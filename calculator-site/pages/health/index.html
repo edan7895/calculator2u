@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="auto" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">健康与身体计算器 | Health & Body Calculators</title>
+  <meta name="description" content="探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。" />
+  <meta name="keywords" content="健康计算器, BMI, 体脂率, BMR, TDEE, 预产期, 排卵期" />
+  <meta name="author" content="Calculator2U" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/health/index.html" />
+  <meta property="og:title" content="健康与身体计算器 | Calculator2U" />
+  <meta property="og:description" content="探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.calculator2u.com/pages/health/index.html" />
+  <meta property="og:image" content="https://www.calculator2u.com/assets/images/health-banner.jpg" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #006d77;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-left: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #006d77;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .calc-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding-top: 3.5rem; /* 给图标留空间 */
+    }
+    .calc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .calc-card h2 {
+      margin-top: 0.5rem;
+      font-size: 1.4rem;
+      color: #008891;
+      margin-bottom: 0.3rem;
+    }
+    .calc-card p {
+      color: #666;
+      margin-bottom: 0;
+    }
+    /* 图标样式 */
+    .calc-icon {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 48px;
+      background-color: #008891;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #006d77;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" class="active" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">健康与身体计算器</h1>
+    <p data-i18n="desc">探索我们的健康与身体类计算器，助你保持健康生活。</p>
+
+    <div class="calculator-grid">
+      <a href="bmi.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">⚖️</div>
+        <h2 data-i18n="bmi">BMI 计算器</h2>
+        <p data-i18n="bmi_desc">计算你的身体质量指数。</p>
+      </a>
+      <a href="bodyfat.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">🧴</div>
+        <h2 data-i18n="bodyfat">体脂率计算器</h2>
+        <p data-i18n="bodyfat_desc">估算你的体脂百分比。</p>
+      </a>
+      <a href="bmr.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">🔥</div>
+        <h2 data-i18n="bmr">BMR 计算器</h2>
+        <p data-i18n="bmr_desc">基础代谢率计算器。</p>
+      </a>
+      <a href="tdee.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">⚡</div>
+        <h2 data-i18n="tdee">TDEE 计算器</h2>
+        <p data-i18n="tdee_desc">每日总能量消耗计算器。</p>
+      </a>
+      <a href="goal-weight.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">🎯</div>
+        <h2 data-i18n="goal_weight">目标体重计算器</h2>
+        <p data-i18n="goal_weight_desc">帮助你设定健康目标体重。</p>
+      </a>
+      <a href="pregnancy-due-date.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">🤰</div>
+        <h2 data-i18n="pregnancy_due">怀孕预产期计算器</h2>
+        <p data-i18n="pregnancy_due_desc">预测宝宝出生日期。</p>
+      </a>
+      <a href="ovulation.html" class="calc-card">
+        <div class="calc-icon" aria-hidden="true">🌸</div>
+        <h2 data-i18n="ovulation">排卵期计算器</h2>
+        <p data-i18n="ovulation_desc">帮助你计算排卵期。</p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+  </footer>
+
+  <script>
+    (function(){
+      const translations = {
+        zh: {
+          title: "健康与身体计算器",
+          desc: "探索我们的健康与身体类计算器，助你保持健康生活。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about: "关于我们",
+          bmi: "BMI 计算器",
+          bmi_desc: "计算你的身体质量指数。",
+          bodyfat: "体脂率计算器",
+          bodyfat_desc: "估算你的体脂百分比。",
+          bmr: "BMR 计算器",
+          bmr_desc: "基础代谢率计算器。",
+          tdee: "TDEE 计算器",
+          tdee_desc: "每日总能量消耗计算器。",
+          goal_weight: "目标体重计算器",
+          goal_weight_desc: "帮助你设定健康目标体重。",
+          pregnancy_due: "怀孕预产期计算器",
+          pregnancy_due_desc: "预测宝宝出生日期。",
+          ovulation: "排卵期计算器",
+          ovulation_desc: "帮助你计算排卵期。",
+          footer_privacy: "隐私政策",
+          footer_terms: "使用条款"
+        },
+        en: {
+          title: "Health & Body Calculators",
+          desc: "Explore our health & body calculators to help you stay healthy.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about: "About Us",
+          bmi: "BMI Calculator",
+          bmi_desc: "Calculate your Body Mass Index.",
+          bodyfat: "Body Fat Calculator",
+          bodyfat_desc: "Estimate your body fat percentage.",
+          bmr: "BMR Calculator",
+          bmr_desc: "Basal Metabolic Rate calculator.",
+          tdee: "TDEE Calculator",
+          tdee_desc: "Total Daily Energy Expenditure calculator.",
+          goal_weight: "Goal Weight Calculator",
+          goal_weight_desc: "Help set your healthy target weight.",
+          pregnancy_due: "Pregnancy Due Date Calculator",
+          pregnancy_due_desc: "Predict your baby’s due date.",
+          ovulation: "Ovulation Calculator",
+          ovulation_desc: "Help calculate your ovulation period.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service"
+        }
+      };
+
+      let lang = localStorage.getItem('site-lang');
+      if(!lang){
+        lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+      }
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if(translations[lang] && translations[lang][key]){
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        lang = (lang === 'zh') ? 'en' : 'zh';
+        setLang(lang);
+      });
+
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>

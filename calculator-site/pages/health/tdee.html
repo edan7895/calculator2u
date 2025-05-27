@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TDEE 计算器 | Calculator2U</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+    }
+    main.container {
+      max-width: 720px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#tdee-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+    input, select {
+      font-size: 1rem;
+      padding: 0.4rem;
+      width: 200px;
+      text-align: center;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005f66;
+    }
+    #result-container {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    @media screen and (max-width: 640px) {
+      input, select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html">财务与投资</a></li>
+        <li><a href="/pages/education/index.html">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html">日常生活</a></li>
+        <li><a href="/pages/about.html">关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 id="title">TDEE 计算器</h1>
+    <form id="tdee-form">
+      <div>
+        <label for="gender" id="label-gender">性别</label><br />
+        <select id="gender">
+          <option value="male">男性</option>
+          <option value="female">女性</option>
+        </select>
+      </div>
+      <div>
+        <label for="age" id="label-age">年龄 (岁)</label><br />
+        <input type="number" id="age" required min="10" max="100" />
+      </div>
+      <div>
+        <label for="weight" id="label-weight">体重 (kg)</label><br />
+        <input type="number" id="weight" required min="20" max="300" step="0.1" />
+      </div>
+      <div>
+        <label for="height" id="label-height">身高 (cm)</label><br />
+        <input type="number" id="height" required min="100" max="250" step="0.1" />
+      </div>
+      <div>
+        <label for="activity" id="label-activity">活动水平</label><br />
+        <select id="activity">
+          <option value="1.2">久坐不动</option>
+          <option value="1.375">轻度活动</option>
+          <option value="1.55">中度活动</option>
+          <option value="1.725">高度活动</option>
+          <option value="1.9">非常活跃</option>
+        </select>
+      </div>
+      <button type="submit" id="btn-calculate">计算</button>
+    </form>
+    <div id="result-container" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer>
+    <p style="text-align:center;">&copy; 2025 Calculator2U 版权所有</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("tdee-form");
+    const resultEl = document.getElementById("result-container");
+    const langBtn = document.getElementById("lang-switch");
+
+    // 国际化文本
+    const texts = {
+      zh: {
+        title: "TDEE 计算器",
+        gender: "性别",
+        age: "年龄 (岁)",
+        weight: "体重 (kg)",
+        height: "身高 (cm)",
+        activity: "活动水平",
+        btn: "计算",
+        activityLevels: [
+          "久坐不动", "轻度活动", "中度活动", "高度活动", "非常活跃"
+        ],
+        result: tdee => `您的每日总能量消耗 (TDEE) 约为 <strong>${tdee} 千卡</strong>。`
+      },
+      en: {
+        title: "TDEE Calculator",
+        gender: "Gender",
+        age: "Age (years)",
+        weight: "Weight (kg)",
+        height: "Height (cm)",
+        activity: "Activity Level",
+        btn: "Calculate",
+        activityLevels: [
+          "Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely active"
+        ],
+        result: tdee => `Your Total Daily Energy Expenditure (TDEE) is approximately <strong>${tdee} kcal</strong>.`
+      }
+    };
+
+    let currentLang = "zh";
+
+    langBtn.addEventListener("click", () => {
+      currentLang = currentLang === "zh" ? "en" : "zh";
+      updateLanguage();
+    });
+
+    function updateLanguage() {
+      const t = texts[currentLang];
+      langBtn.textContent = currentLang === "zh" ? "EN" : "中";
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("label-gender").textContent = t.gender;
+      document.getElementById("label-age").textContent = t.age;
+      document.getElementById("label-weight").textContent = t.weight;
+      document.getElementById("label-height").textContent = t.height;
+      document.getElementById("label-activity").textContent = t.activity;
+      document.getElementById("btn-calculate").textContent = t.btn;
+
+      const activitySelect = document.getElementById("activity");
+      activitySelect.querySelectorAll("option").forEach((opt, i) => {
+        opt.textContent = t.activityLevels[i];
+      });
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const gender = document.getElementById("gender").value;
+      const age = parseFloat(document.getElementById("age").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+      const activity = parseFloat(document.getElementById("activity").value);
+
+      if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+        alert("请输入有效的数值");
+        return;
+      }
+
+      // BMR 公式：Mifflin-St Jeor
+      let bmr;
+      if (gender === "male") {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+
+      const tdee = Math.round(bmr * activity);
+      resultEl.innerHTML = texts[currentLang].result(tdee);
+    });
+
+    updateLanguage(); // 初始化
+  </script>
+</body>
+</html>

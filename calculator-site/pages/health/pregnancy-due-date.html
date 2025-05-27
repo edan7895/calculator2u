@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="auto" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">怀孕预产期计算器 | Pregnancy Due Date Calculator</title>
+  <meta name="description" content="使用我们的怀孕预产期计算器，轻松预测宝宝的预产日期。" />
+  <meta name="keywords" content="怀孕预产期计算器, 预产期, 怀孕, 计算器" />
+  <meta name="author" content="Calculator2U" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/health/pregnancy-due-date.html" />
+  <meta property="og:title" content="怀孕预产期计算器 | Calculator2U" />
+  <meta property="og:description" content="使用我们的怀孕预产期计算器，轻松预测宝宝的预产日期。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.calculator2u.com/pages/health/pregnancy-due-date.html" />
+  <meta property="og:image" content="https://www.calculator2u.com/assets/images/pregnancy-banner.jpg" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #006d77;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-left: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 600px;
+      margin: 3rem auto 4rem;
+      padding: 1rem 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #006d77;
+    }
+    p.desc {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #004f56;
+      text-align: left;
+    }
+    input[type="date"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #008891;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #005f66;
+    }
+    .result {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #006d77;
+      min-height: 2.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    footer a {
+      color: #006d77;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">怀孕预产期计算器</h1>
+    <p class="desc" data-i18n="desc">输入你的最后一次月经日期，计算预产期。</p>
+
+    <form id="dueDateForm" onsubmit="return false;">
+      <label for="lastPeriod" data-i18n="label_last_period">最后一次月经日期</label>
+      <input type="date" id="lastPeriod" required />
+
+      <button id="calculateBtn" data-i18n="btn_calculate">计算预产期</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+  </footer>
+
+  <script>
+    (function(){
+      const translations = {
+        zh: {
+          title: "怀孕预产期计算器",
+          desc: "输入你的最后一次月经日期，计算预产期。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about: "关于我们",
+          label_last_period: "最后一次月经日期",
+          btn_calculate: "计算预产期",
+          footer_privacy: "隐私政策",
+          footer_terms: "使用条款"
+        },
+        en: {
+          title: "Pregnancy Due Date Calculator",
+          desc: "Enter the first day of your last menstrual period to calculate your due date.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about: "About Us",
+          label_last_period: "Last Menstrual Period",
+          btn_calculate: "Calculate Due Date",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service"
+        }
+      };
+
+      let lang = localStorage.getItem('site-lang');
+      if(!lang){
+        lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+      }
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if(translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      setLang(lang);
+
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        setLang(lang);
+      });
+
+      const form = document.getElementById('dueDateForm');
+      const resultDiv = document.getElementById('result');
+      const lastPeriodInput = document.getElementById('lastPeriod');
+
+      function calculateDueDate(lastPeriodDate) {
+        // 计算预产期 = 最后一次月经日期 + 280天（40周）
+        const msPerDay = 24*60*60*1000;
+        const dueDate = new Date(lastPeriodDate.getTime() + 280 * msPerDay);
+        return dueDate;
+      }
+
+      document.getElementById('calculateBtn').addEventListener('click', () => {
+        const lastPeriodVal = lastPeriodInput.value;
+        if (!lastPeriodVal) {
+          resultDiv.textContent = lang === 'zh' ? '请输入最后一次月经日期。' : 'Please enter your last menstrual period date.';
+          return;
+        }
+        const lastPeriodDate = new Date(lastPeriodVal);
+        if (isNaN(lastPeriodDate.getTime())) {
+          resultDiv.textContent = lang === 'zh' ? '请输入有效的日期格式。' : 'Please enter a valid date.';
+          return;
+        }
+        const dueDate = calculateDueDate(lastPeriodDate);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dueDateStr = dueDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+        resultDiv.textContent = lang === 'zh' ? `预计预产期为：${dueDateStr}` : `Your estimated due date is: ${dueDateStr}`;
+      });
+    })();
+  </script>
+</body>
+</html>

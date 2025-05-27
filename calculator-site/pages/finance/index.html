@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="auto" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">财务与投资计算器 | Finance & Investment Calculators</title>
+  <meta name="description" content="探索我们的财务与投资计算器，包括贷款计算器、投资回报率、税务计算等，助你理财无忧。" />
+  <meta name="keywords" content="财务计算器, 贷款, 投资回报率, 税务计算, 理财工具" />
+  <meta name="author" content="Calculator2U" />
+  <meta property="og:title" content="财务与投资计算器 | Calculator2U" />
+  <meta property="og:description" content="探索我们的财务与投资计算器，包括贷款计算器、投资回报率、税务计算等，助你理财无忧。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.calculator2u.com/assets/images/finance-banner.jpg" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #004d61;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-left: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #004d61;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      color: #004d61;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .calc-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .calc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .calc-card h2 {
+      margin-top: 0.8rem;
+      font-size: 1.4rem;
+      color: #007b8a;
+      margin-bottom: 0.3rem;
+    }
+    .calc-card p {
+      color: #666;
+      margin-bottom: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #004d61;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .calc-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" class="active" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">财务与投资计算器</h1>
+    <p data-i18n="desc">探索我们的财务与投资计算器，助你理财无忧。</p>
+
+    <div class="calculator-grid">
+      <a href="loan-calculator.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="20" width="44" height="24" stroke="#007b8a" stroke-width="3" rx="4" ry="4" fill="#00a9b5"/>
+          <path d="M22 20v-8h20v8" stroke="#004d61" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="32" cy="44" r="6" fill="#004d61"/>
+          <circle cx="32" cy="44" r="4" fill="#00a9b5"/>
+        </svg>
+        <h2 data-i18n="loan_calc">贷款计算器</h2>
+        <p data-i18n="loan_calc_desc">快速计算贷款利息与还款计划。</p>
+      </a>
+
+      <a href="investment-return.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" stroke="#007b8a" stroke-width="3" fill="#00a9b5"/>
+          <path d="M20 40l8-12 8 12" stroke="#004d61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="28" cy="30" r="3" fill="#004d61"/>
+          <circle cx="36" cy="30" r="3" fill="#004d61"/>
+        </svg>
+        <h2 data-i18n="investment_return">投资回报率计算器</h2>
+        <p data-i18n="investment_return_desc">估算投资收益表现。</p>
+      </a>
+
+      <a href="tax-calculator.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="14" width="36" height="36" stroke="#007b8a" stroke-width="3" rx="6" ry="6" fill="#00a9b5"/>
+          <path d="M22 32h20" stroke="#004d61" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 22v20" stroke="#004d61" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="8" stroke="#004d61" stroke-width="3"/>
+        </svg>
+        <h2 data-i18n="tax_calc">税务计算器</h2>
+        <p data-i18n="tax_calc_desc">帮助计算应缴税款。</p>
+      </a>
+
+      <a href="compound-interest.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="28" stroke="#007b8a" stroke-width="3" fill="#00a9b5"/>
+          <path d="M24 38l8-12 8 12" stroke="#004d61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 18v12" stroke="#004d61" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h2 data-i18n="compound_interest">复利计算器</h2>
+        <p data-i18n="compound_interest_desc">计算投资复利增长。</p>
+      </a>
+
+      <a href="retirement-savings.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 44h24v6H20z" fill="#00a9b5" stroke="#007b8a" stroke-width="3" rx="2" ry="2"/>
+          <circle cx="32" cy="26" r="14" stroke="#004d61" stroke-width="3" fill="#00a9b5"/>
+          <circle cx="32" cy="26" r="10" fill="#004d61"/>
+        </svg>
+        <h2 data-i18n="retirement_savings">退休储蓄计算器</h2>
+        <p data-i18n="retirement_savings_desc">规划你的退休资金需求。</p>
+      </a>
+
+      <a href="inflation.html" class="calc-card">
+        <svg class="calc-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="20" width="36" height="24" stroke="#007b8a" stroke-width="3" rx="4" ry="4" fill="#00a9b5"/>
+          <path d="M32 16v32" stroke="#004d61" stroke-width="3" stroke-linecap="round"/>
+          <path d="M28 20l4-4 4 4" stroke="#004d61" stroke-width="3" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <h2 data-i18n="inflation">通货膨胀计算器</h2>
+        <p data-i18n="inflation_desc">计算通货膨胀增长。</p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+  </footer>
+
+  <script>
+    (function(){
+      const translations = {
+        zh: {
+          title: "财务与投资计算器",
+          desc: "探索我们的财务与投资计算器，助你理财无忧。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about: "关于我们",
+          loan_calc: "贷款计算器",
+          loan_calc_desc: "快速计算贷款利息与还款计划。",
+          investment_return: "投资回报率计算器",
+          investment_return_desc: "估算投资收益表现。",
+          tax_calc: "税务计算器",
+          tax_calc_desc: "帮助计算应缴税款。",
+          compound_interest: "复利计算器",
+          compound_interest_desc: "计算投资复利增长。",
+          retirement_savings: "退休储蓄计算器",
+          retirement_savings_desc: "规划你的退休资金需求。",
+          inflation: "通货膨胀计算器",
+          inflation_desc: "计算通货膨胀增长。",
+          footer_privacy: "隐私政策",
+          footer_terms: "使用条款",
+        },
+        en: {
+          title: "Finance & Investment Calculators",
+          desc: "Explore our finance & investment calculators to manage your money smarter.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about: "About Us",
+          loan_calc: "Loan Calculator",
+          loan_calc_desc: "Quickly calculate loan interest and repayment plans.",
+          investment_return: "Investment Return Calculator",
+          investment_return_desc: "Estimate your investment performance.",
+          tax_calc: "Tax Calculator",
+          tax_calc_desc: "Help calculate your taxes owed.",
+          compound_interest: "Compound Interest Calculator",
+          compound_interest_desc: "Calculate compound growth of investments.",
+          retirement_savings: "Retirement Savings Calculator",
+          retirement_savings_desc: "Plan your retirement funding needs.",
+          inflation: "Inflation Calculator",
+          inflation_desc: "Calculate inflation increases.",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Use",
+        }
+      };
+
+      let currentLang = "zh";
+
+      const langSwitchBtn = document.getElementById("lang-switch");
+
+      function updateText() {
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[currentLang][key]) {
+            el.textContent = translations[currentLang][key];
+          }
+        });
+        langSwitchBtn.textContent = currentLang === "zh" ? "EN" : "中";
+      }
+
+      langSwitchBtn.addEventListener("click", () => {
+        currentLang = currentLang === "zh" ? "en" : "zh";
+        updateText();
+      });
+
+      updateText();
+    })();
+  </script>
+</body>
+</html>

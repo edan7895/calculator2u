@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">几何计算器 | Geometry Calculator</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; background: #fefefe; color: #222;
+    }
+    .navbar {
+      background-color: #3a4f7a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #3a4f7a;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      color: #3a4f7a;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    form {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #3a4f7a;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2c3e6f;
+    }
+    .result {
+      margin-top: 1.5rem;
+      background-color: #eef3fa;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.1rem;
+      color: #3a4f7a;
+      min-height: 2.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #3a4f7a;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education" class="active">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1 data-i18n="title">几何计算器</h1>
+  <form id="geometry-form" aria-label="几何计算器表单">
+    <label for="radius-input" data-i18n="input_radius">请输入圆的半径 (cm)：</label>
+    <input type="number" id="radius-input" min="0" step="any" aria-required="true" />
+    <button type="submit" data-i18n="calc_button">计算面积和周长</button>
+  </form>
+  <div id="result" class="result" aria-live="polite" role="region"></div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+</footer>
+
+<script>
+  (function(){
+    const translations = {
+      zh: {
+        title: "几何计算器",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about: "关于我们",
+        input_radius: "请输入圆的半径 (cm)：",
+        calc_button: "计算面积和周长",
+        footer_privacy: "隐私政策",
+        footer_terms: "使用条款",
+      },
+      en: {
+        title: "Geometry Calculator",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about: "About Us",
+        input_radius: "Enter the radius of the circle (cm):",
+        calc_button: "Calculate Area and Circumference",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Use",
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'zh';
+
+    function updateTexts() {
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang] && translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+      document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
+      document.getElementById('lang-switch').textContent = currentLang === 'zh' ? 'EN' : '中文';
+    }
+
+    document.getElementById('lang-switch').addEventListener('click', ()=>{
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      localStorage.setItem('lang', currentLang);
+      updateTexts();
+    });
+
+    updateTexts();
+
+    const form = document.getElementById('geometry-form');
+    const radiusInput = document.getElementById('radius-input');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const r = parseFloat(radiusInput.value);
+      if (isNaN(r) || r < 0) {
+        resultDiv.textContent = currentLang === 'zh' ? '请输入有效的半径' : 'Please enter a valid radius';
+        return;
+      }
+      const area = Math.PI * r * r;
+      const circumference = 2 * Math.PI * r;
+      if(currentLang === 'zh') {
+        resultDiv.textContent = `面积: ${area.toFixed(2)} 平方厘米, 周长: ${circumference.toFixed(2)} 厘米`;
+      } else {
+        resultDiv.textContent = `Area: ${area.toFixed(2)} cm², Circumference: ${circumference.toFixed(2)} cm`;
+      }
+    });
+  })();
+</script>
+</body>
+</html>

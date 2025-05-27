@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">进制转换器 | Base Converter</title>
+  <meta name="description" content="简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。" />
+  <meta name="keywords" content="进制转换器, base converter, binary, octal, decimal, hex" />
+  <meta name="author" content="Calculator2U" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; background: #f9f9f9; color: #333;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+    .navbar {
+      background-color: #003f5c;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    main.container {
+      max-width: 600px;
+      margin: 2rem auto 3rem auto;
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+      flex-grow: 1;
+    }
+    h1 {
+      text-align: center;
+      color: #003f5c;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p.desc {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    form.converter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: #003f5c;
+    }
+    input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.5px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+    select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.5px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+    }
+    button {
+      background-color: #003f5c;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005080;
+    }
+    .result-box {
+      margin-top: 1.5rem;
+      background: #e9f0fb;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: #003f5c;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+    }
+    @media (max-width: 480px) {
+      main.container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 data-i18n="title">进制转换器</h1>
+    <p class="desc" data-i18n="desc">简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。</p>
+    <form class="converter-form" onsubmit="return false;">
+      <label for="inputValue" data-i18n="input_label">输入数值</label>
+      <input type="text" id="inputValue" placeholder="" autocomplete="off" />
+
+      <label for="inputBase" data-i18n="input_base_label">输入进制</label>
+      <select id="inputBase" aria-label="Input base">
+        <option value="2">2 (二进制)</option>
+        <option value="8">8 (八进制)</option>
+        <option value="10" selected>10 (十进制)</option>
+        <option value="16">16 (十六进制)</option>
+      </select>
+
+      <label for="outputBase" data-i18n="output_base_label">输出进制</label>
+      <select id="outputBase" aria-label="Output base">
+        <option value="2">2 (二进制)</option>
+        <option value="8">8 (八进制)</option>
+        <option value="10" selected>10 (十进制)</option>
+        <option value="16">16 (十六进制)</option>
+      </select>
+
+      <button type="button" id="convertBtn" data-i18n="convert_btn">转换</button>
+      <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
+    </form>
+
+    <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+
+  <script>
+    (() => {
+      const translations = {
+        zh: {
+          title: "进制转换器",
+          desc: "简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          input_label: "输入数值",
+          input_base_label: "输入进制",
+          output_base_label: "输出进制",
+          convert_btn: "转换",
+          clear_btn: "清除",
+          footer_rights: "保留所有权利。"
+        },
+        en: {
+          title: "Base Converter",
+          desc: "Simple and easy base converter supporting binary, octal, decimal and hexadecimal conversions.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          input_label: "Input Value",
+          input_base_label: "Input Base",
+          output_base_label: "Output Base",
+          convert_btn: "Convert",
+          clear_btn: "Clear",
+          footer_rights: "All rights reserved."
+        }
+      };
+
+      // Detect device language
+      let detectedLang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+      let lang = detectedLang;
+
+      // Elements with data-i18n attribute for translation
+      const i18nElements = document.querySelectorAll('[data-i18n]');
+      // Elements for placeholder translation
+      const inputValue = document.getElementById('inputValue');
+
+      function translatePage(language) {
+        lang = language;
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        i18nElements.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang][key]) el.textContent = translations[lang][key];
+        });
+        // Change placeholder text
+        inputValue.placeholder = translations[lang].input_label + "...";
+
+        // Change language switch button text
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      // Initial translation
+      translatePage(lang);
+
+      // Language switch button
+      document.getElementById('lang-switch').onclick = () => {
+        translatePage(lang === 'zh' ? 'en' : 'zh');
+      };
+
+      // Conversion logic
+      const inputBaseSelect = document.getElementById('inputBase');
+      const outputBaseSelect = document.getElementById('outputBase');
+      const resultBox = document.getElementById('resultBox');
+      const convertBtn = document.getElementById('convertBtn');
+      const clearBtn = document.getElementById('clearBtn');
+
+      function isValidInput(value, base) {
+        // Allowed chars per base
+        const regexMap = {
+          2: /^[0-1]+$/i,
+          8: /^[0-7]+$/i,
+          10: /^[0-9]+$/i,
+          16: /^[0-9a-f]+$/i
+        };
+        return regexMap[base].test(value.trim());
+      }
+
+      function convertBase(value, fromBase, toBase) {
+        try {
+          // parseInt can handle up to base 36
+          const decimal = parseInt(value, fromBase);
+          if (isNaN(decimal)) return null;
+          return decimal.toString(toBase).toUpperCase();
+        } catch {
+          return null;
+        }
+      }
+
+      convertBtn.onclick = () => {
+        const inputVal = inputValue.value.trim();
+        const fromBase = parseInt(inputBaseSelect.value);
+        const toBase = parseInt(outputBaseSelect.value);
+
+        if (!inputVal) {
+          resultBox.textContent = lang === 'zh' ? "请输入数值。" : "Please enter a value.";
+          return;
+        }
+        if (!isValidInput(inputVal, fromBase)) {
+          resultBox.textContent = lang === 'zh' ? `请输入有效的${fromBase}进制数。` : `Please enter a valid base ${fromBase} number.`;
+          return;
+        }
+
+        const converted = convertBase(inputVal, fromBase, toBase);
+        if (converted === null) {
+          resultBox.textContent = lang === 'zh' ? "转换失败，请检查输入。" : "Conversion failed. Please check your input.";
+          return;
+        }
+
+        const fromBaseName = fromBase === 2 ? (lang==='zh'?'二进制':'binary') :
+                            fromBase === 8 ? (lang==='zh'?'八进制':'octal') :
+                            fromBase === 10 ? (lang==='zh'?'十进制':'decimal') :
+                            (lang==='zh'?'十六进制':'hexadecimal');
+
+        const toBaseName = toBase === 2 ? (lang==='zh'?'二进制':'binary') :
+                          toBase === 8 ? (lang==='zh'?'八进制':'octal') :
+                          toBase === 10 ? (lang==='zh'?'十进制':'decimal') :
+                          (lang==='zh'?'十六进制':'hexadecimal');
+
+        resultBox.textContent = `${inputVal} (${fromBaseName}) → ${converted} (${toBaseName})`;
+      };
+
+      clearBtn.onclick = () => {
+        inputValue.value = "";
+        resultBox.textContent = "";
+        inputValue.focus();
+      };
+
+    })();
+  </script>
+</body>
+</html>

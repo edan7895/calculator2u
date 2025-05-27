@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title data-i18n="title">税收计算器 | Tax Calculator</title>
+<meta name="description" content="计算所得税，帮助你估算应缴税款。" />
+<meta name="keywords" content="税收计算器, Tax Calculator, 所得税" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/pages/finance/tax-calculator.html" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<style>
+  body {
+    font-family: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0; padding: 0;
+    color: #222;
+  }
+  header, footer {
+    background-color: #004a99;
+    color: white;
+    padding: 1rem 2rem;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: white;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0; padding: 0;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  nav ul li a.active,
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  #lang-switch {
+    background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #lang-switch:hover {
+    background-color: white;
+    color: #004a99;
+  }
+  main.container {
+    max-width: 520px;
+    background-color: white;
+    margin: 2rem auto 4rem;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #004a99;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  label {
+    font-weight: 600;
+    color: #222;
+  }
+  input[type="number"] {
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #004a99;
+  }
+  button {
+    margin-top: 1rem;
+    background-color: #004a99;
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #0066cc;
+  }
+  .result {
+    margin-top: 2rem;
+    background-color: #e7f0fd;
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    font-weight: 600;
+    color: #004a99;
+    font-size: 1.25rem;
+    white-space: pre-line;
+    text-align: center;
+  }
+  footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  footer a {
+    color: #a9c8f5;
+    text-decoration: none;
+    margin: 0 0.3rem;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
+    main.container {
+      margin: 1rem 1rem 3rem;
+      padding: 1.5rem 1rem;
+    }
+    nav ul {
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul>
+      <li><a href="/pages/finance/index.html" class="active" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+      <li><button id="lang-switch" aria-label="切换语言">EN</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container" role="main">
+  <h1 data-i18n="title">税收计算器</h1>
+  <form id="taxForm" aria-describedby="result">
+    <label for="income" data-i18n="income">应税收入 (Taxable Income):</label>
+    <input type="number" id="income" min="0" step="0.01" required aria-required="true" />
+
+    <label for="deductions" data-i18n="deductions">扣除额 (Deductions):</label>
+    <input type="number" id="deductions" min="0" step="0.01" value="0" aria-required="false" />
+
+    <button type="submit" data-i18n="calculate">计算</button>
+  </form>
+
+  <div id="result" class="result" role="region" aria-live="polite"></div>
+</main>
+
+<footer>
+  <p>
+    &copy; 2025 Calculator2U. All rights reserved.
+    | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a>
+    | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a>
+  </p>
+</footer>
+
+<script>
+(() => {
+  const translations = {
+    zh: {
+      title: "税收计算器",
+      nav_finance: "财务与投资",
+      nav_health: "健康与身体",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about: "关于我们",
+      income: "应税收入",
+      deductions: "扣除额",
+      calculate: "计算",
+      footer_privacy: "隐私政策",
+      footer_terms: "使用条款"
+    },
+    en: {
+      title: "Tax Calculator",
+      nav_finance: "Finance & Investment",
+      nav_health: "Health & Body",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about: "About Us",
+      income: "Taxable Income",
+      deductions: "Deductions",
+      calculate: "Calculate",
+      footer_privacy: "Privacy Policy",
+      footer_terms: "Terms of Service"
+    }
+  };
+
+  let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    localStorage.setItem('site-lang', l);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[l] && translations[l][key]) {
+        el.textContent = translations[l][key];
+      }
+    });
+    document.getElementById('lang-switch').textContent = l === 'zh' ? 'EN' : '中文';
+  }
+
+  setLang(lang);
+
+  document.getElementById('lang-switch').addEventListener('click', () => {
+    setLang(lang === 'zh' ? 'en' : 'zh');
+  });
+
+  const form = document.getElementById('taxForm');
+  const resultDiv = document.getElementById('result');
+
+  // 这里采用简单渐进税率示例
+  const taxBrackets = [
+    { limit: 9875, rate: 0.10 },
+    { limit: 40125, rate: 0.12 },
+    { limit: 85525, rate: 0.22 },
+    { limit: 163300, rate: 0.24 },
+    { limit: 207350, rate: 0.32 },
+    { limit: 518400, rate: 0.35 },
+    { limit: Infinity, rate: 0.37 }
+  ];
+
+  function calculateTax(income) {
+    let tax = 0;
+    let lastLimit = 0;
+    for (const bracket of taxBrackets) {
+      if (income > bracket.limit) {
+        tax += (bracket.limit - lastLimit) * bracket.rate;
+        lastLimit = bracket.limit;
+      } else {
+        tax += (income - lastLimit) * bracket.rate;
+        break;
+      }
+    }
+    return tax;
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const income = parseFloat(document.getElementById('income').value);
+    const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+
+    if (isNaN(income) || income < 0 || deductions < 0) {
+      resultDiv.textContent = lang === 'zh' ?
+        '请输入有效的收入和扣除额' :
+        'Please enter valid income and deductions';
+      return;
+    }
+
+    const taxableIncome = Math.max(0, income - deductions);
+    const taxAmount = calculateTax(taxableIncome);
+
+    if (lang === 'zh') {
+      resultDiv.textContent =
+        应税收入: ${taxableIncome.toFixed(2)} 元\n +
+        预计应缴税款: ${taxAmount.toFixed(2)} 元;
+    } else {
+      resultDiv.textContent =
+        Taxable Income: $${taxableIncome.toFixed(2)}\n +
+        Estimated Tax Owed: $${taxAmount.toFixed(2)};
+    }
+  });
+})();
+</script>
+</body>
+</html>

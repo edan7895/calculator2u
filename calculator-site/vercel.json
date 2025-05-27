@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pages/:category/:page",
+      "destination": "/pages/:category/:page.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/health",
+      "destination": "/pages/health/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/finance",
+      "destination": "/pages/finance/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/education",
+      "destination": "/pages/education/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/engineering",
+      "destination": "/pages/engineering/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/daily-life",
+      "destination": "/pages/daily-life/index.html",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

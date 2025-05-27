@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">字数统计器 | Word Counter</title>
+  <meta name="description" content="字数统计器可快速统计文本的字数、词数和字符数。" />
+  <meta name="keywords" content="字数统计器, 文本工具, 词数统计, Word Counter" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/education/word-counter.html" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      color: #333;
+    }
+    .navbar {
+      background: #30475e;
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: white;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+    .lang-switch {
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #30475e;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      margin-top: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1rem;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/education/index.html" data-i18n="nav_back">← 返回分类</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">字数统计器</h1>
+    <textarea id="text" placeholder="请输入文本..."></textarea>
+    <div class="result" id="result"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 Calculator2U
+  </footer>
+
+  <script>
+    const textArea = document.getElementById("text");
+    const result = document.getElementById("result");
+
+    textArea.addEventListener("input", () => {
+      const text = textArea.value;
+      const words = text.trim().split(/\s+/).filter(Boolean).length;
+      const chars = text.length;
+      const lines = text.split(/\n/).length;
+      result.innerHTML = lang === "zh"
+        ? `字数：${chars} ｜ 词数：${words} ｜ 行数：${lines}`
+        : `Characters: ${chars} | Words: ${words} | Lines: ${lines}`;
+    });
+
+    const translations = {
+      zh: {
+        title: "字数统计器",
+        nav_back: "← 返回分类"
+      },
+      en: {
+        title: "Word Counter",
+        nav_back: "← Back to Category"
+      }
+    };
+    let lang = localStorage.getItem("site-lang") || (navigator.language.startsWith("zh") ? "zh" : "en");
+    function setLang(code) {
+      document.documentElement.lang = code;
+      localStorage.setItem("site-lang", code);
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[code][key];
+      });
+      document.getElementById("lang-switch").textContent = code === "zh" ? "EN" : "中文";
+    }
+    document.getElementById("lang-switch").onclick = () => {
+      lang = lang === "zh" ? "en" : "zh";
+      setLang(lang);
+    };
+    setLang(lang);
+  </script>
+</body>
+</html>

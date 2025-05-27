@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">材料强度计算器 | Material Strength Calculator</title>
+  <meta name="description" content="材料强度计算器，计算应力、受力和截面积。" />
+  <meta name="keywords" content="材料强度, 应力, 计算器, 力, 截面积, Material Strength" />
+  <meta name="author" content="Calculator2U" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; background: #f9f9f9; color: #333;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+    .navbar {
+      background-color: #003f5c;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    main.container {
+      max-width: 600px;
+      margin: 2rem auto 3rem auto;
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+      flex-grow: 1;
+    }
+    h1 {
+      text-align: center;
+      color: #003f5c;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p.desc {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    form.calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: #003f5c;
+    }
+    input[type="number"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.5px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #003f5c;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    button:hover {
+      background-color: #005080;
+    }
+    .result-box {
+      margin-top: 1.5rem;
+      background: #e9f0fb;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: #003f5c;
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 3em;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+    }
+    @media (max-width: 480px) {
+      main.container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 data-i18n="title">材料强度计算器</h1>
+    <p class="desc" data-i18n="desc">输入任意两个参数，计算第三个（应力、受力、截面积）。</p>
+    <form class="calc-form" onsubmit="return false;">
+      <label for="force" data-i18n="label_force">力 (F) - 牛顿 (N)</label>
+      <input type="number" id="force" step="any" placeholder="" autocomplete="off" />
+
+      <label for="area" data-i18n="label_area">截面积 (A) - 平方米 (m²)</label>
+      <input type="number" id="area" step="any" placeholder="" autocomplete="off" />
+
+      <label for="stress" data-i18n="label_stress">应力 (σ) - 帕斯卡 (Pa)</label>
+      <input type="number" id="stress" step="any" placeholder="" autocomplete="off" />
+
+      <button type="button" id="calcBtn" data-i18n="calc_btn">计算</button>
+      <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
+    </form>
+
+    <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+
+  <script>
+    (() => {
+      const translations = {
+        zh: {
+          title: "材料强度计算器",
+          desc: "输入任意两个参数，计算第三个（应力、受力、截面积）。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          label_force: "力 (F) - 牛顿 (N)",
+          label_area: "截面积 (A) - 平方米 (m²)",
+          label_stress: "应力 (σ) - 帕斯卡 (Pa)",
+          calc_btn: "计算",
+          clear_btn: "清除",
+          footer_rights: "保留所有权利。",
+          err_two_values: "请至少输入两个数值。",
+          err_invalid: "输入的值必须是非负数字。",
+          result_force: "力 (F)",
+          result_area: "截面积 (A)",
+          result_stress: "应力 (σ)"
+        },
+        en: {
+          title: "Material Strength Calculator",
+          desc: "Enter any two parameters to calculate the third (Stress, Force, Area).",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          label_force: "Force (F) - Newton (N)",
+          label_area: "Area (A) - square meters (m²)",
+          label_stress: "Stress (σ) - Pascal (Pa)",
+          calc_btn: "Calculate",
+          clear_btn: "Clear",
+          footer_rights: "All rights reserved.",
+          err_two_values: "Please enter at least two values.",
+          err_invalid: "Values must be non-negative numbers.",
+          result_force: "Force (F)",
+          result_area: "Area (A)",
+          result_stress: "Stress (σ)"
+        }
+      };
+
+      // 自动检测用户语言（仅中英文，默认中文）
+      let lang = 'zh';
+      const userLang = navigator.language || navigator.userLanguage || '';
+      if (userLang.toLowerCase().startsWith('en')) lang = 'en';
+
+      // 如果之前用户手动选择过语言，优先使用存储的
+      if (localStorage.getItem('site-lang')) {
+        lang = localStorage.getItem('site-lang');
+      }
+
+      function setLanguage(lng) {
+        lang = lng;
+        localStorage.setItem('site-lang', lng);
+        document.documentElement.lang = lng === 'zh' ? 'zh-CN' : 'en-US';
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (!translations[lng][key]) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = translations[lng][key];
+          } else if (el.tagName === 'BUTTON') {
+            el.textContent = translations[lng][key];
+          } else {
+            el.textContent = translations[lng][key];
+          }
+        });
+
+        // 单独更新输入框 placeholder，防止丢失
+        document.getElementById('force').placeholder = translations[lng].label_force;
+        document.getElementById('area').placeholder = translations[lng].label_area;
+        document.getElementById('stress').placeholder = translations[lng].label_stress;
+
+        // 语言切换按钮文字
+        document.getElementById('lang-switch').textContent = lng === 'zh' ? 'EN' : '中文';
+
+        // 标题同步
+        document.title = translations[lng].title;
+
+        clearResult();
+      }
+
+      function clearResult() {
+        document.getElementById('resultBox').textContent = '';
+      }
+
+      // 校验非负数字
+      function isValidNumber(val) {
+        return val !== '' && !isNaN(val) && Number(val) >= 0;
+      }
+
+      function calculateMaterialStrength() {
+        const F = document.getElementById('force').value.trim();
+        const A = document.getElementById('area').value.trim();
+        const sigma = document.getElementById('stress').value.trim();
+        const resultBox = document.getElementById('resultBox');
+
+        const inputs = [F, A, sigma].filter(isValidNumber);
+
+        if (inputs.length < 2) {
+          resultBox.textContent = translations[lang].err_two_values;
+          return;
+        }
+
+        if ((F !== '' && !isValidNumber(F)) ||
+            (A !== '' && !isValidNumber(A)) ||
+            (sigma !== '' && !isValidNumber(sigma))) {
+          resultBox.textContent = translations[lang].err_invalid;
+          return;
+        }
+
+        const Fnum = parseFloat(F);
+        const Anum = parseFloat(A);
+        const sigmanum = parseFloat(sigma);
+
+        let output = '';
+
+        if (F !== '' && A !== '' && sigma === '') {
+          if (Anum === 0) {
+            resultBox.textContent = translations[lang].err_invalid;
+            return;
+          }
+          const stressCalc = Fnum / Anum;
+          output = `${translations[lang].result_stress}: ${stressCalc.toFixed(4)} Pa`;
+        } else if (F !== '' && sigma !== '' && A === '') {
+          if (sigmanum === 0) {
+            resultBox.textContent = translations[lang].err_invalid;
+            return;
+          }
+          const areaCalc = Fnum / sigmanum;
+          output = `${translations[lang].result_area}: ${areaCalc.toFixed(6)} m²`;
+        } else if (A !== '' && sigma !== '' && F === '') {
+          const forceCalc = Anum * sigmanum;
+          output = `${translations[lang].result_force}: ${forceCalc.toFixed(4)} N`;
+        } else if (F !== '' && A !== '' && sigma !== '') {
+          if (Math.abs(Fnum - Anum * sigmanum) < 1e-6) {
+            output = lang === 'zh' ? '输入的值符合应力公式 σ = F / A。' : 'Input values satisfy the formula σ = F / A.';
+          } else {
+            output = lang === 'zh' ? '输入的值不符合应力公式！' : 'Input values do NOT satisfy the formula!';
+          }
+        } else {
+          output = translations[lang].err_two_values;
+        }
+
+        resultBox.textContent = output;
+      }
+
+      // 初始化语言
+      setLanguage(lang);
+
+      // 语言切换事件
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        setLanguage(lang === 'zh' ? 'en' : 'zh');
+      });
+
+      // 计算按钮事件
+      document.getElementById('calcBtn').addEventListener('click', calculateMaterialStrength);
+
+      // 清除按钮事件
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        document.getElementById('force').value = '';
+        document.getElementById('area').value = '';
+        document.getElementById('stress').value = '';
+        clearResult();
+      });
+    })();
+  </script>
+</body>
+</html>

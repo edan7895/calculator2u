@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">厨房单位换算 | Cooking Converter</title>
+  <meta name="description" content="厨房常用单位转换工具，方便食谱和烹饪计量。" />
+  <meta name="keywords" content="厨房换算, 单位转换, 烹饪工具, 料理单位" />
+  <meta name="author" content="Calculator2U" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #003f5c;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #003f5c;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    .converter-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: 600;
+      color: #003f5c;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.7rem;
+      background-color: #003f5c;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #002a3a;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #003f5c;
+      font-weight: 700;
+      min-height: 1.5em;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 1rem;
+      }
+      .nav-links {
+        gap: 0.6rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .converter-box {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 data-i18n="title">厨房单位换算</h1>
+    <p data-i18n="desc">厨房常用单位转换工具，方便食谱和烹饪计量。</p>
+    <div class="converter-box">
+      <label for="inputValue" data-i18n="input_label">输入数值</label>
+      <input type="number" id="inputValue" placeholder="请输入数值" />
+
+      <label for="inputUnit" data-i18n="input_unit">输入单位</label>
+      <select id="inputUnit">
+        <option value="gram" data-i18n="unit_gram">克 (gram)</option>
+        <option value="kilogram" data-i18n="unit_kilogram">千克 (kilogram)</option>
+        <option value="ounce" data-i18n="unit_ounce">盎司 (ounce)</option>
+        <option value="pound" data-i18n="unit_pound">磅 (pound)</option>
+        <option value="milliliter" data-i18n="unit_milliliter">毫升 (milliliter)</option>
+        <option value="liter" data-i18n="unit_liter">升 (liter)</option>
+        <option value="cup" data-i18n="unit_cup">杯 (cup)</option>
+        <option value="tablespoon" data-i18n="unit_tablespoon">汤匙 (tablespoon)</option>
+        <option value="teaspoon" data-i18n="unit_teaspoon">茶匙 (teaspoon)</option>
+      </select>
+
+      <label for="outputUnit" data-i18n="output_unit">转换到单位</label>
+      <select id="outputUnit">
+        <option value="gram" data-i18n="unit_gram">克 (gram)</option>
+        <option value="kilogram" data-i18n="unit_kilogram">千克 (kilogram)</option>
+        <option value="ounce" data-i18n="unit_ounce">盎司 (ounce)</option>
+        <option value="pound" data-i18n="unit_pound">磅 (pound)</option>
+        <option value="milliliter" data-i18n="unit_milliliter">毫升 (milliliter)</option>
+        <option value="liter" data-i18n="unit_liter">升 (liter)</option>
+        <option value="cup" data-i18n="unit_cup">杯 (cup)</option>
+        <option value="tablespoon" data-i18n="unit_tablespoon">汤匙 (tablespoon)</option>
+        <option value="teaspoon" data-i18n="unit_teaspoon">茶匙 (teaspoon)</option>
+      </select>
+
+      <button id="convertBtn" data-i18n="convert_btn">转换</button>
+      <div class="result" id="result"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+
+  <script>
+    (() => {
+      const translations = {
+        zh: {
+          title: "厨房单位换算",
+          desc: "厨房常用单位转换工具，方便食谱和烹饪计量。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          input_label: "输入数值",
+          input_unit: "输入单位",
+          output_unit: "转换到单位",
+          convert_btn: "转换",
+          footer_rights: "保留所有权利。",
+          unit_gram: "克 (gram)",
+          unit_kilogram: "千克 (kilogram)",
+          unit_ounce: "盎司 (ounce)",
+          unit_pound: "磅 (pound)",
+          unit_milliliter: "毫升 (milliliter)",
+          unit_liter: "升 (liter)",
+          unit_cup: "杯 (cup)",
+          unit_tablespoon: "汤匙 (tablespoon)",
+          unit_teaspoon: "茶匙 (teaspoon)"
+        },
+        en: {
+          title: "Cooking Converter",
+          desc: "Kitchen common unit converter for recipes and cooking measurements.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          input_label: "Input Value",
+          input_unit: "Input Unit",
+          output_unit: "Convert To Unit",
+          convert_btn: "Convert",
+          footer_rights: "All rights reserved.",
+          unit_gram: "Gram (gram)",
+          unit_kilogram: "Kilogram (kilogram)",
+          unit_ounce: "Ounce (ounce)",
+          unit_pound: "Pound (pound)",
+          unit_milliliter: "Milliliter (milliliter)",
+          unit_liter: "Liter (liter)",
+          unit_cup: "Cup (cup)",
+          unit_tablespoon: "Tablespoon (tablespoon)",
+          unit_teaspoon: "Teaspoon (teaspoon)"
+        }
+      };
+
+      // 单位换算率（基准：克和毫升）
+      // 体积单位和重量单位的换算在水为标准
+      const conversionTable = {
+        gram: 1,
+        kilogram: 1000,
+        ounce: 28.3495,
+        pound: 453.592,
+        milliliter: 1,
+        liter: 1000,
+        cup: 240,
+        tablespoon: 15,
+        teaspoon: 5
+      };
+
+      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang][key]) el.textContent = translations[lang][key];
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      setLang(lang);
+
+      document.getElementById('lang-switch').onclick = () => {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        setLang(lang);
+      };
+
+      // 转换逻辑
+      function convert(value, fromUnit, toUnit) {
+        if (value === '' || isNaN(value)) return null;
+
+        value = parseFloat(value);
+
+        // 水为基准，体积单位和重量单位互转默认水的密度1g/ml
+        // 如果单位都属于重量单位，直接按克换算
+        // 如果单位都属于体积单位，直接按毫升换算
+        // 体积与重量互转时，默认1ml水=1g
+        const weightUnits = ['gram', 'kilogram', 'ounce', 'pound'];
+        const volumeUnits = ['milliliter', 'liter', 'cup', 'tablespoon', 'teaspoon'];
+
+        let valueInGramOrMl;
+
+        if (weightUnits.includes(fromUnit) && weightUnits.includes(toUnit)) {
+          valueInGramOrMl = value * conversionTable[fromUnit];
+          return valueInGramOrMl / conversionTable[toUnit];
+        } else if (volumeUnits.includes(fromUnit) && volumeUnits.includes(toUnit)) {
+          valueInGramOrMl = value * conversionTable[fromUnit];
+          return valueInGramOrMl / conversionTable[toUnit];
+        } else if (weightUnits.includes(fromUnit) && volumeUnits.includes(toUnit)) {
+          // 重量转换体积，默认水密度
+          valueInGramOrMl = value * conversionTable[fromUnit];
+          return valueInGramOrMl / conversionTable[toUnit];
+        } else if (volumeUnits.includes(fromUnit) && weightUnits.includes(toUnit)) {
+          // 体积转换重量，默认水密度
+          valueInGramOrMl = value * conversionTable[fromUnit];
+          return valueInGramOrMl / conversionTable[toUnit];
+        } else {
+          return null;
+        }
+      }
+
+      document.getElementById('convertBtn').addEventListener('click', () => {
+        const inputValue = document.getElementById('inputValue').value.trim();
+        const inputUnit = document.getElementById('inputUnit').value;
+        const outputUnit = document.getElementById('outputUnit').value;
+
+        const result = convert(inputValue, inputUnit, outputUnit);
+
+        const resultDiv = document.getElementById('result');
+        if (result === null) {
+          resultDiv.textContent = lang === 'zh' ? '请输入有效的数值。' : 'Please enter a valid number.';
+        } else {
+          resultDiv.textContent = `${inputValue} ${translations[lang]['unit_' + inputUnit]} = ${result.toFixed(4)} ${translations[lang]['unit_' + outputUnit]}`;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

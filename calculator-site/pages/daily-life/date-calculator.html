@@ -1,0 +1,211 @@
+<!-- 文件名：date-calculator.html -->
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">日期差计算器 | Date Calculator</title>
+  <meta name="description" content="用于计算两个日期之间的天数差异的工具。" />
+  <meta name="keywords" content="日期计算器, 日期差, 天数计算" />
+  <meta name="author" content="Calculator2U" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #003f5c;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #003f5c;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    .calculator-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    input[type="date"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #003f5c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #003f5c;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1 data-i18n="title">日期差计算器</h1>
+    <p data-i18n="desc">用于计算两个日期之间的天数差异。</p>
+    <div class="calculator-box">
+      <label for="start-date" data-i18n="start_date">起始日期：</label>
+      <input type="date" id="start-date" />
+      <label for="end-date" data-i18n="end_date">结束日期：</label>
+      <input type="date" id="end-date" />
+      <button onclick="calculateDateDiff()" data-i18n="calculate">计算</button>
+      <div class="result" id="result"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+
+  <script>
+    function calculateDateDiff() {
+      const start = new Date(document.getElementById('start-date').value);
+      const end = new Date(document.getElementById('end-date').value);
+      const resultDiv = document.getElementById('result');
+
+      if (!start || !end || isNaN(start) || isNaN(end)) {
+        resultDiv.textContent = lang === 'zh' ? '请输入有效的日期。' : 'Please enter valid dates.';
+        return;
+      }
+
+      const diff = Math.abs(end - start);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      resultDiv.textContent = lang === 'zh' 
+        ? `两个日期之间相差 ${days} 天。`
+        : `The difference between the dates is ${days} days.`;
+    }
+
+    const translations = {
+      zh: {
+        title: "日期差计算器",
+        desc: "用于计算两个日期之间的天数差异。",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        start_date: "起始日期：",
+        end_date: "结束日期：",
+        calculate: "计算",
+        footer_rights: "保留所有权利。"
+      },
+      en: {
+        title: "Date Calculator",
+        desc: "Tool for calculating the number of days between two dates.",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        start_date: "Start Date:",
+        end_date: "End Date:",
+        calculate: "Calculate",
+        footer_rights: "All rights reserved."
+      }
+    };
+
+    let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+    function setLang(selectedLang) {
+      lang = selectedLang;
+      document.documentElement.lang = lang;
+      localStorage.setItem('site-lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+      document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+    }
+
+    document.getElementById('lang-switch').onclick = () => {
+      setLang(lang === 'zh' ? 'en' : 'zh');
+    };
+
+    setLang(lang);
+  </script>
+</body>
+</html>

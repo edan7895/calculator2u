@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Language" content="auto" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">排卵期计算器 | Ovulation Calculator</title>
+  <meta name="description" content="使用排卵期计算器，计算你的排卵日期和受孕最佳时期。" />
+  <meta name="keywords" content="排卵期计算器, 排卵期, 怀孕, 计算器" />
+  <meta name="author" content="Calculator2U" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/health/ovulation-calculator.html" />
+  <meta property="og:title" content="排卵期计算器 | Calculator2U" />
+  <meta property="og:description" content="使用排卵期计算器，计算你的排卵日期和受孕最佳时期。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.calculator2u.com/pages/health/ovulation-calculator.html" />
+  <meta property="og:image" content="https://www.calculator2u.com/assets/images/ovulation-banner.jpg" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #006d77;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-left: 0;
+      margin: 0;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 600px;
+      margin: 3rem auto 4rem;
+      padding: 1rem 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #006d77;
+    }
+    p.desc {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #004f56;
+      text-align: left;
+    }
+    input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #008891;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #005f66;
+    }
+    .result {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #006d77;
+      min-height: 3rem;
+      white-space: pre-line;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    footer a {
+      color: #006d77;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">排卵期计算器</h1>
+    <p class="desc" data-i18n="desc">输入最后一次月经开始日期和平均月经周期长度，计算你的排卵日和受孕最佳期。</p>
+
+    <form id="ovulationForm" onsubmit="return false;">
+      <label for="lastPeriod" data-i18n="label_last_period">最后一次月经开始日期</label>
+      <input type="date" id="lastPeriod" required />
+
+      <label for="cycleLength" data-i18n="label_cycle_length">平均月经周期长度（天）</label>
+      <input type="number" id="cycleLength" min="20" max="45" value="28" required />
+
+      <button id="calculateBtn" data-i18n="btn_calculate">计算排卵期</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+  </footer>
+
+  <script>
+    (function(){
+      const translations = {
+        zh: {
+          title: "排卵期计算器",
+          desc: "输入最后一次月经开始日期和平均月经周期长度，计算你的排卵日和受孕最佳期。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about: "关于我们",
+          label_last_period: "最后一次月经开始日期",
+          label_cycle_length: "平均月经周期长度（天）",
+          btn_calculate: "计算排卵期",
+          footer_privacy: "隐私政策",
+          footer_terms: "使用条款",
+          error_no_date: "请输入最后一次月经开始日期。",
+          error_invalid_date: "请输入有效的日期格式。",
+          error_invalid_cycle: "请输入20到45之间的有效周期天数。",
+          result_ovulation: (date) => `排卵日预计为：${date}\n受孕最佳期：排卵日前5天至排卵日当天。`
+        },
+        en: {
+          title: "Ovulation Calculator",
+          desc: "Enter the first day of your last menstrual period and your average cycle length to calculate your ovulation day and fertile window.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about: "About Us",
+          label_last_period: "Last Menstrual Period Start Date",
+          label_cycle_length: "Average Cycle Length (days)",
+          btn_calculate: "Calculate Ovulation",
+          footer_privacy: "Privacy Policy",
+          footer_terms: "Terms of Service",
+          error_no_date: "Please enter the first day of your last menstrual period.",
+          error_invalid_date: "Please enter a valid date.",
+          error_invalid_cycle: "Please enter a valid cycle length between 20 and 45 days.",
+          result_ovulation: (date) => `Your estimated ovulation day is: ${date}\nFertile window: 5 days before ovulation to ovulation day.`
+        }
+      };
+
+      let lang = localStorage.getItem('site-lang');
+      if(!lang){
+        lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+      }
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if(translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+        // 清空结果区
+        document.getElementById('result').textContent = '';
+      }
+
+      setLang(lang);
+
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        setLang(lang);
+      });
+
+      const form = document.getElementById('ovulationForm');
+      const resultDiv = document.getElementById('result');
+      const lastPeriodInput = document.getElementById('lastPeriod');
+      const cycleLengthInput = document.getElementById('cycleLength');
+
+      function formatDate(date, lang) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+      }
+
+      function calculateOvulation(lastPeriodDate, cycleLength) {
+        // 排卵日 = 最后一次月经开始日期 + (周期长度 - 14) 天
+        const msPerDay = 24*60*60*1000;
+        const ovulationDate = new Date(lastPeriodDate.getTime() + (cycleLength - 14) * msPerDay);
+        return ovulationDate;
+      }
+
+      document.getElementById('calculateBtn').addEventListener('click', () => {
+        const lastPeriodVal = lastPeriodInput.value;
+        const cycleLengthVal = parseInt(cycleLengthInput.value, 10);
+        if (!lastPeriodVal) {
+          resultDiv.textContent = translations[lang].error_no_date;
+          return;
+        }
+        const lastPeriodDate = new Date(lastPeriodVal);
+        if (isNaN(lastPeriodDate.getTime())) {
+          resultDiv.textContent = translations[lang].error_invalid_date;
+          return;
+        }
+        if (isNaN(cycleLengthVal) || cycleLengthVal < 20 || cycleLengthVal > 45) {
+          resultDiv.textContent = translations[lang].error_invalid_cycle;
+          return;
+        }
+        const ovulationDate = calculateOvulation(lastPeriodDate, cycleLengthVal);
+        const ovulationStr = formatDate(ovulationDate, lang);
+        resultDiv.textContent = translations[lang].result_ovulation(ovulationStr);
+      });
+    })();
+  </script>
+</body>
+</html>

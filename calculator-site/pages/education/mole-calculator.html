@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">摩尔质量计算器 | Mole Calculator</title>
+  <meta name="description" content="通过摩尔质量计算器快速转换摩尔与质量，适用于化学学习与实验。" />
+  <meta name="keywords" content="摩尔, 摩尔质量, 化学, 质量计算器, Mole Calculator" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/education/mole-calculator.html" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      color: #333;
+    }
+    .navbar {
+      background: #30475e;
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: white;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+    .lang-switch {
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #30475e;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background: #30475e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1rem;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="/index.html" class="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/education/index.html" data-i18n="nav_back">← 返回分类</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <h1 data-i18n="title">摩尔质量计算器</h1>
+    <label for="mass" data-i18n="label_mass">质量 (克):</label>
+    <input type="number" id="mass" />
+
+    <label for="molarMass" data-i18n="label_molar_mass">摩尔质量 (g/mol):</label>
+    <input type="number" id="molarMass" />
+
+    <button onclick="calculateMoles()" data-i18n="btn_calc">计算摩尔数</button>
+
+    <div class="result" id="result"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 Calculator2U
+  </footer>
+
+  <script>
+    function calculateMoles() {
+      const mass = parseFloat(document.getElementById("mass").value);
+      const molarMass = parseFloat(document.getElementById("molarMass").value);
+      const resultEl = document.getElementById("result");
+      if (mass > 0 && molarMass > 0) {
+        const moles = mass / molarMass;
+        resultEl.textContent = lang === 'zh' 
+          ? `摩尔数为：${moles.toFixed(4)} mol` 
+          : `Moles: ${moles.toFixed(4)} mol`;
+      } else {
+        resultEl.textContent = lang === 'zh' ? "请输入有效的数值" : "Please enter valid numbers.";
+      }
+    }
+
+    // Language Switcher
+    const translations = {
+      zh: {
+        title: "摩尔质量计算器",
+        label_mass: "质量 (克):",
+        label_molar_mass: "摩尔质量 (g/mol):",
+        btn_calc: "计算摩尔数",
+        nav_back: "← 返回分类"
+      },
+      en: {
+        title: "Mole Calculator",
+        label_mass: "Mass (g):",
+        label_molar_mass: "Molar Mass (g/mol):",
+        btn_calc: "Calculate Moles",
+        nav_back: "← Back to Category"
+      }
+    };
+    let lang = localStorage.getItem("site-lang") || (navigator.language.startsWith("zh") ? "zh" : "en");
+    function setLang(langCode) {
+      document.documentElement.lang = langCode;
+      localStorage.setItem("site-lang", langCode);
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[langCode][key];
+      });
+      document.getElementById("lang-switch").textContent = langCode === "zh" ? "EN" : "中文";
+    }
+    document.getElementById("lang-switch").onclick = () => {
+      lang = lang === "zh" ? "en" : "zh";
+      setLang(lang);
+    };
+    setLang(lang);
+  </script>
+</body>
+</html>
