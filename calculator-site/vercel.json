@@ -1,43 +1,55 @@
 {
-  "version": 2,
-  "public": true,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy.html"
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms.html"
-    },
-    {
-      "source": "/pages/:category/:page",
-      "destination": "/pages/:category/:page.html"
-    },
-    {
-      "source": "/pages/:category",
-      "destination": "/pages/:category/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
-    }
-  ]
+"version": 2,
+"public": true,
+"cleanUrls": false,
+"trailingSlash": false,
+"rewrites": [
+{
+"source": "/",
+"destination": "/index.html"
+},
+{
+"source": "/about.html",
+"destination": "/about.html"
+},
+{
+"source": "/privacy.html",
+"destination": "/privacy.html"
+},
+{
+"source": "/terms.html",
+"destination": "/terms.html"
+},
+{
+"source": "/pages/health/:file",
+"destination": "/pages/health/:file"
+},
+{
+"source": "/pages/finance/:file",
+"destination": "/pages/finance/:file"
+},
+{
+"source": "/pages/education/:file",
+"destination": "/pages/education/:file"
+},
+{
+"source": "/pages/engineering/:file",
+"destination": "/pages/engineering/:file"
+},
+{
+"source": "/pages/daily-life/:file",
+"destination": "/pages/daily-life/:file"
+}
+],
+"headers": [
+{
+"source": "/(.*)",
+"headers": [
+{
+"key": "Cache-Control",
+"value": "public, max-age=0, must-revalidate"
+}
+]
+}
+]
 }
