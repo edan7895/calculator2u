@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="auto">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TDEE 计算器 | Calculator2U</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">TDEE 计算器 | TDEE Calculator</title>
+  <meta name="description" content="使用我们的TDEE计算器，根据您的性别、年龄、体重、身高和活动水平，精确估算您的总每日能量消耗，帮助您更好地管理饮食和健身目标。" />
+  <meta name="keywords" content="TDEE计算器, 总每日能量消耗, 能量消耗计算, 卡路里计算, TDEE, 健身计算器, 营养计算器, TDEE Calculator, Daily Energy Expenditure" />
+  <meta name="author" content="Calculator2U" />
+  <link rel="canonical" href="https://www.calculator2u.com/pages/health/tdee-calculator.html" />
+  <meta property="og:title" content="TDEE 计算器 | TDEE Calculator" />
+  <meta property="og:description" content="计算您的总每日能量消耗（TDEE），帮助您更好地管理饮食和健身目标。只需输入基本个人信息，即可获得精确的卡路里消耗估算。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.calculator2u.com/pages/health/tdee-calculator.html" />
+  <meta property="og:image" content="https://www.calculator2u.com/assets/images/tdee-banner.jpg" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
     header, footer {
       background-color: #006d77;
       color: white;
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
     }
     .navbar {
       display: flex;
@@ -40,9 +59,11 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .nav-links a:hover {
       text-decoration: underline;
+      color: #a9c8f5;
     }
     .lang-switch {
       background: transparent;
@@ -53,6 +74,11 @@
       font-weight: 600;
       padding: 0.25rem 0.8rem;
       user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
     }
     main.container {
       max-width: 720px;
@@ -63,26 +89,33 @@
       text-align: center;
       color: #008891;
       margin-bottom: 2rem;
+      font-size: 2rem;
     }
     form#tdee-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
       margin-bottom: 2rem;
+    }
+    .form-group {
+      width: 100%;
+      text-align: left;
     }
     label {
       font-weight: 600;
       margin-bottom: 0.3rem;
       font-size: 1.1rem;
+      display: block;
     }
     input, select {
       font-size: 1rem;
-      padding: 0.4rem;
-      width: 200px;
+      padding: 0.6rem;
+      width: 250px;
       text-align: center;
-      border: 1px solid #aaa;
-      border-radius: 5px;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      box-sizing: border-box;
     }
     button {
       background-color: #008891;
@@ -90,10 +123,11 @@
       color: white;
       font-weight: 700;
       font-size: 1.1rem;
-      padding: 0.5rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
+      width: 250px;
     }
     button:hover {
       background-color: #005f66;
@@ -103,9 +137,63 @@
       margin-top: 2rem;
       font-size: 1.3rem;
       font-weight: bold;
+      color: #006d77;
+    }
+    .result-details {
+      font-size: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: #f1f1f1;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .info-box {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      margin-top: 2rem;
+    }
+    .info-box h3 {
+      margin-top: 0;
+      color: #006d77;
+      font-size: 1.2rem;
+    }
+    .info-box p {
+      font-size: 0.95rem;
+      color: #555;
     }
     @media screen and (max-width: 640px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+      }
       input, select {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+      .form-group {
         width: 100%;
       }
     }
@@ -116,56 +204,64 @@
     <nav class="navbar">
       <a href="/index.html" class="logo">Calculator2U</a>
       <ul class="nav-links">
-        <li><a href="/pages/health/index.html">健康与身体</a></li>
-        <li><a href="/pages/finance/index.html">财务与投资</a></li>
-        <li><a href="/pages/education/index.html">教育与学习</a></li>
-        <li><a href="/pages/engineering/index.html">工程与科学</a></li>
-        <li><a href="/pages/daily-life/index.html">日常生活</a></li>
-        <li><a href="/pages/about.html">关于我们</a></li>
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
         <li><button class="lang-switch" id="lang-switch">EN</button></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <h1 id="title">TDEE 计算器</h1>
+    <h1 data-i18n="title">TDEE 计算器 | TDEE Calculator</h1>
     <form id="tdee-form">
-      <div>
-        <label for="gender" id="label-gender">性别</label><br />
-        <select id="gender">
-          <option value="male">男性</option>
-          <option value="female">女性</option>
+      <div class="form-group">
+        <label for="gender" data-i18n="label_gender">性别</label><br />
+        <select id="gender" required>
+          <option value="male">男 | Male</option>
+          <option value="female">女 | Female</option>
         </select>
       </div>
-      <div>
-        <label for="age" id="label-age">年龄 (岁)</label><br />
-        <input type="number" id="age" required min="10" max="100" />
+      <div class="form-group">
+        <label for="age" data-i18n="label_age">年龄 (岁)</label><br />
+        <input type="number" id="age" required min="10" max="100" placeholder="Example：30" />
       </div>
-      <div>
-        <label for="weight" id="label-weight">体重 (kg)</label><br />
-        <input type="number" id="weight" required min="20" max="300" step="0.1" />
+      <div class="form-group">
+        <label for="weight" data-i18n="label_weight">体重 (kg)</label><br />
+        <input type="number" id="weight" required min="20" max="300" step="0.1" placeholder="Example：65.5" />
       </div>
-      <div>
-        <label for="height" id="label-height">身高 (cm)</label><br />
-        <input type="number" id="height" required min="100" max="250" step="0.1" />
+      <div class="form-group">
+        <label for="height" data-i18n="label_height">身高 (cm)</label><br />
+        <input type="number" id="height" required min="100" max="250" step="0.1" placeholder="Example：170.5" />
       </div>
-      <div>
-        <label for="activity" id="label-activity">活动水平</label><br />
-        <select id="activity">
-          <option value="1.2">久坐不动</option>
-          <option value="1.375">轻度活动</option>
-          <option value="1.55">中度活动</option>
-          <option value="1.725">高度活动</option>
-          <option value="1.9">非常活跃</option>
+      <div class="form-group">
+        <label for="activity" data-i18n="label_activity">活动水平</label><br />
+        <select id="activity" required>
+          <option value="1.2">久坐不动 | Sedentary</option>
+          <option value="1.375">轻度活动 | Lightly active</option>
+          <option value="1.55">中度活动 | Moderately active</option>
+          <option value="1.725">高度活动 | Very active</option>
+          <option value="1.9">非常活跃 | Extremely active</option>
         </select>
       </div>
-      <button type="submit" id="btn-calculate">计算</button>
+      <button type="submit" id="btn-calculate" data-i18n="btn_calculate">计算 | Calculate</button>
     </form>
     <div id="result-container" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="info-box">
+      <h3 data-i18n="info_title">什么是TDEE？ | What is TDEE?</h3>
+      <p data-i18n="info_content">
+        TDEE（Total Daily Energy Expenditure）是指您在日常生活中消耗的总能量，包括基础代谢率、日常活动和消化食物所消耗的卡路里。了解您的TDEE可以帮助您制定合理的饮食计划，无论是为了减肥、增肌还是维持当前体重。<br><br>
+        TDEE (Total Daily Energy Expenditure) is the total amount of energy you burn daily, including your basal metabolic rate, daily activities, and calories used to digest food. Knowing your TDEE helps you create a balanced diet plan for weight loss, muscle gain, or maintaining your current weight.
+      </p>
+    </div>
   </main>
 
   <footer>
-    <p style="text-align:center;">&copy; 2025 Calculator2U 版权所有</p>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策 | Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款 | Terms of Service</a></p>
   </footer>
 
   <script>
@@ -174,58 +270,86 @@
     const langBtn = document.getElementById("lang-switch");
 
     // 国际化文本
-    const texts = {
+    const translations = {
       zh: {
         title: "TDEE 计算器",
-        gender: "性别",
-        age: "年龄 (岁)",
-        weight: "体重 (kg)",
-        height: "身高 (cm)",
-        activity: "活动水平",
-        btn: "计算",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        label_gender: "性别",
+        label_age: "年龄 (岁)",
+        label_weight: "体重 (kg)",
+        label_height: "身高 (cm)",
+        label_activity: "活动水平",
+        btn_calculate: "计算",
         activityLevels: [
           "久坐不动", "轻度活动", "中度活动", "高度活动", "非常活跃"
         ],
-        result: tdee => `您的每日总能量消耗 (TDEE) 约为 <strong>${tdee} 千卡</strong>。`
+        result: tdee => `您的每日总能量消耗 (TDEE) 约为 <strong>${tdee} 千卡</strong>。`,
+        info_title: "什么是TDEE？",
+        info_content: "TDEE（Total Daily Energy Expenditure）是指您在日常生活中消耗的总能量，包括基础代谢率、日常活动和消化食物所消耗的卡路里。了解您的TDEE可以帮助您制定合理的饮食计划，无论是为了减肥、增肌还是维持当前体重。"
       },
       en: {
         title: "TDEE Calculator",
-        gender: "Gender",
-        age: "Age (years)",
-        weight: "Weight (kg)",
-        height: "Height (cm)",
-        activity: "Activity Level",
-        btn: "Calculate",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        label_gender: "Gender",
+        label_age: "Age (years)",
+        label_weight: "Weight (kg)",
+        label_height: "Height (cm)",
+        label_activity: "Activity Level",
+        btn_calculate: "Calculate",
         activityLevels: [
           "Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely active"
         ],
-        result: tdee => `Your Total Daily Energy Expenditure (TDEE) is approximately <strong>${tdee} kcal</strong>.`
+        result: tdee => `Your Total Daily Energy Expenditure (TDEE) is approximately <strong>${tdee} kcal</strong>.`,
+        info_title: "What is TDEE?",
+        info_content: "TDEE (Total Daily Energy Expenditure) is the total amount of energy you burn daily, including your basal metabolic rate, daily activities, and calories used to digest food. Knowing your TDEE helps you create a balanced diet plan for weight loss, muscle gain, or maintaining your current weight."
       }
     };
 
-    let currentLang = "zh";
+    let currentLang = localStorage.getItem('site-lang') === 'zh' ? 'zh' : 'en';
+
+    function updateLanguage(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('site-lang', lang);
+      const t = translations[lang];
+      
+      // Update navigation links
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.textContent = t[key];
+        }
+      });
+      
+      // Update form elements
+      document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      
+      // Update select options
+      const activitySelect = document.getElementById('activity');
+      activitySelect.querySelectorAll('option').forEach((opt, i) => {
+        opt.textContent = `${t.activityLevels[i]} | ${translations.en.activityLevels[i]}`;
+      });
+    }
+
+    updateLanguage(currentLang);
 
     langBtn.addEventListener("click", () => {
       currentLang = currentLang === "zh" ? "en" : "zh";
-      updateLanguage();
+      updateLanguage(currentLang);
     });
-
-    function updateLanguage() {
-      const t = texts[currentLang];
-      langBtn.textContent = currentLang === "zh" ? "EN" : "中";
-      document.getElementById("title").textContent = t.title;
-      document.getElementById("label-gender").textContent = t.gender;
-      document.getElementById("label-age").textContent = t.age;
-      document.getElementById("label-weight").textContent = t.weight;
-      document.getElementById("label-height").textContent = t.height;
-      document.getElementById("label-activity").textContent = t.activity;
-      document.getElementById("btn-calculate").textContent = t.btn;
-
-      const activitySelect = document.getElementById("activity");
-      activitySelect.querySelectorAll("option").forEach((opt, i) => {
-        opt.textContent = t.activityLevels[i];
-      });
-    }
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -236,7 +360,9 @@
       const activity = parseFloat(document.getElementById("activity").value);
 
       if (isNaN(age) || isNaN(weight) || isNaN(height)) {
-        alert("请输入有效的数值");
+        resultEl.innerHTML = currentLang === 'zh' ? 
+          '请输入有效的数值' : 
+          'Please enter valid numbers';
         return;
       }
 
@@ -249,10 +375,8 @@
       }
 
       const tdee = Math.round(bmr * activity);
-      resultEl.innerHTML = texts[currentLang].result(tdee);
+      resultEl.innerHTML = translations[currentLang].result(tdee);
     });
-
-    updateLanguage(); // 初始化
   </script>
 </body>
 </html>

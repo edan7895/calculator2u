@@ -1,31 +1,78 @@
-<!-- 以下为升级版科学计算器页面 -->
 <!DOCTYPE html>
 <html lang="auto">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="免费在线科学计算器，支持三角函数、对数、指数、常数等运算。Free online scientific calculator with trigonometric, logarithmic, exponential, constant functions.">
+  <meta name="keywords" content="科学计算器,在线计算器,数学计算器,三角函数,计算器,Scientific calculator, Online calculator, Math calculator, Trigonometric functions">
+  <meta name="author" content="Calculator2U">
+  
   <title data-i18n="title">科学计算器 | Scientific Calculator</title>
+  
+  <!-- Math.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --background-color: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --button-bg: #eeeeee;
+      --button-hover: #dddddd;
+      --border-color: #cccccc;
+      --footer-bg: #f0f0f0;
+      --footer-text: #666666;
     }
+
+    .dark-mode {
+      --primary-color: #005a63;
+      --secondary-color: #002c41;
+      --background-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --button-bg: #2d2d2d;
+      --button-hover: #3d3d3d;
+      --border-color: #444444;
+      --footer-bg: #1a1a1a;
+      --footer-text: #aaaaaa;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
     .navbar {
-      background-color: #003f5c;
+      background-color: var(--primary-color);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
+      transition: background-color 0.3s;
     }
+
     .navbar .logo {
       color: #fff;
       font-size: 1.5rem;
       text-decoration: none;
       font-weight: bold;
     }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -33,217 +80,481 @@
       margin: 0;
       padding-left: 0;
       align-items: center;
+      flex-wrap: wrap;
     }
+
     .nav-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
+      transition: opacity 0.2s;
     }
-    .lang-switch {
-      background: transparent;
-      border: 1.5px solid #fff;
+
+    .nav-links a:hover {
+      opacity: 0.9;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
       color: #fff;
-      padding: 0.3rem 0.8rem;
+      padding: 0.4rem 0.8rem;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.3s;
     }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .container {
-      max-width: 500px;
+      max-width: 600px;
       margin: 2rem auto;
       padding: 1rem;
     }
+
     h1 {
       text-align: center;
-      color: #003f5c;
+      color: var(--secondary-color);
       font-size: 2rem;
       margin-bottom: 1rem;
+      transition: color 0.3s;
     }
+
     .calculator {
-      background: #fff;
+      background: var(--card-bg);
       border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
+
     .display {
       width: 100%;
-      height: 3rem;
-      font-size: 1.2rem;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      height: 3.5rem;
+      font-size: 1.4rem;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
       box-sizing: border-box;
+      background: var(--card-bg);
+      color: var(--text-color);
+      text-align: right;
+      transition: all 0.3s;
     }
+
     .buttons {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 0.6rem;
+      gap: 0.8rem;
     }
+
     .buttons button {
-      padding: 0.9rem;
-      font-size: 1rem;
+      padding: 1rem 0.5rem;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      background: #eee;
-      transition: background 0.3s;
+      background: var(--button-bg);
+      color: var(--text-color);
+      transition: all 0.2s;
+      font-weight: 500;
     }
+
     .buttons button:hover {
-      background: #ddd;
+      background: var(--button-hover);
+      transform: translateY(-2px);
     }
+
+    .buttons button:active {
+      transform: translateY(0);
+    }
+
     .buttons .equal {
-      background: #003f5c;
+      background: var(--secondary-color);
       color: #fff;
     }
+
     .buttons .equal:hover {
       background: #002c41;
     }
+
+    .buttons .function {
+      background: rgba(0, 63, 92, 0.1);
+    }
+
+    .buttons .function:hover {
+      background: rgba(0, 63, 92, 0.2);
+    }
+
+    .buttons .constant {
+      background: rgba(0, 109, 119, 0.1);
+    }
+
+    .buttons .constant:hover {
+      background: rgba(0, 109, 119, 0.2);
+    }
+
+    .calculator-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .calc-btn {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #f0f0f0;
+      background: var(--footer-bg);
       font-size: 0.9rem;
-      color: #666;
+      color: var(--footer-text);
+      transition: background-color 0.3s, color 0.3s;
     }
-    @media (max-width: 480px) {
+
+    footer a {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+      }
+      
+      .container {
+        margin: 1rem auto;
+        padding: 0.5rem;
+      }
+      
+      .buttons {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
       .buttons button {
-        padding: 0.7rem;
+        padding: 0.9rem 0.4rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 0.6rem;
+      }
+      
+      .nav-controls {
+        gap: 0.6rem;
+      }
+      
+      .nav-btn {
+        padding: 0.3rem 0.6rem;
         font-size: 0.9rem;
+      }
+      
+      .buttons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+      }
+      
+      .buttons button {
+        padding: 0.8rem 0.3rem;
+        font-size: 0.95rem;
+      }
+      
+      h1 {
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="/index.html" class="logo">Calculator2U</a>
-    <ul class="nav-links">
-      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-      <li><button class="lang-switch" id="lang-switch">EN</button></li>
-    </ul>
-  </nav>
+<header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+        <li class="nav-controls">
+          <button class="nav-btn" id="mode-switch">
+            <span id="mode-icon">🌙</span>
+            <span data-i18n="dark_mode">夜间模式</span>
+          </button>
+          <button class="nav-btn" id="lang-switch">
+            <span id="lang-icon">EN</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+</header>
 
   <main class="container">
     <h1 data-i18n="title">科学计算器</h1>
     <div class="calculator">
-      <input type="text" id="display" class="display" readonly />
+      <input type="text" id="display" class="display" readonly placeholder="0" />
+      <div class="calculator-controls">
+        <button class="calc-btn" id="clear-history" data-i18n="clear_history">清除历史</button>
+        <button class="calc-btn" id="view-history" data-i18n="view_history">查看历史</button>
+      </div>
       <div class="buttons">
-        <button>(</button>
-        <button>)</button>
-        <button>^</button>
-        <button>C</button>
-        <button>←</button>
+        <button class="function">(</button>
+        <button class="function">)</button>
+        <button class="function">^</button>
+        <button class="function">!</button>
+        <button class="function">C</button>
+        <button class="function">←</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>/</button>
-        <button>Ans</button>
+        <button class="function">/</button>
+        <button class="function">Ans</button>
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button>*</button>
-        <button>π</button>
+        <button class="function">*</button>
+        <button class="constant">π</button>
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button>-</button>
-        <button>e</button>
+        <button class="function">-</button>
+        <button class="constant">e</button>
         <button>0</button>
         <button>.</button>
-        <button>+</button>
+        <button class="function">+</button>
         <button class="equal">=</button>
-        <button>sin(</button>
-        <button>cos(</button>
-        <button>tan(</button>
-        <button>log(</button>
-        <button>ln(</button>
-        <button>sqrt(</button>
+        <button class="function">sin(</button>
+        <button class="function">cos(</button>
+        <button class="function">tan(</button>
+        <button class="function">log(</button>
+        <button class="function">ln(</button>
+        <button class="function">sqrt(</button>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
   </footer>
 
   <script>
+    // DOM Elements
     const display = document.getElementById('display');
     const buttons = document.querySelectorAll('.buttons button');
+    const modeSwitch = document.getElementById('mode-switch');
+    const modeIcon = document.getElementById('mode-icon');
+    
+    // State management
     let lastAnswer = '';
-
+    let calculationHistory = [];
+    
+    // Initialize calculator
+    function initCalculator() {
+      // Load saved theme preference
+      const savedMode = localStorage.getItem('calculator-mode');
+      if (savedMode === 'dark') {
+        document.body.classList.add('dark-mode');
+        modeIcon.textContent = '☀️';
+      }
+      
+      // Load saved language preference
+      const savedLang = localStorage.getItem('site-lang');
+      if (savedLang) {
+        setLang(savedLang);
+      } else {
+        const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+        setLang(browserLang);
+      }
+      
+      // Load calculation history
+      const savedHistory = localStorage.getItem('calc-history');
+      if (savedHistory) {
+        calculationHistory = JSON.parse(savedHistory);
+      }
+    }
+    
+    // Button click handler
     buttons.forEach(btn => {
-      btn.onclick = () => {
+      btn.addEventListener('click', () => {
         const val = btn.textContent;
+        
         if (val === 'C') {
+          // Clear display
           display.value = '';
         } else if (val === '←') {
+          // Backspace
           display.value = display.value.slice(0, -1);
         } else if (val === 'Ans') {
+          // Insert last answer
           display.value += lastAnswer;
         } else if (val === '=') {
+          // Perform calculation
           try {
-            let expr = display.value
-              .replace(/π/g, 'Math.PI')
-              .replace(/e/g, 'Math.E')
-              .replace(/sqrt\(/g, 'Math.sqrt(')
-              .replace(/sin\(/g, 'Math.sin(')
-              .replace(/cos\(/g, 'Math.cos(')
-              .replace(/tan\(/g, 'Math.tan(')
-              .replace(/log\(/g, 'Math.log10(')
-              .replace(/ln\(/g, 'Math.log(')
-              .replace(/\^/g, '**');
-            const result = eval(expr);
+            let expr = display.value;
+            
+            // Replace constants and functions with math.js equivalents
+            expr = expr
+              .replace(/π/g, 'pi')
+              .replace(/e/g, 'e')
+              .replace(/sqrt\(/g, 'sqrt(')
+              .replace(/sin\(/g, 'sin(')
+              .replace(/cos\(/g, 'cos(')
+              .replace(/tan\(/g, 'tan(')
+              .replace(/log\(/g, 'log10(')
+              .replace(/ln\(/g, 'log(')
+              .replace(/\^/g, '^')
+              .replace(/!/g, 'factorial(');
+            
+            // Evaluate expression using math.js
+            const result = math.evaluate(expr);
             lastAnswer = result;
+            
+            // Save to history
+            calculationHistory.push({
+              expression: display.value,
+              result: result,
+              timestamp: new Date().toISOString()
+            });
+            
+            // Save history to localStorage
+            localStorage.setItem('calc-history', JSON.stringify(calculationHistory));
+            
+            // Display result
             display.value = result;
-          } catch {
+          } catch (error) {
             display.value = 'Error';
+            console.error('Calculation error:', error);
           }
         } else {
+          // Append value to display
           display.value += val;
         }
-      };
+      });
     });
-
-    // 语言切换逻辑
-    (() => {
-      const translations = {
-        zh: {
-          title: "科学计算器",
-          nav_health: "健康与身体",
-          nav_finance: "财务与投资",
-          nav_education: "教育与学习",
-          nav_engineering: "工程与科学",
-          nav_daily_life: "日常生活",
-          footer_rights: "保留所有权利。"
-        },
-        en: {
-          title: "Scientific Calculator",
-          nav_health: "Health & Body",
-          nav_finance: "Finance & Investment",
-          nav_education: "Education & Learning",
-          nav_engineering: "Engineering & Science",
-          nav_daily_life: "Daily Life",
-          footer_rights: "All rights reserved."
-        }
-      };
-      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
-      function setLang(langCode) {
-        document.documentElement.lang = langCode;
-        localStorage.setItem('site-lang', langCode);
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (translations[langCode][key]) el.textContent = translations[langCode][key];
-        });
-        document.getElementById('lang-switch').textContent = langCode === 'zh' ? 'EN' : '中文';
-        lang = langCode;
+    
+    // History management
+    document.getElementById('clear-history').addEventListener('click', () => {
+      calculationHistory = [];
+      localStorage.removeItem('calc-history');
+      alert('历史记录已清除');
+    });
+    
+    document.getElementById('view-history').addEventListener('click', () => {
+      if (calculationHistory.length === 0) {
+        alert('没有历史记录');
+        return;
       }
-      setLang(lang);
-      document.getElementById('lang-switch').onclick = () => setLang(lang === 'zh' ? 'en' : 'zh');
-    })();
+      
+      let historyText = '计算历史:\n\n';
+      calculationHistory.forEach((item, index) => {
+        historyText += `${index + 1}. ${item.expression} = ${item.result}\n`;
+      });
+      
+      alert(historyText);
+    });
+    
+    // Theme switching
+    modeSwitch.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('calculator-mode', 'dark');
+        modeIcon.textContent = '☀️';
+      } else {
+        localStorage.setItem('calculator-mode', 'light');
+        modeIcon.textContent = '🌙';
+      }
+    });
+    
+    // Language management
+    const translations = {
+      zh: {
+        title: "科学计算器",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        footer_rights: "保留所有权利。",
+        dark_mode: "夜间模式",
+        clear_history: "清除历史",
+        view_history: "查看历史"
+      },
+      en: {
+        title: "Scientific Calculator",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        footer_rights: "All rights reserved.",
+        dark_mode: "Dark Mode",
+        clear_history: "Clear History",
+        view_history: "View History"
+      }
+    };
+    
+    function setLang(langCode) {
+      document.documentElement.lang = langCode;
+      localStorage.setItem('site-lang', langCode);
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[langCode][key]) {
+          el.textContent = translations[langCode][key];
+        }
+      });
+      
+      // Update language switch button
+      document.getElementById('lang-icon').textContent = langCode === 'zh' ? 'EN' : '中文';
+    }
+    
+    // Language switch handler
+    document.getElementById('lang-switch').addEventListener('click', () => {
+      const currentLang = document.documentElement.lang || 'en';
+      const newLang = currentLang === 'zh' ? 'en' : 'zh';
+      setLang(newLang);
+    });
+    
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', initCalculator);
   </script>
 </body>
 </html>

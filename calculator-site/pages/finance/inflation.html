@@ -3,194 +3,227 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title data-i18n="title">通货膨胀计算器 | Inflation Calculator</title>
-<meta name="description" content="计算某金额在通货膨胀率影响下的未来价值。" />
-<meta name="keywords" content="通货膨胀计算器, Inflation Calculator, 购买力" />
-<link rel="stylesheet" href="/assets/css/style.css" />
+<!-- 优化标题，添加关键词 -->
+<title data-i18n="title">通货膨胀计算器 | Inflation Calculator | 购买力计算 | Purchasing Power Calculator</title>
+<meta name="description" content="使用我们的通货膨胀计算器，了解通货膨胀如何影响您的购买力。输入当前金额、通货膨胀率和年数，计算未来的实际购买力。" />
+<!-- 添加更多关键词 -->
+<meta name="keywords" content="通货膨胀计算器, Inflation Calculator, 购买力, Purchasing Power, 财务规划, Financial Planning, 通货膨胀率, Inflation Rate, 未来价值, Future Value" />
+<meta name="author" content="Calculator2U" />
+<meta name="robots" content="index, follow" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<!-- 添加结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "通货膨胀计算器 | Inflation Calculator",
+  "description": "使用我们的通货膨胀计算器，了解通货膨胀如何影响您的购买力。输入当前金额、通货膨胀率和年数，计算未来的实际购买力。",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Calculator2U",
+      "item": "https://www.calculator2u.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "财务与投资",
+      "item": "https://www.calculator2u.com/pages/finance/index.html"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "通货膨胀计算器",
+      "item": "https://www.calculator2u.com/financial/inflation-calculator.html"
+    }]
+  }
+}
+</script>
 <style>
-  /* 同之前统一风格 */
-  body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    margin: 0; padding: 0;
-    color: #222;
-  }
-  header, footer {
-    background-color: #004a99;
-    color: white;
-    padding: 1rem 2rem;
-  }
-  .navbar {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.3rem;
-    margin: 0; padding: 0;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  nav ul li a {
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  nav ul li a.active, nav ul li a:hover {
-    text-decoration: underline;
-  }
-  #lang-switch {
-    background: transparent;
-    border: 1.5px solid white;
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    user-select: none;
-  }
-  #lang-switch:hover {
-    background-color: white;
-    color: #004a99;
-  }
-  main.container {
-    max-width: 560px;
-    margin: 3rem auto 4rem;
-    background-color: white;
-    padding: 2rem 2.2rem;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.08);
-  }
-  h1 {
-    color: #004a99;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1.6rem;
-    font-size: 2.2rem;
-  }
-  form label {
-    font-weight: 600;
-    margin-top: 1rem;
-    display: block;
-    color: #222;
-  }
-  form input[type=number] {
-    width: 100%;
-    padding: 0.6rem 0.9rem;
-    font-size: 1rem;
-    margin-top: 0.3rem;
-    border-radius: 8px;
-    border: 1.5px solid #ccc;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-  }
-  form input[type=number]:focus {
-    outline: none;
-    border-color: #004a99;
-  }
-  form button {
-    margin-top: 2rem;
-    width: 100%;
-    padding: 0.9rem;
-    background-color: #004a99;
-    color: white;
-    font-weight: 700;
-    font-size: 1.15rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  form button:hover {
-    background-color: #0066cc;
-  }
-  .result {
-    margin-top: 2rem;
-    padding: 1.2rem 1rem;
-    background-color: #e7f0fd;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #004a99;
-    white-space: pre-line;
-    text-align: center;
-    min-height: 3.4rem;
-  }
-  footer {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #999;
-    padding: 1rem 1rem 2rem;
-  }
-  footer a {
-    color: #999;
-    text-decoration: none;
-    margin: 0 0.3rem;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-  @media (max-width: 600px) {
-    main.container {
-      margin: 1.5rem 1rem 3rem;
-      padding: 1.5rem 1.3rem;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
     }
-  }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #a9c8f5;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 640px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#inflationForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    form#inflationForm > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+    input[type=number] {
+      font-size: 1rem;
+      padding: 0.4rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      text-align: right;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007279;
+    }
+    #result-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .result-item {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #006d77;
+      margin-bottom: 1rem;
+    }
+    footer {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      form#inflationForm {
+        padding: 0 1rem;
+      }
+    }
 </style>
 </head>
 <body>
 <header>
-  <nav class="navbar" role="navigation" aria-label="Primary Navigation">
-    <a href="/index.html" class="logo">Calculator2U</a>
-    <ul>
-      <li><a href="/pages/finance/index.html" class="active" data-i18n="nav_finance">财务与投资</a></li>
-      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-      <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
-      <li><button id="lang-switch" aria-label="切换语言">EN</button></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+        <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">中文</button></li>
+      </ul>
+    </nav>
 </header>
 
-<main class="container" role="main">
-  <h1 data-i18n="title">通货膨胀计算器</h1>
-  <form id="inflationForm" aria-describedby="result">
-    <label for="presentValue" data-i18n="present_value">当前金额 (Present Value):</label>
-    <input type="number" id="presentValue" min="0" step="0.01" required aria-required="true" />
-
-    <label for="inflationRate" data-i18n="inflation_rate">年通货膨胀率 (%) (Annual Inflation Rate):</label>
-    <input type="number" id="inflationRate" min="0" step="0.01" required aria-required="true" />
-
-    <label for="years" data-i18n="years">年数 (Years):</label>
-    <input type="number" id="years" min="0" step="1" required aria-required="true" />
-
-    <button type="submit" data-i18n="calculate">计算</button>
+<main class="container">
+  <h1 data-i18n="title">通货膨胀计算器 | Inflation Calculator</h1>
+  <form id="inflationForm" aria-label="Inflation Calculator Form">
+    <div>
+      <label for="presentValue" data-i18n="present_value">当前金额 (Present Value):</label>
+      <input type="number" id="presentValue" min="0" step="0.01" required placeholder="Enter present value" />
+    </div>
+    <div>
+      <label for="inflationRate" data-i18n="inflation_rate">年通货膨胀率 (%) (Annual Inflation Rate):</label>
+      <input type="number" id="inflationRate" min="0" step="0.01" required placeholder="Enter inflation rate" />
+    </div>
+    <div>
+      <label for="years" data-i18n="years">年数 (Years):</label>
+      <input type="number" id="years" min="0" step="1" required placeholder="Enter years" />
+    </div>
+    <button type="submit" data-i18n="calculate">Calculate</button>
   </form>
 
-  <div id="result" class="result" role="region" aria-live="polite"></div>
+  <section id="result-container">
+    <div id="result" class="result-item"></div>
+  </section>
 </main>
 
 <footer>
-  <p>
-    &copy; 2025 Calculator2U. All rights reserved.
-    | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a>
-    | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a>
-  </p>
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
 </footer>
 
 <script>
@@ -198,34 +231,38 @@
   // 语言包
   const translations = {
     zh: {
-      title: "通货膨胀计算器",
-      nav_finance: "财务与投资",
-      nav_health: "健康与身体",
-      nav_education: "教育与学习",
-      nav_engineering: "工程与科学",
-      nav_daily_life: "日常生活",
-      nav_about: "关于我们",
-      present_value: "当前金额",
-      inflation_rate: "年通货膨胀率 (%)",
-      years: "年数",
+      logo: "Calculator2U",
+      title: "通货膨胀计算器 | Inflation Calculator",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about_us: "关于我们",
+          lang_switch: "EN",
+      present_value: "当前金额 (Present Value):",
+      inflation_rate: "年通货膨胀率 (%) (Annual Inflation Rate):",
+      years: "年数 (Years):",
       calculate: "计算",
-      footer_privacy: "隐私政策",
-      footer_terms: "使用条款"
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款"
     },
     en: {
-      title: "Inflation Calculator",
-      nav_finance: "Finance & Investment",
-      nav_health: "Health & Body",
-      nav_education: "Education & Learning",
-      nav_engineering: "Engineering & Science",
-      nav_daily_life: "Daily Life",
-      nav_about: "About Us",
+      logo: "Calculator2U",
+      title: "Inflation Calculator | 购买力计算器",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about_us: "About Us",
+          lang_switch: "中文",
       present_value: "Present Value",
       inflation_rate: "Annual Inflation Rate (%)",
       years: "Years",
       calculate: "Calculate",
-      footer_privacy: "Privacy Policy",
-      footer_terms: "Terms of Service"
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service"
     }
   };
 
@@ -239,7 +276,11 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[l] && translations[l][key]) {
-        el.textContent = translations[l][key];
+        if (el.tagName === 'INPUT') {
+          el.placeholder = translations[l][key];
+        } else {
+          el.textContent = translations[l][key];
+        }
       }
     });
     document.getElementById('lang-switch').textContent = l === 'zh' ? 'EN' : '中文';
@@ -267,9 +308,7 @@
       isNaN(inflationRate) || inflationRate < 0 ||
       isNaN(years) || years < 0
     ) {
-      resultDiv.textContent = lang === 'zh' ?
-        '请输入有效的数字' :
-        'Please enter valid numbers';
+      resultDiv.textContent = lang === 'zh' ? '请输入有效的数字' : 'Please enter valid numbers';
       return;
     }
 
@@ -277,15 +316,9 @@
     const futureValue = presentValue * Math.pow(1 + inflationRate, years);
 
     if (lang === 'zh') {
-      resultDiv.textContent =
-        `当前金额: ${presentValue.toFixed(2)} 元\n` +
-        `经过 ${years} 年，按年通货膨胀率 ${(inflationRate * 100).toFixed(2)}% 计算，等价购买力为:\n` +
-        `${futureValue.toFixed(2)} 元`;
+      resultDiv.textContent = `等价购买力: ${futureValue.toFixed(2)} 元`;
     } else {
-      resultDiv.textContent =
-        `Present Value: $${presentValue.toFixed(2)}\n` +
-        `After ${years} years with an annual inflation rate of ${(inflationRate * 100).toFixed(2)}%, the equivalent purchasing power is:\n` +
-        `$${futureValue.toFixed(2)}`;
+      resultDiv.textContent = `Equivalent Purchasing Power: $${futureValue.toFixed(2)}`;
     }
   });
 })();

@@ -1,16 +1,40 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BMI 计算器 | Calculator2U</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">BMI Calculator | Calculator2U</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) quickly and accurately with our BMI calculator. Understand your weight status and get health recommendations based on your BMI. Supports both metric and imperial units." />
+  <meta name="keywords" content="BMI Calculator, Body Mass Index, Weight Assessment, Health Calculator, BMI Chart, Body Mass Index Calculator, Weight Status, Health Recommendations, Metric Units, Imperial Units" />
+  <meta name="author" content="Calculator2U" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.calculator2u.com/bmi-calculator" />
+  <meta property="og:title" content="BMI Calculator" />
+  <meta property="og:description" content="Calculate your Body Mass Index (BMI) quickly and accurately with our BMI calculator. Understand your weight status and get health recommendations based on your BMI." />
+  <meta property="og:image" content="https://www.calculator2u.com/images/bmi-calculator.jpg" />
+  <meta property="og:url" content="https://www.calculator2u.com/bmi-calculator" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BMI Calculator" />
+  <meta name="twitter:description" content="Calculate your Body Mass Index (BMI) quickly and accurately with our BMI calculator. Understand your weight status and get health recommendations based on your BMI." />
+  <meta name="twitter:image" content="https://www.calculator2u.com/images/bmi-calculator.jpg" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
       color: #333;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
     header, footer {
       background-color: #006d77;
@@ -41,6 +65,10 @@
       text-decoration: none;
       font-weight: 500;
     }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #a9c8f5;
+    }
     .lang-switch {
       background: transparent;
       border: 1.5px solid #fff;
@@ -49,6 +77,12 @@
       cursor: pointer;
       font-weight: 600;
       padding: 0.25rem 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
     }
     main.container {
       max-width: 720px;
@@ -62,26 +96,30 @@
     }
     form#bmi-form {
       display: flex;
-      justify-content: center;
-      gap: 3rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
       margin-bottom: 2rem;
     }
     form#bmi-form > div {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
     label {
       font-weight: 600;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
+      text-align: center;
     }
     input[type=number] {
-      width: 120px;
+      width: 100%;
+      max-width: 150px;
       font-size: 1.1rem;
       padding: 0.4rem;
-      border: 1px solid #aaa;
-      border-radius: 5px;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
       text-align: center;
     }
     button {
@@ -90,11 +128,15 @@
       color: white;
       font-weight: 700;
       font-size: 1.1rem;
-      padding: 0.5rem 1.5rem;
+      padding: 0.7rem 1.5rem;
       border-radius: 6px;
       cursor: pointer;
       align-self: center;
       margin-top: 1.3rem;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007279;
     }
     #result-container {
       text-align: center;
@@ -109,12 +151,22 @@
     #bmi-category {
       font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    #bmi-advice {
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: #555;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     #gauge {
       display: block;
-      margin: 0 auto 2rem;
-      width: 600px;
+      margin: 1.5rem auto;
+      width: 100%;
+      max-width: 600px;
       height: 120px;
     }
     #gauge rect.bg0 { fill: #89CFF0; }
@@ -122,13 +174,45 @@
     #gauge rect.bg2 { fill: #FFEB3B; }
     #gauge rect.bg3 { fill: #FF9800; }
     #gauge rect.bg4 { fill: #F44336; }
-    #pointer { fill: #222; }
-
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .export-btn, .speak-btn, .unit-switch {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+    }
+    .export-btn {
+      background-color: #4CAF50;
+    }
+    .speak-btn {
+      background-color: #2196F3;
+    }
+    .unit-switch {
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      color: #333;
+      font-weight: normal;
+    }
+    .unit-switch:hover {
+      background-color: #e9e9e9;
+      border-color: #bbbec5;
+    }
     table.bmi-table {
-      margin: 0 auto;
+      margin: 1.5rem auto;
       border-collapse: collapse;
-      max-width: 600px;
       width: 100%;
+      max-width: 500px;
       font-size: 1rem;
       text-align: center;
       box-shadow: 0 0 12px rgba(0,0,0,0.1);
@@ -141,54 +225,91 @@
       padding: 12px 8px;
       border-bottom: 1px solid #ddd;
     }
-    @media screen and (max-width: 640px) {
-      form#bmi-form {
+    footer p {
+      margin: 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 768px) {
+      .navbar {
         flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
+        align-items: flex-start;
+      }
+      .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
       }
       #gauge {
+        height: 80px;
+      }
+      form#bmi-form {
+        align-items: stretch;
+      }
+      input[type=number] {
         width: 100%;
-        height: 100px;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .export-btn, .speak-btn, .unit-switch {
+        width: 100%;
+        max-width: 300px;
       }
     }
   </style>
 </head>
 <body>
 <header>
-  <nav class="navbar">
-    <a href="/index.html" class="logo">Calculator2U</a>
-    <ul class="nav-links">
-      <li><a data-i18n="nav-health" href="#">健康与身体</a></li>
-      <li><a data-i18n="nav-finance" href="#">财务与投资</a></li>
-      <li><a data-i18n="nav-edu" href="#">教育与学习</a></li>
-      <li><a data-i18n="nav-eng" href="#">工程与科学</a></li>
-      <li><a data-i18n="nav-life" href="#">日常生活</a></li>
-      <li><a data-i18n="nav-about" href="#">关于我们</a></li>
-      <li><button class="lang-switch" id="lang-switch">EN</button></li>
-    </ul>
-  </nav>
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="nav_logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+        <li><button class="lang-switch" id="lang-switch">中文</button></li>
+      </ul>
+    </nav>
 </header>
 
 <main class="container">
-  <h1 data-i18n="title">BMI 计算器</h1>
+  <h1 data-i18n="title">BMI Calculator</h1>
   <form id="bmi-form">
     <div>
-      <label for="weight" data-i18n="label-weight">体重 (kg)</label>
-      <input type="number" id="weight" min="1" max="500" step="0.1" required />
+      <label for="weight" data-i18n="label-weight">Weight (kg)</label>
+      <input type="number" id="weight" min="1" max="500" step="0.1" required placeholder="Enter your weight" />
     </div>
     <div>
-      <label for="height" data-i18n="label-height">身高 (cm)</label>
-      <input type="number" id="height" min="30" max="300" step="0.1" required />
+      <label for="height" data-i18n="label-height">Height (cm)</label>
+      <input type="number" id="height" min="30" max="300" step="0.1" required placeholder="Enter your height" />
     </div>
-    <button type="submit" data-i18n="btn-calc">计算</button>
+    <div>
+      <label for="age" data-i18n="label-age">Age</label>
+      <input type="number" id="age" min="1" max="120" required placeholder="Enter your age" />
+    </div>
+    <div>
+      <button type="button" class="unit-switch" id="unit-switch" data-i18n="unit">Unit: kg/cm</button>
+    </div>
+    <button type="submit" data-i18n="btn-calc">Calculate</button>
   </form>
 
   <section id="result-container">
     <div id="bmi-value"></div>
     <div id="bmi-category"></div>
+    <div id="bmi-advice"></div>
 
-    <svg id="gauge" viewBox="0 0 600 120">
+    <svg id="gauge" viewBox="0 0 600 120" aria-label="BMI gauge">
       <rect class="bg0" x="0" y="40" width="100" height="40"></rect>
       <rect class="bg1" x="100" y="40" width="100" height="40"></rect>
       <rect class="bg2" x="200" y="40" width="100" height="40"></rect>
@@ -202,65 +323,67 @@
       <line x1="400" y1="40" x2="400" y2="80" stroke="#333" stroke-width="2" />
       <line x1="600" y1="40" x2="600" y2="80" stroke="#333" stroke-width="2" />
 
-      <text x="50" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-thin">偏瘦</text>
-      <text x="150" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-normal">正常</text>
-      <text x="250" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-overweight">超重</text>
-      <text x="350" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-obese">肥胖</text>
-      <text x="500" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-severe">重度肥胖</text>
-
-      <polygon id="pointer" points="0,40 10,40 5,0" />
+      <text x="50" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-thin">Underweight</text>
+      <text x="150" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-normal">Normal</text>
+      <text x="250" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-overweight">Overweight</text>
+      <text x="350" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-obese">Obese</text>
+      <text x="500" y="35" font-size="14" fill="#333" font-weight="600" text-anchor="middle" data-i18n="range-severe">Severely Obese</text>
+      <line id="pointer" x1="5" y1="40" x2="15" y2="40" stroke="#222" stroke-width="3" />
+      <text id="pointer-value" x="0" y="20" font-size="16" fill="#222" text-anchor="middle"></text>
     </svg>
 
     <table class="bmi-table">
       <thead>
-        <tr><th data-i18n="table-range">BMI 范围</th><th data-i18n="table-category">分类</th></tr>
+        <tr><th data-i18n="table-range">BMI Range</th><th data-i18n="table-category">Category</th></tr>
       </thead>
       <tbody>
-        <tr><td>< 18.5</td><td data-i18n="range-thin">偏瘦</td></tr>
-        <tr><td>18.5 - 24.9</td><td data-i18n="range-normal">正常</td></tr>
-        <tr><td>25 - 29.9</td><td data-i18n="range-overweight">超重</td></tr>
-        <tr><td>30 - 34.9</td><td data-i18n="range-obese">肥胖</td></tr>
-        <tr><td>≥ 35</td><td data-i18n="range-severe">重度肥胖</td></tr>
+        <tr><td>< 18.5</td><td data-i18n="range-thin">Underweight</td></tr>
+        <tr><td>18.5 - 24.9</td><td data-i18n="range-normal">Normal</td></tr>
+        <tr><td>25 - 29.9</td><td data-i18n="range-overweight">Overweight</td></tr>
+        <tr><td>30 - 34.9</td><td data-i18n="range-obese">Obese</td></tr>
+        <tr><td>≥ 35</td><td data-i18n="range-severe">Severely Obese</td></tr>
       </tbody>
     </table>
+    
+    <div class="pie-chart-container" id="pie-chart-container">
+      <canvas id="pie-chart"></canvas>
+    </div>
+    
+    <div class="btn-row">
+      <button type="button" class="export-btn" id="export-btn" data-i18n="export-pdf">Export as PDF</button>
+      <button type="button" class="speak-btn" id="speak-btn" data-i18n="speak-result">Speak Result</button>
+    </div>
   </section>
 </main>
 
 <footer>
-  <p style="text-align:center;">&copy; 2025 Calculator2U</p>
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
+  <p data-i18n="about-text">Calculator2U offers various online calculators and converters to help you with daily calculations.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 const form = document.getElementById('bmi-form');
 const bmiValueEl = document.getElementById('bmi-value');
 const bmiCategoryEl = document.getElementById('bmi-category');
+const bmiAdviceEl = document.getElementById('bmi-advice');
 const pointer = document.getElementById('pointer');
+const pointerValue = document.getElementById('pointer-value');
 const langSwitchBtn = document.getElementById('lang-switch');
+const unitSwitchBtn = document.getElementById('unit-switch');
+const exportBtn = document.getElementById('export-btn');
+const speakBtn = document.getElementById('speak-btn');
+const pieChartContainer = document.getElementById('pie-chart-container');
+const pieChart = document.getElementById('pie-chart').getContext('2d');
 
 const i18nText = {
-  "zh-CN": {
-    "title": "BMI 计算器",
-    "label-weight": "体重 (kg)",
-    "label-height": "身高 (cm)",
-    "btn-calc": "计算",
-    "table-range": "BMI 范围",
-    "table-category": "分类",
-    "range-thin": "偏瘦",
-    "range-normal": "正常",
-    "range-overweight": "超重",
-    "range-obese": "肥胖",
-    "range-severe": "重度肥胖",
-    "nav-health": "健康与身体",
-    "nav-finance": "财务与投资",
-    "nav-edu": "教育与学习",
-    "nav-eng": "工程与科学",
-    "nav-life": "日常生活",
-    "nav-about": "关于我们"
-  },
   "en": {
+    "nav_logo": "Calculator2U",
     "title": "BMI Calculator",
     "label-weight": "Weight (kg)",
     "label-height": "Height (cm)",
+    "label-age": "Age",
     "btn-calc": "Calculate",
     "table-range": "BMI Range",
     "table-category": "Category",
@@ -269,51 +392,250 @@ const i18nText = {
     "range-overweight": "Overweight",
     "range-obese": "Obese",
     "range-severe": "Severely Obese",
-    "nav-health": "Health",
-    "nav-finance": "Finance",
-    "nav-edu": "Education",
-    "nav-eng": "Engineering",
-    "nav-life": "Daily Life",
-    "nav-about": "About Us"
+    "nav_health": "Health & Body",
+    "nav_finance": "Finance & Investment",
+    "nav_education": "Education & Learning",
+    "nav_engineering": "Engineering & Science",
+    "nav_daily_life": "Daily Life",
+    "nav_about_us": "About Us",
+    "footer_privacy_policy": "Privacy Policy",
+    "footer_terms_of_service": "Terms of Service",
+    "unit": "Unit: kg/cm",
+    "unit-alt": "Unit: lb/in",
+    "export-pdf": "Export as PDF",
+    "speak-result": "Speak Result",
+    "advice-thin": "Your weight is too low. Consider increasing your nutrition intake.",
+    "advice-normal": "Your weight is in a healthy range. Keep up the good work!",
+    "advice-overweight": "Your weight is slightly high. Consider increasing exercise and controlling diet.",
+    "advice-obese": "Your weight is high. Consult a doctor and create a weight loss plan.",
+    "advice-severe": "Your weight is seriously above normal. Consult a doctor immediately.",
+    "about-text": "Calculator2U offers various online calculators and converters to help you with daily calculations.",
+    "calculate-first": "Please calculate BMI first"
+  },
+  "zh": {
+    "nav_logo": "Calculator2U",
+    "title": "BMI 计算器",
+    "label-weight": "体重 (kg)",
+    "label-height": "身高 (cm)",
+    "label-age": "年龄",
+    "btn-calc": "计算",
+    "table-range": "BMI 范围",
+    "table-category": "分类",
+    "range-thin": "偏瘦",
+    "range-normal": "正常",
+    "range-overweight": "超重",
+    "range-obese": "肥胖",
+    "range-severe": "重度肥胖",
+    "nav_health": "健康与身体",
+    "nav_finance": "财务与投资",
+    "nav_education": "教育与学习",
+    "nav_engineering": "工程与科学",
+    "nav_daily_life": "日常生活",
+    "nav_about_us": "关于我们",
+    "footer_privacy_policy": "隐私政策",
+    "footer_terms_of_service": "使用条款",
+    "unit": "单位: kg/cm",
+    "unit-alt": "单位: lb/in",
+    "export-pdf": "导出为 PDF",
+    "speak-result": "语音播报结果",
+    "advice-thin": "您的体重过轻。建议增加营养摄入，适当增重。",
+    "advice-normal": "您的体重处于健康范围。继续保持健康的生活方式。",
+    "advice-overweight": "您的体重略高。建议适当增加运动量，控制饮食。",
+    "advice-obese": "您的体重偏高。建议咨询医生，制定减重计划。",
+    "advice-severe": "您的体重严重超标。建议立即咨询医生，开始减重计划。",
+    "about-text": "Calculator2U提供各种实用在线计算器和转换工具，帮助您轻松解决日常计算需求。",
+    "calculate-first": "请先计算BMI"
   }
 };
 
-let currentLang = 'zh-CN';
+let currentLang = 'en';
+let useMetric = true;
 
 function switchLang() {
-  currentLang = currentLang === 'zh-CN' ? 'en' : 'zh-CN';
-  langSwitchBtn.textContent = currentLang === 'zh-CN' ? 'EN' : '中';
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  langSwitchBtn.textContent = currentLang === 'en' ? '中文' : 'EN';
+  
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (i18nText[currentLang][key]) {
-      el.textContent = i18nText[currentLang][key];
+      if (el.tagName === 'INPUT') {
+        el.placeholder = i18nText[currentLang][key];
+      } else {
+        el.textContent = i18nText[currentLang][key];
+      }
     }
   });
+
+  if (useMetric) {
+    unitSwitchBtn.textContent = i18nText[currentLang]['unit'];
+  } else {
+    unitSwitchBtn.textContent = i18nText[currentLang]['unit-alt'];
+  }
 }
 
-langSwitchBtn.addEventListener('click', switchLang);
+function switchUnit() {
+  useMetric = !useMetric;
+  form.weight.placeholder = useMetric ? i18nText[currentLang]['label-weight'] : 'Weight (lb)';
+  form.height.placeholder = useMetric ? i18nText[currentLang]['label-height'] : 'Height (in)';
+  form.weight.value = '';
+  form.height.value = '';
+  unitSwitchBtn.textContent = useMetric 
+    ? i18nText[currentLang]['unit'] 
+    : i18nText[currentLang]['unit-alt'];
+}
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const weight = parseFloat(form.weight.value);
-  const height = parseFloat(form.height.value);
-  if (!weight || !height) return;
-  const bmi = weight / Math.pow(height / 100, 2);
-  bmiValueEl.textContent = bmi.toFixed(1);
-  let category = '';
-  if (bmi < 18.5) category = i18nText[currentLang]['range-thin'];
-  else if (bmi < 25) category = i18nText[currentLang]['range-normal'];
-  else if (bmi < 30) category = i18nText[currentLang]['range-overweight'];
-  else if (bmi < 35) category = i18nText[currentLang]['range-obese'];
-  else category = i18nText[currentLang]['range-severe'];
-  bmiCategoryEl.textContent = category;
+function calculateBMI(weight, height) {
+  if (useMetric) {
+    return weight / Math.pow(height / 100, 2);
+  } else {
+    return 703 * weight / Math.pow(height, 2);
+  }
+}
+
+function getCategory(bmi) {
+  if (bmi < 18.5) return { name: 'thin', value: bmi < 18.5 };
+  else if (bmi < 25) return { name: 'normal', value: bmi < 25 };
+  else if (bmi < 30) return { name: 'overweight', value: bmi < 30 };
+  else if (bmi < 35) return { name: 'obese', value: bmi < 35 };
+  else return { name: 'severe', value: true };
+}
+
+function updateGauge(bmi) {
   const pos = Math.min(600, bmi <= 18.5 ? (bmi / 18.5) * 100
     : bmi <= 25 ? 100 + ((bmi - 18.5) / 6.5) * 100
     : bmi <= 30 ? 200 + ((bmi - 25) / 5) * 100
     : bmi <= 35 ? 300 + ((bmi - 30) / 5) * 100
     : 400 + Math.min((bmi - 35) / 5, 1) * 200);
-  pointer.setAttribute("transform", `translate(${pos - 5}, 0)`);
+  
+  pointer.setAttribute("x1", pos - 5);
+  pointer.setAttribute("x2", pos + 5);
+  
+  pointerValue.textContent = bmi.toFixed(1);
+  pointerValue.setAttribute("x", pos);
+}
+
+function updatePieChart() {
+  const data = {
+    labels: [
+      `${i18nText[currentLang]['range-thin']} (10%)`,
+      `${i18nText[currentLang]['range-normal']} (15%)`,
+      `${i18nText[currentLang]['range-overweight']} (20%)`,
+      `${i18nText[currentLang]['range-obese']} (15%)`,
+      `${i18nText[currentLang]['range-severe']} (40%)`
+    ],
+    datasets: [ {
+      data: [10, 15, 20, 15, 40],
+      backgroundColor: [
+        '#89CFF0',
+        '#4CAF50',
+        '#FFEB3B',
+        '#FF9800',
+        '#F44336'
+      ],
+      hoverOffset: 4
+    } ]
+  };
+  
+  if (!window.myPieChart) {
+    window.myPieChart = new Chart(pieChart, {
+      type: 'pie',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  } else {
+    window.myPieChart.data = data;
+    window.myPieChart.update();
+  }
+}
+
+function exportToPDF() {
+  if (!bmiValueEl.textContent) {
+    alert(i18nText[currentLang]['calculate-first']);
+    return;
+  }
+  
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  
+  doc.setFontSize(20);
+  doc.text(i18nText[currentLang]['title'], 105, 20, { align: 'center' });
+  
+  doc.setFontSize(16);
+  doc.text(`BMI: ${bmiValueEl.textContent}`, 105, 35, { align: 'center' });
+  
+  doc.setFontSize(16);
+  doc.text(`Category: ${bmiCategoryEl.textContent}`, 105, 45, { align: 'center' });
+  
+  doc.setFontSize(12);
+  doc.text(`Age: ${form.age.value}`, 105, 55, { align: 'center' });
+  
+  doc.text(bmiAdviceEl.textContent, 15, 65);
+  
+  doc.save('bmi-result.pdf');
+}
+
+function speakResult() {
+  if (window.speechSynthesis && bmiValueEl.textContent) {
+    const utterance = new SpeechSynthesisUtterance(
+      `${i18nText[currentLang]['title']}: ${bmiValueEl.textContent}, ` +
+      `${i18nText[currentLang]['table-category']}: ${bmiCategoryEl.textContent}, ` +
+      `${bmiAdviceEl.textContent}`
+    );
+    speechSynthesis.speak(utterance);
+  } else if (!bmiValueEl.textContent) {
+    alert(i18nText[currentLang]['calculate-first']);
+  }
+}
+
+function initialize() {
+  switchLang();
+}
+
+langSwitchBtn.addEventListener('click', switchLang);
+unitSwitchBtn.addEventListener('click', switchUnit);
+exportBtn.addEventListener('click', exportToPDF);
+speakBtn.addEventListener('click', speakResult);
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const weight = parseFloat(form.weight.value);
+  const height = parseFloat(form.height.value);
+  const age = parseInt(form.age.value);
+  
+  if (!weight || !height || isNaN(age)) return;
+  
+  const bmi = calculateBMI(weight, height);
+  bmiValueEl.textContent = bmi.toFixed(1);
+  
+  const category = getCategory(bmi);
+  let categoryText = '';
+  if (category.name === 'thin') categoryText = i18nText[currentLang]['range-thin'];
+  else if (category.name === 'normal') categoryText = i18nText[currentLang]['range-normal'];
+  else if (category.name === 'overweight') categoryText = i18nText[currentLang]['range-overweight'];
+  else if (category.name === 'obese') categoryText = i18nText[currentLang]['range-obese'];
+  else categoryText = i18nText[currentLang]['range-severe'];
+  
+  bmiCategoryEl.textContent = categoryText;
+  bmiAdviceEl.textContent = i18nText[currentLang][`advice-${category.name}`];
+  
+  updateGauge(bmi);
+  
+  pieChartContainer.style.display = 'block';
+  updatePieChart();
+  
+  document.getElementById('result-container').scrollIntoView({
+    behavior: 'smooth'
+  });
 });
+
+window.addEventListener('load', initialize);
 </script>
 </body>
 </html>

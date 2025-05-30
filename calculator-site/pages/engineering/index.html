@@ -9,6 +9,15 @@
   <meta name="keywords" content="工程计算器, 科学工具, 电阻, 力学, 单位转换" />
   <meta name="author" content="Calculator2U" />
   <link rel="canonical" href="https://www.calculator2u.com/pages/engineering/index.html" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +26,7 @@
       color: #333;
     }
     .navbar {
-      background-color: #2b3d51;
+      background-color: #006d77;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -132,9 +141,9 @@
         <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
         <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
         <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-        <li><a href="/pages/engineering/index.html" class="active" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
         <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-        <li><a href="/pages/about.html" data-i18n="nav_about">关于我们</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
         <li><button class="lang-switch" id="lang-switch">EN</button></li>
       </ul>
     </nav>
@@ -179,7 +188,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/pages/privacy.html" data-i18n="footer_privacy">隐私政策</a> | <a href="/pages/terms.html" data-i18n="footer_terms">使用条款</a></p>
+    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
   </footer>
 
   <script>
@@ -193,7 +202,7 @@
           nav_education: "教育与学习",
           nav_engineering: "工程与科学",
           nav_daily_life: "日常生活",
-          nav_about: "关于我们",
+          nav_about_us: "关于我们",
           scientific: "科学计算器",
           scientific_desc: "执行复杂科学与数学运算。",
           base_converter: "进制转换器",
@@ -206,8 +215,8 @@
           material_strength_desc: "计算材料应力、应变等参数。",
           coordinate_converter: "坐标转换器",
           coordinate_converter_desc: "在极坐标与直角坐标间转换。",
-          footer_privacy: "隐私政策",
-          footer_terms: "使用条款"
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款"
         },
         en: {
           title: "Engineering & Science Calculators",
@@ -217,7 +226,7 @@
           nav_education: "Education & Learning",
           nav_engineering: "Engineering & Science",
           nav_daily_life: "Daily Life",
-          nav_about: "About Us",
+          nav_about_us: "About Us",
           scientific: "Scientific Calculator",
           scientific_desc: "Perform complex scientific and math operations.",
           base_converter: "Base Converter",
@@ -230,8 +239,8 @@
           material_strength_desc: "Calculate stress, strain, and more.",
           coordinate_converter: "Coordinate Converter",
           coordinate_converter_desc: "Convert between polar and Cartesian coordinates.",
-          footer_privacy: "Privacy Policy",
-          footer_terms: "Terms of Service"
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service"
         }
       };
 

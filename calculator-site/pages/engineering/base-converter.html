@@ -4,29 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-i18n="title">进制转换器 | Base Converter</title>
-  <meta name="description" content="简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。" />
-  <meta name="keywords" content="进制转换器, base converter, binary, octal, decimal, hex" />
-  <meta name="author" content="Calculator2U" />
+  <meta name="description" content="功能强大的进制转换器，支持2-36进制之间的转换、字符串与ASCII转换。一键复制结果、分享链接，还提供可视化的进制图。" />
+  <meta name="keywords" content="进制转换器, Base Converter, 二进制, Binary, 八进制, Octal, 十进制, Decimal, 十六进制, Hexadecimal, ASCII转换, ASCII Converter, 进制图, Base Visualizer" />
+  <meta name="author" content="Calculator2U">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="进制转换器 | Base Converter">
+  <meta property="og:description" content="功能强大的进制转换器，支持2-36进制之间的转换、字符串与ASCII转换。">
+  <meta property="og:type" content="website">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "进制转换器 | Base Converter",
+    "description": "功能强大的进制转换器，支持2-36进制之间的转换、字符串与ASCII转换。一键复制结果、分享链接，还提供可视化的进制图。",
+    "inLanguage": ["zh", "en"]
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #006d77;
+      --primary-light: #83c5be;
+      --secondary-color: #003f5c;
+      --accent-color: #ff9e6d;
+      --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-text: #fff;
+      --success-color: #4caf50;
+      --error-color: #f44336;
+      --card-bg: #ffffff;
+      --border-radius: 10px;
+      --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    .dark-mode {
+      --primary-color: #83c5be;
+      --primary-light: #006d77;
+      --secondary-color: #6da9e4;
+      --light-bg: #1a1a2e;
+      --dark-text: #e6e6e6;
+      --card-bg: #16213e;
+      --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; background: #f9f9f9; color: #333;
-      display: flex; flex-direction: column; min-height: 100vh;
+      margin: 0;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: var(--transition);
     }
+
     .navbar {
-      background-color: #003f5c;
+      background-color: var(--primary-color);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     .navbar .logo {
-      color: #fff;
+      color: var(--light-text);
       font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
+    .logo i {
+      font-size: 1.8rem;
+    }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -35,296 +109,905 @@
       padding-left: 0;
       align-items: center;
     }
+
     .nav-links a {
-      color: #fff;
+      color: var(--light-text);
       text-decoration: none;
       font-weight: 500;
-    }
-    .lang-switch {
-      background: transparent;
-      border: 1.5px solid #fff;
-      color: #fff;
-      padding: 0.3rem 0.8rem;
+      padding: 0.5rem;
       border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
       font-weight: 600;
     }
+
+    .lang-switch {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--light-text);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .theme-switch {
+      background: transparent;
+      color: var(--light-text);
+      font-size: 1.2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .theme-switch:hover, .lang-switch:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
     main.container {
-      max-width: 600px;
+      max-width: 1200px;
       margin: 2rem auto 3rem auto;
-      background: #fff;
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+      padding: 0 1rem;
+      width: 100%;
       flex-grow: 1;
     }
-    h1 {
-      text-align: center;
-      color: #003f5c;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+
+    .converter-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
+
+    .converter-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .converter-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
     p.desc {
       text-align: center;
-      font-size: 1rem;
-      color: #666;
+      font-size: 1.1rem;
+      color: var(--dark-text);
       margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
     form.converter-form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
     label {
       font-weight: 600;
-      margin-bottom: 0.3rem;
       display: block;
-      color: #003f5c;
+      color: var(--primary-color);
     }
+
+    .input-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
     input[type="text"] {
-      padding: 0.6rem;
+      padding: 0.8rem;
       font-size: 1rem;
       border-radius: 5px;
       border: 1.5px solid #ccc;
       width: 100%;
       box-sizing: border-box;
       font-family: 'Courier New', monospace;
+      background: var(--card-bg);
+      color: var(--dark-text);
+      transition: var(--transition);
     }
+
+    input[type="text"]:focus {
+      border-color: var(--primary-light);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.1);
+    }
+
     select {
-      padding: 0.5rem;
+      padding: 0.8rem;
       font-size: 1rem;
       border-radius: 5px;
       border: 1.5px solid #ccc;
-      background: #fff;
+      background: var(--card-bg);
+      color: var(--dark-text);
       cursor: pointer;
+      flex: 1;
+      transition: var(--transition);
     }
-    button {
-      background-color: #003f5c;
+
+    select:focus {
+      border-color: var(--primary-light);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-group input {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
       color: white;
-      font-weight: 700;
-      border: none;
-      padding: 0.7rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #005080;
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
     }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    .btn-accent {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background-color: #ff8a50;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
     .result-box {
       margin-top: 1.5rem;
-      background: #e9f0fb;
-      padding: 1rem;
+      background: rgba(137, 196, 244, 0.15);
+      padding: 1.5rem;
       border-radius: 8px;
       font-family: 'Courier New', monospace;
       font-size: 1.1rem;
-      color: #003f5c;
+      color: var(--dark-text);
       white-space: pre-wrap;
       word-break: break-word;
+      position: relative;
+      min-height: 120px;
     }
+
+    .result-box.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+    }
+
+    .copy-share {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .copy-share button {
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-radius: 4px;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .copy-share button:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .visualization {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .visual-title {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .base-visualization {
+      width: 100%;
+      height: 300px;
+      background: #f8f9fa;
+      border-radius: var(--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #eee;
+    }
+
+    .visual-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    .digit-box {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .digit-label {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      color: var(--dark-text);
+    }
+
+    .base-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 15px;
+    }
+
+    .base-info span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
-      background: #f0f0f0;
+      background: var(--primary-color);
       font-size: 0.9rem;
-      color: #666;
+      color: var(--light-text);
       user-select: none;
+      margin-top: 3rem;
     }
-    @media (max-width: 480px) {
-      main.container {
-        margin: 1rem;
+
+    footer a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .converter-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .converter-card {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
         padding: 1rem;
       }
-      h1 {
-        font-size: 1.6rem;
+      
+      .nav-links {
+        display: none;
       }
+      
+      .input-row {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .action-buttons button {
+        width: 100%;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .converter-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .digit-box {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -70px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="/index.html" class="logo">Calculator2U</a>
-    <ul class="nav-links">
-      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-      <li><button class="lang-switch" id="lang-switch">EN</button></li>
-    </ul>
-  </nav>
+<header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="logo">
+        <i class="fas fa-calculator"></i>
+        <span>Calculator2U</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="controls">
+        <button class="btn lang-switch" id="lang-switch" data-i18n="lang_switch">中文</button>
+        <button class="btn theme-switch" id="theme-switch">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+</header>
 
-  <main class="container">
-    <h1 data-i18n="title">进制转换器</h1>
-    <p class="desc" data-i18n="desc">简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。</p>
-    <form class="converter-form" onsubmit="return false;">
-      <label for="inputValue" data-i18n="input_label">输入数值</label>
-      <input type="text" id="inputValue" placeholder="" autocomplete="off" />
+<main class="container">
+  <h1 data-i18n="title">进制转换器</h1>
+  <p class="desc" data-i18n="desc">功能强大的进制转换器，支持2-36进制之间的转换、字符串与ASCII转换。一键复制结果、分享链接，还提供可视化的进制图。</p>
+  
+  <div class="converter-container">
+    <div class="converter-card">
+      <form class="converter-form" id="converterForm">
+        <div class="input-group">
+          <label for="inputValue" data-i18n="input_label">输入数值</label>
+          <input type="text" id="inputValue" placeholder="" autocomplete="off" />
+        </div>
+        
+        <div class="input-group">
+          <label for="inputBase" data-i18n="input_base_label">输入进制</label>
+          <select id="inputBase" aria-label="Input base"></select>
+        </div>
+        
+        <div class="input-group">
+          <label for="outputBase" data-i18n="output_base_label">输出进制</label>
+          <select id="outputBase" aria-label="Output base"></select>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="asciiConversion" />
+          <label for="asciiConversion" data-i18n="ascii_label">字符串/ASCII转换</label>
+        </div>
+        
+        <div class="action-buttons">
+          <button type="button" id="convertBtn" class="btn btn-primary">
+            <i class="fas fa-exchange-alt"></i>
+            <span data-i18n="convert_btn">转换</span>
+          </button>
+          <button type="button" id="reverseBtn" class="btn btn-secondary">
+            <i class="fas fa-retweet"></i>
+            <span data-i18n="reverse_btn">反转进制</span>
+          </button>
+          <button type="button" id="clearBtn" class="btn btn-secondary">
+            <i class="fas fa-trash-alt"></i>
+            <span data-i18n="clear_btn">清除</span>
+          </button>
+        </div>
+      </form>
+      
+      <div class="result-box empty" id="resultBox" aria-live="polite" aria-atomic="true">
+        <div class="copy-share">
+          <button id="copyBtn" class="tooltip">
+            <i class="fas fa-copy"></i>
+            <span class="tooltiptext" data-i18n="copy_tooltip">复制结果</span>
+          </button>
+          <button id="shareBtn" class="tooltip">
+            <i class="fas fa-share-alt"></i>
+            <span class="tooltiptext" data-i18n="share_tooltip">分享链接</span>
+          </button>
+        </div>
+        <div id="resultContent" data-i18n="result_placeholder">转换结果将显示在这里</div>
+      </div>
+    </div>
+    
+    <div class="converter-card">
+      <div class="visualization">
+        <h3 class="visual-title" data-i18n="visual_title">进制转换可视化</h3>
+        <div class="base-visualization" id="baseVisualization">
+          <div class="visual-content" id="visualContent">
+            <div class="base-info">
+              <div class="digit-box">?</div>
+              <div class="digit-label" data-i18n="input_base">输入进制</div>
+            </div>
+            <i class="fas fa-arrow-right" style="font-size: 1.5rem; color: var(--primary-color); align-self: center;"></i>
+            <div class="base-info">
+              <div class="digit-box">?</div>
+              <div class="digit-label" data-i18n="output_base">输出进制</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info-box" style="margin-top: 2rem;">
+        <h3 data-i18n="info_title">进制转换说明</h3>
+        <p data-i18n="info_content" style="margin-top: 1rem; line-height: 1.7;">
+          进制转换是将数字从一种进制表示转换为另一种进制表示的过程。本工具支持2-36进制转换：
+          <br>- 2进制（二进制）：使用0和1表示
+          <br>- 8进制（八进制）：使用0-7表示
+          <br>- 10进制（十进制）：使用0-9表示
+          <br>- 16进制（十六进制）：使用0-9和A-F表示
+          <br>- 其他进制（最高36进制）：使用0-9和A-Z表示
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
 
-      <label for="inputBase" data-i18n="input_base_label">输入进制</label>
-      <select id="inputBase" aria-label="Input base">
-        <option value="2">2 (二进制)</option>
-        <option value="8">8 (八进制)</option>
-        <option value="10" selected>10 (十进制)</option>
-        <option value="16">16 (十六进制)</option>
-      </select>
+<footer>
+  <p>&copy; 2025 Calculator2U. All rights reserved. | 
+    <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+    <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a> |
+    <a href="/contact.html" data-i18n="footer_contact">联系我们</a>
+  </p>
+</footer>
 
-      <label for="outputBase" data-i18n="output_base_label">输出进制</label>
-      <select id="outputBase" aria-label="Output base">
-        <option value="2">2 (二进制)</option>
-        <option value="8">8 (八进制)</option>
-        <option value="10" selected>10 (十进制)</option>
-        <option value="16">16 (十六进制)</option>
-      </select>
+<script>
+(() => {
+  const translations = {
+    zh: {
+      title: "进制转换器",
+      desc: "功能强大的进制转换器，支持2-36进制之间的转换、字符串与ASCII转换。一键复制结果、分享链接，还提供可视化的进制图。",
+      logo: "Calculator2U",
+      nav_health: "健康与身体",
+      nav_finance: "财务与投资",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about_us: "关于我们",
+      lang_switch: "EN",
+      input_label: "输入数值",
+      input_base_label: "输入进制",
+      output_base_label: "输出进制",
+      ascii_label: "字符串/ASCII转换",
+      convert_btn: "转换",
+      reverse_btn: "反转进制",
+      clear_btn: "清除",
+      footer_privacy_policy: "隐私政策",
+      footer_terms_of_service: "使用条款",
+      footer_contact: "联系我们",
+      result_placeholder: "转换结果将显示在这里",
+      copy_tooltip: "复制结果",
+      share_tooltip: "分享链接",
+      visual_title: "进制转换可视化",
+      input_base: "输入进制",
+      output_base: "输出进制",
+      info_title: "进制转换说明",
+      info_content: "进制转换是将数字从一种进制表示转换为另一种进制表示的过程。本工具支持2-36进制转换：",
+      copy_success: "结果已复制到剪贴板",
+      share_success: "链接已复制到剪贴板",
+      conversion_error: "转换错误：",
+      ascii_conversion: "ASCII转换：",
+      string_conversion: "字符串转换：",
+      base_names: ["二进制", "三进制", "四进制", "五进制", "六进制", "七进制", "八进制", "九进制", "十进制", 
+                   "十一进制", "十二进制", "十三进制", "十四进制", "十五进制", "十六进制", "十七进制", "十八进制", "十九进制", 
+                   "二十进制", "二十一二进制", "二十二进制", "二十三进制", "二十四进制", "二十五进制", "二十六进制", "二十七进制", 
+                   "二十八进制", "二十九进制", "三十进制", "三十一二进制", "三十二进制", "三十三进制", "三十四进制", "三十五进制", "三十六进制"]
+    },
+    en: {
+      title: "Base Converter",
+      desc: "Simple and powerful base converter supporting binary, octal, decimal and hexadecimal conversions.",
+      logo: "Calculator2U",
+      nav_health: "Health & Body",
+      nav_finance: "Finance & Investment",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about_us: "About Us",
+      lang_switch: "中文",
+      input_label: "Input Value",
+      input_base_label: "Input Base",
+      output_base_label: "Output Base",
+      ascii_label: "String/ASCII Conversion",
+      convert_btn: "Convert",
+      reverse_btn: "Reverse Bases",
+      clear_btn: "Clear",
+      footer_privacy_policy: "Privacy Policy",
+      footer_terms_of_service: "Terms of Service",
+      footer_contact: "Contact Us",
+      result_placeholder: "Conversion results will appear here",
+      copy_tooltip: "Copy result",
+      share_tooltip: "Share link",
+      visual_title: "Base Conversion Visualization",
+      input_base: "Input Base",
+      output_base: "Output Base",
+      info_title: "Base Conversion Information",
+      info_content: "Base conversion is the process of changing the base representation of a number. This tool supports base conversion from 2 to 36:",
+      copy_success: "Result copied to clipboard",
+      share_success: "Link copied to clipboard",
+      conversion_error: "Conversion error: ",
+      ascii_conversion: "ASCII Conversion: ",
+      string_conversion: "String Conversion: ",
+      base_names: ["Binary", "Ternary", "Quaternary", "Quinary", "Senary", "Septenary", "Octal", "Nonary", "Decimal", 
+                   "Undecimal", "Duodecimal", "Tridecimal", "Tetradecimal", "Pentadecimal", "Hexadecimal", "Heptadecimal", "Octodecimal", "Enneadecimal", 
+                   "Vigesimal", "Unvigesimal", "Duovigesimal", "Trivigesimal", "Tetravigesimal", "Pentavigesimal", "Hexavigesimal", "Heptavigesimal", 
+                   "Octovigesimal", "Enneavigesimal", "Trigesimal", "Untrigesimal", "Duotrigesimal", "Tritrigesimal", "Tetratrigesimal", "Pentatrigesimal", "Hexatrigesimal"]
+    }
+  };
 
-      <button type="button" id="convertBtn" data-i18n="convert_btn">转换</button>
-      <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
-    </form>
+  let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+  let darkMode = localStorage.getItem('dark-mode') === 'true';
 
-    <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
-  </footer>
-
-  <script>
-    (() => {
-      const translations = {
-        zh: {
-          title: "进制转换器",
-          desc: "简单好用的进制转换器，支持二进制、八进制、十进制和十六进制相互转换。",
-          nav_health: "健康与身体",
-          nav_finance: "财务与投资",
-          nav_education: "教育与学习",
-          nav_engineering: "工程与科学",
-          nav_daily_life: "日常生活",
-          input_label: "输入数值",
-          input_base_label: "输入进制",
-          output_base_label: "输出进制",
-          convert_btn: "转换",
-          clear_btn: "清除",
-          footer_rights: "保留所有权利。"
-        },
-        en: {
-          title: "Base Converter",
-          desc: "Simple and easy base converter supporting binary, octal, decimal and hexadecimal conversions.",
-          nav_health: "Health & Body",
-          nav_finance: "Finance & Investment",
-          nav_education: "Education & Learning",
-          nav_engineering: "Engineering & Science",
-          nav_daily_life: "Daily Life",
-          input_label: "Input Value",
-          input_base_label: "Input Base",
-          output_base_label: "Output Base",
-          convert_btn: "Convert",
-          clear_btn: "Clear",
-          footer_rights: "All rights reserved."
+  function translatePage(language) {
+    lang = language;
+    document.documentElement.lang = lang;
+    localStorage.setItem('site-lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
         }
-      };
+      }
+    });
+    document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+  }
 
-      // Detect device language
-      let detectedLang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
-      let lang = detectedLang;
+  function toggleDarkMode() {
+    darkMode = !darkMode;
+    localStorage.setItem('dark-mode', darkMode);
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+      document.getElementById('theme-switch').innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.getElementById('theme-switch').innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  }
 
-      // Elements with data-i18n attribute for translation
-      const i18nElements = document.querySelectorAll('[data-i18n]');
-      // Elements for placeholder translation
-      const inputValue = document.getElementById('inputValue');
+  // Initialize dark mode
+  if (darkMode) {
+    document.body.classList.add('dark-mode');
+    document.getElementById('theme-switch').innerHTML = '<i class="fas fa-sun"></i>';
+  }
 
-      function translatePage(language) {
-        lang = language;
-        document.documentElement.lang = lang;
-        localStorage.setItem('site-lang', lang);
-        i18nElements.forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (translations[lang][key]) el.textContent = translations[lang][key];
+  translatePage(lang);
+
+  document.getElementById('lang-switch').addEventListener('click', () => {
+    translatePage(lang === 'zh' ? 'en' : 'zh');
+  });
+
+  document.getElementById('theme-switch').addEventListener('click', toggleDarkMode);
+
+  // Populate base selectors
+  const inputBaseSelect = document.getElementById('inputBase');
+  const outputBaseSelect = document.getElementById('outputBase');
+  
+  function populateBaseSelectors() {
+    inputBaseSelect.innerHTML = '';
+    outputBaseSelect.innerHTML = '';
+    
+    for (let base = 2; base <= 36; base++) {
+      const option = document.createElement('option');
+      option.value = base;
+      const baseName = translations[lang].base_names[base - 2] || `Base ${base}`;
+      option.textContent = `${base} (${baseName})`;
+      
+      if (base === 10) {
+        option.selected = true;
+      }
+      
+      inputBaseSelect.appendChild(option.cloneNode(true));
+      outputBaseSelect.appendChild(option);
+    }
+  }
+  
+  populateBaseSelectors();
+
+  const resultBox = document.getElementById('resultBox');
+  const resultContent = document.getElementById('resultContent');
+  const convertBtn = document.getElementById('convertBtn');
+  const reverseBtn = document.getElementById('reverseBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const inputValue = document.getElementById('inputValue');
+  const asciiConversion = document.getElementById('asciiConversion');
+  const visualContent = document.getElementById('visualContent');
+
+  function isValidInput(value, base) {
+    if (asciiConversion.checked) {
+      // For ASCII conversion, any string is valid
+      return value.trim().length > 0;
+    }
+    
+    const validChars = '0123456789abcdefghijklmnopqrstuvwxyz'.substring(0, base);
+    const regex = new RegExp(`^[${validChars}]+$`, 'i');
+    return regex.test(value.trim());
+  }
+
+  function convertBase(value, fromBase, toBase) {
+    try {
+      // Convert to decimal first
+      const decimal = parseInt(value, fromBase);
+      if (isNaN(decimal)) return null;
+      
+      // Convert to target base
+      return decimal.toString(toBase).toUpperCase();
+    } catch {
+      return null;
+    }
+  }
+
+  function convertAscii(value, toAscii) {
+    if (toAscii) {
+      // Convert string to ASCII codes
+      return value.split('').map(char => char.charCodeAt(0));
+    } else {
+      // Convert ASCII codes to string
+      const codes = value.split(/\s*,\s*|\s+/).map(Number);
+      if (codes.some(isNaN)) return null;
+      return String.fromCharCode(...codes);
+    }
+  }
+
+  function updateVisualization(inputBase, outputBase) {
+    visualContent.innerHTML = `
+      <div class="base-info">
+        <div class="digit-box">${inputBase}</div>
+        <div class="digit-label">${translations[lang].input_base}</div>
+      </div>
+      <i class="fas fa-arrow-right" style="font-size: 1.5rem; color: var(--primary-color); align-self: center;"></i>
+      <div class="base-info">
+        <div class="digit-box">${outputBase}</div>
+        <div class="digit-label">${translations[lang].output_base}</div>
+      </div>
+    `;
+  }
+
+  function showResult(content) {
+    resultBox.classList.remove('empty');
+    resultContent.textContent = content;
+  }
+
+  function showError(message) {
+    resultBox.classList.remove('empty');
+    resultContent.innerHTML = `<span style="color: var(--error-color);">${message}</span>`;
+  }
+
+  function generateShareLink() {
+    const inputVal = inputValue.value.trim();
+    const fromBase = inputBaseSelect.value;
+    const toBase = outputBaseSelect.value;
+    const asciiMode = asciiConversion.checked ? 1 : 0;
+    
+    return `${window.location.origin}${window.location.pathname}?input=${encodeURIComponent(inputVal)}&fromBase=${fromBase}&toBase=${toBase}&ascii=${asciiMode}`;
+  }
+
+  convertBtn.addEventListener('click', () => {
+    const inputVal = inputValue.value.trim();
+    const fromBase = parseInt(inputBaseSelect.value);
+    const toBase = parseInt(outputBaseSelect.value);
+    const isAsciiMode = asciiConversion.checked;
+
+    if (!inputVal) {
+      showError(lang === 'zh' ? "请输入数值。" : "Please enter a value.");
+      return;
+    }
+
+    if (!isValidInput(inputVal, fromBase)) {
+      const baseName = translations[lang].base_names[fromBase - 2] || `${fromBase}`;
+      showError(lang === 'zh' ? 
+        `无效的输入值。请检查${baseName}进制输入。` : 
+        `Invalid input. Please check your ${baseName} base input.`);
+      return;
+    }
+
+    let result;
+    if (isAsciiMode) {
+      // Determine conversion direction
+      const isAsciiInput = /^\d+(\s*,\s*\d+)*$/.test(inputVal);
+      const conversionResult = convertAscii(inputVal, !isAsciiInput);
+      
+      if (conversionResult === null) {
+        showError(lang === 'zh' ? "ASCII转换失败，请检查输入。" : "ASCII conversion failed. Please check your input.");
+        return;
+      }
+      
+      const conversionType = isAsciiInput ? 
+        translations[lang].string_conversion : 
+        translations[lang].ascii_conversion;
+      
+      result = `${conversionType}\n${Array.isArray(conversionResult) ? 
+        conversionResult.join(', ') : 
+        conversionResult}`;
+    } else {
+      const converted = convertBase(inputVal, fromBase, toBase);
+      if (converted === null) {
+        showError(lang === 'zh' ? "转换失败，请检查输入。" : "Conversion failed. Please check your input.");
+        return;
+      }
+
+      const fromBaseName = translations[lang].base_names[fromBase - 2] || `${fromBase}`;
+      const toBaseName = translations[lang].base_names[toBase - 2] || `${toBase}`;
+
+      result = `${inputVal} (${fromBaseName}) → ${converted} (${toBaseName})`;
+    }
+
+    showResult(result);
+    updateVisualization(fromBase, toBase);
+  });
+
+  reverseBtn.addEventListener('click', () => {
+    const tempBase = inputBaseSelect.value;
+    inputBaseSelect.value = outputBaseSelect.value;
+    outputBaseSelect.value = tempBase;
+  });
+
+  clearBtn.addEventListener('click', () => {
+    inputValue.value = "";
+    resultBox.classList.add('empty');
+    resultContent.textContent = translations[lang].result_placeholder;
+    asciiConversion.checked = false;
+    inputValue.focus();
+  });
+
+  copyBtn.addEventListener('click', () => {
+    if (!resultBox.classList.contains('empty')) {
+      navigator.clipboard.writeText(resultContent.textContent)
+        .then(() => {
+          const originalText = copyBtn.querySelector('.tooltiptext').textContent;
+          copyBtn.querySelector('.tooltiptext').textContent = translations[lang].copy_success;
+          setTimeout(() => {
+            copyBtn.querySelector('.tooltiptext').textContent = originalText;
+          }, 2000);
         });
-        // Change placeholder text
-        inputValue.placeholder = translations[lang].input_label + "...";
+    }
+  });
 
-        // Change language switch button text
-        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
-      }
+  shareBtn.addEventListener('click', () => {
+    const shareLink = generateShareLink();
+    navigator.clipboard.writeText(shareLink)
+      .then(() => {
+        const originalText = shareBtn.querySelector('.tooltiptext').textContent;
+        shareBtn.querySelector('.tooltiptext').textContent = translations[lang].share_success;
+        setTimeout(() => {
+          shareBtn.querySelector('.tooltiptext').textContent = originalText;
+        }, 2000);
+      });
+  });
 
-      // Initial translation
-      translatePage(lang);
+  // Handle URL parameters
+  function loadFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('input')) {
+      inputValue.value = decodeURIComponent(params.get('input'));
+      inputBaseSelect.value = params.get('fromBase') || '10';
+      outputBaseSelect.value = params.get('toBase') || '2';
+      asciiConversion.checked = params.get('ascii') === '1';
+      convertBtn.click();
+    }
+  }
 
-      // Language switch button
-      document.getElementById('lang-switch').onclick = () => {
-        translatePage(lang === 'zh' ? 'en' : 'zh');
-      };
-
-      // Conversion logic
-      const inputBaseSelect = document.getElementById('inputBase');
-      const outputBaseSelect = document.getElementById('outputBase');
-      const resultBox = document.getElementById('resultBox');
-      const convertBtn = document.getElementById('convertBtn');
-      const clearBtn = document.getElementById('clearBtn');
-
-      function isValidInput(value, base) {
-        // Allowed chars per base
-        const regexMap = {
-          2: /^[0-1]+$/i,
-          8: /^[0-7]+$/i,
-          10: /^[0-9]+$/i,
-          16: /^[0-9a-f]+$/i
-        };
-        return regexMap[base].test(value.trim());
-      }
-
-      function convertBase(value, fromBase, toBase) {
-        try {
-          // parseInt can handle up to base 36
-          const decimal = parseInt(value, fromBase);
-          if (isNaN(decimal)) return null;
-          return decimal.toString(toBase).toUpperCase();
-        } catch {
-          return null;
-        }
-      }
-
-      convertBtn.onclick = () => {
-        const inputVal = inputValue.value.trim();
-        const fromBase = parseInt(inputBaseSelect.value);
-        const toBase = parseInt(outputBaseSelect.value);
-
-        if (!inputVal) {
-          resultBox.textContent = lang === 'zh' ? "请输入数值。" : "Please enter a value.";
-          return;
-        }
-        if (!isValidInput(inputVal, fromBase)) {
-          resultBox.textContent = lang === 'zh' ? `请输入有效的${fromBase}进制数。` : `Please enter a valid base ${fromBase} number.`;
-          return;
-        }
-
-        const converted = convertBase(inputVal, fromBase, toBase);
-        if (converted === null) {
-          resultBox.textContent = lang === 'zh' ? "转换失败，请检查输入。" : "Conversion failed. Please check your input.";
-          return;
-        }
-
-        const fromBaseName = fromBase === 2 ? (lang==='zh'?'二进制':'binary') :
-                            fromBase === 8 ? (lang==='zh'?'八进制':'octal') :
-                            fromBase === 10 ? (lang==='zh'?'十进制':'decimal') :
-                            (lang==='zh'?'十六进制':'hexadecimal');
-
-        const toBaseName = toBase === 2 ? (lang==='zh'?'二进制':'binary') :
-                          toBase === 8 ? (lang==='zh'?'八进制':'octal') :
-                          toBase === 10 ? (lang==='zh'?'十进制':'decimal') :
-                          (lang==='zh'?'十六进制':'hexadecimal');
-
-        resultBox.textContent = `${inputVal} (${fromBaseName}) → ${converted} (${toBaseName})`;
-      };
-
-      clearBtn.onclick = () => {
-        inputValue.value = "";
-        resultBox.textContent = "";
-        inputValue.focus();
-      };
-
-    })();
-  </script>
+  // Initialize
+  updateVisualization(10, 2);
+  loadFromURL();
+})();
+</script>
 </body>
 </html>

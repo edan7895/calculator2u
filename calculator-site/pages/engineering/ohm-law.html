@@ -1,32 +1,104 @@
 <!DOCTYPE html>
-<html lang="auto">
+<html lang="auto" dir="auto">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="title">欧姆定律计算器 | Ohm's Law Calculator</title>
-  <meta name="description" content="简单实用的欧姆定律计算器，支持根据电压、电流、电阻计算未知值。" />
-  <meta name="keywords" content="欧姆定律, Ohm's Law, 电压, 电流, 电阻, 计算器" />
+  <meta name="description" content="简单实用的欧姆定律计算器，支持根据电压、电流、电阻计算未知值，提供电路图可视化。" />
+  <meta name="keywords" content="欧姆定律, Ohm's Law, 电压, 电流, 电阻, 计算器, 电路图, 电路计算, 物理计算" />
   <meta name="author" content="Calculator2U" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  
+  <!-- 结构化数据增强SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "欧姆定律计算器 | Ohm's Law Calculator",
+    "description": "在线欧姆定律计算器，支持电压、电流、电阻计算，提供电路图可视化功能",
+    "applicationCategory": "Educational",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
   <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --background-color: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --text-secondary: #666666;
+      --border-color: #cccccc;
+      --button-bg: #003f5c;
+      --button-hover: #005080;
+      --result-bg: #e9f0fb;
+      --result-text: #003f5c;
+      --footer-bg: #f0f0f0;
+      --footer-text: #666666;
+      --theme-switch-bg: #f0f0f0;
+      --theme-switch-color: #333;
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #4db5bd;
+      --secondary-color: #89c2d9;
+      --background-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --border-color: #444444;
+      --button-bg: #2a6f97;
+      --button-hover: #468faf;
+      --result-bg: #2c3e50;
+      --result-text: #e0e0e0;
+      --footer-bg: #1a1a1a;
+      --footer-text: #b0b0b0;
+      --theme-switch-bg: #333;
+      --theme-switch-color: #f0f0f0;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; background: #f9f9f9; color: #333;
-      display: flex; flex-direction: column; min-height: 100vh;
+      margin: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
     }
+
     .navbar {
-      background-color: #003f5c;
+      background-color: var(--primary-color);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
     }
+
     .navbar .logo {
       color: #fff;
       font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
     }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -35,12 +107,20 @@
       padding-left: 0;
       align-items: center;
     }
+
     .nav-links a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
     }
-    .lang-switch {
+
+    .theme-switch-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switch, .theme-switch {
       background: transparent;
       border: 1.5px solid #fff;
       color: #fff;
@@ -48,49 +128,120 @@
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
+
+    .theme-switch svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+
     main.container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 2rem auto 3rem auto;
-      background: #fff;
+      background: var(--card-bg);
       padding: 1.5rem 2rem;
       border-radius: 10px;
-      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
       flex-grow: 1;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
+
     h1 {
       text-align: center;
-      color: #003f5c;
+      color: var(--secondary-color);
       font-size: 2rem;
       margin-bottom: 0.5rem;
+      transition: color 0.3s;
     }
+
     p.desc {
       text-align: center;
       font-size: 1rem;
-      color: #666;
+      color: var(--text-secondary);
       margin-bottom: 2rem;
+      transition: color 0.3s;
     }
+
+    .calculator-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .input-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .circuit-section {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circuit-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+
+    .circuit-diagram {
+      width: 100%;
+      max-width: 400px;
+      background: var(--background-color);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
     form.calc-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
+
     label {
       font-weight: 600;
       margin-bottom: 0.3rem;
       display: block;
-      color: #003f5c;
+      color: var(--secondary-color);
+      transition: color 0.3s;
     }
+
     input[type="number"] {
       padding: 0.6rem;
       font-size: 1rem;
       border-radius: 5px;
-      border: 1.5px solid #ccc;
+      border: 1.5px solid var(--border-color);
       width: 100%;
       box-sizing: border-box;
+      background: var(--card-bg);
+      color: var(--text-color);
+      transition: all 0.3s;
     }
+
+    input[type="number"]:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 109, 119, 0.2);
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     button {
-      background-color: #003f5c;
+      background-color: var(--button-bg);
       color: white;
       font-weight: 700;
       border: none;
@@ -99,77 +250,206 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background-color 0.3s ease;
-      margin-top: 0.5rem;
+      flex: 1;
     }
+
     button:hover {
-      background-color: #005080;
+      background-color: var(--button-hover);
     }
+
     .result-box {
       margin-top: 1.5rem;
-      background: #e9f0fb;
+      background: var(--result-bg);
       padding: 1rem;
       border-radius: 8px;
       font-family: 'Courier New', monospace;
       font-size: 1.1rem;
-      color: #003f5c;
+      color: var(--result-text);
       white-space: pre-wrap;
       word-break: break-word;
       min-height: 3em;
+      transition: background-color 0.3s, color 0.3s;
     }
+
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
-      background: #f0f0f0;
+      background: var(--footer-bg);
       font-size: 0.9rem;
-      color: #666;
+      color: var(--footer-text);
       user-select: none;
+      transition: background-color 0.3s, color 0.3s;
     }
+
+    footer a {
+      color: var(--footer-text);
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--primary-color);
+    }
+
+    .circuit-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .circuit-element {
+      transition: all 0.3s;
+    }
+
+    .unknown-element {
+      stroke: #e74c3c;
+      stroke-width: 2;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 0.5; }
+      100% { opacity: 0.8; }
+    }
+
+    @media (max-width: 768px) {
+      .calculator-container {
+        flex-direction: column;
+      }
+      
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+
     @media (max-width: 480px) {
       main.container {
         margin: 1rem;
         padding: 1rem;
       }
+      
       h1 {
         font-size: 1.6rem;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .theme-switch-container {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .form-buttons {
+        flex-direction: column;
       }
     }
   </style>
 </head>
-<body>
-  <nav class="navbar">
-    <a href="/index.html" class="logo">Calculator2U</a>
-    <ul class="nav-links">
-      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-      <li><button class="lang-switch" id="lang-switch">EN</button></li>
-    </ul>
-  </nav>
+<body data-theme="auto">
+  <header>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="theme-switch-container">
+        <button class="lang-switch" id="lang-switch">EN</button>
+        <button class="theme-switch" id="theme-switch" title="切换主题">
+          <svg viewBox="0 0 24 24">
+            <path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
   <main class="container">
     <h1 data-i18n="title">欧姆定律计算器</h1>
-    <p class="desc" data-i18n="desc">输入电压、电流或电阻的任意两个值，自动计算第三个值。</p>
-    <form class="calc-form" onsubmit="return false;">
-      <label for="voltage" data-i18n="label_voltage">电压 (U) - 伏特 (V)</label>
-      <input type="number" id="voltage" step="any" placeholder="" autocomplete="off" />
+    <p class="desc" data-i18n="desc">输入电压、电流或电阻的任意两个值，自动计算第三个值并展示电路图</p>
+    
+    <div class="calculator-container">
+      <div class="input-section">
+        <form class="calc-form" onsubmit="return false;">
+          <label for="voltage" data-i18n="label_voltage">电压 (U) - 伏特 (V)</label>
+          <input type="number" id="voltage" step="any" placeholder="" autocomplete="off" min="0" />
 
-      <label for="current" data-i18n="label_current">电流 (I) - 安培 (A)</label>
-      <input type="number" id="current" step="any" placeholder="" autocomplete="off" />
+          <label for="current" data-i18n="label_current">电流 (I) - 安培 (A)</label>
+          <input type="number" id="current" step="any" placeholder="" autocomplete="off" min="0" />
 
-      <label for="resistance" data-i18n="label_resistance">电阻 (R) - 欧姆 (Ω)</label>
-      <input type="number" id="resistance" step="any" placeholder="" autocomplete="off" />
+          <label for="resistance" data-i18n="label_resistance">电阻 (R) - 欧姆 (Ω)</label>
+          <input type="number" id="resistance" step="any" placeholder="" autocomplete="off" min="0" />
 
-      <button type="button" id="calcBtn" data-i18n="calc_btn">计算</button>
-      <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
-    </form>
+          <div class="form-buttons">
+            <button type="button" id="calcBtn" data-i18n="calc_btn">计算</button>
+            <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
+          </div>
+        </form>
 
-    <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
+        <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
+      </div>
+      
+      <div class="circuit-section">
+        <div class="circuit-title" data-i18n="circuit_diagram">电路图</div>
+        <div class="circuit-diagram">
+          <svg id="circuit-svg" class="circuit-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 电池 -->
+            <rect x="50" y="80" width="15" height="40" fill="#ccc" class="circuit-element" id="battery" />
+            <rect x="50" y="120" width="15" height="40" fill="#ccc" class="circuit-element" />
+            <line x1="57.5" y1="80" x2="57.5" y2="40" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="57.5" y1="160" x2="57.5" y2="120" stroke="#333" stroke-width="2" class="circuit-element" />
+            
+            <!-- 正负标记 -->
+            <text x="65" y="100" fill="#333" font-size="12" class="circuit-element">+</text>
+            <text x="65" y="140" fill="#333" font-size="12" class="circuit-element">-</text>
+            
+            <!-- 导线 -->
+            <line x1="57.5" y1="40" x2="150" y2="40" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="150" y1="40" x2="150" y2="100" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="150" y1="100" x2="250" y2="100" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="250" y1="100" x2="250" y2="160" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="250" y1="160" x2="57.5" y2="160" stroke="#333" stroke-width="2" class="circuit-element" />
+            
+            <!-- 电阻 -->
+            <rect x="170" y="70" width="60" height="60" fill="none" stroke="#333" stroke-width="3" class="circuit-element" id="resistor" />
+            <line x1="170" y1="100" x2="150" y2="100" stroke="#333" stroke-width="2" class="circuit-element" />
+            <line x1="230" y1="100" x2="250" y2="100" stroke="#333" stroke-width="2" class="circuit-element" />
+            
+            <!-- 电流箭头 -->
+            <path d="M180 50 L190 50 L185 45" fill="#333" class="circuit-element" id="current-arrow" />
+            
+            <!-- 标签 -->
+            <text x="90" y="30" fill="#0066cc" font-size="14" class="circuit-element" id="voltage-label">U = ? V</text>
+            <text x="200" y="60" fill="#cc0000" font-size="14" class="circuit-element" id="current-label">I = ? A</text>
+            <text x="200" y="150" fill="#00aa00" font-size="14" class="circuit-element" id="resistance-label">R = ? Ω</text>
+          </svg>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | 
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
   </footer>
 
   <script>
@@ -177,49 +457,91 @@
       const translations = {
         zh: {
           title: "欧姆定律计算器",
-          desc: "输入电压、电流或电阻的任意两个值，自动计算第三个值。",
+          desc: "输入电压、电流或电阻的任意两个值，自动计算第三个值并展示电路图",
           nav_health: "健康与身体",
           nav_finance: "财务与投资",
           nav_education: "教育与学习",
           nav_engineering: "工程与科学",
           nav_daily_life: "日常生活",
+          nav_about_us: "关于我们",
           label_voltage: "电压 (U) - 伏特 (V)",
           label_current: "电流 (I) - 安培 (A)",
           label_resistance: "电阻 (R) - 欧姆 (Ω)",
           calc_btn: "计算",
           clear_btn: "清除",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
           footer_rights: "保留所有权利。",
+          circuit_diagram: "电路图",
           err_two_values: "请至少输入两个数值。",
           err_invalid: "输入的值必须是非负数字。",
           result_voltage: "电压 (U)",
           result_current: "电流 (I)",
-          result_resistance: "电阻 (R)"
+          result_resistance: "电阻 (R)",
+          theme_light: "浅色模式",
+          theme_dark: "深色模式",
+          theme_auto: "自动模式"
         },
         en: {
           title: "Ohm's Law Calculator",
-          desc: "Enter any two of voltage, current or resistance to calculate the third.",
+          desc: "Enter any two of voltage, current or resistance to calculate the third and view the circuit diagram",
           nav_health: "Health & Body",
           nav_finance: "Finance & Investment",
           nav_education: "Education & Learning",
           nav_engineering: "Engineering & Science",
           nav_daily_life: "Daily Life",
+          nav_about_us: "About Us",
           label_voltage: "Voltage (U) - Volts (V)",
           label_current: "Current (I) - Amps (A)",
           label_resistance: "Resistance (R) - Ohms (Ω)",
           calc_btn: "Calculate",
           clear_btn: "Clear",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
           footer_rights: "All rights reserved.",
+          circuit_diagram: "Circuit Diagram",
           err_two_values: "Please enter at least two values.",
           err_invalid: "Input values must be non-negative numbers.",
           result_voltage: "Voltage (U)",
           result_current: "Current (I)",
-          result_resistance: "Resistance (R)"
+          result_resistance: "Resistance (R)",
+          theme_light: "Light Mode",
+          theme_dark: "Dark Mode",
+          theme_auto: "Auto Mode"
         }
       };
 
       // Detect device language
       let detectedLang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
       let lang = detectedLang;
+
+      // Theme management
+      const theme = {
+        current: localStorage.getItem('site-theme') || 'auto',
+        init() {
+          this.applyTheme();
+          document.getElementById('theme-switch').addEventListener('click', () => this.toggleTheme());
+          
+          // Listen for system theme changes
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (this.current === 'auto') this.applyTheme();
+          });
+        },
+        toggleTheme() {
+          const themes = ['light', 'dark', 'auto'];
+          const currentIndex = themes.indexOf(this.current);
+          this.current = themes[(currentIndex + 1) % themes.length];
+          localStorage.setItem('site-theme', this.current);
+          this.applyTheme();
+        },
+        applyTheme() {
+          document.body.setAttribute('data-theme', this.current);
+          
+          // Update theme switch tooltip
+          const themeSwitch = document.getElementById('theme-switch');
+          themeSwitch.title = translations[lang][`theme_${this.current}`];
+        }
+      };
 
       const setLanguage = (lng) => {
         lang = lng;
@@ -240,10 +562,15 @@
 
         // Update lang switch button label
         document.getElementById('lang-switch').textContent = lng === 'zh' ? 'EN' : '中文';
+        
+        // Update theme switch tooltip
+        const themeSwitch = document.getElementById('theme-switch');
+        themeSwitch.title = translations[lang][`theme_${theme.current}`];
       };
 
-      // Initialize language
+      // Initialize language and theme
       setLanguage(lang);
+      theme.init();
 
       // Language switch button
       document.getElementById('lang-switch').addEventListener('click', () => {
@@ -258,6 +585,14 @@
       const resultBox = document.getElementById('resultBox');
       const calcBtn = document.getElementById('calcBtn');
       const clearBtn = document.getElementById('clearBtn');
+      
+      // Circuit elements
+      const voltageLabel = document.getElementById('voltage-label');
+      const currentLabel = document.getElementById('current-label');
+      const resistanceLabel = document.getElementById('resistance-label');
+      const batteryElement = document.getElementById('battery');
+      const resistorElement = document.getElementById('resistor');
+      const currentArrow = document.getElementById('current-arrow');
 
       function isValidNumber(value) {
         return value !== '' && !isNaN(value) && Number(value) >= 0;
@@ -265,6 +600,43 @@
 
       function clearResult() {
         resultBox.textContent = '';
+        // Reset circuit diagram
+        voltageLabel.textContent = 'U = ? V';
+        currentLabel.textContent = 'I = ? A';
+        resistanceLabel.textContent = 'R = ? Ω';
+        
+        // Remove highlight classes
+        batteryElement.classList.remove('unknown-element');
+        resistorElement.classList.remove('unknown-element');
+        currentArrow.classList.remove('unknown-element');
+      }
+
+      function updateCircuitDiagram(calcType, value) {
+        // Reset all labels
+        voltageLabel.textContent = `U = ${voltageInput.value || '?'} V`;
+        currentLabel.textContent = `I = ${currentInput.value || '?'} A`;
+        resistanceLabel.textContent = `R = ${resistanceInput.value || '?'} Ω`;
+        
+        // Reset all highlights
+        batteryElement.classList.remove('unknown-element');
+        resistorElement.classList.remove('unknown-element');
+        currentArrow.classList.remove('unknown-element');
+        
+        // Highlight the unknown element
+        switch(calcType) {
+          case 'voltage':
+            voltageLabel.textContent = `U = ? V`;
+            batteryElement.classList.add('unknown-element');
+            break;
+          case 'current':
+            currentLabel.textContent = `I = ? A`;
+            currentArrow.classList.add('unknown-element');
+            break;
+          case 'resistance':
+            resistanceLabel.textContent = `R = ? Ω`;
+            resistorElement.classList.add('unknown-element');
+            break;
+        }
       }
 
       function calculateOhmLaw() {
@@ -293,13 +665,9 @@
           return;
         }
 
-        // Calculate missing value
-        // Cases:
-        // If U and I known: R = U / I
-        // If U and R known: I = U / R
-        // If I and R known: U = I * R
-
         let resultStr = '';
+        let calcType = '';
+        
         if (U !== '' && I !== '' && R === '') {
           if (iNum === 0) {
             resultBox.textContent = translations[lang].err_invalid;
@@ -307,6 +675,7 @@
           }
           const rCalc = uNum / iNum;
           resultStr = `${translations[lang].result_resistance}: ${rCalc.toFixed(4)} Ω`;
+          calcType = 'resistance';
         } else if (U !== '' && R !== '' && I === '') {
           if (rNum === 0) {
             resultBox.textContent = translations[lang].err_invalid;
@@ -314,9 +683,11 @@
           }
           const iCalc = uNum / rNum;
           resultStr = `${translations[lang].result_current}: ${iCalc.toFixed(4)} A`;
+          calcType = 'current';
         } else if (I !== '' && R !== '' && U === '') {
           const uCalc = iNum * rNum;
           resultStr = `${translations[lang].result_voltage}: ${uCalc.toFixed(4)} V`;
+          calcType = 'voltage';
         } else if (U !== '' && I !== '' && R !== '') {
           // All three given, verify if consistent
           if (Math.abs(uNum - iNum * rNum) < 1e-6) {
@@ -324,11 +695,27 @@
           } else {
             resultStr = lang === 'zh' ? '输入的值不符合欧姆定律！' : 'Input values do NOT satisfy Ohm\'s Law!';
           }
+          calcType = 'verify';
         } else {
           resultStr = translations[lang].err_two_values;
         }
 
         resultBox.textContent = resultStr;
+        
+        // Update circuit diagram if we calculated something
+        if (calcType && calcType !== 'verify') {
+          updateCircuitDiagram(calcType);
+        } else {
+          // For verification, show all values
+          voltageLabel.textContent = `U = ${U} V`;
+          currentLabel.textContent = `I = ${I} A`;
+          resistanceLabel.textContent = `R = ${R} Ω`;
+          
+          // Remove highlights
+          batteryElement.classList.remove('unknown-element');
+          resistorElement.classList.remove('unknown-element');
+          currentArrow.classList.remove('unknown-element');
+        }
       }
 
       calcBtn.addEventListener('click', calculateOhmLaw);
@@ -338,6 +725,9 @@
         resistanceInput.value = '';
         clearResult();
       });
+      
+      // Initialize circuit diagram
+      clearResult();
     })();
   </script>
 </body>
