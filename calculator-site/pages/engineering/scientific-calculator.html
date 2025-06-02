@@ -247,6 +247,7 @@
       transition: all var(--transition-time);
     }
 
+    /* 修改按钮布局 - 使用CSS Grid */
     .buttons {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -263,6 +264,7 @@
       color: var(--text-color);
       transition: all 0.2s;
       font-weight: 500;
+      min-height: 50px;
     }
 
     .buttons button:hover {
@@ -324,7 +326,7 @@
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #006d77(--footer-bg);
+      background: var(--footer-bg);
       font-size: 0.9rem;
       color: var(--footer-text);
       transition: background-color var(--transition-time), color var(--transition-time);
@@ -389,6 +391,7 @@
         padding: 0.5rem;
       }
       
+      /* 修改：在768px以下每行显示4个按钮 */
       .buttons {
         grid-template-columns: repeat(4, 1fr);
       }
@@ -408,14 +411,16 @@
         width: 85%;
       }
       
+      /* 修改：在480px以下仍然保持每行4个按钮 */
       .buttons {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 0.6rem;
       }
       
       .buttons button {
         padding: 0.8rem 0.3rem;
         font-size: 0.95rem;
+        min-height: 45px;
       }
       
       h1 {
@@ -428,6 +433,15 @@
       
       .card {
         padding: 1rem;
+      }
+    }
+
+    /* 在非常小的屏幕上进一步调整按钮大小 */
+    @media (max-width: 360px) {
+      .buttons button {
+        padding: 0.7rem 0.2rem;
+        font-size: 0.9rem;
+        min-height: 40px;
       }
     }
   </style>
