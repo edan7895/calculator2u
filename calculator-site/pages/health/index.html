@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="auto">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Language" content="auto" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">健康与身体计算器 | Health & Body Calculators</title>
-  <meta name="description" content="探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。" />
-  <meta name="keywords" content="健康计算器, BMI, 体脂率, BMR, TDEE, 预产期, 排卵期" />
-  <meta name="author" content="Calculator2U" />
-  <link rel="canonical" href="https://www.calculator2u.com/pages/health/index.html" />
-  <meta property="og:title" content="健康与身体计算器 | Calculator2U" />
-  <meta property="og:description" content="探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.calculator2u.com/pages/health/index.html" />
-  <meta property="og:image" content="https://www.calculator2u.com/assets/images/health-banner.jpg" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+<meta charset="UTF-8" />
+<meta http="-equivContent-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="title">Health & Body Calculators | 健康与身体计算器</title>
+<meta name="description" content="Explore our health and body calculators, including BMI, body fat percentage, BMR, TDEE, pregnancy due date, and ovulation period calculators to help you live a healthier life." />
+<meta name="keywords" content="health calculator, BMI, body fat percentage, BMR, TDEE, pregnancy calculator, ovulation calculator, health index calculation, nutrition calculator" />
+<meta name="author" content="Calculator2U" />
+<!-- 中文 Meta Tags -->
+<meta name="description" lang="zh" content="探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE等，助你健康生活。" />
+<meta name="keywords" lang="zh" content="健康计算器, BMI, 体脂率, BMR, TDEE, 预产期, 排卵期, 健康指数计算, 营养计算" />
+<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
 <script>
@@ -24,27 +28,74 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #008891;
+      --accent-color: #83c5be;
+      --light-color: #edf6f9;
+      --dark-color: #333333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
       background: #f9f9f9;
-      color: #333;
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    .navbar {
-      background-color: #006d77;
+
+    /* Header & Navigation */
+    .header {
+      background-color: var(--primary-color);
       padding: 1rem 2rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
-    .navbar .logo {
+
+    .logo {
       color: #fff;
       font-size: 1.5rem;
       text-decoration: none;
       font-weight: bold;
+      display: flex;
+      align-items: center;
     }
+
+    .logo i {
+      margin-right: 0.5rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
     .nav-links {
       list-style: none;
       display: flex;
@@ -53,17 +104,23 @@
       padding-left: 0;
       margin: 0;
       align-items: center;
+      transition: var(--transition);
     }
+
     .nav-links a {
       color: #fff;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: var(--transition);
       font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 4px;
     }
+
     .nav-links a:hover,
     .nav-links a.active {
-      text-decoration: underline;
+      background-color: rgba(255, 255, 255, 0.2);
     }
+
     .lang-switch {
       background: transparent;
       border: 1.5px solid #fff;
@@ -74,167 +131,525 @@
       font-weight: 600;
       font-size: 0.9rem;
       user-select: none;
-      transition: background-color 0.3s, color 0.3s;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
     .lang-switch:hover {
       background-color: #fff;
-      color: #006d77;
+      color: var(--primary-color);
     }
+
+    /* Main Content */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 2rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
       padding: 0 1rem;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
-      text-align: center;
-      color: #006d77;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
     }
-    p {
-      text-align: center;
-      margin-bottom: 2rem;
+
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .page-header p {
       color: #555;
       font-size: 1.1rem;
+      max-width: 800px;
+      margin: 1rem auto 0;
     }
+
+    /* Calculator Grid */
     .calculator-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
+
     .calc-card {
       background-color: #fff;
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease-in-out;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
       text-decoration: none;
-      color: #333;
+      color: var(--dark-color);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
-      padding-top: 3.5rem; /* 给图标留空间 */
+      padding-top: 4rem;
+      height: 100%;
+      border: 1px solid #eee;
     }
+
     .calc-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      border-color: var(--accent-color);
     }
+
     .calc-card h2 {
       margin-top: 0.5rem;
       font-size: 1.4rem;
-      color: #008891;
+      color: var(--secondary-color);
       margin-bottom: 0.3rem;
     }
+
     .calc-card p {
       color: #666;
       margin-bottom: 0;
     }
-    /* 图标样式 */
+
+    /* Icon Styles */
     .calc-icon {
       position: absolute;
-      top: 1rem;
+      top: -1.5rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 48px;
-      height: 48px;
-      background-color: #008891;
+      width: 60px;
+      height: 60px;
+      background-color: var(--secondary-color);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       font-size: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow);
+      border: 3px solid white;
     }
-    footer {
+
+    /* Footer */
+    .footer {
       text-align: center;
       padding: 2rem 1rem;
-      background-color: #f1f1f1;
-      color: #555;
+      background-color: var(--primary-color);
+      color: white;
       margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-section {
+      padding: 0 1rem;
+    }
+
+    .footer h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: white;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-links a {
+      color: #e6e6e6;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
       font-size: 0.9rem;
     }
-    footer a {
-      color: #006d77;
+
+    .footer-bottom a {
+      color: var(--accent-color);
       text-decoration: none;
     }
-    footer a:hover {
+
+    .footer-bottom a:hover {
       text-decoration: underline;
+    }
+
+    /* Calculator Form Styles */
+    .calculator-form {
+      background-color: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark-color);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 136, 145, 0.2);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .btn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .result-container {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: var(--light-color);
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .result-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .result-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 1rem 0;
+    }
+
+    .result-description {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .calculator-grid {
+        gap: 1.5rem;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        gap: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      }
+      
+      .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+      
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 1rem;
+      }
+      
+      .nav-links .lang-switch {
+        margin: 1rem auto;
+        display: inline-flex;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .calc-card {
+        padding: 1.5rem 1rem;
+        padding-top: 4rem;
+      }
+      
+      .calculator-form {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
+  <header class="header">
     <nav class="navbar">
-      <a href="/index.html" class="logo">Calculator2U</a>
-      <ul class="nav-links">
-        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
-        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      <a href="/index.html" class="logo">
+        <i class="fas fa-calculator"></i>
+        Calculator2U
+      </a>
+      
+      <button class="nav-toggle" id="nav-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/pages/health/index.html" class="active" data-i18n="nav_health"><i class="fas fa-heartbeat"></i>健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance"><i class="fas fa-chart-line"></i>财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education"><i class="fas fa-graduation-cap"></i>教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering"><i class="fas fa-cogs"></i>工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life"><i class="fas fa-home"></i>日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us"><i class="fas fa-info-circle"></i>关于我们</a></li>
+        <li><button class="lang-switch" id="lang-switch"><i class="fas fa-language"></i><span>EN</span></button></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <h1 data-i18n="title">健康与身体计算器</h1>
-    <p data-i18n="desc">探索我们的健康与身体类计算器，助你保持健康生活。</p>
+    <div class="page-header">
+      <h1 data-i18n="title">健康与身体计算器</h1>
+      <p data-i18n="desc">探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。</p>
+    </div>
 
     <div class="calculator-grid">
       <a href="bmi.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">⚖️</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-weight-scale"></i></div>
         <h2 data-i18n="bmi">BMI 计算器</h2>
         <p data-i18n="bmi_desc">计算你的身体质量指数。</p>
       </a>
       <a href="bodyfat.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">🧴</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-person"></i></div>
         <h2 data-i18n="bodyfat">体脂率计算器</h2>
         <p data-i18n="bodyfat_desc">估算你的体脂百分比。</p>
       </a>
       <a href="bmr.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">🔥</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-fire"></i></div>
         <h2 data-i18n="bmr">BMR 计算器</h2>
         <p data-i18n="bmr_desc">基础代谢率计算器。</p>
       </a>
       <a href="tdee.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">⚡</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
         <h2 data-i18n="tdee">TDEE 计算器</h2>
         <p data-i18n="tdee_desc">每日总能量消耗计算器。</p>
       </a>
       <a href="goal-weight.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">🎯</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-bullseye"></i></div>
         <h2 data-i18n="goal_weight">目标体重计算器</h2>
         <p data-i18n="goal_weight_desc">帮助你设定健康目标体重。</p>
       </a>
       <a href="pregnancy-due-date.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">🤰</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-baby"></i></div>
         <h2 data-i18n="pregnancy_due">怀孕预产期计算器</h2>
         <p data-i18n="pregnancy_due_desc">预测宝宝出生日期。</p>
       </a>
       <a href="ovulation.html" class="calc-card">
-        <div class="calc-icon" aria-hidden="true">🌸</div>
+        <div class="calc-icon" aria-hidden="true"><i class="fas fa-seedling"></i></div>
         <h2 data-i18n="ovulation">排卵期计算器</h2>
         <p data-i18n="ovulation_desc">帮助你计算排卵期。</p>
       </a>
     </div>
+
+    <!-- Example Calculator Form -->
+    <div class="calculator-form">
+      <h2><i class="fas fa-calculator"></i> <span data-i18n="bmi">BMI 计算器</span></h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="height_label">身高 (cm)</label>
+          <input type="number" class="form-control" id="height" placeholder="175">
+        </div>
+        <div class="form-group">
+          <label data-i18n="weight_label">体重 (kg)</label>
+          <input type="number" class="form-control" id="weight" placeholder="70">
+        </div>
+      </div>
+      <button class="btn btn-block" id="calculate-btn">
+        <i class="fas fa-calculator"></i>
+        <span data-i18n="calculate_btn">计算 BMI</span>
+      </button>
+      
+      <div class="result-container" id="result" style="display: none;">
+        <h3 class="result-title"><i class="fas fa-chart-line"></i> <span data-i18n="your_bmi">你的 BMI 结果</span></h3>
+        <div class="result-value" id="bmi-value">22.86</div>
+        <div class="result-description" id="bmi-category" data-i18n="normal_weight">正常体重范围</div>
+        <p class="result-description" data-i18n="bmi_advice">保持健康的饮食和规律的运动有助于维持理想体重。</p>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 data-i18n="footer_about">关于我们</h3>
+        <p data-i18n="footer_about_desc">Calculator2U 提供各种实用计算器，帮助您简化日常计算任务，做出更明智的决策。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3 data-i18n="quick_links">快速链接</h3>
+        <ul class="footer-links">
+          <li><a href="/pages/health/index.html" data-i18n="nav_health"><i class="fas fa-arrow-right"></i>健康与身体</a></li>
+          <li><a href="/pages/finance/index.html" data-i18n="nav_finance"><i class="fas fa-arrow-right"></i>财务与投资</a></li>
+          <li><a href="/pages/education/index.html" data-i18n="nav_education"><i class="fas fa-arrow-right"></i>教育与学习</a></li>
+          <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering"><i class="fas fa-arrow-right"></i>工程与科学</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3 data-i18n="contact">联系我们</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-envelope"></i> <span data-i18n="contact_email">feedback@calculator2u.com</span></a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Calculator2U. <span data-i18n="all_rights_reserved">All rights reserved.</span> | 
+        <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+        <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+      </p>
+    </div>
   </footer>
 
   <script>
     (function(){
+      // 多语言翻译内容
       const translations = {
         zh: {
           title: "健康与身体计算器",
-          desc: "探索我们的健康与身体类计算器，助你保持健康生活。",
+          desc: "探索我们的健康与身体类计算器，包括 BMI、体脂率、BMR、TDEE 等，助你健康生活。",
           nav_health: "健康与身体",
           nav_finance: "财务与投资",
           nav_education: "教育与学习",
@@ -256,11 +671,25 @@
           ovulation: "排卵期计算器",
           ovulation_desc: "帮助你计算排卵期。",
           footer_privacy_policy: "隐私政策",
-          footer_terms_of_service: "使用条款"
+          footer_terms_of_service: "使用条款",
+          footer_about: "关于我们",
+          footer_about_desc: "Calculator2U 提供各种实用计算器，帮助您简化日常计算任务，做出更明智的决策。",
+          quick_links: "快速链接",
+          contact: "联系我们",
+          contact_email: "contact@calculator2u.com",
+          twitter: "Twitter",
+          facebook: "Facebook",
+          all_rights_reserved: "保留所有权利",
+          height_label: "身高 (cm)",
+          weight_label: "体重 (kg)",
+          calculate_btn: "计算 BMI",
+          your_bmi: "你的 BMI 结果",
+          normal_weight: "正常体重范围",
+          bmi_advice: "保持健康的饮食和规律的运动有助于维持理想体重。"
         },
         en: {
           title: "Health & Body Calculators",
-          desc: "Explore our health & body calculators to help you stay healthy.",
+          desc: "Explore our health & body calculators including BMI, Body Fat, BMR, TDEE and more to help you stay healthy.",
           nav_health: "Health & Body",
           nav_finance: "Finance & Investment",
           nav_education: "Education & Learning",
@@ -282,10 +711,25 @@
           ovulation: "Ovulation Calculator",
           ovulation_desc: "Help calculate your ovulation period.",
           footer_privacy_policy: "Privacy Policy",
-          footer_terms_of_service: "Terms of Service"
+          footer_terms_of_service: "Terms of Service",
+          footer_about: "About Us",
+          footer_about_desc: "Calculator2U provides various practical calculators to help you simplify daily calculations and make smarter decisions.",
+          quick_links: "Quick Links",
+          contact: "Contact Us",
+          contact_email: "contact@calculator2u.com",
+          twitter: "Twitter",
+          facebook: "Facebook",
+          all_rights_reserved: "All rights reserved",
+          height_label: "Height (cm)",
+          weight_label: "Weight (kg)",
+          calculate_btn: "Calculate BMI",
+          your_bmi: "Your BMI Result",
+          normal_weight: "Normal Weight Range",
+          bmi_advice: "Maintaining a healthy diet and regular exercise helps maintain an ideal weight."
         }
       };
 
+      // 语言切换功能
       let lang = localStorage.getItem('site-lang');
       if(!lang){
         lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
@@ -294,13 +738,18 @@
       function setLang(lang) {
         document.documentElement.lang = lang;
         localStorage.setItem('site-lang', lang);
+        
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
           if(translations[lang] && translations[lang][key]){
             el.textContent = translations[lang][key];
           }
         });
-        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+        
+        const langSwitch = document.getElementById('lang-switch');
+        if (langSwitch) {
+          langSwitch.querySelector('span').textContent = lang === 'zh' ? 'EN' : '中文';
+        }
       }
 
       document.getElementById('lang-switch').addEventListener('click', () => {
@@ -308,6 +757,48 @@
         setLang(lang);
       });
 
+      // 汉堡菜单功能
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.getElementById('nav-links');
+      
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+      
+      // 关闭菜单当点击外部区域
+      document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+        }
+      });
+
+      // 简单的BMI计算器功能
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result');
+      
+      calculateBtn.addEventListener('click', () => {
+        const height = parseFloat(document.getElementById('height').value);
+        const weight = parseFloat(document.getElementById('weight').value);
+        
+        if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+          alert(lang === 'zh' ? '请输入有效的数值！' : 'Please enter valid values!');
+          return;
+        }
+        
+        // 计算BMI
+        const heightInMeters = height / 100;
+        const bmi = weight / (heightInMeters * heightInMeters);
+        const formattedBMI = bmi.toFixed(2);
+        
+        // 显示结果
+        document.getElementById('bmi-value').textContent = formattedBMI;
+        resultContainer.style.display = 'block';
+        
+        // 滚动到结果区域
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // 初始化页面
       setLang(lang);
     })();
   </script>

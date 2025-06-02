@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="auto">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="免费在线科学计算器，支持三角函数、对数、指数、常数等运算。Free online scientific calculator with trigonometric, logarithmic, exponential, constant functions.">
-  <meta name="keywords" content="科学计算器,在线计算器,数学计算器,三角函数,计算器,Scientific calculator, Online calculator, Math calculator, Trigonometric functions">
-  <meta name="author" content="Calculator2U">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Perfect for students, teachers, and professionals." />
+    <meta name="keywords" content="scientific calculator, online calculator, math calculator, trigonometric functions, logarithmic functions, exponential functions, constants, math tools" />
+    <meta name="author" content="Calculator2U" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="免费在线科学计算器，支持三角函数、对数、指数、常数等运算，适用于学生、教师和专业人士。" />
+    <meta name="keywords" lang="zh" content="科学计算器, 在线计算器, 数学计算器, 三角函数, 对数函数, 指数函数, 常数, 数学工具" />
+    <meta property="og:title" content="免费在线科学计算器 | Free Online Scientific Calculator" />
+    <meta property="og:description" content="Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Perfect for students, teachers, and professionals." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/scientific-calculator.jpg" />
+    <title data-i18n="title">Scientific Calculator | 科学计算器</title>
+<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
   
-  <title data-i18n="title">科学计算器 | Scientific Calculator</title>
-  
-  <!-- Math.js from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
 <script>
@@ -20,6 +32,8 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
+  <!-- Math.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
   
   <style>
     :root {
@@ -33,6 +47,7 @@
       --border-color: #cccccc;
       --footer-bg: #f0f0f0;
       --footer-text: #666666;
+      --transition-time: 0.3s;
     }
 
     .dark-mode {
@@ -48,22 +63,32 @@
       --footer-text: #aaaaaa;
     }
 
-    body {
-      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: var(--background-color);
-      color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
+      padding: 0;
     }
 
+    body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      transition: background-color var(--transition-time), color var(--transition-time);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 响应式导航栏 */
     .navbar {
       background-color: var(--primary-color);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       align-items: center;
-      transition: background-color 0.3s;
+      transition: background-color var(--transition-time);
+      position: relative;
+      z-index: 100;
     }
 
     .navbar .logo {
@@ -71,16 +96,15 @@
       font-size: 1.5rem;
       text-decoration: none;
       font-weight: bold;
+      z-index: 101;
     }
 
     .nav-links {
       list-style: none;
       display: flex;
       gap: 1.2rem;
-      margin: 0;
-      padding-left: 0;
       align-items: center;
-      flex-wrap: wrap;
+      transition: transform var(--transition-time) ease-in-out;
     }
 
     .nav-links a {
@@ -88,10 +112,12 @@
       text-decoration: none;
       font-weight: 500;
       transition: opacity 0.2s;
+      padding: 0.5rem;
+      border-radius: 4px;
     }
 
     .nav-links a:hover {
-      opacity: 0.9;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .nav-controls {
@@ -111,17 +137,29 @@
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      transition: background 0.3s;
+      transition: background var(--transition-time);
     }
 
     .nav-btn:hover {
       background: rgba(255, 255, 255, 0.3);
     }
 
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      z-index: 101;
+    }
+
     .container {
-      max-width: 600px;
+      width: 100%;
+      max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
+      flex: 1;
     }
 
     h1 {
@@ -129,15 +167,69 @@
       color: var(--secondary-color);
       font-size: 2rem;
       margin-bottom: 1rem;
-      transition: color 0.3s;
+      transition: color var(--transition-time);
     }
 
+    .page-description {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: all var(--transition-time);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color var(--transition-time);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .card-btn:hover {
+      background: var(--secondary-color);
+    }
+
+    /* 计算器样式 */
     .calculator {
       background: var(--card-bg);
       border-radius: 8px;
       padding: 1.5rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color var(--transition-time), box-shadow var(--transition-time);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .display {
@@ -152,7 +244,7 @@
       background: var(--card-bg);
       color: var(--text-color);
       text-align: right;
-      transition: all 0.3s;
+      transition: all var(--transition-time);
     }
 
     .buttons {
@@ -211,6 +303,7 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 1rem;
+      gap: 1rem;
     }
 
     .calc-btn {
@@ -220,15 +313,22 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.9rem;
+      flex: 1;
+      transition: all var(--transition-time);
+    }
+    
+    .calc-btn:hover {
+      background: rgba(0, 0, 0, 0.1);
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: var(--footer-bg);
+      background: #006d77(--footer-bg);
       font-size: 0.9rem;
       color: var(--footer-text);
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color var(--transition-time), color var(--transition-time);
+      margin-top: auto;
     }
 
     footer a {
@@ -240,14 +340,48 @@
       text-decoration: underline;
     }
 
-    /* Responsive adjustments */
+    /* 响应式调整 */
+    @media (max-width: 992px) {
+      .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .navbar {
         padding: 1rem;
       }
       
+      .hamburger {
+        display: block;
+      }
+      
       .nav-links {
-        gap: 0.8rem;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 6rem 1rem 2rem;
+        align-items: flex-start;
+        gap: 0.5rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-controls {
+        flex-direction: column;
+        width: 100%;
+        padding-top: 1rem;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
       }
       
       .container {
@@ -263,20 +397,15 @@
         padding: 0.9rem 0.4rem;
         font-size: 1rem;
       }
+      
+      .page-description {
+        padding: 0 1rem;
+      }
     }
 
     @media (max-width: 480px) {
       .nav-links {
-        gap: 0.6rem;
-      }
-      
-      .nav-controls {
-        gap: 0.6rem;
-      }
-      
-      .nav-btn {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.9rem;
+        width: 85%;
       }
       
       .buttons {
@@ -292,6 +421,14 @@
       h1 {
         font-size: 1.7rem;
       }
+      
+      .calculator-controls {
+        flex-direction: column;
+      }
+      
+      .card {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -299,7 +436,8 @@
 <header>
     <nav class="navbar">
       <a href="/index.html" class="logo">Calculator2U</a>
-      <ul class="nav-links">
+      <button class="hamburger" id="hamburger">☰</button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
         <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
         <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
@@ -321,6 +459,28 @@
 
   <main class="container">
     <h1 data-i18n="title">科学计算器</h1>
+    <p class="page-description" data-i18n="description">免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。适用于学生、工程师和任何需要复杂计算的人士。</p>
+    
+    <div class="grid-container">
+      <div class="card">
+        <h3 data-i18n="feature1_title">高级计算功能</h3>
+        <p data-i18n="feature1_desc">支持三角函数（sin, cos, tan）、对数、指数、阶乘、常数（π, e）等高级数学运算。</p>
+        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+      </div>
+      
+      <div class="card">
+        <h3 data-i18n="feature2_title">历史记录</h3>
+        <p data-i18n="feature2_desc">保存您的计算历史，随时查看或清除。支持答案(Ans)功能，可重复使用计算结果。</p>
+        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+      </div>
+      
+      <div class="card">
+        <h3 data-i18n="feature3_title">多设备支持</h3>
+        <p data-i18n="feature3_desc">完美适配各种屏幕尺寸，在手机、平板和桌面设备上都能获得一致的使用体验。</p>
+        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+      </div>
+    </div>
+    
     <div class="calculator">
       <input type="text" id="display" class="display" readonly placeholder="0" />
       <div class="calculator-controls">
@@ -373,6 +533,8 @@
     const buttons = document.querySelectorAll('.buttons button');
     const modeSwitch = document.getElementById('mode-switch');
     const modeIcon = document.getElementById('mode-icon');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
     
     // State management
     let lastAnswer = '';
@@ -401,6 +563,18 @@
       if (savedHistory) {
         calculationHistory = JSON.parse(savedHistory);
       }
+      
+      // Setup hamburger menu
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+        }
+      });
     }
     
     // Button click handler
@@ -466,16 +640,16 @@
     document.getElementById('clear-history').addEventListener('click', () => {
       calculationHistory = [];
       localStorage.removeItem('calc-history');
-      alert('历史记录已清除');
+      alert(getTranslation('history_cleared'));
     });
     
     document.getElementById('view-history').addEventListener('click', () => {
       if (calculationHistory.length === 0) {
-        alert('没有历史记录');
+        alert(getTranslation('no_history'));
         return;
       }
       
-      let historyText = '计算历史:\n\n';
+      let historyText = getTranslation('calc_history') + ':\n\n';
       calculationHistory.forEach((item, index) => {
         historyText += `${index + 1}. ${item.expression} = ${item.result}\n`;
       });
@@ -500,6 +674,7 @@
     const translations = {
       zh: {
         title: "科学计算器",
+        description: "免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。适用于学生、工程师和任何需要复杂计算的人士。",
         nav_health: "健康与身体",
         nav_finance: "财务与投资",
         nav_education: "教育与学习",
@@ -511,10 +686,21 @@
         footer_rights: "保留所有权利。",
         dark_mode: "夜间模式",
         clear_history: "清除历史",
-        view_history: "查看历史"
+        view_history: "查看历史",
+        feature1_title: "高级计算功能",
+        feature1_desc: "支持三角函数（sin, cos, tan）、对数、指数、阶乘、常数（π, e）等高级数学运算。",
+        feature2_title: "历史记录",
+        feature2_desc: "保存您的计算历史，随时查看或清除。支持答案(Ans)功能，可重复使用计算结果。",
+        feature3_title: "多设备支持",
+        feature3_desc: "完美适配各种屏幕尺寸，在手机、平板和桌面设备上都能获得一致的使用体验。",
+        learn_more: "了解更多",
+        history_cleared: "历史记录已清除",
+        no_history: "没有历史记录",
+        calc_history: "计算历史"
       },
       en: {
         title: "Scientific Calculator",
+        description: "Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Ideal for students, engineers, and anyone needing advanced mathematical calculations.",
         nav_health: "Health & Body",
         nav_finance: "Finance & Investment",
         nav_education: "Education & Learning",
@@ -526,9 +712,24 @@
         footer_rights: "All rights reserved.",
         dark_mode: "Dark Mode",
         clear_history: "Clear History",
-        view_history: "View History"
+        view_history: "View History",
+        feature1_title: "Advanced Functions",
+        feature1_desc: "Supports trigonometric (sin, cos, tan), logarithmic, exponential, factorial, and constants (π, e) functions.",
+        feature2_title: "Calculation History",
+        feature2_desc: "Save your calculation history for later review. Supports Answer (Ans) function to reuse previous results.",
+        feature3_title: "Multi-Device Support",
+        feature3_desc: "Perfectly adapted for all screen sizes, providing a consistent experience on mobile, tablet, and desktop devices.",
+        learn_more: "Learn More",
+        history_cleared: "History cleared",
+        no_history: "No history available",
+        calc_history: "Calculation History"
       }
     };
+    
+    function getTranslation(key) {
+      const lang = document.documentElement.lang || 'en';
+      return translations[lang][key] || key;
+    }
     
     function setLang(langCode) {
       document.documentElement.lang = langCode;

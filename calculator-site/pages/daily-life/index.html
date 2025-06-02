@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="auto">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Language" content="auto" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">日常生活计算器 | Daily Life Calculators</title>
-  <meta name="description" content="探索我们的日常生活计算器，包括日期计算、时区转换、密码生成、烹饪转换和旅行费用分摊，助您轻松管理生活。" />
-  <meta name="keywords" content="日常计算器, 日期计算, 时区转换, 密码生成, 烹饪转换, 旅行费用分摊" />
-  <meta name="author" content="Calculator2U" />
-  <link rel="canonical" href="https://www.calculator2u.com/pages/daily-life/index.html" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="auto" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="title">Daily Life Calculators | 日常生活计算器</title>
+    <meta name="description" content="Simplify your daily life with our everyday calculators, including date calculations, time zone conversions, password generators, cooking conversions, and travel cost splitters." />
+    <meta name="keywords" content="daily calculator, date calculator, time zone converter, password generator, cooking converter, travel cost splitter, everyday tools, life management tools" />
+    <meta name="author" content="Calculator2U" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="探索我们的日常生活计算器，包括日期计算、时区转换、密码生成、烹饪转换和旅行费用分摊，助您轻松管理生活。" />
+    <meta name="keywords" lang="zh" content="日常计算器, 日期计算, 时区转换, 密码生成, 烹饪转换, 旅行费用分摊, 日常工具, 生活管理工具" />
+<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
 <script>
@@ -18,264 +28,690 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #83c5be;
+      --accent-color: #e29578;
+      --light-color: #edf6f9;
+      --dark-color: #2b3d51;
+      --text-color: #333;
+      --light-text: #fff;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
+      background-color: #f9f9f9;
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+    
+    /* 顶部导航栏样式 */
+    .header {
+      background-color: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    
     .navbar {
-      background-color: #006d77;
-      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .navbar .logo {
-      color: #fff;
-      font-size: 1.5rem;
+    
+    .logo {
+      color: var(--light-text);
+      font-size: 1.8rem;
       text-decoration: none;
       font-weight: bold;
-    }
-    .nav-links {
-      list-style: none;
       display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      font-size: 1.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
       gap: 1.5rem;
-      padding-left: 0;
-      margin: 0;
       align-items: center;
     }
+    
     .nav-links a {
-      color: #fff;
+      color: var(--light-text);
       text-decoration: none;
       font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: var(--transition);
+      position: relative;
     }
-    .nav-links a:hover,
+    
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
     .nav-links a.active {
-      text-decoration: underline;
+      background-color: rgba(255, 255, 255, 0.2);
     }
+    
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--light-text);
+    }
+    
     .lang-switch {
       background: transparent;
-      border: 1.5px solid #fff;
-      color: #fff;
-      padding: 0.3rem 0.8rem;
+      border: 1.5px solid var(--light-text);
+      color: var(--light-text);
+      padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
       font-size: 0.9rem;
+      transition: var(--transition);
     }
+    
+    .lang-switch:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 汉堡菜单样式 */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--light-text);
+      font-size: 1.8rem;
+    }
+    
+    /* 主要内容区域 */
+    .main {
+      flex: 1;
+      padding: 2rem 1rem;
+    }
+    
     .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-bottom: 3rem;
+    }
+    
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-      color: #2b3d51;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+      line-height: 1.2;
     }
-    p {
-      text-align: center;
-      margin-bottom: 2rem;
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
       color: #555;
-      font-size: 1.1rem;
     }
+    
     .calculator-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
+    
     .calc-card {
       background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
       text-decoration: none;
-      color: #333;
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #eee;
     }
+    
     .calc-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
+    
+    .calc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--secondary-color);
+    }
+    
     .calc-card svg {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 0.8rem;
-      fill: #2b3d51;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1.5rem;
+      fill: var(--primary-color);
     }
+    
     .calc-card h2 {
-      font-size: 1.4rem;
-      margin: 0.3rem 0;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark-color);
     }
+    
     .calc-card p {
       margin: 0;
       color: #666;
+      font-size: 1.05rem;
     }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #eee;
-      color: #555;
-      font-size: 0.9rem;
+    
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(131, 197, 190, 0.2);
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
     }
-    footer a {
-      color: #2b3d51;
+    
+    /* 页脚样式 - 更新为 #006d77 */
+    .footer {
+      background-color: #006d77; /* 更新为与导航栏相同的颜色 */
+      color: var(--light-text);
+      padding: 3rem 1rem 2rem;
+      margin-top: auto;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      display: inline-block;
+      color: white;
+    }
+    
+    .footer-about p {
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .footer-links h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      color: white;
+    }
+    
+    .footer-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    footer a:hover {
+    
+    .footer-links a:hover {
+      color: var(--light-text);
+      padding-left: 5px;
+    }
+    
+    .footer-links a i {
+      width: 20px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+    }
+    
+    .copyright a {
+      color: var(--light-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .copyright a:hover {
+      color: var(--accent-color);
       text-decoration: underline;
     }
+    
+    .social-links a {
+      display: inline-block;
+      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      margin-right: 10px;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+    
+    /* 响应式设计 - 媒体查询 */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .calculator-grid {
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      
+      .nav-links.active {
+        max-height: 500px;
+      }
+      
+      .nav-links li {
+        width: 100%;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links a.active {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links a.active::after {
+        display: none;
+      }
+      
+      .lang-switch {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo span {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .calc-card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .calc-card h2 {
+        font-size: 1.4rem;
+      }
+      
+      .calc-card p {
+        font-size: 1rem;
+      }
+    }
+    
+    /* 功能卡片颜色变化 */
+    .calc-card:nth-child(1)::before { background-color: #e29578; }
+    .calc-card:nth-child(2)::before { background-color: #83c5be; }
+    .calc-card:nth-child(3)::before { background-color: #ffddd2; }
+    .calc-card:nth-child(4)::before { background-color: #006d77; }
+    .calc-card:nth-child(5)::before { background-color: #e29578; }
   </style>
 </head>
 <body>
-<header>
+<header class="header">
     <nav class="navbar">
-      <a href="/index.html" class="logo">Calculator2U</a>
-      <ul class="nav-links">
-        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      <a href="/index.html" class="logo">
+        <i class="fas fa-calculator"></i>
+        <span>Calculator2U</span>
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health"><i class="fas fa-heartbeat"></i> 健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance"><i class="fas fa-chart-line"></i> 财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education"><i class="fas fa-graduation-cap"></i> 教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering"><i class="fas fa-cogs"></i> 工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life"><i class="fas fa-home"></i> 日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us"><i class="fas fa-info-circle"></i> 关于我们</a></li>
         <li><button class="lang-switch" id="lang-switch">EN</button></li>
       </ul>
     </nav>
 </header>
 
-  <main class="container">
-    <h1 data-i18n="title">日常生活计算器</h1>
-    <p data-i18n="desc">探索我们的日常生活计算器，助您轻松管理生活事务。</p>
+<main class="main">
+  <div class="container">
+    <section class="hero">
+      <h1 data-i18n="title">日常生活计算器</h1>
+      <p data-i18n="desc">探索我们的日常生活计算器，包括日期计算、时区转换、密码生成、烹饪转换和旅行费用分摊，助您轻松管理生活。</p>
+    </section>
 
     <div class="calculator-grid">
       <a href="date-calculator.html" class="calc-card">
-        <svg viewBox="0 0 24 24"><path d="M7 4h10v2H7V4zm9 4H8v9h8v-9zm-8 4h2v2H8v-2zm4 0h2v2h-2v-2z"/></svg>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M7 4h10v2H7V4zm9 4H8v9h8v-9zm-8 4h2v2H8v-2zm4 0h2v2h-2v-2z"/></svg>
+        </div>
         <h2 data-i18n="date_calculator">日期计算器</h2>
         <p data-i18n="date_calculator_desc">计算日期间隔及相关时间。</p>
       </a>
+      
       <a href="time-zone-converter.html" class="calc-card">
-        <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 100 16 8 8 0 000-16zm1 11h-2V7h2v8z"/></svg>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 100 16 8 8 0 000-16zm1 11h-2V7h2v8z"/></svg>
+        </div>
         <h2 data-i18n="time_zone_converter">时区转换器</h2>
         <p data-i18n="time_zone_converter_desc">不同地区时间快速换算。</p>
       </a>
+      
       <a href="password-generator.html" class="calc-card">
-        <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v5h10v-5a5 5 0 00-5-5zm-3 7v-2a3 3 0 116 0v2H9z"/></svg>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 00-5 5v5h10v-5a5 5 0 00-5-5zm-3 7v-2a3 3 0 116 0v2H9z"/></svg>
+        </div>
         <h2 data-i18n="password_generator">密码生成器</h2>
         <p data-i18n="password_generator_desc">创建安全强密码，保护账户安全。</p>
       </a>
+      
       <a href="cooking-converter.html" class="calc-card">
-        <svg viewBox="0 0 24 24"><path d="M6 3v2H4v2h2v2H4v2h2v4h2v-4h2v4h2v-4h2v4h2v-4h2v-2h-2v-2h2V5h-2V3h-2v2H6V3z"/></svg>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 3v2H4v2h2v2H4v2h2v4h2v-4h2v4h2v-4h2v4h2v-4h2v-2h-2v-2h2V5h-2V3h-2v2H6V3z"/></svg>
+        </div>
         <h2 data-i18n="cooking_converter">烹饪转换器</h2>
         <p data-i18n="cooking_converter_desc">不同单位烹饪量换算。</p>
       </a>
+      
       <a href="trip-splitter.html" class="calc-card">
-        <svg viewBox="0 0 24 24"><path d="M7 7h10v2H7V7zm0 4h6v2H7v-2zm0 4h8v2H7v-2z"/></svg>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M7 7h10v2H7V7zm0 4h6v2H7v-2zm0 4h8v2H7v-2z"/></svg>
+        </div>
         <h2 data-i18n="trip_splitter">旅行费用分摊</h2>
         <p data-i18n="trip_splitter_desc">多人旅行费用公平分摊计算。</p>
       </a>
     </div>
-  </main>
+  </div>
+</main>
 
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-about">
+      <a href="/" class="footer-logo">Calculator2U</a>
+      <p data-i18n="footer_about">我们提供各种实用计算器，帮助您轻松解决日常生活中的计算问题，从健康到财务，从教育到工程，应有尽有。</p>
+    </div>
+    
+    <div class="footer-links">
+      <h3 data-i18n="footer_quick_links">快速链接</h3>
+      <ul>
+        <li><a href="/index.html"><i class="fas fa-home"></i> <span data-i18n="footer_home">首页</span></a></li>
+        <li><a href="/pages/daily-life/index.html"><i class="fas fa-home"></i> <span data-i18n="nav_daily_life">日常生活</span></a></li>
+        <li><a href="/pages/health/index.html"><i class="fas fa-heartbeat"></i> <span data-i18n="nav_health">健康与身体</span></a></li>
+        <li><a href="/pages/finance/index.html"><i class="fas fa-chart-line"></i> <span data-i18n="nav_finance">财务与投资</span></a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-links">
+      <h3 data-i18n="footer_legal">法律信息</h3>
+      <ul>
+        <li><a href="/privacy.html"><i class="fas fa-shield-alt"></i> <span data-i18n="footer_privacy_policy">隐私政策</span></a></li>
+        <li><a href="/terms.html"><i class="fas fa-file-contract"></i> <span data-i18n="footer_terms_of_service">使用条款</span></a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">All rights reserved.</span> | 
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+    </p>
+  </div>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
-  </footer>
+<script>
+  (function(){
+    // 翻译数据
+    const translations = {
+      zh: {
+        title: "日常生活计算器",
+        desc: "探索我们的日常生活计算器，包括日期计算、时区转换、密码生成、烹饪转换和旅行费用分摊，助您轻松管理生活。",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        footer_about: "我们提供各种实用计算器，帮助您轻松解决日常生活中的计算问题，从健康到财务，从教育到工程，应有尽有。",
+        footer_quick_links: "快速链接",
+        footer_legal: "法律信息",
+        footer_home: "首页",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        footer_cookie_policy: "Cookie政策",
+        footer_contact: "联系我们",
+        footer_rights: "保留所有权利",
+        date_calculator: "日期计算器",
+        date_calculator_desc: "计算日期间隔及相关时间。",
+        time_zone_converter: "时区转换器",
+        time_zone_converter_desc: "不同地区时间快速换算。",
+        password_generator: "密码生成器",
+        password_generator_desc: "创建安全强密码，保护账户安全。",
+        cooking_converter: "烹饪转换器",
+        cooking_converter_desc: "不同单位烹饪量换算。",
+        trip_splitter: "旅行费用分摊",
+        trip_splitter_desc: "多人旅行费用公平分摊计算。"
+      },
+      en: {
+        title: "Daily Life Calculators",
+        desc: "Explore our daily life calculators including date calculation, time zone conversion, password generation, cooking conversion and trip expense splitting to help you manage life easily.",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        footer_about: "We provide various practical calculators to help you easily solve calculation problems in daily life, from health to finance, from education to engineering, everything is covered.",
+        footer_quick_links: "Quick Links",
+        footer_legal: "Legal",
+        footer_home: "Home",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        footer_cookie_policy: "Cookie Policy",
+        footer_contact: "Contact Us",
+        footer_rights: "All rights reserved",
+        date_calculator: "Date Calculator",
+        date_calculator_desc: "Calculate date intervals and related times.",
+        time_zone_converter: "Time Zone Converter",
+        time_zone_converter_desc: "Quickly convert times between regions.",
+        password_generator: "Password Generator",
+        password_generator_desc: "Create strong secure passwords for your accounts.",
+        cooking_converter: "Cooking Converter",
+        cooking_converter_desc: "Convert cooking units easily.",
+        trip_splitter: "Trip Splitter",
+        trip_splitter_desc: "Fairly split expenses for group trips."
+      }
+    };
 
-  <script>
-    (function(){
-      const translations = {
-        zh: {
-          title: "日常生活计算器",
-          desc: "探索我们的日常生活计算器，助您轻松管理生活事务。",
-          nav_health: "健康与身体",
-          nav_finance: "财务与投资",
-          nav_education: "教育与学习",
-          nav_engineering: "工程与科学",
-          nav_daily_life: "日常生活",
-          nav_about_us: "关于我们",
-          footer_privacy_policy: "隐私政策",
-          footer_terms_of_service: "使用条款",
-          date_calculator: "日期计算器",
-          date_calculator_desc: "计算日期间隔及相关时间。",
-          time_zone_converter: "时区转换器",
-          time_zone_converter_desc: "不同地区时间快速换算。",
-          password_generator: "密码生成器",
-          password_generator_desc: "创建安全强密码，保护账户安全。",
-          cooking_converter: "烹饪转换器",
-          cooking_converter_desc: "不同单位烹饪量换算。",
-          trip_splitter: "旅行费用分摊",
-          trip_splitter_desc: "多人旅行费用公平分摊计算。"
-        },
-        en: {
-          title: "Daily Life Calculators",
-          desc: "Explore our daily life calculators to help you manage everyday tasks with ease.",
-          nav_health: "Health & Body",
-          nav_finance: "Finance & Investment",
-          nav_education: "Education & Learning",
-          nav_engineering: "Engineering & Science",
-          nav_daily_life: "Daily Life",
-          nav_about_us: "About Us",
-          footer_privacy_policy: "Privacy Policy",
-          footer_terms_of_service: "Terms of Service",
-          date_calculator: "Date Calculator",
-          date_calculator_desc: "Calculate date intervals and related times.",
-          time_zone_converter: "Time Zone Converter",
-          time_zone_converter_desc: "Quickly convert times between regions.",
-          password_generator: "Password Generator",
-          password_generator_desc: "Create strong secure passwords for your accounts.",
-          cooking_converter: "Cooking Converter",
-          cooking_converter_desc: "Convert cooking units easily.",
-          trip_splitter: "Trip Splitter",
-          trip_splitter_desc: "Fairly split expenses for group trips."
+    // 语言管理功能
+    let currentLang = localStorage.getItem('lang') || 'zh';
+    if (!['zh', 'en'].includes(currentLang)) currentLang = 'zh';
+    document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
+
+    // 更新文本内容
+    function updateText() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang] && translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
         }
-      };
-
-      let currentLang = localStorage.getItem('lang') || 'zh';
-      if (!['zh', 'en'].includes(currentLang)) currentLang = 'zh';
-      document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
-
-      function updateText() {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (translations[currentLang] && translations[currentLang][key]) {
-            el.textContent = translations[currentLang][key];
-          }
-        });
-      }
-
-      function updateLangSwitchBtn() {
-        const btn = document.getElementById('lang-switch');
-        btn.textContent = currentLang === 'zh' ? 'EN' : '中文';
-      }
-
-      function updateActiveNav() {
-        document.querySelectorAll('.nav-links a').forEach(a => {
-          a.classList.remove('active');
-          if(a.getAttribute('href').endsWith('/daily-life/index.html') || a.getAttribute('href') === 'daily-life/index.html') {
-            if(currentLang === 'zh') a.classList.add('active');
-          }
-        });
-      }
-
-      document.getElementById('lang-switch').addEventListener('click', () => {
-        currentLang = currentLang === 'zh' ? 'en' : 'zh';
-        localStorage.setItem('lang', currentLang);
-        document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
-        updateText();
-        updateLangSwitchBtn();
-        updateActiveNav();
       });
+    }
 
+    // 更新语言切换按钮
+    function updateLangSwitchBtn() {
+      const btn = document.getElementById('lang-switch');
+      btn.textContent = currentLang === 'zh' ? 'EN' : '中文';
+    }
+
+    // 更新活动导航链接
+    function updateActiveNav() {
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.remove('active');
+        if(a.getAttribute('href').endsWith('/daily-life/index.html') || a.getAttribute('href') === 'daily-life/index.html') {
+          a.classList.add('active');
+        }
+      });
+    }
+
+    // 汉堡菜单功能
+    function setupHamburgerMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.innerHTML = navLinks.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+      
+      // 点击菜单项关闭菜单
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+    }
+
+    // 语言切换功能
+    document.getElementById('lang-switch').addEventListener('click', () => {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      localStorage.setItem('lang', currentLang);
+      document.documentElement.lang = currentLang === 'zh' ? 'zh' : 'en';
       updateText();
       updateLangSwitchBtn();
       updateActiveNav();
-    })();
-  </script>
+    });
+
+    // 初始化
+    updateText();
+    updateLangSwitchBtn();
+    updateActiveNav();
+    setupHamburgerMenu();
+  })();
+</script>
 </body>
 </html>

@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="auto">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>旅游费用分摊 | Trip Splitter</title>
-  <meta name="description" content="简单易用的旅游费用分摊计算器，帮助多人公平分摊旅行费用。支持多种分摊方式：按人头平均、按活动参与、按天分摊及自定义规则。" />
-  <meta name="keywords" content="旅游分摊,费用计算,旅行预算,费用均摊,trip splitter,expense sharing,travel budget" />
-  <meta name="author" content="Calculator2U" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Splitter | 旅游费用分摊</title>
+    <meta name="description" content="Free and easy-to-use trip expense splitter to fairly divide travel costs among multiple people. Supports multiple allocation methods like per person, per activity participation, daily splitting, and custom rules." />
+    <meta name="keywords" content="trip splitter, expense sharing, travel budget, cost division, expense calculator, travel cost splitter, group travel expenses, expense management" />
+    <meta name="author" content="Calculator2U" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="简单易用的旅游费用分摊计算器，帮助多人公平分摊旅行费用。支持多种分摊方式：按人头平均、按活动参与、按天分摊及自定义规则。" />
+    <meta name="keywords" lang="zh" content="旅游分摊, 费用计算, 旅行预算, 费用均摊, 费用计算器, 团队旅行费用, 费用管理" />
+    <meta property="og:title" content="Trip Splitter | 旅游费用分摊" />
+    <meta property="og:description" content="Free and easy-to-use trip expense splitter to fairly divide travel costs among multiple people. Supports multiple allocation methods like per person, per activity participation, daily splitting, and custom rules." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/trip-splitter.jpg" />
+<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
 
-  gtag('config', 'G-RLH4FLZBZF');
+<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+<script>
+    window.ezstandalone = window.ezstandalone || {};
+    ezstandalone.cmd = ezstandalone.cmd || [];
 </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RLH4FLZBZF');
+  </script>
   <style>
     :root {
       --primary: #006d77;
@@ -49,6 +62,7 @@
       padding-bottom: 2rem;
     }
     
+    /* 响应式导航栏 */
     .navbar {
       background-color: var(--primary);
       padding: 1rem 2rem;
@@ -57,6 +71,7 @@
       align-items: center;
       flex-wrap: wrap;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
     }
     
     .navbar .logo {
@@ -67,6 +82,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      z-index: 1001;
     }
     
     .logo i {
@@ -415,43 +431,10 @@
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #f0f0f0;
+      background: #006d77;
       font-size: 0.9rem;
       color: #666;
       margin-top: 3rem;
-    }
-    
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .app-description {
-        font-size: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.2rem;
-      }
-      
-      .btn-group {
-        flex-direction: column;
-      }
-      
-      .btn-group button {
-        width: 100%;
-      }
     }
     
     .hidden {
@@ -582,6 +565,167 @@
       padding: 2rem;
       color: var(--gray);
     }
+    
+    /* 响应式改造 - 新增样式 */
+    
+    /* 汉堡菜单按钮 */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* 响应式表格 */
+    .table-container {
+      overflow-x: auto;
+    }
+    
+    /* 移动端布局优化 */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 0;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        width: 100%;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 0.8rem 2rem;
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      .app-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .app-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.2rem;
+      }
+      
+      .tabs {
+        flex-direction: column;
+      }
+      
+      .tab-btn {
+        width: 100%;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+      }
+      
+      .btn-group button {
+        width: 100%;
+      }
+      
+      .participant-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .participant-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+      }
+      
+      .expense-table {
+        font-size: 0.9rem;
+      }
+      
+      .expense-table th, .expense-table td {
+        padding: 0.5rem;
+      }
+      
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .share-input-group {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .navbar .logo span {
+        font-size: 1.2rem;
+      }
+      
+      .lang-switch {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.9rem;
+      }
+      
+      .splitter-box {
+        padding: 1rem;
+      }
+      
+      .summary-value {
+        font-size: 1.5rem;
+      }
+    }
+    
+    /* 响应式表单元素 */
+    .input-group-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .input-group-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+    
+    /* 响应式表格文本换行 */
+    .expense-table td {
+      word-break: break-word;
+    }
   </style>
 </head>
 <body>
@@ -591,7 +735,13 @@
         <i class="fas fa-calculator"></i>
         <span>旅游费用分摊</span>
       </a>
-      <ul class="nav-links">
+      
+      <!-- 汉堡菜单按钮 -->
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
         <li><a href="#"><i class="fas fa-heartbeat"></i> 健康与身体</a></li>
         <li><a href="#"><i class="fas fa-chart-line"></i> 财务与投资</a></li>
         <li><a href="#"><i class="fas fa-graduation-cap"></i> 教育与学习</a></li>
@@ -616,7 +766,7 @@
           
           <div class="input-group">
             <label for="participantName"><i class="fas fa-user"></i> 添加参与者</label>
-            <div style="display: flex; gap: 0.5rem;">
+            <div class="input-group-row">
               <input type="text" id="participantName" placeholder="输入姓名">
               <button class="btn-secondary" id="addParticipantBtn"><i class="fas fa-plus"></i> 添加</button>
             </div>
@@ -685,20 +835,22 @@
         
         <div class="splitter-box">
           <h2 class="section-title"><i class="fas fa-list"></i> 费用清单</h2>
-          <table class="expense-table">
-            <thead>
-              <tr>
-                <th>费用名称</th>
-                <th>金额</th>
-                <th>付款人</th>
-                <th>分摊人</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody id="expenseTableBody">
-              <!-- Expense rows will be added here -->
-            </tbody>
-          </table>
+          <div class="table-container">
+            <table class="expense-table">
+              <thead>
+                <tr>
+                  <th>费用名称</th>
+                  <th>金额</th>
+                  <th>付款人</th>
+                  <th>分摊人</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="expenseTableBody">
+                <!-- Expense rows will be added here -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       
@@ -775,9 +927,12 @@
     (() => {
       let participants = [];
       let expenses = [];
+      let isEnglish = false;
       
       // DOM Elements
       const langSwitch = document.getElementById('lang-switch');
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
       const participantNameInput = document.getElementById('participantName');
       const addParticipantBtn = document.getElementById('addParticipantBtn');
       const participantList = document.getElementById('participantList');
@@ -799,6 +954,125 @@
       const copyLinkBtn = document.getElementById('copyLinkBtn');
       const shareLinkInput = document.getElementById('shareLink');
       const shareMessage = document.getElementById('shareMessage');
+      
+      // Toggle navigation menu on mobile
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('active');
+        }
+      });
+      
+      // Language switch functionality
+      langSwitch.addEventListener('click', () => {
+        isEnglish = !isEnglish;
+        langSwitch.innerHTML = isEnglish 
+          ? '<i class="fas fa-globe"></i> 中文' 
+          : '<i class="fas fa-globe"></i> EN';
+        
+        // Update UI text based on language
+        updateUILanguage();
+      });
+      
+      // Update UI language
+      function updateUILanguage() {
+        if (isEnglish) {
+          // Update navigation
+          document.querySelector('.logo span').textContent = 'Trip Splitter';
+          document.querySelectorAll('.nav-links a')[0].innerHTML = '<i class="fas fa-heartbeat"></i> Health & Body';
+          document.querySelectorAll('.nav-links a')[1].innerHTML = '<i class="fas fa-chart-line"></i> Finance & Investment';
+          document.querySelectorAll('.nav-links a')[2].innerHTML = '<i class="fas fa-graduation-cap"></i> Education';
+          document.querySelectorAll('.nav-links a')[3].innerHTML = '<i class="fas fa-cogs"></i> Engineering';
+          document.querySelectorAll('.nav-links a')[4].innerHTML = '<i class="fas fa-home"></i> Daily Life';
+          document.querySelectorAll('.nav-links a')[5].innerHTML = '<i class="fas fa-info-circle"></i> About Us';
+          
+          // Update main content
+          document.querySelector('h1').innerHTML = '<i class="fas fa-route"></i> Trip Expense Splitter';
+          document.querySelector('.app-description').textContent = 'Easy-to-use trip expense calculator to fairly split costs among multiple people. Supports various splitting methods.';
+          
+          // Update section titles
+          document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-users"></i> Participants';
+          document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-list"></i> Expense List';
+          document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-chart-pie"></i> Expense Summary';
+          document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-file-invoice-dollar"></i> Settlement Details';
+          document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-share-alt"></i> Share Results';
+          
+          // Update buttons and labels
+          document.querySelector('label[for="participantName"]').innerHTML = '<i class="fas fa-user"></i> Add Participant';
+          document.getElementById('addParticipantBtn').innerHTML = '<i class="fas fa-plus"></i> Add';
+          document.querySelectorAll('.tab-btn')[0].innerHTML = '<i class="fas fa-receipt"></i> Expenses';
+          document.querySelectorAll('.tab-btn')[1].innerHTML = '<i class="fas fa-calculator"></i> Split Method';
+          document.querySelector('label[for="expenseName"]').innerHTML = '<i class="fas fa-tag"></i> Expense Name';
+          document.querySelector('label[for="expenseAmount"]').innerHTML = '<i class="fas fa-money-bill-wave"></i> Amount';
+          document.querySelector('label[for="paidBy"]').innerHTML = '<i class="fas fa-user-check"></i> Paid By';
+          document.querySelector('label[for="sharedByList"]').innerHTML = '<i class="fas fa-user-friends"></i> Shared By';
+          document.getElementById('addExpenseBtn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Expense';
+          document.querySelector('.info-text').innerHTML = '<i class="fas fa-info-circle"></i> Choose the expense splitting method suitable for your trip';
+          document.querySelector('label[for="splitMethod"]').innerHTML = '<i class="fas fa-balance-scale"></i> Split Method';
+          document.querySelector('label[for="customRules"]').innerHTML = '<i class="fas fa-sliders-h"></i> Custom Rules';
+          document.getElementById('splitMethod').innerHTML = `
+            <option value="equal">Equal Split (per person)</option>
+            <option value="activity">By Activity</option>
+            <option value="days">By Days</option>
+            <option value="custom">Custom Split</option>
+          `;
+          document.getElementById('customRules').placeholder = "e.g., A pays 50%, B and C pay 25% each";
+          document.getElementById('calculateBtn').innerHTML = '<i class="fas fa-calculator"></i> Calculate';
+          document.getElementById('resetBtn').innerHTML = '<i class="fas fa-redo"></i> Reset';
+          document.querySelector('.share-section p').textContent = 'Generate a link to share the settlement results with other participants:';
+          document.getElementById('generateLinkBtn').innerHTML = '<i class="fas fa-link"></i> Generate Link';
+          document.getElementById('copyLinkBtn').innerHTML = '<i class="fas fa-copy"></i> Copy Link';
+          document.querySelector('footer p').innerHTML = '&copy; 2025 Calculator2U. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>';
+        } else {
+          // Revert to Chinese
+          document.querySelector('.logo span').textContent = '旅游费用分摊';
+          document.querySelectorAll('.nav-links a')[0].innerHTML = '<i class="fas fa-heartbeat"></i> 健康与身体';
+          document.querySelectorAll('.nav-links a')[1].innerHTML = '<i class="fas fa-chart-line"></i> 财务与投资';
+          document.querySelectorAll('.nav-links a')[2].innerHTML = '<i class="fas fa-graduation-cap"></i> 教育与学习';
+          document.querySelectorAll('.nav-links a')[3].innerHTML = '<i class="fas fa-cogs"></i> 工程与科学';
+          document.querySelectorAll('.nav-links a')[4].innerHTML = '<i class="fas fa-home"></i> 日常生活';
+          document.querySelectorAll('.nav-links a')[5].innerHTML = '<i class="fas fa-info-circle"></i> 关于我们';
+          
+          document.querySelector('h1').innerHTML = '<i class="fas fa-route"></i> 旅游费用分摊';
+          document.querySelector('.app-description').textContent = '简单易用的旅游费用分摊计算器，支持多种分摊方式，帮助多人公平分摊旅行费用。';
+          
+          document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-users"></i> 参与者设置';
+          document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-list"></i> 费用清单';
+          document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-chart-pie"></i> 费用摘要';
+          document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-file-invoice-dollar"></i> 结算明细';
+          document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-share-alt"></i> 分享结算结果';
+          
+          document.querySelector('label[for="participantName"]').innerHTML = '<i class="fas fa-user"></i> 添加参与者';
+          document.getElementById('addParticipantBtn').innerHTML = '<i class="fas fa-plus"></i> 添加';
+          document.querySelectorAll('.tab-btn')[0].innerHTML = '<i class="fas fa-receipt"></i> 费用管理';
+          document.querySelectorAll('.tab-btn')[1].innerHTML = '<i class="fas fa-calculator"></i> 分摊方式';
+          document.querySelector('label[for="expenseName"]').innerHTML = '<i class="fas fa-tag"></i> 费用名称';
+          document.querySelector('label[for="expenseAmount"]').innerHTML = '<i class="fas fa-money-bill-wave"></i> 金额';
+          document.querySelector('label[for="paidBy"]').innerHTML = '<i class="fas fa-user-check"></i> 付款人';
+          document.querySelector('label[for="sharedByList"]').innerHTML = '<i class="fas fa-user-friends"></i> 分摊人员';
+          document.getElementById('addExpenseBtn').innerHTML = '<i class="fas fa-plus-circle"></i> 添加费用';
+          document.querySelector('.info-text').innerHTML = '<i class="fas fa-info-circle"></i> 选择适合您旅行的费用分摊方式';
+          document.querySelector('label[for="splitMethod"]').innerHTML = '<i class="fas fa-balance-scale"></i> 分摊方式';
+          document.querySelector('label[for="customRules"]').innerHTML = '<i class="fas fa-sliders-h"></i> 自定义规则';
+          document.getElementById('splitMethod').innerHTML = `
+            <option value="equal">平均分摊（每人相同）</option>
+            <option value="activity">按活动分摊</option>
+            <option value="days">按天数分摊</option>
+            <option value="custom">自定义分摊</option>
+          `;
+          document.getElementById('customRules').placeholder = "例如：A分摊50%, B和C各分摊25%";
+          document.getElementById('calculateBtn').innerHTML = '<i class="fas fa-calculator"></i> 计算分摊';
+          document.getElementById('resetBtn').innerHTML = '<i class="fas fa-redo"></i> 重置数据';
+          document.querySelector('.share-section p').textContent = '生成一个链接分享结算结果给其他参与者：';
+          document.getElementById('generateLinkBtn').innerHTML = '<i class="fas fa-link"></i> 生成链接';
+          document.getElementById('copyLinkBtn').innerHTML = '<i class="fas fa-copy"></i> 复制链接';
+          document.querySelector('footer p').innerHTML = '&copy; 2025 Calculator2U. 保留所有权利。 | <a href="#">隐私政策</a> | <a href="#">使用条款</a>';
+        }
+      }
       
       // Add participant
       function addParticipant() {
@@ -825,7 +1099,9 @@
         participantList.innerHTML = '';
         
         if (participants.length === 0) {
-          participantList.innerHTML = `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
+          participantList.innerHTML = isEnglish 
+            ? `<div class="info-text"><i class="fas fa-info-circle"></i> Add participants, expenses and click "Calculate" to see results</div>`
+            : `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
           return;
         }
         
@@ -835,8 +1111,8 @@
           item.innerHTML = `
             <div class="participant-name">${participant.name}</div>
             <div class="participant-actions">
-              <button class="btn-secondary" onclick="editParticipant('${participant.id}')"><i class="fas fa-edit"></i></button>
-              <button class="btn-accent" onclick="removeParticipant('${participant.id}')"><i class="fas fa-trash"></i></button>
+              <button class="btn-secondary" onclick="editParticipant('${participant.id}')"><i class="fas fa-edit"></i> ${isEnglish ? 'Edit' : '编辑'}</button>
+              <button class="btn-accent" onclick="removeParticipant('${participant.id}')"><i class="fas fa-trash"></i> ${isEnglish ? 'Remove' : '删除'}</button>
             </div>
           `;
           participantList.appendChild(item);
@@ -925,7 +1201,9 @@
         expenseTableBody.innerHTML = '';
         
         if (expenses.length === 0) {
-          expenseTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">添加参与者、费用并点击"计算分摊"查看结算结果</td></tr>`;
+          expenseTableBody.innerHTML = isEnglish 
+            ? `<tr><td colspan="5" style="text-align: center;">Add expenses to see the list</td></tr>`
+            : `<tr><td colspan="5" style="text-align: center;">添加费用以查看列表</td></tr>`;
           return;
         }
         
@@ -970,7 +1248,9 @@
       // Calculate settlement
       function calculateSettlement() {
         if (participants.length === 0 || expenses.length === 0) {
-          settlementResults.innerHTML = `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
+          settlementResults.innerHTML = isEnglish 
+            ? `<div class="info-text"><i class="fas fa-info-circle"></i> Add participants, expenses and click "Calculate" to see results</div>`
+            : `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
           return;
         }
         
@@ -1011,7 +1291,7 @@
         let html = `
           <div class="settlement-grid">
             <div class="settlement-card">
-              <h4><i class="fas fa-user-check"></i> 参与者结算</h4>
+              <h4><i class="fas fa-user-check"></i> ${isEnglish ? 'Participant Balances' : '参与者结算'}</h4>
               <div class="settlement-list">
         `;
         
@@ -1021,10 +1301,10 @@
                              p.balance < 0 ? 'negative' : 'neutral';
           
           const balanceText = p.balance > 0 ? 
-            `${p.name} 应收款: $${Math.abs(p.balance).toFixed(2)}` :
+            `${p.name} ${isEnglish ? 'should receive' : '应收款'}: $${Math.abs(p.balance).toFixed(2)}` :
             p.balance < 0 ? 
-            `${p.name} 应付款: $${Math.abs(p.balance).toFixed(2)}` :
-            `${p.name} 已结清`;
+            `${p.name} ${isEnglish ? 'should pay' : '应付款'}: $${Math.abs(p.balance).toFixed(2)}` :
+            `${p.name} ${isEnglish ? 'is settled' : '已结清'}`;
             
           html += `
             <div class="settlement-list-item">
@@ -1039,7 +1319,7 @@
             </div>
             
             <div class="settlement-card">
-              <h4><i class="fas fa-exchange-alt"></i> 结算方案</h4>
+              <h4><i class="fas fa-exchange-alt"></i> ${isEnglish ? 'Settlement Plan' : '结算方案'}</h4>
               <div class="settlement-list">
         `;
         
@@ -1048,7 +1328,9 @@
         const creditors = participants.filter(p => p.balance > 0);
         
         if (debtors.length === 0 && creditors.length === 0) {
-          html += `<div class="no-data">所有参与者已结清</div>`;
+          html += isEnglish 
+            ? `<div class="no-data">All participants are settled</div>`
+            : `<div class="no-data">所有参与者已结清</div>`;
         } else {
           debtors.forEach(debtor => {
             let debt = Math.abs(debtor.balance);
@@ -1059,7 +1341,7 @@
                 
                 html += `
                   <div class="settlement-list-item">
-                    <div><strong>${debtor.name}</strong> 应付 <strong>${creditor.name}</strong></div>
+                    <div><strong>${debtor.name}</strong> ${isEnglish ? 'should pay' : '应付'} <strong>${creditor.name}</strong></div>
                     <div class="negative">$${amount.toFixed(2)}</div>
                   </div>
                 `;
@@ -1082,7 +1364,7 @@
       
       // Reset all data
       function resetData() {
-        if (confirm('确定要重置所有数据吗？')) {
+        if (confirm(isEnglish ? 'Are you sure you want to reset all data?' : '确定要重置所有数据吗？')) {
           participants = [];
           expenses = [];
           renderParticipants();
@@ -1090,7 +1372,9 @@
           updatePaidBySelect();
           updateSharedByList();
           updateSummary();
-          settlementResults.innerHTML = `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
+          settlementResults.innerHTML = isEnglish 
+            ? `<div class="info-text"><i class="fas fa-info-circle"></i> Add participants, expenses and click "Calculate" to see results</div>`
+            : `<div class="info-text"><i class="fas fa-info-circle"></i> 添加参与者、费用并点击"计算分摊"查看结算结果</div>`;
           
           // Clear share link
           shareLinkInput.value = '';
@@ -1102,7 +1386,10 @@
       // Generate shareable link
       function generateShareableLink() {
         if (participants.length === 0 || expenses.length === 0) {
-          showShareMessage('请先添加参与者和费用并计算分摊', 'error');
+          showShareMessage(
+            isEnglish ? 'Please add participants and expenses first' : '请先添加参与者和费用并计算分摊', 
+            'error'
+          );
           return;
         }
         
@@ -1130,7 +1417,12 @@
         shareLinkInput.value = shareUrl;
         copyLinkBtn.disabled = false;
         
-        showShareMessage('分享链接已生成！点击"复制链接"按钮分享给其他参与者', 'success');
+        showShareMessage(
+          isEnglish 
+            ? 'Share link generated! Click "Copy Link" to share with participants' 
+            : '分享链接已生成！点击"复制链接"按钮分享给其他参与者', 
+          'success'
+        );
       }
       
       // Copy link to clipboard
@@ -1138,7 +1430,10 @@
         shareLinkInput.select();
         document.execCommand('copy');
         
-        showShareMessage('链接已复制到剪贴板！', 'success');
+        showShareMessage(
+          isEnglish ? 'Link copied to clipboard!' : '链接已复制到剪贴板！', 
+          'success'
+        );
       }
       
       // Show share message
@@ -1195,9 +1490,9 @@
       
       // Make functions available globally for HTML onclick handlers
       window.removeParticipant = removeParticipant;
-      window.editParticipant = (id) => alert('编辑功能将在后续版本中提供');
+      window.editParticipant = (id) => alert(isEnglish ? 'Edit feature coming soon' : '编辑功能将在后续版本中提供');
       window.removeExpense = removeExpense;
-      window.editExpense = (id) => alert('编辑功能将在后续版本中提供');
+      window.editExpense = (id) => alert(isEnglish ? 'Edit feature coming soon' : '编辑功能将在后续版本中提供');
       
       // Initialize when DOM is loaded
       document.addEventListener('DOMContentLoaded', init);
