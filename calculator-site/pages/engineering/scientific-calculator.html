@@ -3,39 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Perfect for students, teachers, and professionals." />
-    <meta name="keywords" content="scientific calculator, online calculator, math calculator, trigonometric functions, logarithmic functions, exponential functions, constants, math tools" />
+    <meta name="description" content="免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。" />
+    <meta name="keywords" content="科学计算器, 在线计算器, 数学计算器, 三角函数, 对数函数" />
     <meta name="author" content="Calculator2U" />
-    <!-- 中文 Meta Tags -->
-    <meta name="description" lang="zh" content="免费在线科学计算器，支持三角函数、对数、指数、常数等运算，适用于学生、教师和专业人士。" />
-    <meta name="keywords" lang="zh" content="科学计算器, 在线计算器, 数学计算器, 三角函数, 对数函数, 指数函数, 常数, 数学工具" />
-    <meta property="og:title" content="免费在线科学计算器 | Free Online Scientific Calculator" />
-    <meta property="og:description" content="Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Perfect for students, teachers, and professionals." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.calculator2u.com/assets/images/scientific-calculator.jpg" />
-    <title data-i18n="title">Scientific Calculator | 科学计算器</title>
-<script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-<script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
-
-<script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-<script>
-    window.ezstandalone = window.ezstandalone || {};
-    ezstandalone.cmd = ezstandalone.cmd || [];
-</script>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RLH4FLZBZF');
-</script>
-  <!-- Math.js from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
-  
-  <style>
+    <title>科学计算器 | 科学计算器</title>
+    <!-- Math.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
+    <style>
     :root {
       --primary-color: #006d77;
       --secondary-color: #003f5c;
@@ -247,7 +221,7 @@
       transition: all var(--transition-time);
     }
 
-    /* 修改按钮布局 - 使用CSS Grid */
+    /* 优化后的按钮布局 */
     .buttons {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -265,6 +239,9 @@
       transition: all 0.2s;
       font-weight: 500;
       min-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .buttons button:hover {
@@ -391,9 +368,14 @@
         padding: 0.5rem;
       }
       
-      /* 修改：在768px以下每行显示4个按钮 */
+      /* 优化：在手机上使用3列布局 */
       .buttons {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      /* 特殊样式：使0按钮占据两列 */
+      .buttons .zero {
+        grid-column: span 2;
       }
       
       .buttons button {
@@ -411,9 +393,7 @@
         width: 85%;
       }
       
-      /* 修改：在480px以下仍然保持每行4个按钮 */
       .buttons {
-        grid-template-columns: repeat(4, 1fr);
         gap: 0.6rem;
       }
       
@@ -448,20 +428,26 @@
 </head>
 <body>
 <header>
+<div id="ezoic-pub-ad-placeholder-101"></div>
+<script>
+    ezstandalone.cmd.push(function() {
+        ezstandalone.showAds(101)
+    });
+</script>
     <nav class="navbar">
       <a href="/index.html" class="logo">Calculator2U</a>
       <button class="hamburger" id="hamburger">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
-        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
-        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
-        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
-        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
-        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+        <li><a href="/pages/health/index.html">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html">财务与投资</a></li>
+        <li><a href="/pages/education/index.html">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html">日常生活</a></li>
+        <li><a href="/about.html">关于我们</a></li>
         <li class="nav-controls">
           <button class="nav-btn" id="mode-switch">
             <span id="mode-icon">🌙</span>
-            <span data-i18n="dark_mode">夜间模式</span>
+            <span>夜间模式</span>
           </button>
           <button class="nav-btn" id="lang-switch">
             <span id="lang-icon">EN</span>
@@ -472,73 +458,94 @@
 </header>
 
   <main class="container">
-    <h1 data-i18n="title">科学计算器</h1>
-    <p class="page-description" data-i18n="description">免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。适用于学生、工程师和任何需要复杂计算的人士。</p>
+    <h1>科学计算器</h1>
+    <p class="page-description">免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。适用于学生、工程师和任何需要复杂计算的人士。</p>
+<div id="ezoic-pub-ad-placeholder-102"></div>
+<script>
+    ezstandalone.cmd.push(function() {
+        ezstandalone.showAds(102)
+    });
+</script>
     
     <div class="grid-container">
       <div class="card">
-        <h3 data-i18n="feature1_title">高级计算功能</h3>
-        <p data-i18n="feature1_desc">支持三角函数（sin, cos, tan）、对数、指数、阶乘、常数（π, e）等高级数学运算。</p>
-        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+        <h3>高级计算功能</h3>
+        <p>支持三角函数（sin, cos, tan）、对数、指数、阶乘、常数（π, e）等高级数学运算。</p>
+        <a href="#" class="card-btn">了解更多</a>
       </div>
       
       <div class="card">
-        <h3 data-i18n="feature2_title">历史记录</h3>
-        <p data-i18n="feature2_desc">保存您的计算历史，随时查看或清除。支持答案(Ans)功能，可重复使用计算结果。</p>
-        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+        <h3>历史记录</h3>
+        <p>保存您的计算历史，随时查看或清除。支持答案(Ans)功能，可重复使用计算结果。</p>
+        <a href="#" class="card-btn">了解更多</a>
       </div>
       
       <div class="card">
-        <h3 data-i18n="feature3_title">多设备支持</h3>
-        <p data-i18n="feature3_desc">完美适配各种屏幕尺寸，在手机、平板和桌面设备上都能获得一致的使用体验。</p>
-        <a href="#" class="card-btn" data-i18n="learn_more">了解更多</a>
+        <h3>多设备支持</h3>
+        <p>完美适配各种屏幕尺寸，在手机、平板和桌面设备上都能获得一致的使用体验。</p>
+        <a href="#" class="card-btn">了解更多</a>
       </div>
     </div>
     
     <div class="calculator">
       <input type="text" id="display" class="display" readonly placeholder="0" />
       <div class="calculator-controls">
-        <button class="calc-btn" id="clear-history" data-i18n="clear_history">清除历史</button>
-        <button class="calc-btn" id="view-history" data-i18n="view_history">查看历史</button>
+        <button class="calc-btn" id="clear-history">清除历史</button>
+        <button class="calc-btn" id="view-history">查看历史</button>
       </div>
       <div class="buttons">
-        <button class="function">(</button>
-        <button class="function">)</button>
-        <button class="function">^</button>
-        <button class="function">!</button>
-        <button class="function">C</button>
-        <button class="function">←</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="function">/</button>
-        <button class="function">Ans</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="function">*</button>
-        <button class="constant">π</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button class="function">-</button>
-        <button class="constant">e</button>
-        <button>0</button>
-        <button>.</button>
-        <button class="function">+</button>
-        <button class="equal">=</button>
+        <!-- 功能键 -->
         <button class="function">sin(</button>
         <button class="function">cos(</button>
         <button class="function">tan(</button>
         <button class="function">log(</button>
         <button class="function">ln(</button>
+        
         <button class="function">sqrt(</button>
+        <button class="function">(</button>
+        <button class="function">)</button>
+        <button class="function">^</button>
+        <button class="function">!</button>
+        
+        <button class="function">C</button>
+        <button class="function">←</button>
+        <button class="function">Ans</button>
+        <button class="constant">π</button>
+        <button class="constant">e</button>
+        
+        <!-- 数字键区域 -->
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="function">/</button>
+        <button class="function">*</button>
+        
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="function">-</button>
+        <button class="function">+</button>
+        
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="zero">0</button>
+        <button>.</button>
+        
+        <!-- 等于键 -->
+        <button class="equal">=</button>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+<div id="ezoic-pub-ad-placeholder-103"></div>
+<script>
+    ezstandalone.cmd.push(function() {
+        ezstandalone.showAds(103)
+    });
+</script>
+    <p>&copy; 2025 Calculator2U. 保留所有权利。 | <a href="/privacy.html">隐私政策</a> | <a href="/terms.html">使用条款</a></p>
   </footer>
 
   <script>
@@ -561,21 +568,6 @@
       if (savedMode === 'dark') {
         document.body.classList.add('dark-mode');
         modeIcon.textContent = '☀️';
-      }
-      
-      // Load saved language preference
-      const savedLang = localStorage.getItem('site-lang');
-      if (savedLang) {
-        setLang(savedLang);
-      } else {
-        const browserLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
-        setLang(browserLang);
-      }
-      
-      // Load calculation history
-      const savedHistory = localStorage.getItem('calc-history');
-      if (savedHistory) {
-        calculationHistory = JSON.parse(savedHistory);
       }
       
       // Setup hamburger menu
@@ -654,16 +646,16 @@
     document.getElementById('clear-history').addEventListener('click', () => {
       calculationHistory = [];
       localStorage.removeItem('calc-history');
-      alert(getTranslation('history_cleared'));
+      alert('历史记录已清除');
     });
     
     document.getElementById('view-history').addEventListener('click', () => {
       if (calculationHistory.length === 0) {
-        alert(getTranslation('no_history'));
+        alert('没有历史记录');
         return;
       }
       
-      let historyText = getTranslation('calc_history') + ':\n\n';
+      let historyText = '计算历史:\n\n';
       calculationHistory.forEach((item, index) => {
         historyText += `${index + 1}. ${item.expression} = ${item.result}\n`;
       });
@@ -682,90 +674,6 @@
         localStorage.setItem('calculator-mode', 'light');
         modeIcon.textContent = '🌙';
       }
-    });
-    
-    // Language management
-    const translations = {
-      zh: {
-        title: "科学计算器",
-        description: "免费在线科学计算器，支持三角函数、对数、指数、常数等高级数学运算。适用于学生、工程师和任何需要复杂计算的人士。",
-        nav_health: "健康与身体",
-        nav_finance: "财务与投资",
-        nav_education: "教育与学习",
-        nav_engineering: "工程与科学",
-        nav_daily_life: "日常生活",
-        nav_about_us: "关于我们",
-        footer_privacy_policy: "隐私政策",
-        footer_terms_of_service: "使用条款",
-        footer_rights: "保留所有权利。",
-        dark_mode: "夜间模式",
-        clear_history: "清除历史",
-        view_history: "查看历史",
-        feature1_title: "高级计算功能",
-        feature1_desc: "支持三角函数（sin, cos, tan）、对数、指数、阶乘、常数（π, e）等高级数学运算。",
-        feature2_title: "历史记录",
-        feature2_desc: "保存您的计算历史，随时查看或清除。支持答案(Ans)功能，可重复使用计算结果。",
-        feature3_title: "多设备支持",
-        feature3_desc: "完美适配各种屏幕尺寸，在手机、平板和桌面设备上都能获得一致的使用体验。",
-        learn_more: "了解更多",
-        history_cleared: "历史记录已清除",
-        no_history: "没有历史记录",
-        calc_history: "计算历史"
-      },
-      en: {
-        title: "Scientific Calculator",
-        description: "Free online scientific calculator with trigonometric, logarithmic, exponential, and constant functions. Ideal for students, engineers, and anyone needing advanced mathematical calculations.",
-        nav_health: "Health & Body",
-        nav_finance: "Finance & Investment",
-        nav_education: "Education & Learning",
-        nav_engineering: "Engineering & Science",
-        nav_daily_life: "Daily Life",
-        nav_about_us: "About Us",
-        footer_privacy_policy: "Privacy Policy",
-        footer_terms_of_service: "Terms of Service",
-        footer_rights: "All rights reserved.",
-        dark_mode: "Dark Mode",
-        clear_history: "Clear History",
-        view_history: "View History",
-        feature1_title: "Advanced Functions",
-        feature1_desc: "Supports trigonometric (sin, cos, tan), logarithmic, exponential, factorial, and constants (π, e) functions.",
-        feature2_title: "Calculation History",
-        feature2_desc: "Save your calculation history for later review. Supports Answer (Ans) function to reuse previous results.",
-        feature3_title: "Multi-Device Support",
-        feature3_desc: "Perfectly adapted for all screen sizes, providing a consistent experience on mobile, tablet, and desktop devices.",
-        learn_more: "Learn More",
-        history_cleared: "History cleared",
-        no_history: "No history available",
-        calc_history: "Calculation History"
-      }
-    };
-    
-    function getTranslation(key) {
-      const lang = document.documentElement.lang || 'en';
-      return translations[lang][key] || key;
-    }
-    
-    function setLang(langCode) {
-      document.documentElement.lang = langCode;
-      localStorage.setItem('site-lang', langCode);
-      
-      // Update all translatable elements
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[langCode][key]) {
-          el.textContent = translations[langCode][key];
-        }
-      });
-      
-      // Update language switch button
-      document.getElementById('lang-icon').textContent = langCode === 'zh' ? 'EN' : '中文';
-    }
-    
-    // Language switch handler
-    document.getElementById('lang-switch').addEventListener('click', () => {
-      const currentLang = document.documentElement.lang || 'en';
-      const newLang = currentLang === 'zh' ? 'en' : 'zh';
-      setLang(newLang);
     });
     
     // Initialize on load
