@@ -1,0 +1,1176 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave Calculator | Calculator2U</title>
+<meta name="description" content="Calculate your remaining leave entitlements, track your vacation days, and plan your time off" />
+<meta name="keywords" content="leave calculator, vacation calculator, holiday entitlement calculator, annual leave calculator" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/daily-life/leave-calculator.html" />
+<meta property="og:title" content="Leave Calculator | Calculator2U" />
+<meta property="og:description" content="Calculate your remaining leave entitlements, track your vacation days, and plan your time off" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/daily-life/leave-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/leave-calculator.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Leave Calculator Styles */
+  .leave-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .leave-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .leave-summary {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Leave breakdown chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Leave schedule */
+  .leave-schedule {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .leave-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .leave-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .leave-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .leave-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .leave-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .leave-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .leave-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .leave-schedule {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .leave-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .leave-table th,
+    .leave-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Leave Calculator</h1>
+    <p>Calculate your remaining leave entitlements, track your vacation days, and plan your time off</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Leave Calculator</h2>
+    
+    <div class="leave-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employee-name">Employee Name
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Enter the name of the employee</span>
+              </span>
+            </label>
+            <input type="text" id="employee-name" placeholder="Enter employee name">
+          </div>
+          
+          <div class="input-field">
+            <label for="hiring-date">Hiring Date
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Date when the employee was hired</span>
+              </span>
+            </label>
+            <input type="date" id="hiring-date">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="year-month">Year/Month
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Select the year and month for calculation</span>
+              </span>
+            </label>
+            <select id="year-month">
+              <option value="2025-01">January 2025</option>
+              <option value="2025-02">February 2025</option>
+              <option value="2025-03">March 2025</option>
+              <option value="2025-04">April 2025</option>
+              <option value="2025-05">May 2025</option>
+              <option value="2025-06">June 2025</option>
+              <option value="2025-07">July 2025</option>
+              <option value="2025-08">August 2025</option>
+              <option value="2025-09">September 2025</option>
+              <option value="2025-10">October 2025</option>
+              <option value="2025-11">November 2025</option>
+              <option value="2025-12">December 2025</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="leave-quota">Annual Leave Quota (days)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Number of leave days allocated per year</span>
+              </span>
+            </label>
+            <input type="number" id="leave-quota" placeholder="Enter leave quota" min="0" value="20">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="used-leave">Used Leave (days)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Number of leave days already used</span>
+              </span>
+            </label>
+            <input type="number" id="used-leave" placeholder="Enter used leave" min="0" value="5">
+          </div>
+          
+          <div class="input-field">
+            <label for="planned-leave">Planned Leave (days)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Number of leave days planned for the future</span>
+              </span>
+            </label>
+            <input type="number" id="planned-leave" placeholder="Enter planned leave" min="0">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="leave-balance">Leave Balance (days)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Leave days remaining after planned leave</span>
+              </span>
+            </label>
+            <input type="number" id="leave-balance" placeholder="Leave balance" min="0" readonly>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculate Leave
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Your Leave Summary</h3>
+          <div class="leave-summary" id="leave-summary">
+            Remaining Leave: 10 days
+          </div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Annual Leave Quota</div>
+              <div class="metric-value" id="quota-value">20 days</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Used Leave</div>
+              <div class="metric-value" id="used-value">5 days</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Planned Leave</div>
+              <div class="metric-value" id="planned-value">3 days</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Remaining Leave</div>
+              <div class="metric-value" id="remaining-value">12 days</div>
+            </div>
+          </div>
+          
+          <!-- Leave breakdown chart -->
+          <div class="chart-container">
+            <canvas id="leave-chart"></canvas>
+          </div>
+          
+          <div class="leave-details" id="leave-details">
+            <p>Based on your inputs, <span class="highlight" id="employee-name-display">Employee Name</span> has <span class="highlight" id="remaining-leave-display">12</span> days of leave remaining for the current year.</p>
+            <p>This calculation includes <span class="highlight" id="used-leave-display">5</span> days already used and <span class="highlight" id="planned-leave-display">3</span> days planned.</p>
+          </div>
+        </div>
+        
+        <div class="leave-schedule">
+          <table class="leave-table" id="leave-table">
+            <thead>
+              <tr>
+                <th>Leave Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Days</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Leave schedule will be populated here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>Total Used Leave</strong></td>
+                <td colspan="3" id="total-used-leave">5 days</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>Remaining Leave</strong></td>
+                <td colspan="3" id="total-remaining-leave">15 days</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Understanding Your Leave Entitlements</h3>
+        <p>Leave entitlements vary by company policy and local labor laws. Here are some common types of leave:</p>
+        <ul>
+          <li><strong>Annual Leave:</strong> Paid vacation days accrued over the year</li>
+          <li><strong>Sick Leave:</strong> Time off for illness or medical appointments</li>
+          <li><strong>Parental Leave:</strong> Leave for new parents (maternity/paternity)</li>
+          <li><strong>Bereavement Leave:</strong> Time off to mourn a family member's death</li>
+          <li><strong>Jury Duty Leave:</strong> Time off for serving on a jury</li>
+        </ul>
+        
+        <h3>Factors Affecting Leave Calculations</h3>
+        <p>Several factors can influence your leave entitlements:</p>
+        <ul>
+          <li><strong>Employment Type:</strong> Full-time, part-time, or contract</li>
+          <li><strong>Length of Service:</strong> Some companies increase leave with tenure</li>
+          <li><strong>Accrual Rate:</strong> How leave days accumulate over time</li>
+          <li><strong>Company Policy:</strong> Specific rules about leave usage</li>
+          <li><strong>Local Laws:</strong> Minimum leave requirements by law</li>
+        </ul>
+        
+        <div class="leave-tips">
+          <h3><i class="fas fa-lightbulb"></i> Leave Management Tips</h3>
+          <p>Consider these tips to manage your leave effectively:</p>
+          <ul>
+            <li>Plan your leave in advance to ensure adequate coverage</li>
+            <li>Understand your company's leave policies and procedures</li>
+            <li>Keep track of your leave balance throughout the year</li>
+            <li>Communicate with your team about your planned absences</li>
+            <li>Consider spreading out leave to avoid burnout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and financial tools. Helping you make informed decisions since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Others Useful Calculators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/finance/auto-loan-calculator.html">Auto Loan Calculator</a></li>
+          <li><a href="/en/finance/home-loan-calculator-calculator.html">Home Mortgage Calculator</a></li>
+          <li><a href="/en/daily-life/salary-calculator.html">Salary Calculator</a></li>
+          <li><a href="/en/finance/tax-calculator.html">Tax Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: These calculators provide estimates only. Consult your HR department for specific entitlements.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const employeeName = document.getElementById('employee-name');
+      const hiringDate = document.getElementById('hiring-date');
+      const yearMonth = document.getElementById('year-month');
+      const leaveQuota = document.getElementById('leave-quota');
+      const usedLeave = document.getElementById('used-leave');
+      const plannedLeave = document.getElementById('planned-leave');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const leaveSummary = document.getElementById('leave-summary');
+      const leaveDetails = document.getElementById('leave-details');
+      const leaveTable = document.getElementById('leave-table').querySelector('tbody');
+      
+      // Chart variable
+      let leaveChart = null;
+      
+      // Format number with comma separator
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      
+      // Calculate Leave function
+      function calculateLeave() {
+        // Get input values
+        const name = employeeName.value || 'Employee';
+        const quota = parseFloat(leaveQuota.value) || 0;
+        const used = parseFloat(usedLeave.value) || 0;
+        const planned = parseFloat(plannedLeave.value) || 0;
+        
+        // Calculate remaining leave
+        const remaining = Math.max(quota - used - planned, 0);
+        
+        // Update results display
+        document.getElementById('quota-value').textContent = `${quota} days`;
+        document.getElementById('used-value').textContent = `${used} days`;
+        document.getElementById('planned-value').textContent = `${planned} days`;
+        document.getElementById('remaining-value').textContent = `${remaining} days`;
+        
+        // Update leave summary
+        leaveSummary.textContent = `Remaining Leave: ${remaining} days`;
+        
+        // Update leave details
+        document.getElementById('employee-name-display').textContent = name;
+        document.getElementById('remaining-leave-display').textContent = remaining;
+        document.getElementById('used-leave-display').textContent = used;
+        document.getElementById('planned-leave-display').textContent = planned;
+        
+        // Update leave balance field
+        document.getElementById('leave-balance').value = remaining;
+        
+        // Update footer totals
+        document.getElementById('total-used-leave').textContent = `${used} days`;
+        document.getElementById('total-remaining-leave').textContent = `${remaining} days`;
+        
+        // Create or update leave chart
+        const ctx = document.getElementById('leave-chart').getContext('2d');
+        if (leaveChart) {
+          leaveChart.destroy();
+        }
+        
+        leaveChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Used Leave', 'Planned Leave', 'Remaining Leave'],
+            datasets: [ {
+              data: [used, planned, remaining],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166',
+                '#9c88ff'
+              ],
+              borderWidth: 1
+            } ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  font: {
+                    family: 'Segoe UI',
+                    size: 12
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.raw;
+                    return `${label}: ${value} days`;
+                  }
+                }
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Event Listeners
+      calculateBtn.addEventListener('click', calculateLeave);
+      
+      // Allow Enter key to trigger calculation
+      const inputFields = [
+        employeeName, 
+        hiringDate, 
+        leaveQuota,
+        usedLeave,
+        plannedLeave
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateLeave();
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/daily-life/leave-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/daily-life/leave-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/daily-life/leave-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/daily-life/leave-calculator.html';
+            break;
+          default: // English
+            targetUrl = '/en/daily-life/leave-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Initialize the calculator with default values
+      window.addEventListener('load', calculateLeave);
+    })();
+  </script>
+</body>
+</html></body></html> 

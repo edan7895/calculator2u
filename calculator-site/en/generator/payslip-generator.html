@@ -1,0 +1,1521 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pay Slip Generator | Calculator2U</title>
+<meta name="description" content="Create professional pay slips with our free generator. Customize, download as PDF, or print directly." />
+<meta name="keywords" content="pay slip generator, create pay slip, free payslip, payslip template, payslip PDF" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/generator/payslip-generator.html" />
+<meta property="og:title" content="Pay Slip Generator | Calculator2U" />
+<meta property="og:description" content="Create professional pay slips with our free generator. Customize, download as PDF, or print directly." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/generator/payslip-generator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/payslip-generator.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  /* All existing styles from your date calculator */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Payslip Generator Styles */
+  .payslip-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .payslip-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .generator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field textarea,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field textarea:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .action-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .action-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .payslip-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .payslip-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .generator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .action-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .generator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Payslip specific styles */
+  .payslip-section-title {
+    font-size: 1.4rem;
+    color: #006d77;
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0f7fa;
+  }
+  
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .items-table th {
+    background: #006d77;
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+  }
+  
+  .items-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .items-table input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e0f7fa;
+    border-radius: 4px;
+  }
+  
+  .btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .btn-group .action-btn {
+    margin: 0;
+    flex: 1;
+  }
+  
+  .btn-outline {
+    background: white;
+    border: 2px solid #006d77;
+    color: #006d77;
+  }
+  
+  .btn-outline:hover {
+    background: #e0f7fa;
+  }
+  
+  .remove-item {
+    background: #e63946;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .add-item {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.5rem 0;
+  }
+  
+  .totals-table {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  
+  .totals-table td {
+    padding: 0.5rem 0;
+  }
+  
+  .totals-table tr:last-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #006d77;
+    border-top: 2px solid #e0f7fa;
+  }
+  
+  .payslip-preview {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    display: none;
+  }
+  
+  .payslip-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .payslip-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #006d77;
+  }
+  
+  .payslip-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #006d77;
+  }
+  
+  .payslip-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .payslip-from, .payslip-to {
+    flex: 1;
+  }
+  
+  .payslip-meta {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .payslip-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+  
+  .payslip-items th {
+    background: #006d77;
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+  }
+  
+  .payslip-items td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .payslip-totals {
+    width: 300px;
+    margin-left: auto;
+    border-collapse: collapse;
+  }
+  
+  .payslip-totals td {
+    padding: 0.5rem;
+  }
+  
+  .payslip-totals tr:last-child {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #006d77;
+    border-top: 2px solid #e0f7fa;
+  }
+  
+  .payslip-notes {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+  }
+  
+  .payslip-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0f7fa;
+    color: #666;
+  }
+  
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .payslip-preview, .payslip-preview * {
+      visibility: visible;
+    }
+    .payslip-preview {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      box-shadow: none;
+    }
+    .action-btns {
+      display: none;
+    }
+  }
+  
+  .action-btns {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .action-btns button {
+    flex: 1;
+  }
+
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0f7fa;
+  }
+
+  .info-card ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .info-card li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+
+  .info-card p {
+    color: #555;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html" class="active">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Pay Slip Generator</h1>
+    <p>Create professional pay slips in seconds. Customize, download as PDF, or print directly.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Create Your Pay Slip</h2>
+    
+    <div class="payslip-container">
+      <!-- Generator Card -->
+      <div class="generator-card">
+        <h3 class="payslip-section-title">Employer Information</h3>
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employer-name">Employer Name:</label>
+            <input type="text" id="employer-name" placeholder="Your Company Name">
+          </div>
+          <div class="input-field">
+            <label for="employer-address">Address:</label>
+            <input type="text" id="employer-address" placeholder="Street Address">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employer-city">City:</label>
+            <input type="text" id="employer-city" placeholder="City">
+          </div>
+          <div class="input-field">
+            <label for="employer-zip">ZIP Code:</label>
+            <input type="text" id="employer-zip" placeholder="ZIP/Postal Code">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employer-phone">Phone:</label>
+            <input type="tel" id="employer-phone" placeholder="Phone Number">
+          </div>
+          <div class="input-field">
+            <label for="employer-email">Email:</label>
+            <input type="email" id="employer-email" placeholder="contact@example.com">
+          </div>
+        </div>
+        
+        <h3 class="payslip-section-title">Employee Information</h3>
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employee-name">Employee Name:</label>
+            <input type="text" id="employee-name" placeholder="Employee's Name">
+          </div>
+          <div class="input-field">
+            <label for="employee-id">Employee ID:</label>
+            <input type="text" id="employee-id" placeholder="Employee ID">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="employee-address">Address:</label>
+            <input type="text" id="employee-address" placeholder="Employee's Address">
+          </div>
+          <div class="input-field">
+            <label for="employee-email">Email:</label>
+            <input type="email" id="employee-email" placeholder="employee@example.com">
+          </div>
+        </div>
+        
+        <h3 class="payslip-section-title">Pay Slip Details</h3>
+        <div class="input-group">
+          <div class="input-field">
+            <label for="pay-slip-number">Pay Slip #:</label>
+            <input type="text" id="pay-slip-number" placeholder="PSL-001" value="PSL-001">
+          </div>
+          <div class="input-field">
+            <label for="pay-period-start">Pay Period Start:</label>
+            <input type="date" id="pay-period-start">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="pay-period-end">Pay Period End:</label>
+            <input type="date" id="pay-period-end">
+          </div>
+          <div class="input-field">
+            <label for="pay-date">Pay Date:</label>
+            <input type="date" id="pay-date">
+          </div>
+        </div>
+        
+        <h3 class="payslip-section-title">Earnings</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="earnings-container">
+            <tr>
+              <td><input type="text" class="earning-desc" placeholder="Basic Salary"></td>
+              <td><input type="number" class="earning-amount" min="0" step="0.01" placeholder="0.00"></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="earning-desc" placeholder="Overtime"></td>
+              <td><input type="number" class="earning-amount" min="0" step="0.01" placeholder="0.00"></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <button class="add-item" id="add-earning"><i class="fas fa-plus"></i> Add Earning</button>
+        
+        <h3 class="payslip-section-title">Deductions</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="deductions-container">
+            <tr>
+              <td><input type="text" class="deduction-desc" placeholder="Income Tax"></td>
+              <td><input type="number" class="deduction-amount" min="0" step="0.01" placeholder="0.00"></td>
+            </tr>
+            <tr>
+              <td><input type="text" class="deduction-desc" placeholder="Social Security"></td>
+              <td><input type="number" class="deduction-amount" min="0" step="0.01" placeholder="0.00"></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <button class="add-item" id="add-deduction"><i class="fas fa-plus"></i> Add Deduction</button>
+        
+        <div class="totals-table">
+          <table style="width: 100%;">
+            <tr>
+              <td>Total Earnings:</td>
+              <td align="right" id="total-earnings">$0.00</td>
+            </tr>
+            <tr>
+              <td>Total Deductions:</td>
+              <td align="right" id="total-deductions">$0.00</td>
+            </tr>
+            <tr>
+              <td>Net Pay:</td>
+              <td align="right" id="net-pay">$0.00</td>
+            </tr>
+          </table>
+        </div>
+        
+        <h3 class="payslip-section-title">Notes</h3>
+        <div class="input-field">
+          <label for="payslip-notes">Additional Notes:</label>
+          <textarea id="payslip-notes" rows="3" placeholder="Payment terms, special instructions, etc."></textarea>
+        </div>
+        
+        <button class="action-btn" id="generate-payslip">
+          <i class="fas fa-file-invoice"></i> Generate Pay Slip
+        </button>
+      </div>
+      
+      <!-- Preview & Info Card -->
+      <div>
+        <!-- Payslip Preview -->
+        <div class="payslip-preview" id="payslip-preview">
+          <div class="payslip-header">
+            <div class="payslip-logo" id="preview-logo">Your Company</div>
+            <div>
+              <h2>PAY SLIP</h2>
+              <div><strong>Pay Slip #:</strong> <span id="preview-pay-slip-number">PSL-001</span></div>
+              <div><strong>Date:</strong> <span id="preview-pay-date">Jan 1, 2025</span></div>
+            </div>
+          </div>
+          
+          <div class="payslip-details">
+            <div class="payslip-from">
+              <h3>From:</h3>
+              <div id="preview-employer-name">Your Company</div>
+              <div id="preview-employer-address">123 Business St, City</div>
+              <div id="preview-employer-contact">Phone: (123) 456-7890 | Email: contact@example.com</div>
+            </div>
+            
+            <div class="payslip-to">
+              <h3>To:</h3>
+              <div id="preview-employee-name">Employee Name</div>
+              <div id="preview-employee-id">Employee ID: 12345</div>
+              <div id="preview-employee-address">456 Client Ave, City</div>
+              <div id="preview-employee-email">employee@example.com</div>
+            </div>
+          </div>
+          
+          <div class="payslip-meta">
+            <div><strong>Pay Period:</strong> <span id="preview-pay-period">Jan 1 - Jan 15, 2025</span></div>
+          </div>
+          
+          <h3>Earnings</h3>
+          <table class="payslip-items">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="preview-earnings">
+              <tr>
+                <td>Basic Salary</td>
+                <td>$5000.00</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h3>Deductions</h3>
+          <table class="payslip-items">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="preview-deductions">
+              <tr>
+                <td>Income Tax</td>
+                <td>$500.00</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <table class="payslip-totals">
+            <tr>
+              <td>Total Earnings:</td>
+              <td id="preview-total-earnings">$5000.00</td>
+            </tr>
+            <tr>
+              <td>Total Deductions:</td>
+              <td id="preview-total-deductions">$500.00</td>
+            </tr>
+            <tr>
+              <td>Net Pay:</td>
+              <td id="preview-net-pay">$4500.00</td>
+            </tr>
+          </table>
+          
+          <div class="payslip-notes">
+            <p id="preview-notes">This is a sample pay slip generated by Calculator2U. For any questions, please contact your HR department.</p>
+          </div>
+          
+          <div class="payslip-footer">
+            <p>Pay slip generated by Calculator2U | www.calculator2u.com</p>
+          </div>
+        </div>
+        
+        <!-- Action Buttons for Preview -->
+        <div class="action-btns" id="action-btns" style="display: none;">
+          <button class="action-btn btn-outline" id="download-pdf">
+            <i class="fas fa-file-pdf"></i> Download PDF
+          </button>
+          <button class="action-btn" id="print-payslip">
+            <i class="fas fa-print"></i> Print Pay Slip
+          </button>
+        </div>
+        
+        <!-- Information Card -->
+        <div class="info-card">
+          <h3>Creating Professional Pay Slips</h3>
+          <p>Follow these best practices when creating your pay slips:</p>
+          <ul>
+            <li><strong>Accurate Information:</strong> Include accurate employee and employer details</li>
+            <li><strong>Clear Earnings:</strong> Clearly list all earnings components</li>
+            <li><strong>Detailed Deductions:</strong> Specify all deductions with clear descriptions</li>
+            <li><strong>Net Pay:</strong> Clearly state the net pay amount</li>
+            <li><strong>Payment Date:</strong> Include the payment date and pay period</li>
+          </ul>
+          
+          <h3>Pay Slip Tips</h3>
+          <p>Make your pay slips more effective:</p>
+          <ul>
+            <li>Use sequential pay slip numbers for better organization</li>
+            <li>Include your company logo for brand recognition</li>
+            <li>Provide a digital copy alongside the physical one</li>
+            <li>Keep records of all pay slips for at least 3 years</li>
+            <li>Clearly explain any deductions to avoid employee confusion</li>
+          </ul>
+          
+          <h3>Common Pay Slip Elements</h3>
+          <p>Essential components of any professional pay slip:</p>
+          <ul>
+            <li>Employee name and ID</li>
+            <li>Pay period and payment date</li>
+            <li>Itemized list of earnings</li>
+            <li>Itemized list of deductions</li>
+            <li>Gross pay and net pay</li>
+            <li>Employer contact information</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and financial tools. Helping you create professional pay slips since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Other Useful Generators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/generator/password-generator.html" id="util1">Password Generator</a></li>
+          <li><a href="/en/generator/qr-code-generator.html" id="util2">QR Code Generator</a></li>
+          <li><a href="/en/generator/username-generator.html" id="util3">Username Generator</a></li>
+          <li><a href="/en/generator/random-number-generator.html" id="util4">Random Number Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: This pay slip generator provides templates only. Consult with a financial professional for payroll advice.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      
+      // Payslip form elements
+      const employerName = document.getElementById('employer-name');
+      const employerAddress = document.getElementById('employer-address');
+      const employerCity = document.getElementById('employer-city');
+      const employerZip = document.getElementById('employer-zip');
+      const employerPhone = document.getElementById('employer-phone');
+      const employerEmail = document.getElementById('employer-email');
+      
+      const employeeName = document.getElementById('employee-name');
+      const employeeId = document.getElementById('employee-id');
+      const employeeAddress = document.getElementById('employee-address');
+      const employeeEmail = document.getElementById('employee-email');
+      
+      const paySlipNumber = document.getElementById('pay-slip-number');
+      const payPeriodStart = document.getElementById('pay-period-start');
+      const payPeriodEnd = document.getElementById('pay-period-end');
+      const payDate = document.getElementById('pay-date');
+      
+      const earningsContainer = document.getElementById('earnings-container');
+      const deductionsContainer = document.getElementById('deductions-container');
+      const addEarningBtn = document.getElementById('add-earning');
+      const addDeductionBtn = document.getElementById('add-deduction');
+      const payslipNotes = document.getElementById('payslip-notes');
+      
+      const totalEarningsEl = document.getElementById('total-earnings');
+      const totalDeductionsEl = document.getElementById('total-deductions');
+      const netPayEl = document.getElementById('net-pay');
+      
+      // Preview elements
+      const payslipPreview = document.getElementById('payslip-preview');
+      const previewLogo = document.getElementById('preview-logo');
+      const previewPaySlipNumber = document.getElementById('preview-pay-slip-number');
+      const previewPayDate = document.getElementById('preview-pay-date');
+      const previewEmployerName = document.getElementById('preview-employer-name');
+      const previewEmployerAddress = document.getElementById('preview-employer-address');
+      const previewEmployerContact = document.getElementById('preview-employer-contact');
+      const previewEmployeeName = document.getElementById('preview-employee-name');
+      const previewEmployeeId = document.getElementById('preview-employee-id');
+      const previewEmployeeAddress = document.getElementById('preview-employee-address');
+      const previewEmployeeEmail = document.getElementById('preview-employee-email');
+      const previewPayPeriod = document.getElementById('preview-pay-period');
+      const previewEarnings = document.getElementById('preview-earnings');
+      const previewDeductions = document.getElementById('preview-deductions');
+      const previewTotalEarnings = document.getElementById('preview-total-earnings');
+      const previewTotalDeductions = document.getElementById('preview-total-deductions');
+      const previewNetPay = document.getElementById('preview-net-pay');
+      const previewNotes = document.getElementById('preview-notes');
+      
+      const actionBtns = document.getElementById('action-btns');
+      const generatePayslipBtn = document.getElementById('generate-payslip');
+      const downloadPdfBtn = document.getElementById('download-pdf');
+      const printPayslipBtn = document.getElementById('print-payslip');
+      
+      // Set today's date as default
+      function setDefaultDates() {
+        const today = new Date();
+        const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+        const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 15);
+        
+        // Format to YYYY-MM-DD
+        const formatDate = (date) => {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        
+        payPeriodStart.value = formatDate(startOfMonth);
+        payPeriodEnd.value = formatDate(endOfMonth);
+        payDate.value = formatDate(nextMonth);
+      }
+      
+      // Format currency
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        }).format(amount);
+      }
+      
+      // Format date for display
+      function formatDisplayDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+      }
+      
+      // Format period for display
+      function formatPeriod(start, end) {
+        const startOptions = { month: 'short', day: 'numeric' };
+        const endOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+        return `${new Date(start).toLocaleDateString('en-US', startOptions)} - ${new Date(end).toLocaleDateString('en-US', endOptions)}`;
+      }
+      
+      // Calculate totals
+      function calculateTotals() {
+        let totalEarnings = 0;
+        let totalDeductions = 0;
+        
+        // Calculate earnings
+        document.querySelectorAll('#earnings-container tr').forEach(row => {
+          const amount = parseFloat(row.querySelector('.earning-amount').value) || 0;
+          totalEarnings += amount;
+        });
+        
+        // Calculate deductions
+        document.querySelectorAll('#deductions-container tr').forEach(row => {
+          const amount = parseFloat(row.querySelector('.deduction-amount').value) || 0;
+          totalDeductions += amount;
+        });
+        
+        const netPay = totalEarnings - totalDeductions;
+        
+        // Update totals display
+        totalEarningsEl.textContent = formatCurrency(totalEarnings);
+        totalDeductionsEl.textContent = formatCurrency(totalDeductions);
+        netPayEl.textContent = formatCurrency(netPay);
+        
+        return { totalEarnings, totalDeductions, netPay };
+      }
+      
+      // Update the preview with form data
+      function updatePreview() {
+        // Set employer info
+        previewLogo.textContent = employerName.value || 'Your Company';
+        previewEmployerName.textContent = employerName.value || 'Your Company';
+        previewEmployerAddress.textContent = employerAddress.value || '123 Business St, City';
+        const contactInfo = [];
+        if (employerPhone.value) contactInfo.push(`Phone: ${employerPhone.value}`);
+        if (employerEmail.value) contactInfo.push(`Email: ${employerEmail.value}`);
+        previewEmployerContact.textContent = contactInfo.join(' | ') || 'Phone: (123) 456-7890 | Email: contact@example.com';
+        
+        // Set employee info
+        previewEmployeeName.textContent = employeeName.value || 'Employee Name';
+        previewEmployeeId.textContent = `Employee ID: ${employeeId.value || '12345'}`;
+        previewEmployeeAddress.textContent = employeeAddress.value || '456 Client Ave, City';
+        previewEmployeeEmail.textContent = employeeEmail.value || 'employee@example.com';
+        
+        // Set payslip details
+        previewPaySlipNumber.textContent = paySlipNumber.value || 'PSL-001';
+        previewPayDate.textContent = formatDisplayDate(payDate.value);
+        previewPayPeriod.textContent = formatPeriod(payPeriodStart.value, payPeriodEnd.value);
+        
+        // Set earnings
+        previewEarnings.innerHTML = '';
+        document.querySelectorAll('#earnings-container tr').forEach(row => {
+          const desc = row.querySelector('.earning-desc').value || 'Earning';
+          const amount = parseFloat(row.querySelector('.earning-amount').value) || 0;
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${desc}</td>
+            <td>${formatCurrency(amount)}</td>
+          `;
+          previewEarnings.appendChild(tr);
+        });
+        
+        // Set deductions
+        previewDeductions.innerHTML = '';
+        document.querySelectorAll('#deductions-container tr').forEach(row => {
+          const desc = row.querySelector('.deduction-desc').value || 'Deduction';
+          const amount = parseFloat(row.querySelector('.deduction-amount').value) || 0;
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${desc}</td>
+            <td>${formatCurrency(amount)}</td>
+          `;
+          previewDeductions.appendChild(tr);
+        });
+        
+        // Calculate and set totals
+        const { totalEarnings, totalDeductions, netPay } = calculateTotals();
+        
+        previewTotalEarnings.textContent = formatCurrency(totalEarnings);
+        previewTotalDeductions.textContent = formatCurrency(totalDeductions);
+        previewNetPay.textContent = formatCurrency(netPay);
+        
+        // Set notes
+        previewNotes.textContent = payslipNotes.value || 'This is a sample pay slip generated by Calculator2U. For any questions, please contact your HR department.';
+      }
+      
+      // Generate the payslip preview
+      function generatePayslip() {
+        // First validate required fields
+        if (!employerName.value || !employeeName.value || !paySlipNumber.value) {
+          alert('Please fill in all required fields: Employer Name, Employee Name, and Pay Slip Number');
+          return;
+        }
+        
+        updatePreview();
+        payslipPreview.style.display = 'block';
+        actionBtns.style.display = 'flex';
+        
+        // Scroll to preview
+        payslipPreview.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Export as PDF
+      function exportToPdf() {
+        const { jsPDF } = window.jspdf;
+        
+        // Create new PDF instance
+        const doc = new jsPDF('p', 'mm', 'a4');
+        
+        // Use html2canvas to capture the payslip preview
+        html2canvas(payslipPreview).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          const imgWidth = 210; // A4 width in mm
+          const pageHeight = 297; // A4 height in mm
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          let heightLeft = imgHeight;
+          let position = 0;
+          
+          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          
+          // Add new pages if the content is longer than one page
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+          }
+          
+          // Save the PDF
+          doc.save(`payslip_${paySlipNumber.value || 'PSL'}.pdf`);
+        });
+      }
+      
+      // Print the payslip
+      function printPayslip() {
+        window.print();
+      }
+      
+      // Add new earning row
+      function addEarningRow() {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><input type="text" class="earning-desc" placeholder="Earning description"></td>
+          <td><input type="number" class="earning-amount" min="0" step="0.01" placeholder="0.00"></td>
+        `;
+        earningsContainer.appendChild(row);
+        
+        // Add event listeners to new inputs
+        row.querySelector('.earning-amount').addEventListener('input', calculateTotals);
+      }
+      
+      // Add new deduction row
+      function addDeductionRow() {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><input type="text" class="deduction-desc" placeholder="Deduction description"></td>
+          <td><input type="number" class="deduction-amount" min="0" step="0.01" placeholder="0.00"></td>
+        `;
+        deductionsContainer.appendChild(row);
+        
+        // Add event listeners to new inputs
+        row.querySelector('.deduction-amount').addEventListener('input', calculateTotals);
+      }
+      
+      // Event Listeners
+      generatePayslipBtn.addEventListener('click', generatePayslip);
+      downloadPdfBtn.addEventListener('click', exportToPdf);
+      printPayslipBtn.addEventListener('click', printPayslip);
+      addEarningBtn.addEventListener('click', addEarningRow);
+      addDeductionBtn.addEventListener('click', addDeductionRow);
+      
+      // Add event listeners to existing earning and deduction inputs
+      document.querySelectorAll('.earning-amount, .deduction-amount').forEach(input => {
+        input.addEventListener('input', calculateTotals);
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/generator/payslip-generator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/generator/payslip-generator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/generator/payslip-generator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/generator/payslip-generator.html';
+            break;
+          default: // English
+            targetUrl = '/en/generator/payslip-generator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize the generator with default values
+      window.addEventListener('load', () => {
+        setDefaultDates();
+        calculateTotals();
+      });
+    })();
+  </script>
+</body>
+</html></body></html> 

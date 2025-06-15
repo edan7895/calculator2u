@@ -1,0 +1,1924 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enhanced Unit Converter Calculator | Calculator2U</title>
+<meta name="description" content="Convert various units including length, weight, area, volume, temperature and more with our comprehensive unit converter." />
+<meta name="keywords" content="unit converter, unit calculator, measurement converter, unit conversion" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/education/unit-converter.html  " />
+<meta property="og:title" content="Enhanced Unit Converter Calculator | Calculator2U" />
+<meta property="og:description" content="Convert various units including length, weight, area, volume, temperature and more with our comprehensive unit converter." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/education/unit-converter.html  " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/unit-converter.jpg  " />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  " />
+<script src="https://cdn.jsdelivr.net/npm/chart.js  "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg  ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .unit-selection {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .unit-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .swap-button {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  
+  .swap-button:hover {
+    background: #006d77;
+    transform: rotate(180deg);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  
+  /* Tooltip */
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Enhanced Unit Converter Calculator</h1>
+    <p>Convert various units including length, weight, area, volume, temperature and more with our comprehensive unit converter.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Enhanced Unit Converter Calculator</h2>
+    
+    <div class="cooking-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="converter-tabs">
+          <button class="converter-tab-btn active" data-tab="length">Length</button>
+          <button class="converter-tab-btn" data-tab="weight">Weight/Mass</button>
+          <button class="converter-tab-btn" data-tab="area">Area</button>
+          <button class="converter-tab-btn" data-tab="volume">Volume</button>
+          <button class="converter-tab-btn" data-tab="temperature">Temperature</button>
+          <button class="converter-tab-btn" data-tab="time">Time</button>
+          <button class="converter-tab-btn" data-tab="speed">Speed</button>
+        </div>
+        
+        <!-- Length Conversion Tab -->
+        <div class="converter-panel active" id="length-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="length-value">Value:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the value to convert (e.g., 100, 5.5)</span>
+                </span>
+              </label>
+              <input type="number" id="length-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="length-from-unit">From Unit:</label>
+              <select id="length-from-unit" class="unit-select">
+                <option value="km">Kilometers (km)</option>
+                <option value="m" selected>Meters (m)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="mm">Millimeters (mm)</option>
+                <option value="mi">Miles (mi)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="length-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="length-to-unit">To Unit:</label>
+              <select id="length-to-unit" class="unit-select">
+                <option value="km">Kilometers (km)</option>
+                <option value="m">Meters (m)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="mm">Millimeters (mm)</option>
+                <option value="mi" selected>Miles (mi)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="length-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="length-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="length-result-container">
+            <h3 class="result-header">Length Conversion Result</h3>
+            <div class="result-value" id="length-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="length-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="length-details">
+              <p>Length conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Weight Conversion Tab -->
+        <div class="converter-panel" id="weight-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="weight-value">Value:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the value to convert (e.g., 500, 2.5)</span>
+                </span>
+              </label>
+              <input type="number" id="weight-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="weight-from-unit">From Unit:</label>
+              <select id="weight-from-unit" class="unit-select">
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g" selected>Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="ton">Metric tons</option>
+                <option value="lb">Pounds (lb)</option>
+                <option value="oz">Ounces (oz)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="weight-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="weight-to-unit">To Unit:</label>
+              <select id="weight-to-unit" class="unit-select">
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="mg">Milligrams (mg)</option>
+                <option value="ton">Metric tons</option>
+                <option value="lb" selected>Pounds (lb)</option>
+                <option value="oz">Ounces (oz)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="weight-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="weight-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="weight-result-container">
+            <h3 class="result-header">Weight Conversion Result</h3>
+            <div class="result-value" id="weight-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="weight-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="weight-details">
+              <p>Weight conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Area Conversion Tab -->
+        <div class="converter-panel" id="area-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="area-value">Value:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the value to convert (e.g., 10, 500)</span>
+                </span>
+              </label>
+              <input type="number" id="area-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="area-from-unit">From Unit:</label>
+              <select id="area-from-unit" class="unit-select">
+                <option value="m²" selected>Square meters (m²)</option>
+                <option value="km²">Square kilometers (km²)</option>
+                <option value="cm²">Square centimeters (cm²)</option>
+                <option value="mm²">Square millimeters (mm²)</option>
+                <option value="mi²">Square miles (mi²)</option>
+                <option value="yd²">Square yards (yd²)</option>
+                <option value="ft²">Square feet (ft²)</option>
+                <option value="in²">Square inches (in²)</option>
+                <option value="ha">Hectares (ha)</option>
+                <option value="acre">Acres</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="area-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="area-to-unit">To Unit:</label>
+              <select id="area-to-unit" class="unit-select">
+                <option value="m²">Square meters (m²)</option>
+                <option value="km²">Square kilometers (km²)</option>
+                <option value="cm²">Square centimeters (cm²)</option>
+                <option value="mm²">Square millimeters (mm²)</option>
+                <option value="mi²">Square miles (mi²)</option>
+                <option value="yd²">Square yards (yd²)</option>
+                <option value="ft²" selected>Square feet (ft²)</option>
+                <option value="in²">Square inches (in²)</option>
+                <option value="ha">Hectares (ha)</option>
+                <option value="acre">Acres</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="area-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="area-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="area-result-container">
+            <h3 class="result-header">Area Conversion Result</h3>
+            <div class="result-value" id="area-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="area-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="area-details">
+              <p>Area conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Volume Conversion Tab -->
+        <div class="converter-panel" id="volume-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="volume-value">Value:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the value to convert (e.g., 500, 2.5)</span>
+                </span>
+              </label>
+              <input type="number" id="volume-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="volume-from-unit">From Unit:</label>
+              <select id="volume-from-unit" class="unit-select">
+                <option value="l" selected>Liters (l)</option>
+                <option value="ml">Milliliters (ml)</option>
+                <option value="m3">Cubic meters (m³)</option>
+                <option value="gal">Gallons (US)</option>
+                <option value="qt">Quarts (US)</option>
+                <option value="pt">Pints (US)</option>
+                <option value="cup">Cups (US)</option>
+                <option value="fl_oz">Fluid ounces (US)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="volume-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="volume-to-unit">To Unit:</label>
+              <select id="volume-to-unit" class="unit-select">
+                <option value="l">Liters (l)</option>
+                <option value="ml">Milliliters (ml)</option>
+                <option value="m3">Cubic meters (m³)</option>
+                <option value="gal" selected>Gallons (US)</option>
+                <option value="qt">Quarts (US)</option>
+                <option value="pt">Pints (US)</option>
+                <option value="cup">Cups (US)</option>
+                <option value="fl_oz">Fluid ounces (US)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="volume-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="volume-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="volume-result-container">
+            <h3 class="result-header">Volume Conversion Result</h3>
+            <div class="result-value" id="volume-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="volume-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="volume-details">
+              <p>Volume conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Temperature Conversion Tab -->
+        <div class="converter-panel" id="temperature-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="temperature-value">Value:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the temperature to convert (e.g., 32, 100)</span>
+                </span>
+              </label>
+              <input type="number" id="temperature-value" placeholder="Enter temperature" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="temperature-from-unit">From Unit:</label>
+              <select id="temperature-from-unit" class="unit-select">
+                <option value="°C" selected>Celsius (°C)</option>
+                <option value="°F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="temperature-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="temperature-to-unit">To Unit:</label>
+              <select id="temperature-to-unit" class="unit-select">
+                <option value="°C">Celsius (°C)</option>
+                <option value="°F" selected>Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="temperature-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="temperature-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="temperature-result-container">
+            <h3 class="result-header">Temperature Conversion Result</h3>
+            <div class="result-value" id="temperature-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="temperature-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="temperature-details">
+              <p>Temperature conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Time Conversion Tab -->
+        <div class="converter-panel" id="time-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="time-value">Value:</label>
+              <input type="number" id="time-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="time-from-unit">From Unit:</label>
+              <select id="time-from-unit" class="unit-select">
+                <option value="s" selected>Seconds (s)</option>
+                <option value="min">Minutes (min)</option>
+                <option value="h">Hours (h)</option>
+                <option value="d">Days (d)</option>
+                <option value="wk">Weeks (wk)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="time-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="time-to-unit">To Unit:</label>
+              <select id="time-to-unit" class="unit-select">
+                <option value="s">Seconds (s)</option>
+                <option value="min" selected>Minutes (min)</option>
+                <option value="h">Hours (h)</option>
+                <option value="d">Days (d)</option>
+                <option value="wk">Weeks (wk)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="time-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="time-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="time-result-container">
+            <h3 class="result-header">Time Conversion Result</h3>
+            <div class="result-value" id="time-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="time-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="time-details">
+              <p>Time conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Speed Conversion Tab -->
+        <div class="converter-panel" id="speed-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="speed-value">Value:</label>
+              <input type="number" id="speed-value" placeholder="Enter value" step="any">
+            </div>
+          </div>
+          
+          <div class="unit-selection">
+            <div class="unit-field">
+              <label for="speed-from-unit">From Unit:</label>
+              <select id="speed-from-unit" class="unit-select">
+                <option value="km/h" selected>km/h</option>
+                <option value="m/s">m/s</option>
+                <option value="mph">mph</option>
+                <option value="knot">knots</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="speed-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="unit-field">
+              <label for="speed-to-unit">To Unit:</label>
+              <select id="speed-to-unit" class="unit-select">
+                <option value="km/h">km/h</option>
+                <option value="m/s">m/s</option>
+                <option value="mph" selected>mph</option>
+                <option value="knot">knots</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="speed-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="speed-convert">
+            <i class="fas fa-exchange-alt"></i> Convert
+          </button>
+          
+          <div class="result-container" id="speed-result-container">
+            <h3 class="result-header">Speed Conversion Result</h3>
+            <div class="result-value" id="speed-result-value">
+              Converted value will appear here
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="speed-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="speed-details">
+              <p>Speed conversions are based on standard international units and common measurement systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Understanding Unit Conversions</h3>
+        <p>Unit conversions are essential in various fields including science, engineering, cooking, and everyday life. Here are some key points to remember:</p>
+        <ul>
+          <li><strong>Units Matter:</strong> Always ensure you're using the correct units for your calculations</li>
+          <li><strong>Precision:</strong> Conversions can vary slightly depending on the system used</li>
+          <li><strong>International System (SI):</strong> The metric system is the standard for scientific measurements</li>
+          <li><strong>Common Systems:</strong> Imperial and US customary units are still widely used in certain countries</li>
+        </ul>
+        
+        <h3>Conversion Tips</h3>
+        <p>Consider these tips for successful conversions:</p>
+        <ul>
+          <li>Double-check the units you're converting from and to</li>
+          <li>Use a reliable conversion tool or calculator</li>
+          <li>Be aware of significant figures and rounding</li>
+          <li>For critical applications, verify conversions with multiple sources</li>
+        </ul>
+        
+        <h3>Common Conversion Factors</h3>
+        <p>Keep these common conversion factors handy:</p>
+        <ul>
+          <li>1 kilometer = 0.621371 miles</li>
+          <li>1 kilogram = 2.20462 pounds</li>
+          <li>1 liter = 0.264172 gallons</li>
+          <li>1 meter = 3.28084 feet</li>
+          <li>1 Celsius degree = (°F - 32) × 5/9</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and educational tools. Helping you with unit conversions since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Others Useful Calculators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/finance/auto-loan-calculator.html">Auto Loan Calculator</a></li>
+          <li><a href="/en/finance/home-loan-calculator-calculator.html">Home Mortgage Calculator</a></li>
+          <li><a href="/en/daily-life/salary-calculator.html">Salary Calculator</a></li>
+          <li><a href="/en/finance/tax-calculator.html">Tax Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: These calculators provide estimates only. Always verify critical conversions with multiple sources.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const converterTabButtons = document.querySelectorAll('.converter-tab-btn');
+      const converterPanels = document.querySelectorAll('.converter-panel');
+      
+      // Conversion elements for each unit type
+      const conversionElements = {
+        length: {
+          value: document.getElementById('length-value'),
+          fromUnit: document.getElementById('length-from-unit'),
+          toUnit: document.getElementById('length-to-unit'),
+          swapBtn: document.getElementById('length-swap'),
+          result: document.getElementById('length-result'),
+          error: document.getElementById('length-error'),
+          resultContainer: document.getElementById('length-result-container'),
+          resultValue: document.getElementById('length-result-value'),
+          chartCtx: document.getElementById('length-chart').getContext('2d'),
+          chart: null
+        },
+        weight: {
+          value: document.getElementById('weight-value'),
+          fromUnit: document.getElementById('weight-from-unit'),
+          toUnit: document.getElementById('weight-to-unit'),
+          swapBtn: document.getElementById('weight-swap'),
+          result: document.getElementById('weight-result'),
+          error: document.getElementById('weight-error'),
+          resultContainer: document.getElementById('weight-result-container'),
+          resultValue: document.getElementById('weight-result-value'),
+          chartCtx: document.getElementById('weight-chart').getContext('2d'),
+          chart: null
+        },
+        area: {
+          value: document.getElementById('area-value'),
+          fromUnit: document.getElementById('area-from-unit'),
+          toUnit: document.getElementById('area-to-unit'),
+          swapBtn: document.getElementById('area-swap'),
+          result: document.getElementById('area-result'),
+          error: document.getElementById('area-error'),
+          resultContainer: document.getElementById('area-result-container'),
+          resultValue: document.getElementById('area-result-value'),
+          chartCtx: document.getElementById('area-chart').getContext('2d'),
+          chart: null
+        },
+        volume: {
+          value: document.getElementById('volume-value'),
+          fromUnit: document.getElementById('volume-from-unit'),
+          toUnit: document.getElementById('volume-to-unit'),
+          swapBtn: document.getElementById('volume-swap'),
+          result: document.getElementById('volume-result'),
+          error: document.getElementById('volume-error'),
+          resultContainer: document.getElementById('volume-result-container'),
+          resultValue: document.getElementById('volume-result-value'),
+          chartCtx: document.getElementById('volume-chart').getContext('2d'),
+          chart: null
+        },
+        temperature: {
+          value: document.getElementById('temperature-value'),
+          fromUnit: document.getElementById('temperature-from-unit'),
+          toUnit: document.getElementById('temperature-to-unit'),
+          swapBtn: document.getElementById('temperature-swap'),
+          result: document.getElementById('temperature-result'),
+          error: document.getElementById('temperature-error'),
+          resultContainer: document.getElementById('temperature-result-container'),
+          resultValue: document.getElementById('temperature-result-value'),
+          chartCtx: document.getElementById('temperature-chart').getContext('2d'),
+          chart: null
+        },
+        time: {
+          value: document.getElementById('time-value'),
+          fromUnit: document.getElementById('time-from-unit'),
+          toUnit: document.getElementById('time-to-unit'),
+          swapBtn: document.getElementById('time-swap'),
+          result: document.getElementById('time-result'),
+          error: document.getElementById('time-error'),
+          resultContainer: document.getElementById('time-result-container'),
+          resultValue: document.getElementById('time-result-value'),
+          chartCtx: document.getElementById('time-chart').getContext('2d'),
+          chart: null
+        },
+        speed: {
+          value: document.getElementById('speed-value'),
+          fromUnit: document.getElementById('speed-from-unit'),
+          toUnit: document.getElementById('speed-to-unit'),
+          swapBtn: document.getElementById('speed-swap'),
+          result: document.getElementById('speed-result'),
+          error: document.getElementById('speed-error'),
+          resultContainer: document.getElementById('speed-result-container'),
+          resultValue: document.getElementById('speed-result-value'),
+          chartCtx: document.getElementById('speed-chart').getContext('2d'),
+          chart: null
+        }
+      };
+      
+      // Unit conversion logic
+      const unitConversion = {
+        length: {
+          units: {
+            km: 1000,
+            m: 1,
+            cm: 0.01,
+            mm: 0.001,
+            mi: 1609.34,
+            yd: 0.9144,
+            ft: 0.3048,
+            in: 0.0254
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.length.units[fromUnit]) / unitConversion.length.units[toUnit];
+          }
+        },
+        weight: {
+          units: {
+            kg: 1,
+            g: 0.001,
+            mg: 0.000001,
+            ton: 1000,
+            lb: 0.453592,
+            oz: 0.0283495
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.weight.units[fromUnit]) / unitConversion.weight.units[toUnit];
+          }
+        },
+        area: {
+          units: {
+            'm²': 1,
+            'km²': 1000000,
+            'cm²': 0.0001,
+            'mm²': 0.000001,
+            'mi²': 2589988,
+            'yd²': 0.836127,
+            'ft²': 0.092903,
+            'in²': 0.00064516,
+            'ha': 10000,
+            'acre': 4046.86
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.area.units[fromUnit]) / unitConversion.area.units[toUnit];
+          }
+        },
+        volume: {
+          units: {
+            m3: 1,
+            l: 0.001,
+            ml: 0.000001,
+            gal: 0.00378541,
+            qt: 0.000946353,
+            pt: 0.000473176,
+            cup: 0.000236588,
+            fl_oz: 0.0000295735
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.volume.units[fromUnit]) / unitConversion.volume.units[toUnit];
+          }
+        },
+        temperature: {
+          units: ['°C', '°F', 'K'],
+          convert: (value, fromUnit, toUnit) => {
+            let convertedValue;
+            
+            if (fromUnit === '°C' && toUnit === '°F') {
+              convertedValue = (value * 9/5) + 32;
+            } else if (fromUnit === '°F' && toUnit === '°C') {
+              convertedValue = (value - 32) * 5/9;
+            } else if (fromUnit === '°C' && toUnit === 'K') {
+              convertedValue = value + 273.15;
+            } else if (fromUnit === 'K' && toUnit === '°C') {
+              convertedValue = value - 273.15;
+            } else if (fromUnit === '°F' && toUnit === 'K') {
+              convertedValue = (value + 459.67) * 5/9;
+            } else if (fromUnit === 'K' && toUnit === '°F') {
+              convertedValue = (value * 9/5) - 459.67;
+            } else {
+              convertedValue = value; // Same unit conversion
+            }
+            
+            return convertedValue;
+          }
+        },
+        time: {
+          units: {
+            s: 1,
+            ms: 0.001,
+            min: 60,
+            h: 3600,
+            d: 86400,
+            wk: 604800
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.time.units[fromUnit]) / unitConversion.time.units[toUnit];
+          }
+        },
+        speed: {
+          units: {
+            'km/h': 1,
+            'm/s': 0.277778,
+            'mph': 0.621371,
+            'knot': 0.539957
+          },
+          convert: (value, fromUnit, toUnit) => {
+            return (value * unitConversion.speed.units[fromUnit]) / unitConversion.speed.units[toUnit];
+          }
+        }
+      };
+      
+      // Format the result with proper unit symbols
+      function getUnitSymbol(unitType, unit) {
+        const symbols = {
+          length: {
+            km: 'km',
+            m: 'm',
+            cm: 'cm',
+            mm: 'mm',
+            mi: 'mi',
+            yd: 'yd',
+            ft: 'ft',
+            in: 'in'
+          },
+          weight: {
+            kg: 'kg',
+            g: 'g',
+            mg: 'mg',
+            ton: 'ton',
+            lb: 'lb',
+            oz: 'oz'
+          },
+          area: {
+            'm²': 'm²',
+            'km²': 'km²',
+            'cm²': 'cm²',
+            'mm²': 'mm²',
+            'mi²': 'mi²',
+            'yd²': 'yd²',
+            'ft²': 'ft²',
+            'in²': 'in²',
+            'ha': 'ha',
+            'acre': 'acre'
+          },
+          volume: {
+            m3: 'm³',
+            l: 'l',
+            ml: 'ml',
+            gal: 'gal',
+            qt: 'qt',
+            pt: 'pt',
+            cup: 'cup',
+            fl_oz: 'fl oz'
+          },
+          temperature: {
+            '°C': '°C',
+            '°F': '°F',
+            'K': 'K'
+          },
+          time: {
+            s: 's',
+            ms: 'ms',
+            min: 'min',
+            h: 'h',
+            d: 'd',
+            wk: 'wk'
+          },
+          speed: {
+            'km/h': 'km/h',
+            'm/s': 'm/s',
+            'mph': 'mph',
+            'knot': 'knots'
+          }
+        };
+        
+        return symbols[unitType]?.[unit] || unit;
+      }
+      
+      // Format the result
+      function formatResult(value, precision = 4) {
+        // Use scientific notation for very large or very small numbers
+        if (Math.abs(value) >= 1e6 || (Math.abs(value) < 1e-4 && value !== 0)) {
+          return value.toExponential(precision);
+        }
+        
+        // Format with appropriate decimal places
+        const decimalPlaces = Math.abs(value) < 1 ? precision : Math.max(2, precision - Math.floor(Math.log10(Math.abs(value))) - 1);
+        return value.toFixed(decimalPlaces);
+      }
+      
+      // Create chart for visualization
+      function createChart(ctx, value, convertedValue, originalUnit, convertedUnit, unitType) {
+        if (ctx.chart) {
+          ctx.chart.destroy();
+        }
+        
+        const symbolFrom = getUnitSymbol(unitType, originalUnit);
+        const symbolTo = getUnitSymbol(unitType, convertedUnit);
+        
+        ctx.chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [symbolFrom, symbolTo],
+            datasets: [ {
+              label: 'Conversion Comparison',
+              data: [value, convertedValue],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            } ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Value'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              },
+              title: {
+                display: true,
+                text: 'Conversion Comparison'
+              }
+            }
+          }
+        });
+      }
+      
+      // Conversion handler function
+      function handleConversion(unitType) {
+        const elements = conversionElements[unitType];
+        const inputValue = elements.value.value;
+        
+        // Validate input
+        if (inputValue === '' || isNaN(inputValue)) {
+          elements.error.textContent = 'Please enter a valid number';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const value = parseFloat(inputValue);
+        const fromUnit = elements.fromUnit.value;
+        const toUnit = elements.toUnit.value;
+        
+        // Clear any previous error
+        elements.error.style.display = 'none';
+        
+        // Special handling for temperature conversions
+        if (unitType === 'temperature') {
+          let convertedValue;
+          
+          if (fromUnit === '°C' && toUnit === '°F') {
+            convertedValue = (value * 9/5) + 32;
+          } else if (fromUnit === '°F' && toUnit === '°C') {
+            convertedValue = (value - 32) * 5/9;
+          } else if (fromUnit === '°C' && toUnit === 'K') {
+            convertedValue = value + 273.15;
+          } else if (fromUnit === 'K' && toUnit === '°C') {
+            convertedValue = value - 273.15;
+          } else if (fromUnit === '°F' && toUnit === 'K') {
+            convertedValue = (value + 459.67) * 5/9;
+          } else if (fromUnit === 'K' && toUnit === '°F') {
+            convertedValue = (value * 9/5) - 459.67;
+          } else {
+            convertedValue = value; // Same unit conversion
+          }
+          
+          // Format the result
+          const formattedResult = formatResult(convertedValue);
+          elements.resultValue.textContent = `${value} ${getUnitSymbol(unitType, fromUnit)} = ${formattedResult} ${getUnitSymbol(unitType, toUnit)}`;
+          
+          // Create or update chart
+          createChart(elements.chartCtx, value, convertedValue, fromUnit, toUnit, unitType);
+          
+          // Show result container
+          elements.resultContainer.style.display = 'block';
+          
+          return;
+        }
+        
+        // Handle other unit types
+        if (!unitConversion[unitType] || !unitConversion[unitType].units[fromUnit] || !unitConversion[unitType].units[toUnit]) {
+          elements.error.textContent = 'Invalid unit selection';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const convertedValue = unitConversion[unitType].convert(value, fromUnit, toUnit);
+        
+        // Format the result
+        const formattedResult = formatResult(convertedValue);
+        elements.resultValue.textContent = `${value} ${getUnitSymbol(unitType, fromUnit)} = ${formattedResult} ${getUnitSymbol(unitType, toUnit)}`;
+        
+        // Create or update chart
+        createChart(elements.chartCtx, value, convertedValue, fromUnit, toUnit, unitType);
+        
+        // Show result container
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Event Listeners for conversion buttons
+      document.getElementById('length-convert').addEventListener('click', () => handleConversion('length'));
+      document.getElementById('weight-convert').addEventListener('click', () => handleConversion('weight'));
+      document.getElementById('area-convert').addEventListener('click', () => handleConversion('area'));
+      document.getElementById('volume-convert').addEventListener('click', () => handleConversion('volume'));
+      document.getElementById('temperature-convert').addEventListener('click', () => handleConversion('temperature'));
+      document.getElementById('time-convert').addEventListener('click', () => handleConversion('time'));
+      document.getElementById('speed-convert').addEventListener('click', () => handleConversion('speed'));
+      
+      // Event Listeners for swap buttons
+      conversionElements.length.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.length.fromUnit.value;
+        conversionElements.length.fromUnit.value = conversionElements.length.toUnit.value;
+        conversionElements.length.toUnit.value = temp;
+      });
+      
+      conversionElements.weight.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.weight.fromUnit.value;
+        conversionElements.weight.fromUnit.value = conversionElements.weight.toUnit.value;
+        conversionElements.weight.toUnit.value = temp;
+      });
+      
+      conversionElements.area.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.area.fromUnit.value;
+        conversionElements.area.fromUnit.value = conversionElements.area.toUnit.value;
+        conversionElements.area.toUnit.value = temp;
+      });
+      
+      conversionElements.volume.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.volume.fromUnit.value;
+        conversionElements.volume.fromUnit.value = conversionElements.volume.toUnit.value;
+        conversionElements.volume.toUnit.value = temp;
+      });
+      
+      conversionElements.temperature.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.temperature.fromUnit.value;
+        conversionElements.temperature.fromUnit.value = conversionElements.temperature.toUnit.value;
+        conversionElements.temperature.toUnit.value = temp;
+      });
+      
+      conversionElements.time.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.time.fromUnit.value;
+        conversionElements.time.fromUnit.value = conversionElements.time.toUnit.value;
+        conversionElements.time.toUnit.value = temp;
+      });
+      
+      conversionElements.speed.swapBtn.addEventListener('click', () => {
+        const temp = conversionElements.speed.fromUnit.value;
+        conversionElements.speed.fromUnit.value = conversionElements.speed.toUnit.value;
+        conversionElements.speed.toUnit.value = temp;
+      });
+      
+      // Tab switching
+      converterTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs
+          converterTabButtons.forEach(btn => btn.classList.remove('active'));
+          converterPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Allow Enter key to trigger conversion
+      Object.keys(conversionElements).forEach(unitType => {
+        conversionElements[unitType].value.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            handleConversion(unitType);
+          }
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/education/unit-converter.html';
+            break;
+          case 'es':
+            targetUrl = '/es/education/unit-converter.html';
+            break;
+          case 'de':
+            targetUrl = '/de/education/unit-converter.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/education/unit-converter.html';
+            break;
+          default: // English
+            targetUrl = '/en/education/unit-converter.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Initialize the calculator with default values
+      window.addEventListener('load', () => {
+        // Default to Length tab
+        document.getElementById('length-panel').classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html></body></html> 
