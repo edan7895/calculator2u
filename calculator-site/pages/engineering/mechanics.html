@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="title">Physics Calculator | 高级力学计算器</title>
+    <meta name="description" content="Advanced mechanics calculator supporting various physics formulas, unit conversions, night mode, and visual charts. Ideal for students, teachers, and physics enthusiasts." />
+    <meta name="keywords" content="mechanics calculator, physics formulas, Newton's laws, kinematics, unit conversion, science tools, online physics calculator, high school physics, college physics, physics equations" />
+    <meta name="author" content="Calculator2U" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="高级力学计算器，支持多种物理公式计算、单位转换、夜间模式和可视化图表。适用于学生、教师和物理爱好者。" />
+    <meta name="keywords" lang="zh" content="力学计算器, 物理公式, 牛顿定律, 运动学, 单位转换, 科学工具, 在线物理计算器, 高中物理, 大学物理, 物理方程" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="高级力学计算器 | Physics Calculator" />
+    <meta property="og:description" content="高级力学计算器，支持多种物理公式计算、单位转换、夜间模式和可视化图表。适用于学生、教师和物理爱好者。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/physics-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+    <!-- 修正后的脚本和样式表链接 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+    <!-- 添加更多语言版本链接 -->
+    <link rel="alternate" hreflang="en" href="https://Calculator2U/en/physics-calculator" />
+    <link rel="alternate" hreflang="zh" href="https://Calculator2U/zh/physics-calculator" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --text-color: #333;
+      --bg-color: #f9f9f9;
+      --card-bg: #fff;
+      --border-color: #ddd;
+      --result-bg: #e9f0fb;
+      --shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+      --nav-bg: #006d77;
+      --footer-bg: #f0f0f0;
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #4db5bd;
+      --secondary-color: #2c698d;
+      --text-color: #e6e6e6;
+      --bg-color: #1a1a2e;
+      --card-bg: #16213e;
+      --border-color: #2a2a4a;
+      --result-bg: #1f4068;
+      --shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+      --nav-bg: #0f3460;
+      --footer-bg: #0f3460;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; 
+      background: var(--bg-color); 
+      color: var(--text-color);
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar {
+      background-color: var(--nav-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: background-color 0.3s;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .control-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .control-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    main.container {
+      max-width: 800px;
+      margin: 2rem auto 3rem auto;
+      background: var(--card-bg);
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      flex-grow: 1;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    p.desc {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+    }
+
+    .formula-selection {
+      margin-bottom: 1.5rem;
+    }
+
+    .formula-group {
+      margin-bottom: 1rem;
+    }
+
+    .formula-group h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid var(--border-color);
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .formula-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .formula-btn {
+      background: rgba(0, 111, 119, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      color: var(--text-color);
+    }
+
+    .formula-btn:hover {
+      background: rgba(0, 111, 119, 0.2);
+      border-color: var(--primary-color);
+    }
+
+    .formula-btn.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    form.calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .input-container {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: var(--primary-color);
+      transition: color 0.3s;
+    }
+
+    input[type="number"], select {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.5px solid var(--border-color);
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--card-bg);
+      color: var(--text-color);
+      transition: all 0.3s;
+    }
+
+    .unit-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .unit-group select {
+      flex: 1;
+    }
+
+    button {
+      background-color: var(--secondary-color);
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-color);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .action-buttons button {
+      flex: 1;
+    }
+
+    .result-container {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .result-box {
+      background: var(--result-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 3em;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .formula-display {
+      background: rgba(0, 63, 92, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-color);
+      font-size: 1.1rem;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+    }
+
+    .katex-display {
+      margin: 0 !important;
+      padding: 5px 0;
+    }
+
+    .chart-container {
+      margin-top: 1.5rem;
+      height: 300px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--footer-bg);
+      font-size: 0.9rem;
+      color: var(--text-color);
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      main.container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 0.8rem;
+      }
+      
+      h1 {
+        font-size: 1.7rem;
+      }
+      
+      .input-group {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .control-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .chart-container {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="control-buttons">
+        <button class="control-btn" id="theme-toggle">
+          <span id="theme-icon">🌙</span>
+          <span data-i18n="dark_mode">夜间模式</span>
+        </button>
+        <button class="control-btn" id="lang-switch">
+          <span data-i18n="language">EN</span>
+        </button>
+      </div>
+    </nav>
+</header>
+
+  <main class="container">
+    <h1 data-i18n="title">高级力学计算器</h1>
+    <p class="desc" data-i18n="desc">选择物理公式，输入参数值，自动计算结果并提供图表可视化</p>
+    
+    <div class="formula-selection">
+      <div class="formula-group">
+        <h3 data-i18n="newton_laws">牛顿定律</h3>
+        <div class="formula-options">
+          <button class="formula-btn" data-formula="newton_second" data-i18n="newton_second_law">牛顿第二定律 (F=ma)</button>
+        </div>
+      </div>
+      
+      <div class="formula-group">
+        <h3 data-i18n="kinematics">运动学</h3>
+        <div class="formula-options">
+          <button class="formula-btn" data-formula="final_velocity" data-i18n="final_velocity">末速度 (v = u + at)</button>
+          <button class="formula-btn" data-formula="displacement" data-i18n="displacement">位移 (s = ut + ½at²)</button>
+          <button class="formula-btn" data-formula="displacement_no_acc" data-i18n="displacement_no_acc">位移 (无加速度)</button>
+          <button class="formula-btn" data-formula="velocity_no_time" data-i18n="velocity_no_time">末速度 (无时间)</button>
+        </div>
+      </div>
+      
+      <div class="formula-group">
+        <h3 data-i18n="force_friction">力与摩擦</h3>
+        <div class="formula-options">
+          <button class="formula-btn" data-formula="friction" data-i18n="frictional_force">摩擦力</button>
+          <button class="formula-btn" data-formula="centripetal" data-i18n="centripetal_force">向心力</button>
+          <button class="formula-btn" data-formula="resultant" data-i18n="resultant_force">合力</button>
+          <button class="formula-btn" data-formula="torque" data-i18n="torque">扭矩</button>
+        </div>
+      </div>
+      
+      <div class="formula-group">
+        <h3 data-i18n="work_energy">功、能量与功率</h3>
+        <div class="formula-options">
+          <button class="formula-btn" data-formula="kinetic" data-i18n="kinetic_energy">动能</button>
+          <button class="formula-btn" data-formula="potential" data-i18n="potential_energy">势能</button>
+          <button class="formula-btn" data-formula="mechanical" data-i18n="mechanical_energy">机械能</button>
+          <button class="formula-btn" data-formula="work" data-i18n="work_done">功</button>
+        </div>
+      </div>
+    </div>
+    
+    <form class="calc-form" onsubmit="return false;">
+      <div class="input-group" id="inputFields">
+        <!-- Dynamic input fields will be inserted here -->
+      </div>
+      
+      <div class="action-buttons">
+        <button type="button" id="calcBtn" data-i18n="calc_btn">计算</button>
+        <button type="button" id="clearBtn" data-i18n="clear_btn">清除</button>
+      </div>
+    </form>
+
+    
+    <div class="result-container">
+      <div class="formula-display" id="formulaDisplay">
+        <!-- Formula display will be inserted here -->
+      </div>
+      
+      <div class="result-box" id="resultBox" aria-live="polite" aria-atomic="true"></div>
+    </div>
+    
+    <div class="chart-container">
+      <canvas id="physicsChart"></canvas>
+    </div>
+  </main>
+
+  <footer>
+
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | 
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+  </footer>
+
+  <script>
+    (() => {
+      // 扩展翻译内容
+      const translations = {
+        zh: {
+          title: "高级力学计算器",
+          desc: "选择物理公式，输入参数值，自动计算结果并提供图表可视化",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about_us: "关于我们",
+          dark_mode: "夜间模式",
+          language: "EN",
+          calc_btn: "计算",
+          clear_btn: "清除",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
+          footer_rights: "保留所有权利。",
+          newton_laws: "牛顿定律",
+          newton_second_law: "牛顿第二定律 (F=ma)",
+          kinematics: "运动学",
+          final_velocity: "末速度 (v = u + at)",
+          displacement: "位移 (s = ut + ½at²)",
+          displacement_no_acc: "位移 (无加速度)",
+          velocity_no_time: "末速度 (无时间)",
+          force_friction: "力与摩擦",
+          frictional_force: "摩擦力",
+          centripetal_force: "向心力",
+          resultant_force: "合力",
+          torque: "扭矩",
+          work_energy: "功、能量与功率",
+          kinetic_energy: "动能",
+          potential_energy: "势能",
+          mechanical_energy: "机械能",
+          work_done: "功",
+          err_two_values: "请至少输入两个数值。",
+          err_invalid: "输入的值必须是非负数字。",
+          result_force: "力 (F)",
+          result_mass: "质量 (m)",
+          result_acceleration: "加速度 (a)",
+          unit_n: "牛顿 (N)",
+          unit_kg: "千克 (kg)",
+          unit_ms2: "米/秒² (m/s²)",
+          unit_m: "米 (m)",
+          unit_s: "秒 (s)",
+          unit_ms: "米/秒 (m/s)",
+          unit_j: "焦耳 (J)",
+          unit_nm: "牛顿·米 (N·m)",
+          unit_degree: "度",
+          unit_coeff: "系数",
+          initial_velocity: "初速度 (u)",
+          time: "时间 (t)",
+          displacement_s: "位移 (s)",
+          final_velocity_v: "末速度 (v)",
+          friction_coeff: "摩擦系数 (μ)",
+          normal_force: "法向力 (N)",
+          mass_m: "质量 (m)",
+          velocity_v: "速度 (v)",
+          radius_r: "半径 (r)",
+          force_f: "力 (F)",
+          angle_theta: "角度 (θ)",
+          distance_d: "距离 (d)",
+          height_h: "高度 (h)",
+          gravity_g: "重力加速度 (g)",
+          power_p: "功率 (P)"
+        },
+        en: {
+          title: "Advanced Physics Calculator",
+          desc: "Select a physics formula, input parameter values, and get results with visualization",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about_us: "About Us",
+          dark_mode: "Dark Mode",
+          language: "中文",
+          calc_btn: "Calculate",
+          clear_btn: "Clear",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
+          footer_rights: "All rights reserved.",
+          newton_laws: "Newton's Laws",
+          newton_second_law: "Newton's Second Law (F=ma)",
+          kinematics: "Kinematics",
+          final_velocity: "Final Velocity (v = u + at)",
+          displacement: "Displacement (s = ut + ½at²)",
+          displacement_no_acc: "Displacement (no acceleration)",
+          velocity_no_time: "Final Velocity (no time)",
+          force_friction: "Force & Friction",
+          frictional_force: "Frictional Force",
+          centripetal_force: "Centripetal Force",
+          resultant_force: "Resultant Force",
+          torque: "Torque",
+          work_energy: "Work, Energy & Power",
+          kinetic_energy: "Kinetic Energy",
+          potential_energy: "Potential Energy",
+          mechanical_energy: "Mechanical Energy",
+          work_done: "Work Done",
+          err_two_values: "Please enter at least two values.",
+          err_invalid: "Values must be non-negative numbers.",
+          result_force: "Force (F)",
+          result_mass: "Mass (m)",
+          result_acceleration: "Acceleration (a)",
+          unit_n: "Newtons (N)",
+          unit_kg: "Kilograms (kg)",
+          unit_ms2: "m/s²",
+          unit_m: "Meters (m)",
+          unit_s: "Seconds (s)",
+          unit_ms: "m/s",
+          unit_j: "Joules (J)",
+          unit_nm: "Newton-meters (N·m)",
+          unit_degree: "Degrees",
+          unit_coeff: "Coefficient",
+          initial_velocity: "Initial Velocity (u)",
+          time: "Time (t)",
+          displacement_s: "Displacement (s)",
+          final_velocity_v: "Final Velocity (v)",
+          friction_coeff: "Friction Coefficient (μ)",
+          normal_force: "Normal Force (N)",
+          mass_m: "Mass (m)",
+          velocity_v: "Velocity (v)",
+          radius_r: "Radius (r)",
+          force_f: "Force (F)",
+          angle_theta: "Angle (θ)",
+          distance_d: "Distance (d)",
+          height_h: "Height (h)",
+          gravity_g: "Gravity (g)",
+          power_p: "Power (P)"
+        }
+      };
+
+      // 定义公式集合
+      const formulas = {
+        newton_second: {
+          name: { zh: "牛顿第二定律", en: "Newton's Second Law" },
+          equation: { zh: "F = m × a", en: "F = m × a" },
+          latex: "F = m \\times a",
+          inputs: [
+            { id: "force", label: { zh: "力 (F)", en: "Force (F)" }, units: ["N", "lbf"], defaultUnit: "N" },
+            { id: "mass", label: { zh: "质量 (m)", en: "Mass (m)" }, units: ["kg", "g", "lb"], defaultUnit: "kg" },
+            { id: "acceleration", label: { zh: "加速度 (a)", en: "Acceleration (a)" }, units: ["m/s²", "ft/s²"], defaultUnit: "m/s²" }
+          ],
+          calculate: (inputs) => {
+            const F = inputs.force ? parseFloat(inputs.force.value) : null;
+            const m = inputs.mass ? parseFloat(inputs.mass.value) : null;
+            const a = inputs.acceleration ? parseFloat(inputs.acceleration.value) : null;
+            
+            if (F !== null && m !== null && a === null) {
+              return { result: F / m, unit: "m/s²", formula: `a = F / m = ${F} / ${m}` };
+            } else if (F !== null && a !== null && m === null) {
+              return { result: F / a, unit: "kg", formula: `m = F / a = ${F} / ${a}` };
+            } else if (m !== null && a !== null && F === null) {
+              return { result: m * a, unit: "N", formula: `F = m × a = ${m} × ${a}` };
+            }
+            return null;
+          }
+        },
+        final_velocity: {
+          name: { zh: "末速度", en: "Final Velocity" },
+          equation: { zh: "v = u + a × t", en: "v = u + a × t" },
+          latex: "v = u + a \\times t",
+          inputs: [
+            { id: "initial_velocity", label: { zh: "初速度 (u)", en: "Initial Velocity (u)" }, units: ["m/s", "km/h", "mph"], defaultUnit: "m/s" },
+            { id: "acceleration", label: { zh: "加速度 (a)", en: "Acceleration (a)" }, units: ["m/s²", "ft/s²"], defaultUnit: "m/s²" },
+            { id: "time", label: { zh: "时间 (t)", en: "Time (t)" }, units: ["s", "min", "h"], defaultUnit: "s" },
+            { id: "final_velocity", label: { zh: "末速度 (v)", en: "Final Velocity (v)" }, units: ["m/s", "km/h", "mph"], defaultUnit: "m/s" }
+          ],
+          calculate: (inputs) => {
+            const u = inputs.initial_velocity ? parseFloat(inputs.initial_velocity.value) : null;
+            const a = inputs.acceleration ? parseFloat(inputs.acceleration.value) : null;
+            const t = inputs.time ? parseFloat(inputs.time.value) : null;
+            const v = inputs.final_velocity ? parseFloat(inputs.final_velocity.value) : null;
+            
+            if (u !== null && a !== null && t !== null && v === null) {
+              return { result: u + a * t, unit: "m/s", formula: `v = u + a × t = ${u} + ${a} × ${t}` };
+            }
+            return null;
+          }
+        },
+        friction: {
+          name: { zh: "摩擦力", en: "Frictional Force" },
+          equation: { zh: "F_friction = μ × N", en: "F_friction = μ × N" },
+          latex: "F_{friction} = \\mu \\times N",
+          inputs: [
+            { id: "friction_coeff", label: { zh: "摩擦系数 (μ)", en: "Friction Coefficient (μ)" }, units: [""], defaultUnit: "" },
+            { id: "normal_force", label: { zh: "法向力 (N)", en: "Normal Force (N)" }, units: ["N", "lbf"], defaultUnit: "N" },
+            { id: "frictional_force", label: { zh: "摩擦力 (F_friction)", en: "Frictional Force (F_friction)" }, units: ["N", "lbf"], defaultUnit: "N" }
+          ],
+          calculate: (inputs) => {
+            const mu = inputs.friction_coeff ? parseFloat(inputs.friction_coeff.value) : null;
+            const N = inputs.normal_force ? parseFloat(inputs.normal_force.value) : null;
+            const F_friction = inputs.frictional_force ? parseFloat(inputs.frictional_force.value) : null;
+            
+            if (mu !== null && N !== null && F_friction === null) {
+              return { result: mu * N, unit: "N", formula: `F_friction = μ × N = ${mu} × ${N}` };
+            }
+            return null;
+          }
+        },
+        kinetic: {
+          name: { zh: "动能", en: "Kinetic Energy" },
+          equation: { zh: "KE = ½ × m × v²", en: "KE = ½ × m × v²" },
+          latex: "KE = \\frac{1}{2} m v^2",
+          inputs: [
+            { id: "mass", label: { zh: "质量 (m)", en: "Mass (m)" }, units: ["kg", "g", "lb"], defaultUnit: "kg" },
+            { id: "velocity", label: { zh: "速度 (v)", en: "Velocity (v)" }, units: ["m/s", "km/h", "mph"], defaultUnit: "m/s" },
+            { id: "kinetic_energy", label: { zh: "动能 (KE)", en: "Kinetic Energy (KE)" }, units: ["J", "kJ"], defaultUnit: "J" }
+          ],
+          calculate: (inputs) => {
+            const m = inputs.mass ? parseFloat(inputs.mass.value) : null;
+            const v = inputs.velocity ? parseFloat(inputs.velocity.value) : null;
+            const KE = inputs.kinetic_energy ? parseFloat(inputs.kinetic_energy.value) : null;
+            
+            if (m !== null && v !== null && KE === null) {
+              return { result: 0.5 * m * v * v, unit: "J", formula: `KE = ½ × m × v² = 0.5 × ${m} × ${v}²` };
+            }
+            return null;
+          }
+        }
+      };
+
+      // 全局变量
+      let lang = 'zh';
+      let currentTheme = 'light';
+      let currentFormula = 'newton_second';
+      let physicsChart = null;
+
+      // DOM元素
+      const langSwitch = document.getElementById('lang-switch');
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const formulaDisplay = document.getElementById('formulaDisplay');
+      const resultBox = document.getElementById('resultBox');
+      const inputFields = document.getElementById('inputFields');
+      const calcBtn = document.getElementById('calcBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const formulaButtons = document.querySelectorAll('.formula-btn');
+
+      // 初始化函数
+      function init() {
+        // 自动检测用户语言
+        const userLang = navigator.language || navigator.userLanguage || '';
+        if (userLang.toLowerCase().startsWith('en')) lang = 'en';
+        
+        // 如果之前用户手动选择过语言，优先使用存储的
+        if (localStorage.getItem('site-lang')) {
+          lang = localStorage.getItem('site-lang');
+        }
+        
+        // 检测主题偏好
+        if (localStorage.getItem('site-theme')) {
+          currentTheme = localStorage.getItem('site-theme');
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          currentTheme = 'dark';
+        }
+        
+        applyTheme();
+        setLanguage(lang);
+        setupFormula(currentFormula);
+        setupEventListeners();
+        initChart();
+      }
+
+      // 设置事件监听器
+      function setupEventListeners() {
+        langSwitch.addEventListener('click', () => {
+          setLanguage(lang === 'zh' ? 'en' : 'zh');
+        });
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        calcBtn.addEventListener('click', calculateFormula);
+        
+        clearBtn.addEventListener('click', () => {
+          clearInputs();
+          clearResult();
+          updateChart([]);
+        });
+        
+        formulaButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // 移除所有按钮的active类
+            formulaButtons.forEach(btn => btn.classList.remove('active'));
+            // 为当前按钮添加active类
+            button.classList.add('active');
+            // 设置当前公式
+            currentFormula = button.dataset.formula;
+            setupFormula(currentFormula);
+            clearResult();
+            updateChart([]);
+          });
+        });
+      }
+
+      // 设置语言
+      function setLanguage(lng) {
+        lang = lng;
+        localStorage.setItem('site-lang', lng);
+        document.documentElement.lang = lng === 'zh' ? 'zh-CN' : 'en-US';
+
+        // 更新所有带 data-i18n 的元素
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (!translations[lng][key]) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = translations[lng][key];
+          } else if (el.tagName === 'BUTTON') {
+            el.textContent = translations[lng][key];
+          } else {
+            el.textContent = translations[lng][key];
+          }
+        });
+
+        // 更新语言切换按钮文字
+        langSwitch.querySelector('span').textContent = translations[lng].language;
+        
+        // 更新标题
+        document.title = translations[lng].title;
+        
+        // 重新设置当前公式以更新标签
+        setupFormula(currentFormula);
+      }
+
+      // 切换主题
+      function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme();
+        localStorage.setItem('site-theme', currentTheme);
+      }
+
+      // 应用主题
+      function applyTheme() {
+        document.body.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+        themeToggle.querySelector('span:last-child').textContent = 
+          translations[lang][currentTheme === 'light' ? 'dark_mode' : 'dark_mode'];
+      }
+
+      // 设置公式输入字段
+      function setupFormula(formulaKey) {
+        const formula = formulas[formulaKey];
+        if (!formula) return;
+        
+        // 清空输入区域
+        inputFields.innerHTML = '';
+        
+        // 渲染输入字段
+        formula.inputs.forEach(input => {
+          const container = document.createElement('div');
+          container.className = 'input-container';
+          
+          const label = document.createElement('label');
+          label.htmlFor = input.id;
+          label.textContent = translations[lang][input.label[lang]] || input.label[lang];
+          
+          const inputEl = document.createElement('input');
+          inputEl.type = 'number';
+          inputEl.id = input.id;
+          inputEl.step = 'any';
+          inputEl.autocomplete = 'off';
+          inputEl.placeholder = translations[lang][input.label[lang]] || input.label[lang];
+          
+          const unitGroup = document.createElement('div');
+          unitGroup.className = 'unit-group';
+          
+          if (input.units && input.units.length > 0) {
+            const unitSelect = document.createElement('select');
+            unitSelect.id = `${input.id}_unit`;
+            
+            input.units.forEach(unit => {
+              const option = document.createElement('option');
+              option.value = unit;
+              option.textContent = translations[lang][`unit_${unit}`] || unit;
+              if (unit === input.defaultUnit) option.selected = true;
+              unitSelect.appendChild(option);
+            });
+            
+            unitGroup.appendChild(unitSelect);
+          }
+          
+          container.appendChild(label);
+          container.appendChild(inputEl);
+          container.appendChild(unitGroup);
+          inputFields.appendChild(container);
+        });
+        
+        // 更新公式显示
+        renderFormulaDisplay(formula.latex);
+      }
+
+      // 渲染公式显示
+      function renderFormulaDisplay(latex) {
+        formulaDisplay.innerHTML = '';
+        katex.render(latex, formulaDisplay, {
+          throwOnError: false,
+          displayMode: true
+        });
+      }
+
+      // 计算公式
+      function calculateFormula() {
+        const formula = formulas[currentFormula];
+        if (!formula) return;
+        
+        // 收集输入值
+        const inputs = {};
+        let inputCount = 0;
+        
+        formula.inputs.forEach(input => {
+          const inputEl = document.getElementById(input.id);
+          const unitEl = document.getElementById(`${input.id}_unit`);
+          
+          if (inputEl && inputEl.value.trim() !== '') {
+            inputs[input.id] = {
+              value: inputEl.value,
+              unit: unitEl ? unitEl.value : null
+            };
+            inputCount++;
+          }
+        });
+        
+        // 检查是否有足够输入
+        if (inputCount < 2) {
+          resultBox.textContent = translations[lang].err_two_values;
+          return;
+        }
+        
+        // 计算结果
+        const result = formula.calculate(inputs);
+        if (result) {
+          resultBox.textContent = `${translations[lang].result}: ${result.result.toFixed(4)} ${translations[lang][`unit_${result.unit}`] || result.unit}\n${result.formula}`;
+          
+          // 生成图表数据
+          const data = generateChartData(formula, inputs, result);
+          updateChart(data);
+        } else {
+          resultBox.textContent = translations[lang].err_invalid;
+        }
+      }
+
+      // 生成图表数据
+      function generateChartData(formula, inputs, result) {
+        if (formula === formulas.newton_second) {
+          const data = [];
+          const m = inputs.mass ? parseFloat(inputs.mass.value) : result.result;
+          
+          for (let a = 0; a <= 20; a += 1) {
+            data.push({ x: a, y: m * a });
+          }
+          
+          return {
+            datasets: [{
+              label: translations[lang].result_force,
+              data: data,
+              borderColor: '#4db5bd',
+              backgroundColor: 'rgba(77, 181, 189, 0.1)',
+              tension: 0.4,
+              fill: true
+            }]
+          };
+        } else if (formula === formulas.final_velocity) {
+          const data = [];
+          const u = inputs.initial_velocity ? parseFloat(inputs.initial_velocity.value) : 5;
+          const a = inputs.acceleration ? parseFloat(inputs.acceleration.value) : 2;
+          
+          for (let t = 0; t <= 10; t += 0.5) {
+            data.push({ x: t, y: u + a * t });
+          }
+          
+          return {
+            datasets: [{
+              label: translations[lang].final_velocity_v,
+              data: data,
+              borderColor: '#e76f51',
+              backgroundColor: 'rgba(231, 111, 81, 0.1)',
+              tension: 0.4,
+              fill: true
+            }]
+          };
+        }
+        
+        return [];
+      }
+
+      // 初始化图表
+      function initChart() {
+        const ctx = document.getElementById('physicsChart').getContext('2d');
+        physicsChart = new Chart(ctx, {
+          type: 'line',
+          data: { datasets: [] },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              title: {
+                display: true,
+                text: translations[lang].chart_title || 'Physics Visualization',
+                color: 'var(--text-color)',
+                font: { size: 16 }
+              },
+              legend: {
+                labels: { color: 'var(--text-color)' }
+              }
+            },
+            scales: {
+              x: {
+                type: 'linear',
+                position: 'bottom',
+                title: {
+                  display: true,
+                  text: translations[lang].x_axis || 'X Axis',
+                  color: 'var(--text-color)'
+                },
+                grid: { color: 'rgba(200, 200, 200, 0.1)' },
+                ticks: { color: 'var(--text-color)' }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: translations[lang].y_axis || 'Y Axis',
+                  color: 'var(--text-color)'
+                },
+                grid: { color: 'rgba(200, 200, 200, 0.1)' },
+                ticks: { color: 'var(--text-color)' }
+              }
+            }
+          }
+        });
+      }
+
+      // 更新图表
+      function updateChart(data) {
+        if (!physicsChart) return;
+        
+        physicsChart.data = data;
+        physicsChart.update();
+      }
+
+      // 清空输入
+      function clearInputs() {
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => input.value = '');
+      }
+
+      // 清空结果
+      function clearResult() {
+        resultBox.textContent = '';
+      }
+
+      // 页面加载时初始化
+      window.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</body>
+</html>

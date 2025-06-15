@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="title">Timezone Converter | 时区转换器</title>
+    <meta name="description" content="Free online timezone converter tool. Convert time between any two timezones instantly, with daylight saving time support and time difference calculation. Search by city or country, and enjoy features like night mode and multiple time formats." />
+    <meta name="keywords" content="timezone converter, time conversion, world clock, time zone converter free tools, time zone conversion city country search, time difference calculator" />
+    <meta name="author" content="Calculator2U" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="轻松将时间从一个时区转换为另一个时区。支持城市/国家搜索，夜间模式，多种时间格式。" />
+    <meta name="keywords" lang="zh" content="时区转换, 时间转换, 世界时钟, 时区转换免费工具, 城市时区搜索, 时间差计算" />
+    <meta property="og:title" content="免费在线时区转换工具" />
+    <meta property="og:description" content="免费在线时区转换工具。可即时转换任意两个时区的时间，支持夏令时调整和时间差计算。支持城市/国家搜索，夜间模式，多种时间格式。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/timezone-converter.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --container-bg: #fff;
+      --header-bg: #006d77;
+      --header-text: #fff;
+      --footer-bg: #f0f0f0;
+      --border-color: #ddd;
+      --accent-color: #006d77;
+      --accent-hover: #00525a;
+      --result-color: #003f5c;
+      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    .dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --container-bg: #1e1e1e;
+      --header-bg: #004952;
+      --footer-bg: #2d2d2d;
+      --border-color: #444;
+      --accent-color: #00a8b5;
+      --accent-hover: #008c97;
+      --result-color: #4dc0cb;
+      --shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* 主容器 */
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* 导航栏 */
+    .navbar {
+      background-color: var(--header-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .navbar .logo {
+      color: var(--header-text);
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      z-index: 101;
+    }
+    
+    .logo svg {
+      margin-right: 10px;
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+      transition: var(--transition);
+    }
+    
+    .nav-links a {
+      color: var(--header-text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: var(--header-text);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid var(--header-text);
+      color: var(--header-text);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .lang-switch:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    /* 汉堡菜单 */
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--header-text);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 101;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+    
+    /* 内容区域 */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .main-content {
+      background: var(--container-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--accent-color);
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    .input-with-icon {
+      position: relative;
+    }
+    
+    .input-with-icon svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      fill: #777;
+    }
+    
+    select, input {
+      width: 100%;
+      padding: 0.8rem;
+      padding-left: 40px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--container-bg);
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+    
+    input[type="datetime-local"] {
+      padding-left: 0.8rem;
+    }
+    
+    select:focus, input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.2);
+    }
+    
+    .options-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .option-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+    
+    .result-box {
+      background: var(--container-bg);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    .result {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--result-color);
+      margin: 1rem 0;
+    }
+    
+    .time-difference {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      opacity: 0.9;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: rgba(0, 109, 119, 0.1);
+      border-radius: 8px;
+      display: inline-block;
+    }
+    
+    .convert-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .convert-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    
+    .convert-btn:active {
+      transform: translateY(0);
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    
+    .feature-card {
+      background: var(--container-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-card svg {
+      width: 48px;
+      height: 48px;
+      fill: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    .feature-card h3 {
+      margin: 0.5rem 0;
+      color: var(--accent-color);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: #006d77(--footer-bg);
+      font-size: 0.9rem;
+      color: var(--text-color);
+      margin-top: auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    
+    .footer-links a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+    
+    /* 侧边栏 */
+    .sidebar {
+      background: var(--container-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+    
+    .sidebar h3 {
+      margin-top: 0;
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    .sidebar-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .sidebar-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .sidebar-links a {
+      color: var(--accent-color);
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .sidebar-links a:hover {
+      background: rgba(0, 109, 119, 0.1);
+    }
+    
+    /* 响应式布局 */
+    @media (min-width: 992px) {
+      .content-grid {
+        grid-template-columns: 1fr 300px;
+      }
+    }
+    
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .sidebar {
+        margin-top: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        background: var(--header-bg);
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      .nav-links.active {
+        height: auto;
+        padding: 1rem 0;
+      }
+      
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 0;
+      }
+      
+      .header-actions {
+        margin-left: auto;
+        padding-right: 1rem;
+      }
+      
+      .options-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .result {
+        font-size: 1.5rem;
+      }
+      
+      .feature-card {
+        padding: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
+      
+      .logo {
+        font-size: 1.2rem;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .radio-group {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-container">
+  <header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20ZM14,7H10V9h4Zm0,4H10v6h4Z"/>
+        </svg>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        ☰
+      </button>
+      
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="切换夜间模式">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12,3a9,9,0,1,0,9,9,9,9,0,0,0-9-9Zm0,16a7,7,0,0,1-7-7,7.08,7.08,0,0,1,.22-1.71l9.52,9.52A7.08,7.08,0,0,1,12,19Zm6.78-4.29L9.29,5.22A7,7,0,0,1,18.78,14.71Z"/>
+          </svg>
+        </button>
+        <button class="lang-switch" id="lang-switch">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="content-grid">
+      <div class="main-content">
+        <h1 data-i18n="title">时区转换器</h1>
+        <p class="subtitle" data-i18n="desc">轻松将时间从一个时区转换为另一个时区</p>
+        
+        <div class="form-group">
+          <label data-i18n="from_time">输入时间</label>
+          <input type="datetime-local" id="inputTime" />
+        </div>
+        
+        <div class="form-group">
+          <label data-i18n="from_zone">从时区</label>
+          <div class="input-with-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,10,10,10,10,0,0,0,10-10A10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/>
+              <circle cx="12" cy="12" r="1.5"/>
+            </svg>
+            <select id="fromZone"></select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label data-i18n="to_zone">到时区</label>
+          <div class="input-with-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,10,10,10,10,0,0,0,10-10A10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/>
+              <circle cx="12" cy="12" r="1.5"/>
+            </svg>
+            <select id="toZone"></select>
+          </div>
+        </div>
+        
+        <div class="options-row">
+          <div class="option-group">
+            <label data-i18n="time_format">时间格式</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="time-format" value="12" checked>
+                <span data-i18n="format_12">12小时制</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="time-format" value="24">
+                <span data-i18n="format_24">24小时制</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label data-i18n="display_options">显示选项</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="checkbox" id="show-difference" checked>
+                <span data-i18n="show_difference">显示时间差</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <button class="convert-btn" id="convert-btn" data-i18n="convert_btn">转换时间</button>
+
+
+        
+        <div class="result-box">
+          <div data-i18n="converted_time">转换后时间</div>
+          <div class="result" id="result">--:--</div>
+          <div class="time-difference" id="time-difference"></div>
+        </div>
+      </div>
+      
+      <!-- 侧边栏 -->
+      <aside class="sidebar">
+        <h3 data-i18n="sidebar_title">常用工具</h3>
+        <ul class="sidebar-links">
+          <li><a href="/pages/education/unit-converter.html" data-i18n="sidebar_unit">单位转换器</a></li>
+          <li><a href="/pages/health/bmi.html" data-i18n="sidebar_bmi">BMI 计算器</a></li>
+          <li><a href="/pages/finance/loan-calculator.html" data-i18n="sidebar_loan">贷款计算器</a></li>
+        </ul>
+      </aside>
+    </div>
+<div id="ezoic-pub-ad-placeholder-104"></div>
+<script>
+    ezstandalone.cmd.push(function() {
+        ezstandalone.showAds(104)
+    });
+</script>
+    
+    <div class="features">
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24">
+          <path d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12H20Zm0-9H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z"/>
+          <circle cx="8" cy="16" r="1.5"/>
+          <circle cx="12" cy="16" r="1.5"/>
+          <circle cx="16" cy="16" r="1.5"/>
+        </svg>
+        <h3 data-i18n="feature1_title">全球时区覆盖</h3>
+        <p data-i18n="feature1_desc">支持所有主要城市和国家，轻松转换世界各地时间</p>
+      </div>
+      
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,6a1,1,0,0,0-1,1V17a1,1,0,0,0,2,0V7A1,1,0,0,0,12,6Z"/>
+          <path d="M16.94,7.94a1.5,1.5,0,0,0-2.12,0L12,10.76,9.18,7.94A1.5,1.5,0,0,0,7.06,10.06L10.88,14,7.06,17.82a1.5,1.5,0,0,0,2.12,2.12L12,16.12l2.82,2.82a1.5,1.5,0,0,0,2.12-2.12L13.12,14l3.82-3.94A1.5,1.5,0,0,0,16.94,7.94Z"/>
+        </svg>
+        <h3 data-i18n="feature2_title">灵活时间格式</h3>
+        <p data-i18n="feature2_desc">可选择12小时制或24小时制，满足不同习惯</p>
+      </div>
+      
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24">
+          <path d="M9,2H7A5,5,0,0,0,2,7v5a1,1,0,0,0,2,0V7A3,3,0,0,1,7,4H9A1,1,0,0,0,9,2Z"/>
+          <path d="M15,2h2a5,5,0,0,1,5,5v5a1,1,0,0,1-2,0V7a3,3,0,0,0-3-3H15a1,1,0,0,1,0-2Z"/>
+          <path d="M22,16H2a1,1,0,0,0,0,2H22a1,1,0,0,0,0-2Z"/>
+          <path d="M22,20H2a1,1,0,0,0,0,2H22a1,1,0,0,0,0-2Z"/>
+        </svg>
+        <h3 data-i18n="feature3_title">时间差计算</h3>
+        <p data-i18n="feature3_desc">清晰显示两个时区之间的时间差异</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+
+    <div class="footer-links">
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a>
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+    </div>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+</div>
+
+<script>
+  // 增强时区数据 - 添加主要城市/国家
+  const enhancedTimeZones = [
+    { id: "America/New_York", name: "New York, USA (EST/EDT)" },
+    { id: "America/Los_Angeles", name: "Los Angeles, USA (PST/PDT)" },
+    { id: "Europe/London", name: "London, UK (GMT/BST)" },
+    { id: "Europe/Paris", name: "Paris, France (CET/CEST)" },
+    { id: "Europe/Berlin", name: "Berlin, Germany (CET/CEST)" },
+    { id: "Asia/Tokyo", name: "Tokyo, Japan (JST)" },
+    { id: "Asia/Shanghai", name: "Shanghai, China (CST)" },
+    { id: "Asia/Hong_Kong", name: "Hong Kong, China (HKT)" },
+    { id: "Australia/Sydney", name: "Sydney, Australia (AEDT)" },
+    { id: "Asia/Singapore", name: "Singapore (SGT)" },
+    { id: "Asia/Seoul", name: "Seoul, South Korea (KST)" },
+    { id: "Asia/Dubai", name: "Dubai, UAE (GST)" },
+    { id: "Asia/Kolkata", name: "India (IST)" },
+    { id: "America/Toronto", name: "Toronto, Canada (EST/EDT)" },
+    { id: "America/Sao_Paulo", name: "São Paulo, Brazil (BRT)" },
+    { id: "Africa/Johannesburg", name: "Johannesburg, South Africa (SAST)" }
+  ];
+
+  // 获取浏览器支持的时区
+  const timeZones = Intl.supportedValuesOf('timeZone');
+  
+  // 创建时区选项
+  function populateTimeZones() {
+    const fromZone = document.getElementById('fromZone');
+    const toZone = document.getElementById('toZone');
+    
+    // 清空现有选项
+    fromZone.innerHTML = '';
+    toZone.innerHTML = '';
+    
+    // 添加增强的时区（主要城市）
+    enhancedTimeZones.forEach(zone => {
+      const opt1 = new Option(zone.name, zone.id);
+      const opt2 = new Option(zone.name, zone.id);
+      fromZone.appendChild(opt1);
+      toZone.appendChild(opt2);
+    });
+    
+    // 添加分隔线
+    const separator = new Option('──────────', 'disabled', true, true);
+    separator.disabled = true;
+    fromZone.appendChild(separator.cloneNode(true));
+    toZone.appendChild(separator.cloneNode(true));
+    
+    // 添加所有其他时区
+    timeZones.forEach(zone => {
+      // 跳过已添加的时区
+      if (!enhancedTimeZones.some(e => e.id === zone)) {
+        const opt1 = new Option(zone, zone);
+        const opt2 = new Option(zone, zone);
+        fromZone.appendChild(opt1);
+        toZone.appendChild(opt2);
+      }
+    });
+    
+    // 设置默认值
+    try {
+      const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      fromZone.value = userTimeZone;
+      
+      // 设置目标时区为纽约（欧美用户）或上海（亚洲用户）
+      const isAsianLang = navigator.language.startsWith('zh') || 
+                         navigator.language.startsWith('ja') || 
+                         navigator.language.startsWith('ko');
+      toZone.value = isAsianLang ? 'Asia/Shanghai' : 'America/New_York';
+    } catch (e) {
+      // 如果无法获取用户时区，使用默认值
+      fromZone.value = 'Europe/London';
+      toZone.value = 'Asia/Tokyo';
+    }
+  }
+
+  // 获取指定时区的UTC偏移量（分钟）
+  function getTimezoneOffset(date, timeZone) {
+    try {
+      // 创建源时区的日期字符串
+      const dateString = date.toLocaleString('sv-SE', { timeZone, hour12: false });
+      // 创建本地时区的日期对象（使用相同的时间值）
+      const localDate = new Date(dateString);
+      // 计算UTC时间
+      const utcDate = new Date(date.toLocaleString('sv-SE', { timeZone: 'UTC', hour12: false }));
+      
+      // 计算偏移量（分钟）
+      const offsetMs = utcDate.getTime() - localDate.getTime();
+      return offsetMs / (60 * 1000);
+    } catch (e) {
+      console.error('Error getting timezone offset', e);
+      return 0;
+    }
+  }
+
+  // 转换时间函数
+  function convertTime() {
+    const timeInput = document.getElementById('inputTime').value;
+    const from = document.getElementById('fromZone').value;
+    const to = document.getElementById('toZone').value;
+    const timeFormat = document.querySelector('input[name="time-format"]:checked').value;
+    const showDifference = document.getElementById('show-difference').checked;
+    const lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+    
+    if (!timeInput || !from || !to) return;
+
+    // 创建源时区日期对象
+    const sourceDate = new Date(timeInput);
+    
+    // 转换为目标时区
+    const targetDate = new Date(sourceDate.toLocaleString('en-US', { timeZone: to }));
+    
+    // 格式化时间
+    let timeString;
+    if (timeFormat === '12') {
+      timeString = targetDate.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: true
+      });
+    } else {
+      timeString = targetDate.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: false
+      });
+    }
+    
+    // 格式化日期
+    const dateOptions = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    
+    const dateString = targetDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', dateOptions);
+    
+    // 显示结果
+    document.getElementById('result').textContent = `${dateString}, ${timeString}`;
+    
+    // 计算并显示时间差（修复版）
+    if (showDifference) {
+      // 获取源时区和目标时区的UTC偏移量（分钟）
+      const sourceOffset = getTimezoneOffset(sourceDate, from);
+      const targetOffset = getTimezoneOffset(sourceDate, to);
+      
+      // 计算时差（小时）
+      const diffHours = (targetOffset - sourceOffset) / 60;
+      
+      let diffText;
+      if (diffHours > 0) {
+        diffText = `${Math.abs(diffHours).toFixed(1)} ${lang === 'zh' ? '小时晚于' : 'hours ahead of'}`;
+      } else if (diffHours < 0) {
+        diffText = `${Math.abs(diffHours).toFixed(1)} ${lang === 'zh' ? '小时早于' : 'hours behind'}`;
+      } else {
+        diffText = lang === 'zh' ? '与源时区相同' : 'same as source timezone';
+      }
+      
+      if (lang === 'zh') {
+        document.getElementById('time-difference').textContent = `目标时区 ${diffText} 源时区`;
+      } else {
+        document.getElementById('time-difference').textContent = `Target timezone is ${diffText} source timezone`;
+      }
+    } else {
+      document.getElementById('time-difference').textContent = '';
+    }
+  }
+
+  // 初始化页面
+  document.addEventListener('DOMContentLoaded', () => {
+    populateTimeZones();
+    
+    // 设置当前时间为默认值
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    document.getElementById('inputTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+    
+    // 添加事件监听器
+    document.getElementById('convert-btn').addEventListener('click', convertTime);
+    document.getElementById('inputTime').addEventListener('change', convertTime);
+    document.getElementById('fromZone').addEventListener('change', convertTime);
+    document.getElementById('toZone').addEventListener('change', convertTime);
+    document.querySelectorAll('input[name="time-format"]').forEach(radio => {
+      radio.addEventListener('change', convertTime);
+    });
+    document.getElementById('show-difference').addEventListener('change', convertTime);
+    
+    // 汉堡菜单事件
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // 初始转换
+    convertTime();
+  });
+
+  // 夜间模式切换
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+    
+    // 更新按钮图标
+    const icon = document.querySelector('#theme-toggle svg');
+    if (isDarkMode) {
+      icon.innerHTML = '<path d="M12,3a9,9,0,1,0,9,9,9,9,0,0,0-9-9Zm0,16a7,7,0,0,1-7-7,7.08,7.08,0,0,1,.22-1.71l9.52,9.52A7.08,7.08,0,0,1,12,19Zm6.78-4.29L9.29,5.22A7,7,0,0,1,18.78,14.71Z"/>';
+    } else {
+      icon.innerHTML = '<path d="M12,6a1,1,0,0,0-1,1V17a1,1,0,0,0,2,0V7A1,1,0,0,0,12,6Z"/><path d="M16.94,7.94a1.5,1.5,0,0,0-2.12,0L12,10.76,9.18,7.94A1.5,1.5,0,0,0,7.06,10.06L10.88,14,7.06,17.82a1.5,1.5,0,0,0,2.12,2.12L12,16.12l2.82,2.82a1.5,1.5,0,0,0,2.12-2.12L13.12,14l3.82-3.94A1.5,1.5,0,0,0,16.94,7.94Z"/>';
+    }
+  });
+
+  // 检查保存的夜间模式设置
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    const icon = document.querySelector('#theme-toggle svg');
+    icon.innerHTML = '<path d="M12,3a9,9,0,1,0,9,9,9,9,0,0,0-9-9Zm0,16a7,7,0,0,1-7-7,7.08,7.08,0,0,1,.22-1.71l9.52,9.52A7.08,7.08,0,0,1,12,19Zm6.78-4.29L9.29,5.22A7,7,0,0,1,18.78,14.71Z"/>';
+  }
+
+  // 多语言支持
+  (() => {
+    const translations = {
+      zh: {
+        title: "时区转换器",
+        desc: "轻松将时间从一个时区转换为另一个时区",
+        from_time: "输入时间",
+        from_zone: "从时区",
+        to_zone: "到时区",
+        time_format: "时间格式",
+        format_12: "12小时制",
+        format_24: "24小时制",
+        display_options: "显示选项",
+        show_difference: "显示时间差",
+        converted_time: "转换后时间",
+        convert_btn: "转换时间",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        footer_contact: "联系我们",
+        footer_sitemap: "网站地图",
+        footer_rights: "保留所有权利。",
+        feature1_title: "全球时区覆盖",
+        feature1_desc: "支持所有主要城市和国家，轻松转换世界各地时间",
+        feature2_title: "灵活时间格式",
+        feature2_desc: "可选择12小时制或24小时制，满足不同习惯",
+        feature3_title: "时间差计算",
+        feature3_desc: "清晰显示两个时区之间的时间差异",
+        sidebar_title: "常用工具",
+        sidebar_currency: "货币转换器",
+        sidebar_unit: "单位转换器",
+        sidebar_tip: "小费计算器",
+        sidebar_bmi: "BMI 计算器",
+        sidebar_gpa: "GPA 计算器",
+        sidebar_loan: "贷款计算器"
+      },
+      en: {
+        title: "Timezone Converter",
+        desc: "Easily convert time between different time zones",
+        from_time: "Input Time",
+        from_zone: "From Timezone",
+        to_zone: "To Timezone",
+        time_format: "Time Format",
+        format_12: "12-hour",
+        format_24: "24-hour",
+        display_options: "Display Options",
+        show_difference: "Show time difference",
+        converted_time: "Converted Time",
+        convert_btn: "Convert Time",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        footer_contact: "Contact Us",
+        footer_sitemap: "Sitemap",
+        footer_rights: "All rights reserved.",
+        feature1_title: "Global Timezone Coverage",
+        feature1_desc: "Support for all major cities and countries, easily convert times worldwide",
+        feature2_title: "Flexible Time Formats",
+        feature2_desc: "Choose between 12-hour or 24-hour formats to suit your preferences",
+        feature3_title: "Time Difference Calculation",
+        feature3_desc: "Clearly displays the time difference between two time zones",
+        sidebar_title: "Popular Tools",
+        sidebar_currency: "Currency Converter",
+        sidebar_unit: "Unit Converter",
+        sidebar_tip: "Tip Calculator",
+        sidebar_bmi: "BMI Calculator",
+        sidebar_gpa: "GPA Calculator",
+        sidebar_loan: "Loan Calculator"
+      }
+    };
+    
+    let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+    
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('site-lang', lang);
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          if (el.tagName === 'INPUT' && el.type === 'button') {
+            el.value = translations[lang][key];
+          } else {
+            el.textContent = translations[lang][key];
+          }
+        }
+      });
+      
+      document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+    }
+    
+    setLang(lang);
+    
+    document.getElementById('lang-switch').onclick = () => {
+      lang = lang === 'zh' ? 'en' : 'zh';
+      setLang(lang);
+      // 重新转换时间以更新语言
+      convertTime();
+    };
+  })();
+</script>
+</body>
+</html>

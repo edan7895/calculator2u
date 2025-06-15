@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Body Fat Calculator | Calculator2U</title>
+  <meta name="description" content="Calculate your body fat percentage accurately with our body fat calculator. Understand your body composition and get health recommendations based on your body fat percentage. Supports both metric and imperial units." />
+  <meta name="keywords" content="Body Fat Calculator, Body Fat Percentage, Body Composition, Health Calculator, Fitness Calculator, Body Fat Formula, Body Composition Analysis, Weight Management, Fitness Tracking, BMI Calculator, Metabolism Calculator" />
+  <meta name="author" content="Calculator2U" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.calculator2u.com/body-fat-calculator" />
+  <meta property="og:title" content="Body Fat Calculator" />
+  <meta property="og:description" content="Calculate your body fat percentage accurately with our body fat calculator. Understand your body composition and get health recommendations based on your body fat percentage." />
+  <meta property="og:image" content="https://www.calculator2u.com/images/body-fat-calculator.jpg" />
+  <meta property="og:url" content="https://www.calculator2u.com/body-fat-calculator" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Body Fat Calculator" />
+  <meta name="twitter:description" content="Calculate your body fat percentage accurately with our body fat calculator. Understand your body composition and get health recommendations based on your body fat percentage." />
+  <meta name="twitter:image" content="https://www.calculator2u.com/images/body-fat-calculator.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #a9c8f5;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 720px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#bodyfat-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    form#bodyfat-form > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    input[type=number], select {
+      width: 100%;
+      max-width: 150px;
+      font-size: 1.1rem;
+      padding: 0.4rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      text-align: center;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      align-self: center;
+      margin-top: 1.3rem;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007279;
+    }
+    #result-container {
+      text-align: center;
+      min-height: 250px;
+    }
+    #fat-value {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #008891;
+      margin-bottom: 0.3rem;
+    }
+    #fat-category {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    table.fat-table {
+      margin: 2rem auto;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 500px;
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    table.fat-table thead {
+      background-color: #008891;
+      color: white;
+    }
+    table.fat-table th, table.fat-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    footer p {
+      margin: 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      input[type=number], select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+        <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">中文</button></li>
+      </ul>
+    </nav>
+</header>
+
+<main class="container">
+  <h1 data-i18n="title">Body Fat Calculator</h1>
+  <form id="bodyfat-form" aria-label="Body Fat Calculator Form">
+    <div>
+      <label for="gender" data-i18n="gender">Gender</label>
+      <select id="gender" required>
+        <option value="male" data-i18n="male">Male</option>
+        <option value="female" data-i18n="female">Female</option>
+      </select>
+    </div>
+    <div>
+      <label for="age" data-i18n="age">Age</label>
+      <input type="number" id="age" min="1" max="120" required placeholder="Enter your age" />
+    </div>
+    <div>
+      <label for="height" data-i18n="height">Height (cm)</label>
+      <input type="number" id="height" min="30" max="300" step="0.1" required placeholder="Enter your height" />
+    </div>
+    <div>
+      <label for="neck" data-i18n="neck">Neck (cm)</label>
+      <input type="number" id="neck" min="5" max="100" step="0.1" required placeholder="Enter your neck measurement" />
+    </div>
+    <div>
+      <label for="waist" data-i18n="waist">Waist (cm)</label>
+      <input type="number" id="waist" min="5" max="300" step="0.1" required placeholder="Enter your waist measurement" />
+    </div>
+    <div id="hip-div">
+      <label for="hip" data-i18n="hip">Hip (cm)</label>
+      <input type="number" id="hip" min="5" max="300" step="0.1" placeholder="Enter your hip measurement" />
+    </div>
+    <button type="submit" data-i18n="calculate">Calculate</button>
+  </form>
+
+  <section id="result-container">
+    <div id="fat-value"></div>
+    <div id="fat-category"></div>
+
+
+
+    <table class="fat-table">
+      <thead>
+        <tr>
+          <th data-i18n="fat_percentage">Body Fat %</th>
+          <th data-i18n="category">Category</th>
+        </tr>
+      </thead>
+      <tbody id="fat-table-body">
+        <!-- Table content will be generated by JavaScript -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+
+<footer>
+
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // Internationalization text
+  const i18n = {
+    en: {
+      logo: "Calculator2U",
+      title: "Body Fat Calculator",
+      nav_health: "Health & Body",
+      nav_finance: "Finance & Investment",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about_us: "About Us",
+      lang_switch: "中文",
+      gender: "Gender",
+      male: "Male",
+      female: "Female",
+      age: "Age",
+      height: "Height (cm)",
+      neck: "Neck (cm)",
+      waist: "Waist (cm)",
+      hip: "Hip (cm)",
+      calculate: "Calculate",
+      placeholder_age: "Enter your age",
+      placeholder_height: "Enter your height",
+      placeholder_neck: "Enter your neck measurement",
+      placeholder_waist: "Enter your waist measurement",
+      placeholder_hip: "Enter your hip measurement",
+      fat_percentage: "Body Fat %",
+      category: "Category",
+      male_athlete: "Male: 6-13",
+      female_athlete: "Female: 14-20",
+      male_fitness: "Male: 14-17",
+      female_fitness: "Female: 21-24",
+      male_average: "Male: 18-24",
+      female_average: "Female: 25-31",
+      male_obese: "Male: 25+",
+      female_obese: "Female: 32+",
+      athlete: "Athlete",
+      fitness: "Fitness",
+      average: "Average",
+      obese: "Obese",
+      footer_privacy_policy: "Privacy Policy",
+      footer_terms_of_service: "Terms of Service",
+      result: fat => `Your body fat percentage is ${fat} %`,
+      calculate_first: "Please calculate body fat first",
+    },
+    zh: {
+      logo: "Calculator2U",
+      title: "体脂率计算器",
+      nav_health: "健康与身体",
+      nav_finance: "财务与投资",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about_us: "关于我们",
+      lang_switch: "EN",
+      gender: "性别",
+      male: "男性",
+      female: "女性",
+      age: "年龄",
+      height: "身高 (cm)",
+      neck: "颈围 (cm)",
+      waist: "腰围 (cm)",
+      hip: "臀围 (cm)",
+      calculate: "计算",
+      placeholder_age: "请输入年龄",
+      placeholder_height: "请输入身高",
+      placeholder_neck: "请输入颈围",
+      placeholder_waist: "请输入腰围",
+      placeholder_hip: "请输入臀围",
+      fat_percentage: "体脂率 (%)",
+      category: "分类",
+      male_athlete: "男：6-13",
+      female_athlete: "女：14-20",
+      male_fitness: "男：14-17",
+      female_fitness: "女：21-24",
+      male_average: "男：18-24",
+      female_average: "女：25-31",
+      male_obese: "男：25+",
+      female_obese: "女：32+",
+      athlete: "运动员",
+      fitness: "健身型",
+      average: "平均",
+      obese: "肥胖",
+      footer_privacy_policy: "隐私政策",
+      footer_terms_of_service: "使用条款",
+      result: fat => `您的体脂率为 ${fat} %`,
+      calculate_first: "请先计算体脂率",
+    }
+  };
+
+  // DOM elements
+  const form = document.getElementById('bodyfat-form');
+  const fatValueEl = document.getElementById('fat-value');
+  const fatCategoryEl = document.getElementById('fat-category');
+  const hipDiv = document.getElementById('hip-div');
+  const langBtn = document.getElementById('lang-switch');
+  const fatTableBody = document.getElementById('fat-table-body');
+
+  // Current language
+  let currentLang = 'en';
+
+  // Update language
+  function updateLang(lang) {
+    // Update navigation links
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = i18n[lang][key];
+        } else {
+          el.textContent = i18n[lang][key];
+        }
+      }
+    });
+
+    // Update gender dropdown
+    document.querySelectorAll('#gender option').forEach(option => {
+      const value = option.value;
+      if (i18n[lang][value]) {
+        option.textContent = i18n[lang][value];
+      }
+    });
+
+    // Update table content
+    updateFatTable(lang);
+
+    currentLang = lang;
+  }
+
+  // Update body fat table
+  function updateFatTable(lang) {
+    fatTableBody.innerHTML = `
+      <tr>
+        <td>${i18n[lang].male_athlete}<br>${i18n[lang].female_athlete}</td>
+        <td>${i18n[lang].athlete}</td>
+      </tr>
+      <tr>
+        <td>${i18n[lang].male_fitness}<br>${i18n[lang].female_fitness}</td>
+        <td>${i18n[lang].fitness}</td>
+      </tr>
+      <tr>
+        <td>${i18n[lang].male_average}<br>${i18n[lang].female_average}</td>
+        <td>${i18n[lang].average}</td>
+      </tr>
+      <tr>
+        <td>${i18n[lang].male_obese}<br>${i18n[lang].female_obese}</td>
+        <td>${i18n[lang].obese}</td>
+      </tr>
+    `;
+  }
+
+  // Calculate body fat
+  function calculateFat(gender, height, neck, waist, hip) {
+    if (gender === 'male') {
+      return 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76;
+    } else {
+      return 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(height) - 78.387;
+    }
+  }
+
+  // Get category
+  function getCategory(gender, fat) {
+    if (gender === 'male') {
+      if (fat < 6) return 'Very Low';
+      if (fat <= 13) return 'Athlete';
+      if (fat <= 17) return 'Fitness';
+      if (fat <= 24) return 'Average';
+      return 'Obese';
+    } else {
+      if (fat < 14) return 'Very Low';
+      if (fat <= 20) return 'Athlete';
+      if (fat <= 24) return 'Fitness';
+      if (fat <= 31) return 'Average';
+      return 'Obese';
+    }
+  }
+
+  // Get category display text
+  function getCategoryDisplay(gender, fat) {
+    if (gender === 'male') {
+      if (fat < 6) return i18n[currentLang].male_athlete;
+      if (fat <= 13) return i18n[currentLang].athlete;
+      if (fat <= 17) return i18n[currentLang].male_fitness;
+      if (fat <= 24) return i18n[currentLang].male_average;
+      return i18n[currentLang].male_obese;
+    } else {
+      if (fat < 14) return i18n[currentLang].female_athlete;
+      if (fat <= 20) return i18n[currentLang].athlete;
+      if (fat <= 24) return i18n[currentLang].female_fitness;
+      if (fat <= 31) return i18n[currentLang].female_average;
+      return i18n[currentLang].female_obese;
+    }
+  }
+
+  // Event listeners
+  langBtn.addEventListener('click', () => {
+    updateLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+
+  document.getElementById('gender').addEventListener('change', e => {
+    hipDiv.style.display = e.target.value === 'female' ? 'block' : 'none';
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const gender = document.getElementById('gender').value;
+    const height = parseFloat(document.getElementById('height').value);
+    const neck = parseFloat(document.getElementById('neck').value);
+    const waist = parseFloat(document.getElementById('waist').value);
+    const hip = parseFloat(document.getElementById('hip').value) || 0;
+
+    if (gender === 'female' && hip <= 0) {
+      alert(i18n[currentLang].calculate_first);
+      return;
+    }
+
+    const fat = calculateFat(gender, height, neck, waist, hip);
+    const category = getCategory(gender, fat);
+    fatValueEl.textContent = i18n[currentLang].result(fat);
+    fatCategoryEl.textContent = getCategoryDisplay(gender, fat);
+  });
+
+  // Initialize language
+  updateLang(currentLang);
+</script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Auto Loan Calculator | Calculator2U</title>
+  <meta name="description" content="Calculate your auto loan payments accurately with our auto loan calculator. Plan your car finances with detailed visualizations and tables showing your payment schedule." />
+  <meta name="keywords" content="Auto Loan Calculator, Car Loan Calculator, Financial Calculator, Loan Payment Calculator, Interest Calculator, Debt Calculator, Financial Planning" />
+  <meta name="author" content="Calculator2U" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.calculator2u.com/auto-loan-calculator" />
+  <meta property="og:title" content="Auto Loan Calculator" />
+  <meta property="og:description" content="Calculate your auto loan payments accurately with our auto loan calculator. Plan your car finances with detailed visualizations and tables showing your payment schedule." />
+  <meta property="og:image" content="https://www.calculator2u.com/images/auto-loan-calculator.jpg" />
+  <meta property="og:url" content="https://www.calculator2u.com/auto-loan-calculator" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Auto Loan Calculator" />
+  <meta name="twitter:description" content="Calculate your auto loan payments accurately with our auto loan calculator. Plan your car finances with detailed visualizations and tables showing your payment schedule." />
+  <meta name="twitter:image" content="https://www.calculator2u.com/images/auto-loan-calculator.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #a9c8f5;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#loan-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    form#loan-form > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+    input[type=number] {
+      font-size: 1rem;
+      padding: 0.4rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      text-align: right;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007279;
+    }
+    #result-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .result-item {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #006d77;
+      margin-bottom: 1rem;
+    }
+    .charts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .chart-wrapper {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+    table.result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    table.result-table th, table.result-table td {
+      padding: 0.8rem;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+    }
+    table.result-table th {
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    footer p {
+      margin: 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .table-controls {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .table-view-toggle {
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .table-view-toggle.active {
+      background-color: #006d77;
+      color: white;
+    }
+    @media screen and (max-width: 768px) {
+      form#loan-form {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+        <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">中文</button></li>
+      </ul>
+    </nav>
+</header>
+
+<main class="container">
+  <h1 data-i18n="title">Auto Loan Calculator</h1>
+  <form id="loan-form" aria-label="Auto Loan Calculator Form">
+    <div>
+      <label for="amount" data-i18n="amount">Car Loan Amount ($)</label>
+      <input type="number" id="amount" min="0" step="0.01" required placeholder="Enter car loan amount" />
+    </div>
+    <div>
+      <label for="interest" data-i18n="interest">Annual Interest Rate (%)</label>
+      <input type="number" id="interest" min="0" step="0.01" required placeholder="Enter interest rate" />
+    </div>
+    <div>
+      <label for="years" data-i18n="years">Loan Term (Years)</label>
+      <input type="number" id="years" min="0" step="1" required placeholder="Enter loan term" />
+    </div>
+    <button type="submit" data-i18n="calculate">Calculate</button>
+  </form>
+
+  <section id="result-container">
+    <div id="monthly-payment" class="result-item"></div>
+    <div id="total-payment" class="result-item"></div>
+    <div id="total-interest" class="result-item"></div>
+
+
+    <div class="charts-container">
+      <div class="chart-wrapper">
+        <canvas id="payment-chart"></canvas>
+      </div>
+    </div>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th data-i18n="period">Period</th>
+          <th data-i18n="principal">Principal</th>
+          <th data-i18n="interest">Interest</th>
+          <th data-i18n="payment">Payment</th>
+          <th data-i18n="balance">Balance</th>
+        </tr>
+      </thead>
+      <tbody id="result-table-body">
+        <!-- Table content will be generated by JavaScript -->
+      </tbody>
+    </table>
+
+    <div class="table-controls">
+      <button id="toggle-monthly-view" class="table-view-toggle active" data-view="monthly" data-i18n="view_monthly">Monthly View</button>
+      <button id="toggle-yearly-view" class="table-view-toggle" data-view="yearly" data-i18n="view_yearly">Yearly View</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Internationalization text
+  const i18n = {
+    en: {
+      logo: "Calculator2U",
+      title: "Auto Loan Calculator",
+      nav_health: "Health & Body",
+      nav_finance: "Finance & Investment",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about_us: "About Us",
+      lang_switch: "中文",
+      amount: "Car Loan Amount ($)",
+      interest: "Annual Interest Rate (%)",
+      years: "Loan Term (Years)",
+      calculate: "Calculate",
+      footer_privacy_policy: "Privacy Policy",
+      footer_terms_of_service: "Terms of Service",
+      period: "Period",
+      principal: "Principal",
+      interest: "Interest",
+      payment: "Payment",
+      balance: "Balance",
+      monthly_payment: "Monthly Payment: $",
+      total_payment: "Total Payment: $",
+      total_interest: "Total Interest: $",
+      view_monthly: "Monthly View",
+      view_yearly: "Yearly View"
+    },
+    zh: {
+      logo: "Calculator2U",
+      title: "汽车贷款计算器",
+      nav_health: "健康与身体",
+      nav_finance: "财务与投资",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about_us: "关于我们",
+      lang_switch: "EN",
+      amount: "汽车贷款金额 ($)",
+      interest: "年利率 (%)",
+      years: "贷款期限 (年)",
+      calculate: "计算",
+      footer_privacy_policy: "隐私政策",
+      footer_terms_of_service: "使用条款",
+      period: "期数",
+      principal: "本金",
+      interest: "利息",
+      payment: "还款",
+      balance: "剩余余额",
+      monthly_payment: "每月还款金额: ¥",
+      total_payment: "还款总额: ¥",
+      total_interest: "支付利息总额: ¥",
+      view_monthly: "月度视图",
+      view_yearly: "年度视图"
+    }
+  };
+
+  // DOM elements
+  const form = document.getElementById('loan-form');
+  const monthlyPayment = document.getElementById('monthly-payment');
+  const totalPayment = document.getElementById('total-payment');
+  const totalInterest = document.getElementById('total-interest');
+  const resultTableBody = document.getElementById('result-table-body');
+  const langBtn = document.getElementById('lang-switch');
+  const paymentChartCanvas = document.getElementById('payment-chart');
+  const toggleMonthlyView = document.getElementById('toggle-monthly-view');
+  const toggleYearlyView = document.getElementById('toggle-yearly-view');
+
+  // Current language and chart instances
+  let currentLang = 'en';
+  let paymentChart;
+  let loanResults = [];
+  let displayMode = 'monthly'; // Default to monthly view
+
+  // Update language
+  function updateLang(lang) {
+    // Update navigation links
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = i18n[lang][key];
+        } else {
+          el.textContent = i18n[lang][key];
+        }
+      }
+    });
+
+    currentLang = lang;
+  }
+
+  // Format currency
+  function formatCurrency(amount) {
+    return currentLang === 'zh' 
+      ? amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') 
+      : amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  // Calculate auto loan payments using simple interest
+  function calculateAutoLoanPayment(principal, rate, years) {
+    const results = [];
+    let currentPrincipal = principal;
+    let totalInterest = 0;
+
+    const monthlyRate = rate / 12 / 100;
+    const numberOfPayments = years * 12;
+
+    // For auto loans, we often use simple interest calculated daily and applied monthly
+    // This is a simplified version for demonstration
+    const monthlyPayment = principal * monthlyRate + principal / numberOfPayments;
+
+    for (let month = 1; month <= numberOfPayments; month++) {
+      const interest = currentPrincipal * monthlyRate;
+      const principalPayment = monthlyPayment - interest;
+      currentPrincipal -= principalPayment;
+      totalInterest += interest;
+
+      results.push({
+        period: month,
+        principal: principalPayment,
+        interest: interest,
+        payment: monthlyPayment,
+        balance: currentPrincipal
+      });
+    }
+
+    return { results, monthlyPayment, totalInterest, totalPayment: principal + totalInterest };
+  }
+
+  // Update charts
+  function updateCharts(results) {
+    // Payment chart
+    const paymentData = {
+      labels: results.map((_, index) => `Month ${index + 1}`),
+      datasets: [
+        {
+          label: i18n[currentLang].principal,
+          data: results.map(r => r.principal),
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          fill: false
+        },
+        {
+          label: i18n[currentLang].interest,
+          data: results.map(r => r.interest),
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          fill: false
+        }
+      ]
+    };
+
+    if (!paymentChart) {
+      paymentChart = new Chart(paymentChartCanvas, {
+        type: 'line',
+        data: paymentData,
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            tooltip: {
+              mode: 'index',
+              intersect: false
+            },
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: `${i18n[currentLang].monthly_payment}${formatCurrency(paymentData.datasets[0].data[0] + paymentData.datasets[1].data[0])}`
+            }
+          }
+        }
+      });
+    } else {
+      paymentChart.data = paymentData;
+      paymentChart.options.plugins.title.text = `${i18n[currentLang].monthly_payment}${formatCurrency(paymentData.datasets[0].data[0] + paymentData.datasets[1].data[0])}`;
+      paymentChart.update();
+    }
+  }
+
+  // Update table display based on mode
+  function updateTableDisplay() {
+    resultTableBody.innerHTML = '';
+    const results = displayMode === 'monthly' ? loanResults : yearlySummary();
+
+    results.forEach((result, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${result.period}</td>
+        <td>${formatCurrency(result.principal)}</td>
+        <td>${formatCurrency(result.interest)}</td>
+        <td>${formatCurrency(result.payment)}</td>
+        <td>${formatCurrency(result.balance)}</td>
+      `;
+      resultTableBody.appendChild(row);
+    });
+
+    toggleMonthlyView.classList.toggle('active', displayMode === 'monthly');
+    toggleYearlyView.classList.toggle('active', displayMode === 'yearly');
+  }
+
+  // Create yearly summary from monthly results
+  function yearlySummary() {
+    const yearlyResults = [];
+    let currentYear = 1;
+    let yearlyPrincipal = 0;
+    let yearlyInterest = 0;
+    let yearlyPayment = 0;
+    let yearlyBalance = loanResults[0].balance;
+
+    for (let i = 0; i < loanResults.length; i++) {
+      yearlyPrincipal += loanResults[i].principal;
+      yearlyInterest += loanResults[i].interest;
+      yearlyPayment = yearlyPrincipal + yearlyInterest; // Annual payment is sum of principal and interest
+      yearlyBalance = loanResults[i].balance;
+
+      if ((i + 1) % 12 === 0 || i === loanResults.length - 1) {
+        yearlyResults.push({
+          period: currentYear,
+          principal: yearlyPrincipal,
+          interest: yearlyInterest,
+          payment: yearlyPayment,
+          balance: yearlyBalance
+        });
+        currentYear++;
+        yearlyPrincipal = 0;
+        yearlyInterest = 0;
+      }
+    }
+
+    return yearlyResults;
+  }
+
+  // Event listeners
+  langBtn.addEventListener('click', () => {
+    updateLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+
+  toggleMonthlyView.addEventListener('click', () => {
+    displayMode = 'monthly';
+    updateTableDisplay();
+  });
+
+  toggleYearlyView.addEventListener('click', () => {
+    displayMode = 'yearly';
+    updateTableDisplay();
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const principal = parseFloat(document.getElementById('amount').value);
+    const rate = parseFloat(document.getElementById('interest').value);
+    const years = parseInt(document.getElementById('years').value);
+
+    if (isNaN(principal) || principal <= 0 || isNaN(rate) || rate <= 0 || isNaN(years) || years <= 0) {
+      alert(i18n[currentLang].calculate_first);
+      return;
+    }
+
+    const { results, monthlyPayment, totalInterest, totalPayment } = calculateAutoLoanPayment(principal, rate, years);
+    loanResults = results;
+
+    // Update results display
+    monthlyPayment.textContent = i18n[currentLang].monthly_payment + formatCurrency(monthlyPayment);
+    totalPayment.textContent = i18n[currentLang].total_payment + formatCurrency(totalPayment);
+    totalInterest.textContent = i18n[currentLang].total_interest + formatCurrency(totalInterest);
+
+    // Update table
+    updateTableDisplay();
+
+    // Update charts
+    updateCharts(results);
+  });
+
+  // Initialize language
+  updateLang(currentLang);
+</script>
+</body>
+</html>

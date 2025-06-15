@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">服务条款 | Terms of Service</title>
+  <meta name="description" content="Calculator2U 服务条款，说明用户使用本网站的相关规则和责任。" />
+  <meta name="keywords" content="服务条款, Terms of Service, 用户协议, Calculator2U" />
+  <meta name="author" content="Calculator2U" />
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RLH4FLZBZF');
+  </script>
+  <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #83c5be;
+      --accent-color: #ff9e6d;
+      --light-color: #edf6f9;
+      --dark-color: #003f5c;
+      --text-color: #333;
+      --text-light: #555;
+      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Noto Sans SC', sans-serif;
+      background: #f9f9f9;
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* 导航栏样式 */
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 100;
+    }
+    
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .lang-switch:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 主要内容区域 */
+    .container {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      flex: 1;
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--dark-color);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+    
+    h2 {
+      color: var(--dark-color);
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.4rem;
+    }
+    
+    p, ul {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 页脚样式 */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: var(--light-color);
+      color: var(--text-light);
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    footer a:hover {
+      color: var(--dark-color);
+      text-decoration: underline;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      
+      .nav-container.active {
+        max-height: 500px;
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .nav-links li {
+        width: 100%;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 0.8rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+      
+      .lang-switch {
+        align-self: center;
+        margin-top: 0.5rem;
+      }
+      
+      .container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.2rem;
+      }
+      
+      h1 {
+        font-size: 1.4rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* 主题切换开关 */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="logo">
+      <span class="logo-icon">🧮</span>
+      <span>Calculator2U</span>
+    </a>
+    
+    <button class="hamburger" id="hamburger">☰</button>
+    
+    <div class="nav-container" id="navContainer">
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      </ul>
+      <button class="lang-switch" id="lang-switch">EN</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1 data-i18n="title">服务条款</h1>
+
+
+    <p data-i18n="intro">
+      欢迎您使用 Calculator2U 网站。请在使用本网站前仔细阅读以下服务条款。
+    </p>
+
+    <h2 data-i18n="use_of_service_title">服务使用</h2>
+    <p data-i18n="use_of_service_text">
+      您同意遵守所有适用的法律法规，不以任何非法方式使用本网站及其提供的服务。
+    </p>
+
+    <h2 data-i18n="user_responsibility_title">用户责任</h2>
+    <p data-i18n="user_responsibility_text">
+      您应对使用本网站产生的风险自行负责。Calculator2U 不保证所有服务无误或适用于所有目的。
+    </p>
+
+    <h2 data-i18n="intellectual_property_title">知识产权</h2>
+    <p data-i18n="intellectual_property_text">
+      本网站内容受版权保护，未经许可不得复制、传播或用于商业目的。
+    </p>
+
+    <h2 data-i18n="limitation_liability_title">责任限制</h2>
+    <p data-i18n="limitation_liability_text">
+      Calculator2U 对因使用本网站服务而产生的任何直接或间接损失不承担责任。
+    </p>
+
+    <h2 data-i18n="modification_title">条款变更</h2>
+    <p data-i18n="modification_text">
+      我们保留随时修改服务条款的权利，修改后条款自发布之日起生效。
+    </p>
+
+    <h2 data-i18n="governing_law_title">适用法律</h2>
+    <p data-i18n="governing_law_text">
+      本服务条款适用中华人民共和国法律，因本条款产生的争议由本地法院管辖。
+    </p>
+
+    <h2 data-i18n="contact_title">联系我们</h2>
+    <p data-i18n="contact_text">
+      如对本服务条款有疑问，请通过网站联系方式与我们联系。
+    </p>
+  </main>
+
+
+  <footer>
+
+    <div class="footer-links">
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a>
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+      <a href="/contact.html" data-i18n="footer_contact">联系我们</a>
+      <a href="/about.html" data-i18n="footer_about">关于我们</a>
+    </div>
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span></p>
+  </footer>
+  
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+
+  <script>
+    (() => {
+      // 翻译数据
+      const translations = {
+        zh: {
+          title: "服务条款",
+          intro: "欢迎您使用 Calculator2U 网站。请在使用本网站前仔细阅读以下服务条款。",
+          use_of_service_title: "服务使用",
+          use_of_service_text: "您同意遵守所有适用的法律法规，不以任何非法方式使用本网站及其提供的服务。",
+          user_responsibility_title: "用户责任",
+          user_responsibility_text: "您应对使用本网站产生的风险自行负责。Calculator2U 不保证所有服务无误或适用于所有目的。",
+          intellectual_property_title: "知识产权",
+          intellectual_property_text: "本网站内容受版权保护，未经许可不得复制、传播或用于商业目的。",
+          limitation_liability_title: "责任限制",
+          limitation_liability_text: "Calculator2U 对因使用本网站服务而产生的任何直接或间接损失不承担责任。",
+          modification_title: "条款变更",
+          modification_text: "我们保留随时修改服务条款的权利，修改后条款自发布之日起生效。",
+          governing_law_title: "适用法律",
+          governing_law_text: "本服务条款适用中华人民共和国法律，因本条款产生的争议由本地法院管辖。",
+          contact_title: "联系我们",
+          contact_text: "如对本服务条款有疑问，请通过网站联系方式与我们联系。",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
+          footer_contact: "联系我们",
+          footer_about: "关于我们",
+          footer_rights: "保留所有权利。"
+        },
+        en: {
+          title: "Terms of Service",
+          intro: "Welcome to Calculator2U. Please read these Terms of Service carefully before using our website.",
+          use_of_service_title: "Use of Service",
+          use_of_service_text: "You agree to comply with all applicable laws and regulations and not to use our website or services for any illegal purposes.",
+          user_responsibility_title: "User Responsibility",
+          user_responsibility_text: "You assume all risks associated with your use of the website. Calculator2U does not guarantee the accuracy or suitability of all services for any purpose.",
+          intellectual_property_title: "Intellectual Property",
+          intellectual_property_text: "Content on this site is protected by copyright and may not be copied, distributed, or used commercially without permission.",
+          limitation_liability_title: "Limitation of Liability",
+          limitation_liability_text: "Calculator2U shall not be liable for any direct or indirect damages arising from the use of this website.",
+          modification_title: "Changes to Terms",
+          modification_text: "We reserve the right to modify these Terms of Service at any time. Changes become effective upon posting.",
+          governing_law_title: "Governing Law",
+          governing_law_text: "These Terms are governed by the laws of the People's Republic of China, and disputes are subject to local courts.",
+          contact_title: "Contact Us",
+          contact_text: "If you have any questions about these Terms, please contact us via the website.",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
+          footer_contact: "Contact Us",
+          footer_about: "About Us",
+          footer_rights: "All rights reserved."
+        }
+      };
+
+      // 语言状态管理
+      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+      // 设置语言函数
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      // 初始化语言
+      setLang(lang);
+      
+      // 语言切换事件
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        lang = (lang === 'zh') ? 'en' : 'zh';
+        setLang(lang);
+      });
+      
+      // 汉堡菜单切换
+      const hamburger = document.getElementById('hamburger');
+      const navContainer = document.getElementById('navContainer');
+      
+      hamburger.addEventListener('click', () => {
+        navContainer.classList.toggle('active');
+      });
+      
+      // 点击菜单外区域关闭菜单
+      document.addEventListener('click', (e) => {
+        if (!navContainer.contains(e.target) && 
+            e.target !== hamburger && 
+            navContainer.classList.contains('active')) {
+          navContainer.classList.remove('active');
+        }
+      });
+      
+      // 主题切换功能
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+      });
+      
+      // 响应式调整 - 窗口大小变化时调整菜单
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navContainer.classList.contains('active')) {
+          navContainer.classList.remove('active');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
