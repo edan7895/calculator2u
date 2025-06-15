@@ -1,0 +1,1401 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Goal Weight Calculator | Calculator2U</title>
+<meta name="description" content="Calculate how long it will take to reach your target weight and get personalized calorie and nutrition recommendations." />
+<meta name="keywords" content="goal weight calculator, weight loss calculator, weight gain calculator, fitness calculator" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/health/goal-weight-calculator.html" />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/health/goal-weight-calculator.html"/>
+<meta property="og:title" content="Goal Weight Calculator | Calculator2U" />
+<meta property="og:description" content="Calculate how long it will take to reach your target weight and get personalized calorie and nutrition recommendations." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/health/goal-weight-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/goal-weight-calculator.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Goal Weight Calculator Styles */
+  .goal-weight-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .goal-weight-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 400px) {
+    .unit-toggle {
+      flex-direction: column;
+    }
+  }
+
+  .unit-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .unit-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* FIXED: Improved responsive styles for small screens */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .goal-weight-container {
+      padding: 0 0.5rem;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+    }
+    
+    .info-card {
+      overflow-x: auto;
+    }
+    
+    .reference-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    
+    .reference-table {
+      min-width: 100%;
+      font-size: 0.85rem;
+    }
+    
+    .reference-table th,
+    .reference-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+    }
+    
+    .input-field input,
+    .input-field select {
+      max-width: 100%;
+    }
+    
+    .chart-labels {
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .macros-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .tdee-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #006d77;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .stat-title {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+  
+  .health-advice {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+  }
+  
+  .health-advice h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .activity-level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .activity-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .activity-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  /* Fix: Add table container */
+  .reference-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .reference-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .reference-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .reference-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .reference-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Macros grid */
+  .macros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .macro-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .macro-name {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.5rem;
+  }
+  
+  .macro-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+  
+  .macro-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+  
+  /* Timeline visualization */
+  .timeline-container {
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #006d77;
+  }
+  
+  .timeline-bar {
+    height: 20px;
+    background: #e0f7fa;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4db5bd, #006d77);
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background: #ffd166;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  
+  .timeline-marker-text {
+    position: absolute;
+    top: -25px;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #006d77;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .goal-weight-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Goal Weight Calculator</h1>
+    <p>Calculate how long it will take to reach your target weight and get personalized calorie & nutrition recommendations</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Goal Weight Calculator</h2>
+    
+    <div class="goal-weight-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="unit-toggle">
+          <div class="unit-option active" id="metric-option">Metric (kg, cm)</div>
+          <div class="unit-option" id="imperial-option">Imperial (lb, in)</div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="age">Age (years)</label>
+            <input type="number" id="age" placeholder="Enter age" min="0" max="120">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="height" id="height-label">Height (cm)</label>
+            <input type="number" id="height" placeholder="Enter height" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="current-weight" id="current-weight-label">Current Weight (kg)</label>
+            <input type="number" id="current-weight" placeholder="Current weight" min="0" step="0.1">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="goal-weight" id="goal-weight-label">Goal Weight (kg)</label>
+            <input type="number" id="goal-weight" placeholder="Target weight" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="body-fat">Body Fat % (optional)</label>
+            <input type="number" id="body-fat" placeholder="Enter body fat %" min="0" max="100" step="0.1">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="rate" id="rate-label">Weekly Goal (kg/week)</label>
+            <input type="number" id="rate" placeholder="0.5 kg/week" min="0.1" max="2" step="0.1" value="0.5">
+          </div>
+        </div>
+        
+        <div class="activity-level">
+          <div class="activity-option" data-multiplier="1.2">
+            <i class="fas fa-couch"></i>
+            <p>Sedentary<br>(Little or no exercise)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.375">
+            <i class="fas fa-walking"></i>
+            <p>Lightly Active<br>(Light exercise/sports 1-3 days/week)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.55">
+            <i class="fas fa-running"></i>
+            <p>Moderately Active<br>(Moderate exercise/sports 3-5 days/week)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.725">
+            <i class="fas fa-dumbbell"></i>
+            <p>Very Active<br>(Hard exercise/sports 6-7 days/week)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.9">
+            <i class="fas fa-hard-hat"></i>
+            <p>Super Active<br>(Very hard exercise/physical job)</p>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculate Goal Plan
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Your Goal Weight Plan</h3>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-title">Weight to Change</div>
+              <div class="stat-value" id="weight-change">-10 kg</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-title">Estimated Time</div>
+              <div class="stat-value" id="time-estimate">20 weeks</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-title">Target Date</div>
+              <div class="stat-value" id="target-date">Oct 15, 2025</div>
+            </div>
+          </div>
+          
+          <div class="timeline-container">
+            <div class="timeline-header">
+              <span>Today</span>
+              <span id="timeline-end">Goal Date</span>
+            </div>
+            <div class="timeline-bar">
+              <div class="timeline-progress" id="timeline-progress" style="width: 30%;"></div>
+              <div class="timeline-marker" style="left: 30%;">
+                <div class="timeline-marker-text">Current</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="health-advice">
+            <h3><i class="fas fa-fire"></i> Daily Calorie Target</h3>
+            <p>Based on your activity level and goal, your recommended daily calorie intake is:</p>
+            <div class="tdee-value" id="calorie-target">1850</div>
+            <p>calories per day</p>
+          </div>
+          
+          <div class="health-advice">
+            <h3><i class="fas fa-apple-alt"></i> Macronutrient Recommendations</h3>
+            <p>For optimal results with your goal, follow these nutrition guidelines:</p>
+            
+            <div class="macros-grid">
+              <div class="macro-item">
+                <div class="macro-name">Protein</div>
+                <div class="macro-value">150g</div>
+                <div class="macro-description">30% of calories</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">Carbs</div>
+                <div class="macro-value">230g</div>
+                <div class="macro-description">50% of calories</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">Fats</div>
+                <div class="macro-value">52g</div>
+                <div class="macro-description">20% of calories</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">Fiber</div>
+                <div class="macro-value">30g</div>
+                <div class="macro-description">Daily minimum</div>
+              </div>
+            </div>
+            
+            <p>These ratios support sustainable weight loss while preserving muscle mass.</p>
+          </div>
+          
+          <div class="health-advice" id="diet-advice">
+            <h3><i class="fas fa-lightbulb"></i> Health Recommendations</h3>
+            <ul>
+              <li>Aim for 7-9 hours of quality sleep each night to support metabolism</li>
+              <li>Combine cardio and strength training for optimal fat loss</li>
+              <li>Stay hydrated with at least 2-3 liters of water daily</li>
+              <li>Track your progress weekly and adjust as needed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Understanding Healthy Weight Goals</h3>
+        <p>Achieving your goal weight requires a sustainable approach that combines proper nutrition, physical activity, and realistic expectations. This calculator helps you create a personalized plan based on scientifically-backed principles.</p>
+        
+        <h3>Key Principles for Success</h3>
+        <p>Research shows that successful weight management involves:</p>
+        <ul>
+          <li><strong>Gradual changes:</strong> Aim for 0.5-1kg (1-2lb) loss/gain per week</li>
+          <li><strong>Calorie balance:</strong> Create a moderate deficit/surplus of 500-1000 calories/day</li>
+          <li><strong>Macronutrient balance:</strong> Adequate protein to preserve muscle mass</li>
+          <li><strong>Consistency:</strong> Sustainable habits over time yield the best results</li>
+        </ul>
+        
+        <h3>How the Calculation Works</h3>
+        <p>This calculator uses the Mifflin-St Jeor equation to determine your Basal Metabolic Rate (BMR), then factors in your activity level to calculate your Total Daily Energy Expenditure (TDEE).</p>
+        
+        <p><strong>Mifflin-St Jeor Equation:</strong></p>
+        <ul>
+          <li>Male: <em>BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5</em></li>
+          <li>Female: <em>BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161</em></li>
+        </ul>
+        
+        <h3>Activity Multipliers</h3>
+        <p>Your TDEE is calculated by multiplying your BMR by an activity factor:</p>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>Activity Level</th>
+              <th>Multiplier</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sedentary</td>
+              <td>1.2</td>
+              <td>Little to no exercise, desk job</td>
+            </tr>
+            <tr>
+              <td>Lightly Active</td>
+              <td>1.375</td>
+              <td>Light exercise 1-3 days/week</td>
+            </tr>
+            <tr>
+              <td>Moderately Active</td>
+              <td>1.55</td>
+              <td>Moderate exercise 3-5 days/week</td>
+            </tr>
+            <tr>
+              <td>Very Active</td>
+              <td>1.725</td>
+              <td>Hard exercise 6-7 days/week</td>
+            </tr>
+            <tr>
+              <td>Super Active</td>
+              <td>1.9</td>
+              <td>Physical job or training twice daily</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3>Healthy Weight Change Rates</h3>
+        <p>For sustainable results, follow these guidelines:</p>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>Goal</th>
+              <th>Recommended Rate</th>
+              <th>Calorie Adjustment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Weight Loss</td>
+              <td>0.5-1 kg/week</td>
+              <td>500-1000 calorie deficit</td>
+            </tr>
+            <tr>
+              <td>Weight Gain</td>
+              <td>0.25-0.5 kg/week</td>
+              <td>250-500 calorie surplus</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> Success Tips</h3>
+          <p>Remember that weight change isn't linear. Plateaus are normal - focus on long-term trends rather than daily fluctuations. Combine your nutrition plan with regular physical activity for optimal health results.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for health calculators and wellness tools. Providing accurate, reliable health metrics since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Health Calculators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/health/bmi-calculator.html">BMI Calculator</a></li>
+          <li><a href="/en/health/bmr-calculator.html">BMR Calculator</a></li>
+          <li><a href="/en/health/body-fat-calculator.html">Body Fat Calculator</a></li>
+          <li><a href="/en/health/tdee-calculator.html">TDEE Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: These calculators provide estimates only. Consult a healthcare professional for medical advice.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the health section
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = healthPath ? `/zh/health/${healthPath}` : '/zh/health/goal-weight-calculator.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/health/${healthPath}` : '/es/health/goal-weight-calculator.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/health/${healthPath}` : '/de/health/goal-weight-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/health/${healthPath}` : '/fr/health/goal-weight-calculator.html';
+            break;
+          default: // English
+            targetUrl = healthPath ? `/en/health/${healthPath}` : '/en/health/goal-weight-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Goal Weight Calculator Functionality
+      const metricOption = document.getElementById('metric-option');
+      const imperialOption = document.getElementById('imperial-option');
+      const genderSelect = document.getElementById('gender');
+      const ageInput = document.getElementById('age');
+      const heightInput = document.getElementById('height');
+      const currentWeightInput = document.getElementById('current-weight');
+      const goalWeightInput = document.getElementById('goal-weight');
+      const bodyFatInput = document.getElementById('body-fat');
+      const rateInput = document.getElementById('rate');
+      const heightLabel = document.getElementById('height-label');
+      const currentWeightLabel = document.getElementById('current-weight-label');
+      const goalWeightLabel = document.getElementById('goal-weight-label');
+      const rateLabel = document.getElementById('rate-label');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const weightChange = document.getElementById('weight-change');
+      const timeEstimate = document.getElementById('time-estimate');
+      const targetDate = document.getElementById('target-date');
+      const calorieTarget = document.getElementById('calorie-target');
+      const timelineProgress = document.getElementById('timeline-progress');
+      const timelineEnd = document.getElementById('timeline-end');
+      
+      // Activity level selection
+      const activityOptions = document.querySelectorAll('.activity-option');
+      let selectedActivity = 1.55; // default to moderate activity
+      
+      activityOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          activityOptions.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+          selectedActivity = parseFloat(option.getAttribute('data-multiplier'));
+        });
+      });
+      
+      // Set default unit to metric
+      let isMetric = true;
+      
+      // Unit toggle functionality
+      metricOption.addEventListener('click', () => {
+        if (!isMetric) {
+          isMetric = true;
+          metricOption.classList.add('active');
+          imperialOption.classList.remove('active');
+          heightLabel.textContent = 'Height (cm)';
+          currentWeightLabel.textContent = 'Current Weight (kg)';
+          goalWeightLabel.textContent = 'Goal Weight (kg)';
+          rateLabel.textContent = 'Weekly Goal (kg/week)';
+          rateInput.placeholder = '0.5 kg/week';
+        }
+      });
+      
+      imperialOption.addEventListener('click', () => {
+        if (isMetric) {
+          isMetric = false;
+          imperialOption.classList.add('active');
+          metricOption.classList.remove('active');
+          heightLabel.textContent = 'Height (in)';
+          currentWeightLabel.textContent = 'Current Weight (lb)';
+          goalWeightLabel.textContent = 'Goal Weight (lb)';
+          rateLabel.textContent = 'Weekly Goal (lb/week)';
+          rateInput.placeholder = '1 lb/week';
+        }
+      });
+      
+      // Calculate goal weight function
+      function calculateGoalPlan() {
+        const gender = genderSelect.value;
+        const age = parseFloat(ageInput.value);
+        const height = parseFloat(heightInput.value);
+        const currentWeight = parseFloat(currentWeightInput.value);
+        const goalWeight = parseFloat(goalWeightInput.value);
+        const bodyFat = bodyFatInput.value ? parseFloat(bodyFatInput.value) : null;
+        const weeklyRate = parseFloat(rateInput.value);
+        
+        if (!gender || !age || !height || !currentWeight || !goalWeight || 
+            age <= 0 || height <= 0 || currentWeight <= 0 || goalWeight <= 0 || weeklyRate <= 0) {
+          alert('Please enter valid values for all required fields.');
+          return;
+        }
+        
+        // Convert imperial to metric if needed for calculations
+        const heightInCm = isMetric ? height : height * 2.54;
+        const currentWeightInKg = isMetric ? currentWeight : currentWeight * 0.453592;
+        const goalWeightInKg = isMetric ? goalWeight : goalWeight * 0.453592;
+        const weeklyRateInKg = isMetric ? weeklyRate : weeklyRate * 0.453592;
+        
+        // Calculate weight difference
+        const weightDifference = goalWeightInKg - currentWeightInKg;
+        const absWeightDifference = Math.abs(weightDifference);
+        
+        // Calculate estimated time
+        const weeksNeeded = Math.round(absWeightDifference / weeklyRateInKg);
+        const monthsNeeded = Math.round(weeksNeeded / 4.345);
+        
+        // Calculate target date
+        const today = new Date();
+        const targetDateObj = new Date(today);
+        targetDateObj.setDate(targetDateObj.getDate() + (weeksNeeded * 7));
+        
+        // Format target date
+        const formattedDate = targetDateObj.toLocaleDateString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric' 
+        });
+        
+        // Calculate BMR (Mifflin-St Jeor)
+        let bmr;
+        if (gender === 'male') {
+          bmr = (10 * currentWeightInKg) + (6.25 * heightInCm) - (5 * age) + 5;
+        } else {
+          bmr = (10 * currentWeightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
+        }
+        
+        // Calculate TDEE
+        const tdee = Math.round(bmr * selectedActivity);
+        
+        // Calculate calorie target based on goal
+        let calorieTargetValue;
+        if (weightDifference < 0) { // Weight loss
+          // 7700 calories ≈ 1kg of fat
+          calorieTargetValue = tdee - Math.round((weeklyRateInKg * 7700) / 7);
+        } else { // Weight gain
+          calorieTargetValue = tdee + Math.round((weeklyRateInKg * 7700) / 7);
+        }
+        
+        // Calculate macros
+        const proteinGrams = Math.round(currentWeightInKg * 2.2); // Higher protein for weight loss
+        const proteinCalories = proteinGrams * 4;
+        const fatGrams = Math.round((calorieTargetValue * 0.25) / 9); // 25% of calories from fat
+        const fatCalories = fatGrams * 9;
+        const carbCalories = calorieTargetValue - proteinCalories - fatCalories;
+        const carbGrams = Math.round(carbCalories / 4);
+        const fiberGrams = 30; // Recommended daily fiber intake
+        
+        // Update UI with results
+        const weightChangeText = weightDifference < 0 ? 
+          `-${absWeightDifference.toFixed(1)} kg` : 
+          `+${absWeightDifference.toFixed(1)} kg`;
+          
+        weightChange.textContent = weightChangeText;
+        timeEstimate.textContent = `${weeksNeeded} weeks (${monthsNeeded} months)`;
+        targetDate.textContent = formattedDate;
+        calorieTarget.textContent = calorieTargetValue;
+        
+        // Update timeline
+        timelineProgress.style.width = '30%'; // Placeholder - would be calculated based on progress
+        timelineEnd.textContent = formattedDate;
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateGoalPlan);
+      
+      // Also allow pressing Enter in input fields
+      const inputFields = [ageInput, heightInput, currentWeightInput, goalWeightInput, bodyFatInput, rateInput];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateGoalPlan();
+        });
+      });
+      
+      // Initialize default selections
+      activityOptions[2].classList.add('active');
+    })();
+  </script>
+</body>
+</html></body></html> 

@@ -1,0 +1,1433 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Typing Speed Test | Calculator2U</title>
+<meta name="description" content="Test and improve your typing speed with our Typing Speed Test game! Measure your WPM and accuracy with various difficulty levels." />
+<meta name="keywords" content="typing test, typing speed, typing game, wpm test, keyboard practice" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="/en/games/typing-speed-test.html" />
+<meta property="og:title" content="Typing Speed Test | Calculator2U" />
+<meta property="og:description" content="Test and improve your typing speed with our Typing Speed Test game! Measure your WPM and accuracy with various difficulty levels." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/en/games/typing-speed-test.html" />
+<meta property="og:image" content="/assets/images/typing-test.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 8px;
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 1.8rem;
+    height: 0.2rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 0.5rem;
+  }
+
+  /* Main Content */
+  .container {
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 0 0.8rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Game Styles */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .game-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+  
+  .score-box {
+    background: #006d77;
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    min-width: 100px;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .score-label {
+    font-size: 0.8rem;
+    font-weight: normal;
+    opacity: 0.9;
+  }
+  
+  .score-value {
+    font-size: 1.2rem;
+  }
+  
+  .typing-container {
+    width: 100%;
+    max-width: 92vw;
+    background-color: #fafafa;
+    border-radius: 6px;
+    position: relative;
+    touch-action: none;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Typing Test Styles */
+  .typing-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1rem;
+  }
+  
+  .timer-display {
+    background: #4db5bd;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .quote-display {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    min-height: 180px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+  
+  .current-word {
+    background-color: #b3e5fc;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  .typed-correct {
+    color: #4CAF50;
+  }
+  
+  .typed-incorrect {
+    color: #e53935;
+    text-decoration: underline;
+  }
+  
+  .typing-input {
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 2px solid #4db5bd;
+    border-radius: 8px;
+    margin: 1rem 0;
+    resize: none;
+    height: 120px;
+    transition: all 0.3s;
+  }
+  
+  .typing-input:focus {
+    outline: none;
+    border-color: #006d77;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.3);
+  }
+  
+  /* Difficulty Options */
+  .options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .option-btn {
+    padding: 0.8rem 1.2rem;
+    background: #e0f7fa;
+    color: #006d77;
+    border: 1px solid #4db5bd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .option-btn.active {
+    background: #4db5bd;
+    color: white;
+    border-color: #4db5bd;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .game-btn {
+    padding: 0.7rem 1.2rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+    max-width: 160px;
+    justify-content: center;
+  }
+  
+  .game-btn:hover {
+    background: #006d77;
+  }
+  
+  /* Game messages */
+  .game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .game-message.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .game-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #006d77;
+  }
+  
+  .game-message p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    max-width: 90%;
+  }
+  
+  .game-message .final-score {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006d77;
+    margin: 1rem 0;
+  }
+  
+  .game-message button {
+    padding: 0.8rem 1.8rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .game-message button:hover {
+    background: #006d77;
+  }
+  
+  /* Instructions */
+  .instructions {
+    margin-top: 1.2rem;
+    padding: 0.8rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .instructions h3 {
+    color: #006d77;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.1rem;
+  }
+  
+  .instructions p {
+    margin-bottom: 0.6rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Keyboard Visualization */
+  .keyboard-visual {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(3, 40px);
+    gap: 4px;
+    margin-top: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .key {
+    background: #e0f7fa;
+    border: 1px solid #4db5bd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    grid-column: span 2;
+  }
+  
+  .key.space {
+    grid-column: span 8;
+  }
+  
+  .key.used {
+    background: #b3e5fc;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 1.5rem 0.8rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(3px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (min-width: 768px) {
+    .navbar {
+      padding: 1rem 2rem;
+    }
+    
+    .navbar .logo {
+      font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .hero {
+      padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      padding: 0 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .game-container {
+      flex-direction: row;
+      gap: 2rem;
+      max-width: 1200px;
+      padding: 0 1.5rem;
+    }
+    
+    .card {
+      padding: 1.8rem;
+      flex: 1;
+    }
+    
+    .quote-display {
+      font-size: 1.5rem;
+      min-height: 200px;
+    }
+    
+    .instructions {
+      font-size: 1rem;
+    }
+    
+    .instructions h3 {
+      font-size: 1.2rem;
+    }
+    
+    footer {
+      padding: 2.5rem 1rem;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Mobile navigation active state */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: #006d77;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 0.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s ease;
+    z-index: 99;
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+  
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .close-menu {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Info Card Styles */
+  .card h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.2rem;
+  }
+
+  .card ul {
+    margin: 0.8rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .card li {
+    margin-bottom: 0.4rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    color: #555;
+    margin: 0.8rem 0;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 480px) {
+    .score-box {
+      min-width: 80px;
+      padding: 0.4rem 0.8rem;
+    }
+    
+    .score-value {
+      font-size: 1rem;
+    }
+    
+    .quote-display {
+      font-size: 1.1rem;
+      padding: 1rem;
+      min-height: 150px;
+    }
+    
+    .typing-input {
+      font-size: 1rem;
+      height: 100px;
+    }
+    
+    .game-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      max-width: 140px;
+    }
+    
+    .option-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+    }
+    
+    .keyboard-visual {
+      display: none; /* Hide on small screens */
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+    </nav>
+    
+    <ul class="nav-links" id="navLinks">
+      <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+      <li><a href="/en/health/index.html">Health & Body</a></li>
+      <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+      <li><a href="/en/education/index.html">Education & Learning</a></li>
+      <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+      <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+      <li><a href="/en/generator/index.html">Generator</a></li>
+      <li><a href="/en/games/index.html" class="active">Games</a></li>
+      <li><a href="/about-en.html">About Us</a></li>
+      <li class="lang-selector">
+        <select id="lang-select" class="lang-select">
+          <option value="en">English</option>
+          <option value="zh">中文 (Chinese)</option>
+          <option value="es">Español (Spanish)</option>
+          <option value="de">Deutsch (German)</option>
+          <option value="fr">Français (French)</option>
+        </select>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Typing Speed Test</h1>
+    <p>Test and improve your typing speed with our Typing Speed Test game! Measure your WPM and accuracy with various difficulty levels.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Test Your Typing Skills</h2>
+    
+    <div class="game-container">
+      <!-- Game Card -->
+      <div class="card">
+        <div class="game-board-container">
+          <div class="score-container">
+            <div class="score-box">
+              <span class="score-label">WPM</span>
+              <span class="score-value" id="wpm">0</span>
+            </div>
+            <div class="score-box">
+              <span class="score-label">ACCURACY</span>
+              <span class="score-value" id="accuracy">100%</span>
+            </div>
+            <div class="score-box">
+              <span class="score-label">TIME</span>
+              <span class="score-value" id="timer">60s</span>
+            </div>
+            <div class="score-box">
+              <span class="score-label">SCORE</span>
+              <span class="score-value" id="score">0</span>
+            </div>
+          </div>
+          
+          <div class="typing-container" id="typing-container">
+            <div class="typing-header">
+              <div class="timer-display" id="timer-display">60 seconds</div>
+              <div class="difficulty-display" id="difficulty-display">Medium</div>
+            </div>
+            
+            <div class="quote-display" id="quote-display">
+              <!-- Text to be typed will appear here -->
+            </div>
+            
+            <textarea 
+              class="typing-input" 
+              id="typing-input" 
+              placeholder="Start typing the text above here..."
+              spellcheck="false"
+            ></textarea>
+            
+            <div class="options-container">
+              <button class="option-btn active" data-difficulty="easy">Easy</button>
+              <button class="option-btn" data-difficulty="medium">Medium</button>
+              <button class="option-btn" data-difficulty="hard">Hard</button>
+              <button class="option-btn" data-difficulty="expert">Expert</button>
+            </div>
+            
+            <div class="keyboard-visual" id="keyboard-visual">
+              <!-- Keyboard visualization will be generated here -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="controls">
+          <button class="game-btn" id="restart-btn">
+            <i class="fas fa-redo"></i> Restart
+          </button>
+          <button class="game-btn" id="new-text-btn">
+            <i class="fas fa-sync"></i> New Text
+          </button>
+          <button class="game-btn" id="pause-btn">
+            <i class="fas fa-pause"></i> Pause
+          </button>
+        </div>
+        
+        <div class="instructions">
+          <h3>How to Play:</h3>
+          <p>Type the text displayed above as quickly and accurately as possible. Your typing speed (WPM - Words Per Minute) and accuracy will be calculated in real-time.</p>
+          <p>Choose difficulty levels:</p>
+          <ul>
+            <li><strong>Easy:</strong> Simple words and short sentences</li>
+            <li><strong>Medium:</strong> Common words and medium-length sentences</li>
+            <li><strong>Hard:</strong> Complex words and longer sentences</li>
+            <li><strong>Expert:</strong> Technical terms and complex sentences</li>
+          </ul>
+          <p>Press "Restart" to reset the current test, or "New Text" to get a different passage.</p>
+        </div>
+      </div>
+      
+      <!-- Info Card -->
+      <div class="card">
+        <h3>About Typing Speed Test</h3>
+        <p>Our Typing Speed Test is designed to help you measure and improve your typing skills. Whether you're a beginner or an experienced typist, regular practice can significantly increase your typing speed and accuracy.</p>
+        
+        <h3>Game Features</h3>
+        <ul>
+          <li>Real-time WPM and accuracy tracking</li>
+          <li>Multiple difficulty levels</li>
+          <li>Diverse text passages</li>
+          <li>Detailed performance statistics</li>
+          <li>Keyboard visualization</li>
+          <li>Score tracking</li>
+        </ul>
+        
+        <h3>Benefits of Improving Typing Speed</h3>
+        <p>Faster and more accurate typing can:</p>
+        <ul>
+          <li>Increase productivity in work and studies</li>
+          <li>Reduce physical strain and fatigue</li>
+          <li>Improve focus and concentration</li>
+          <li>Enhance overall computer efficiency</li>
+          <li>Boost confidence in digital tasks</li>
+        </ul>
+        
+        <h3>Typing Speed Standards</h3>
+        <p>Typing speeds are generally categorized as:</p>
+        <ul>
+          <li><strong>Beginner:</strong> 20-30 WPM</li>
+          <li><strong>Intermediate:</strong> 30-45 WPM</li>
+          <li><strong>Advanced:</strong> 45-65 WPM</li>
+          <li><strong>Professional:</strong> 65-90 WPM</li>
+          <li><strong>Expert:</strong> 90+ WPM</li>
+        </ul>
+        <p>With regular practice, most people can reach 60+ WPM within a few months.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and educational tools. Enjoy our Typing Speed Test since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Other Games</h3>
+        <ul class="footer-links">
+          <li><a href="/en/games/math-puzzle.html" id="game1">Math Puzzle Game</a></li>
+          <li><a href="/en/games/2048-game.html" id="game2">2048 Game</a></li>
+          <li><a href="/en/games/memory-game.html" id="game3">Memory Game</a></li>
+          <li><a href="/en/games/number-guessing.html" id="game4">Number Guessing</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: This Typing Speed Test is provided for entertainment and educational purposes only.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const closeMenu = document.getElementById('closeMenu');
+      const langSelect = document.getElementById('lang-select');
+      const quoteDisplay = document.getElementById('quote-display');
+      const typingInput = document.getElementById('typing-input');
+      const wpmDisplay = document.getElementById('wpm');
+      const accuracyDisplay = document.getElementById('accuracy');
+      const timerDisplay = document.getElementById('timer');
+      const scoreDisplay = document.getElementById('score');
+      const timerMainDisplay = document.getElementById('timer-display');
+      const difficultyDisplay = document.getElementById('difficulty-display');
+      const restartBtn = document.getElementById('restart-btn');
+      const newTextBtn = document.getElementById('new-text-btn');
+      const pauseBtn = document.getElementById('pause-btn');
+      const gameMessage = document.getElementById('game-message');
+      const optionBtns = document.querySelectorAll('.option-btn');
+      const keyboardVisual = document.getElementById('keyboard-visual');
+      
+      // Game variables
+      let originalText = '';
+      let timer = 60;
+      let timerInterval = null;
+      let gameActive = false;
+      let startTime = 0;
+      let totalTyped = 0;
+      let correctTyped = 0;
+      let difficulty = 'medium';
+      let currentTextIndex = 0;
+      let usedKeys = new Set();
+      
+      // Sample texts by difficulty
+      const textSamples = {
+        easy: [
+          "The quick brown fox jumps over the lazy dog. This is a simple typing test for beginners.",
+          "Practice makes perfect. Keep typing every day to improve your skills. Start slow and focus on accuracy.",
+          "Hello world! This is an easy typing exercise. Try to type without looking at your keyboard.",
+          "Coding is fun and rewarding. Start with simple programs and gradually take on more complex challenges.",
+          "The sun shines bright in the clear blue sky. Birds are singing and flowers are blooming in the garden."
+        ],
+        medium: [
+          "Typing speed is measured in words per minute (WPM). To improve, practice regularly and focus on accuracy before speed.",
+          "Programming requires logical thinking and problem-solving skills. Start with the basics and build your knowledge step by step.",
+          "Effective communication is essential in both personal and professional relationships. Choose your words carefully.",
+          "Learning to touch type can significantly improve your productivity. Keep your fingers on the home row for best results.",
+          "The internet has revolutionized how we access information and connect with others around the globe."
+        ],
+        hard: [
+          "Cryptography involves complex mathematical algorithms to secure digital communications against unauthorized access.",
+          "Neuroscience explores the intricate workings of the human brain, seeking to understand consciousness and cognition.",
+          "Quantum computing harnesses quantum mechanical phenomena to perform computations at unprecedented speeds.",
+          "Philosophical discourse often examines epistemological questions concerning the nature and scope of human knowledge.",
+          "Metaphysical concepts challenge our conventional understanding of reality, space, and time."
+        ],
+        expert: [
+          "Pneumonoultramicroscopicsilicovolcanoconiosis, a lung disease caused by inhaling volcanic ash, is often cited as the longest word in English dictionaries.",
+          "Floccinaucinihilipilification, the act of estimating something as worthless, exemplifies the complexity and richness of the English lexicon.",
+          "Hippopotomonstrosesquippedaliophobia, ironically, refers to the fear of long words, presenting a linguistic paradox.",
+          "Antidisestablishmentarianism originally described opposition to the disestablishment of the Church of England in the 19th century.",
+          "Pseudopseudohypoparathyroidism, a rare genetic disorder, demonstrates medical terminology's intricate morphological constructions."
+        ]
+      };
+      
+      // Initialize the game
+      function initGame() {
+        // Reset game state
+        timer = 60;
+        totalTyped = 0;
+        correctTyped = 0;
+        gameActive = false;
+        currentTextIndex = 0;
+        usedKeys.clear();
+        
+        // Update UI
+        wpmDisplay.textContent = '0';
+        accuracyDisplay.textContent = '100%';
+        timerDisplay.textContent = '60s';
+        scoreDisplay.textContent = '0';
+        timerMainDisplay.textContent = '60 seconds';
+        typingInput.value = '';
+        typingInput.disabled = false;
+        
+        // Generate new text
+        generateText();
+        
+        // Hide game message
+        document.querySelector('.game-message')?.classList.remove('show');
+        
+        // Generate keyboard visualization
+        generateKeyboard();
+        
+        // Focus input field
+        typingInput.focus();
+      }
+      
+      // Generate text based on difficulty
+      function generateText() {
+        const texts = textSamples[difficulty];
+        originalText = texts[Math.floor(Math.random() * texts.length)];
+        quoteDisplay.innerHTML = '';
+        
+        // Split text into words and create spans
+        originalText.split(' ').forEach(word => {
+          const wordSpan = document.createElement('span');
+          wordSpan.textContent = word + ' ';
+          quoteDisplay.appendChild(wordSpan);
+        });
+        
+        // Highlight first word
+        const words = quoteDisplay.querySelectorAll('span');
+        if (words.length > 0) {
+          words[0].classList.add('current-word');
+        }
+        
+        // Update difficulty display
+        difficultyDisplay.textContent = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+      }
+      
+      // Generate keyboard visualization
+      function generateKeyboard() {
+        keyboardVisual.innerHTML = '';
+        
+        // Top row
+        'QWERTYUIOP'.split('').forEach(char => {
+          const key = document.createElement('div');
+          key.className = 'key';
+          key.textContent = char;
+          keyboardVisual.appendChild(key);
+        });
+        
+        // Middle row
+        const middleRow = document.createElement('div');
+        middleRow.style.gridColumn = 'span 2';
+        keyboardVisual.appendChild(middleRow);
+        
+        'ASDFGHJKL'.split('').forEach(char => {
+          const key = document.createElement('div');
+          key.className = 'key';
+          key.textContent = char;
+          keyboardVisual.appendChild(key);
+        });
+        
+        const middleEnd = document.createElement('div');
+        middleEnd.style.gridColumn = 'span 3';
+        keyboardVisual.appendChild(middleEnd);
+        
+        // Bottom row
+        const bottomRowStart = document.createElement('div');
+        bottomRowStart.style.gridColumn = 'span 3';
+        keyboardVisual.appendChild(bottomRowStart);
+        
+        'ZXCVBNM'.split('').forEach(char => {
+          const key = document.createElement('div');
+          key.className = 'key';
+          key.textContent = char;
+          keyboardVisual.appendChild(key);
+        });
+        
+        const space = document.createElement('div');
+        space.className = 'key space';
+        space.textContent = 'SPACE';
+        keyboardVisual.appendChild(space);
+      }
+      
+      // Highlight used keys
+      function highlightKey(char) {
+        // Convert to uppercase and handle space
+        const keyChar = char === ' ' ? 'SPACE' : char.toUpperCase();
+        usedKeys.add(keyChar);
+        
+        // Highlight the key
+        const keys = keyboardVisual.querySelectorAll('.key');
+        keys.forEach(key => {
+          if (key.textContent === keyChar) {
+            key.classList.add('used');
+          }
+        });
+      }
+      
+      // Start the game when typing begins
+      function startGame() {
+        if (!gameActive) {
+          gameActive = true;
+          startTime = new Date();
+          
+          // Start timer
+          if (timerInterval) {
+            clearInterval(timerInterval);
+          }
+          
+          timerInterval = setInterval(() => {
+            timer--;
+            timerDisplay.textContent = `${timer}s`;
+            timerMainDisplay.textContent = `${timer} seconds`;
+            
+            if (timer <= 0) {
+              endGame();
+            }
+          }, 1000);
+        }
+      }
+      
+      // Update the typing display
+      function updateTypingDisplay() {
+        const typedValue = typingInput.value;
+        const words = quoteDisplay.querySelectorAll('span');
+        
+        // Reset all words
+        words.forEach(word => {
+          word.classList.remove('current-word');
+          word.classList.remove('typed-correct');
+          word.classList.remove('typed-incorrect');
+        });
+        
+        // Split typed text into words
+        const typedWords = typedValue.split(' ');
+        let allCorrect = true;
+        let currentWordIndex = 0;
+        
+        // Check each word
+        for (let i = 0; i < typedWords.length; i++) {
+          if (i < words.length) {
+            const originalWord = words[i].textContent.trim();
+            const typedWord = typedWords[i];
+            
+            if (i < typedWords.length - 1) {
+              // Completed word
+              if (typedWord === originalWord) {
+                words[i].classList.add('typed-correct');
+              } else {
+                words[i].classList.add('typed-incorrect');
+                allCorrect = false;
+              }
+            } else {
+              // Current word
+              words[i].classList.add('current-word');
+              if (typedWord !== originalWord.substring(0, typedWord.length)) {
+                allCorrect = false;
+              }
+            }
+            
+            currentWordIndex = i;
+          }
+        }
+        
+        // Update current word index
+        currentTextIndex = currentWordIndex;
+        
+        // Calculate accuracy
+        totalTyped = typedValue.length;
+        correctTyped = 0;
+        
+        for (let i = 0; i < totalTyped; i++) {
+          if (typedValue[i] === originalText[i]) {
+            correctTyped++;
+          }
+        }
+        
+        const accuracy = totalTyped > 0 ? Math.round((correctTyped / totalTyped) * 100) : 100;
+        accuracyDisplay.textContent = `${accuracy}%`;
+        
+        // Calculate WPM (words per minute)
+        const timeElapsed = (new Date() - startTime) / 60000; // minutes
+        const wordsTyped = typedValue.trim().split(/\s+/).length;
+        const wpm = timeElapsed > 0 ? Math.round(wordsTyped / timeElapsed) : 0;
+        wpmDisplay.textContent = wpm;
+        
+        // Calculate score
+        const score = Math.round(wpm * accuracy / 10);
+        scoreDisplay.textContent = score;
+        
+        // Check if text is completed
+        if (typedValue.trim() === originalText.trim()) {
+          endGame();
+        }
+      }
+      
+      // End the game
+      function endGame() {
+        gameActive = false;
+        clearInterval(timerInterval);
+        typingInput.disabled = true;
+        
+        // Calculate final WPM and accuracy
+        const timeElapsed = (new Date() - startTime) / 60000;
+        const wordsTyped = typingInput.value.trim().split(/\s+/).length;
+        const wpm = timeElapsed > 0 ? Math.round(wordsTyped / timeElapsed) : 0;
+        const accuracy = totalTyped > 0 ? Math.round((correctTyped / totalTyped) * 100) : 100;
+        const score = Math.round(wpm * accuracy / 10);
+        
+        // Show game over message
+        const message = document.createElement('div');
+        message.className = 'game-message';
+        message.innerHTML = `
+          <h2>Test Complete!</h2>
+          <p>Your typing results:</p>
+          <p>Speed: <strong>${wpm} WPM</strong></p>
+          <p>Accuracy: <strong>${accuracy}%</strong></p>
+          <p>Score: <strong>${score}</strong></p>
+          <div class="final-score">${score}</div>
+          <button id="play-again">Test Again</button>
+        `;
+        typingContainer.appendChild(message);
+        message.classList.add('show');
+        
+        // Add event listener to play again button
+        document.getElementById('play-again').addEventListener('click', () => {
+          message.remove();
+          initGame();
+        });
+      }
+      
+      // Toggle game pause
+      function togglePause() {
+        if (pauseBtn.innerHTML.includes('pause')) {
+          // Pause the game
+          gameActive = false;
+          clearInterval(timerInterval);
+          pauseBtn.innerHTML = '<i class="fas fa-play"></i> Resume';
+          typingInput.disabled = true;
+        } else {
+          // Resume the game
+          gameActive = true;
+          pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+          timerInterval = setInterval(() => {
+            timer--;
+            timerDisplay.textContent = `${timer}s`;
+            timerMainDisplay.textContent = `${timer} seconds`;
+            
+            if (timer <= 0) {
+              endGame();
+            }
+          }, 1000);
+          typingInput.disabled = false;
+          typingInput.focus();
+        }
+      }
+      
+      // Set difficulty level
+      function setDifficulty(level) {
+        difficulty = level;
+        
+        // Update active button
+        optionBtns.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.difficulty === level) {
+            btn.classList.add('active');
+          }
+        });
+        
+        // Generate new text with selected difficulty
+        generateText();
+      }
+      
+      // Event Listeners
+      typingInput.addEventListener('input', () => {
+        if (!gameActive && typingInput.value.length > 0) {
+          startGame();
+        }
+        
+        // Highlight last typed character
+        if (typingInput.value.length > 0) {
+          const lastChar = typingInput.value[typingInput.value.length - 1];
+          highlightKey(lastChar);
+        }
+        
+        updateTypingDisplay();
+      });
+      
+      restartBtn.addEventListener('click', initGame);
+      newTextBtn.addEventListener('click', generateText);
+      pauseBtn.addEventListener('click', togglePause);
+      
+      // Difficulty buttons
+      optionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          setDifficulty(btn.dataset.difficulty);
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.add('active');
+      });
+      
+      closeMenu.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/games/typing-speed-test.html';
+            break;
+          case 'es':
+            targetUrl = '/es/games/typing-speed-test.html';
+            break;
+          case 'de':
+            targetUrl = '/de/games/typing-speed-test.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/games/typing-speed-test.html';
+            break;
+          default: // English
+            targetUrl = '/en/games/typing-speed-test.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize the game on page load
+      window.addEventListener('load', initGame);
+    })();
+  </script>
+</body>
+</html></body></html> 

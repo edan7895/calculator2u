@@ -1,0 +1,1218 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Body Fat Calculator | Calculator2U</title>
+<meta name="description" content="Calculate your body fat percentage to understand your body composition and evaluate your health status." />
+<meta name="keywords" content="body fat calculator, body fat percentage, health calculator, fitness calculator" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/health/body-fat-calculator.html" />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/body-fat-calculator.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/body-fat-calculator.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/body-fat-calculator.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/body-fat-calculator.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/body-fat-calculator.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/health/body-fat-calculator.html"/>
+<meta property="og:title" content="Body Fat Calculator | Calculator2U" />
+<meta property="og:description" content="Calculate your body fat percentage to understand your body composition and evaluate your health status." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/health/body-fat-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/body-fat-calculator.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+html, body {
+  overflow-x: hidden;
+}
+
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 多语言选择器样式 */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Body Fat Calculator Styles */
+  .body-fat-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .body-fat-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+@media (max-width: 400px) {
+  .unit-toggle {
+    flex-direction: column;
+  }
+}
+
+  .unit-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .unit-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* FIXED: Improved responsive styles for small screens */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .body-fat-container {
+      padding: 0 0.5rem;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+    }
+    
+    .info-card {
+      overflow-x: auto;
+    }
+    
+    .reference-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    
+    .reference-table {
+      min-width: 100%;
+      font-size: 0.85rem;
+    }
+    
+    .reference-table th,
+    .reference-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+    }
+    
+    .input-field input,
+    .input-field select {
+      max-width: 100%;
+    }
+    
+    .chart-labels {
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .body-fat-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #006d77;
+  }
+  
+  .body-fat-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .body-fat-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .body-fat-item-title {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.5rem;
+  }
+  
+  .body-fat-item-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+  
+  .health-advice {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+  }
+  
+  .health-advice h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+  }
+  
+  .health-advice ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .health-advice li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .health-advice p {
+    margin-bottom: 1rem;
+  }
+  
+  /* 健康建议突出显示 */
+  .health-advice-important {
+    background-color: #ffd166;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  /* 修复：添加表格容器 */
+  .reference-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .reference-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .reference-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .reference-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .reference-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .body-fat-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Body Fat Calculator</h1>
+    <p>Calculate your body fat percentage to evaluate your body composition and health status</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Body Fat Calculator</h2>
+    
+    <div class="body-fat-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="unit-toggle">
+          <div class="unit-option active" id="metric-option">Metric (kg, cm)</div>
+          <div class="unit-option" id="imperial-option">Imperial (lb, in)</div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="age">Age (years)</label>
+            <input type="number" id="age" placeholder="Enter age" min="10" max="120">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="weight" id="weight-label">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="Enter weight" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="height" id="height-label">Height (cm)</label>
+            <input type="number" id="height" placeholder="Enter height" min="0" step="0.1">
+          </div>
+        </div>
+        
+        <div class="input-field">
+          <label for="neck">Neck Circumference (cm)</label>
+          <input type="number" id="neck" placeholder="Enter neck circumference" min="0" step="0.1">
+        </div>
+        
+        <div class="input-field">
+          <label for="waist">Waist Circumference (cm)</label>
+          <input type="number" id="waist" placeholder="Enter waist circumference" min="0" step="0.1">
+        </div>
+        
+        <div class="input-field">
+          <label for="hip">Hip Circumference (cm)</label>
+          <input type="number" id="hip" placeholder="Enter hip circumference" min="0" step="0.1">
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculate Body Fat
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Your Body Fat Result</h3>
+          <div class="body-fat-value" id="body-fat-value">25</div>
+          <div class="body-fat-breakdown">
+            <div class="body-fat-item">
+              <div class="body-fat-item-title">Body Fat Category</div>
+              <div class="body-fat-item-value" id="category-value">Normal</div>
+            </div>
+            <div class="body-fat-item">
+              <div class="body-fat-item-title">Essential Fat</div>
+              <div class="body-fat-item-value" id="essential-value">2-5%</div>
+            </div>
+            <div class="body-fat-item">
+              <div class="body-fat-item-title">Healthy Fat Range</div>
+              <div class="body-fat-item-value" id="range-value">18-25%</div>
+            </div>
+          </div>
+          
+          <div class="health-advice" id="health-advice">
+            <h3><i class="fas fa-heartbeat"></i> Body Fat Analysis</h3>
+            <p>Your body fat percentage is <strong>25%</strong>. This indicates a healthy body composition.</p>
+            <div class="health-advice-important">
+              <h4>Important Health Considerations</h4>
+              <p>Body fat percentage is a better indicator of fitness and health than BMI alone. Maintaining a healthy body fat percentage can reduce your risk of chronic diseases.</p>
+            </div>
+          </div>
+          
+          <div class="health-advice" id="recommendations">
+            <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+            <p>To maintain or improve your body composition:</p>
+            <ul>
+              <li>Engage in regular cardiovascular exercise</li>
+              <li>Incorporate strength training into your routine</li>
+              <li>Follow a balanced diet with adequate protein</li>
+              <li>Monitor your progress over time</li>
+              <li>Consider consulting with a fitness professional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Understanding Body Fat</h3>
+        <p>Body fat percentage represents the total mass of fat divided by total body weight. It is a more accurate measure of health than BMI alone. Healthy body fat ranges vary by age and gender.</p>
+        
+        <h3>Body Fat Categories</h3>
+        <p>Body fat percentage can be categorized as:</p>
+        <ul>
+          <li><strong>Essential Fat:</strong> 2-5% for men, 10-13% for women</li>
+          <li><strong>Athletes:</strong> 6-13% for men, 14-20% for women</li>
+          <li><strong>Fitness:</strong> 14-17% for men, 21-24% for women</li>
+          <li><strong>Acceptable:</strong> 18-24% for men, 25-31% for women</li>
+          <li><strong>Obese:</strong> 25%+ for men, 32%+ for women</li>
+        </ul>
+        
+        <h3>Body Fat Calculation Method</h3>
+        <p>This calculator uses the U.S. Navy circumference method, which estimates body fat using gender, age, weight, height, and circumferences of neck, waist, and hip.</p>
+        
+        <div class="reference-table-container">
+          <h3>Body Fat Reference Table</h3>
+          <table class="reference-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Male</th>
+                <th>Female</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Essential Fat</td>
+                <td>2-5%</td>
+                <td>10-13%</td>
+              </tr>
+              <tr>
+                <td>Athletes</td>
+                <td>6-13%</td>
+                <td>14-20%</td>
+              </tr>
+              <tr>
+                <td>Fitness</td>
+                <td>14-17%</td>
+                <td>21-24%</td>
+              </tr>
+              <tr>
+                <td>Acceptable</td>
+                <td>18-24%</td>
+                <td>25-31%</td>
+              </tr>
+              <tr>
+                <td>Obese</td>
+                <td>25%+</td>
+                <td>32%+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> Health Tips</h3>
+          <p>Body fat percentage should be considered alongside other health metrics. Regular exercise and a balanced diet are key to maintaining healthy body composition. Consider consulting with a healthcare professional for personalized advice.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for health calculators and wellness tools. Providing accurate, reliable health metrics since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Health Calculators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/health/bmi-calculator.html">BMI Calculator</a></li>
+          <li><a href="/en/health/bmr-calculator.html">BMR Calculator</a></li>
+          <li><a href="/en/health/body-fat-calculator.html">Body Fat Calculator</a></li>
+          <li><a href="/en/health/tdee-calculator.html">TDEE Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: These calculators provide estimates only. Consult a healthcare professional for medical advice.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the health section
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = healthPath ? `/zh/health/${healthPath}` : '/zh/health/body-fat-calculator.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/health/${healthPath}` : '/es/health/body-fat-calculator.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/health/${healthPath}` : '/de/health/body-fat-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/health/${healthPath}` : '/fr/health/body-fat-calculator.html';
+            break;
+          default: // English
+            targetUrl = healthPath ? `/en/health/${healthPath}` : '/en/health/body-fat-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      // Body Fat Calculator Functionality
+      const metricOption = document.getElementById('metric-option');
+      const imperialOption = document.getElementById('imperial-option');
+      const genderSelect = document.getElementById('gender');
+      const ageInput = document.getElementById('age');
+      const weightInput = document.getElementById('weight');
+      const heightInput = document.getElementById('height');
+      const neckInput = document.getElementById('neck');
+      const waistInput = document.getElementById('waist');
+      const hipInput = document.getElementById('hip');
+      const weightLabel = document.getElementById('weight-label');
+      const heightLabel = document.getElementById('height-label');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const bodyFatValue = document.getElementById('body-fat-value');
+      const categoryValue = document.getElementById('category-value');
+      const essentialValue = document.getElementById('essential-value');
+      const rangeValue = document.getElementById('range-value');
+      const healthAdvice = document.getElementById('health-advice');
+      
+      // Set default unit to metric
+      let isMetric = true;
+      
+      // Unit toggle functionality
+      metricOption.addEventListener('click', () => {
+        if (!isMetric) {
+          isMetric = true;
+          metricOption.classList.add('active');
+          imperialOption.classList.remove('active');
+          weightLabel.textContent = 'Weight (kg)';
+          heightLabel.textContent = 'Height (cm)';
+          weightInput.placeholder = 'Enter weight in kg';
+          heightInput.placeholder = 'Enter height in cm';
+        }
+      });
+      
+      imperialOption.addEventListener('click', () => {
+        if (isMetric) {
+          isMetric = false;
+          imperialOption.classList.add('active');
+          metricOption.classList.remove('active');
+          weightLabel.textContent = 'Weight (lb)';
+          heightLabel.textContent = 'Height (in)';
+          weightInput.placeholder = 'Enter weight in lb';
+          heightInput.placeholder = 'Enter height in inches';
+        }
+      });
+      
+      // Calculate Body Fat function
+      function calculateBodyFat() {
+        const gender = genderSelect.value;
+        const age = parseFloat(ageInput.value);
+        const weight = parseFloat(weightInput.value);
+        const height = parseFloat(heightInput.value);
+        const neck = parseFloat(neckInput.value);
+        const waist = parseFloat(waistInput.value);
+        const hip = parseFloat(hipInput.value);
+        
+        if (!gender || !age || !weight || !height || !neck || !waist || !hip || age <= 0 || weight <= 0 || height <= 0) {
+          alert('Please enter valid values for all fields.');
+          return;
+        }
+        
+        // Convert imperial to metric if needed
+        const weightInKg = isMetric ? weight : weight * 0.453592;
+        const heightInCm = isMetric ? height : height * 2.54;
+        const neckInCm = isMetric ? neck : neck * 2.54;
+        const waistInCm = isMetric ? waist : waist * 2.54;
+        const hipInCm = isMetric ? hip : hip * 2.54;
+        
+        // U.S. Navy formula
+        let bodyFat;
+        
+        if (gender === 'male') {
+          bodyFat = 495 / (
+            1.0324 - 
+            0.19077 * Math.log10(waistInCm - neckInCm) + 
+            0.15456 * Math.log10(heightInCm)
+          ) - 450;
+        } else {
+          bodyFat = 495 / (
+            1.29579 - 
+            0.35004 * Math.log10(waistInCm + hipInCm - neckInCm) + 
+            0.22100 * Math.log10(heightInCm)
+          ) - 450;
+        }
+        
+        // Round to 1 decimal place
+        bodyFat = parseFloat(bodyFat.toFixed(1));
+        
+        // Determine body fat category
+        let category, healthyRange;
+        
+        if (gender === 'male') {
+          if (bodyFat < 5) category = 'Essential Fat';
+          else if (bodyFat < 14) category = 'Athletes';
+          else if (bodyFat < 18) category = 'Fitness';
+          else if (bodyFat < 25) category = 'Acceptable';
+          else category = 'Obese';
+          
+          healthyRange = '18-24%';
+          essentialValue.textContent = '2-5%';
+        } else {
+          if (bodyFat < 13) category = 'Essential Fat';
+          else if (bodyFat < 21) category = 'Athletes';
+          else if (bodyFat < 25) category = 'Fitness';
+          else if (bodyFat < 32) category = 'Acceptable';
+          else category = 'Obese';
+          
+          healthyRange = '25-31%';
+          essentialValue.textContent = '10-13%';
+        }
+        
+        // Update result values
+        bodyFatValue.textContent = bodyFat;
+        categoryValue.textContent = category;
+        rangeValue.textContent = healthyRange;
+        
+        // Generate advice
+        let adviceHTML = `
+          <h3><i class="fas fa-heartbeat"></i> Body Fat Analysis</h3>
+          <p>Your body fat percentage is <strong>${bodyFat}%</strong>. This indicates a ${category.toLowerCase()} body composition.</p>
+        `;
+        
+        let recommendationsHTML = `
+          <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+          <p>To maintain or achieve a healthier body composition:</p>
+          <ul>
+        `;
+        
+        if (gender === 'male' && bodyFat < 18) {
+          recommendationsHTML += `
+            <li>Increase muscle mass with strength training</li>
+            <li>Ensure adequate calorie intake</li>
+            <li>Focus on protein-rich foods</li>
+          `;
+        } else if (gender === 'male' && bodyFat > 24) {
+          recommendationsHTML += `
+            <li>Engage in regular cardiovascular exercise</li>
+            <li>Create a calorie deficit</li>
+            <li>Focus on whole foods and lean proteins</li>
+          `;
+        } else if (gender === 'female' && bodyFat < 25) {
+          recommendationsHTML += `
+            <li>Increase muscle mass with strength training</li>
+            <li>Ensure adequate calorie intake</li>
+            <li>Focus on protein-rich foods</li>
+          `;
+        } else if (gender === 'female' && bodyFat > 31) {
+          recommendationsHTML += `
+            <li>Engage in regular cardiovascular exercise</li>
+            <li>Create a calorie deficit</li>
+            <li>Focus on whole foods and lean proteins</li>
+          `;
+        } else {
+          recommendationsHTML += `
+            <li>Maintain your current exercise routine</li>
+            <li>Continue balanced nutrition</li>
+            <li>Monitor your progress regularly</li>
+          `;
+        }
+        
+        recommendationsHTML += `</ul>`;
+        
+        healthAdvice.innerHTML = adviceHTML;
+        document.getElementById('recommendations').innerHTML = recommendationsHTML;
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateBodyFat);
+      
+      // Also allow pressing Enter in input fields
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateBodyFat();
+        });
+      });
+      
+      // Initialize default selections
+      metricOption.classList.add('active');
+    })();
+  </script>
+</body>
+</html></body></html> 
