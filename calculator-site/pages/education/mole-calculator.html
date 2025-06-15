@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+ <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mole Calculator | 摩尔质量计算器 - Chemistry Solutions & Step-by-Step Tutorials</title>
+    <meta name="description" content="Free online mole calculator for mass/mole/particle number/gas volume conversion. Offers step-by-step solutions and formula explanations, essential for chemistry students and educators." />
+    <meta name="keywords" content="mole calculator, chemistry calculator, stoichiometry, molar mass, gas volume STP, molarity, step-by-step solution, chemistry education, 摩尔计算器, 化学计算器, 化学计量学, 摩尔质量, 气体体积, 摩尔浓度, 分步解答" />
+    <meta name="author" content="Calculator2U" />
+    <link rel="canonical" href="https://www.calculator2u.com/pages/education/mole-calculator.html" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="免费在线摩尔计算器，支持质量/摩尔/粒子数/气体体积转换。提供分步解答和公式说明，化学学生必备工具。" />
+    <meta name="keywords" lang="zh" content="摩尔计算器, 化学计算器, 化学计量学, 摩尔质量, 气体体积, 摩尔浓度, 分步解答, 化学工具, 化学教育" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="摩尔质量计算器 | Mole Calculator - Chemistry Solutions & Step-by-Step Tutorials" />
+    <meta property="og:description" content="免费在线摩尔计算器，支持质量/摩尔/粒子数/气体体积转换。提供分步解答和公式说明，化学学生必备工具。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/mole-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+    <!-- 添加更多语言版本链接 -->
+    <link rel="alternate" hreflang="en" href="https://Calculator2U/en/mole-calculator" />
+    <link rel="alternate" hreflang="zh" href="https://Calculator2U/zh/mole-calculator" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #006d77;
+      --primary-dark: #00545c;
+      --secondary: #30475e;
+      --accent: #e29578;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --text: #333;
+      --text-light: #6c757d;
+      --card-bg: #fff;
+      --border: #dee2e6;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+
+    .dark-mode {
+      --primary: #00a8b5;
+      --primary-dark: #008c96;
+      --secondary: #3d5a80;
+      --accent: #ff9b6a;
+      --light: #121212;
+      --dark: #f8f9fa;
+      --text: #e9ecef;
+      --text-light: #adb5bd;
+      --card-bg: #1e1e1e;
+      --border: #444;
+      --shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    .navbar {
+      background: var(--primary);
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .mode-switch, .lang-switch {
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition);
+    }
+
+    .mode-switch:hover, .lang-switch:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .calculator-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      .calculator-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .calculator-card, .explanation-card, .examples-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      color: var(--text);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.2);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #25354b;
+    }
+
+    .result-container {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 109, 119, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .result-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .result-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .step-by-step {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .step {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .step:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .formula {
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      color: var(--text);
+    }
+
+    .dark-mode .formula {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .example-card {
+      background: rgba(0, 109, 119, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .example-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .example-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chart-container {
+      margin-top: 2rem;
+      height: 300px;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      background: var(--primary);
+      color: white;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        justify-content: center;
+      }
+      
+      .nav-controls {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .calculator-card, .explanation-card, .examples-card {
+        padding: 1.5rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+      }
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .tab {
+      padding: 0.8rem 1.2rem;
+      background: #e9ecef;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab:hover:not(.active) {
+      background: #d1d7dc;
+    }
+
+    .dark-mode .tab {
+      background: #2a2a2a;
+      color: var(--text-light);
+    }
+
+    .dark-mode .tab:hover:not(.active) {
+      background: #333;
+    }
+    
+    .error {
+      color: var(--danger);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">
+        <i class="fas fa-calculator"></i>
+        <span>Calculator2U</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="mode-switch" id="mode-switch">
+          <i class="fas fa-moon"></i>
+          <span data-i18n="dark_mode">夜间模式</span>
+        </button>
+        <button class="lang-switch" id="lang-switch">
+          <i class="fas fa-globe"></i>
+          <span>EN</span>
+        </button>
+      </div>
+    </nav>
+</header>
+
+  <main class="container">
+    <h1 data-i18n="title">摩尔质量计算器</h1>
+    
+    <div class="calculator-container">
+      <div class="calculator-card">
+        <h2 class="card-title" data-i18n="calculate">计算</h2>
+
+        
+        <div class="tabs">
+          <div class="tab active" data-type="mass-moles" data-i18n="mass_moles">质量 → 摩尔</div>
+          <div class="tab" data-type="moles-mass" data-i18n="moles_mass">摩尔 → 质量</div>
+          <div class="tab" data-type="moles-particles" data-i18n="moles_particles">摩尔 → 粒子数</div>
+          <div class="tab" data-type="particles-moles" data-i18n="particles_moles">粒子数 → 摩尔</div>
+          <div class="tab" data-type="moles-gas" data-i18n="moles_gas">摩尔 → 气体体积 (STP)</div>
+          <div class="tab" data-type="gas-moles" data-i18n="gas_moles">气体体积 (STP) → 摩尔</div>
+          <div class="tab" data-type="molarity" data-i18n="molarity">摩尔浓度</div>
+          <div class="tab" data-type="molar-mass" data-i18n="molar_mass">摩尔质量</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="input1" id="input1-label">质量 (克):</label>
+          <input type="number" id="input1" placeholder="Example: 18" step="any" />
+        </div>
+        
+        <div class="form-group">
+          <label for="input2" id="input2-label">摩尔质量 (g/mol):</label>
+          <input type="number" id="input2" placeholder="Example: 18" step="any" />
+        </div>
+        
+        <div class="form-group" id="volume-group" style="display: none;">
+          <label for="volume" data-i18n="label_volume">体积 (L):</label>
+          <input type="number" id="volume" placeholder="Example: 2.5" step="any" />
+        </div>
+        
+        <div class="form-group" id="particles-group" style="display: none;">
+          <label for="particles" data-i18n="label_particles">粒子数:</label>
+          <input type="number" id="particles" placeholder="Example: 6.022e23" step="any" />
+        </div>
+        
+        <div class="form-group" id="formula-group" style="display: none;">
+          <label for="chemical-formula" data-i18n="label_formula">化学式:</label>
+          <input type="text" id="chemical-formula" placeholder="Example: H2O" />
+        </div>
+        
+        <div class="btn-group">
+          <button class="btn btn-primary" id="calculate-btn">
+            <i class="fas fa-calculator"></i>
+            <span data-i18n="btn_calc">计算</span>
+          </button>
+          <button class="btn btn-secondary" id="reset-btn">
+            <i class="fas fa-redo"></i>
+            <span data-i18n="btn_reset">重置</span>
+          </button>
+        </div>
+        
+        <div class="result-container">
+          <div class="result-title" data-i18n="result">结果:</div>
+          <div class="result-value" id="result">-</div>
+          
+          <div class="step-by-step">
+            <div class="step-title" data-i18n="step_solution">分步解答:</div>
+            <div id="step-solution">
+              <p data-i18n="select_calculation">请选择计算类型并输入值</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="explanation-card">
+        <h2 class="card-title" data-i18n="formula_explanation">公式与说明</h2>
+        <div class="formula" id="current-formula">n = m / M</div>
+        <p id="formula-desc">其中: <br>
+          <strong>n</strong> = 物质的量 (摩尔) <br>
+          <strong>m</strong> = 质量 (克) <br>
+          <strong>M</strong> = 摩尔质量 (g/mol)
+        </p>
+        
+        <div class="chart-container">
+          <canvas id="chemistry-chart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <div class="examples-card">
+      <h2 class="card-title" data-i18n="examples">示例与应用</h2>
+      <div class="examples-grid">
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fas fa-flask"></i>
+            <span data-i18n="example1_title">水的摩尔计算</span>
+          </div>
+          <p data-i18n="example1_desc">计算18g水的摩尔数。水的摩尔质量是18g/mol，因此n = 18g / 18g/mol = 1 mol。</p>
+        </div>
+        
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fas fa-wind"></i>
+            <span data-i18n="example2_title">气体体积计算</span>
+          </div>
+          <p data-i18n="example2_desc">在STP条件下，1摩尔任何气体占据22.4升体积。因此2摩尔氧气占据44.8升体积。</p>
+        </div>
+        
+        <div class="example-card">
+          <div class="example-title">
+            <i class="fas fa-atom"></i>
+            <span data-i18n="example3_title">粒子数计算</span>
+          </div>
+          <p data-i18n="example3_desc">1摩尔物质含有阿伏伽德罗常数(6.022×10²³)个粒子。因此0.5摩尔水分子含有3.011×10²³个水分子。</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+  </footer>
+
+  <script>
+    // Language and Translations
+    const translations = {
+      zh: {
+        title: "摩尔质量计算器",
+        calculate: "计算",
+        formula_explanation: "公式与说明",
+        examples: "示例与应用",
+        mass_moles: "质量 → 摩尔",
+        moles_mass: "摩尔 → 质量",
+        moles_particles: "摩尔 → 粒子数",
+        particles_moles: "粒子数 → 摩尔",
+        moles_gas: "摩尔 → 气体体积 (STP)",
+        gas_moles: "气体体积 (STP) → 摩尔",
+        molarity: "摩尔浓度",
+        molar_mass: "摩尔质量",
+        label_mass: "质量 (克):",
+        label_molar_mass: "摩尔质量 (g/mol):",
+        label_volume: "体积 (L):",
+        label_particles: "粒子数:",
+        label_formula: "化学式:",
+        btn_calc: "计算",
+        btn_reset: "重置",
+        result: "结果:",
+        step_solution: "分步解答:",
+        select_calculation: "请选择计算类型并输入值",
+        formula_desc: `其中: <br>
+          <strong>n</strong> = 物质的量 (摩尔) <br>
+          <strong>m</strong> = 质量 (克) <br>
+          <strong>M</strong> = 摩尔质量 (g/mol)`,
+        example1_title: "水的摩尔计算",
+        example1_desc: "计算18g水的摩尔数。水的摩尔质量是18g/mol，因此n = 18g / 18g/mol = 1 mol。",
+        example2_title: "气体体积计算",
+        example2_desc: "在STP条件下，1摩尔任何气体占据22.4升体积。因此2摩尔氧气占据44.8升体积。",
+        example3_title: "粒子数计算",
+        example3_desc: "1摩尔物质含有阿伏伽德罗常数(6.022×10²³)个粒子。因此0.5摩尔水分子含有3.011×10²³个水分子。",
+        dark_mode: "夜间模式",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        nav_home: "首页",
+        nav_contact: "联系我们",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        copyright: "&copy; 2025 Calculator2U. 保留所有权利。"
+      },
+      en: {
+        title: "Mole Calculator",
+        calculate: "Calculate",
+        formula_explanation: "Formula & Explanation",
+        examples: "Examples & Applications",
+        mass_moles: "Mass → Moles",
+        moles_mass: "Moles → Mass",
+        moles_particles: "Moles → Particles",
+        particles_moles: "Particles → Moles",
+        moles_gas: "Moles → Gas Volume (STP)",
+        gas_moles: "Gas Volume (STP) → Moles",
+        molarity: "Molarity",
+        molar_mass: "Molar Mass",
+        label_mass: "Mass (g):",
+        label_molar_mass: "Molar Mass (g/mol):",
+        label_volume: "Volume (L):",
+        label_particles: "Number of Particles:",
+        label_formula: "Chemical Formula:",
+        btn_calc: "Calculate",
+        btn_reset: "Reset",
+        result: "Result:",
+        step_solution: "Step-by-Step Solution:",
+        select_calculation: "Please select calculation type and enter values",
+        formula_desc: `Where: <br>
+          <strong>n</strong> = number of moles <br>
+          <strong>m</strong> = mass (grams) <br>
+          <strong>M</strong> = molar mass (g/mol)`,
+        example1_title: "Water Mole Calculation",
+        example1_desc: "Calculate moles in 18g of water. Molar mass of water is 18g/mol, so n = 18g / 18g/mol = 1 mol.",
+        example2_title: "Gas Volume Calculation",
+        example2_desc: "At STP, 1 mole of any gas occupies 22.4 liters. Therefore 2 moles of oxygen occupy 44.8 liters.",
+        example3_title: "Particle Count",
+        example3_desc: "1 mole of substance contains Avogadro's number (6.022×10²³) of particles. So 0.5 moles of water molecules contain 3.011×10²³ molecules.",
+        dark_mode: "Dark Mode",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        nav_home: "Home",
+        nav_contact: "Contact Us",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        copyright: "&copy; 2025 Calculator2U. All rights reserved."
+      }
+    };
+    
+    // App State
+    const state = {
+      lang: localStorage.getItem("site-lang") || (navigator.language.startsWith("zh") ? "zh" : "en"),
+      darkMode: localStorage.getItem("dark-mode") === "true",
+      currentType: "mass-moles",
+      avogadro: 6.022e23,
+      stpVolume: 22.4 // liters per mole at STP
+    };
+    
+    // DOM Elements
+    const elements = {
+      langSwitch: document.getElementById("lang-switch"),
+      modeSwitch: document.getElementById("mode-switch"),
+      calculateBtn: document.getElementById("calculate-btn"),
+      resetBtn: document.getElementById("reset-btn"),
+      resultEl: document.getElementById("result"),
+      stepSolution: document.getElementById("step-solution"),
+      formulaEl: document.getElementById("current-formula"),
+      formulaDesc: document.getElementById("formula-desc"),
+      volumeGroup: document.getElementById("volume-group"),
+      particlesGroup: document.getElementById("particles-group"),
+      formulaGroup: document.getElementById("formula-group"),
+      chartCtx: document.getElementById("chemistry-chart"),
+      input1Label: document.getElementById("input1-label"),
+      input2Label: document.getElementById("input2-label")
+    };
+    
+    // Initialize Chart
+    let chemistryChart;
+    function initChart() {
+      chemistryChart = new Chart(elements.chartCtx, {
+        type: 'bar',
+        data: {
+          labels: ['H₂O', 'O₂', 'CO₂', 'NaCl', 'CH₄'],
+          datasets: [{
+            label: '摩尔质量 (g/mol)',
+            data: [18, 32, 44, 58.5, 16],
+            backgroundColor: 'rgba(0, 109, 119, 0.7)',
+            borderColor: 'rgba(0, 109, 119, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: '摩尔质量 (g/mol)'
+              }
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: '常见物质的摩尔质量'
+            }
+          }
+        }
+      });
+    }
+    
+    // Set Language
+    function setLang(langCode) {
+      state.lang = langCode;
+      document.documentElement.lang = langCode;
+      localStorage.setItem("site-lang", langCode);
+      
+      // Update all translatable elements
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.innerHTML = translations[langCode][key] || key;
+      });
+      
+      // Update language switch text
+      const langText = langCode === "zh" ? "中文" : "EN";
+      elements.langSwitch.querySelector('span').textContent = langText;
+      
+      // Update formula description
+      elements.formulaDesc.innerHTML = translations[langCode].formula_desc;
+      
+      // Update chart labels
+      updateChartLabels();
+      
+      // Update input labels
+      updateInputLabels();
+    }
+    
+    // Update chart labels based on language
+    function updateChartLabels() {
+      if (!chemistryChart) return;
+      
+      if (state.lang === "zh") {
+        chemistryChart.data.datasets[0].label = '摩尔质量 (g/mol)';
+        chemistryChart.options.scales.y.title.text = '摩尔质量 (g/mol)';
+        chemistryChart.options.plugins.title.text = '常见物质的摩尔质量';
+      } else {
+        chemistryChart.data.datasets[0].label = 'Molar Mass (g/mol)';
+        chemistryChart.options.scales.y.title.text = 'Molar Mass (g/mol)';
+        chemistryChart.options.plugins.title.text = 'Molar Mass of Common Substances';
+      }
+      chemistryChart.update();
+    }
+    
+    // Toggle Dark Mode
+    function toggleDarkMode() {
+      state.darkMode = !state.darkMode;
+      document.body.classList.toggle("dark-mode", state.darkMode);
+      localStorage.setItem("dark-mode", state.darkMode);
+      
+      // Update mode switch icon and text
+      const icon = elements.modeSwitch.querySelector('i');
+      const text = elements.modeSwitch.querySelector('span');
+      if (state.darkMode) {
+        icon.className = "fas fa-sun";
+        text.dataset.i18n = "light_mode";
+        text.textContent = state.lang === "zh" ? "日间模式" : "Light Mode";
+      } else {
+        icon.className = "fas fa-moon";
+        text.dataset.i18n = "dark_mode";
+        text.textContent = state.lang === "zh" ? "夜间模式" : "Dark Mode";
+      }
+    }
+    
+    // Set Calculation Type
+    function setCalculationType(type) {
+      state.currentType = type;
+      
+      // Update active tab
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.type === type);
+      });
+      
+      // Reset inputs
+      document.getElementById('input1').value = '';
+      document.getElementById('input2').value = '';
+      document.getElementById('volume').value = '';
+      document.getElementById('particles').value = '';
+      document.getElementById('chemical-formula').value = '';
+      
+      // Update form visibility based on type
+      elements.volumeGroup.style.display = (type === 'molarity' || type === 'moles-gas' || type === 'gas-moles') ? 'block' : 'none';
+      elements.particlesGroup.style.display = (type === 'moles-particles' || type === 'particles-moles') ? 'block' : 'none';
+      elements.formulaGroup.style.display = (type === 'molar-mass') ? 'block' : 'none';
+      
+      // Update labels based on type and language
+      updateInputLabels();
+      
+      // Clear results
+      elements.resultEl.textContent = '-';
+      elements.stepSolution.innerHTML = `<p>${translations[state.lang].select_calculation}</p>`;
+    }
+    
+    // Update input labels based on calculation type
+    function updateInputLabels() {
+      const input1 = document.getElementById('input1');
+      const input2 = document.getElementById('input2');
+      
+      switch(state.currentType) {
+        case 'mass-moles':
+          elements.input1Label.textContent = translations[state.lang].label_mass;
+          elements.input2Label.textContent = translations[state.lang].label_molar_mass;
+          elements.formulaEl.textContent = 'n = m / M';
+          input2.style.display = 'block';
+          elements.input2Label.style.display = 'block';
+          break;
+        case 'moles-mass':
+          elements.input1Label.textContent = state.lang === 'zh' ? '物质的量 (摩尔):' : 'Moles:';
+          elements.input2Label.textContent = translations[state.lang].label_molar_mass;
+          elements.formulaEl.textContent = 'm = n × M';
+          input2.style.display = 'block';
+          elements.input2Label.style.display = 'block';
+          break;
+        case 'moles-particles':
+          elements.input1Label.textContent = state.lang === 'zh' ? '物质的量 (摩尔):' : 'Moles:';
+          elements.formulaEl.textContent = 'P = n × N_A';
+          input2.style.display = 'none';
+          elements.input2Label.style.display = 'none';
+          break;
+        case 'particles-moles':
+          elements.input1Label.textContent = translations[state.lang].label_particles;
+          elements.formulaEl.textContent = 'n = P / N_A';
+          input2.style.display = 'none';
+          elements.input2Label.style.display = 'none';
+          break;
+        case 'moles-gas':
+          elements.input1Label.textContent = state.lang === 'zh' ? '物质的量 (摩尔):' : 'Moles:';
+          elements.formulaEl.textContent = 'V = n × 22.4 L/mol';
+          input2.style.display = 'none';
+          elements.input2Label.style.display = 'none';
+          break;
+        case 'gas-moles':
+          elements.input1Label.textContent = translations[state.lang].label_volume;
+          elements.formulaEl.textContent = 'n = V / 22.4 L/mol';
+          input2.style.display = 'none';
+          elements.input2Label.style.display = 'none';
+          break;
+        case 'molarity':
+          elements.input1Label.textContent = state.lang === 'zh' ? '物质的量 (摩尔):' : 'Moles:';
+          elements.input2Label.textContent = translations[state.lang].label_volume;
+          elements.formulaEl.textContent = 'C = n / V';
+          input2.style.display = 'block';
+          elements.input2Label.style.display = 'block';
+          break;
+        case 'molar-mass':
+          elements.input1Label.textContent = translations[state.lang].label_formula;
+          elements.formulaEl.textContent = 'M = Σ(原子质量)';
+          input2.style.display = 'none';
+          elements.input2Label.style.display = 'none';
+          break;
+      }
+    }
+    
+    // Perform Calculation
+    function calculate() {
+      let result, solution;
+      const lang = state.lang;
+      
+      try {
+        switch(state.currentType) {
+          case 'mass-moles':
+            const mass = parseFloat(document.getElementById('input1').value);
+            const molarMass = parseFloat(document.getElementById('input2').value);
+            
+            if (isNaN(mass) || isNaN(molarMass) || mass <= 0 || molarMass <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = mass / molarMass;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: n = m / M</div>
+                 <div class="step">n = ${mass} g / ${molarMass} g/mol</div>
+                 <div class="step">n = ${result.toFixed(4)} mol</div>`
+              : `<div class="step">Using formula: n = m / M</div>
+                 <div class="step">n = ${mass} g / ${molarMass} g/mol</div>
+                 <div class="step">n = ${result.toFixed(4)} mol</div>`;
+            break;
+            
+          case 'moles-mass':
+            const moles = parseFloat(document.getElementById('input1').value);
+            const mm = parseFloat(document.getElementById('input2').value);
+            
+            if (isNaN(moles) || isNaN(mm) || moles <= 0 || mm <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = moles * mm;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: m = n × M</div>
+                 <div class="step">m = ${moles} mol × ${mm} g/mol</div>
+                 <div class="step">m = ${result.toFixed(4)} g</div>`
+              : `<div class="step">Using formula: m = n × M</div>
+                 <div class="step">m = ${moles} mol × ${mm} g/mol</div>
+                 <div class="step">m = ${result.toFixed(4)} g</div>`;
+            break;
+            
+          case 'moles-particles':
+            const n = parseFloat(document.getElementById('input1').value);
+            
+            if (isNaN(n) || n <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = n * state.avogadro;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: P = n × N_A</div>
+                 <div class="step">P = ${n} mol × ${state.avogadro.toExponential(3)}</div>
+                 <div class="step">P = ${result.toExponential(4)}</div>`
+              : `<div class="step">Using formula: P = n × N_A</div>
+                 <div class="step">P = ${n} mol × ${state.avogadro.toExponential(3)}</div>
+                 <div class="step">P = ${result.toExponential(4)}</div>`;
+            break;
+            
+          case 'particles-moles':
+            const particles = parseFloat(document.getElementById('input1').value);
+            
+            if (isNaN(particles) || particles <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = particles / state.avogadro;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: n = P / N_A</div>
+                 <div class="step">n = ${particles.toExponential(4)} / ${state.avogadro.toExponential(3)}</div>
+                 <div class="step">n = ${result.toExponential(4)} mol</div>`
+              : `<div class="step">Using formula: n = P / N_A</div>
+                 <div class="step">n = ${particles.toExponential(4)} / ${state.avogadro.toExponential(3)}</div>
+                 <div class="step">n = ${result.toExponential(4)} mol</div>`;
+            break;
+            
+          case 'moles-gas':
+            const molesGas = parseFloat(document.getElementById('input1').value);
+            
+            if (isNaN(molesGas) || molesGas <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = molesGas * state.stpVolume;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: V = n × 22.4 L/mol (STP)</div>
+                 <div class="step">V = ${molesGas} mol × 22.4 L/mol</div>
+                 <div class="step">V = ${result.toFixed(2)} L</div>`
+              : `<div class="step">Using formula: V = n × 22.4 L/mol (STP)</div>
+                 <div class="step">V = ${molesGas} mol × 22.4 L/mol</div>
+                 <div class="step">V = ${result.toFixed(2)} L</div>`;
+            break;
+            
+          case 'gas-moles':
+            const volume = parseFloat(document.getElementById('input1').value);
+            
+            if (isNaN(volume) || volume <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = volume / state.stpVolume;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: n = V / 22.4 L/mol (STP)</div>
+                 <div class="step">n = ${volume} L / 22.4 L/mol</div>
+                 <div class="step">n = ${result.toFixed(4)} mol</div>`
+              : `<div class="step">Using formula: n = V / 22.4 L/mol (STP)</div>
+                 <div class="step">n = ${volume} L / 22.4 L/mol</div>
+                 <div class="step">n = ${result.toFixed(4)} mol</div>`;
+            break;
+            
+          case 'molarity':
+            const molesMolarity = parseFloat(document.getElementById('input1').value);
+            const vol = parseFloat(document.getElementById('input2').value);
+            
+            if (isNaN(molesMolarity) || isNaN(vol) || molesMolarity <= 0 || vol <= 0) {
+              throw new Error('Invalid input');
+            }
+            
+            result = molesMolarity / vol;
+            solution = lang === 'zh' 
+              ? `<div class="step">使用公式: C = n / V</div>
+                 <div class="step">C = ${molesMolarity} mol / ${vol} L</div>
+                 <div class="step">C = ${result.toFixed(4)} mol/L</div>`
+              : `<div class="step">Using formula: C = n / V</div>
+                 <div class="step">C = ${molesMolarity} mol / ${vol} L</div>
+                 <div class="step">C = ${result.toFixed(4)} mol/L</div>`;
+            break;
+            
+          case 'molar-mass':
+            const formula = document.getElementById('input1').value.trim();
+            if (!formula) throw new Error('Invalid input');
+            
+            // Simple implementation for demo
+            const molarMasses = {
+              'H2O': 18,
+              'H2O2': 34,
+              'CO2': 44,
+              'O2': 32,
+              'N2': 28,
+              'NaCl': 58.5,
+              'HCl': 36.5,
+              'CH4': 16,
+              'C6H12O6': 180
+            };
+            
+            result = molarMasses[formula] || 0;
+            if (!result) throw new Error('Formula not found');
+            
+            solution = lang === 'zh' 
+              ? `<div class="step">${formula} 的摩尔质量计算:</div>
+                 <div class="step">${formula} 的摩尔质量 = ${result} g/mol</div>`
+              : `<div class="step">Molar mass calculation for ${formula}:</div>
+                 <div class="step">Molar mass of ${formula} = ${result} g/mol</div>`;
+            break;
+            
+          default:
+            throw new Error('Unknown calculation type');
+        }
+        
+        elements.resultEl.textContent = formatResult(result);
+        elements.stepSolution.innerHTML = solution;
+      } catch (error) {
+        elements.resultEl.textContent = '⚠️';
+        elements.stepSolution.innerHTML = `<p class="error">${
+          state.lang === 'zh' ? '错误：请输入有效数值' : 'Error: Please enter valid values'
+        }</p>`;
+      }
+    }
+    
+    // Format result based on calculation type
+    function formatResult(value) {
+      if (isNaN(value)) return '-';
+      
+      switch(state.currentType) {
+        case 'mass-moles':
+        case 'gas-moles':
+        case 'particles-moles':
+          return `${value.toFixed(4)} mol`;
+        case 'moles-mass':
+          return `${value.toFixed(4)} g`;
+        case 'moles-particles':
+          return value.toExponential(4);
+        case 'moles-gas':
+          return `${value.toFixed(2)} L`;
+        case 'molarity':
+          return `${value.toFixed(4)} mol/L`;
+        case 'molar-mass':
+          return `${value} g/mol`;
+        default:
+          return value.toFixed(4);
+      }
+    }
+    
+    // Reset Calculator
+    function resetCalculator() {
+      document.getElementById('input1').value = '';
+      document.getElementById('input2').value = '';
+      document.getElementById('volume').value = '';
+      document.getElementById('particles').value = '';
+      document.getElementById('chemical-formula').value = '';
+      elements.resultEl.textContent = '-';
+      elements.stepSolution.innerHTML = `<p>${translations[state.lang].select_calculation}</p>`;
+    }
+    
+    // Initialize App
+    function initApp() {
+      // Initialize chart
+      initChart();
+      
+      // Set initial language
+      setLang(state.lang);
+      
+      // Set initial dark mode
+      document.body.classList.toggle("dark-mode", state.darkMode);
+      if (state.darkMode) {
+        elements.modeSwitch.querySelector('i').className = "fas fa-sun";
+        elements.modeSwitch.querySelector('span').textContent = state.lang === "zh" ? "日间模式" : "Light Mode";
+      }
+      
+      // Set initial calculation type
+      setCalculationType(state.currentType);
+      
+      // Event listeners
+      elements.langSwitch.addEventListener('click', () => {
+        const newLang = state.lang === "zh" ? "en" : "zh";
+        setLang(newLang);
+      });
+      
+      elements.modeSwitch.addEventListener('click', toggleDarkMode);
+      elements.calculateBtn.addEventListener('click', calculate);
+      elements.resetBtn.addEventListener('click', resetCalculator);
+      
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          setCalculationType(tab.dataset.type);
+        });
+      });
+      
+      // Allow Enter key to trigger calculation
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('keypress', e => {
+          if (e.key === 'Enter') calculate();
+        });
+      });
+    }
+    
+    // Start the app
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>

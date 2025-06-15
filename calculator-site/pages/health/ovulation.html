@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="title">Ovulation Calculator | 排卵期计算器 | Calculator2U</title>
+    <meta name="description" content="Use our Ovulation Calculator to determine your ovulation period and fertile window based on your menstrual cycle. Available in both Chinese and English with multiple result display options. Essential for family planning and conception tracking." />
+    <meta name="keywords" content="Ovulation Calculator, Fertile Window Calculator, Menstrual Cycle Tracker, Conception Calculator, Family Planning, Pregnancy Calculator, Ovulation Prediction" />
+    <meta name="author" content="Calculator2U" />
+    <meta name="robots" content="index, follow" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="使用我们的排卵期计算器，根据您的月经周期计算排卵期和受孕窗口。支持中英文切换和多种结果展示方式。适用于计划生育和怀孕追踪。" />
+    <meta name="keywords" lang="zh" content="排卵期计算器, 受孕窗口计算器, 月经周期追踪, 怀孕计算器, 排卵期预测" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="Ovulation Calculator | 排卵期计算器 | Calculator2U" />
+    <meta property="og:description" content="Use our Ovulation Calculator to determine your ovulation period and fertile window based on your menstrual cycle. Available in both Chinese and English with multiple result display options. Essential for family planning and conception tracking." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/ovulation-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ovulation Calculator | 排卵期计算器 | Calculator2U" />
+    <meta name="twitter:description" content="Use our Ovulation Calculator to determine your ovulation period and fertile window based on your menstrual cycle. Available in both Chinese and English with multiple result display options. Essential for family planning and conception tracking." />
+    <meta name="twitter:image" content="https://www.calculator2u.com/assets/images/ovulation-calculator.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+    }
+    main.container {
+      max-width: 720px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#ovulation-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 240px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      text-align: center;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #005f66;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #006d77;
+      margin-bottom: 1.5rem;
+    }
+    table.ovulation-table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      max-width: 600px;
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table.ovulation-table thead {
+      background-color: #008891;
+      color: white;
+    }
+    table.ovulation-table th, table.ovulation-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    table.ovulation-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .export-btn, .speak-btn, .share-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .export-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .speak-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+    .share-btn {
+      background-color: #3b5998;
+      color: white;
+    }
+    @media screen and (max-width: 640px) {
+      input {
+        width: 90%;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .export-btn, .speak-btn, .share-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+  <nav class="navbar">
+    <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">EN</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container" role="main">
+  <h1 id="title" data-i18n="title">排卵期计算器</h1>
+  <form id="ovulation-form" aria-label="排卵期计算器表单">
+    <div>
+      <label for="menstruation-start" data-i18n="menstruation_start">月经开始日期</label>
+      <input type="date" id="menstruation-start" required>
+    </div>
+    <div>
+      <label for="cycle-length" data-i18n="cycle_length">月经周期长度（天）</label>
+      <input type="number" id="cycle-length" required min="18" max="45" value="28">
+    </div>
+    <button type="submit" data-i18n="calculate">计算排卵期</button>
+  </form>
+
+
+
+  <div id="result" aria-live="polite"></div>
+
+  <table class="ovulation-table">
+    <thead>
+      <tr>
+        <th data-i18n="date">日期</th>
+        <th data-i18n="fertility">受孕可能性</th>
+      </tr>
+    </thead>
+    <tbody id="ovulation-table-body">
+      <!-- 表格内容将通过JavaScript动态生成 -->
+    </tbody>
+  </table>
+
+  <div class="btn-row">
+    <button class="share-btn" id="share-btn" data-i18n="share">分享结果</button>
+    <button class="export-btn" id="export-btn" data-i18n="export">导出结果</button>
+    <button class="speak-btn" id="speak-btn" data-i18n="speak">语音播报</button>
+  </div>
+</main>
+
+<footer>
+
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // 国际化文本
+  const i18n = {
+    zh: {
+      logo: "Calculator2U",
+      title: "排卵期计算器",
+      nav_health: "健康与身体",
+      nav_finance: "财务与投资",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about_us: "关于我们",
+      lang_switch: "EN",
+      menstruation_start: "月经开始日期",
+      cycle_length: "月经周期长度（天）",
+      calculate: "计算排卵期",
+      date: "日期",
+      fertility: "受孕可能性",
+      low: "低",
+      moderate: "中等",
+      high: "高",
+      peak: "高峰",
+      share: "分享结果",
+      export: "导出结果",
+      speak: "语音播报",
+      footer_privacy_policy: "隐私政策",
+      footer_terms_of_service: "使用条款",
+      result: (start, ovulationStart, ovulationEnd) => `
+        <p>预计排卵期从 <strong>${ovulationStart}</strong> 到 <strong>${ovulationEnd}</strong></p>
+        <p>受孕窗口从 <strong>${start}</strong> 开始</p>
+      `,
+      calculate_first: "请先计算排卵期"
+    },
+    en: {
+      logo: "Calculator2U",
+      title: "Ovulation Calculator",
+      nav_health: "Health & Body",
+      nav_finance: "Finance & Investment",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about_us: "About Us",
+      lang_switch: "中",
+      menstruation_start: "First Day of Menstruation",
+      cycle_length: "Menstrual Cycle Length (days)",
+      calculate: "Calculate Ovulation",
+      date: "Date",
+      fertility: "Fertility",
+      low: "Low",
+      moderate: "Moderate",
+      high: "High",
+      peak: "Peak",
+      share: "Share",
+      export: "Export",
+      speak: "Speak",
+      footer_privacy_policy: "Privacy Policy",
+      footer_terms_of_service: "Terms of Service",
+      result: (start, ovulationStart, ovulationEnd) => `
+        <p>Estimated ovulation period from <strong>${ovulationStart}</strong> to <strong>${ovulationEnd}</strong></p>
+        <p>Fertility window starts from <strong>${start}</strong></p>
+      `,
+      calculate_first: "Please calculate ovulation first"
+    }
+  };
+
+  // DOM元素
+  const form = document.getElementById('ovulation-form');
+  const resultEl = document.getElementById('result');
+  const ovulationTableBody = document.getElementById('ovulation-table-body');
+  const langBtn = document.getElementById('lang-switch');
+  const shareBtn = document.getElementById('share-btn');
+  const exportBtn = document.getElementById('export-btn');
+  const speakBtn = document.getElementById('speak-btn');
+
+  // 当前语言
+  let currentLang = 'zh';
+
+  // 更新语言
+  function updateLang(lang) {
+    // 更新导航链接
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) {
+        if (el.tagName === 'INPUT' && el.type === 'date') {
+          // 日期输入框不需要占位符
+        } else if (el.tagName === 'INPUT') {
+          el.placeholder = i18n[lang][key];
+        } else {
+          el.textContent = i18n[lang][key];
+        }
+      }
+    });
+
+    currentLang = lang;
+  }
+
+  // 计算排卵期
+  function calculateOvulation(startDate, cycleLength) {
+    const start = new Date(startDate);
+    const ovulationStart = new Date(startDate);
+    const ovulationEnd = new Date(startDate);
+
+    // 计算排卵期（通常在下次月经前14天）
+    ovulationStart.setDate(start.getDate() + cycleLength - 14);
+    ovulationEnd.setDate(ovulationStart.getDate() + 2);
+
+    // 计算受孕窗口（排卵前5天到排卵后1天）
+    const fertilityWindowStart = new Date(startDate);
+    fertilityWindowStart.setDate(start.getDate() + cycleLength - 18);
+
+    return {
+      start: formatDate(start),
+      ovulationStart: formatDate(ovulationStart),
+      ovulationEnd: formatDate(ovulationEnd),
+      fertilityWindowStart: formatDate(fertilityWindowStart)
+    };
+  }
+
+  // 格式化日期
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  // 生成表格内容
+  function generateTable(startDate, cycleLength) {
+    const start = new Date(startDate);
+    const ovulationStart = new Date(startDate);
+    ovulationStart.setDate(start.getDate() + cycleLength - 14);
+    const ovulationEnd = new Date(ovulationStart);
+    ovulationEnd.setDate(ovulationStart.getDate() + 2);
+
+    ovulationTableBody.innerHTML = '';
+    for (let i = 0; i < cycleLength; i++) {
+      const date = new Date(startDate);
+      date.setDate(start.getDate() + i);
+
+      let fertility = '';
+      if (i >= cycleLength - 18 && i <= cycleLength - 13) {
+        fertility = i18n[currentLang].moderate;
+      } else if (i >= cycleLength - 12 && i <= cycleLength - 10) {
+        fertility = i18n[currentLang].high;
+      } else if (i === cycleLength - 14 || i === cycleLength - 13) {
+        fertility = i18n[currentLang].peak;
+      } else {
+        fertility = i18n[currentLang].low;
+      }
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${formatDate(date)}</td>
+        <td>${fertility}</td>
+      `;
+      ovulationTableBody.appendChild(row);
+    }
+  }
+
+  // 导出结果为PDF
+  function exportResult(startDate, cycleLength) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.text(i18n[currentLang].title, 105, 20, { align: 'center' });
+
+    const ovulationData = calculateOvulation(startDate, cycleLength);
+    doc.setFontSize(16);
+    doc.text(i18n[currentLang].result(ovulationData.start, ovulationData.ovulationStart, ovulationData.ovulationEnd), 105, 35, { align: 'center' });
+
+    doc.save('ovulation-result.pdf');
+  }
+
+  // 分享结果
+  function shareResult(startDate, cycleLength) {
+    const ovulationData = calculateOvulation(startDate, cycleLength);
+    const text = i18n[currentLang].result(ovulationData.start, ovulationData.ovulationStart, ovulationData.ovulationEnd);
+    if (navigator.share) {
+      navigator.share({
+        title: i18n[currentLang].title,
+        text: text,
+        url: window.location.href
+      });
+    } else {
+      alert(text);
+    }
+  }
+
+  // 语音播报结果
+  function speakResult(startDate, cycleLength) {
+    if (window.speechSynthesis) {
+      const ovulationData = calculateOvulation(startDate, cycleLength);
+      const utterance = new SpeechSynthesisUtterance(i18n[currentLang].result(ovulationData.start, ovulationData.ovulationStart, ovulationData.ovulationEnd));
+      speechSynthesis.speak(utterance);
+    } else {
+      alert('您的浏览器不支持语音播报功能');
+    }
+  }
+
+  // 事件监听
+  langBtn.addEventListener('click', () => {
+    updateLang(currentLang === 'zh' ? 'en' : 'zh');
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const startDate = document.getElementById('menstruation-start').value;
+    const cycleLength = parseInt(document.getElementById('cycle-length').value);
+
+    if (startDate && cycleLength >= 18 && cycleLength <= 45) {
+      const ovulationData = calculateOvulation(startDate, cycleLength);
+      resultEl.innerHTML = i18n[currentLang].result(ovulationData.start, ovulationData.ovulationStart, ovulationData.ovulationEnd);
+      generateTable(startDate, cycleLength);
+    }
+  });
+
+  shareBtn.addEventListener('click', () => {
+    const startDate = document.getElementById('menstruation-start').value;
+    const cycleLength = parseInt(document.getElementById('cycle-length').value);
+    if (startDate && cycleLength >= 18 && cycleLength <= 45) {
+      shareResult(startDate, cycleLength);
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  exportBtn.addEventListener('click', () => {
+    const startDate = document.getElementById('menstruation-start').value;
+    const cycleLength = parseInt(document.getElementById('cycle-length').value);
+    if (startDate && cycleLength >= 18 && cycleLength <= 45) {
+      exportResult(startDate, cycleLength);
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  speakBtn.addEventListener('click', () => {
+    const startDate = document.getElementById('menstruation-start').value;
+    const cycleLength = parseInt(document.getElementById('cycle-length').value);
+    if (startDate && cycleLength >= 18 && cycleLength <= 45) {
+      speakResult(startDate, cycleLength);
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  // 初始化语言
+  updateLang(currentLang);
+</script>
+</body>
+</html>

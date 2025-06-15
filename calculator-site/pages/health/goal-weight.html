@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 优化标题，添加更多关键词 -->
+    <title data-i18n="title">Target Weight Calculator | Ideal Weight Calculator | BMI Calculator | Calculator2U</title>
+    <meta name="description" content="Calculate your ideal target weight based on your height and desired BMI with our Target Weight Calculator. Simple, accurate, and essential for weight management and health monitoring." />
+    <meta name="keywords" content="Target Weight Calculator, Ideal Weight Calculator, BMI Calculator, Weight Management, Health Calculator, Weight Loss Calculator, Body Weight Calculator" />
+    <meta name="author" content="Calculator2U" />
+    <meta name="robots" content="index, follow" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="使用我们的目标体重计算器，根据身高和理想BMI计算您的理想目标体重。简单准确，是体重管理和健康监测的理想工具。" />
+    <meta name="keywords" lang="zh" content="目标体重计算器, 理想体重计算器, BMI计算器, 体重管理, 健康计算器, 减肥计算器, 身体重计算器" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="Target Weight Calculator | Ideal Weight Calculator | BMI Calculator" />
+    <meta property="og:description" content="Calculate your ideal target weight based on your height and desired BMI with our Target Weight Calculator. Simple, accurate, and essential for weight management and health monitoring." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/target-weight-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Target Weight Calculator | Ideal Weight Calculator | BMI Calculator" />
+    <meta name="twitter:description" content="Calculate your ideal target weight based on your height and desired BMI with our Target Weight Calculator. Simple, accurate, and essential for weight management and health monitoring." />
+    <meta name="twitter:image" content="https://www.calculator2u.com/assets/images/target-weight-calculator.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+    }
+    main.container {
+      max-width: 720px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#goal-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 240px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      text-align: center;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #005f66;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #006d77;
+      margin-bottom: 1.5rem;
+    }
+    table.bmi-table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      max-width: 600px;
+      width: 100%;
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table.bmi-table thead {
+      background-color: #008891;
+      color: white;
+    }
+    table.bmi-table th, table.bmi-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    table.bmi-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .export-btn, .speak-btn, .share-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .export-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .speak-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+    .share-btn {
+      background-color: #3b5998;
+      color: white;
+    }
+    @media screen and (max-width: 640px) {
+      input {
+        width: 90%;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .export-btn, .speak-btn, .share-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+  <nav class="navbar">
+    <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+    <ul class="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+      <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+      <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">中</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container" role="main">
+  <h1 id="title" data-i18n="title">Target Weight Calculator</h1>
+  <form id="goal-form" aria-label="Target Weight Calculator Form">
+    <div>
+      <label for="height" data-i18n="height">Height (cm)</label>
+      <input type="number" id="height" required min="100" max="250" step="0.1" data-i18n="placeholder_height" placeholder="Enter your height">
+    </div>
+    <div>
+      <label for="target-bmi" data-i18n="target_bmi">Target BMI</label>
+      <input type="number" id="target-bmi" required min="15" max="30" step="0.1" data-i18n="placeholder_bmi" placeholder="Enter your target BMI">
+    </div>
+    <button type="submit" data-i18n="calculate">Calculate Target Weight</button>
+  </form>
+
+  <div id="result" aria-live="polite"></div>
+
+  <table class="bmi-table">
+    <thead>
+      <tr>
+        <th data-i18n="bmi_range">BMI Range</th>
+        <th data-i18n="category">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-i18n="underweight">Under 18.5</td>
+        <td data-i18n="underweight_category">Underweight</td>
+      </tr>
+      <tr>
+        <td data-i18n="normal">18.5 - 24.9</td>
+        <td data-i18n="normal_category">Normal</td>
+      </tr>
+      <tr>
+        <td data-i18n="overweight">25 - 29.9</td>
+        <td data-i18n="overweight_category">Overweight</td>
+      </tr>
+      <tr>
+        <td data-i18n="obese">30 - 34.9</td>
+        <td data-i18n="obese_category">Obese</td>
+      </tr>
+      <tr>
+        <td data-i18n="severely_obese">35 and above</td>
+        <td data-i18n="severely_obese_category">Severely Obese</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="btn-row">
+    <button class="share-btn" id="share-btn" data-i18n="share">Share Result</button>
+    <button class="export-btn" id="export-btn" data-i18n="export">Export Result</button>
+    <button class="speak-btn" id="speak-btn" data-i18n="speak">Speak Result</button>
+  </div>
+</main>
+
+<footer>
+
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // Internationalization text
+  const i18n = {
+    en: {
+      logo: "Calculator2U",
+      title: "Target Weight Calculator",
+      nav_health: "Health & Body",
+      nav_finance: "Finance & Investment",
+      nav_education: "Education & Learning",
+      nav_engineering: "Engineering & Science",
+      nav_daily_life: "Daily Life",
+      nav_about_us: "About Us",
+      lang_switch: "中",
+      height: "Height (cm)",
+      target_bmi: "Target BMI",
+      calculate: "Calculate Target Weight",
+      placeholder_height: "Enter your height",
+      placeholder_bmi: "Enter your target BMI",
+      bmi_range: "BMI Range",
+      category: "Category",
+      underweight: "Under 18.5",
+      underweight_category: "Underweight",
+      normal: "18.5 - 24.9",
+      normal_category: "Normal",
+      overweight: "25 - 29.9",
+      overweight_category: "Overweight",
+      obese: "30 - 34.9",
+      obese_category: "Obese",
+      severely_obese: "35 and above",
+      severely_obese_category: "Severely Obese",
+      share: "Share Result",
+      export: "Export Result",
+      speak: "Speak Result",
+      footer_privacy_policy: "Privacy Policy",
+      footer_terms_of_service: "Terms of Service",
+      result: weight => `Your target weight is <strong>${weight.toFixed(1)} kg</strong>`,
+      calculate_first: "Please calculate target weight first"
+    },
+    zh: {
+      logo: "Calculator2U",
+      title: "目标体重计算器",
+      nav_health: "健康与身体",
+      nav_finance: "财务与投资",
+      nav_education: "教育与学习",
+      nav_engineering: "工程与科学",
+      nav_daily_life: "日常生活",
+      nav_about_us: "关于我们",
+      lang_switch: "EN",
+      height: "身高 (cm)",
+      target_bmi: "目标 BMI",
+      calculate: "计算目标体重",
+      placeholder_height: "请输入身高",
+      placeholder_bmi: "请输入目标BMI",
+      bmi_range: "BMI 范围",
+      category: "分类",
+      underweight: "小于 18.5",
+      underweight_category: "偏瘦",
+      normal: "18.5 - 24.9",
+      normal_category: "正常",
+      overweight: "25 - 29.9",
+      overweight_category: "超重",
+      obese: "30 - 34.9",
+      obese_category: "肥胖",
+      severely_obese: "35 及以上",
+      severely_obese_category: "重度肥胖",
+      share: "分享结果",
+      export: "导出结果",
+      speak: "语音播报",
+      footer_privacy_policy: "隐私政策",
+      footer_terms_of_service: "使用条款",
+      result: weight => `您的目标体重为 <strong>${weight.toFixed(1)} kg</strong>`,
+      calculate_first: "请先计算目标体重"
+    }
+  };
+
+  // DOM elements
+  const form = document.getElementById('goal-form');
+  const resultEl = document.getElementById('result');
+  const langBtn = document.getElementById('lang-switch');
+  const shareBtn = document.getElementById('share-btn');
+  const exportBtn = document.getElementById('export-btn');
+  const speakBtn = document.getElementById('speak-btn');
+
+  // Current language
+  let currentLang = 'en';
+
+  // Update language
+  function updateLang(lang) {
+    // Update navigation links
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = i18n[lang][key];
+        } else {
+          el.textContent = i18n[lang][key];
+        }
+      }
+    });
+
+    // Update button text
+    document.getElementById('calc-btn').textContent = i18n[lang].calculate;
+
+    currentLang = lang;
+  }
+
+  // Calculate target weight
+  function calculateGoalWeight(height, targetBmi) {
+    const heightM = height / 100;
+    return targetBmi * heightM * heightM;
+  }
+
+  // Export result as PDF
+  function exportResult(weight) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(20);
+    doc.text(i18n[currentLang].title, 105, 20, { align: 'center' });
+    doc.setFontSize(16);
+    doc.text(i18n[currentLang].result(weight), 105, 35, { align: 'center' });
+    doc.save('goal-weight-result.pdf');
+  }
+
+  // Share result
+  function shareResult(weight) {
+    const text = i18n[currentLang].result(weight);
+    if (navigator.share) {
+      navigator.share({
+        title: i18n[currentLang].title,
+        text: text,
+        url: window.location.href
+      });
+    } else {
+      alert(text);
+    }
+  }
+
+  // Speak result
+  function speakResult(weight) {
+    if (window.speechSynthesis) {
+      const utterance = new SpeechSynthesisUtterance(i18n[currentLang].result(weight));
+      speechSynthesis.speak(utterance);
+    } else {
+      alert('Your browser does not support speech synthesis');
+    }
+  }
+
+  // Event listeners
+  langBtn.addEventListener('click', () => {
+    updateLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const height = parseFloat(document.getElementById('height').value);
+    const targetBmi = parseFloat(document.getElementById('target-bmi').value);
+
+    if (height > 0 && targetBmi > 0) {
+      const weight = calculateGoalWeight(height, targetBmi);
+      resultEl.innerHTML = i18n[currentLang].result(weight);
+    }
+  });
+
+  shareBtn.addEventListener('click', () => {
+    const weightMatch = resultEl.innerHTML.match(/\d+\.\d+/);
+    if (weightMatch) {
+      shareResult(parseFloat(weightMatch[0]));
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  exportBtn.addEventListener('click', () => {
+    const weightMatch = resultEl.innerHTML.match(/\d+\.\d+/);
+    if (weightMatch) {
+      exportResult(parseFloat(weightMatch[0]));
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  speakBtn.addEventListener('click', () => {
+    const weightMatch = resultEl.innerHTML.match(/\d+\.\d+/);
+    if (weightMatch) {
+      speakResult(parseFloat(weightMatch[0]));
+    } else {
+      alert(i18n[currentLang].calculate_first);
+    }
+  });
+
+  // Initialize language
+  updateLang(currentLang);
+</script>
+</body>
+</html>

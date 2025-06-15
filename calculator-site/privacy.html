@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">隐私政策 | Privacy Policy</title>
+  <meta name="description" content="Calculator2U 致力于保护用户隐私，详细说明我们如何收集、使用和保护您的信息。" />
+  <meta name="keywords" content="隐私政策, Privacy Policy, 个人信息保护, Calculator2U" />
+  <meta name="author" content="Calculator2U" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RLH4FLZBZF');
+  </script>
+  <style>
+    /* 基础样式 */
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --accent-color: #83c5be;
+      --light-bg: #f9f9f9;
+      --dark-text: #333;
+      --light-text: #fff;
+      --border-radius: 8px;
+      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* 导航栏样式 */
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      color: var(--light-text);
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      transition: var(--transition);
+    }
+    
+    .nav-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: var(--transition);
+      display: block;
+    }
+    
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid var(--light-text);
+      color: var(--light-text);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .lang-switch:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light-text);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    /* 主内容区域 */
+    main {
+      flex: 1;
+    }
+    
+    .container {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--secondary-color);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    
+    h2 {
+      color: var(--secondary-color);
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+    }
+    
+    p, ul {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1.2rem;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 页脚样式 */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #e9ecef;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .copyright {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    /* 响应式设计 - 平板 */
+    @media (max-width: 992px) {
+      .container {
+        padding: 1.8rem;
+        margin: 1.8rem auto;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+    
+    /* 响应式设计 - 手机 */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-container {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      .nav-links.show {
+        max-height: 500px;
+        padding: 1rem 0;
+      }
+      
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        padding: 0.8rem 1rem;
+        width: 100%;
+      }
+      
+      .lang-switch {
+        margin-top: 1rem;
+        width: 80%;
+        max-width: 200px;
+      }
+      
+      .container {
+        margin: 1.5rem;
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    
+    /* 响应式设计 - 小屏幕手机 */
+    @media (max-width: 480px) {
+      .container {
+        margin: 1rem;
+        padding: 1.2rem;
+      }
+      
+      h1 {
+        font-size: 1.4rem;
+      }
+      
+      h2 {
+        font-size: 1.2rem;
+      }
+      
+      p, ul {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="logo">
+      <span class="logo-icon">🧮</span>
+      <span>Calculator2U</span>
+    </a>
+    
+    <div class="nav-container">
+      <button class="hamburger" id="hamburger">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><button class="lang-switch" id="lang-switch">EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <h1 data-i18n="title">隐私政策</h1>
+
+
+      <p data-i18n="intro">
+        Calculator2U 非常重视您的隐私保护。以下说明了我们如何收集、使用和保护您在使用本网站时提供的信息。
+      </p>
+
+      <h2 data-i18n="data_collection_title">我们收集的信息</h2>
+      <p data-i18n="data_collection_text">
+        本网站主要提供在线计算服务，我们不会主动收集您的任何个人身份信息。我们仅收集非个人身份的统计数据以改进服务，例如：
+      </p>
+      <ul data-i18n="data_collection_list">
+        <li>访问时间和频率</li>
+        <li>使用的设备和浏览器类型</li>
+        <li>访问的页面和停留时间</li>
+      </ul>
+
+      <h2 data-i18n="use_of_data_title">信息的使用</h2>
+      <p data-i18n="use_of_data_text">
+        收集的统计数据仅用于分析网站流量和改进用户体验，绝不会用于商业广告投放或分享给第三方。
+      </p>
+
+      <h2 data-i18n="cookies_title">Cookie 的使用</h2>
+      <p data-i18n="cookies_text">
+        我们使用少量 Cookie 以保持语言偏好和提升功能体验。Cookie 不包含个人身份信息，您可在浏览器中管理或禁用 Cookie。
+      </p>
+
+      <h2 data-i18n="third_party_title">第三方服务</h2>
+      <p data-i18n="third_party_text">
+        本网站可能会使用第三方分析工具（如 Google Analytics）收集匿名使用数据，具体请参见对应第三方隐私政策。
+      </p>
+
+      <h2 data-i18n="security_title">安全保护</h2>
+      <p data-i18n="security_text">
+        我们采取合理的技术措施保障您的数据安全，防止未经授权的访问、披露或篡改。
+      </p>
+
+      <h2 data-i18n="changes_title">隐私政策变更</h2>
+      <p data-i18n="changes_text">
+        我们可能不时更新隐私政策，建议您定期查看本页以了解最新内容。
+      </p>
+
+      <h2 data-i18n="contact_title">联系我们</h2>
+      <p data-i18n="contact_text">
+        如您对隐私政策有任何疑问或建议，请通过网站联系方式与我们联系。感谢您的信任与支持！
+      </p>
+    </div>
+  </main>
+
+
+  <footer>
+
+    <div class="footer-links">
+      <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a>
+      <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+      <a href="/contact.html" data-i18n="footer_contact">联系我们</a>
+    </div>
+    <p class="copyright" data-i18n="footer_rights">&copy; 2025 Calculator2U. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (() => {
+      // 翻译数据
+      const translations = {
+        zh: {
+          title: "隐私政策",
+          intro: "Calculator2U 非常重视您的隐私保护。以下说明了我们如何收集、使用和保护您在使用本网站时提供的信息。",
+          data_collection_title: "我们收集的信息",
+          data_collection_text: "本网站主要提供在线计算服务，我们不会主动收集您的任何个人身份信息。我们仅收集非个人身份的统计数据以改进服务，例如：",
+          data_collection_list: ["访问时间和频率", "使用的设备和浏览器类型", "访问的页面和停留时间"],
+          use_of_data_title: "信息的使用",
+          use_of_data_text: "收集的统计数据仅用于分析网站流量和改进用户体验，绝不会用于商业广告投放或分享给第三方。",
+          cookies_title: "Cookie 的使用",
+          cookies_text: "我们使用少量 Cookie 以保持语言偏好和提升功能体验。Cookie 不包含个人身份信息，您可在浏览器中管理或禁用 Cookie。",
+          third_party_title: "第三方服务",
+          third_party_text: "本网站可能会使用第三方分析工具（如 Google Analytics）收集匿名使用数据，具体请参见对应第三方隐私政策。",
+          security_title: "安全保护",
+          security_text: "我们采取合理的技术措施保障您的数据安全，防止未经授权的访问、披露或篡改。",
+          changes_title: "隐私政策变更",
+          changes_text: "我们可能不时更新隐私政策，建议您定期查看本页以了解最新内容。",
+          contact_title: "联系我们",
+          contact_text: "如您对隐私政策有任何疑问或建议，请通过网站联系方式与我们联系。感谢您的信任与支持！",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
+          footer_contact: "联系我们",
+          footer_rights: "&copy; 2025 Calculator2U. 保留所有权利。"
+        },
+        en: {
+          title: "Privacy Policy",
+          intro: "Calculator2U takes your privacy seriously. This statement explains how we collect, use, and protect the information you provide while using our website.",
+          data_collection_title: "Information We Collect",
+          data_collection_text: "Our website primarily provides online calculation services and does not actively collect any personally identifiable information. We only collect non-personal statistical data to improve services, such as:",
+          data_collection_list: ["Visit times and frequency", "Device and browser type used", "Pages visited and duration"],
+          use_of_data_title: "Use of Information",
+          use_of_data_text: "Collected statistical data is solely used for analyzing website traffic and improving user experience. It will never be used for commercial advertising or shared with third parties.",
+          cookies_title: "Use of Cookies",
+          cookies_text: "We use a small number of cookies to maintain language preferences and enhance functionality. Cookies do not contain personal identification information. You can manage or disable cookies via your browser settings.",
+          third_party_title: "Third-Party Services",
+          third_party_text: "Our site may use third-party analytics tools (such as Google Analytics) to collect anonymous usage data. Please refer to the respective third-party privacy policies for details.",
+          security_title: "Security",
+          security_text: "We implement reasonable technical measures to protect your data from unauthorized access, disclosure, or alteration.",
+          changes_title: "Changes to This Privacy Policy",
+          changes_text: "We may update this privacy policy from time to time. We encourage you to review this page periodically for the latest information.",
+          contact_title: "Contact Us",
+          contact_text: "If you have any questions or suggestions regarding this privacy policy, please contact us through the website. Thank you for your trust and support!",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
+          footer_contact: "Contact Us",
+          footer_rights: "&copy; 2025 Calculator2U. All rights reserved."
+        }
+      };
+
+      // 获取语言设置
+      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+      // 设置语言
+      function setLang(l) {
+        lang = l;
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        
+        // 更新所有带data-i18n属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            if (Array.isArray(translations[lang][key])) {
+              // 处理列表项
+              el.innerHTML = '';
+              translations[lang][key].forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                el.appendChild(li);
+              });
+            } else {
+              el.innerHTML = translations[lang][key];
+            }
+          }
+        });
+        
+        // 更新语言切换按钮文本
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      // 切换语言
+      function toggleLang() {
+        setLang(lang === 'zh' ? 'en' : 'zh');
+      }
+
+      // 汉堡菜单切换
+      function toggleMenu() {
+        const navLinks = document.getElementById('nav-links');
+        navLinks.classList.toggle('show');
+      }
+
+      // 点击页面其他地方关闭菜单
+      document.addEventListener('click', (e) => {
+        const navLinks = document.getElementById('nav-links');
+        const hamburger = document.getElementById('hamburger');
+        
+        if (navLinks.classList.contains('show') && 
+            e.target !== hamburger && 
+            !hamburger.contains(e.target) &&
+            e.target !== navLinks && 
+            !navLinks.contains(e.target)) {
+          navLinks.classList.remove('show');
+        }
+      });
+
+      // 初始化事件监听
+      document.getElementById('lang-switch').addEventListener('click', toggleLang);
+      document.getElementById('hamburger').addEventListener('click', toggleMenu);
+
+      // 初始化语言
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>

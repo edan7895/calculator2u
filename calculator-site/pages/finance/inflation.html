@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 优化标题，添加更多关键词 -->
+    <title data-i18n="title">Inflation Calculator | 通货膨胀计算器 | Purchasing Power Calculator | 购买力计算器</title>
+    <meta name="description" content="Use our inflation calculator to understand how inflation affects your purchasing power. Input the current amount, inflation rate, and number of years to calculate the future purchasing power. Essential for financial planning and investment decisions." />
+    <meta name="keywords" content="Inflation Calculator, Purchasing Power Calculator, 通货膨胀计算器, 购买力计算器, Financial Planning, Investment Decisions, Inflation Rate, Future Purchasing Power, Economic Tools, Finance Calculator" />
+    <meta name="author" content="Calculator2U" />
+    <meta name="robots" content="index, follow" />
+    <!-- 中文 Meta Tags -->
+    <meta name="description" lang="zh" content="使用我们的通货膨胀计算器，了解通货膨胀如何影响您的购买力。输入当前金额、通货膨胀率和年数，计算未来的实际购买力。适用于财务规划和投资决策。" />
+    <meta name="keywords" lang="zh" content="通货膨胀计算器, 购买力计算器, 财务规划, 投资决策, 通货膨胀率, 未来购买力, 经济工具, 财务计算器" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="通货膨胀计算器 | Inflation Calculator | 购买力计算器 | Purchasing Power Calculator" />
+    <meta property="og:description" content="使用我们的通货膨胀计算器，了解通货膨胀如何影响您的购买力。输入当前金额、通货膨胀率和年数，计算未来的实际购买力。适用于财务规划和投资决策。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/inflation-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Inflation Calculator | 通货膨胀计算器 | Purchasing Power Calculator | 购买力计算器" />
+    <meta name="twitter:description" content="Use our inflation calculator to understand how inflation affects your purchasing power. Input the current amount, inflation rate, and number of years to calculate the future purchasing power. Essential for financial planning and investment decisions." />
+    <meta name="twitter:image" content="https://www.calculator2u.com/assets/images/inflation-calculator.jpg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<!-- 添加结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "通货膨胀计算器 | Inflation Calculator",
+  "description": "使用我们的通货膨胀计算器，了解通货膨胀如何影响您的购买力。输入当前金额、通货膨胀率和年数，计算未来的实际购买力。",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Calculator2U",
+      "item": "https://www.calculator2u.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "财务与投资",
+      "item": "https://www.calculator2u.com/pages/finance/index.html"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "通货膨胀计算器",
+      "item": "https://www.calculator2u.com/financial/inflation-calculator.html"
+    }]
+  }
+}
+</script>
+<style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar a.logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #a9c8f5;
+    }
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #fff;
+      color: #006d77;
+    }
+    main.container {
+      max-width: 640px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #008891;
+      margin-bottom: 2rem;
+    }
+    form#inflationForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    form#inflationForm > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+    input[type=number] {
+      font-size: 1rem;
+      padding: 0.4rem;
+      border: 1.5px solid #006d77;
+      border-radius: 6px;
+      text-align: right;
+    }
+    button {
+      background-color: #008891;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #007279;
+    }
+    #result-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .result-item {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #006d77;
+      margin-bottom: 1rem;
+    }
+    footer {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a9c8f5;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      form#inflationForm {
+        padding: 0 1rem;
+      }
+    }
+</style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo" data-i18n="logo">Calculator2U</a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">Health & Body</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">Finance & Investment</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">Education & Learning</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">Engineering & Science</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">Daily Life</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">About Us</a></li>
+        <li><button class="lang-switch" id="lang-switch" data-i18n="lang_switch">中文</button></li>
+      </ul>
+    </nav>
+</header>
+
+<main class="container">
+  <h1 data-i18n="title">通货膨胀计算器 | Inflation Calculator</h1>
+  <form id="inflationForm" aria-label="Inflation Calculator Form">
+    <div>
+      <label for="presentValue" data-i18n="present_value">当前金额 (Present Value):</label>
+      <input type="number" id="presentValue" min="0" step="0.01" required placeholder="Enter present value" />
+    </div>
+    <div>
+      <label for="inflationRate" data-i18n="inflation_rate">年通货膨胀率 (%) (Annual Inflation Rate):</label>
+      <input type="number" id="inflationRate" min="0" step="0.01" required placeholder="Enter inflation rate" />
+    </div>
+    <div>
+      <label for="years" data-i18n="years">年数 (Years):</label>
+      <input type="number" id="years" min="0" step="1" required placeholder="Enter years" />
+    </div>
+    <button type="submit" data-i18n="calculate">Calculate</button>
+  </form>
+
+
+  <section id="result-container">
+    <div id="result" class="result-item"></div>
+  </section>
+</main>
+
+<footer>
+
+  <p>&copy; 2025 Calculator2U. All rights reserved. | <a href="/privacy.html" data-i18n="footer_privacy_policy">Privacy Policy</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">Terms of Service</a></p>
+</footer>
+
+<script>
+(() => {
+  // 语言包
+  const translations = {
+    zh: {
+      logo: "Calculator2U",
+      title: "通货膨胀计算器 | Inflation Calculator",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about_us: "关于我们",
+          lang_switch: "EN",
+      present_value: "当前金额 (Present Value):",
+      inflation_rate: "年通货膨胀率 (%) (Annual Inflation Rate):",
+      years: "年数 (Years):",
+      calculate: "计算",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款"
+    },
+    en: {
+      logo: "Calculator2U",
+      title: "Inflation Calculator | 购买力计算器",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about_us: "About Us",
+          lang_switch: "中文",
+      present_value: "Present Value",
+      inflation_rate: "Annual Inflation Rate (%)",
+      years: "Years",
+      calculate: "Calculate",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service"
+    }
+  };
+
+  // 获取语言，默认中文或英文
+  let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    localStorage.setItem('site-lang', l);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[l] && translations[l][key]) {
+        if (el.tagName === 'INPUT') {
+          el.placeholder = translations[l][key];
+        } else {
+          el.textContent = translations[l][key];
+        }
+      }
+    });
+    document.getElementById('lang-switch').textContent = l === 'zh' ? 'EN' : '中文';
+  }
+
+  setLang(lang);
+
+  document.getElementById('lang-switch').addEventListener('click', () => {
+    setLang(lang === 'zh' ? 'en' : 'zh');
+  });
+
+  // 表单提交计算逻辑
+  const form = document.getElementById('inflationForm');
+  const resultDiv = document.getElementById('result');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const presentValue = parseFloat(document.getElementById('presentValue').value);
+    const inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
+    const years = parseInt(document.getElementById('years').value, 10);
+
+    if (
+      isNaN(presentValue) || presentValue < 0 ||
+      isNaN(inflationRate) || inflationRate < 0 ||
+      isNaN(years) || years < 0
+    ) {
+      resultDiv.textContent = lang === 'zh' ? '请输入有效的数字' : 'Please enter valid numbers';
+      return;
+    }
+
+    // 未来价值 = 当前金额 * (1 + 通胀率)^年数
+    const futureValue = presentValue * Math.pow(1 + inflationRate, years);
+
+    if (lang === 'zh') {
+      resultDiv.textContent = `等价购买力: ${futureValue.toFixed(2)} 元`;
+    } else {
+      resultDiv.textContent = `Equivalent Purchasing Power: $${futureValue.toFixed(2)}`;
+    }
+  });
+})();
+</script>
+</body>
+</html>

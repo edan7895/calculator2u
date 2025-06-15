@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">关于我们 | About Us</title>
+  <meta name="description" content="Calculator2U 是一个专业提供各类实用在线计算器的网站，致力于帮助用户轻松解决各种计算问题。" />
+  <meta name="keywords" content="关于我们, 计算器网站, 在线工具, Calculator2U" />
+  <meta name="author" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #83c5be;
+      --accent-color: #e29578;
+      --light-color: #edf6f9;
+      --dark-color: #333;
+      --text-color: #555;
+      --shadow: 0 2px 8px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+      background: #f9f9f9;
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* 导航栏样式 */
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    /* 汉堡菜单按钮 */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 5px;
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+      transition: var(--transition);
+    }
+    
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover, 
+    .nav-links a:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .lang-switch {
+      background: transparent;
+      border: 1.5px solid #fff;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .lang-switch:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 主要内容区域 */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      width: 100%;
+      flex: 1;
+    }
+    
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 992px) {
+      .content-wrapper {
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+    
+    .main-content {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+    
+    .sidebar {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      height: fit-content;
+    }
+    
+    h1, h2, h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    h1:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+    
+    p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* 特色计算器区域 */
+    .featured-calculators {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .calculator-card {
+      background: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid #ddd;
+    }
+    
+    .calculator-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    
+    .calculator-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .calculator-card h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .calculator-card p {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .btn:hover {
+      background-color: #005a63;
+      transform: translateY(-2px);
+    }
+    
+    /* 页脚样式 */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-section {
+      padding: 0 1rem;
+    }
+    
+    .footer-section h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .footer-section h3:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .copyright a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .copyright a:hover {
+      text-decoration: underline;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 991px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0;
+        z-index: 100;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 0.8rem 1rem;
+        border-radius: 0;
+      }
+      
+      .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+      
+      .lang-switch {
+        margin-top: 1rem;
+        width: 80%;
+        max-width: 200px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      .main-content, .sidebar {
+        padding: 1.5rem;
+      }
+      
+      .featured-calculators {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .navbar .logo {
+        font-size: 1.3rem;
+      }
+      
+      .container {
+        margin: 1rem auto;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="logo">
+      <span class="logo-icon">🧮</span>
+      <span>Calculator2U</span>
+    </a>
+    
+    <button class="hamburger" id="hamburger">☰</button>
+    
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+      <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+      <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+      <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+      <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+      <li><button class="lang-switch" id="lang-switch">EN</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div class="content-wrapper">
+      <div class="main-content">
+        <h1 data-i18n="title">关于我们</h1>
+        <p data-i18n="intro">
+          Calculator2U 是一个专业的在线计算器平台，致力于为用户提供丰富、实用且易用的计算工具。无论是健康、财务、教育还是工程领域，我们都希望帮助您轻松完成各种计算任务。
+        </p>
+        
+        <h2 data-i18n="mission_title">我们的使命</h2>
+        <p data-i18n="mission">
+          我们的使命是通过高质量的工具，提升用户的生活和工作效率。所有计算器均经过精心设计和测试，确保准确和便捷。我们相信，复杂的计算应该简单化，让每个人都能轻松使用专业工具。
+        </p>
+        
+        <h2 data-i18n="values_title">核心价值观</h2>
+        <p data-i18n="values">
+          Calculator2U 重视用户体验和隐私保护，不收集任何个人敏感信息，且所有服务完全免费。我们欢迎用户反馈，持续改进和扩展更多实用功能。
+        </p>
+
+        <h2 data-i18n="featured_title">特色计算器</h2>
+        <div class="featured-calculators">
+          <div class="calculator-card">
+            <div class="calculator-icon">💊</div>
+            <h3 data-i18n="calc_health">BMI 计算器</h3>
+            <p data-i18n="calc_health_desc">计算您的身体质量指数，评估健康状况</p>
+            <a href="/pages/health/bmi.html" class="btn" data-i18n="calc_use">立即使用</a>
+          </div>
+          
+          <div class="calculator-card">
+            <div class="calculator-icon">💰</div>
+            <h3 data-i18n="calc_finance">贷款计算器</h3>
+            <p data-i18n="calc_finance_desc">计算您的每月还款额和总利息</p>
+            <a href="/pages/finance/loan-calculator.html" class="btn" data-i18n="calc_use">立即使用</a>
+          </div>
+          
+          
+          <div class="calculator-card">
+            <div class="calculator-icon">⚙️</div>
+            <h3 data-i18n="calc_engineering">单位转换器</h3>
+            <p data-i18n="calc_engineering_desc">在公制和英制单位之间轻松转换</p>
+            <a href="/pages/education/unit-converter.html" class="btn" data-i18n="calc_use">立即使用</a>
+          </div>
+        </div>
+        
+        <h2 data-i18n="contact_title">联系我们</h2>
+        <p data-i18n="contact">
+          如有任何建议或问题，请通过我们的联系方式feedback@calculator2u.com与我们取得联系。感谢您对 Calculator2U 的支持！
+        </p>
+      </div>
+      
+      <aside class="sidebar">
+        <h3 data-i18n="popular_title">热门计算器</h3>
+        <ul>
+          <li><a href="/pages/finance/homeloan.html" data-i18n="popular1">房贷计算器</a></li>
+          <li><a href="/pages/health/tdee.html" data-i18n="popular2">卡路里计算器</a></li>
+          <li><a href="/pages/daily-life/date-calculator.html" data-i18n="popular3">日期计算器</a></li>
+        </ul>
+        
+        <h3 data-i18n="recent_title">最近更新</h3>
+        <ul>
+          <li><a href="/pages/finance/investment-return.html" data-i18n="recent1">退休储蓄计算器</a></li>
+          <li><a href="/pages/health/pregnancy-due-date.html" data-i18n="recent2">怀孕计算器</a></li>
+        </ul>
+        
+        <h3 data-i18n="news_title">最新消息</h3>
+        <p data-i18n="news1">我们刚刚发布了全新设计的个人所得税计算器！</p>
+
+      </aside>
+    </div>
+  </main>
+
+
+  <footer>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 data-i18n="footer_about">关于我们</h3>
+        <p data-i18n="footer_about_desc">Calculator2U 是一个专业的在线计算器平台，致力于为用户提供丰富、实用且易用的计算工具。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3 data-i18n="footer_links">快速链接</h3>
+        <ul class="footer-links">
+          <li><a href="/index.html" data-i18n="footer_home">首页</a></li>
+          <li><a href="/about.html" data-i18n="footer_about_us">关于我们</a></li>
+          <li><a href="/contact.html" data-i18n="footer_contact">联系我们</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3 data-i18n="footer_legal">法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a></li>
+          <li><a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | 
+        <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | 
+        <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const translations = {
+        zh: {
+          title: "关于我们",
+          intro: "Calculator2U 是一个专业的在线计算器平台，致力于为用户提供丰富、实用且易用的计算工具。无论是健康、财务、教育还是工程领域，我们都希望帮助您轻松完成各种计算任务。",
+          mission_title: "我们的使命",
+          mission: "我们的使命是通过高质量的工具，提升用户的生活和工作效率。所有计算器均经过精心设计和测试，确保准确和便捷。我们相信，复杂的计算应该简单化，让每个人都能轻松使用专业工具。",
+          values_title: "核心价值观",
+          values: "Calculator2U 重视用户体验和隐私保护，不收集任何个人敏感信息，且所有服务完全免费。我们欢迎用户反馈，持续改进和扩展更多实用功能。",
+          featured_title: "特色计算器",
+          contact_title: "联系我们",
+          contact: "如有任何建议或问题，请通过我们的联系方式feedback@calculator2u.com与我们取得联系。感谢您对 Calculator2U 的支持！",
+          popular_title: "热门计算器",
+          recent_title: "最近更新",
+          news_title: "最新消息",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          footer_about: "关于我们",
+          footer_about_desc: "Calculator2U 是一个专业的在线计算器平台，致力于为用户提供丰富、实用且易用的计算工具。",
+          footer_links: "快速链接",
+          footer_legal: "法律信息",
+          footer_home: "首页",
+          footer_about_us: "关于我们",
+          footer_contact: "联系我们",
+          footer_sitemap: "网站地图",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
+          footer_disclaimer: "免责声明",
+          footer_rights: "保留所有权利。",
+          calc_health: "BMI 计算器",
+          calc_health_desc: "计算您的身体质量指数，评估健康状况",
+          calc_finance: "贷款计算器",
+          calc_finance_desc: "计算您的每月还款额和总利息",
+          calc_education: "成绩计算器",
+          calc_education_desc: "计算您的加权平均分和GPA",
+          calc_engineering: "单位转换器",
+          calc_engineering_desc: "在公制和英制单位之间轻松转换",
+          calc_use: "立即使用",
+          popular1: "房贷计算器",
+          popular2: "卡路里计算器",
+          popular3: "日期计算器",
+          popular4: "百分比计算器",
+          popular5: "货币转换器",
+          recent1: "退休储蓄计算器",
+          recent2: "怀孕计算器",
+          recent3: "燃油效率计算器",
+          news1: "我们刚刚发布了全新设计的个人所得税计算器！",
+          news2: "移动应用版本将在下个月推出，敬请期待。"
+        },
+        en: {
+          title: "About Us",
+          intro: "Calculator2U is a professional online calculator platform dedicated to providing users with a wide range of practical and easy-to-use calculation tools. Whether in health, finance, education, or engineering, we aim to help you accomplish your calculations effortlessly.",
+          mission_title: "Our Mission",
+          mission: "Our mission is to enhance users' life and work efficiency through high-quality tools. All calculators are carefully designed and tested to ensure accuracy and convenience. We believe complex calculations should be simplified, making professional tools accessible to everyone.",
+          values_title: "Core Values",
+          values: "Calculator2U values user experience and privacy protection. We do not collect any personal sensitive information, and all services are completely free. We welcome user feedback to continuously improve and expand our features.",
+          featured_title: "Featured Calculators",
+          contact_title: "Contact Us",
+          contact: "If you have any suggestions or questions, please contact us at feedback@calculator2u.com. Thank you for supporting Calculator2U!",
+          popular_title: "Popular Calculators",
+          recent_title: "Recent Updates",
+          news_title: "Latest News",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          footer_about: "About Us",
+          footer_about_desc: "Calculator2U is a professional online calculator platform dedicated to providing users with practical and easy-to-use calculation tools.",
+          footer_links: "Quick Links",
+          footer_legal: "Legal Information",
+          footer_home: "Home",
+          footer_about_us: "About Us",
+          footer_contact: "Contact Us",
+          footer_sitemap: "Sitemap",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
+          footer_disclaimer: "Disclaimer",
+          footer_rights: "All rights reserved.",
+          calc_health: "BMI Calculator",
+          calc_health_desc: "Calculate your Body Mass Index and health status",
+          calc_finance: "Loan Calculator",
+          calc_finance_desc: "Calculate your monthly payment and total interest",
+          calc_education: "Grade Calculator",
+          calc_education_desc: "Calculate your weighted average and GPA",
+          calc_engineering: "Unit Converter",
+          calc_engineering_desc: "Easily convert between metric and imperial units",
+          calc_use: "Use Now",
+          popular1: "Mortgage Calculator",
+          popular2: "Calorie Calculator",
+          popular3: "Date Calculator",
+          popular4: "Percentage Calculator",
+          popular5: "Currency Converter",
+          recent1: "Retirement Savings Calculator",
+          recent2: "Pregnancy Calculator",
+          recent3: "Fuel Efficiency Calculator",
+          news1: "We just released a newly designed Income Tax Calculator!",
+          news2: "Mobile app version coming next month. Stay tuned."
+        }
+      };
+
+      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+      }
+
+      function toggleLang() {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        setLang(lang);
+      }
+
+      // 汉堡菜单功能
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+      
+      // 点击菜单项关闭菜单（移动设备）
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 991) {
+            navLinks.classList.remove('active');
+          }
+        });
+      });
+
+      // 初始化语言切换按钮
+      document.getElementById('lang-switch').addEventListener('click', toggleLang);
+      
+      // 初始化语言
+      setLang(lang);
+    })();
+  </script>
+</body>
+</html>

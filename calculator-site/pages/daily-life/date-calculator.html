@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="title">Date Calculator | 日期计算器 - 计算日期差 & 日期加减</title>
+    <meta name="description" content="强大的日期计算器：计算两个日期之间的天数差，或从指定日期加减天数得出新日期。支持中英文切换和夜间模式，界面简洁，操作便捷。适用于学生、项目管理、个人规划等场景。" />
+    <meta name="keywords" content="日期计算器, 日期差计算, 天数计算, 日期加减, 日期工具, 日期转换, 天数计算器, 计算器工具, date calculator, date difference, add days to date, date converter" />
+    <meta name="description" lang="en" content="A powerful date calculator that computes the difference in days between two dates or calculates a new date by adding/subtracting days from a specified date. Supports both Chinese/English interfaces and a dark mode for comfortable use. Ideal for students, project management, and personal planning." />
+    <meta name="keywords" lang="en" content="Date Calculator, Date Difference, Day Calculator, Date Converter, Date Calculation Tool, Day Counter, Calculate Days Between Dates, Add Days to Date, Date Arithmetic, Date and Time Tools" />
+    <meta name="author" content="Calculator2U" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="日期计算器 | Date Calculator - 计算日期差 & 日期加减" />
+    <meta property="og:description" content="强大的日期计算器：计算两个日期之间的天数差，或从指定日期加减天数得出新日期。支持中英文切换和夜间模式，界面简洁，操作便捷。适用于学生、项目管理、个人规划等场景。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/date-calculator.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+  <link rel="canonical" href="https://www.calculator2u.com/date-calculator" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --bg-color: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --light-gray: #f0f0f0;
+      --border-color: #dddddd;
+      --shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    .dark-mode {
+      --primary-color: #4db5bd;
+      --secondary-color: #88ccd6;
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --light-gray: #2d2d2d;
+      --border-color: #444444;
+      --shadow: 0 2px 15px rgba(0,0,0,0.3);
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.4rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 1.6rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .control-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .control-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      padding: 0.8rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-color);
+      opacity: 0.7;
+      font-size: 1rem;
+    }
+
+    .tab-btn.active {
+      opacity: 1;
+      border-bottom: 3px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .calculator-box {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      padding: 0.8rem 1.8rem;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .result {
+      margin-top: 1.8rem;
+      padding: 1.2rem;
+      border-radius: 8px;
+      background: var(--light-gray);
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      color: var(--secondary-color);
+    }
+
+    .feature-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: var(--light-gray);
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.8rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .calculator-box {
+        padding: 1.5rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .tabs {
+        flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+        flex: 1;
+        text-align: center;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">
+        <span class="logo-icon"></span>
+        <span>Calculator2U</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="control-btn" id="dark-mode-toggle">
+          <span id="dark-mode-icon">🌙</span>
+          <span data-i18n="dark_mode">夜间模式</span>
+        </button>
+        <button class="control-btn" id="lang-switch">
+          <span id="lang-icon">🌐</span>
+          <span id="lang-text">EN</span>
+        </button>
+      </div>
+    </nav>
+</header>
+
+  <main class="container">
+    <h1 data-i18n="title">日期计算器</h1>
+    <p class="subtitle" data-i18n="desc">计算日期差异或添加天数到指定日期</p>
+
+    
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-diff" data-i18n="tab_diff">日期差计算</button>
+      <button class="tab-btn" id="tab-add" data-i18n="tab_add">日期加减</button>
+    </div>
+    
+    <div class="calculator-box">
+      <!-- 日期差计算部分 -->
+      <div id="diff-calculator">
+        <div class="input-group">
+          <label for="start-date" data-i18n="start_date">起始日期：</label>
+          <input type="date" id="start-date" />
+        </div>
+        <div class="input-group">
+          <label for="end-date" data-i18n="end_date">结束日期：</label>
+          <input type="date" id="end-date" />
+        </div>
+        <div class="btn-group">
+          <button onclick="calculateDateDiff()" data-i18n="calculate">计算日期差</button>
+        </div>
+        <div class="result" id="diff-result"></div>
+      </div>
+      
+      <!-- 日期加减部分 -->
+      <div id="add-calculator" style="display: none;">
+        <div class="input-group">
+          <label for="base-date" data-i18n="base_date">基准日期：</label>
+          <input type="date" id="base-date" />
+        </div>
+        <div class="input-group">
+          <label for="days-to-add" data-i18n="days_to_add">要添加的天数：</label>
+          <input type="number" id="days-to-add" min="1" value="7" />
+        </div>
+        <div class="btn-group">
+          <button onclick="calculateDateAdd()" data-i18n="add_days">添加天数</button>
+          <button onclick="calculateDateSubtract()" data-i18n="subtract_days">减去天数</button>
+        </div>
+        <div class="result" id="add-result"></div>
+      </div>
+    </div>
+    
+    <div class="feature-section">
+      <div class="feature-card">
+        <h3 data-i18n="feature1_title">精准日期计算</h3>
+        <p data-i18n="feature1_desc">无论日期跨度多大，我们都能精确计算两个日期之间的天数差，包括闰年处理。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="feature2_title">日期加减</h3>
+        <p data-i18n="feature2_desc">在指定日期上添加或减去任意天数，快速计算未来或过去的日期。</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="feature3_title">多语言支持</h3>
+        <p data-i18n="feature3_desc">支持中英文自动切换，满足不同用户的语言需求。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+  </footer>
+
+  <script>
+    // 日期计算功能
+    function calculateDateDiff() {
+      const start = new Date(document.getElementById('start-date').value);
+      const end = new Date(document.getElementById('end-date').value);
+      const resultDiv = document.getElementById('diff-result');
+
+      if (!start || !end || isNaN(start) || isNaN(end)) {
+        resultDiv.textContent = lang === 'zh' ? '请输入有效的日期。' : 'Please enter valid dates.';
+        return;
+      }
+
+      // 计算日期差（包括开始日期）
+      const diff = Math.abs(end - start);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+      
+      // 格式化日期显示
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const startStr = start.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+      const endStr = end.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+      
+      if (lang === 'zh') {
+        resultDiv.innerHTML = `从 <strong>${startStr}</strong> 到 <strong>${endStr}</strong><br>总共 <strong>${days}</strong> 天`;
+      } else {
+        resultDiv.innerHTML = `From <strong>${startStr}</strong> to <strong>${endStr}</strong><br>Total of <strong>${days}</strong> days`;
+      }
+    }
+
+    function calculateDateAdd() {
+      calculateDateOperation(true);
+    }
+
+    function calculateDateSubtract() {
+      calculateDateOperation(false);
+    }
+
+    function calculateDateOperation(isAdd) {
+      const baseDate = new Date(document.getElementById('base-date').value);
+      const daysInput = document.getElementById('days-to-add').value;
+      const resultDiv = document.getElementById('add-result');
+      
+      if (!baseDate || isNaN(baseDate) || !daysInput || isNaN(daysInput)) {
+        resultDiv.textContent = lang === 'zh' ? '请输入有效的日期和天数。' : 'Please enter a valid date and number of days.';
+        return;
+      }
+      
+      const days = parseInt(daysInput);
+      if (days <= 0) {
+        resultDiv.textContent = lang === 'zh' ? '天数必须大于0。' : 'Days must be greater than 0.';
+        return;
+      }
+      
+      const resultDate = new Date(baseDate);
+      if (isAdd) {
+        resultDate.setDate(resultDate.getDate() + days);
+      } else {
+        resultDate.setDate(resultDate.getDate() - days);
+      }
+      
+      // 格式化日期显示
+      const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+      const baseStr = baseDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+      const resultStr = resultDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', options);
+      
+      if (lang === 'zh') {
+        resultDiv.innerHTML = `${baseStr} ${isAdd ? '加上' : '减去'} <strong>${days}</strong> 天<br>结果为：<strong>${resultStr}</strong>`;
+      } else {
+        const action = isAdd ? 'plus' : 'minus';
+        resultDiv.innerHTML = `${baseStr} ${action} <strong>${days}</strong> days<br>Result: <strong>${resultStr}</strong>`;
+      }
+    }
+
+    // 标签切换功能
+    document.getElementById('tab-diff').addEventListener('click', function() {
+      document.getElementById('diff-calculator').style.display = 'block';
+      document.getElementById('add-calculator').style.display = 'none';
+      document.getElementById('tab-diff').classList.add('active');
+      document.getElementById('tab-add').classList.remove('active');
+    });
+
+    document.getElementById('tab-add').addEventListener('click', function() {
+      document.getElementById('diff-calculator').style.display = 'none';
+      document.getElementById('add-calculator').style.display = 'block';
+      document.getElementById('tab-add').classList.add('active');
+      document.getElementById('tab-diff').classList.remove('active');
+    });
+
+    // 多语言支持
+    const translations = {
+      zh: {
+        title: "日期计算器",
+        desc: "计算日期差异或添加天数到指定日期",
+        tab_diff: "日期差计算",
+        tab_add: "日期加减",
+        nav_health: "健康与身体",
+        nav_finance: "财务与投资",
+        nav_education: "教育与学习",
+        nav_engineering: "工程与科学",
+        nav_daily_life: "日常生活",
+        nav_about_us: "关于我们",
+        start_date: "起始日期：",
+        end_date: "结束日期：",
+        base_date: "基准日期：",
+        days_to_add: "要添加的天数：",
+        calculate: "计算日期差",
+        add_days: "添加天数",
+        subtract_days: "减去天数",
+        footer_privacy_policy: "隐私政策",
+        footer_terms_of_service: "使用条款",
+        footer_contact: "联系我们",
+        footer_rights: "保留所有权利。",
+        dark_mode: "夜间模式",
+        feature1_title: "精准日期计算",
+        feature1_desc: "无论日期跨度多大，我们都能精确计算两个日期之间的天数差，包括闰年处理。",
+        feature2_title: "日期加减",
+        feature2_desc: "在指定日期上添加或减去任意天数，快速计算未来或过去的日期。",
+        feature3_title: "多语言支持",
+        feature3_desc: "支持中英文自动切换，满足不同用户的语言需求。"
+      },
+      en: {
+        title: "Date Calculator",
+        desc: "Calculate date differences or add days to a date",
+        tab_diff: "Date Difference",
+        tab_add: "Add/Subtract Days",
+        nav_health: "Health & Body",
+        nav_finance: "Finance & Investment",
+        nav_education: "Education & Learning",
+        nav_engineering: "Engineering & Science",
+        nav_daily_life: "Daily Life",
+        nav_about_us: "About Us",
+        start_date: "Start Date:",
+        end_date: "End Date:",
+        base_date: "Base Date:",
+        days_to_add: "Days to Add:",
+        calculate: "Calculate Difference",
+        add_days: "Add Days",
+        subtract_days: "Subtract Days",
+        footer_privacy_policy: "Privacy Policy",
+        footer_terms_of_service: "Terms of Service",
+        footer_contact: "Contact Us",
+        footer_rights: "All rights reserved.",
+        dark_mode: "Dark Mode",
+        feature1_title: "Accurate Date Calculation",
+        feature1_desc: "Calculate the exact number of days between two dates, including leap year handling.",
+        feature2_title: "Date Addition/Subtraction",
+        feature2_desc: "Add or subtract any number of days to a date to calculate future or past dates.",
+        feature3_title: "Multilingual Support",
+        feature3_desc: "Supports Chinese and English with automatic switching based on user preference."
+      }
+    };
+
+    let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+    let darkMode = localStorage.getItem('dark-mode') === 'true';
+
+    function applyDarkMode() {
+      if (darkMode) {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-icon').textContent = '☀️';
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.getElementById('dark-mode-icon').textContent = '🌙';
+      }
+    }
+
+    function setLang(selectedLang) {
+      lang = selectedLang;
+      document.documentElement.lang = lang;
+      localStorage.setItem('site-lang', lang);
+      
+      // 更新所有文本元素
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          if (el.tagName === 'INPUT' && el.type === 'button') {
+            el.value = translations[lang][key];
+          } else {
+            el.textContent = translations[lang][key];
+          }
+        }
+      });
+      
+      // 更新语言切换按钮文本
+      document.getElementById('lang-text').textContent = lang === 'zh' ? 'EN' : '中文';
+    }
+
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', function() {
+      // 设置语言
+      setLang(lang);
+      
+      // 设置夜间模式
+      applyDarkMode();
+      
+      // 设置当前日期为默认值
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('start-date').value = today;
+      document.getElementById('end-date').value = today;
+      document.getElementById('base-date').value = today;
+      
+      // 添加语言切换事件
+      document.getElementById('lang-switch').addEventListener('click', () => {
+        setLang(lang === 'zh' ? 'en' : 'zh');
+      });
+      
+      // 添加夜间模式切换事件
+      document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+        darkMode = !darkMode;
+        localStorage.setItem('dark-mode', darkMode);
+        applyDarkMode();
+      });
+    });
+  </script>
+</body>
+</html>
