@@ -1,4 +1,3 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,6 +260,25 @@
     font-weight: bold;
     min-width: 100px;
     font-size: 1.1rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .score-change {
+    position: absolute;
+    right: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
+    color: #ffd166;
+  }
+  
+  .score-change.show {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   .game-board {
@@ -300,6 +318,23 @@
     border-radius: 4px;
     transition: all 0.15s ease;
     z-index: 2;
+    transform: scale(0);
+    animation: appear 0.2s ease forwards;
+  }
+  
+  @keyframes appear {
+    to { transform: scale(1); }
+  }
+  
+  .tile.merged {
+    animation: merged 0.3s ease;
+    z-index: 3;
+  }
+  
+  @keyframes merged {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
   }
   
   /* Tile colors */
@@ -340,10 +375,30 @@
     flex: 1;
     max-width: 140px;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .game-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
   }
   
   .game-btn:hover {
     background: #006d77;
+  }
+  
+  .game-btn:active::after {
+    width: 300px;
+    height: 300px;
   }
   
   .mobile-controls {
@@ -365,10 +420,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mobile-controls button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
   }
   
   .mobile-controls button:active {
     background: #006d77;
+  }
+  
+  .mobile-controls button:active::after {
+    width: 200px;
+    height: 200px;
   }
   
   .mobile-controls .up {
@@ -410,6 +486,13 @@
     transition: opacity 0.3s;
     padding: 1rem;
     text-align: center;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(77, 181, 189, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(77, 181, 189, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(77, 181, 189, 0); }
   }
   
   .game-message.show {
@@ -744,6 +827,122 @@
       font-size: 1rem;
     }
   }
+  
+  /* Tutorial overlay */
+  .tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  
+  .tutorial-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .tutorial-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+  }
+  
+  .tutorial-content h2 {
+    color: #006d77;
+    margin-bottom: 1rem;
+  }
+  
+  .tutorial-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .tutorial-content button {
+    padding: 0.8rem 1.8rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .tutorial-content button:hover {
+    background: #006d77;
+  }
+  
+  .tutorial-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #006d77;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Tile movement animation */
+  .tile.moving {
+    transition: all 0.15s ease;
+    z-index: 4;
+  }
+  
+  /* Game status indicators */
+  .game-status {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .status-indicator {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: #e0f7fa;
+    color: #006d77;
+  }
+  
+  .status-indicator.active {
+    background: #ffd166;
+    color: #333;
+  }
+  
+  /* Key instructions */
+  .key-instructions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .key {
+    background: #4db5bd;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -795,10 +994,19 @@
     <div class="game-container">
       <!-- Game Card -->
       <div class="card">
+        <div class="game-status">
+          <div class="status-indicator" id="game-status">Playing</div>
+          <div class="status-indicator" id="tile-count">Tiles: 2</div>
+        </div>
+        
         <div class="game-board-container">
           <div class="score-container">
             <span>SCORE:</span>
-            <div class="score-box" id="score">0</div>
+            <div class="score-box" id="score">0
+              <span class="score-change" id="score-change"></span>
+            </div>
+            <span>BEST:</span>
+            <div class="score-box" id="best-score">0</div>
           </div>
           
           <div class="game-board" id="game-board">
@@ -817,6 +1025,14 @@
             <button class="down"><i class="fas fa-arrow-down"></i></button>
             <button class="left"><i class="fas fa-arrow-left"></i></button>
             <button class="right"><i class="fas fa-arrow-right"></i></button>
+          </div>
+          
+          <div class="key-instructions">
+            <div class="key">↑</div>
+            <div class="key">↓</div>
+            <div class="key">←</div>
+            <div class="key">→</div>
+            <span>to move tiles</span>
           </div>
         </div>
         
@@ -894,6 +1110,18 @@
     </div>
   </footer>
 
+  <!-- Tutorial Overlay -->
+  <div class="tutorial-overlay" id="tutorial-overlay">
+    <div class="tutorial-content">
+      <button class="tutorial-close" id="tutorial-close"><i class="fas fa-times"></i></button>
+      <h2>Welcome to 2048!</h2>
+      <p>Swipe or use arrow keys to move tiles. When two tiles with the same number touch, they merge into one!</p>
+      <p>Your goal is to create a tile with the number <strong>2048</strong>.</p>
+      <p>Try to keep your highest value tile in one corner and plan your moves ahead.</p>
+      <button id="start-playing">Start Playing</button>
+    </div>
+  </div>
+
   <script>
     (function() {
       // DOM Elements
@@ -903,17 +1131,26 @@
       const langSelect = document.getElementById('lang-select');
       const gameBoard = document.getElementById('game-board');
       const scoreElement = document.getElementById('score');
+      const scoreChangeElement = document.getElementById('score-change');
+      const bestScoreElement = document.getElementById('best-score');
       const restartBtn = document.getElementById('restart-btn');
       const undoBtn = document.getElementById('undo-btn');
       const gameMessage = document.getElementById('game-message');
+      const gameStatusElement = document.getElementById('game-status');
+      const tileCountElement = document.getElementById('tile-count');
+      const tutorialOverlay = document.getElementById('tutorial-overlay');
+      const tutorialClose = document.getElementById('tutorial-close');
+      const startPlayingBtn = document.getElementById('start-playing');
       
       // Game variables
       const boardSize = 4;
       let board = [];
       let score = 0;
+      let bestScore = 0;
       let gameOver = false;
       let won = false;
       let previousState = null;
+      let hasShownTutorial = localStorage.getItem('2048_tutorial_shown');
       
       // Initialize the game
       function initGame() {
@@ -922,9 +1159,12 @@
         board = [];
         score = 0;
         scoreElement.textContent = '0';
+        scoreChangeElement.textContent = '';
+        scoreChangeElement.classList.remove('show');
         gameOver = false;
         won = false;
         previousState = null;
+        updateGameStatus('Playing');
         
         // Hide game message
         gameMessage.classList.remove('show');
@@ -960,6 +1200,28 @@
         
         // Add touch event listeners for mobile
         setupTouchEvents();
+        
+        // Load best score
+        bestScore = parseInt(localStorage.getItem('2048_best_score') || '0');
+        bestScoreElement.textContent = bestScore;
+        
+        // Show tutorial if first time
+        if (!hasShownTutorial) {
+          setTimeout(() => {
+            tutorialOverlay.classList.add('show');
+            localStorage.setItem('2048_tutorial_shown', 'true');
+          }, 1000);
+        }
+      }
+      
+      // Update game status indicator
+      function updateGameStatus(status) {
+        gameStatusElement.textContent = status;
+        if (status === 'Game Over') {
+          gameStatusElement.classList.add('active');
+        } else {
+          gameStatusElement.classList.remove('active');
+        }
       }
       
       // Save current state for undo
@@ -989,6 +1251,9 @@
       
       // Update the board display
       function updateBoard() {
+        // Count tiles for status
+        let tileCount = 0;
+        
         // Remove existing tiles
         const existingTiles = document.querySelectorAll('.tile');
         existingTiles.forEach(tile => tile.remove());
@@ -998,6 +1263,7 @@
           for (let j = 0; j < boardSize; j++) {
             const value = board[i][j];
             if (value !== 0) {
+              tileCount++;
               const tile = document.createElement('div');
               tile.className = `tile tile-${value}`;
               if (value > 2048) tile.classList.add('tile-super');
@@ -1015,6 +1281,9 @@
             }
           }
         }
+        
+        // Update tile count
+        tileCountElement.textContent = `Tiles: ${tileCount}`;
       }
       
       // Move tiles in the specified direction
@@ -1024,6 +1293,7 @@
         saveState();
         
         let moved = false;
+        let pointsEarned = 0;
         
         switch(direction) {
           case 'up':
@@ -1039,15 +1309,16 @@
                   }
                   
                   if (row > 0 && board[row - 1][j] === board[row][j]) {
-                    board[row - 1][j] *= 2;
-                    score += board[row - 1][j];
+                    const newValue = board[row - 1][j] * 2;
+                    pointsEarned += newValue;
+                    board[row - 1][j] = newValue;
                     board[row][j] = 0;
                     moved = true;
                     
                     // Check if player reached 2048
-                    if (board[row - 1][j] === 2048 && !won) {
+                    if (newValue === 2048 && !won) {
                       won = true;
-                      showGameMessage('You Win!', 'Congratulations! You reached 2048!');
+                      showGameMessage('You Win!', 'Congratulations! You reached 2048! Continue playing to get a higher score.');
                     }
                   }
                 }
@@ -1068,14 +1339,15 @@
                   }
                   
                   if (col < boardSize - 1 && board[i][col + 1] === board[i][col]) {
-                    board[i][col + 1] *= 2;
-                    score += board[i][col + 1];
+                    const newValue = board[i][col + 1] * 2;
+                    pointsEarned += newValue;
+                    board[i][col + 1] = newValue;
                     board[i][col] = 0;
                     moved = true;
                     
-                    if (board[i][col + 1] === 2048 && !won) {
+                    if (newValue === 2048 && !won) {
                       won = true;
-                      showGameMessage('You Win!', 'Congratulations! You reached 2048!');
+                      showGameMessage('You Win!', 'Congratulations! You reached 2048! Continue playing to get a higher score.');
                     }
                   }
                 }
@@ -1096,14 +1368,15 @@
                   }
                   
                   if (row < boardSize - 1 && board[row + 1][j] === board[row][j]) {
-                    board[row + 1][j] *= 2;
-                    score += board[row + 1][j];
+                    const newValue = board[row + 1][j] * 2;
+                    pointsEarned += newValue;
+                    board[row + 1][j] = newValue;
                     board[row][j] = 0;
                     moved = true;
                     
-                    if (board[row + 1][j] === 2048 && !won) {
+                    if (newValue === 2048 && !won) {
                       won = true;
-                      showGameMessage('You Win!', 'Congratulations! You reached 2048!');
+                      showGameMessage('You Win!', 'Congratulations! You reached 2048! Continue playing to get a higher score.');
                     }
                   }
                 }
@@ -1124,14 +1397,15 @@
                   }
                   
                   if (col > 0 && board[i][col - 1] === board[i][col]) {
-                    board[i][col - 1] *= 2;
-                    score += board[i][col - 1];
+                    const newValue = board[i][col - 1] * 2;
+                    pointsEarned += newValue;
+                    board[i][col - 1] = newValue;
                     board[i][col] = 0;
                     moved = true;
                     
-                    if (board[i][col - 1] === 2048 && !won) {
+                    if (newValue === 2048 && !won) {
                       won = true;
-                      showGameMessage('You Win!', 'Congratulations! You reached 2048!');
+                      showGameMessage('You Win!', 'Congratulations! You reached 2048! Continue playing to get a higher score.');
                     }
                   }
                 }
@@ -1141,13 +1415,45 @@
         }
         
         if (moved) {
+          // Update score with animation
+          score += pointsEarned;
+          scoreElement.textContent = score;
+          
+          // Show points earned animation
+          if (pointsEarned > 0) {
+            scoreChangeElement.textContent = `+${pointsEarned}`;
+            scoreChangeElement.classList.add('show');
+            setTimeout(() => {
+              scoreChangeElement.classList.remove('show');
+            }, 1000);
+          }
+          
+          // Scale animation for score
+          scoreElement.classList.add('score-update');
+          setTimeout(() => {
+            scoreElement.classList.remove('score-update');
+          }, 300);
+          
+          // Update best score if needed
+          if (score > bestScore) {
+            bestScore = score;
+            bestScoreElement.textContent = bestScore;
+            localStorage.setItem('2048_best_score', bestScore);
+            
+            // Animation for new best score
+            bestScoreElement.classList.add('score-update');
+            setTimeout(() => {
+              bestScoreElement.classList.remove('score-update');
+            }, 300);
+          }
+          
           addRandomTile();
           updateBoard();
-          scoreElement.textContent = score;
           
           // Check if the game is over
           if (isGameOver()) {
             gameOver = true;
+            updateGameStatus('Game Over');
             showGameMessage('Game Over!', `Your score: ${score}`);
           }
         }
@@ -1188,10 +1494,12 @@
         let touchStartY = 0;
         let touchEndX = 0;
         let touchEndY = 0;
+        let touchStartTime = 0;
         
         gameBoard.addEventListener('touchstart', function(e) {
           touchStartX = e.touches[0].clientX;
           touchStartY = e.touches[0].clientY;
+          touchStartTime = Date.now();
           e.preventDefault();
         }, { passive: false });
         
@@ -1207,9 +1515,13 @@
           
           const dx = touchEndX - touchStartX;
           const dy = touchEndY - touchStartY;
+          const touchTime = Date.now() - touchStartTime;
           
-          // Minimum swipe distance to register as a move
+          // Minimum swipe distance and time to register as a move
           const minSwipeDistance = 20;
+          const maxSwipeTime = 500;
+          
+          if (touchTime > maxSwipeTime) return;
           
           // Determine swipe direction
           if (Math.abs(dx) > Math.abs(dy)) {
@@ -1271,6 +1583,7 @@
           scoreElement.textContent = score;
           updateBoard();
           gameOver = false;
+          updateGameStatus('Playing');
           gameMessage.classList.remove('show');
         }
       });
@@ -1310,6 +1623,15 @@
         window.location.href = targetUrl;
       });
       
+      // Tutorial functionality
+      tutorialClose.addEventListener('click', () => {
+        tutorialOverlay.classList.remove('show');
+      });
+      
+      startPlayingBtn.addEventListener('click', () => {
+        tutorialOverlay.classList.remove('show');
+      });
+      
       // Initialize the game
       window.addEventListener('load', initGame);
       
@@ -1318,4 +1640,4 @@
     })();
   </script>
 </body>
-</html></body></html> 
+</html>
