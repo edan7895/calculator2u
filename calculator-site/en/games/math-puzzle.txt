@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Math Puzzle Game | Calculator2U</title>
+<meta name="description" content="Challenge your mind with our Math Puzzle Game! Solve mathematical equations to progress through levels and improve your math skills." />
+<meta name="keywords" content="math puzzle game, play math puzzle, math games, online math games, math brain teasers" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="/en/games/math-puzzle.html" />
+<meta property="og:title" content="Math Puzzle Game | Calculator2U" />
+<meta property="og:description" content="Challenge your mind with our Math Puzzle Game! Solve mathematical equations to progress through levels and improve your math skills." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/en/games/math-puzzle.html" />
+<meta property="og:image" content="/assets/images/math-puzzle.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 8px;
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 1.8rem;
+    height: 0.2rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 0.5rem;
+  }
+
+  /* Main Content */
+  .container {
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 0 0.8rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Game Styles */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .game-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .score-box {
+    background: #006d77;
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    min-width: 100px;
+    font-size: 1.1rem;
+  }
+  
+  .math-puzzle {
+    width: 100%;
+    max-width: 92vw;
+    background-color: #fafafa;
+    border-radius: 6px;
+    position: relative;
+    touch-action: none;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  .puzzle-question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #006d77;
+  }
+  
+  .option-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+  
+  .option-btn {
+    padding: 0.8rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .option-btn:hover {
+    background: #006d77;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .game-btn {
+    padding: 0.7rem 1.2rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+    max-width: 140px;
+    justify-content: center;
+  }
+  
+  .game-btn:hover {
+    background: #006d77;
+  }
+  
+  /* Game messages */
+  .game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .game-message.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .game-message h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: #006d77;
+  }
+  
+  .game-message p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    max-width: 90%;
+  }
+  
+  .game-message button {
+    padding: 0.7rem 1.5rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+  
+  .game-message button:hover {
+    background: #006d77;
+  }
+  
+  /* Instructions */
+  .instructions {
+    margin-top: 1.2rem;
+    padding: 0.8rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .instructions h3 {
+    color: #006d77;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.1rem;
+  }
+  
+  .instructions p {
+    margin-bottom: 0.6rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 1.5rem 0.8rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(3px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (min-width: 768px) {
+    .navbar {
+      padding: 1rem 2rem;
+    }
+    
+    .navbar .logo {
+      font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .hero {
+      padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      padding: 0 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .game-container {
+      flex-direction: row;
+      gap: 2rem;
+      max-width: 1200px;
+      padding: 0 1.5rem;
+    }
+    
+    .card {
+      padding: 1.8rem;
+      flex: 1;
+    }
+    
+    .math-puzzle {
+      max-width: 500px;
+    }
+    
+    .puzzle-question {
+      font-size: 1.5rem;
+    }
+    
+    .option-buttons {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .option-btn {
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .instructions {
+      font-size: 1rem;
+    }
+    
+    .instructions h3 {
+      font-size: 1.2rem;
+    }
+    
+    footer {
+      padding: 2.5rem 1rem;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Mobile navigation active state */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: #006d77;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 0.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s ease;
+    z-index: 99;
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+  
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .close-menu {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Info Card Styles */
+  .card h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.2rem;
+  }
+
+  .card ul {
+    margin: 0.8rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .card li {
+    margin-bottom: 0.4rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    color: #555;
+    margin: 0.8rem 0;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+  
+  @media (min-width: 768px) {
+    .card h3 {
+      font-size: 1.3rem;
+    }
+    
+    .card li, .card p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="/index-en.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+    </nav>
+    
+    <ul class="nav-links" id="navLinks">
+      <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+      <li><a href="/en/health/index.html">Health & Body</a></li>
+      <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+      <li><a href="/en/education/index.html">Education & Learning</a></li>
+      <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+      <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+      <li><a href="/en/generator/index.html">Generator</a></li>
+      <li><a href="/en/games/index.html" class="active">Games</a></li>
+      <li><a href="/about-en.html">About Us</a></li>
+      <li class="lang-selector">
+        <select id="lang-select" class="lang-select">
+          <option value="en">English</option>
+          <option value="zh">中文 (Chinese)</option>
+          <option value="es">Español (Spanish)</option>
+          <option value="de">Deutsch (German)</option>
+          <option value="fr">Français (French)</option>
+        </select>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Math Puzzle Game</h1>
+    <p>Challenge your mind with our Math Puzzle Game! Solve mathematical equations to progress through levels and improve your math skills.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Play Math Puzzle</h2>
+    
+    <div class="game-container">
+      <!-- Game Card -->
+      <div class="card">
+        <div class="game-board-container">
+          <div class="score-container">
+            <span>SCORE:</span>
+            <div class="score-box" id="score">0</div>
+          </div>
+          
+          <div class="math-puzzle" id="math-puzzle">
+            <!-- Puzzle content will be generated by JS -->
+            <div class="game-message" id="game-message">
+              <!-- Game message content will be inserted by JS -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="controls">
+          <button class="game-btn" id="restart-btn">
+            <i class="fas fa-redo"></i> New Game
+          </button>
+          <button class="game-btn" id="hint-btn">
+            <i class="fas fa-lightbulb"></i> Hint
+          </button>
+        </div>
+        
+        <div class="instructions">
+          <h3>How to Play:</h3>
+          <p>Solve the mathematical equations presented. Choose the correct answer from the options provided. The difficulty increases as you progress through levels.</p>
+        </div>
+      </div>
+      
+      <!-- Info Card -->
+      <div class="card">
+        <h3>About Math Puzzle Game</h3>
+        <p>Our Math Puzzle Game is designed to sharpen your mathematical skills while providing entertainment. It's suitable for all ages and skill levels.</p>
+        
+        <h3>Game Features</h3>
+        <ul>
+          <li>Multiple difficulty levels</li>
+          <li>Various types of math problems</li>
+          <li>Scoring system based on accuracy and speed</li>
+          <li>Hint system to help when stuck</li>
+        </ul>
+        
+        <h3>Benefits of Playing</h3>
+        <p>Regularly playing math puzzles can:</p>
+        <ul>
+          <li>Improve problem-solving abilities</li>
+          <li>Enhance mental calculation skills</li>
+          <li>Boost logical thinking</li>
+          <li>Keep your brain sharp</li>
+          <li>Make learning math fun</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and educational tools. Enjoy our Math Puzzle Game since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Other Games</h3>
+        <ul class="footer-links">
+          <li><a href="/en/games/math-puzzle.html" id="game1">Math Puzzle Game</a></li>
+          <li><a href="/en/games/2048-game.html" id="game2">2048 Game</a></li>
+          <li><a href="/en/games/memory-game.html" id="game3">Memory Game</a></li>
+          <li><a href="/en/games/number-guessing.html" id="game4">Number Guessing</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: This Math Puzzle Game is provided for educational and entertainment purposes only.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const closeMenu = document.getElementById('closeMenu');
+      const langSelect = document.getElementById('lang-select');
+      const mathPuzzle = document.getElementById('math-puzzle');
+      const scoreElement = document.getElementById('score');
+      const restartBtn = document.getElementById('restart-btn');
+      const hintBtn = document.getElementById('hint-btn');
+      const gameMessage = document.getElementById('game-message');
+      
+      // Game variables
+      let currentLevel = 1;
+      let score = 0;
+      let correctAnswers = 0;
+      let hintUsed = false;
+      let currentQuestion = {};
+      
+      // Question types and difficulties
+      const questionTypes = ['addition', 'subtraction', 'multiplication', 'division', 'mixed'];
+      const difficulties = {
+        1: { min: 1, max: 10, types: ['addition', 'subtraction'] },
+        2: { min: 10, max: 20, types: ['addition', 'subtraction', 'multiplication'] },
+        3: { min: 20, max: 50, types: ['addition', 'subtraction', 'multiplication', 'division'] },
+        4: { min: 50, max: 100, types: ['addition', 'subtraction', 'multiplication', 'division'] },
+        5: { min: 100, max: 500, types: ['mixed'] },
+      };
+      
+      // Initialize the game
+      function initGame() {
+        currentLevel = 1;
+        score = 0;
+        correctAnswers = 0;
+        hintUsed = false;
+        scoreElement.textContent = '0';
+        
+        // Hide game message
+        gameMessage.classList.remove('show');
+        gameMessage.innerHTML = '';
+        
+        // Generate first question
+        generateQuestion();
+        displayQuestion();
+      }
+      
+      // Generate a new question based on current level
+      function generateQuestion() {
+        const difficulty = difficulties[currentLevel];
+        const types = difficulty.types;
+        const questionType = types[Math.floor(Math.random() * types.length)];
+        
+        // Generate numbers based on difficulty
+        let num1, num2, answer;
+        
+        switch(questionType) {
+          case 'addition':
+            num1 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+            num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+            answer = num1 + num2;
+            break;
+            
+          case 'subtraction':
+            num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+            num1 = num2 + Math.floor(Math.random() * (difficulty.max - difficulty.min + 1));
+            answer = num1 - num2;
+            break;
+            
+          case 'multiplication':
+            num1 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+            num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+            answer = num1 * num2;
+            break;
+            
+          case 'division':
+            num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+            num1 = num2 * Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+            answer = Math.floor(num1 / num2);
+            break;
+            
+          case 'mixed':
+            const mixedTypes = ['addition', 'subtraction', 'multiplication', 'division'];
+            const mixedType = mixedTypes[Math.floor(Math.random() * mixedTypes.length)];
+            
+            switch(mixedType) {
+              case 'addition':
+                num1 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+                num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+                answer = num1 + num2;
+                break;
+                
+              case 'subtraction':
+                num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1)) + difficulty.min;
+                num1 = num2 + Math.floor(Math.random() * (difficulty.max - difficulty.min + 1));
+                answer = num1 - num2;
+                break;
+                
+              case 'multiplication':
+                num1 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+                num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+                answer = num1 * num2;
+                break;
+                
+              case 'division':
+                num2 = Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+                num1 = num2 * Math.floor(Math.random() * (difficulty.max - difficulty.min + 1) / 2) + difficulty.min;
+                answer = Math.floor(num1 / num2);
+                break;
+            }
+            break;
+        }
+        
+        // Generate distractors (wrong answers)
+        const distractors = [];
+        while(distractors.length < 3) {
+          let wrongAnswer = answer + Math.floor(Math.random() * 10) - 5;
+          if(wrongAnswer !== answer && !distractors.includes(wrongAnswer)) {
+            distractors.push(wrongAnswer);
+          }
+        }
+        
+        // Shuffle options
+        const options = [answer, ...distractors];
+        shuffleArray(options);
+        
+        // Create question object
+        currentQuestion = {
+          type: questionType,
+          num1: num1,
+          num2: num2,
+          answer: answer,
+          options: options,
+          hint: generateHint(questionType, num1, num2)
+        };
+      }
+      
+      // Generate hint for the current question
+      function generateHint(type, num1, num2) {
+        switch(type) {
+          case 'addition':
+            return `Add the two numbers together: ${num1} + ${num2}`;
+            
+          case 'subtraction':
+            return `Subtract the smaller number from the larger one: ${num1} - ${num2}`;
+            
+          case 'multiplication':
+            return `Multiply the two numbers: ${num1} × ${num2}`;
+            
+          case 'division':
+            return `Divide ${num1} by ${num2} (round down to the nearest whole number)`;
+            
+          case 'mixed':
+            return `Think about the mathematical operation needed to solve ${num1} ? ${num2} = ?`;
+            
+          default:
+            return 'Think carefully about the mathematical operation needed.';
+        }
+      }
+      
+      // Display the current question
+      function displayQuestion() {
+        mathPuzzle.innerHTML = '';
+        
+        // Create question element
+        const questionElement = document.createElement('div');
+        questionElement.className = 'puzzle-question';
+        
+        let questionText = '';
+        switch(currentQuestion.type) {
+          case 'addition':
+            questionText = `${currentQuestion.num1} + ${currentQuestion.num2} = ?`;
+            break;
+            
+          case 'subtraction':
+            questionText = `${currentQuestion.num1} - ${currentQuestion.num2} = ?`;
+            break;
+            
+          case 'multiplication':
+            questionText = `${currentQuestion.num1} × ${currentQuestion.num2} = ?`;
+            break;
+            
+          case 'division':
+            questionText = `${currentQuestion.num1} ÷ ${currentQuestion.num2} = ?`;
+            break;
+            
+          case 'mixed':
+            const operations = ['+', '-', '×', '÷'];
+            const operation = operations[Math.floor(Math.random() * operations.length)];
+            questionText = `${currentQuestion.num1} ${operation} ${currentQuestion.num2} = ?`;
+            break;
+        }
+        
+        questionElement.textContent = questionText;
+        mathPuzzle.appendChild(questionElement);
+        
+        // Create options
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'option-buttons';
+        
+        currentQuestion.options.forEach(option => {
+          const optionBtn = document.createElement('button');
+          optionBtn.className = 'option-btn';
+          optionBtn.textContent = option;
+          optionBtn.addEventListener('click', () => checkAnswer(option));
+          optionsContainer.appendChild(optionBtn);
+        });
+        
+        mathPuzzle.appendChild(optionsContainer);
+        
+        // Reset hint status
+        hintUsed = false;
+        hintBtn.disabled = false;
+      }
+      
+      // Check if the selected answer is correct
+      function checkAnswer(selectedAnswer) {
+        if(currentQuestion.answer === selectedAnswer) {
+          // Correct answer
+          score += 10;
+          correctAnswers++;
+          
+          // Check if level should advance
+          if(correctAnswers % 5 === 0 && currentLevel < 5) {
+            currentLevel++;
+            showGameMessage('Level Up!', `Congratulations! You've advanced to level ${currentLevel}.`);
+          } else {
+            showGameMessage('Correct!', 'Well done! Get ready for the next question.');
+          }
+        } else {
+          // Wrong answer
+          score = Math.max(0, score - 5);
+          showGameMessage('Incorrect!', `The correct answer was ${currentQuestion.answer}. Try again.`);
+        }
+        
+        scoreElement.textContent = score;
+        
+        // Generate new question after delay
+        setTimeout(() => {
+          generateQuestion();
+          displayQuestion();
+        }, 2000);
+      }
+      
+      // Show game message
+      function showGameMessage(title, message) {
+        gameMessage.innerHTML = `
+          <h2>${title}</h2>
+          <p>${message}</p>
+        `;
+        gameMessage.classList.add('show');
+      }
+      
+      // Provide a hint
+      function provideHint() {
+        if(!hintUsed) {
+          hintUsed = true;
+          showGameMessage('Hint', currentQuestion.hint);
+          hintBtn.disabled = true;
+          
+          // Continue after showing hint
+          setTimeout(() => {
+            gameMessage.classList.remove('show');
+          }, 3000);
+        }
+      }
+      
+      // Helper function to shuffle arrays
+      function shuffleArray(array) {
+        for(let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+      
+      // Event Listeners
+      restartBtn.addEventListener('click', initGame);
+      
+      hintBtn.addEventListener('click', provideHint);
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.add('active');
+      });
+      
+      closeMenu.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/games/math-puzzle.html';
+            break;
+          case 'es':
+            targetUrl = '/es/games/math-puzzle.html';
+            break;
+          case 'de':
+            targetUrl = '/de/games/math-puzzle.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/games/math-puzzle.html';
+            break;
+          default: // English
+            targetUrl = '/en/games/math-puzzle.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize the game
+      window.addEventListener('load', initGame);
+    })();
+  </script>
+</body>
+</html>
