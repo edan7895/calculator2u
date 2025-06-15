@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+ <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cooking Converter | 厨房单位换算 - 专业烹饪计量工具</title>
+    <meta name="description" content="免费厨房单位转换工具，支持公制/美制单位转换、食材密度识别和夜间模式，方便食谱和烹饪计量，界面友好，操作便捷。适用于家庭烹饪、专业料理和美食创作等多种场景。" />
+    <meta name="keywords" content="厨房换算, 单位转换, 烹饪工具, 料理单位, 美制单位, 公制单位, 体积转换, 重量转换, 食材密度, 夜间模式, cooking converter, kitchen measurement" />
+    <meta name="description" lang="en" content="Free kitchen unit converter supporting metric/imperial unit conversion, ingredient density recognition, and dark mode. Perfect for recipe and cooking measurements with a user-friendly interface. Ideal for home cooking, professional culinary, and food creation." />
+    <meta name="keywords" lang="en" content="Kitchen Converter, Unit Conversion, Cooking Tool, Imperial Units, Metric Units, Volume Conversion, Weight Conversion, Ingredient Density, Dark Mode, Recipe Measurement, Food Calculator" />
+    <meta name="author" content="Calculator2U" />
+    <link rel="alternate" hreflang="en" href="https://Calculator2U/en/cooking-converter" />
+    <link rel="alternate" hreflang="zh" href="https://Calculator2U/zh/cooking-converter" />
+    <!-- Open Graph 标签 -->
+    <meta property="og:title" content="厨房单位换算 | Cooking Converter - 专业烹饪计量工具" />
+    <meta property="og:description" content="免费厨房单位转换工具，支持公制/美制单位转换、食材密度识别和夜间模式，方便食谱和烹饪计量，界面友好，操作便捷。适用于家庭烹饪、专业料理和美食创作等多种场景。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.calculator2u.com/assets/images/cooking-converter.jpg" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+  <style>
+    :root {
+      --primary-color: #006d77;
+      --secondary-color: #003f5c;
+      --background-color: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --light-text: #666666;
+      --border-color: #dddddd;
+      --button-bg: #003f5c;
+      --button-hover: #002a3a;
+      --footer-bg: #f0f0f0;
+      --success-color: #4caf50;
+    }
+
+    .dark-mode {
+      --primary-color: #00a8b5;
+      --secondary-color: #008c9e;
+      --background-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --light-text: #b0b0b0;
+      --border-color: #333333;
+      --button-bg: #008c9e;
+      --button-hover: #006d77;
+      --footer-bg: #1a1a1a;
+      --success-color: #66bb6a;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      margin-right: 8px;
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      margin: 0;
+      padding-left: 0;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .control-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      color: var(--secondary-color);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--light-text);
+      margin-bottom: 1.5rem;
+    }
+
+    .converter-box {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      max-width: 700px;
+      margin: 0 auto;
+      border: 1px solid var(--border-color);
+    }
+
+    .converter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-btn {
+      padding: 0.6rem 1rem;
+      background-color: rgba(0, 63, 92, 0.1);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    .toolbar-btn.active {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    .toolbar-btn:hover:not(.active) {
+      background-color: rgba(0, 63, 92, 0.2);
+    }
+
+    label {
+      display: block;
+      margin: 1.2rem 0 0.5rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    select:focus, input[type="number"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.2);
+    }
+
+    .input-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .input-group > div {
+      flex: 1;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      background-color: var(--button-bg);
+      color: #fff;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    button:active {
+      transform: translateY(2px);
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      font-size: 1.3rem;
+      color: var(--success-color);
+      font-weight: 700;
+      min-height: 1.5em;
+      text-align: center;
+      background-color: rgba(76, 175, 80, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid var(--success-color);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      color: var(--secondary-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: var(--footer-bg);
+      font-size: 0.9rem;
+      color: var(--light-text);
+      margin-top: 4rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .footer-links a {
+      color: var(--light-text);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav-links {
+        margin-top: 1rem;
+        gap: 0.8rem;
+      }
+      
+      .controls {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: flex-end;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .converter-box {
+        padding: 1.5rem;
+      }
+      
+      .converter-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .toolbar {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .input-group {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 0.5rem;
+      }
+      
+      .control-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .toolbar-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .converter-box {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">
+        <span class="logo-icon"></span>
+        <span>Calculator2U</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/pages/health/index.html" data-i18n="nav_health">健康与身体</a></li>
+        <li><a href="/pages/finance/index.html" data-i18n="nav_finance">财务与投资</a></li>
+        <li><a href="/pages/education/index.html" data-i18n="nav_education">教育与学习</a></li>
+        <li><a href="/pages/engineering/index.html" data-i18n="nav_engineering">工程与科学</a></li>
+        <li><a href="/pages/daily-life/index.html" data-i18n="nav_daily_life">日常生活</a></li>
+        <li><a href="/about.html" data-i18n="nav_about_us">关于我们</a></li>
+      </ul>
+      <div class="controls">
+        <button class="control-btn" id="darkModeToggle">
+          <span id="darkModeIcon">🌙</span>
+          <span data-i18n="dark_mode">夜间模式</span>
+        </button>
+        <button class="control-btn" id="lang-switch">EN</button>
+      </div>
+    </nav>
+</header>
+
+  <main class="container">
+    <div class="hero">
+      <h1 data-i18n="title">厨房单位换算</h1>
+      <p class="subtitle" data-i18n="desc">精确转换厨房单位，支持美制/公制互换、食材密度识别和夜间模式</p>
+    </div>
+    
+    <div class="converter-box">
+      <div class="converter-header">
+        <h2 data-i18n="converter_title">单位转换器</h2>
+        <div class="toolbar">
+          <button class="toolbar-btn active" id="metricBtn">
+            <span>📏</span>
+            <span data-i18n="metric_system">公制单位</span>
+          </button>
+          <button class="toolbar-btn" id="imperialBtn">
+            <span>🇺🇸</span>
+            <span data-i18n="imperial_system">美制单位</span>
+          </button>
+        </div>
+      </div>
+      
+      <label for="ingredientSelect" data-i18n="ingredient_label">选择食材类型</label>
+      <select id="ingredientSelect">
+        <option value="water" data-i18n="ingredient_water">水/液体 (默认密度)</option>
+        <option value="flour" data-i18n="ingredient_flour">面粉</option>
+        <option value="sugar" data-i18n="ingredient_sugar">糖</option>
+        <option value="oil" data-i18n="ingredient_oil">食用油</option>
+        <option value="milk" data-i18n="ingredient_milk">牛奶</option>
+        <option value="honey" data-i18n="ingredient_honey">蜂蜜</option>
+        <option value="butter" data-i18n="ingredient_butter">黄油</option>
+      </select>
+      
+      <div class="input-group">
+        <div>
+          <label for="inputValue" data-i18n="input_label">输入数值</label>
+          <input type="number" id="inputValue" placeholder="0" min="0" step="0.01" />
+        </div>
+        <div>
+          <label for="inputUnit" data-i18n="input_unit">输入单位</label>
+          <select id="inputUnit"></select>
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <div>
+          <label for="outputValue" data-i18n="output_label">输出数值</label>
+          <input type="number" id="outputValue" placeholder="0" readonly />
+        </div>
+        <div>
+          <label for="outputUnit" data-i18n="output_unit">输出单位</label>
+          <select id="outputUnit"></select>
+        </div>
+      </div>
+      
+      <button id="swapBtn" data-i18n="swap_btn">
+        <span>🔄</span>
+        <span>交换输入输出单位</span>
+      </button>
+
+
+
+      <div class="result" id="result"></div>
+    </div>
+    
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title" data-i18n="feature1_title">多单位系统</h3>
+        <p data-i18n="feature1_desc">支持公制与美制单位系统一键切换，满足全球食谱需求</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3 class="feature-title" data-i18n="feature2_title">夜间模式</h3>
+        <p data-i18n="feature2_desc">保护眼睛的夜间模式，适合在低光环境下使用</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🥣</div>
+        <h3 class="feature-title" data-i18n="feature3_title">食材密度识别</h3>
+        <p data-i18n="feature3_desc">自动识别不同食材密度，提供更精确的转换结果</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+
+    <p>&copy; 2025 Calculator2U. <span data-i18n="footer_rights">保留所有权利。</span> | <a href="/privacy.html" data-i18n="footer_privacy_policy">隐私政策</a> | <a href="/terms.html" data-i18n="footer_terms_of_service">使用条款</a></p>
+  </footer>
+
+  <script>
+    (() => {
+      // 扩展翻译数据
+      const translations = {
+        zh: {
+          title: "厨房单位换算",
+          desc: "精确转换厨房单位，支持美制/公制互换、食材密度识别和夜间模式",
+          nav_health: "健康与身体",
+          nav_finance: "财务与投资",
+          nav_education: "教育与学习",
+          nav_engineering: "工程与科学",
+          nav_daily_life: "日常生活",
+          nav_about_us: "关于我们",
+          input_label: "输入数值",
+          output_label: "输出数值",
+          input_unit: "输入单位",
+          output_unit: "输出单位",
+          ingredient_label: "选择食材类型",
+          ingredient_water: "水/液体 (默认密度)",
+          ingredient_flour: "面粉",
+          ingredient_sugar: "糖",
+          ingredient_oil: "食用油",
+          ingredient_milk: "牛奶",
+          ingredient_honey: "蜂蜜",
+          ingredient_butter: "黄油",
+          swap_btn: "交换输入输出单位",
+          converter_title: "单位转换器",
+          metric_system: "公制单位",
+          imperial_system: "美制单位",
+          dark_mode: "夜间模式",
+          footer_privacy_policy: "隐私政策",
+          footer_terms_of_service: "使用条款",
+          footer_contact: "联系我们",
+          footer_rights: "保留所有权利。",
+          feature1_title: "多单位系统",
+          feature1_desc: "支持公制与美制单位系统一键切换，满足全球食谱需求",
+          feature2_title: "夜间模式",
+          feature2_desc: "保护眼睛的夜间模式，适合在低光环境下使用",
+          feature3_title: "食材密度识别",
+          feature3_desc: "自动识别不同食材密度，提供更精确的转换结果",
+          footer_seo: "厨房单位转换器 | 公制美制换算 | 烹饪计量工具 | 体积重量转换 | 食谱单位转换"
+        },
+        en: {
+          title: "Cooking Converter",
+          desc: "Precise kitchen unit conversion with metric/imperial switch, ingredient density detection and dark mode",
+          nav_health: "Health & Body",
+          nav_finance: "Finance & Investment",
+          nav_education: "Education & Learning",
+          nav_engineering: "Engineering & Science",
+          nav_daily_life: "Daily Life",
+          nav_about_us: "About Us",
+          input_label: "Input Value",
+          output_label: "Output Value",
+          input_unit: "Input Unit",
+          output_unit: "Output Unit",
+          ingredient_label: "Select Ingredient Type",
+          ingredient_water: "Water/Liquid (default density)",
+          ingredient_flour: "Flour",
+          ingredient_sugar: "Sugar",
+          ingredient_oil: "Cooking Oil",
+          ingredient_milk: "Milk",
+          ingredient_honey: "Honey",
+          ingredient_butter: "Butter",
+          swap_btn: "Swap Input/Output Units",
+          converter_title: "Unit Converter",
+          metric_system: "Metric System",
+          imperial_system: "Imperial System",
+          dark_mode: "Dark Mode",
+          footer_privacy_policy: "Privacy Policy",
+          footer_terms_of_service: "Terms of Service",
+          footer_contact: "Contact Us",
+          footer_rights: "All rights reserved.",
+          feature1_title: "Multiple Unit Systems",
+          feature1_desc: "Switch between metric and imperial units with one click",
+          feature2_title: "Dark Mode",
+          feature2_desc: "Eye-friendly dark mode for low-light environments",
+          feature3_title: "Ingredient Density Detection",
+          feature3_desc: "Automatic density detection for accurate conversions",
+          footer_seo: "Cooking Unit Converter | Metric Imperial Conversion | Kitchen Measurement Tool | Volume Weight Conversion | Recipe Unit Converter"
+        }
+      };
+
+      // 单位定义（包含类型和所属系统）
+      const units = [
+        { id: "gram", name: "Gram", system: "metric", type: "weight", multiplier: 1 },
+        { id: "kilogram", name: "Kilogram", system: "metric", type: "weight", multiplier: 1000 },
+        { id: "milligram", name: "Milligram", system: "metric", type: "weight", multiplier: 0.001 },
+        { id: "ounce", name: "Ounce", system: "imperial", type: "weight", multiplier: 28.3495 },
+        { id: "pound", name: "Pound", system: "imperial", type: "weight", multiplier: 453.592 },
+        { id: "milliliter", name: "Milliliter", system: "metric", type: "volume", multiplier: 1 },
+        { id: "liter", name: "Liter", system: "metric", type: "volume", multiplier: 1000 },
+        { id: "cup", name: "Cup", system: "imperial", type: "volume", multiplier: 240 },
+        { id: "tablespoon", name: "Tablespoon", system: "imperial", type: "volume", multiplier: 15 },
+        { id: "teaspoon", name: "Teaspoon", system: "imperial", type: "volume", multiplier: 5 },
+        { id: "fluid-ounce", name: "Fluid Ounce", system: "imperial", type: "volume", multiplier: 29.5735 },
+        { id: "pint", name: "Pint", system: "imperial", type: "volume", multiplier: 473.176 },
+        { id: "quart", name: "Quart", system: "imperial", type: "volume", multiplier: 946.353 }
+      ];
+
+      // 食材密度 (g/ml)
+      const densities = {
+        water: 1.00,
+        flour: 0.57,
+        sugar: 0.85,
+        oil: 0.92,
+        milk: 1.03,
+        honey: 1.42,
+        butter: 0.96
+      };
+
+      let lang = localStorage.getItem('site-lang') || (navigator.language.startsWith('zh') ? 'zh' : 'en');
+      let currentSystem = localStorage.getItem('unit-system') || 'metric';
+      let darkMode = localStorage.getItem('dark-mode') === 'true';
+
+      // 应用初始设置
+      function initializeSettings() {
+        // 应用语言
+        setLang(lang);
+        
+        // 应用单位系统
+        updateUnitSystem(currentSystem);
+        document.getElementById('metricBtn').classList.toggle('active', currentSystem === 'metric');
+        document.getElementById('imperialBtn').classList.toggle('active', currentSystem === 'imperial');
+        
+        // 应用夜间模式
+        if (darkMode) {
+          document.body.classList.add('dark-mode');
+          document.getElementById('darkModeIcon').textContent = '☀️';
+        }
+      }
+
+      // 设置语言
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('site-lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+        document.getElementById('lang-switch').textContent = lang === 'zh' ? 'EN' : '中文';
+        
+        // 更新单位选择框选项
+        populateUnitSelectors();
+      }
+
+      // 填充单位选择框
+      function populateUnitSelectors() {
+        const inputUnitSelect = document.getElementById('inputUnit');
+        const outputUnitSelect = document.getElementById('outputUnit');
+        
+        // 清空选择框
+        inputUnitSelect.innerHTML = '';
+        outputUnitSelect.innerHTML = '';
+        
+        // 获取当前系统下的单位
+        const systemUnits = units.filter(unit => unit.system === currentSystem);
+        
+        // 添加选项
+        systemUnits.forEach(unit => {
+          const option = document.createElement('option');
+          option.value = unit.id;
+          option.textContent = translations[lang][`unit_${unit.id}`] || unit.name;
+          inputUnitSelect.appendChild(option);
+          
+          const option2 = document.createElement('option');
+          option2.value = unit.id;
+          option2.textContent = translations[lang][`unit_${unit.id}`] || unit.name;
+          outputUnitSelect.appendChild(option2);
+        });
+        
+        // 设置默认值
+        inputUnitSelect.value = systemUnits.find(u => u.id === 'gram') ? 'gram' : systemUnits[0].id;
+        outputUnitSelect.value = systemUnits.find(u => u.id === 'ounce') ? 'ounce' : systemUnits[1].id;
+      }
+
+      // 更新单位系统
+      function updateUnitSystem(system) {
+        currentSystem = system;
+        localStorage.setItem('unit-system', system);
+        populateUnitSelectors();
+      }
+
+      // 转换单位
+      function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        if (isNaN(inputValue)) {
+          document.getElementById('outputValue').value = '';
+          document.getElementById('result').textContent = translations[lang]['input_error'] || 'Please enter a valid number';
+          return;
+        }
+        
+        const inputUnitId = document.getElementById('inputUnit').value;
+        const outputUnitId = document.getElementById('outputUnit').value;
+        const ingredient = document.getElementById('ingredientSelect').value;
+        const density = densities[ingredient] || 1;
+        
+        const inputUnit = units.find(u => u.id === inputUnitId);
+        const outputUnit = units.find(u => u.id === outputUnitId);
+        
+        if (!inputUnit || !outputUnit) {
+          document.getElementById('result').textContent = translations[lang]['conversion_error'] || 'Conversion error';
+          return;
+        }
+        
+        // 转换逻辑
+        let result;
+        
+        // 相同类型（重量->重量 或 体积->体积）
+        if (inputUnit.type === outputUnit.type) {
+          // 转换为基准单位（克或毫升）
+          const baseValue = inputValue * inputUnit.multiplier;
+          // 从基准单位转换为目标单位
+          result = baseValue / outputUnit.multiplier;
+        } 
+        // 不同类型（重量<->体积）
+        else {
+          // 重量转体积：重量(g) / 密度(g/ml) = 体积(ml)
+          if (inputUnit.type === 'weight') {
+            const volumeInMl = (inputValue * inputUnit.multiplier) / density;
+            result = volumeInMl / outputUnit.multiplier;
+          } 
+          // 体积转重量：体积(ml) * 密度(g/ml) = 重量(g)
+          else {
+            const weightInG = (inputValue * inputUnit.multiplier) * density;
+            result = weightInG / outputUnit.multiplier;
+          }
+        }
+        
+        // 更新输出框和结果
+        document.getElementById('outputValue').value = result.toFixed(4);
+        
+        const inputUnitName = translations[lang][`unit_${inputUnitId}`] || inputUnit.name;
+        const outputUnitName = translations[lang][`unit_${outputUnitId}`] || outputUnit.name;
+        
+        document.getElementById('result').textContent = 
+          `${inputValue} ${inputUnitName} = ${result.toFixed(4)} ${outputUnitName}`;
+      }
+
+      // 交换输入输出单位
+      function swapUnits() {
+        const inputUnit = document.getElementById('inputUnit').value;
+        const outputUnit = document.getElementById('outputUnit').value;
+        const inputValue = document.getElementById('inputValue').value;
+        const outputValue = document.getElementById('outputValue').value;
+        
+        document.getElementById('inputUnit').value = outputUnit;
+        document.getElementById('outputUnit').value = inputUnit;
+        document.getElementById('inputValue').value = outputValue;
+        document.getElementById('outputValue').value = inputValue;
+        
+        convert();
+      }
+
+      // 初始化事件监听器
+      function initEventListeners() {
+        // 语言切换
+        document.getElementById('lang-switch').addEventListener('click', () => {
+          lang = lang === 'zh' ? 'en' : 'zh';
+          setLang(lang);
+        });
+        
+        // 单位系统切换
+        document.getElementById('metricBtn').addEventListener('click', () => {
+          updateUnitSystem('metric');
+          document.getElementById('metricBtn').classList.add('active');
+          document.getElementById('imperialBtn').classList.remove('active');
+        });
+        
+        document.getElementById('imperialBtn').addEventListener('click', () => {
+          updateUnitSystem('imperial');
+          document.getElementById('imperialBtn').classList.add('active');
+          document.getElementById('metricBtn').classList.remove('active');
+        });
+        
+        // 夜间模式切换
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+          darkMode = !darkMode;
+          document.body.classList.toggle('dark-mode', darkMode);
+          localStorage.setItem('dark-mode', darkMode);
+          document.getElementById('darkModeIcon').textContent = darkMode ? '☀️' : '🌙';
+        });
+        
+        // 单位转换
+        document.getElementById('inputValue').addEventListener('input', convert);
+        document.getElementById('inputUnit').addEventListener('change', convert);
+        document.getElementById('outputUnit').addEventListener('change', convert);
+        document.getElementById('ingredientSelect').addEventListener('change', convert);
+        
+        // 交换单位
+        document.getElementById('swapBtn').addEventListener('click', swapUnits);
+      }
+
+      // 初始化应用
+      function initApp() {
+        // 添加单位翻译
+        units.forEach(unit => {
+          translations.zh[`unit_${unit.id}`] = `${unit.name} (${unit.id})`;
+          translations.en[`unit_${unit.id}`] = `${unit.name} (${unit.id})`;
+        });
+        
+        initializeSettings();
+        initEventListeners();
+        convert(); // 初始转换
+      }
+
+      // 启动应用
+      initApp();
+    })();
+  </script>
+</body>
+</html>
