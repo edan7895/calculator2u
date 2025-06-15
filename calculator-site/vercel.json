@@ -1,9 +1,13 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
+    { "source": "/en", "destination": "/index-en.html" },
+    { "source": "/zh", "destination": "/index-zh.html" },
+    { "source": "/fr", "destination": "/index-fr.html" },
+    { "source": "/es", "destination": "/index-es.html" },
+    { "source": "/de", "destination": "/index-de.html" },
+
+    { "source": "/", "destination": "/index.html" },
+
+    { "source": "/(.*)", "destination": "/$1.html" }
   ]
 }
-
