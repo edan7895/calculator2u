@@ -1,0 +1,1890 @@
+<html><body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ohm's Law Calculator | Calculator2U</title>
+<meta name="description" content="Calculate voltage, current, resistance and power with our comprehensive Ohm's Law Calculator. Perfect for electrical engineering students and professionals." />
+<meta name="keywords" content="ohms law calculator, resistance calculator, voltage calculator, current calculator, power calculator" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/en/engineering/ohms-law-calculator.html" />
+<meta property="og:title" content="Ohm's Law Calculator | Calculator2U" />
+<meta property="og:description" content="Calculate voltage, current, resistance and power with our comprehensive Ohm's Law Calculator." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/en/engineering/ohms-law-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/ohms-law-calculator.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    line-height: 1.6;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .calc-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .calc-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+    font-size: 0.9rem;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus,
+  .input-field textarea:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    color: #006d77;
+    font-size: 1.2rem;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 250px;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e0f7fa;
+    font-size: 0.9rem;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 2.5rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 1rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .calc-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .calc-container {
+      padding: 0 0.8rem;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 0.95rem;
+    }
+    
+    .converter-tab-btn {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .result-value {
+      font-size: 1.1rem;
+      padding: 0.6rem;
+    }
+    
+    .chart-container {
+      height: 200px;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.3rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .unit-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .unit-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .unit-label {
+    font-weight: 500;
+    color: #006d77;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .unit-select {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .unit-select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  /* Circuit Diagram Container */
+  .circuit-diagram {
+    background-color: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    height: fit-content;
+  }
+  
+  .circuit-diagram h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .circuit-container {
+    height: 250px;
+    border: 1px dashed #4db5bd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin: 0.8rem 0;
+  }
+  
+  /* Slider Styles */
+  .slider-container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .slider-container h3 {
+    color: #006d77;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .slider-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #006d77;
+    font-size: 0.95rem;
+  }
+  
+  .slider-value {
+    font-weight: 600;
+    color: #4db5bd;
+  }
+  
+  .slider-track {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: #e0f7fa;
+    outline: none;
+  }
+  
+  .slider-track::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffd166;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin: 0.8rem 0;
+    display: none;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 6px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+  
+  /* Formula display */
+  .formula-display {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #006d77;
+    border-left: 3px solid #ffd166;
+  }
+  
+  /* Loader */
+  .loader {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .loader-spinner {
+    border: 4px solid #f0f9ff;
+    border-top: 4px solid #4db5bd;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Success animation */
+  @keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .success-pulse {
+    animation: successPulse 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/en/health/index.html">Health & Body</a></li>
+        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
+        <li><a href="/en/education/index.html">Education & Learning</a></li>
+        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
+        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
+        <li><a href="/en/generator/index.html">Generator</a></li>
+        <li><a href="/en/games/index.html">Games</a></li>
+        <li><a href="/about-en.html">About Us</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Ohm's Law Calculator</h1>
+    <p>Calculate voltage, current, resistance and power with our comprehensive Ohm's Law Calculator. Perfect for electrical engineering students and professionals.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Ohm's Law Calculator</h2>
+    
+    <div class="calc-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="converter-tabs">
+          <button class="converter-tab-btn active" data-tab="basic">Basic Ohm's Law</button>
+          <button class="converter-tab-btn" data-tab="power">Power Calculator</button>
+          <button class="converter-tab-btn" data-tab="series">Series Resistance</button>
+          <button class="converter-tab-btn" data-tab="parallel">Parallel Resistance</button>
+        </div>
+        
+        <!-- Basic Ohm's Law Tab -->
+        <div class="converter-panel active" id="basic-panel">
+          <div class="unit-selection">
+            <div class="unit-field">
+              <span class="unit-label">Voltage Unit</span>
+              <select class="unit-select" id="voltage-unit">
+                <option value="V">Volts (V)</option>
+                <option value="mV">Millivolts (mV)</option>
+                <option value="kV">Kilovolts (kV)</option>
+              </select>
+            </div>
+            
+            <div class="unit-field">
+              <span class="unit-label">Current Unit</span>
+              <select class="unit-select" id="current-unit">
+                <option value="A">Amps (A)</option>
+                <option value="mA">Milliamps (mA)</option>
+                <option value="kA">Kiloamps (kA)</option>
+              </select>
+            </div>
+            
+            <div class="unit-field">
+              <span class="unit-label">Resistance Unit</span>
+              <select class="unit-select" id="resistance-unit">
+                <option value="ohm">Ohms (Ω)</option>
+                <option value="kohm">Kiloohms (kΩ)</option>
+                <option value="Mohm">Megohms (MΩ)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="voltage-value">Voltage:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the voltage value</span>
+                </span>
+              </label>
+              <input type="number" id="voltage-value" placeholder="Enter voltage" step="any" min="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="current-value">Current:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the current value</span>
+                </span>
+              </label>
+              <input type="number" id="current-value" placeholder="Enter current" step="any" min="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="resistance-value">Resistance:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the resistance value</span>
+                </span>
+              </label>
+              <input type="number" id="resistance-value" placeholder="Enter resistance" step="any" min="0">
+            </div>
+          </div>
+          
+          <div id="basic-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="basic-calculate">
+            <i class="fas fa-calculator"></i> Calculate
+          </button>
+          
+          <div class="loader" id="basic-loader">
+            <div class="loader-spinner"></div>
+            <p>Calculating...</p>
+          </div>
+          
+          <div class="result-container" id="basic-result-container">
+            <h3 class="result-header">Ohm's Law Calculation Result</h3>
+            <div class="result-value" id="basic-result-value">
+              Result will appear here
+            </div>
+            
+            <div class="formula-display">
+              V = I × R
+            </div>
+            
+            <div class="result-metrics">
+              <div class="metric-card">
+                <div class="metric-value" id="voltage-result">0 V</div>
+                <div class="metric-label">Voltage</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="current-result">0 A</div>
+                <div class="metric-label">Current</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="resistance-result">0 Ω</div>
+                <div class="metric-label">Resistance</div>
+              </div>
+            </div>
+            
+            <div class="slider-container">
+              <h3>Interactive Simulation</h3>
+              <div class="slider-group">
+                <div class="slider-item">
+                  <div class="slider-label">
+                    <span>Voltage</span>
+                    <span class="slider-value" id="voltage-slider-value">0 V</span>
+                  </div>
+                  <input type="range" min="0" max="50" value="0" class="slider-track" id="voltage-slider">
+                </div>
+                
+                <div class="slider-item">
+                  <div class="slider-label">
+                    <span>Resistance</span>
+                    <span class="slider-value" id="resistance-slider-value">10 Ω</span>
+                  </div>
+                  <input type="range" min="1" max="100" value="10" class="slider-track" id="resistance-slider">
+                </div>
+              </div>
+              
+              <div class="circuit-diagram">
+                <h3>Live Circuit Diagram</h3>
+                <div class="circuit-container">
+                  <svg width="300" height="150" viewBox="0 0 300 150">
+                    <path d="M50,75 L80,75" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <rect x="80" y="60" width="40" height="30" fill="white" stroke="#4db5bd" stroke-width="2" rx="2" />
+                    <text x="100" y="78" text-anchor="middle" fill="#006d77" font-size="12" id="resistor-label">R = 10Ω</text>
+                    <path d="M120,75 L150,75" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <path d="M150,75 L180,75" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <path d="M180,40 L180,110" stroke="#4db5bd" stroke-width="2" fill="none" />
+                    <path d="M180,40 L200,40" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <path d="M180,110 L200,110" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <path d="M200,40 L200,110" stroke="#4db5bd" stroke-width="2" fill="none" />
+                    <text x="190" y="65" text-anchor="middle" fill="#006d77" font-size="12" id="battery-label">V = 0V</text>
+                    <path d="M200,75 L230,75" stroke="#4db5bd" stroke-width="3" fill="none" />
+                    <circle cx="230" cy="75" r="5" fill="#4db5bd" />
+                  </svg>
+                </div>
+                <p>Adjust the sliders to see how voltage and resistance affect the current in the circuit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Power Calculator Tab -->
+        <div class="converter-panel" id="power-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="power-voltage">Voltage (V):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the voltage in volts</span>
+                </span>
+              </label>
+              <input type="number" id="power-voltage" placeholder="Enter voltage" step="any" min="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="power-current">Current (A):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the current in amps</span>
+                </span>
+              </label>
+              <input type="number" id="power-current" placeholder="Enter current" step="any" min="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="power-resistance">Resistance (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the resistance in ohms</span>
+                </span>
+              </label>
+              <input type="number" id="power-resistance" placeholder="Enter resistance" step="any" min="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="power-power">Power (W):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter the power in watts</span>
+                </span>
+              </label>
+              <input type="number" id="power-power" placeholder="Enter power" step="any" min="0">
+            </div>
+          </div>
+          
+          <div id="power-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="power-calculate">
+            <i class="fas fa-calculator"></i> Calculate Power
+          </button>
+          
+          <div class="loader" id="power-loader">
+            <div class="loader-spinner"></div>
+            <p>Calculating...</p>
+          </div>
+          
+          <div class="result-container" id="power-result-container">
+            <h3 class="result-header">Power Calculation Result</h3>
+            <div class="result-value" id="power-result-value">
+              Result will appear here
+            </div>
+            
+            <div class="formula-display">
+              P = V × I = I² × R = V² / R
+            </div>
+            
+            <div class="result-metrics">
+              <div class="metric-card">
+                <div class="metric-value" id="power-voltage-result">0 V</div>
+                <div class="metric-label">Voltage</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="power-current-result">0 A</div>
+                <div class="metric-label">Current</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value" id="power-power-result">0 W</div>
+                <div class="metric-label">Power</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Series Resistance Tab -->
+        <div class="converter-panel" id="series-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="series-resistance1">Resistor 1 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the first resistor</span>
+                </span>
+              </label>
+              <input type="number" id="series-resistance1" placeholder="Enter resistance" step="any" min="0" value="10">
+            </div>
+            
+            <div class="input-field">
+              <label for="series-resistance2">Resistor 2 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the second resistor</span>
+                </span>
+              </label>
+              <input type="number" id="series-resistance2" placeholder="Enter resistance" step="any" min="0" value="20">
+            </div>
+            
+            <div class="input-field">
+              <label for="series-resistance3">Resistor 3 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the third resistor</span>
+                </span>
+              </label>
+              <input type="number" id="series-resistance3" placeholder="Enter resistance" step="any" min="0" value="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="series-resistance4">Resistor 4 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the fourth resistor</span>
+                </span>
+              </label>
+              <input type="number" id="series-resistance4" placeholder="Enter resistance" step="any" min="0" value="0">
+            </div>
+          </div>
+          
+          <div id="series-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="series-calculate">
+            <i class="fas fa-calculator"></i> Calculate Total Resistance
+          </button>
+          
+          <div class="loader" id="series-loader">
+            <div class="loader-spinner"></div>
+            <p>Calculating...</p>
+          </div>
+          
+          <div class="result-container" id="series-result-container">
+            <h3 class="result-header">Series Resistance Result</h3>
+            <div class="result-value" id="series-result-value">
+              Result will appear here
+            </div>
+            
+            <div class="formula-display">
+              R_total = R1 + R2 + R3 + R4
+            </div>
+            
+            <div class="circuit-diagram">
+              <h3>Series Circuit Diagram</h3>
+              <div class="circuit-container">
+                <svg width="350" height="120" viewBox="0 0 350 120">
+                  <path d="M30,60 L70,60" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <rect x="70" y="40" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" />
+                  <text x="90" y="65" text-anchor="middle" fill="#006d77" font-size="12" id="series-r1">R1</text>
+                  <path d="M110,60 L150,60" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <rect x="150" y="40" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" />
+                  <text x="170" y="65" text-anchor="middle" fill="#006d77" font-size="12" id="series-r2">R2</text>
+                  <path d="M190,60 L230,60" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <rect x="230" y="40" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" id="series-r3-rect" />
+                  <text x="250" y="65" text-anchor="middle" fill="#006d77" font-size="12" id="series-r3">R3</text>
+                  <path d="M270,60 L310,60" stroke="#4db5bd" stroke-width="3" fill="none" id="series-r3-path" />
+                  <rect x="310" y="40" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" id="series-r4-rect" />
+                  <text x="330" y="65" text-anchor="middle" fill="#006d77" font-size="12" id="series-r4">R4</text>
+                  <path d="M350,60 L380,60" stroke="#4db5bd" stroke-width="3" fill="none" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Parallel Resistance Tab -->
+        <div class="converter-panel" id="parallel-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="parallel-resistance1">Resistor 1 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the first resistor</span>
+                </span>
+              </label>
+              <input type="number" id="parallel-resistance1" placeholder="Enter resistance" step="any" min="0" value="10">
+            </div>
+            
+            <div class="input-field">
+              <label for="parallel-resistance2">Resistor 2 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the second resistor</span>
+                </span>
+              </label>
+              <input type="number" id="parallel-resistance2" placeholder="Enter resistance" step="any" min="0" value="20">
+            </div>
+            
+            <div class="input-field">
+              <label for="parallel-resistance3">Resistor 3 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the third resistor</span>
+                </span>
+              </label>
+              <input type="number" id="parallel-resistance3" placeholder="Enter resistance" step="any" min="0" value="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="parallel-resistance4">Resistor 4 (Ω):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Enter resistance value for the fourth resistor</span>
+                </span>
+              </label>
+              <input type="number" id="parallel-resistance4" placeholder="Enter resistance" step="any" min="0" value="0">
+            </div>
+          </div>
+          
+          <div id="parallel-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="parallel-calculate">
+            <i class="fas fa-calculator"></i> Calculate Total Resistance
+          </button>
+          
+          <div class="loader" id="parallel-loader">
+            <div class="loader-spinner"></div>
+            <p>Calculating...</p>
+          </div>
+          
+          <div class="result-container" id="parallel-result-container">
+            <h3 class="result-header">Parallel Resistance Result</h3>
+            <div class="result-value" id="parallel-result-value">
+              Result will appear here
+            </div>
+            
+            <div class="formula-display">
+              1/R_total = 1/R1 + 1/R2 + 1/R3 + 1/R4
+            </div>
+            
+            <div class="circuit-diagram">
+              <h3>Parallel Circuit Diagram</h3>
+              <div class="circuit-container">
+                <svg width="350" height="200" viewBox="0 0 350 200">
+                  <path d="M50,100 L100,100" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <path d="M100,50 L100,150" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  
+                  <path d="M100,50 L150,50" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <rect x="150" y="30" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" />
+                  <text x="170" y="55" text-anchor="middle" fill="#006d77" font-size="12" id="parallel-r1">R1</text>
+                  <path d="M190,50 L240,50" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  
+                  <path d="M100,100 L150,100" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <rect x="150" y="80" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" />
+                  <text x="170" y="105" text-anchor="middle" fill="#006d77" font-size="12" id="parallel-r2">R2</text>
+                  <path d="M190,100 L240,100" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  
+                  <path d="M100,150 L150,150" stroke="#4db5bd" stroke-width="3" fill="none" id="parallel-r3-path" />
+                  <rect x="150" y="130" width="40" height="40" fill="white" stroke="#006d77" stroke-width="2" rx="2" id="parallel-r3-rect" />
+                  <text x="170" y="155" text-anchor="middle" fill="#006d77" font-size="12" id="parallel-r3">R3</text>
+                  <path d="M190,150 L240,150" stroke="#4db5bd" stroke-width="3" fill="none" id="parallel-r3-path2" />
+                  
+                  <path d="M240,50 L240,150" stroke="#4db5bd" stroke-width="3" fill="none" />
+                  <path d="M240,100 L290,100" stroke="#4db5bd" stroke-width="3" fill="none" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>About Ohm's Law</h3>
+        <p>Ohm's Law states that the current through a conductor between two points is directly proportional to the voltage across the two points. It is usually formulated as:</p>
+        <div class="formula-display">V = I × R</div>
+        <p>Where:</p>
+        <ul>
+          <li>V = Voltage (volts)</li>
+          <li>I = Current (amps)</li>
+          <li>R = Resistance (ohms)</li>
+        </ul>
+        
+        <h3>Power in Electrical Circuits</h3>
+        <p>Power in electrical circuits can be calculated using:</p>
+        <ul>
+          <li>P = V × I</li>
+          <li>P = I² × R</li>
+          <li>P = V² / R</li>
+        </ul>
+        
+        <h3>Series and Parallel Circuits</h3>
+        <p><strong>Series Circuits:</strong> The total resistance is the sum of all individual resistances:</p>
+        <div class="formula-display">R_total = R1 + R2 + R3 + ...</div>
+        
+        <p><strong>Parallel Circuits:</strong> The reciprocal of the total resistance is the sum of the reciprocals of all individual resistances:</p>
+        <div class="formula-display">1/R_total = 1/R1 + 1/R2 + 1/R3 + ...</div>
+        
+        <h3>Usage Instructions</h3>
+        <ul>
+          <li>Select the appropriate tab for your calculation</li>
+          <li>Enter at least two known values</li>
+          <li>Click the calculate button to get results</li>
+          <li>Use the interactive sliders to visualize relationships</li>
+          <li>Hover over info icons for additional guidance</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Your trusted source for daily life calculators and educational tools. Helping you with electrical calculations since 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Others Useful Calculators</h3>
+        <ul class="footer-links">
+          <li><a href="/en/education/unit-converter.html">Unit Converter</a></li>
+          <li><a href="/en/finance/compound-interest-calculator.html">Compound Interest Calculator</a></li>
+          <li><a href="/en/engineering/mechanics-calculator.html">Mechanics Calculator</a></li>
+          <li><a href="/en/engineering/material-strength-calculator.html">Material Strength Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal Information</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-en.html">Privacy Policy</a></li>
+          <li><a href="/terms-en.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. All rights reserved. | 
+        <a href="/privacy-en.html">Privacy Policy</a> | 
+        <a href="/terms-en.html">Terms of Service</a>
+      </p>
+      <p><small>Note: These calculators provide estimates only. Always verify critical calculations with multiple sources.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const converterTabButtons = document.querySelectorAll('.converter-tab-btn');
+      const converterPanels = document.querySelectorAll('.converter-panel');
+      
+      // Initialize default values
+      function initializeValues() {
+        // Set default values for inputs
+        document.getElementById('voltage-value').value = '';
+        document.getElementById('current-value').value = '';
+        document.getElementById('resistance-value').value = '';
+        
+        document.getElementById('power-voltage').value = '';
+        document.getElementById('power-current').value = '';
+        document.getElementById('power-resistance').value = '';
+        document.getElementById('power-power').value = '';
+        
+        document.getElementById('series-resistance1').value = '10';
+        document.getElementById('series-resistance2').value = '20';
+        document.getElementById('series-resistance3').value = '';
+        document.getElementById('series-resistance4').value = '';
+        
+        document.getElementById('parallel-resistance1').value = '10';
+        document.getElementById('parallel-resistance2').value = '20';
+        document.getElementById('parallel-resistance3').value = '';
+        document.getElementById('parallel-resistance4').value = '';
+      }
+      
+      // Toggle mobile navigation
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/engineering/ohms-law-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/engineering/ohms-law-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/engineering/ohms-law-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/engineering/ohms-law-calculator.html';
+            break;
+          default: // English
+            targetUrl = '/en/engineering/ohms-law-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Tab switching
+      converterTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs and panels
+          converterTabButtons.forEach(btn => btn.classList.remove('active'));
+          converterPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Initialize tooltips
+      const tooltips = document.querySelectorAll('.tooltip');
+      tooltips.forEach(tooltip => {
+        const infoIcon = tooltip.querySelector('.info-icon');
+        const tooltipText = tooltip.querySelector('.tooltip-text');
+        
+        infoIcon.addEventListener('mouseover', function() {
+          tooltipText.style.display = 'block';
+        });
+        
+        infoIcon.addEventListener('mouseout', function() {
+          tooltipText.style.display = 'none';
+        });
+      });
+      
+      // Initialize sliders
+      const voltageSlider = document.getElementById('voltage-slider');
+      const voltageSliderValue = document.getElementById('voltage-slider-value');
+      const resistanceSlider = document.getElementById('resistance-slider');
+      const resistanceSliderValue = document.getElementById('resistance-slider-value');
+      
+      voltageSlider.addEventListener('input', () => {
+        const voltage = parseFloat(voltageSlider.value);
+        const resistance = parseFloat(resistanceSlider.value);
+        voltageSliderValue.textContent = `${voltage} V`;
+        updateCircuitDiagram(voltage, resistance);
+      });
+      
+      resistanceSlider.addEventListener('input', () => {
+        const voltage = parseFloat(voltageSlider.value);
+        const resistance = parseFloat(resistanceSlider.value);
+        resistanceSliderValue.textContent = `${resistance} Ω`;
+        updateCircuitDiagram(voltage, resistance);
+      });
+      
+      // Update circuit diagram
+      function updateCircuitDiagram(voltage, resistance) {
+        document.getElementById('resistor-label').textContent = `R = ${resistance}Ω`;
+        document.getElementById('battery-label').textContent = `V = ${voltage}V`;
+        
+        // Calculate current
+        const current = voltage > 0 && resistance > 0 ? (voltage / resistance).toFixed(2) : 0;
+        document.getElementById('current-result').textContent = `${current} A`;
+      }
+      
+      // Calculate Ohm's Law
+      function calculateOhmsLaw() {
+        const voltage = parseFloat(document.getElementById('voltage-value').value);
+        const current = parseFloat(document.getElementById('current-value').value);
+        const resistance = parseFloat(document.getElementById('resistance-value').value);
+        
+        // Get units
+        const voltageUnit = document.getElementById('voltage-unit').value;
+        const currentUnit = document.getElementById('current-unit').value;
+        const resistanceUnit = document.getElementById('resistance-unit').value;
+        
+        // Show loader
+        const loader = document.getElementById('basic-loader');
+        loader.style.display = 'block';
+        
+        // Hide previous results
+        document.getElementById('basic-result-container').style.display = 'none';
+        document.getElementById('basic-error').style.display = 'none';
+        
+        // Simulate calculation delay
+        setTimeout(() => {
+          let error = '';
+          let calcVoltage = voltage;
+          let calcCurrent = current;
+          let calcResistance = resistance;
+          
+          // Validate inputs
+          const knownValues = [voltage, current, resistance].filter(val => !isNaN(val) && val !== '').length;
+          
+          if (knownValues < 2) {
+            error = 'Please enter at least two values';
+          } else {
+            // Perform calculations
+            if (isNaN(voltage) && !isNaN(current) && !isNaN(resistance)) {
+              calcVoltage = current * resistance;
+            } else if (isNaN(current) && !isNaN(voltage) && !isNaN(resistance)) {
+              calcCurrent = voltage / resistance;
+            } else if (isNaN(resistance) && !isNaN(voltage) && !isNaN(current)) {
+              calcResistance = voltage / current;
+            } else {
+              // All values provided - verify consistency
+              const calcVoltage2 = current * resistance;
+              if (Math.abs(voltage - calcVoltage2) > 0.01) {
+                error = 'The values provided are inconsistent with Ohm\'s Law';
+              }
+            }
+            
+            // Check for invalid values
+            if (calcResistance === 0 && calcVoltage !== 0) {
+              error = 'Resistance cannot be zero when voltage is non-zero';
+            }
+          }
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          if (error) {
+            // Show error
+            const errorElement = document.getElementById('basic-error');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+          } else {
+            // Display results
+            document.getElementById('voltage-result').textContent = `${calcVoltage.toFixed(2)} ${voltageUnit}`;
+            document.getElementById('current-result').textContent = `${calcCurrent.toFixed(2)} ${currentUnit}`;
+            document.getElementById('resistance-result').textContent = `${calcResistance.toFixed(2)} ${resistanceUnit}`;
+            
+            const resultValue = document.getElementById('basic-result-value');
+            resultValue.innerHTML = `
+              <p>Voltage: ${calcVoltage.toFixed(2)} ${voltageUnit}</p>
+              <p>Current: ${calcCurrent.toFixed(2)} ${currentUnit}</p>
+              <p>Resistance: ${calcResistance.toFixed(2)} ${resistanceUnit}</p>
+            `;
+            resultValue.classList.add('success-pulse');
+            
+            document.getElementById('basic-result-container').style.display = 'block';
+            
+            // Update sliders
+            voltageSlider.value = calcVoltage;
+            voltageSliderValue.textContent = `${calcVoltage} V`;
+            resistanceSlider.value = calcResistance;
+            resistanceSliderValue.textContent = `${calcResistance} Ω`;
+            
+            // Update circuit diagram
+            updateCircuitDiagram(calcVoltage, calcResistance);
+          }
+        }, 800);
+      }
+      
+      // Calculate Power
+      function calculatePower() {
+        const voltage = parseFloat(document.getElementById('power-voltage').value);
+        const current = parseFloat(document.getElementById('power-current').value);
+        const resistance = parseFloat(document.getElementById('power-resistance').value);
+        const power = parseFloat(document.getElementById('power-power').value);
+        
+        // Show loader
+        const loader = document.getElementById('power-loader');
+        loader.style.display = 'block';
+        
+        // Hide previous results
+        document.getElementById('power-result-container').style.display = 'none';
+        document.getElementById('power-error').style.display = 'none';
+        
+        // Simulate calculation delay
+        setTimeout(() => {
+          let error = '';
+          let calcVoltage = voltage;
+          let calcCurrent = current;
+          let calcResistance = resistance;
+          let calcPower = power;
+          
+          // Count known values
+          const knownValues = [voltage, current, resistance, power].filter(val => !isNaN(val) && val !== '').length;
+          
+          if (knownValues < 2) {
+            error = 'Please enter at least two values';
+          } else {
+            // Calculate based on known values
+            if (!isNaN(voltage) && !isNaN(current)) {
+              calcPower = voltage * current;
+              if (!isNaN(resistance)) {
+                // Verify with other formulas
+                const powerFromResistance = current * current * resistance;
+                if (Math.abs(calcPower - powerFromResistance) > 0.01) {
+                  error = 'The values provided are inconsistent';
+                }
+              }
+            } else if (!isNaN(current) && !isNaN(resistance)) {
+              calcPower = current * current * resistance;
+              if (!isNaN(voltage)) {
+                const powerFromVoltage = voltage * voltage / resistance;
+                if (Math.abs(calcPower - powerFromVoltage) > 0.01) {
+                  error = 'The values provided are inconsistent';
+                }
+              }
+            } else if (!isNaN(voltage) && !isNaN(resistance)) {
+              calcPower = voltage * voltage / resistance;
+            } else if (!isNaN(power) && !isNaN(voltage)) {
+              calcCurrent = power / voltage;
+            } else if (!isNaN(power) && !isNaN(current)) {
+              calcVoltage = power / current;
+            } else if (!isNaN(power) && !isNaN(resistance)) {
+              calcVoltage = Math.sqrt(power * resistance);
+              calcCurrent = Math.sqrt(power / resistance);
+            }
+          }
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          if (error) {
+            // Show error
+            const errorElement = document.getElementById('power-error');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+          } else {
+            // Display results
+            document.getElementById('power-voltage-result').textContent = `${calcVoltage.toFixed(2)} V`;
+            document.getElementById('power-current-result').textContent = `${calcCurrent.toFixed(2)} A`;
+            document.getElementById('power-power-result').textContent = `${calcPower.toFixed(2)} W`;
+            
+            const resultValue = document.getElementById('power-result-value');
+            resultValue.innerHTML = `
+              <p>Voltage: ${calcVoltage.toFixed(2)} V</p>
+              <p>Current: ${calcCurrent.toFixed(2)} A</p>
+              <p>Power: ${calcPower.toFixed(2)} W</p>
+            `;
+            resultValue.classList.add('success-pulse');
+            
+            document.getElementById('power-result-container').style.display = 'block';
+          }
+        }, 800);
+      }
+      
+      // Calculate Series Resistance
+      function calculateSeriesResistance() {
+        const r1 = parseFloat(document.getElementById('series-resistance1').value) || 0;
+        const r2 = parseFloat(document.getElementById('series-resistance2').value) || 0;
+        const r3 = parseFloat(document.getElementById('series-resistance3').value) || 0;
+        const r4 = parseFloat(document.getElementById('series-resistance4').value) || 0;
+        
+        // Show loader
+        const loader = document.getElementById('series-loader');
+        loader.style.display = 'block';
+        
+        // Hide previous results
+        document.getElementById('series-result-container').style.display = 'none';
+        document.getElementById('series-error').style.display = 'none';
+        
+        // Simulate calculation delay
+        setTimeout(() => {
+          let error = '';
+          let totalResistance = 0;
+          
+          // Validate inputs
+          if (r1 === 0 && r2 === 0 && r3 === 0 && r4 === 0) {
+            error = 'Please enter at least one resistance value';
+          } else {
+            totalResistance = r1 + r2 + r3 + r4;
+          }
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          if (error) {
+            // Show error
+            const errorElement = document.getElementById('series-error');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+          } else {
+            // Display results
+            const resultValue = document.getElementById('series-result-value');
+            resultValue.textContent = `Total Resistance: ${totalResistance.toFixed(2)} Ω`;
+            resultValue.classList.add('success-pulse');
+            
+            // Update circuit diagram
+            document.getElementById('series-r1').textContent = `R1 = ${r1}Ω`;
+            document.getElementById('series-r2').textContent = `R2 = ${r2}Ω`;
+            document.getElementById('series-r3').textContent = r3 > 0 ? `R3 = ${r3}Ω` : '';
+            document.getElementById('series-r4').textContent = r4 > 0 ? `R4 = ${r4}Ω` : '';
+            
+            // Hide unused resistors
+            document.getElementById('series-r3-rect').style.display = r3 > 0 ? 'block' : 'none';
+            document.getElementById('series-r3-path').style.display = r3 > 0 ? 'block' : 'none';
+            document.getElementById('series-r4-rect').style.display = r4 > 0 ? 'block' : 'none';
+            
+            document.getElementById('series-result-container').style.display = 'block';
+          }
+        }, 800);
+      }
+      
+      // Calculate Parallel Resistance
+      function calculateParallelResistance() {
+        const r1 = parseFloat(document.getElementById('parallel-resistance1').value) || 0;
+        const r2 = parseFloat(document.getElementById('parallel-resistance2').value) || 0;
+        const r3 = parseFloat(document.getElementById('parallel-resistance3').value) || 0;
+        const r4 = parseFloat(document.getElementById('parallel-resistance4').value) || 0;
+        
+        // Show loader
+        const loader = document.getElementById('parallel-loader');
+        loader.style.display = 'block';
+        
+        // Hide previous results
+        document.getElementById('parallel-result-container').style.display = 'none';
+        document.getElementById('parallel-error').style.display = 'none';
+        
+        // Simulate calculation delay
+        setTimeout(() => {
+          let error = '';
+          let totalResistance = 0;
+          
+          // Validate inputs
+          if (r1 === 0 && r2 === 0 && r3 === 0 && r4 === 0) {
+            error = 'Please enter at least one resistance value';
+          } else {
+            // Check for zero values
+            if (r1 === 0 || r2 === 0 || r3 === 0 || r4 === 0) {
+              error = 'Resistance values must be greater than zero';
+            } else {
+              // Calculate parallel resistance
+              totalResistance = 1 / (1/r1 + 1/r2 + 1/r3 + 1/r4);
+            }
+          }
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          if (error) {
+            // Show error
+            const errorElement = document.getElementById('parallel-error');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+          } else {
+            // Display results
+            const resultValue = document.getElementById('parallel-result-value');
+            resultValue.textContent = `Total Resistance: ${totalResistance.toFixed(2)} Ω`;
+            resultValue.classList.add('success-pulse');
+            
+            // Update circuit diagram
+            document.getElementById('parallel-r1').textContent = `R1 = ${r1}Ω`;
+            document.getElementById('parallel-r2').textContent = `R2 = ${r2}Ω`;
+            document.getElementById('parallel-r3').textContent = r3 > 0 ? `R3 = ${r3}Ω` : '';
+            
+            // Hide unused resistors
+            document.getElementById('parallel-r3-rect').style.display = r3 > 0 ? 'block' : 'none';
+            document.getElementById('parallel-r3-path').style.display = r3 > 0 ? 'block' : 'none';
+            document.getElementById('parallel-r3-path2').style.display = r3 > 0 ? 'block' : 'none';
+            
+            document.getElementById('parallel-result-container').style.display = 'block';
+          }
+        }, 800);
+      }
+      
+      // Add event listeners to calculate buttons
+      document.getElementById('basic-calculate').addEventListener('click', calculateOhmsLaw);
+      document.getElementById('power-calculate').addEventListener('click', calculatePower);
+      document.getElementById('series-calculate').addEventListener('click', calculateSeriesResistance);
+      document.getElementById('parallel-calculate').addEventListener('click', calculateParallelResistance);
+      
+      // Initialize default values and calculate
+      initializeValues();
+      calculateOhmsLaw();
+      calculateSeriesResistance();
+      calculateParallelResistance();
+    });
+  </script>
+</body>
+</html></body></html> 
