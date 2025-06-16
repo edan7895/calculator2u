@@ -1210,19 +1210,19 @@ box-sizing: border-box;
         // 根据选择的语言构建新URL
         switch(selectedLang) {
           case 'zh':
-            targetUrl = healthPath ? `/zh/health/${healthPath}` : '/zh/health/calorie-calculator.html';
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/calorie-calculator.html';
             break;
           case 'es':
-            targetUrl = healthPath ? `/es/health/${healthPath}` : '/es/health/calorie-calculator.html';
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/calorie-calculator.html';
             break;
           case 'de':
-            targetUrl = healthPath ? `/de/health/${healthPath}` : '/de/health/calorie-calculator.html';
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/calorie-calculator.html';
             break;
           case 'fr':
-            targetUrl = healthPath ? `/fr/health/${healthPath}` : '/fr/health/calorie-calculator.html';
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/calorie-calculator.html';
             break;
           default: // English
-            targetUrl = healthPath ? `/en/health/${healthPath}` : '/en/health/calorie-calculator.html';
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/calorie-calculator.html';
         }
         
         window.location.href = targetUrl;
