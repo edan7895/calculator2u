@@ -1,13 +1,1399 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标体重计算器 | Calculator2U</title>
+<meta name="description" content="计算需要多长时间才能达到目标体重，并获取个性化的卡路里和营养建议。" />
+<meta name="keywords" content="目标体重计算器, 减肥计算器, 增重计算器, 健身计算器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/health/goal-weight-calculator.html" />
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/goal-weight-calculator.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/zh/health/goal-weight-calculator.html"/>
+<meta property="og:title" content="目标体重计算器 | Calculator2U" />
+<meta property="og:description" content="计算需要多长时间才能达到目标体重，并获取个性化的卡路里和营养建议。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/health/goal-weight-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/goal-weight-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Goal Weight Calculator Styles */
+  .goal-weight-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .goal-weight-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 400px) {
+    .unit-toggle {
+      flex-direction: column;
+    }
+  }
+
+  .unit-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .unit-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* FIXED: Improved responsive styles for small screens */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .goal-weight-container {
+      padding: 0 0.5rem;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+    }
+    
+    .info-card {
+      overflow-x: auto;
+    }
+    
+    .reference-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    
+    .reference-table {
+      min-width: 100%;
+      font-size: 0.85rem;
+    }
+    
+    .reference-table th,
+    .reference-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+    }
+    
+    .input-field input,
+    .input-field select {
+      max-width: 100%;
+    }
+    
+    .chart-labels {
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .macros-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow:0  5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .tdee-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #006d77;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .stat-title {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+  
+  .health-advice {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+  }
+  
+  .health-advice h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .activity-level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .activity-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .activity-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  /* Fix: Add table container */
+  .reference-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .reference-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .reference-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .reference-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .reference-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Macros grid */
+  .macros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .macro-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .macro-name {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.5rem;
+  }
+  
+  .macro-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+  
+  .macro-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+  
+  /* Timeline visualization */
+  .timeline-container {
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #006d77;
+  }
+  
+  .timeline-bar {
+    height: 20px;
+    background: #e0f7fa;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4db5bd, #006d77);
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background: #ffd166;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  
+  .timeline-marker-text {
+    position: absolute;
+    top: -25px;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #006d77;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .goal-weight-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务和投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="zh">中文 (Chinese)</option>
+            <option value="en">English</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>目标体重计算器</h1>
+    <p>计算需要多长时间才能达到目标体重，并获取个性化的卡路里和营养建议</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">目标体重计算器</h2>
+    
+    <div class="goal-weight-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="unit-toggle">
+          <div class="unit-option active" id="metric-option">公制 (kg, cm)</div>
+          <div class="unit-option" id="imperial-option">英制 (lb, in)</div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="gender">性别</label>
+            <select id="gender">
+              <option value="">选择性别</option>
+              <option value="male">男性</option>
+              <option value="female">女性</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="age">年龄 (岁)</label>
+            <input type="number" id="age" placeholder="请输入年龄" min="0" max="120">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="height" id="height-label">身高 (cm)</label>
+            <input type="number" id="height" placeholder="请输入身高" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="current-weight" id="current-weight-label">当前体重 (kg)</label>
+            <input type="number" id="current-weight" placeholder="当前体重" min="0" step="0.1">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="goal-weight" id="goal-weight-label">目标体重 (kg)</label>
+            <input type="number" id="goal-weight" placeholder="目标体重" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="body-fat">体脂率 % (可选)</label>
+            <input type="number" id="body-fat" placeholder="请输入体脂率 %" min="0" max="100" step="0.1">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="rate" id="rate-label">每周目标 (kg/周)</label>
+            <input type="number" id="rate" placeholder="0.5 kg/周" min="0.1" max="2" step="0.1" value="0.5">
+          </div>
+        </div>
+        
+        <div class="activity-level">
+          <div class="activity-option" data-multiplier="1.2">
+            <i class="fas fa-couch"></i>
+            <p>久坐<br>(几乎不运动)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.375">
+            <i class="fas fa-walking"></i>
+            <p>轻度活动<br>(每周1-3天轻度运动)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.55">
+            <i class="fas fa-running"></i>
+            <p>中度活动<br>(每周3-5天中度运动)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.725">
+            <i class="fas fa-dumbbell"></i>
+            <p>非常活跃<br>(每周6-7天高强度运动)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.9">
+            <i class="fas fa-hard-hat"></i>
+            <p>超级活跃<br>(体力工作或每日两次训练)</p>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> 计算目标计划
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">您的目标体重计划</h3>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-title">体重变化</div>
+              <div class="stat-value" id="weight-change">-10 kg</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-title">预计时间</div>
+              <div class="stat-value" id="time-estimate">20周</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-title">目标日期</div>
+              <div class="stat-value" id="target-date">2025年10月15日</div>
+            </div>
+          </div>
+          
+          <div class="timeline-container">
+            <div class="timeline-header">
+              <span>今天</span>
+              <span id="timeline-end">目标日期</span>
+            </div>
+            <div class="timeline-bar">
+              <div class="timeline-progress" id="timeline-progress" style="width: 30%;"></div>
+              <div class="timeline-marker" style="left: 30%;">
+                <div class="timeline-marker-text">当前</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="health-advice">
+            <h3><i class="fas fa-fire"></i> 每日热量目标</h3>
+            <p>根据您的活动水平和目标，推荐的每日热量摄入量为：</p>
+            <div class="tdee-value" id="calorie-target">1850</div>
+            <p>卡路里/天</p>
+          </div>
+          
+          <div class="health-advice">
+            <h3><i class="fas fa-apple-alt"></i> 宏量营养素建议</h3>
+            <p>为了在实现目标的同时保持健康，请遵循以下营养指南：</p>
+            
+            <div class="macros-grid">
+              <div class="macro-item">
+                <div class="macro-name">蛋白质</div>
+                <div class="macro-value">150克</div>
+                <div class="macro-description">占热量的30%</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">碳水化合物</div>
+                <div class="macro-value">230克</div>
+                <div class="macro-description">占热量的50%</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">脂肪</div>
+                <div class="macro-value">52克</div>
+                <div class="macro-description">占热量的20%</div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-name">膳食纤维</div>
+                <div class="macro-value">30克</div>
+                <div class="macro-description">每日最低摄入量</div>
+              </div>
+            </div>
+            
+            <p>这些比例有助于在保持肌肉质量的同时实现可持续的体重管理。</p>
+          </div>
+          
+          <div class="health-advice" id="diet-advice">
+            <h3><i class="fas fa-lightbulb"></i> 健康建议</h3>
+            <ul>
+              <li>每晚保持7-9小时的优质睡眠以支持新陈代谢</li>
+              <li>结合有氧运动和力量训练以达到最佳减脂效果</li>
+              <li>每天至少饮用2-3升水以保持水分</li>
+              <li>每周记录进度，并根据需要进行调整</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>理解健康体重目标</h3>
+        <p>实现目标体重需要采取可持续的方法，包括合理营养、体育活动和现实期望。此计算器帮助您基于科学依据创建个性化计划。</p>
+        
+        <h3>成功的关键原则</h3>
+        <p>研究表明，成功的体重管理包括：</p>
+        <ul>
+          <li><strong>渐进式变化：</strong>每周目标为0.5-1公斤（1-2磅）的增重或减重</li>
+          <li><strong>热量平衡：</strong>每天制造500-1000卡路里的适度缺口或盈余</li>
+          <li><strong>宏量营养素平衡：</strong>足够的蛋白质以保持肌肉质量</li>
+          <li><strong>一致性：</strong>随着时间的推移，养成可持续的习惯能带来最佳效果</li>
+        </ul>
+        
+        <h3>计算原理</h3>
+        <p>此计算器使用Mifflin-St Jeor方程确定您的基础代谢率（BMR），然后根据您的活动水平计算总每日能量消耗（TDEE）。</p>
+        
+        <p><strong>Mifflin-St Jeor方程：</strong></p>
+        <ul>
+          <li>男性：<em>BMR = (体重kg × 10) + (身高cm × 6.25) - (年龄 × 5) + 5</em></li>
+          <li>女性：<em>BMR = (体重kg × 10) + (身高cm × 6.25) - (年龄 × 5) - 161</em></li>
+        </ul>
+        
+        <h3>活动水平乘数</h3>
+        <p>您的TDEE是通过将BMR乘以活动因子计算得出的：</p>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>活动水平</th>
+              <th>乘数</th>
+              <th>描述</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>久坐</td>
+              <td>1.2</td>
+              <td>几乎不运动，久坐工作</td>
+            </tr>
+            <tr>
+              <td>轻度活动</td>
+              <td>1.375</td>
+              <td>每周1-3天轻度运动</td>
+            </tr>
+            <tr>
+              <td>中度活动</td>
+              <td>1.55</td>
+              <td>每周3-5天中度运动</td>
+            </tr>
+            <tr>
+              <td>非常活跃</td>
+              <td>1.725</td>
+              <td>每周6-7天高强度运动</td>
+            </tr>
+            <tr>
+              <td>超级活跃</td>
+              <td>1.9</td>
+              <td>体力工作或每日两次训练</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3>健康体重变化速率</h3>
+        <p>为了实现可持续的结果，请遵循以下指南：</p>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>目标</th>
+              <th>推荐速率</th>
+              <th>热量调整</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>减重</td>
+              <td>每周0.5-1公斤</td>
+              <td>500-1000卡路里缺口</td>
+            </tr>
+            <tr>
+              <td>增重</td>
+              <td>每周0.25-0.5公斤</td>
+              <td>250-500卡路里盈余</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> 成功提示</h3>
+          <p>请记住，体重变化不是线性的。平台期是正常的——关注长期趋势而非每日波动。将您的营养计划与定期体育活动结合，以获得最佳健康效果。</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您的健康计算器和健康工具的可信来源。自2025年起提供准确、可靠的健康指标。</p>
+      </div>
+      <div class="footer-column">
+        <h3>健康计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/health/bmi-calculator.html">BMI计算器</a></li>
+          <li><a href="/zh/health/bmr-calculator.html">BMR计算器</a></li>
+          <li><a href="/zh/health/body-fat-calculator.html">体脂率计算器</a></li>
+          <li><a href="/zh/health/tdee-calculator.html">TDEE计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. 保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些计算器仅提供估算值。请咨询医疗专业人员获取医疗建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // 汉堡菜单功能
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // 点击外部关闭菜单
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // 语言选择器功能
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // 获取当前路径并替换语言段
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // 确定健康部分的基路径
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/');
+          }
+        }
+        
+        // 根据所选语言构建新URL
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/goal-weight-calculator.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/goal-weight-calculator.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/goal-weight-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/goal-weight-calculator.html';
+            break;
+          default: // English
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/goal-weight-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // 根据URL设置当前语言
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['zh', 'en', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // 目标体重计算器功能
+      const metricOption = document.getElementById('metric-option');
+      const imperialOption = document.getElementById('imperial-option');
+      const genderSelect = document.getElementById('gender');
+      const ageInput = document.getElementById('age');
+      const heightInput = document.getElementById('height');
+      const currentWeightInput = document.getElementById('current-weight');
+      const goalWeightInput = document.getElementById('goal-weight');
+      const bodyFatInput = document.getElementById('body-fat');
+      const rateInput = document.getElementById('rate');
+      const heightLabel = document.getElementById('height-label');
+      const currentWeightLabel = document.getElementById('current-weight-label');
+      const goalWeightLabel = document.getElementById('goal-weight-label');
+      const rateLabel = document.getElementById('rate-label');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const weightChange = document.getElementById('weight-change');
+      const timeEstimate = document.getElementById('time-estimate');
+      const targetDate = document.getElementById('target-date');
+      const calorieTarget = document.getElementById('calorie-target');
+      const timelineProgress = document.getElementById('timeline-progress');
+      const timelineEnd = document.getElementById('timeline-end');
+      
+      // 活动水平选择
+      const activityOptions = document.querySelectorAll('.activity-option');
+      let selectedActivity = 1.55; // 默认为中度活动
+      
+      activityOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          activityOptions.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+          selectedActivity = parseFloat(option.getAttribute('data-multiplier'));
+        });
+      });
+      
+      // 设置默认单位为公制
+      let isMetric = true;
+      
+      // 单位切换功能
+      metricOption.addEventListener('click', () => {
+        if (!isMetric) {
+          isMetric = true;
+          metricOption.classList.add('active');
+          imperialOption.classList.remove('active');
+          heightLabel.textContent = '身高 (cm)';
+          currentWeightLabel.textContent = '当前体重 (kg)';
+          goalWeightLabel.textContent = '目标体重 (kg)';
+          rateLabel.textContent = '每周目标 (kg/周)';
+          rateInput.placeholder = '0.5 kg/周';
+        }
+      });
+      
+      imperialOption.addEventListener('click', () => {
+        if (isMetric) {
+          isMetric = false;
+          imperialOption.classList.add('active');
+          metricOption.classList.remove('active');
+          heightLabel.textContent = '身高 (in)';
+          currentWeightLabel.textContent = '当前体重 (lb)';
+          goalWeightLabel.textContent = '目标体重 (lb)';
+          rateLabel.textContent = '每周目标 (lb/周)';
+          rateInput.placeholder = '1 lb/周';
+        }
+      });
+      
+      // 计算目标计划函数
+      function calculateGoalPlan() {
+        const gender = genderSelect.value;
+        const age = parseFloat(ageInput.value);
+        const height = parseFloat(heightInput.value);
+        const currentWeight = parseFloat(currentWeightInput.value);
+        const goalWeight = parseFloat(goalWeightInput.value);
+        const bodyFat = bodyFatInput.value ? parseFloat(bodyFatInput.value) : null;
+        const weeklyRate = parseFloat(rateInput.value);
+        
+        if (!gender || !age || !height || !currentWeight || !goalWeight || 
+            age <= 0 || height <= 0 || currentWeight <= 0 || goalWeight <= 0 || weeklyRate <= 0) {
+          alert('请输入所有必填字段的有效值。');
+          return;
+        }
+        
+        // 如果需要计算，将英制转换为公制
+        const heightInCm = isMetric ? height : height * 2.54;
+        const currentWeightInKg = isMetric ? currentWeight : currentWeight * 0.453592;
+        const goalWeightInKg = isMetric ? goalWeight : goalWeight * 0.453592;
+        const weeklyRateInKg = isMetric ? weeklyRate : weeklyRate * 0.453592;
+        
+        // 计算体重差异
+        const weightDifference = goalWeightInKg - currentWeightInKg;
+        const absWeightDifference = Math.abs(weightDifference);
+        
+        // 计算预计时间
+        const weeksNeeded = Math.round(absWeightDifference / weeklyRateInKg);
+        const monthsNeeded = Math.round(weeksNeeded / 4.345);
+        
+        // 计算目标日期
+        const today = new Date();
+        const targetDateObj = new Date(today);
+        targetDateObj.setDate(targetDateObj.getDate() + (weeksNeeded * 7));
+        
+        // 格式化目标日期
+        const formattedDate = targetDateObj.toLocaleDateString('zh-CN', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric' 
+        });
+        
+        // 计算基础代谢率（Mifflin-St Jeor）
+        let bmr;
+        if (gender === 'male') {
+          bmr = (10 * currentWeightInKg) + (6.25 * heightInCm) - (5 * age) + 5;
+        } else {
+          bmr = (10 * currentWeightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
+        }
+        
+        // 计算总每日能量消耗
+        const tdee = Math.round(bmr * selectedActivity);
+        
+        // 根据目标计算热量目标
+        let calorieTargetValue;
+        if (weightDifference < 0) { // 减重
+          // 7700卡路里 ≈ 1公斤脂肪
+          calorieTargetValue = tdee - Math.round((weeklyRateInKg * 7700) / 7);
+        } else { // 增重
+          calorieTargetValue = tdee + Math.round((weeklyRateInKg * 7700) / 7);
+        }
+        
+        // 计算宏量营养素
+        const proteinGrams = Math.round(currentWeightInKg * 2.2); // 减重时增加蛋白质
+        const proteinCalories = proteinGrams * 4;
+        const fatGrams = Math.round((calorieTargetValue * 0.25) / 9); // 25%的热量来自脂肪
+        const fatCalories = fatGrams * 9;
+        const carbCalories = calorieTargetValue - proteinCalories - fatCalories;
+        const carbGrams = Math.round(carbCalories / 4);
+        const fiberGrams = 30; // 推荐的每日膳食纤维摄入量
+        
+        // 更新UI显示结果
+        const weightChangeText = weightDifference < 0 ? 
+          `-${absWeightDifference.toFixed(1)} 公斤` : 
+          `+${absWeightDifference.toFixed(1)} 公斤`;
+          
+        weightChange.textContent = weightChangeText;
+        timeEstimate.textContent = `${weeksNeeded} 周 (${monthsNeeded} 个月)`;
+        targetDate.textContent = formattedDate;
+        calorieTarget.textContent = calorieTargetValue;
+        
+        // 更新时间轴
+        timelineProgress.style.width = '30%'; // 示例 - 实际使用时需根据进度计算
+        timelineEnd.textContent = formattedDate;
+        
+        // 显示结果容器
+        resultContainer.style.display = 'block';
+        
+        // 滚动到结果
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // 为计算按钮添加事件监听器
+      calculateBtn.addEventListener('click', calculateGoalPlan);
+      
+      // 允许按Enter键提交
+      const inputFields = [ageInput, heightInput, currentWeightInput, goalWeightInput, bodyFatInput, rateInput];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateGoalPlan();
+        });
+      });
+      
+      // 初始化默认选择
+      activityOptions[2].classList.add('active');
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>
