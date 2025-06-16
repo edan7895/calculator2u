@@ -938,19 +938,19 @@
         // Build new URL based on selected language
         switch(selectedLang) {
           case 'zh':
-            targetUrl = financePath ? `/zh/finance/${financePath}` : '/zh/finance/index.html';
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/index.html';
             break;
           case 'es':
-            targetUrl = financePath ? `/es/finance/${financePath}` : '/es/finance/index.html';
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/index.html';
             break;
           case 'de':
-            targetUrl = financePath ? `/de/finance/${financePath}` : '/de/finance/index.html';
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/index.html';
             break;
           case 'fr':
-            targetUrl = financePath ? `/fr/finance/${financePath}` : '/fr/finance/index.html';
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/index.html';
             break;
           default: // English
-            targetUrl = financePath ? `/en/finance/${financePath}` : '/en/finance/index.html';
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/index.html';
         }
         
         window.location.href = targetUrl;

@@ -910,19 +910,19 @@ box-sizing: border-box;
         // Build new URL based on selected language
         switch(selectedLang) {
           case 'zh':
-            targetUrl = financePath ? `/zh/finance/${financePath}` : '/zh/finance/auto-loan-calculator.html';
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/auto-loan-calculator.html';
             break;
           case 'es':
-            targetUrl = financePath ? `/es/finance/${financePath}` : '/es/finance/auto-loan-calculator.html';
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/auto-loan-calculator.html';
             break;
           case 'de':
-            targetUrl = financePath ? `/de/finance/${financePath}` : '/de/finance/auto-loan-calculator.html';
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/auto-loan-calculator.html';
             break;
           case 'fr':
-            targetUrl = financePath ? `/fr/finance/${financePath}` : '/fr/finance/auto-loan-calculator.html';
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/auto-loan-calculator.html';
             break;
           default: // English
-            targetUrl = financePath ? `/en/finance/${financePath}` : '/en/finance/auto-loan-calculator.html';
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/auto-loan-calculator.html';
         }
         
         window.location.href = targetUrl;
