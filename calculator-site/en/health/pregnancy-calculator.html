@@ -1288,19 +1288,19 @@
         // Build new URL based on selected language
         switch(selectedLang) {
           case 'zh':
-            targetUrl = healthPath ? `/zh/health/${healthPath}` : '/zh/health/pregnancy-calculator.html';
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/pregnancy-calculator.html';
             break;
           case 'es':
-            targetUrl = healthPath ? `/es/health/${healthPath}` : '/es/health/pregnancy-calculator.html';
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/pregnancy-calculator.html';
             break;
           case 'de':
-            targetUrl = healthPath ? `/de/health/${healthPath}` : '/de/health/pregnancy-calculator.html';
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/pregnancy-calculator.html';
             break;
           case 'fr':
-            targetUrl = healthPath ? `/fr/health/${healthPath}` : '/fr/health/pregnancy-calculator.html';
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/pregnancy-calculator.html';
             break;
           default: // English
-            targetUrl = healthPath ? `/en/health/${healthPath}` : '/en/health/pregnancy-calculator.html';
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/pregnancy-calculator.html';
         }
         
         window.location.href = targetUrl;

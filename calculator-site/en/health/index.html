@@ -940,19 +940,19 @@
         // Build new URL based on selected language
         switch(selectedLang) {
           case 'zh':
-            targetUrl = healthPath ? `/zh/health/${healthPath}` : '/zh/health/index.html';
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/index.html';
             break;
           case 'es':
-            targetUrl = healthPath ? `/es/health/${healthPath}` : '/es/health/index.html';
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/index.html';
             break;
           case 'de':
-            targetUrl = healthPath ? `/de/health/${healthPath}` : '/de/health/index.html';
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/index.html';
             break;
           case 'fr':
-            targetUrl = healthPath ? `/fr/health/${healthPath}` : '/fr/health/index.html';
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/index.html';
             break;
           default: // English
-            targetUrl = healthPath ? `/en/health/${healthPath}` : '/en/health/index.html';
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/index.html';
         }
         
         window.location.href = targetUrl;
