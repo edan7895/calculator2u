@@ -1,4 +1,3 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -929,19 +928,19 @@
         // Build new URL based on selected language
         switch(selectedLang) {
           case 'zh':
-            targetUrl = engineeringPath ? `/zh/engineering/${engineeringPath}` : '/zh/engineering/index.html';
+            targetUrl = engineeringPath ? `/zh/${engineeringPath}` : '/zh/engineering/index.html';
             break;
           case 'es':
-            targetUrl = engineeringPath ? `/es/engineering/${engineeringPath}` : '/es/engineering/index.html';
+            targetUrl = engineeringPath ? `/es/${engineeringPath}` : '/es/engineering/index.html';
             break;
           case 'de':
-            targetUrl = engineeringPath ? `/de/engineering/${engineeringPath}` : '/de/engineering/index.html';
+            targetUrl = engineeringPath ? `/de/${engineeringPath}` : '/de/engineering/index.html';
             break;
           case 'fr':
-            targetUrl = engineeringPath ? `/fr/engineering/${engineeringPath}` : '/fr/engineering/index.html';
+            targetUrl = engineeringPath ? `/fr/${engineeringPath}` : '/fr/engineering/index.html';
             break;
           default: // English
-            targetUrl = engineeringPath ? `/en/engineering/${engineeringPath}` : '/en/engineering/index.html';
+            targetUrl = engineeringPath ? `/en/${engineeringPath}` : '/en/engineering/index.html';
         }
         
         window.location.href = targetUrl;
@@ -958,4 +957,4 @@
     })();
   </script>
 </body>
-</html></body></html> 
+</html>
