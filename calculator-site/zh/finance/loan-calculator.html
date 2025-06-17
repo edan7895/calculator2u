@@ -1,13 +1,1044 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>贷款计算器 | Calculator2U</title>
+<meta name="description" content="计算您的个人或商业贷款的月供和总利息成本" />
+<meta name="keywords" content="贷款计算器,个人贷款计算器,商业贷款计算器,财务计算器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/finance/loan-calculator.html" />
+<meta property="og:title" content="贷款计算器 | Calculator2U" />
+<meta property="og:description" content="计算您的个人或商业贷款的月供和总利息成本" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/finance/loan-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/loan-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+html, body {
+  overflow-x: hidden;
+}
+
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 多语言选择器样式 */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Loan Calculator Styles */
+  .loan-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .loan-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .monthly-payment {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Amortization Schedule */
+  .amortization-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .amortization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .amortization-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .amortization-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .amortization-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .amortization-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loan-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* 新增的小屏幕样式调整 */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .loan-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+    }
+    
+    .amortization-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .amortization-table {
+      min-width: 100%;
+    }
+    
+    .amortization-table th,
+    .amortization-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .monthly-payment {
+      font-size: 2.5rem;
+    }
+    
+    .total-interest {
+      font-size: 1.1rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="zh">中文 (Chinese)</option>
+            <option value="en">English</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>贷款计算器</h1>
+    <p>计算您的个人或商业贷款的月供和总利息成本</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">贷款计算器</h2>
+    
+    <div class="loan-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="loan-amount">贷款总额 ($)</label>
+            <input type="number" id="loan-amount" placeholder="输入贷款金额" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="interest-rate">利率 (%)</label>
+            <input type="number" id="interest-rate" placeholder="输入利率" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="loan-term">贷款期限 (年)</label>
+            <input type="number" id="loan-term" placeholder="输入贷款期限 (例如: 1-99)" min="1" max="99">
+          </div>
+          
+          <div class="input-field">
+            <label for="payment-per-year">每年还款次数</label>
+            <select id="payment-per-year">
+              <option value="12">每月还款 (每年12次还款)</option>
+              <option value="2">每半年还款 (每年2次还款)</option>
+              <option value="1">每年还款 (每年1次还款)</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> 计算贷款
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">您的贷款还款摘要</h3>
+          <div class="monthly-payment" id="payment-amount">1,200</div>
+          <div class="total-interest" id="total-interest">总利息: $85,000</div>
+          
+          <div class="loan-summary" id="loan-summary">
+            <h3><i class="fas fa-money-bill-wave"></i> 贷款摘要</h3>
+            <p>您的估计月供为1,200美元，基于300,000美元的贷款，4.5%的利率，贷款期限25年。</p>
+            <h3><i class="fas fa-chart-line"></i> 总成本</h3>
+            <p>贷款的总成本将是426,000美元，其中包括126,000美元的利息支付。</p>
+          </div>
+        </div>
+        
+        <div class="amortization-container">
+          <table class="amortization-table" id="amortization-table">
+            <thead>
+              <tr>
+                <th>还款期数</th>
+                <th>还款日期</th>
+                <th>本金</th>
+                <th>利息</th>
+                <th>余额</th>
+                <th>总还款额</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 还款计划将在此处生成 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>了解贷款</h3>
+        <p>贷款是一种金融安排，借款人从贷款人处获得一笔资金，并同意在指定期间内偿还本金及利息。影响您贷款还款的关键因素包括：</p>
+        <ul>
+          <li><strong>贷款金额：</strong> 借款的总额</li>
+          <li><strong>利率：</strong> 借款的成本，以百分比表示</li>
+          <li><strong>贷款期限：</strong> 还款的时间长度（通常为1-99年）</li>
+          <li><strong>还款频率：</strong> 您进行还款的频率（每月、每季、每年）</li>
+        </ul>
+        
+        <h3>贷款还款如何运作</h3>
+        <p>您的定期贷款还款是通过摊销公式确定的。还款包括本金和利息部分，这些部分会随时间变化：</p>
+        <ul>
+          <li>在开始时，您的大部分还款将用于支付利息</li>
+          <li>随着时间推移，更多的还款将用于减少本金余额</li>
+          <li>固定利率贷款的还款金额在贷款期限内保持不变</li>
+        </ul>
+        
+        <h3>影响您利率的因素</h3>
+        <p>贷款人在确定您的贷款利率时会考虑多个因素：</p>
+        <ul>
+          <li><strong>信用评分：</strong> 较高的信用评分通常会导致较低的利率</li>
+          <li><strong>贷款期限：</strong> 较长的期限通常具有较高的利率</li>
+          <li><strong>贷款类型：</strong> 个人贷款、商业贷款和有担保贷款可能具有不同的利率</li>
+          <li><strong>市场状况：</strong> 经济因素会影响整体利率水平</li>
+        </ul>
+        
+        <div class="loan-tips">
+          <h3><i class="fas fa-lightbulb"></i> 贷款提示</h3>
+          <p>在申请贷款之前，请考虑以下建议以获得最佳交易：</p>
+          <ul>
+            <li>检查您的信用评分和报告是否有错误</li>
+            <li>货比三家，寻找最佳利率</li>
+            <li>考虑借款的总成本，而不仅仅是月供</li>
+            <li>选择一个在可承受的还款额与最小利息成本之间取得平衡的贷款期限</li>
+            <li>如果可能，尽量多还款以减少利息成本</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您值得信赖的财务计算器和金融工具来源。自2025年以来，一直帮助您做出明智的财务决策。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他有用的计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator.html">抵押贷款计算器</a></li>
+          <li><a href="/zh/finance/retirement-savings-calculator.html">退休储蓄计算器</a></li>
+          <li><a href="/zh/finance/compound-interest-calculator-calculator.html">复利计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. 保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注：这些计算器仅提供估算值。请咨询财务顾问以获取个性化建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // 汉堡菜单功能
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // 点击外部关闭菜单
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // 语言选择器功能
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // 获取当前路径并替换语言段
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+
+        // 确定财务部分的基路径
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/loan-calculator', 'finance/loan-calculator');
+          }
+        }
+
+        // 根据选定语言构建新URL
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/loan-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/loan-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/loan-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/loan-calculator.html';
+            break;
+          default: // English
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/loan-calculator.html';
+        }
+
+        window.location.href = targetUrl;
+      });
+
+      // 根据URL设置当前语言
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['zh', 'en', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+
+      // 贷款计算器功能
+      const loanAmountInput = document.getElementById('loan-amount');
+      const interestRateInput = document.getElementById('interest-rate');
+      const loanTermInput = document.getElementById('loan-term');
+      const paymentPerYearInput = document.getElementById('payment-per-year');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const paymentAmount = document.getElementById('payment-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const loanSummary = document.getElementById('loan-summary');
+      const amortizationTable = document.getElementById('amortization-table');
+
+      // 计算贷款函数
+      function calculateLoan() {
+        const loanAmount = parseFloat(loanAmountInput.value);
+        const interestRate = parseFloat(interestRateInput.value) / 100;
+        const loanTerm = parseInt(loanTermInput.value);
+        const paymentsPerYear = parseInt(paymentPerYearInput.value);
+
+        if (!loanAmount || !interestRate || !loanTerm || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+          alert('请输入有效的贷款金额、利率和贷款期限。');
+          return;
+        }
+
+        // 计算每期利率
+        const paymentFrequency = paymentsPerYear;
+        const periodInterestRate = interestRate / paymentFrequency;
+        const totalPayments = loanTerm * paymentFrequency;
+
+        // 使用摊销公式计算还款额
+        const numerator = periodInterestRate * Math.pow(1 + periodInterestRate, totalPayments);
+        const denominator = Math.pow(1 + periodInterestRate, totalPayments) - 1;
+        let paymentAmountValue = loanAmount * (numerator / denominator);
+
+        // 四舍五入到最近的分
+        paymentAmountValue = Math.round(paymentAmountValue * 100) / 100;
+
+        // 计算总利息支出
+        const totalPaymentsAmount = paymentAmountValue * totalPayments;
+        const totalInterestPaid = totalPaymentsAmount - loanAmount;
+
+        // 更新还款额和总利息
+        paymentAmount.textContent = paymentAmountValue.toFixed(2);
+        totalInterest.textContent = `总利息: $${totalInterestPaid.toFixed(0)}`;
+
+        // 更新贷款摘要
+        const paymentFrequencyText = paymentPerYearInput.options[paymentPerYearInput.selectedIndex].text.split(' ')[0];
+        const summaryHTML = `
+          <h3><i class="fas fa-money-bill-wave"></i> 贷款摘要</h3>
+          <p>您的估计${paymentFrequencyText.toLowerCase()}还款额为$${paymentAmountValue.toFixed(2)}，基于$${loanAmount.toFixed(0)}的贷款，${interestRate * 100}%的利率，贷款期限${loanTerm}年。</p>
+          <h3><i class="fas fa-chart-line"></i> 总成本</h3>
+          <p>贷款的总成本将是$${totalPaymentsAmount.toFixed(0)}，其中包括$${totalInterestPaid.toFixed(0)}的利息支出。</p>
+        `;
+
+        loanSummary.innerHTML = summaryHTML;
+
+        // 生成摊销表
+        const tableBody = amortizationTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+
+        let remainingBalance = loanAmount;
+        let paymentNumber = 1;
+        let currentPeriod = new Date();
+        currentPeriod.setMonth(currentPeriod.getMonth() + 1); // 从下个月开始
+
+        for (let i = 0; i < totalPayments; i++) {
+          const interestPayment = remainingBalance * periodInterestRate;
+          const principalPayment = paymentAmountValue - interestPayment;
+          remainingBalance -= principalPayment;
+
+          const row = document.createElement('tr');
+
+          // 格式化还款日期
+          const paymentDate = new Date(currentPeriod);
+          const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+
+          row.innerHTML = `
+            <td>${paymentNumber}</td>
+            <td>${dateStr}</td>
+            <td>$${principalPayment.toFixed(2)}</td>
+            <td>$${interestPayment.toFixed(2)}</td>
+            <td>$${remainingBalance.toFixed(2)}</td>
+            <td>$${paymentAmountValue.toFixed(2)}</td>
+          `;
+
+          tableBody.appendChild(row);
+
+          // 日期递增
+          currentPeriod.setMonth(currentPeriod.getMonth() + 1);
+          paymentNumber++;
+        }
+
+        // 显示结果容器
+        resultContainer.style.display = 'block';
+      }
+
+      // 为计算按钮添加事件监听器
+      calculateBtn.addEventListener('click', calculateLoan);
+
+      // 允许在输入字段中按回车键
+      loanAmountInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      interestRateInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      loanTermInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      paymentPerYearInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+    })();
+
+    // 为小屏幕添加额外的响应式设计
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.loan-container').style.gridTemplateColumns = '1fr';
+      }
+    });
+
+    // 设置规范URL和og:url的路径
+    const canonicalUrl = document.querySelector('link[rel="canonical"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    const currentUrl = window.location.href;
+    
+    if (canonicalUrl && canonicalUrl.getAttribute('href').includes('url')) {
+      canonicalUrl.setAttribute('href', currentUrl);
+    }
+    
+    if (ogUrl && ogUrl.getAttribute('content').includes('url')) {
+      ogUrl.setAttribute('content', currentUrl);
+    }
+  </script>
 </body>
-</html></body></html> 
+</html>

@@ -1,13 +1,1756 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>投资回报计算器 | Calculator2U</title>
+<meta name="description" content="计算您的投资回报，包括复利、年化回报和投资总增长" />
+<meta name="keywords" content="投资计算器,复利计算器,投资回报计算器,财务计算器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/finance/investment-return-calculator.html" />
+<meta property="og:title" content="投资回报计算器 | Calculator2U" />
+<meta property="og:description" content="计算您的投资回报，包括复利、年化回报和投资总增长" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/finance/investment-return-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/investment-return-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Investment Return Calculator Styles */
+  .investment-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .investment-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Investment growth chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Amortization Schedule */
+  .growth-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .growth-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .growth-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .growth-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .growth-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .growth-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .investment-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .investment-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .growth-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
+    }
+    
+    .growth-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .growth-table th,
+    .growth-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .final-amount {
+      font-size: 2rem;
+      word-break: break-all;
+    }
+    
+    .total-interest {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Fix for chart container */
+    .chart-container canvas {
+      max-width: 100%;
+    }
+  }
+
+  /* Investment comparison styles */
+  .comparison-container {
+    margin-top: 2rem;
+  }
+
+  .comparison-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .comparison-btn:hover {
+    background: #ffc043;
+  }
+
+  .comparison-input {
+    display: none;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-input input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 1rem;
+  }
+
+  .comparison-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .comparison-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #006d77;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English (英文)</option>
+            <option value="zh" selected>中文 (Chinese)</option>
+            <option value="es">Español (西班牙语)</option>
+            <option value="de">Deutsch (德语)</option>
+            <option value="fr">Français (法语)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>投资回报计算器</h1>
+    <p>计算您的投资增长、复利和年化回报</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">投资回报计算器</h2>
+    
+    <div class="investment-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="initial-investment">初始投资金额 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您开始投资的金额</span>
+              </span>
+            </label>
+            <input type="number" id="initial-investment" placeholder="输入初始投资金额" min="0" value="10000">
+          </div>
+          
+          <div class="input-field">
+            <label for="investment-term">投资期限 (年)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您计划投资的年数</span>
+              </span>
+            </label>
+            <input type="number" id="investment-term" placeholder="输入投资期限（例如，10）" min="1" max="50" value="10">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="annual-return">年回报率 (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">预期的年回报率</span>
+              </span>
+            </label>
+            <input type="number" id="annual-return" placeholder="输入年回报率" min="0" step="0.01" value="7">
+          </div>
+          
+          <div class="input-field">
+            <label for="compounding">复利频率
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">利息计算和添加的频率</span>
+              </span>
+            </label>
+            <select id="compounding">
+              <option value="daily">每日</option>
+              <option value="monthly" selected>每月</option>
+              <option value="quarterly">每季度</option>
+              <option value="annually">每年</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="monthly-contribution">定期投入 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您将定期添加的金额</span>
+              </span>
+            </label>
+            <input type="number" id="monthly-contribution" placeholder="输入每月投入" min="0" value="500">
+          </div>
+          
+          <div class="input-field">
+            <label for="contribution-frequency">投入频率
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您投入的频率</span>
+              </span>
+            </label>
+            <select id="contribution-frequency">
+              <option value="none">无</option>
+              <option value="monthly" selected>每月</option>
+              <option value="quarterly">每季度</option>
+              <option value="annually">每年</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Additional Options -->
+        <div class="additional-options">
+          <h3>附加选项</h3>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="inflation-rate">通货膨胀率 (%)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">预期的年通货膨胀率</span>
+                </span>
+              </label>
+              <input type="number" id="inflation-rate" placeholder="输入通货膨胀率" min="0" step="0.01" value="2">
+            </div>
+            
+            <div class="input-field">
+              <label for="tax-rate">税率 (%)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">投资收益的税率</span>
+                </span>
+              </label>
+              <input type="number" id="tax-rate" placeholder="输入税率" min="0" max="100" step="0.01" value="15">
+            </div>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-tax">
+              <span class="slider"></span>
+            </label>
+            <span>对投资收益征税</span>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-inflation">
+              <span class="slider"></span>
+            </label>
+            <span>调整通货膨胀</span>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> 计算投资回报
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">您的投资摘要</h3>
+          <div class="final-amount" id="final-amount">$22,658.10</div>
+          <div class="total-interest" id="total-interest">总利息: $6,658.10</div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">总投入</div>
+              <div class="metric-value" id="total-contributions">$16,000.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">年化回报</div>
+              <div class="metric-value" id="annualized-return">7.00%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">税后价值</div>
+              <div class="metric-value" id="after-tax-value">$21,959.39</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">通货膨胀调整后</div>
+              <div class="metric-value" id="inflation-adjusted">$17,926.82</div>
+            </div>
+          </div>
+          
+          <!-- Chart container -->
+          <div class="chart-container">
+            <canvas id="growth-chart"></canvas>
+          </div>
+          
+          <div class="investment-summary" id="investment-summary">
+            <p>根据您的输入，您的初始投资 <span class="highlight">$10,000</span> 以 <span class="highlight">7%</span> 的年回报率在 <span class="highlight">10年</span> 的时间内将增长到 <span class="highlight">$22,658.10</span>。</p>
+            <p>在调整 <span class="highlight">15%</span> 的税率和 <span class="highlight">2%</span> 的通货膨胀率后，您的购买力将相当于今天的 <span class="highlight">$17,926.82</span>。</p>
+          </div>
+        </div>
+        
+        <div class="growth-container">
+          <table class="growth-table" id="growth-table">
+            <thead>
+              <tr>
+                <th>年份</th>
+                <th>期初余额</th>
+                <th>投入金额</th>
+                <th>收益</th>
+                <th>期末余额</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Growth schedule will be populated here -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="comparison-container">
+          <div class="comparison-header">
+            <h3>与其他投资进行比较</h3>
+            <button class="comparison-btn" id="add-comparison">添加投资</button>
+          </div>
+          
+          <div class="comparison-input" id="comparison-input">
+            <div class="input-group">
+              <div class="input-field">
+                <label for="comparison-name">投资名称</label>
+                <input type="text" id="comparison-name" placeholder="输入投资名称">
+              </div>
+              
+              <div class="input-field">
+                <label for="comparison-return">年回报率 (%)</label>
+                <input type="number" id="comparison-return" placeholder="输入年回报率" min="0" step="0.01">
+              </div>
+            </div>
+            
+            <button class="calculate-btn" id="add-comparison-btn">添加到比较表</button>
+          </div>
+          
+          <table class="comparison-table" id="comparison-table">
+            <thead>
+              <tr>
+                <th>投资名称</th>
+                <th>最终价值</th>
+                <th>利息收益</th>
+                <th>年化回报</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Comparison table will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>了解投资回报</h3>
+        <p>投资回报是您的投资随时间获得的收益。影响您投资回报的关键因素包括：</p>
+        <ul>
+          <li><strong>初始投资：</strong>您开始投资的金额</li>
+          <li><strong>年回报率：</strong>您投资的百分比增长</li>
+          <li><strong>投资期限：</strong>您保持投资的时间长度</li>
+          <li><strong>复利频率：</strong>利息计算和添加到本金的频率</li>
+          <li><strong>定期投入：</strong>对您投资的定期添加</li>
+        </ul>
+        
+        <h3>复利是如何工作的</h3>
+        <p>复利是根据初始本金和以前各期累计的利息计算的利息。这意味着您的投资可以随时间指数增长：</p>
+        <ul>
+          <li>每日复利：每天计算和添加利息</li>
+          <li>每月复利：每月计算和添加利息</li>
+          <li>每季度复利：每季度计算和添加利息</li>
+          <li>每年复利：每年计算和添加利息</li>
+        </ul>
+        
+        <h3>影响您投资增长的因素</h3>
+        <p>有几个因素影响您的投资随时间的增长：</p>
+        <ul>
+          <li><strong>市场表现：</strong>金融市场整体表现影响投资回报</li>
+          <li><strong>通货膨胀率：</strong>通货膨胀降低回报的购买力</li>
+          <li><strong>税率：</strong>投资收入的税款可以显著影响净回报</li>
+          <li><strong>投资费用：</strong>管理费用和其他成本可以降低您的净回报</li>
+          <li><strong>风险承受能力：</strong>高风险投资通常提供更高的回报，但波动性更大</li>
+        </ul>
+        
+        <div class="investment-summary">
+          <h3><i class="fas fa-lightbulb"></i> 投资建议</h3>
+          <p>考虑这些最大化您的投资回报的建议：</p>
+          <ul>
+            <li>尽早开始投资，以从复利中受益</li>
+            <li>定期向您的投资中添加资金</li>
+            <li>在不同的资产类别中分散投资</li>
+            <li>再投资股息和资本收益</li>
+            <li>避免频繁交易，这会通过成本侵蚀回报</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您值得信赖的财务计算器和财务工具来源。自2025年起帮助您做出明智的财务决策。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他有用的计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator.html">抵押贷款计算器</a></li>
+          <li><a href="/zh/finance/loan-calculator.html">贷款计算器</a></li>
+          <li><a href="/zh/finance/compound-interest-calculator-calculator.html">复利计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U。保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些计算器仅提供估算值。请咨询财务顾问以获得个性化的建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the finance section
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/investment-return-calculator', 'finance/investment-return-calculator');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/investment-return-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/investment-return-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/investment-return-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/investment-return-calculator.html';
+            break;
+          default: // English
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/investment-return-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Investment Calculator Functionality
+      const initialInvestmentInput = document.getElementById('initial-investment');
+      const investmentTermInput = document.getElementById('investment-term');
+      const annualReturnInput = document.getElementById('annual-return');
+      const compoundingSelect = document.getElementById('compounding');
+      const monthlyContributionInput = document.getElementById('monthly-contribution');
+      const contributionFrequencySelect = document.getElementById('contribution-frequency');
+      const inflationRateInput = document.getElementById('inflation-rate');
+      const taxRateInput = document.getElementById('tax-rate');
+      const includeTaxCheckbox = document.getElementById('include-tax');
+      const includeInflationCheckbox = document.getElementById('include-inflation');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const finalAmount = document.getElementById('final-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const investmentSummary = document.getElementById('investment-summary');
+      const growthTable = document.getElementById('growth-table');
+      const comparisonBtn = document.getElementById('add-comparison');
+      const comparisonInput = document.getElementById('comparison-input');
+      const comparisonNameInput = document.getElementById('comparison-name');
+      const comparisonReturnInput = document.getElementById('comparison-return');
+      const addComparisonBtn = document.getElementById('add-comparison-btn');
+      const comparisonTable = document.getElementById('comparison-table');
+      const totalContributionsEl = document.getElementById('total-contributions');
+      const annualizedReturnEl = document.getElementById('annualized-return');
+      const afterTaxValueEl = document.getElementById('after-tax-value');
+      const inflationAdjustedEl = document.getElementById('inflation-adjusted');
+      
+      let comparisonEntries = [];
+      let growthChart = null;
+      
+      // Format currency
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // Format percentage
+      function formatPercent(value) {
+        return value.toFixed(2) + '%';
+      }
+      
+      // Calculate Investment Return function with optimized logic
+      function calculateInvestmentReturn() {
+        const initialInvestment = parseFloat(initialInvestmentInput.value) || 0;
+        const investmentTerm = parseInt(investmentTermInput.value) || 0;
+        const annualReturnRate = parseFloat(annualReturnInput.value) / 100 || 0;
+        const compounding = compoundingSelect.value;
+        const monthlyContribution = parseFloat(monthlyContributionInput.value) || 0;
+        const contributionFrequency = contributionFrequencySelect.value;
+        const inflationRate = parseFloat(inflationRateInput.value) / 100 || 0;
+        const taxRate = parseFloat(taxRateInput.value) / 100 || 0;
+        const includeTax = includeTaxCheckbox.checked;
+        const includeInflation = includeInflationCheckbox.checked;
+        
+        if (isNaN(initialInvestment) || isNaN(investmentTerm) || isNaN(annualReturnRate)) {
+          alert('请输入有效的投资详情。');
+          return;
+        }
+        
+        // Determine compounding periods per year
+        let periodsPerYear;
+        switch (compounding) {
+          case 'daily':
+            periodsPerYear = 365;
+            break;
+          case 'monthly':
+            periodsPerYear = 12;
+            break;
+          case 'quarterly':
+            periodsPerYear = 4;
+            break;
+          case 'annually':
+            periodsPerYear = 1;
+            break;
+          default:
+            periodsPerYear = 1;
+        }
+        
+        // Determine contribution frequency
+        let contributionsPerYear;
+        switch (contributionFrequency) {
+          case 'monthly':
+            contributionsPerYear = 12;
+            break;
+          case 'quarterly':
+            contributionsPerYear = 4;
+            break;
+          case 'annually':
+            contributionsPerYear = 1;
+            break;
+          case 'none':
+          default:
+            contributionsPerYear = 0;
+        }
+        
+        // Calculate rate per period and total periods
+        const ratePerPeriod = annualReturnRate / periodsPerYear;
+        const totalPeriods = investmentTerm * periodsPerYear;
+        
+        // Calculate contribution per period
+        const contributionPerPeriod = monthlyContribution * contributionsPerYear / periodsPerYear;
+        
+        // Initialize variables
+        let balance = initialInvestment;
+        let yearlyData = [];
+        let chartData = {
+          years: [],
+          balances: []
+        };
+        
+        // Add initial state for chart
+        chartData.years.push(0);
+        chartData.balances.push(balance);
+        
+        // Calculate growth for each year
+        for (let year = 1; year <= investmentTerm; year++) {
+          let startingBalance = balance;
+          let yearlyContributions = 0;
+          let yearlyEarnings = 0;
+          
+          // Calculate growth for each period in the year
+          for (let period = 0; period < periodsPerYear; period++) {
+            // Add contributions at the beginning of the period
+            if (contributionPerPeriod > 0) {
+              balance += contributionPerPeriod;
+              yearlyContributions += contributionPerPeriod;
+            }
+            
+            // Calculate interest for the period
+            const interest = balance * ratePerPeriod;
+            balance += interest;
+            yearlyEarnings += interest;
+          }
+          
+          // Apply tax at the end of the year if enabled
+          let taxPaid = 0;
+          if (includeTax && yearlyEarnings > 0) {
+            taxPaid = yearlyEarnings * taxRate;
+            balance -= taxPaid;
+            yearlyEarnings -= taxPaid;
+          }
+          
+          // Store yearly data
+          yearlyData.push({
+            year: year,
+            startingBalance: startingBalance,
+            contributions: yearlyContributions,
+            earnings: yearlyEarnings,
+            endingBalance: balance,
+            taxPaid: taxPaid
+          });
+          
+          // Store data for chart
+          chartData.years.push(year);
+          chartData.balances.push(balance);
+        }
+        
+        // Calculate total values
+        const totalContributions = initialInvestment + monthlyContribution * contributionsPerYear * investmentTerm;
+        const interestEarned = balance - totalContributions;
+        
+        // Calculate after-tax value
+        let afterTaxValue = balance;
+        if (includeTax) {
+          // Tax has already been applied annually
+        } else if (taxRate > 0) {
+          // Apply tax at the end if not applied annually
+          const totalGain = balance - initialInvestment;
+          const tax = totalGain * taxRate;
+          afterTaxValue = balance - tax;
+        }
+        
+        // Calculate inflation-adjusted value
+        let inflationAdjustedValue = afterTaxValue;
+        if (includeInflation && inflationRate > 0) {
+          const inflationFactor = Math.pow(1 + inflationRate, investmentTerm);
+          inflationAdjustedValue = afterTaxValue / inflationFactor;
+        }
+        
+        // Update results
+        finalAmount.textContent = formatCurrency(balance);
+        totalInterest.textContent = `总利息: ${formatCurrency(interestEarned)}`;
+        totalContributionsEl.textContent = formatCurrency(totalContributions);
+        annualizedReturnEl.textContent = formatPercent(annualReturnRate * 100);
+        afterTaxValueEl.textContent = formatCurrency(afterTaxValue);
+        inflationAdjustedEl.textContent = formatCurrency(inflationAdjustedValue);
+        
+        // Update investment summary
+        const summaryHTML = `
+          <p>根据您的输入，您的初始投资 <span class="highlight">${formatCurrency(initialInvestment)}</span> 以 <span class="highlight">${formatPercent(annualReturnRate * 100)}</span> 的年回报率在 <span class="highlight">${investmentTerm}年</span> 的时间内将增长到 <span class="highlight">${formatCurrency(balance)}</span>。</p>
+          <p>在调整 <span class="highlight">${formatPercent(taxRate * 100)}</span> 的税率和 <span class="highlight">${formatPercent(inflationRate * 100)}</span> 的通货膨胀率后，您的购买力将相当于今天的 <span class="highlight">${formatCurrency(inflationAdjustedValue)}</span>。</p>
+        `;
+        investmentSummary.innerHTML = summaryHTML;
+        
+        // Generate growth table
+        const tableBody = growthTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        yearlyData.forEach(data => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${data.year}</td>
+            <td>${formatCurrency(data.startingBalance)}</td>
+            <td>${formatCurrency(data.contributions)}</td>
+            <td>${formatCurrency(data.earnings)}</td>
+            <td>${formatCurrency(data.endingBalance)}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+        
+        // Create or update growth chart
+        createGrowthChart(chartData);
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Create growth chart
+      function createGrowthChart(chartData) {
+        const ctx = document.getElementById('growth-chart').getContext('2d');
+        
+        // Destroy previous chart if exists
+        if (growthChart) {
+          growthChart.destroy();
+        }
+        
+        growthChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: chartData.years,
+            datasets: [{
+              label: '投资增长',
+              data: chartData.balances,
+              backgroundColor: 'rgba(77, 181, 189, 0.2)',
+              borderColor: '#006d77',
+              borderWidth: 3,
+              pointBackgroundColor: '#ffd166',
+              pointBorderColor: '#333',
+              pointBorderWidth: 1,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              fill: true,
+              tension: 0.3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                  label: function(context) {
+                    return `余额: ${formatCurrency(context.parsed.y)}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: '年份',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: '投资价值',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    return formatCurrency(value);
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateInvestmentReturn);
+      
+      // Also allow pressing Enter in input fields
+      const inputFields = [
+        initialInvestmentInput, 
+        investmentTermInput, 
+        annualReturnInput, 
+        monthlyContributionInput,
+        inflationRateInput,
+        taxRateInput
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateInvestmentReturn();
+        });
+      });
+
+      // Comparison functionality
+      comparisonBtn.addEventListener('click', () => {
+        comparisonInput.style.display = comparisonInput.style.display === 'none' ? 'block' : 'none';
+      });
+      
+      addComparisonBtn.addEventListener('click', () => {
+        const comparisonName = comparisonNameInput.value;
+        const comparisonReturn = parseFloat(comparisonReturnInput.value);
+        
+        if (!comparisonName || isNaN(comparisonReturn)) {
+          alert('请输入有效的比较详情。');
+          return;
+        }
+        
+        // Get current inputs
+        const initialInvestment = parseFloat(initialInvestmentInput.value) || 0;
+        const investmentTerm = parseInt(investmentTermInput.value) || 0;
+        const compounding = compoundingSelect.value;
+        const monthlyContribution = parseFloat(monthlyContributionInput.value) || 0;
+        const contributionFrequency = contributionFrequencySelect.value;
+        const inflationRate = parseFloat(inflationRateInput.value) / 100 || 0;
+        const taxRate = parseFloat(taxRateInput.value) / 100 || 0;
+        const includeTax = includeTaxCheckbox.checked;
+        const includeInflation = includeInflationCheckbox.checked;
+        
+        // Determine compounding periods per year
+        let periodsPerYear;
+        switch (compounding) {
+          case 'daily': periodsPerYear = 365; break;
+          case 'monthly': periodsPerYear = 12; break;
+          case 'quarterly': periodsPerYear = 4; break;
+          case 'annually': periodsPerYear = 1; break;
+          default: periodsPerYear = 1;
+        }
+        
+        // Determine contribution frequency
+        let contributionsPerYear;
+        switch (contributionFrequency) {
+          case 'monthly': contributionsPerYear = 12; break;
+          case 'quarterly': contributionsPerYear = 4; break;
+          case 'annually': contributionsPerYear = 1; break;
+          case 'none': default: contributionsPerYear = 0;
+        }
+        
+        // Calculate contribution per period
+        const contributionPerPeriod = monthlyContribution * contributionsPerYear / periodsPerYear;
+        
+        // Calculate rate per period and total periods
+        const ratePerPeriod = comparisonReturn / 100 / periodsPerYear;
+        const totalPeriods = investmentTerm * periodsPerYear;
+        
+        // Calculate final value
+        let balance = initialInvestment;
+        for (let i = 0; i < totalPeriods; i++) {
+          // Add contribution
+          if (contributionPerPeriod > 0) {
+            balance += contributionPerPeriod;
+          }
+          
+          // Apply interest
+          balance *= (1 + ratePerPeriod);
+        }
+        
+        // Calculate total contributions and interest
+        const totalContributions = initialInvestment + monthlyContribution * contributionsPerYear * investmentTerm;
+        const interestEarned = balance - totalContributions;
+        
+        // Add to comparison entries
+        comparisonEntries.push({
+          name: comparisonName,
+          finalValue: balance,
+          interestEarned: interestEarned,
+          returnRate: comparisonReturn
+        });
+        
+        // Update comparison table
+        updateComparisonTable();
+        
+        // Clear inputs
+        comparisonNameInput.value = '';
+        comparisonReturnInput.value = '';
+        
+        // Hide comparison input
+        comparisonInput.style.display = 'none';
+      });
+      
+      function updateComparisonTable() {
+        const tableBody = comparisonTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        comparisonEntries.forEach(entry => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${entry.name}</td>
+            <td>${formatCurrency(entry.finalValue)}</td>
+            <td>${formatCurrency(entry.interestEarned)}</td>
+            <td>${formatPercent(entry.returnRate)}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      }
+      
+      // Initialize the calculator with default values
+      calculateInvestmentReturn();
+      
+      // Add additional responsiveness for small screens
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.investment-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>

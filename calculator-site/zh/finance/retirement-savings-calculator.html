@@ -1,13 +1,1400 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>退休储蓄计算器 | Calculator2U</title>
+<meta name="description" content="计算您的退休储蓄增长，包括复利和定期供款" />
+<meta name="keywords" content="退休计算器, 储蓄计算器, 退休储蓄计算器, 退休规划" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/finance/retirement-savings-calculator.html" />
+<meta property="og:title" content="退休储蓄计算器 | Calculator2U" />
+<meta property="og:description" content="根据您的当前储蓄、供款和投资回报计算退休储蓄增长" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/finance/retirement-savings-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/retirement-savings-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Retirement Savings Calculator Styles */
+  .retirement-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .retirement-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Savings growth chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Retirement Summary */
+  .retirement-summary {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 500px;
+  }
+  
+  .summary-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .summary-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .summary-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .summary-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .retirement-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 576px */
+  @media (max-width: 576px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .retirement-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #006d77;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="zh">中文 (Chinese)</option>
+            <option value="en">English</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>退休储蓄计算器</h1>
+    <p>追踪您的退休储蓄增长，规划您的财务未来</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">退休储蓄计算器</h2>
+    
+    <div class="retirement-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="current-age">当前年龄
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您的当前年龄</span>
+              </span>
+            </label>
+            <input type="number" id="current-age" placeholder="请输入当前年龄" min="0" max="100" value="30">
+          </div>
+          
+          <div class="input-field">
+            <label for="retirement-age">退休年龄
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您计划退休的年龄</span>
+              </span>
+            </label>
+            <input type="number" id="retirement-age" placeholder="请输入退休年龄" min="1" max="100" value="65">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="current-savings">当前退休储蓄 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您当前的退休储蓄金额</span>
+              </span>
+            </label>
+            <input type="number" id="current-savings" placeholder="请输入当前储蓄" min="0" value="50000">
+          </div>
+          
+          <div class="input-field">
+            <label for="monthly-contribution">每月供款 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您每月将添加的金额</span>
+              </span>
+            </label>
+            <input type="number" id="monthly-contribution" placeholder="请输入每月供款" min="0" value="1000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="annual-return">预期年回报率 (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">预期的年回报率</span>
+              </span>
+            </label>
+            <input type="number" id="annual-return" placeholder="请输入年回报率" min="0" step="0.01" value="6">
+          </div>
+          
+          <div class="input-field">
+            <label for="inflation-rate">通货膨胀率 (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">预期的年通货膨胀率</span>
+              </span>
+            </label>
+            <input type="number" id="inflation-rate" placeholder="请输入通货膨胀率" min="0" step="0.01" value="2">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="retirement-goal">退休目标 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您的预期退休储蓄目标</span>
+              </span>
+            </label>
+            <input type="number" id="retirement-goal" placeholder="请输入退休目标" min="0" value="1000000">
+          </div>
+        </div>
+        
+        <div class="additional-options">
+          <h3>附加选项</h3>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-inflation">
+              <span class="slider"></span>
+            </label>
+            <span>调整通货膨胀</span>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> 计算退休储蓄
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">您的退休储蓄摘要</h3>
+          <div class="final-amount" id="final-amount">$1,234,567.89</div>
+          <div class="total-interest" id="total-interest">总利息: $789,123.45</div>
+          
+          <!-- 结果指标 -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">总供款</div>
+              <div class="metric-value" id="total-contributions">$450,000.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">距离退休年数</div>
+              <div class="metric-value" id="years-until-retirement">35</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">每月所需增加额</div>
+              <div class="metric-value" id="required-increase">$0.00</div>
+            </div>
+          </div>
+          
+          <!-- 图表容器 -->
+          <div class="chart-container">
+            <canvas id="savings-chart"></canvas>
+          </div>
+          
+          <div class="retirement-summary" id="retirement-summary">
+            <p>根据您的输入，您的退休储蓄为 <span class="highlight">$50,000</span>，每月供款为 <span class="highlight">$1,000</span>，预期年回报率为 <span class="highlight">6%</span>，在 <span class="highlight">35年</span> 内将增长至 <span class="highlight">$1,234,567.89</span>。</p>
+            <p id="goal-message"></p>
+          </div>
+        </div>
+        
+        <div class="retirement-summary">
+          <table class="summary-table" id="summary-table">
+            <thead>
+              <tr>
+                <th>年份</th>
+                <th>年龄</th>
+                <th>供款</th>
+                <th>收益</th>
+                <th>总储蓄</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 退休摘要将在此生成 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- 信息卡 -->
+      <div class="info-card">
+        <h3>了解退休储蓄</h3>
+        <p>退休储蓄对您晚年的财务安全至关重要。影响您的退休储蓄的关键因素包括：</p>
+        <ul>
+          <li><strong>当前年龄：</strong> 您今天的年龄</li>
+          <li><strong>退休年龄：</strong> 您计划退休的年龄</li>
+          <li><strong>当前储蓄：</strong> 您已经储蓄的金额</li>
+          <li><strong>每月供款：</strong> 您定期添加的金额</li>
+          <li><strong>预期回报率：</strong> 您的投资增长率</li>
+        </ul>
+        
+        <h3>复利如何运作</h3>
+        <p>复利是指在最初本金以及以前各期累积利息的基础上计算利息。这意味着您的退休储蓄可以随着时间呈指数增长：</p>
+        <ul>
+          <li>尽早开始储蓄使您的储蓄有更多时间增长</li>
+          <li>定期供款随时间积累</li>
+          <li>较高的回报率加速增长</li>
+          <li>复利在长期效果最佳</li>
+        </ul>
+        
+        <h3>影响您退休储蓄的因素</h3>
+        <p>几个因素影响您的退休储蓄如何随时间增长：</p>
+        <ul>
+          <li><strong>市场表现：</strong> 您投资的整体表现</li>
+          <li><strong>通货膨胀率：</strong> 通货膨胀降低储蓄的购买力</li>
+          <li><strong>税率：</strong> 投资收入的税收会减少您的净储蓄</li>
+          <li><strong>投资费用：</strong> 管理费用和其他成本会减少您的净回报</li>
+          <li><strong>供款一致性：</strong> 定期供款比不定期供款更快地积累储蓄</li>
+        </ul>
+        
+        <div class="retirement-tips">
+          <h3><i class="fas fa-lightbulb"></i> 退休储蓄建议</h3>
+          <p>考虑这些提示以最大化您的退休储蓄：</p>
+          <ul>
+            <li>尽早开始储蓄以从复利中受益</li>
+            <li>定期供款并在可能时增加供款</li>
+            <li>将您的投资分散到不同的资产类别</li>
+            <li>充分利用雇主提供的匹配供款</li>
+            <li>每年审查和调整您的退休计划</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您值得信赖的财务计算器和财务工具来源。自2025年以来，我们一直帮助您做出明智的财务决策。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他有用的计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator.html">抵押贷款计算器</a></li>
+          <li><a href="/zh/finance/loan-calculator.html">贷款计算器</a></li>
+          <li><a href="/zh/finance/compound-interest-calculator-calculator.html">复利计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. 保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些计算器仅提供估算。请咨询财务顾问以获取个性化建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // 汉堡菜单功能
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // 点击外部关闭菜单
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // 语言选择器功能
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // 获取当前路径并替换语言段
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // 确定财务部分的基路径
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/retirement-savings-calculator', 'finance/retirement-savings-calculator');
+          }
+        }
+        
+        // 根据所选语言构建新URL
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/retirement-savings-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/retirement-savings-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/retirement-savings-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/retirement-savings-calculator.html';
+            break;
+          default: // 英语
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/retirement-savings-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // 根据URL设置当前语言
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['zh', 'en', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // 退休计算器功能
+      const currentAgeInput = document.getElementById('current-age');
+      const retirementAgeInput = document.getElementById('retirement-age');
+      const currentSavingsInput = document.getElementById('current-savings');
+      const monthlyContributionInput = document.getElementById('monthly-contribution');
+      const annualReturnInput = document.getElementById('annual-return');
+      const inflationRateInput = document.getElementById('inflation-rate');
+      const retirementGoalInput = document.getElementById('retirement-goal');
+      const includeInflationCheckbox = document.getElementById('include-inflation');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const finalAmount = document.getElementById('final-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const retirementSummary = document.getElementById('retirement-summary');
+      const summaryTable = document.getElementById('summary-table');
+      const totalContributionsEl = document.getElementById('total-contributions');
+      const yearsUntilRetirementEl = document.getElementById('years-until-retirement');
+      const requiredIncreaseEl = document.getElementById('required-increase');
+      const goalMessage = document.getElementById('goal-message');
+      
+      let savingsChart = null;
+      
+      // 格式化货币
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('zh-CN', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // 格式化百分比
+      function formatPercent(value) {
+        return value.toFixed(2) + '%';
+      }
+      
+      // 计算退休储蓄函数
+      function calculateRetirementSavings() {
+        const currentAge = parseInt(currentAgeInput.value) || 0;
+        const retirementAge = parseInt(retirementAgeInput.value) || 0;
+        const currentSavings = parseFloat(currentSavingsInput.value) || 0;
+        const monthlyContribution = parseFloat(monthlyContributionInput.value) || 0;
+        const annualReturnRate = parseFloat(annualReturnInput.value) / 100 || 0;
+        const inflationRate = parseFloat(inflationRateInput.value) / 100 || 0;
+        const retirementGoal = parseFloat(retirementGoalInput.value) || 0;
+        const includeInflation = includeInflationCheckbox.checked;
+        
+        if (isNaN(currentAge) || isNaN(retirementAge) || isNaN(currentSavings) || isNaN(monthlyContribution) || isNaN(annualReturnRate)) {
+          alert('请输入有效的退休详情。');
+          return;
+        }
+        
+        if (currentAge >= retirementAge) {
+          alert('退休年龄必须大于当前年龄。');
+          return;
+        }
+        
+        // 计算距离退休的年数
+        const yearsUntilRetirement = retirementAge - currentAge;
+        
+        // 计算总供款
+        const totalContributions = monthlyContribution * 12 * yearsUntilRetirement;
+        
+        // 计算当前储蓄的未来价值
+        const currentSavingsFutureValue = currentSavings * Math.pow(1 + annualReturnRate, yearsUntilRetirement);
+        
+        // 计算每月供款的未来价值
+        const contributionsFutureValue = monthlyContribution * 12 * ((Math.pow(1 + annualReturnRate, yearsUntilRetirement) - 1) / annualReturnRate);
+        
+        // 计算总未来价值
+        let totalFutureValue = currentSavingsFutureValue + contributionsFutureValue;
+        
+        // 计算总利息
+        const totalInterestEarned = totalFutureValue - (currentSavings + totalContributions);
+        
+        // 调整通货膨胀
+        let inflationAdjustedValue = totalFutureValue;
+        if (includeInflation && inflationRate > 0) {
+          const inflationFactor = Math.pow(1 + inflationRate, yearsUntilRetirement);
+          inflationAdjustedValue = totalFutureValue / inflationFactor;
+        }
+        
+        // 计算达到目标所需的额外供款
+        let requiredMonthlyIncrease = 0;
+        let goalMessageText = '';
+        
+        if (retirementGoal > 0) {
+          if (totalFutureValue >= retirementGoal) {
+            goalMessageText = `<p>恭喜！您当前的储蓄计划将超出您的退休目标 <span class="highlight">${formatCurrency(totalFutureValue - retirementGoal)}</span>。</p>`;
+          } else {
+            // 计算所需供款以实现目标
+            const requiredContribution = retirementGoal - currentSavingsFutureValue;
+            const requiredMonthly = requiredContribution / ((Math.pow(1 + annualReturnRate, yearsUntilRetirement) - 1) / annualReturnRate) / 12;
+            
+            requiredMonthlyIncrease = requiredMonthly - monthlyContribution;
+            
+            goalMessageText = `<p>要实现您的退休目标，您需要将每月供款增加 <span class="highlight">${formatCurrency(requiredMonthlyIncrease)}</span>。</p>`;
+          }
+        }
+        
+        // 更新结果
+        finalAmount.textContent = formatCurrency(totalFutureValue);
+        totalInterest.textContent = `总利息: ${formatCurrency(totalInterestEarned)}`;
+        totalContributionsEl.textContent = formatCurrency(totalContributions);
+        yearsUntilRetirementEl.textContent = yearsUntilRetirement;
+        requiredIncreaseEl.textContent = formatCurrency(requiredMonthlyIncrease);
+        
+        // 更新退休摘要
+        const summaryHTML = `
+          <p>根据您的输入，您的退休储蓄为 <span class="highlight">${formatCurrency(currentSavings)}</span>，每月供款为 <span class="highlight">${formatCurrency(monthlyContribution)}</span>，预期年回报率为 <span class="highlight">${formatPercent(annualReturnRate * 100)}</span>，在 <span class="highlight">${yearsUntilRetirement}年</span> 内将增长至 <span class="highlight">${formatCurrency(totalFutureValue)}</span>。</p>
+        `;
+        retirementSummary.innerHTML = summaryHTML + goalMessageText;
+        
+        // 生成摘要表格
+        const tableBody = summaryTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        // 计算年度数据
+        let balance = currentSavings;
+        for (let year = 0; year <= yearsUntilRetirement; year++) {
+          const age = currentAge + year;
+          const yearlyContributions = monthlyContribution * 12;
+          const yearlyEarnings = balance * annualReturnRate;
+          
+          // 应用年回报率
+          balance += yearlyContributions;
+          balance *= (1 + annualReturnRate);
+          
+          // 存储年度数据
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${year}</td>
+            <td>${age}</td>
+            <td>${formatCurrency(yearlyContributions)}</td>
+            <td>${formatCurrency(yearlyEarnings)}</td>
+            <td>${formatCurrency(balance)}</td>
+          `;
+          tableBody.appendChild(row);
+        }
+        
+        // 创建或更新储蓄图表
+        createSavingsChart();
+        
+        // 显示结果容器
+        resultContainer.style.display = 'block';
+      }
+      
+      // 创建储蓄图表
+      function createSavingsChart() {
+        const ctx = document.getElementById('savings-chart').getContext('2d');
+        
+        // 销毁之前的图表（如果存在）
+        if (savingsChart) {
+          savingsChart.destroy();
+        }
+        
+        // 从表格获取数据
+        const tableRows = summaryTable.querySelectorAll('tbody tr');
+        const years = [];
+        const savings = [];
+        
+        tableRows.forEach(row => {
+          const yearCell = row.cells[0];
+          const savingsCell = row.cells[4];
+          
+          years.push(parseInt(yearCell.textContent));
+          savings.push(parseFloat(savingsCell.textContent.replace('$', '').replace(',', '')));
+        });
+        
+        savingsChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [ {
+              label: '退休储蓄',
+              data: savings,
+              backgroundColor: 'rgba(77, 181, 189, 0.2)',
+              borderColor: '#006d77',
+              borderWidth: 3,
+              pointBackgroundColor: '#ffd166',
+              pointBorderColor: '#333',
+              pointBorderWidth: 1,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              fill: true,
+              tension: 0.3
+            } ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                  label: function(context) {
+                    return `储蓄: ${formatCurrency(context.parsed.y)}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: '年份',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: '退休储蓄',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    return formatCurrency(value);
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // 为计算按钮添加事件监听器
+      calculateBtn.addEventListener('click', calculateRetirementSavings);
+      
+      // 允许在输入字段中按Enter键
+      const inputFields = [
+        currentAgeInput, 
+        retirementAgeInput, 
+        currentSavingsInput, 
+        monthlyContributionInput,
+        annualReturnInput,
+        inflationRateInput,
+        retirementGoalInput
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateRetirementSavings();
+        });
+      });
+      
+      // 用默认值初始化计算器
+      calculateRetirementSavings();
+      
+      // 为小屏幕添加额外的响应性
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.retirement-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+
+    // 确保所有内容都在视口宽度内
+    window.addEventListener('load', function() {
+      document.body.style.maxWidth = '100%';
+      document.body.style.overflowX = 'hidden';
+    });
+  </script>
 </body>
-</html></body></html> 
+</html>
