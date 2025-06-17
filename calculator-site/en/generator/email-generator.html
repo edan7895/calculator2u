@@ -1,4 +1,3 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +93,7 @@
   .nav-links a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s;
     font-weight: 500;
     padding: 0.5rem 0.8rem;
     border-radius: 4px;
@@ -141,13 +140,14 @@
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 101;
+    position: relative;
   }
 
   .hamburger:focus {
@@ -159,9 +159,22 @@
     height: 0.25rem;
     background: #fff;
     border-radius: 10px;
-    transition: all 0.3s linear;
+    transition: all 0.3s ease;
     position: relative;
-    transform-origin: 1px;
+    transform-origin: center;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active .line1 {
+    transform: rotate(45deg) translate(0.3rem, 0.4rem);
+  }
+
+  .hamburger.active .line2 {
+    opacity: 0;
+  }
+
+  .hamburger.active .line3 {
+    transform: rotate(-45deg) translate(0.3rem, -0.4rem);
   }
 
   /* Hero Section */
@@ -533,34 +546,40 @@
     }
     
     .nav-links {
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 0;
       left: 0;
       width: 100%;
+      height: 100vh;
       background-color: #006d77;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 1.5rem 2rem;
-      gap: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-      transform: translateY(-150%);
+      transform: translateX(-100%);
       opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 100;
     }
     
     .nav-links.active {
-      transform: translateY(0);
+      transform: translateX(0);
       opacity: 1;
     }
     
     .nav-links li {
       width: 100%;
-      margin: 0.5rem 0;
+      text-align: center;
+      margin: 0;
     }
     
     .nav-links a {
       display: block;
       width: 100%;
-      padding: 0.8rem 1rem;
+      padding: 1rem;
+      font-size: 1.2rem;
     }
     
     .hero h1 {
@@ -1197,9 +1216,6 @@
     
     // 更新语言选择器
     document.getElementById('lang-select').value = currentLang;
-    
-    // 更新邮箱提示文本
-    document.querySelector('.email-box::after').content = t('copiedHint');
   }
 
   // DOM elements
@@ -1405,8 +1421,40 @@
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
-    hamburger.addEventListener('click', () => {
+    // Toggle menu function
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
+      
+      // Toggle body scroll when menu is open
+      if (navLinks.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Bind events to hamburger
+    hamburger.addEventListener('click', toggleMenu);
+    
+    // Also close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const isMenuOpen = navLinks.classList.contains('active');
+      const isClickInsideNav = navLinks.contains(e.target);
+      const isClickOnHamburger = hamburger.contains(e.target);
+      
+      if (isMenuOpen && !isClickInsideNav && !isClickOnHamburger) {
+        toggleMenu();
+      }
+    });
+    
+    // Also close menu when clicking on links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
     });
     
     emailBox.textContent = t('generating');
@@ -1417,4 +1465,4 @@
 })();
 </script>
 </body>
-</html></body></html> 
+</html>
