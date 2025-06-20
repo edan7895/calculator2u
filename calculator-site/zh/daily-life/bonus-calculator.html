@@ -1,12 +1,1931 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>奖金计算器 | Calculator2U</title>
+<meta name="description" content="计算您的奖金税和净收入，包括不同奖金结构和支付方式的税务影响" />
+<meta name="keywords" content="奖金计算器, 税计算器, 薪资计算器, 收入计算器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/daily-life/bonus-calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/bonus-calculator.html" />
+<meta property="og:title" content="奖金计算器 | Calculator2U" />
+<meta property="og:description" content="计算您的奖金税和净收入，包括不同奖金结构和支付方式的税务影响" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/daily-life/bonus-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/bonus-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Bonus Calculator Styles */
+  .bonus-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .bonus-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Bonus structure table container */
+  .bonus-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .bonus-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .bonus-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .bonus-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .bonus-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .bonus-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+
+  /* Info Card */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bonus-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .bonus-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .bonus-container {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .bonus-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .bonus-table th,
+    .bonus-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .final-amount {
+      font-size: 2rem;
+      word-break: break-all;
+    }
+    
+    .total-interest {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Fix for chart container */
+    .chart-container canvas {
+      max-width: 100%;
+    }
+  }
+
+  /* Bonus structure styles */
+  .bonus-structure {
+    margin-top: 2rem;
+  }
+
+  .bonus-summary {
+    margin-top: 2rem;
+  }
+
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .tab-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-buttons {
+    display: flex;
+    border-bottom: 2px solid #e0f7fa;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .tab-btn.active {
+    color: #006d77;
+  }
+
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #006d77;
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English (英文)</option>
+            <option value="zh" selected>中文 (中文)</option>
+            <option value="es">Español (西班牙语)</option>
+            <option value="de">Deutsch (德语)</option>
+            <option value="fr">Français (法语)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>奖金计算器</h1>
+    <p>计算您的奖金税和净收入，包括不同奖金结构和支付方式的税务影响</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">奖金计算器</h2>
+    
+    <div class="bonus-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="tab-container">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="bonus-calculator">奖金计算器</button>
+            <button class="tab-btn" data-tab="salary-plus-bonus">薪资 + 奖金</button>
+          </div>
+          
+          <div id="bonus-calculator" class="tab-content">
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-type">奖金类型
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">选择您想计算奖金的方式</span>
+                  </span>
+                </label>
+                <select id="bonus-type">
+                  <option value="fixed">固定奖金金额</option>
+                  <option value="percentage">薪资百分比</option>
+                </select>
+              </div>
+              
+              <div class="input-field" id="bonus-percentage-container">
+                <label for="bonus-percentage">薪资百分比 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">输入您薪资的百分比</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-percentage" placeholder="输入百分比" min="0" step="0.01" value="10">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-amount">奖金金额 ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">输入您的奖金金额</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-amount" placeholder="输入奖金金额" min="0" value="10000">
+              </div>
+              
+              <div class="input-field">
+                <label for="annual-salary">年薪 ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的年薪（适用于百分比奖金）</span>
+                  </span>
+                </label>
+                <input type="number" id="annual-salary" placeholder="输入年薪" min="0" value="80000">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="calculation-mode">计算模式
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">选择计算预扣税或净奖金</span>
+                  </span>
+                </label>
+                <select id="calculation-mode">
+                  <option value="pre-tax">从预扣奖金计算税</option>
+                  <option value="post-tax">从净奖金计算所需预扣金额</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="tax-mode">税务计算
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">选择您的税务计算模式</span>
+                  </span>
+                </label>
+                <select id="tax-mode">
+                  <option value="us">美国</option>
+                  <option value="china">中国</option>
+                  <option value="uk">英国</option>
+                  <option value="custom">自定义税率</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group" id="custom-tax-container" style="display: none;">
+              <div class="input-field">
+                <label for="income-tax-rate">所得税税率 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的边际所得税率</span>
+                  </span>
+                </label>
+                <input type="number" id="income-tax-rate" placeholder="输入税率" min="0" max="100" step="0.01" value="24">
+              </div>
+              
+              <div class="input-field">
+                <label for="social-tax-rate">社会保障税率 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的社会保障税率</span>
+                  </span>
+                </label>
+                <input type="number" id="social-tax-rate" placeholder="输入社会保障税率" min="0" max="100" step="0.01" value="6.2">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-structure">奖金结构
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您要计算的奖金类型</span>
+                  </span>
+                </label>
+                <select id="bonus-structure">
+                  <option value="year-end">年终奖</option>
+                  <option value="quarterly">季度奖</option>
+                  <option value="performance">绩效奖</option>
+                  <option value="project">项目奖</option>
+                  <option value="other">其他</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="payment-frequency">支付频率
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的奖金支付频率</span>
+                  </span>
+                </label>
+                <select id="payment-frequency">
+                  <option value="one-time">一次性</option>
+                  <option value="monthly">每月</option>
+                  <option value="quarterly">每季度</option>
+                  <option value="semi-annually">每半年</option>
+                  <option value="annually">每年</option>
+                </select>
+              </div>
+            </div>
+            
+            <button class="calculate-btn" id="calculate-bonus">
+              <i class="fas fa-calculator"></i> 计算奖金
+            </button>
+            
+            <div class="result-container" id="result-container">
+              <h3 class="result-header">您的奖金摘要</h3>
+              <div class="final-amount" id="final-amount">$7,600.00</div>
+              <div class="total-interest" id="total-taxes">总税额: $2,400.00</div>
+              
+              <!-- Result Metrics -->
+              <div class="result-metrics">
+                <div class="metric-card">
+                  <div class="metric-label">毛奖金</div>
+                  <div class="metric-value" id="gross-bonus">$10,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">净奖金</div>
+                  <div class="metric-value" id="net-bonus">$7,600.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">有效税率</div>
+                  <div class="metric-value" id="effective-tax-rate">24.00%</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">年度税务节省</div>
+                  <div class="metric-value" id="tax-savings">$2,400.00</div>
+                </div>
+              </div>
+              
+              <!-- Chart container -->
+              <div class="chart-container">
+                <canvas id="bonus-chart"></canvas>
+              </div>
+              
+              <div class="bonus-summary" id="bonus-summary">
+                <p>根据您的输入，您的奖金 <span class="highlight">$10,000</span> 将在 <span class="highlight">24%</span> 的税率下，产生 <span class="highlight">$7,600</span> 的净收入。</p>
+              </div>
+            </div>
+            
+            <div class="bonus-container">
+              <table class="bonus-table" id="bonus-table">
+                <thead>
+                  <tr>
+                    <th>税务组成部分</th>
+                    <th>税率</th>
+                    <th>税额</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 税务明细将在这里填充 -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div id="salary-plus-bonus" class="tab-content" style="display: none;">
+            <div class="input-group">
+              <div class="input-field">
+                <label for="monthly-salary">月薪 ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的月薪基数</span>
+                  </span>
+                </label>
+                <input type="number" id="monthly-salary" placeholder="输入月薪" min="0" value="6000">
+              </div>
+              
+              <div class="input-field">
+                <label for="bonus-type-salary">奖金类型
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">包含的奖金类型</span>
+                  </span>
+                </label>
+                <select id="bonus-type-salary">
+                  <option value="fixed">固定奖金金额</option>
+                  <option value="percentage">薪资百分比</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field" id="bonus-percentage-container-salary">
+                <label for="bonus-percentage-salary">薪资百分比 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">用于奖金计算的薪资百分比</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-percentage-salary" placeholder="输入百分比" min="0" step="0.01" value="10">
+              </div>
+              
+              <div class="input-field">
+                <label for="bonus-amount-salary">奖金金额 ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的奖金金额</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-amount-salary" placeholder="输入奖金金额" min="0" value="7200">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-frequency">支付频率
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的奖金支付频率</span>
+                  </span>
+                </label>
+                <select id="bonus-frequency">
+                  <option value="one-time">一次性</option>
+                  <option value="monthly">每月</option>
+                  <option value="quarterly">每季度</option>
+                  <option value="semi-annually">每半年</option>
+                  <option value="annually">每年</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="salary-plus-bonus-tax">税务计算
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">选择您的税务计算模式</span>
+                  </span>
+                </label>
+                <select id="salary-plus-bonus-tax">
+                  <option value="us">美国</option>
+                  <option value="china">中国</option>
+                  <option value="uk">英国</option>
+                  <option value="custom">自定义税率</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group" id="custom-tax-container-salary" style="display: none;">
+              <div class="input-field">
+                <label for="income-tax-rate-salary">所得税税率 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的边际所得税率</span>
+                  </span>
+                </label>
+                <input type="number" id="income-tax-rate-salary" placeholder="输入税率" min="0" max="100" step="0.01" value="24">
+              </div>
+              
+              <div class="input-field">
+                <label for="social-tax-rate-salary">社会保障税率 (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">您的社会保障税率</span>
+                  </span>
+                </label>
+                <input type="number" id="social-tax-rate-salary" placeholder="输入社会保障税率" min="0" max="100" step="0.01" value="6.2">
+              </div>
+            </div>
+            
+            <button class="calculate-btn" id="calculate-salary-plus-bonus">
+              <i class="fas fa-calculator"></i> 计算总收入
+            </button>
+            
+            <div class="result-container" id="salary-plus-result-container">
+              <h3 class="result-header">您的总收入摘要</h3>
+              <div class="final-amount" id="total-gross">$87,200.00</div>
+              <div class="total-interest" id="total-net">$65,408.00</div>
+              
+              <!-- Result Metrics -->
+              <div class="result-metrics">
+                <div class="metric-card">
+                  <div class="metric-label">年薪</div>
+                  <div class="metric-value" id="annual-salary-result">$72,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">年奖金</div>
+                  <div class="metric-value" id="annual-bonus">$12,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">总税额</div>
+                  <div class="metric-value" id="total-taxes">$21,792.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">净收入</div>
+                  <div class="metric-value" id="net-income">$65,408.00</div>
+                </div>
+              </div>
+              
+              <!-- Chart container -->
+              <div class="chart-container">
+                <canvas id="income-chart"></canvas>
+              </div>
+              
+              <div class="bonus-summary" id="income-summary">
+                <p>根据您的输入，您的年薪 <span class="highlight">$72,000</span> 加上奖金 <span class="highlight">$12,000</span> 将产生总计 <span class="highlight">$84,000</span> 的毛收入和 <span class="highlight">$65,408</span> 的净收入，税后。</p>
+              </div>
+            </div>
+            
+            <div class="bonus-container">
+              <table class="bonus-table" id="income-table">
+                <thead>
+                  <tr>
+                    <th>组成部分</th>
+                    <th>毛额</th>
+                    <th>税率</th>
+                    <th>税额</th>
+                    <th>净额</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 收入明细将在这里填充 -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Additional Options -->
+        <div class="additional-options">
+          <h3>附加选项</h3>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="bonus-performance">绩效评分
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">您的绩效评分（1-100）</span>
+                </span>
+              </label>
+              <input type="number" id="bonus-performance" placeholder="输入绩效评分" min="0" max="100" value="85">
+            </div>
+            
+            <div class="input-field">
+              <label for="bonus-multiplier">奖金倍数
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">基于绩效的奖金倍数</span>
+                </span>
+              </label>
+              <input type="number" id="bonus-multiplier" placeholder="输入奖金倍数" min="0" step="0.01" value="0.5">
+            </div>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-paycheck-details">
+              <span class="slider"></span>
+            </label>
+            <span>包含详细的工资单明细</span>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-yearly-projections">
+              <span class="slider"></span>
+            </label>
+            <span>显示年度收入预测</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>了解奖金计算</h3>
+        <p>奖金计算可能较为复杂，因为与普通收入相比有不同的税务处理。影响您的奖金的关键因素包括：</p>
+        <ul>
+          <li><strong>奖金金额：</strong>您收到的总奖金</li>
+          <li><strong>税率：</strong>奖金中用于缴税的百分比</li>
+          <li><strong>支付频率：</strong>奖金的支付频率</li>
+          <li><strong>奖金结构：</strong>是年终奖、季度奖还是绩效奖金</li>
+          <li><strong>国家/地区：</strong>各地的税法不同</li>
+        </ul>
+        
+        <h3>奖金如何纳税</h3>
+        <p>奖金的税务处理因国家而异，并且可能与普通收入的纳税方式不同：</p>
+        <ul>
+          <li>在美国，奖金通常按22%的联邦税率纳税（最高可达100万美元）</li>
+          <li>在中国，奖金使用单独的计算方法纳税</li>
+          <li>在英国，奖金按您的边际所得税率纳税</li>
+          <li>一些国家允许您选择将奖金计入普通收入或单独纳税</li>
+        </ul>
+        
+        <h3>奖金税务规划技巧</h3>
+        <p>考虑以下技巧以最大化您的奖金净收入：</p>
+        <ul>
+          <li>了解您所在国家的奖金纳税方式</li>
+          <li>考虑使用奖金进行税优储蓄</li>
+          <li>检查是否可以通过推迟奖金支付来降低税负</li>
+          <li>咨询税务专业人士获取个性化建议</li>
+          <li>考虑通过慈善捐赠来减少应税收入</li>
+        </ul>
+        
+        <div class="bonus-summary">
+          <h3><i class="fas fa-lightbulb"></i> 奖金优化</h3>
+          <p>战略性规划可以显著提高您的奖金净收入：</p>
+          <ul>
+            <li>将奖金推迟到税率较低的年度</li>
+            <li>将奖金分配给家庭成员</li>
+            <li>使用奖金资助税优账户</li>
+            <li>协商奖金支付时间</li>
+            <li>了解公司的奖金政策</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您日常计算和财务工具的可信赖来源。自2025年以来，帮助您做出明智的决策。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他有用计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator-calculator.html">房屋抵押贷款计算器</a></li>
+          <li><a href="/zh/daily-life/salary-calculator.html">薪资计算器</a></li>
+          <li><a href="/zh/finance/tax-calculator.html">税计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U。保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些计算器仅提供估算值。请咨询税务专业人士获取个性化建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the daily-life section
+        let dailyLifePath = '';
+        if (currentPath.includes('/daily-life/')) {
+          const dailyLifeIndex = pathSegments.findIndex(segment => segment === 'daily-life');
+          if (dailyLifeIndex !== -1) {
+            dailyLifePath = pathSegments.slice(dailyLifeIndex).join('/').replace('daily-life/bonus-calculator', 'daily-life/bonus-calculator');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = dailyLifePath ? `/zh/${dailyLifePath}` : '/zh/daily-life/bonus-calculator.html';
+            break;
+          case 'es':
+            targetUrl = dailyLifePath ? `/es/${dailyLifePath}` : '/es/daily-life/bonus-calculator.html';
+            break;
+          case 'de':
+            targetUrl = dailyLifePath ? `/de/${dailyLifePath}` : '/de/daily-life/bonus-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = dailyLifePath ? `/fr/${dailyLifePath}` : '/fr/daily-life/bonus-calculator.html';
+            break;
+          default: // English
+            targetUrl = dailyLifePath ? `/en/${dailyLifePath}` : '/en/daily-life/bonus-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Bonus Calculator Functionality
+      const bonusTypeSelect = document.getElementById('bonus-type');
+      const bonusPercentageContainer = document.getElementById('bonus-percentage-container');
+      const calculationModeSelect = document.getElementById('calculation-mode');
+      const taxModeSelect = document.getElementById('tax-mode');
+      const customTaxContainer = document.getElementById('custom-tax-container');
+      const calculateBonusBtn = document.getElementById('calculate-bonus');
+      const resultContainer = document.getElementById('result-container');
+      const finalAmount = document.getElementById('final-amount');
+      const totalTaxes = document.getElementById('total-taxes');
+      const bonusSummary = document.getElementById('bonus-summary');
+      const bonusTable = document.getElementById('bonus-table');
+      const grossBonusEl = document.getElementById('gross-bonus');
+      const netBonusEl = document.getElementById('net-bonus');
+      const effectiveTaxRateEl = document.getElementById('effective-tax-rate');
+      const taxSavingsEl = document.getElementById('tax-savings');
+      
+      // Salary + Bonus Calculator
+      const salaryPlusTab = document.querySelector('[data-tab="salary-plus-bonus"]');
+      const bonusCalculatorTab = document.querySelector('[data-tab="bonus-calculator"]');
+      const bonusCalculatorContent = document.getElementById('bonus-calculator');
+      const salaryPlusContent = document.getElementById('salary-plus-bonus');
+      const calculateSalaryPlusBtn = document.getElementById('calculate-salary-plus-bonus');
+      const salaryPlusResultContainer = document.getElementById('salary-plus-result-container');
+      const totalGrossEl = document.getElementById('total-gross');
+      const totalNetEl = document.getElementById('total-net');
+      const incomeSummary = document.getElementById('income-summary');
+      const incomeTable = document.getElementById('income-table');
+      const annualSalaryResultEl = document.getElementById('annual-salary-result');
+      const annualBonusEl = document.getElementById('annual-bonus');
+      const totalTaxesEl = document.getElementById('total-taxes');
+      const netIncomeEl = document.getElementById('net-income');
+      
+      let bonusChart = null;
+      let incomeChart = null;
+      
+      // Format currency
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // Format percentage
+      function formatPercent(value) {
+        return value.toFixed(2) + '%';
+      }
+      
+      // Tax calculation functions
+      function calculateUSTaxes(bonusAmount) {
+        // Simplified US bonus tax calculation (flat 22% up to $1M)
+        const federalTax = bonusAmount * 0.22;
+        const socialSecurityTax = bonusAmount * 0.062;
+        const medicareTax = bonusAmount * 0.0145;
+        const totalTaxes = federalTax + socialSecurityTax + medicareTax;
+        return {
+          federal: federalTax,
+          socialSecurity: socialSecurityTax,
+          medicare: medicareTax,
+          total: totalTaxes
+        };
+      }
+      
+      function calculateChinaTaxes(bonusAmount) {
+        // Simplified China bonus tax calculation
+        const taxBracket = [
+          { max: 3000, rate: 0.1, quickDeduction: 0 },
+          { max: 12000, rate: 0.1, quickDeduction: 250 },
+          { max: 25000, rate: 0.2, quickDeduction: 1410 },
+          { max: 35000, rate: 0.25, quickDeduction: 2660 },
+          { max: 55000, rate: 0.3, quickDeduction: 4410 },
+          { max: 80000, rate: 0.35, quickDeduction: 7160 },
+          { max: Infinity, rate: 0.45, quickDeduction: 15160 }
+        ];
+        
+        let applicableBracket = taxBracket.find(b => bonusAmount <= b.max) || taxBracket[taxBracket.length - 1];
+        const tax = bonusAmount * applicableBracket.rate - applicableBracket.quickDeduction;
+        return {
+          incomeTax: tax,
+          socialSecurity: bonusAmount * 0.08,
+          total: tax + bonusAmount * 0.08
+        };
+      }
+      
+      function calculateUKTaxes(bonusAmount, annualSalary) {
+        // Simplified UK tax calculation
+        const totalIncome = bonusAmount + annualSalary;
+        
+        let incomeTax;
+        if (totalIncome <= 37700) {
+          incomeTax = totalIncome * 0.2;
+        } else if (totalIncome <= 150000) {
+          incomeTax = 37700 * 0.2 + (totalIncome - 37700) * 0.4;
+        } else {
+          incomeTax = 37700 * 0.2 + 112300 * 0.4 + (totalIncome - 150000) * 0.45;
+        }
+        
+        const nationalInsurance = Math.min(totalIncome * 0.12, 50000 * 0.12);
+        
+        const bonusProportion = bonusAmount / totalIncome;
+        const allocatedTaxes = {
+          incomeTax: incomeTax * bonusProportion,
+          nationalInsurance: nationalInsurance * bonusProportion,
+          total: (incomeTax + nationalInsurance) * bonusProportion
+        };
+        
+        return allocatedTaxes;
+      }
+      
+      function calculateCustomTaxes(bonusAmount, incomeTaxRate, socialTaxRate) {
+        const incomeTax = bonusAmount * (incomeTaxRate / 100);
+        const socialTax = bonusAmount * (socialTaxRate / 100);
+        return {
+          incomeTax: incomeTax,
+          socialTax: socialTax,
+          total: incomeTax + socialTax
+        };
+      }
+      
+      // Bonus Calculator
+      function calculateBonus() {
+        const bonusType = bonusTypeSelect.value;
+        const calculationMode = calculationModeSelect.value;
+        const taxMode = taxModeSelect.value;
+        const customTaxContainer = document.getElementById('custom-tax-container');
+        const incomeTaxRate = parseFloat(document.getElementById('income-tax-rate').value) || 24;
+        const socialTaxRate = parseFloat(document.getElementById('social-tax-rate').value) || 6.2;
+        
+        let bonusAmount;
+        const annualSalary = parseFloat(document.getElementById('annual-salary').value) || 0;
+        
+        if (bonusType === 'fixed') {
+          bonusAmount = parseFloat(document.getElementById('bonus-amount').value) || 0;
+        } else {
+          const bonusPercentage = parseFloat(document.getElementById('bonus-percentage').value) || 10;
+          bonusAmount = (annualSalary * bonusPercentage) / 100;
+        }
+        
+        let taxes;
+        
+        switch(taxMode) {
+          case 'us':
+            taxes = calculateUSTaxes(bonusAmount);
+            break;
+          case 'china':
+            taxes = calculateChinaTaxes(bonusAmount);
+            break;
+          case 'uk':
+            taxes = calculateUKTaxes(bonusAmount, annualSalary);
+            break;
+          case 'custom':
+            taxes = calculateCustomTaxes(bonusAmount, incomeTaxRate, socialTaxRate);
+            break;
+          default:
+            taxes = calculateUSTaxes(bonusAmount);
+        }
+        
+        let netBonus;
+        let grossBonus;
+        
+        if (calculationMode === 'pre-tax') {
+          grossBonus = bonusAmount;
+          netBonus = bonusAmount - taxes.total;
+        } else {
+          netBonus = bonusAmount;
+          grossBonus = bonusAmount / (1 - (taxes.total / bonusAmount));
+        }
+        
+        const effectiveTaxRate = (taxes.total / grossBonus) * 100;
+        
+        // Update results
+        finalAmount.textContent = formatCurrency(netBonus);
+        totalTaxes.textContent = `总税额: ${formatCurrency(taxes.total)}`;
+        grossBonusEl.textContent = formatCurrency(grossBonus);
+        netBonusEl.textContent = formatCurrency(netBonus);
+        effectiveTaxRateEl.textContent = formatPercent(effectiveTaxRate);
+        taxSavingsEl.textContent = formatCurrency(taxes.total);
+        
+        // Update summary
+        const summaryHTML = `
+          <p>根据您的输入，您的奖金 <span class="highlight">${formatCurrency(grossBonus)}</span> 将在 <span class="highlight">${formatPercent(effectiveTaxRate)}</span> 的有效税率下，产生 <span class="highlight">${formatCurrency(netBonus)}</span> 的净收入。</p>
+        `;
+        bonusSummary.innerHTML = summaryHTML;
+        
+        // Generate tax breakdown table
+        const tableBody = bonusTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        Object.entries(taxes).forEach(([taxType, taxAmount]) => {
+          if (taxType !== 'total') {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${taxType.replace(/([A-Z])/g, ' $1').trim()}</td>
+              <td>${formatPercent((taxAmount / grossBonus) * 100)}</td>
+              <td>${formatCurrency(taxAmount)}</td>
+            `;
+            tableBody.appendChild(row);
+          }
+        });
+        
+        // Create or update bonus chart
+        createBonusChart(grossBonus, netBonus, taxes.total);
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Salary + Bonus Calculator
+      function calculateSalaryPlusBonus() {
+        const monthlySalary = parseFloat(document.getElementById('monthly-salary').value) || 6000;
+        const bonusType = document.getElementById('bonus-type-salary').value;
+        const taxMode = document.getElementById('salary-plus-bonus-tax').value;
+        const customTaxContainer = document.getElementById('custom-tax-container-salary');
+        const incomeTaxRate = parseFloat(document.getElementById('income-tax-rate-salary').value) || 24;
+        const socialTaxRate = parseFloat(document.getElementById('social-tax-rate-salary').value) || 6.2;
+        const bonusFrequency = document.getElementById('bonus-frequency').value;
+        
+        let bonusAmount;
+        const annualSalary = monthlySalary * 12;
+        
+        if (bonusType === 'fixed') {
+          bonusAmount = parseFloat(document.getElementById('bonus-amount-salary').value) || 0;
+        } else {
+          const bonusPercentage = parseFloat(document.getElementById('bonus-percentage-salary').value) || 10;
+          bonusAmount = (annualSalary * bonusPercentage) / 100;
+        }
+        
+        let taxes;
+        
+        switch(taxMode) {
+          case 'us':
+            taxes = calculateUSTaxes(bonusAmount);
+            break;
+          case 'china':
+            taxes = calculateChinaTaxes(bonusAmount);
+            break;
+          case 'uk':
+            taxes = calculateUKTaxes(bonusAmount, annualSalary);
+            break;
+          case 'custom':
+            taxes = calculateCustomTaxes(bonusAmount, incomeTaxRate, socialTaxRate);
+            break;
+          default:
+            taxes = calculateUSTaxes(bonusAmount);
+        }
+        
+        const netBonus = bonusAmount - taxes.total;
+        const grossTotal = annualSalary + bonusAmount;
+        const netTotal = annualSalary * (1 - (taxes.total / bonusAmount)) + netBonus;
+        
+        // Update results
+        totalGrossEl.textContent = formatCurrency(grossTotal);
+        totalNetEl.textContent = formatCurrency(netTotal);
+        annualSalaryResultEl.textContent = formatCurrency(annualSalary);
+        annualBonusEl.textContent = formatCurrency(bonusAmount);
+        totalTaxesEl.textContent = formatCurrency(taxes.total);
+        netIncomeEl.textContent = formatCurrency(netTotal);
+        
+        // Update summary
+        const summaryHTML = `
+          <p>根据您的输入，您的年薪 <span class="highlight">${formatCurrency(annualSalary)}</span> 加上奖金 <span class="highlight">${formatCurrency(bonusAmount)}</span> 将产生总计 <span class="highlight">${formatCurrency(grossTotal)}</span> 的毛收入和 <span class="highlight">${formatCurrency(netTotal)}</span> 的净收入，税后。</p>
+        `;
+        incomeSummary.innerHTML = summaryHTML;
+        
+        // Generate income breakdown table
+        const tableBody = incomeTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        const salaryTaxes = calculateUSTaxes(annualSalary);
+        const totalTaxes = salaryTaxes.total + taxes.total;
+        
+        const salaryRow = document.createElement('tr');
+        salaryRow.innerHTML = `
+          <td>基本薪资</td>
+          <td>${formatCurrency(annualSalary)}</td>
+          <td>${formatPercent((salaryTaxes.total / annualSalary) * 100)}</td>
+          <td>${formatCurrency(salaryTaxes.total)}</td>
+          <td>${formatCurrency(annualSalary - salaryTaxes.total)}</td>
+        `;
+        tableBody.appendChild(salaryRow);
+        
+        const bonusRow = document.createElement('tr');
+        bonusRow.innerHTML = `
+          <td>奖金</td>
+          <td>${formatCurrency(bonusAmount)}</td>
+          <td>${formatPercent((taxes.total / bonusAmount) * 100)}</td>
+          <td>${formatCurrency(taxes.total)}</td>
+          <td>${formatCurrency(netBonus)}</td>
+        `;
+        tableBody.appendChild(bonusRow);
+        
+        const totalRow = document.createElement('tr');
+        totalRow.innerHTML = `
+          <td><strong>总计</strong></td>
+          <td><strong>${formatCurrency(grossTotal)}</strong></td>
+          <td></td>
+          <td><strong>${formatCurrency(totalTaxes)}</strong></td>
+          <td><strong>${formatCurrency(netTotal)}</strong></td>
+        `;
+        totalRow.style.fontWeight = 'bold';
+        tableBody.appendChild(totalRow);
+        
+        // Create or update income chart
+        createIncomeChart(annualSalary, bonusAmount, netTotal);
+        
+        // Show result container
+        salaryPlusResultContainer.style.display = 'block';
+      }
+      
+      // Create bonus chart
+      function createBonusChart(grossBonus, netBonus, taxes) {
+        const ctx = document.getElementById('bonus-chart').getContext('2d');
+        
+        // Destroy previous chart if exists
+        if (bonusChart) {
+          bonusChart.destroy();
+        }
+        
+        bonusChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['净奖金', '税'],
+            datasets: [{
+              data: [netBonus, taxes],
+              backgroundColor: ['#4db5bd', '#e0f7fa'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom'
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return `${context.label}: ${formatCurrency(context.parsed)}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Create income chart
+      function createIncomeChart(salary, bonus, netTotal) {
+        const ctx = document.getElementById('income-chart').getContext('2d');
+        
+        // Destroy previous chart if exists
+        if (incomeChart) {
+          incomeChart.destroy();
+        }
+        
+        incomeChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['基本薪资', '奖金', '总计'],
+            datasets: [
+              {
+                label: '毛额',
+                data: [salary, bonus, salary + bonus],
+                backgroundColor: '#006d77',
+                borderColor: '#006d77',
+                borderWidth: 1
+              },
+              {
+                label: '净额',
+                data: [salary * 0.78, bonus * 0.76, netTotal],
+                backgroundColor: '#ffd166',
+                borderColor: '#ffd166',
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    return formatCurrency(value);
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Add event listener to calculate button
+      calculateBonusBtn.addEventListener('click', calculateBonus);
+      
+      // Add event listener to salary + bonus calculate button
+      calculateSalaryPlusBtn.addEventListener('click', calculateSalaryPlusBonus);
+      
+      // Tab switching functionality
+      bonusCalculatorTab.addEventListener('click', () => {
+        bonusCalculatorTab.classList.add('active');
+        salaryPlusTab.classList.remove('active');
+        bonusCalculatorContent.style.display = 'block';
+        salaryPlusContent.style.display = 'none';
+      });
+      
+      salaryPlusTab.addEventListener('click', () => {
+        salaryPlusTab.classList.add('active');
+        bonusCalculatorTab.classList.remove('active');
+        bonusCalculatorContent.style.display = 'none';
+        salaryPlusContent.style.display = 'block';
+      });
+      
+      // Tax mode selection
+      taxModeSelect.addEventListener('change', function() {
+        if (this.value === 'custom') {
+          customTaxContainer.style.display = 'block';
+        } else {
+          customTaxContainer.style.display = 'none';
+        }
+      });
+      
+      document.getElementById('salary-plus-bonus-tax').addEventListener('change', function() {
+        if (this.value === 'custom') {
+          document.getElementById('custom-tax-container-salary').style.display = 'block';
+        } else {
+          document.getElementById('custom-tax-container-salary').style.display = 'none';
+        }
+      });
+      
+      // Bonus type selection
+      bonusTypeSelect.addEventListener('change', function() {
+        if (this.value === 'percentage') {
+          bonusPercentageContainer.style.display = 'block';
+        } else {
+          bonusPercentageContainer.style.display = 'none';
+        }
+      });
+      
+      document.getElementById('bonus-type-salary').addEventListener('change', function() {
+        if (this.value === 'percentage') {
+          document.getElementById('bonus-percentage-container-salary').style.display = 'block';
+        } else {
+          document.getElementById('bonus-percentage-container-salary').style.display = 'none';
+        }
+      });
+      
+      // Initialize the calculator with default values
+      calculateBonus();
+      
+      // Also allow pressing Enter in input fields
+      const inputFields = document.querySelectorAll('input[type="number"]');
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            if (bonusCalculatorTab.classList.contains('active')) {
+              calculateBonus();
+            } else {
+              calculateSalaryPlusBonus();
+            }
+          }
+        });
+      });
+
+      // Add responsiveness for small screens
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.bonus-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

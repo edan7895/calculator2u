@@ -4,27 +4,27 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>休假计算器 | Calculator2U</title>
-<meta name="description" content="计算您的剩余休假权益，跟踪您的假期天数，并规划您的休假时间" />
-<meta name="keywords" content="休假计算器, 假期计算器, 年假权益计算器, 年假计算器" />
+<title>年龄计算器 | Calculator2U</title>
+<meta name="description" content="计算您的年龄（年、月、日）。了解您在不同时间单位下的年龄。" />
+<meta name="keywords" content="年龄计算器, 计算年龄, 我多大了, 年龄换算成天数, 年龄换算成周数" />
 <meta name="author" content="Calculator2U" />
-<link rel="canonical" href="https://www.calculator2u.com/zh/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/daily-life/leave-calculator.html" />
-<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/leave-calculator.html" />
-<meta property="og:title" content="休假计算器 | Calculator2U" />
-<meta property="og:description" content="计算您的剩余休假权益，跟踪您的假期天数，并规划您的休假时间" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/daily-life/age-calculator.html  " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/daily-life/age-calculator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/age-calculator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/daily-life/age-calculator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/age-calculator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/daily-life/age-calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/age-calculator.html" />
+<meta property="og:title" content="年龄计算器 | Calculator2U" />
+<meta property="og:description" content="计算您的年龄（年、月、日）。了解您在不同时间单位下的年龄。" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.calculator2u.com/zh/daily-life/leave-calculator.html" />
-<meta property="og:image" content="https://www.calculator2u.com/assets/images/leave-calculator.jpg" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/daily-life/age-calculator.html  " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/age-calculator.jpg  " />
 <meta property="og:locale" content="zh_CN" />
 <meta property="og:site_name" content="Calculator2U" />
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF  "></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -32,10 +32,8 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Include Chart.js for visualizations -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
+<script src="https://cdn.jsdelivr.net/npm/chart.js  "></script>
 <style>
   * {
     box-sizing: border-box;
@@ -134,7 +132,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg  ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.7rem center;
     background-size: 1rem;
@@ -224,8 +222,8 @@
     border-radius: 2px;
   }
 
-  /* Leave Calculator Styles */
-  .leave-container {
+  /* Date Calculator Styles */
+  .date-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -236,7 +234,7 @@
   }
   
   @media (min-width: 992px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -345,7 +343,7 @@
     color: #006d77;
   }
   
-  .leave-summary {
+  .result-value {
     text-align: center;
     font-size: 1.4rem;
     font-weight: 600;
@@ -356,15 +354,15 @@
     color: white;
   }
   
-  /* Leave breakdown chart container */
+  /* Conversion chart container */
   .chart-container {
     height: 300px;
     margin: 2rem 0;
     position: relative;
   }
   
-  /* Leave schedule */
-  .leave-schedule {
+  /* Conversion table */
+  .conversion-table {
     overflow-x: auto;
     margin-top: 2rem;
     border-radius: 8px;
@@ -372,30 +370,30 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  .leave-table {
+  .conversion-table table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     min-width: 600px;
   }
   
-  .leave-table th {
+  .conversion-table th {
     background: #006d77;
     color: white;
     padding: 1rem;
     text-align: left;
   }
   
-  .leave-table td {
+  .conversion-table td {
     padding: 0.8rem 1rem;
     border-bottom: 1px solid #e0f7fa;
   }
   
-  .leave-table tr:last-child td {
+  .conversion-table tr:last-child td {
     border-bottom: none;
   }
   
-  .leave-table tr:nth-child(even) {
+  .conversion-table tr:nth-child(even) {
     background: #f9f9f9;
   }
   
@@ -563,7 +561,7 @@
   }
 
   @media (max-width: 768px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr;
     }
   }
@@ -574,7 +572,7 @@
       font-size: 14px;
     }
 
-    .container, .leave-container {
+    .container, .date-container {
       padding: 0 0.5rem;
       width: 100%;
       max-width: 100%;
@@ -611,18 +609,18 @@
       max-width: 100%;
     }
     
-    .leave-schedule {
+    .conversion-table {
       max-width: 100%;
       width: auto;
     }
     
-    .leave-table {
+    .conversion-table table {
       min-width: 100%;
       width: auto;
     }
     
-    .leave-table th,
-    .leave-table td {
+    .conversion-table th,
+    .conversion-table td {
       padding: 0.5rem;
       word-break: break-word;
       white-space: normal;
@@ -707,6 +705,137 @@
     border-radius: 4px;
     font-weight: 600;
   }
+  
+  /* Conversion tabs */
+  .conversion-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .conversion-panel {
+    display: none;
+  }
+  
+  .conversion-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Unit system toggle */
+  .unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-btn {
+    background: #e0f7fa;
+    border: 2px solid #4db5bd;
+    color: #006d77;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .toggle-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .toggle-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  /* Age Calculator Specific */
+  .birthday-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .birthday-input input {
+    flex: 1;
+  }
+
+  .age-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e63946;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(230, 57, 70, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .age-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .age-value {
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .age-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .result-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .format-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    min-width: 160px;
+  }
+
+  .format-value {
+    font-weight: bold;
+    color: #006d77;
+    font-size: 1.1rem;
+  }
+
+  .format-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
 </style>
 </head>
 <body>
@@ -734,8 +863,8 @@
         <li><a href="/about-zh.html">关于我们</a></li>
         <li class="lang-selector">
           <select id="lang-select" class="lang-select">
-            <option value="zh">中文 (Chinese)</option>
             <option value="en">English</option>
+            <option value="zh" selected>中文 (Chinese)</option>
             <option value="es">Español (Spanish)</option>
             <option value="de">Deutsch (German)</option>
             <option value="fr">Français (French)</option>
@@ -747,211 +876,122 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>休假计算器</h1>
-    <p>计算您的剩余休假权益，跟踪您的假期天数，并规划您的休假时间</p>
+    <h1>年龄计算器</h1>
+    <p>计算您的年龄（年、月、日）。了解您在不同时间单位下的年龄。</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">休假计算器</h2>
+    <h2 class="section-title">年龄计算器</h2>
     
-    <div class="leave-container">
+    <div class="date-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="input-group">
           <div class="input-field">
-            <label for="employee-name">员工姓名
+            <label for="birth-date">出生日期：
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">请输入员工姓名</span>
+                <span class="tooltip-text">选择您的出生日期</span>
               </span>
             </label>
-            <input type="text" id="employee-name" placeholder="请输入员工姓名">
-          </div>
-          
-          <div class="input-field">
-            <label for="hiring-date">入职日期
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">员工入职的日期</span>
-              </span>
-            </label>
-            <input type="date" id="hiring-date">
+            <input type="date" id="birth-date">
           </div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="year-month">年/月
+            <label for="calculate-date">计算年龄的日期：
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">选择计算的年份和月份</span>
+                <span class="tooltip-text">选择要计算年龄的日期</span>
               </span>
             </label>
-            <select id="year-month">
-              <option value="2025-01">2025年1月</option>
-              <option value="2025-02">2025年2月</option>
-              <option value="2025-03">2025年3月</option>
-              <option value="2025-04">2025年4月</option>
-              <option value="2025-05">2025年5月</option>
-              <option value="2025-06">2025年6月</option>
-              <option value="2025-07">2025年7月</option>
-              <option value="2025-08">2025年8月</option>
-              <option value="2025-09">2025年9月</option>
-              <option value="2025-10">2025年10月</option>
-              <option value="2025-11">2025年11月</option>
-              <option value="2025-12">2025年12月</option>
-            </select>
-          </div>
-          
-          <div class="input-field">
-            <label for="leave-quota">年假额度（天）
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">每年分配的休假天数</span>
-              </span>
-            </label>
-            <input type="number" id="leave-quota" placeholder="请输入年假额度" min="0" value="20">
+            <input type="date" id="calculate-date">
           </div>
         </div>
         
-        <div class="input-group">
-          <div class="input-field">
-            <label for="used-leave">已用休假（天）
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">已使用的休假天数</span>
-              </span>
-            </label>
-            <input type="number" id="used-leave" placeholder="请输入已用休假" min="0" value="5">
-          </div>
-          
-          <div class="input-field">
-            <label for="planned-leave">计划休假（天）
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">计划未来使用的休假天数</span>
-              </span>
-            </label>
-            <input type="number" id="planned-leave" placeholder="请输入计划休假" min="0">
-          </div>
-        </div>
-        
-        <div class="input-group">
-          <div class="input-field">
-            <label for="leave-balance">剩余休假（天）
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">计划休假后剩余的休假天数</span>
-              </span>
-            </label>
-            <input type="number" id="leave-balance" placeholder="剩余休假" min="0" readonly>
-          </div>
-        </div>
-        
-        <button class="calculate-btn" id="calculate-btn">
-          <i class="fas fa-calculator"></i> 计算休假
+        <button class="calculate-btn" id="calculate-age">
+          <i class="fas fa-calculator"></i> 计算年龄
         </button>
         
-        <div class="result-container" id="result-container">
-          <h3 class="result-header">您的休假汇总</h3>
-          <div class="leave-summary" id="leave-summary">
-            剩余休假：10天
+        <div class="result-container" id="age-result-container">
+          <h3 class="result-header">您的年龄</h3>
+          
+          <div class="age-display" id="age-display">
+            <!-- 年龄将显示在这里 -->
           </div>
           
-          <!-- Result Metrics -->
-          <div class="result-metrics">
-            <div class="metric-card">
-              <div class="metric-label">年假额度</div>
-              <div class="metric-value" id="quota-value">20天</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">已用休假</div>
-              <div class="metric-value" id="used-value">5天</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">计划休假</div>
-              <div class="metric-value" id="planned-value">3天</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">剩余休假</div>
-              <div class="metric-value" id="remaining-value">12天</div>
-            </div>
-          </div>
-          
-          <!-- Leave breakdown chart -->
-          <div class="chart-container">
-            <canvas id="leave-chart"></canvas>
-          </div>
-          
-          <div class="leave-details" id="leave-details">
-            <p>根据您的输入，<span class="highlight" id="employee-name-display">员工姓名</span> 在今年还有 <span class="highlight" id="remaining-leave-display">12</span> 天的剩余休假。</p>
-            <p>此计算包括已使用的 <span class="highlight" id="used-leave-display">5</span> 天和计划使用的 <span class="highlight" id="planned-leave-display">3</span> 天。</p>
+          <div class="result-formats" id="age-formats">
+            <!-- 年龄格式将插入到这里 -->
           </div>
         </div>
         
-        <div class="leave-schedule">
-          <table class="leave-table" id="leave-table">
+        <div class="conversion-table">
+          <h4 style="margin-bottom: 1rem;">年龄计算示例</h4>
+          <table>
             <thead>
               <tr>
-                <th>休假类型</th>
-                <th>开始日期</th>
-                <th>结束日期</th>
-                <th>天数</th>
-                <th>状态</th>
+                <th>生日</th>
+                <th>计算日期</th>
+                <th>结果</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Leave schedule will be populated here -->
+              <tr>
+                <td>2000-01-01</td>
+                <td>2025-01-01</td>
+                <td>25岁</td>
+              </tr>
+              <tr>
+                <td>1990-05-15</td>
+                <td>2025-06-17</td>
+                <td>35岁1个月2天</td>
+              </tr>
+              <tr>
+                <td>2010-12-31</td>
+                <td>2025-01-01</td>
+                <td>14岁0个月1天</td>
+              </tr>
+              <tr>
+                <td>2005-02-28</td>
+                <td>2025-02-28</td>
+                <td>20岁</td>
+              </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>总计已用休假</strong></td>
-                <td colspan="3" id="total-used-leave">5天</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><strong>剩余休假</strong></td>
-                <td colspan="3" id="total-remaining-leave">15天</td>
-                <td></td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>了解您的休假权益</h3>
-        <p>休假权益因公司政策和当地劳动法而异。以下是一些常见的休假类型：</p>
+        <h3>理解年龄计算</h3>
+        <p>年龄计算可能因不同的日历系统和闰年而有所不同。以下是一些需要记住的关键点：</p>
         <ul>
-          <li><strong>年假：</strong> 逐年累积的带薪假期天数</li>
-          <li><strong>病假：</strong> 因病或医疗预约而休假的时间</li>
-          <li><strong>育儿假：</strong> 新父母的假期（产假/陪产假）</li>
-          <li><strong>丧假：</strong> 因家庭成员去世而休假的时间</li>
-          <li><strong>陪审团服务假：</strong> 因陪审团服务而休假的时间</li>
+          <li><strong>闰年：</strong>能被4整除的年份是闰年，但世纪年份必须能被400整除</li>
+          <li><strong>月份长度：</strong>月份有28-31天（4月、6月、9月、11月有30天；2月有28或29天）</li>
+          <li><strong>日期格式：</strong>我们的计算器使用ISO 8601格式（YYYY-MM-DD）</li>
+          <li><strong>精确年龄：</strong>计算器会根据您的出生日期和目标日期计算精确年龄</li>
         </ul>
         
-        <h3>影响休假计算的因素</h3>
-        <p>以下因素可能影响您的休假权益：</p>
+        <h3>年龄计算提示</h3>
+        <p>以下是准确计算年龄的一些提示：</p>
         <ul>
-          <li><strong>就业类型：</strong> 全职、兼职或合同工</li>
-          <li><strong>工作年限：</strong> 一些公司会随着工作年限增加休假天数</li>
-          <li><strong>累积速率：</strong> 休假天数如何随时间累积</li>
-          <li><strong>公司政策：</strong> 关于休假使用的具体规则</li>
-          <li><strong>当地法律：</strong> 法律规定的最低休假要求</li>
+          <li>年龄计算基于格里历（公历）</li>
+          <li>如果您的生日今年尚未到来，则计算中会减去一年</li>
+          <li>年龄可以用多种格式表示（年、月、日）</li>
+          <li>闰年会影响2月29日出生的人的年龄计算</li>
+          <li>由于我们仅考虑日期，时区不会影响年龄计算</li>
         </ul>
         
-        <div class="leave-tips">
-          <h3><i class="fas fa-lightbulb"></i> 休假管理技巧</h3>
-          <p>考虑以下技巧来有效管理您的休假：</p>
-          <ul>
-            <li>提前规划您的休假以确保足够的覆盖</li>
-            <li>了解公司的休假政策和程序</li>
-            <li>全年跟踪您的休假余额</li>
-            <li>与团队沟通您的计划缺席情况</li>
-            <li>考虑分散休假以避免倦怠</li>
-          </ul>
-        </div>
+        <h3>常见年龄计算</h3>
+        <p>一些常用的年龄计算：</p>
+        <ul>
+          <li>法定成年年龄：在许多国家为18岁</li>
+          <li>退休年龄：通常为65-70岁，具体取决于国家</li>
+          <li>驾驶年龄：通常为16-18岁</li>
+          <li>大学入学资格：通常为18岁</li>
+          <li>儿童年龄：至12岁</li>
+        </ul>
       </div>
     </div>
   </main>
@@ -960,15 +1000,15 @@
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>您的日常计算器和财务工具的可信赖来源。自2025年以来帮助您做出明智的决策。</p>
+        <p>您的日常计算和财务工具的可信来源。自2025年起，帮助您计算年龄。</p>
       </div>
       <div class="footer-column">
         <h3>其他有用计算器</h3>
         <ul class="footer-links">
           <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
-          <li><a href="/zh/finance/home-loan-calculator-calculator.html">房贷计算器</a></li>
-          <li><a href="/zh/daily-life/salary-calculator.html">薪资计算器</a></li>
-          <li><a href="/zh/finance/tax-calculator.html">税务计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator-calculator.html">房屋抵押贷款计算器</a></li>
+          <li><a href="/zh/daily-life/salary-calculator.html">工资计算器</a></li>
+          <li><a href="/zh/finance/tax-calculator.html">税计算器</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -984,7 +1024,7 @@
         <a href="/privacy-zh.html">隐私政策</a> | 
         <a href="/terms-zh.html">服务条款</a>
       </p>
-      <p><small>注：这些计算器仅提供估算值。请咨询您的人力资源部门以获取具体的权益。</small></p>
+      <p><small>注意：年龄计算基于格里历（公历）。其他日历系统的结果可能会有所不同。</small></p>
     </div>
   </footer>
 
@@ -994,124 +1034,152 @@
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
       const langSelect = document.getElementById('lang-select');
-      const employeeName = document.getElementById('employee-name');
-      const hiringDate = document.getElementById('hiring-date');
-      const yearMonth = document.getElementById('year-month');
-      const leaveQuota = document.getElementById('leave-quota');
-      const usedLeave = document.getElementById('used-leave');
-      const plannedLeave = document.getElementById('planned-leave');
-      const calculateBtn = document.getElementById('calculate-btn');
-      const resultContainer = document.getElementById('result-container');
-      const leaveSummary = document.getElementById('leave-summary');
-      const leaveDetails = document.getElementById('leave-details');
-      const leaveTable = document.getElementById('leave-table').querySelector('tbody');
       
-      // Chart variable
-      let leaveChart = null;
+      // Age calculator elements
+      const birthDate = document.getElementById('birth-date');
+      const calculateDate = document.getElementById('calculate-date');
+      const calculateAgeBtn = document.getElementById('calculate-age');
+      const ageResultContainer = document.getElementById('age-result-container');
+      const ageDisplay = document.getElementById('age-display');
+      const ageFormats = document.getElementById('age-formats');
       
-      // Format number with comma separator
-      function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // Set default dates
+      function setDefaultDates() {
+        const today = new Date();
+        const todayFormatted = formatDate(today);
+        
+        // Set calculate date to today
+        calculateDate.value = todayFormatted;
+        
+        // Set birth date to 30 years ago
+        const thirtyYearsAgo = new Date();
+        thirtyYearsAgo.setFullYear(today.getFullYear() - 30);
+        birthDate.value = formatDate(thirtyYearsAgo);
       }
       
-      // Calculate Leave function
-      function calculateLeave() {
-        // Get input values
-        const name = employeeName.value || '员工';
-        const quota = parseFloat(leaveQuota.value) || 0;
-        const used = parseFloat(usedLeave.value) || 0;
-        const planned = parseFloat(plannedLeave.value) || 0;
+      // Format date to YYYY-MM-DD
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+      
+      // Calculate age
+      function calculateAge() {
+        const birth = new Date(birthDate.value);
+        const calc = new Date(calculateDate.value);
         
-        // Calculate remaining leave
-        const remaining = Math.max(quota - used - planned, 0);
-        
-        // Update results display
-        document.getElementById('quota-value').textContent = `${quota}天`;
-        document.getElementById('used-value').textContent = `${used}天`;
-        document.getElementById('planned-value').textContent = `${planned}天`;
-        document.getElementById('remaining-value').textContent = `${remaining}天`;
-        
-        // Update leave summary
-        leaveSummary.textContent = `剩余休假：${remaining}天`;
-        
-        // Update leave details
-        document.getElementById('employee-name-display').textContent = name;
-        document.getElementById('remaining-leave-display').textContent = remaining;
-        document.getElementById('used-leave-display').textContent = used;
-        document.getElementById('planned-leave-display').textContent = planned;
-        
-        // Update leave balance field
-        document.getElementById('leave-balance').value = remaining;
-        
-        // Update footer totals
-        document.getElementById('total-used-leave').textContent = `${used}天`;
-        document.getElementById('total-remaining-leave').textContent = `${remaining}天`;
-        
-        // Create or update leave chart
-        const ctx = document.getElementById('leave-chart').getContext('2d');
-        if (leaveChart) {
-          leaveChart.destroy();
+        if (isNaN(birth) || isNaN(calc)) {
+          ageDisplay.innerHTML = "请选择有效的日期";
+          ageResultContainer.style.display = "block";
+          return;
         }
         
-        leaveChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ['已用休假', '计划休假', '剩余休假'],
-            datasets: [ {
-              data: [used, planned, remaining],
-              backgroundColor: [
-                '#4db5bd',
-                '#ffd166',
-                '#9c88ff'
-              ],
-              borderWidth: 1
-            } ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'right',
-                labels: {
-                  font: {
-                    family: 'Segoe UI',
-                    size: 12
-                  }
-                }
-              },
-              tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    const label = context.label || '';
-                    const value = context.raw;
-                    return `${label}: ${value}天`;
-                  }
-                }
-              }
-            }
-          }
-        });
+        // Calculate age in milliseconds
+        let age = calc - birth;
         
-        // Show result container
-        resultContainer.style.display = 'block';
+        if (age < 0) {
+          ageDisplay.innerHTML = "请选择一个晚于出生日期的计算日期";
+          ageResultContainer.style.display = "block";
+          return;
+        }
+        
+        // Calculate years, months, and days
+        let years = calc.getFullYear() - birth.getFullYear();
+        let months = calc.getMonth() - birth.getMonth();
+        let days = calc.getDate() - birth.getDate();
+        
+        // Adjust for negative months/days
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+        
+        if (days < 0) {
+          // Get last day of previous month
+          const lastDay = new Date(calc.getFullYear(), calc.getMonth(), 0).getDate();
+          days += lastDay;
+          months--;
+          
+          // Adjust months if needed
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
+        }
+        
+        // Calculate total days
+        const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
+        
+        // Calculate weeks
+        const weeks = Math.floor(totalDays / 7);
+        
+        // Calculate months (another way)
+        const totalMonths = years * 12 + months;
+        
+        // Calculate hours, minutes, seconds
+        const hours = Math.floor((age % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((age % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((age % (1000 * 60)) / 1000);
+        
+        // Display results
+        ageDisplay.innerHTML = `
+          <div class="age-unit">
+            <div class="age-value">${years}</div>
+            <div class="age-label">岁</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${months}</div>
+            <div class="age-label">月</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${days}</div>
+            <div class="age-label">天</div>
+          </div>
+        `;
+        ageResultContainer.style.display = "block";
+        
+        // Format results
+        ageFormats.innerHTML = '';
+        
+        const formats = [
+          { value: `${years}年${years !== 1 ? '' : ''}`, label: "年" },
+          { value: `${totalMonths}月${totalMonths !== 1 ? '' : ''}`, label: "月" },
+          { value: `${weeks}周${weeks !== 1 ? '' : ''}`, label: "周" },
+          { value: `${totalDays}天${totalDays !== 1 ? '' : ''}`, label: "天" },
+          { value: `${Math.floor(totalDays / 365.25)}年${Math.floor(totalDays / 365.25) !== 1 ? '' : ''}`, label: "太阳年" },
+          { value: `${Math.floor(totalDays / 30.44)}月${Math.floor(totalDays / 30.44) !== 1 ? '' : ''}`, label: "约月数" },
+          { value: `${totalDays * 24}小时${totalDays * 24 !== 1 ? '' : ''}`, label: "小时" },
+          { value: `${totalDays * 24 * 60}分钟${totalDays * 24 * 60 !== 1 ? '' : ''}`, label: "分钟" },
+          { value: `${totalDays * 24 * 60 * 60}秒${totalDays * 24 * 60 * 60 !== 1 ? '' : ''}`, label: "秒" }
+        ];
+        
+        formats.forEach(format => {
+          const formatCard = document.createElement('div');
+          formatCard.className = 'format-card';
+          formatCard.innerHTML = `
+            <div class="format-value">${format.value}</div>
+            <div class="format-label">${format.label}</div>
+          `;
+          ageFormats.appendChild(formatCard);
+        });
       }
       
       // Event Listeners
-      calculateBtn.addEventListener('click', calculateLeave);
+      calculateAgeBtn.addEventListener('click', calculateAge);
       
       // Allow Enter key to trigger calculation
       const inputFields = [
-        employeeName, 
-        hiringDate, 
-        leaveQuota,
-        usedLeave,
-        plannedLeave
+        birthDate, 
+        calculateDate
       ];
       
       inputFields.forEach(field => {
         field.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') calculateLeave();
+          if (e.key === 'Enter') {
+            calculateAge();
+          }
         });
       });
       
@@ -1137,23 +1205,20 @@
         
         // Build target URL based on selected language
         switch(selectedLang) {
-          case 'en':
-            targetUrl = '/en/daily-life/leave-calculator.html';
-            break;
           case 'zh':
-            targetUrl = '/zh/daily-life/leave-calculator.html';
+            targetUrl = '/zh/daily-life/age-calculator.html';
             break;
           case 'es':
-            targetUrl = '/es/daily-life/leave-calculator.html';
+            targetUrl = '/es/daily-life/age-calculator.html';
             break;
           case 'de':
-            targetUrl = '/de/daily-life/leave-calculator.html';
+            targetUrl = '/de/daily-life/age-calculator.html';
             break;
           case 'fr':
-            targetUrl = '/fr/daily-life/leave-calculator.html';
+            targetUrl = '/fr/daily-life/age-calculator.html';
             break;
           default: // English
-            targetUrl = '/en/daily-life/leave-calculator.html';
+            targetUrl = '/en/daily-life/age-calculator.html';
         }
         
         window.location.href = targetUrl;
@@ -1177,7 +1242,10 @@
       });
       
       // Initialize the calculator with default values
-      window.addEventListener('load', calculateLeave);
+      window.addEventListener('load', () => {
+        setDefaultDates();
+        calculateAge();
+      });
     })();
   </script>
 </body>

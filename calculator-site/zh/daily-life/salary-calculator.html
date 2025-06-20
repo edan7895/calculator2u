@@ -1,13 +1,1493 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>工资计算器 | Calculator2U</title>
+<meta name="description" content="计算您的实得工资，查看工资明细，并在时薪和年薪之间转换" />
+<meta name="keywords" content="工资计算器, 实得工资计算器, 税收计算器, 时薪计算器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/daily-life/salary-calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/salary-calculator.html" />
+<meta property="og:title" content="工资计算器 | Calculator2U" />
+<meta property="og:description" content="计算您的实得工资，查看工资明细，并在时薪和年薪之间转换" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/daily-life/salary-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/salary-calculator.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Salary Calculator Styles */
+  .salary-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .salary-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .deduction-breakdown {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Salary breakdown chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Pay stub */
+  .pay-stub {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .pay-stub-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .pay-stub-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .pay-stub-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .pay-stub-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .pay-stub-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .salary-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .salary-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .pay-stub {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .pay-stub-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .pay-stub-table th,
+    .pay-stub-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .final-amount {
+      font-size: 2rem;
+      word-break: break-all;
+    }
+    
+    .deduction-breakdown {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="zh" selected>中文</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>工资计算器</h1>
+    <p>计算您的实得工资，查看工资明细，并在时薪和年薪之间转换</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">工资计算器</h2>
+    
+    <div class="salary-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="salary-input">工资金额 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您的税前月薪或年薪</span>
+              </span>
+            </label>
+            <input type="number" id="salary-input" placeholder="请输入工资金额" min="0" value="50000">
+          </div>
+          
+          <div class="input-field">
+            <label for="salary-period">工资周期
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">请选择您输入的是月薪还是年薪</span>
+              </span>
+            </label>
+            <select id="salary-period">
+              <option value="monthly">月薪</option>
+              <option value="annual" selected>年薪</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="work-hours">每周工作小时数
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">您每周工作多少小时</span>
+              </span>
+            </label>
+            <input type="number" id="work-hours" placeholder="请输入每周工作小时数" min="1" max="168" value="40">
+          </div>
+          
+          <div class="input-field">
+            <label for="work-type">工作类型
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">选择全职或兼职</span>
+              </span>
+            </label>
+            <select id="work-type">
+              <option value="full-time">全职</option>
+              <option value="part-time">兼职</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="ot-multiplier">加班系数
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">加班工资计算系数（例如，1.5表示1.5倍工资）</span>
+              </span>
+            </label>
+            <input type="number" id="ot-multiplier" placeholder="请输入加班系数" min="1" step="0.1" value="1.5">
+          </div>
+          
+          <div class="input-field">
+            <label for="ot-hours">每月加班小时数
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">平均每月加班小时数</span>
+              </span>
+            </label>
+            <input type="number" id="ot-hours" placeholder="请输入加班小时数" min="0" value="5">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="bonus-input">奖金/津贴 ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">年度奖金或津贴总额</span>
+              </span>
+            </label>
+            <input type="number" id="bonus-input" placeholder="请输入奖金金额" min="0" value="2000">
+          </div>
+        </div>
+        
+        <!-- Additional Options -->
+        <div class="additional-options">
+          <h3>自定义扣款</h3>
+          
+          <div class="deduction-list" id="deduction-list">
+            <div class="input-group" id="deduction-template">
+              <div class="input-field">
+                <label>扣款名称</label>
+                <input type="text" class="deduction-name" placeholder="例如：所得税" value="所得税">
+              </div>
+              
+              <div class="input-field">
+                <label>扣款率 (%)</label>
+                <input type="number" class="deduction-rate" placeholder="例如：20" min="0" step="0.1" value="20">
+              </div>
+              
+              <div class="input-field">
+                <button class="remove-deduction" style="margin-top: 25px; background: #dc3545; color: white; border: none; padding: 0.3rem 0.5rem; border-radius: 4px; cursor: pointer;">移除</button>
+              </div>
+            </div>
+          </div>
+          
+          <button id="add-deduction-btn" style="display: block; margin: 1rem auto; padding: 0.5rem 1rem; background: #006d77; color: white; border: none; border-radius: 4px; cursor: pointer;">添加扣款</button>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> 计算工资
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">您的工资摘要</h3>
+          <div class="final-amount" id="take-home">
+            $3,500.00
+          </div>
+          <div class="deduction-breakdown" id="deduction-total">
+            总扣款：$1,500.00
+          </div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">工资总额</div>
+              <div class="metric-value" id="gross-salary">$5,000.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">总扣款</div>
+              <div class="metric-value" id="total-deductions">$1,500.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">实得工资</div>
+              <div class="metric-value" id="net-salary">$3,500.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">时薪</div>
+              <div class="metric-value" id="hourly-wage">$28.57</div>
+            </div>
+          </div>
+          
+          <!-- Salary composition chart -->
+          <div class="chart-container">
+            <canvas id="salary-chart"></canvas>
+          </div>
+          
+          <div class="salary-summary" id="salary-summary">
+            <p>根据您的输入，您的税前工资为<span class="highlight">$5,000.00</span>，扣除各项扣款后实得工资为<span class="highlight">$3,500.00</span>。</p>
+            <p>此计算包括每周<span class="highlight">40小时</span>的正常工作时间和每月<span class="highlight">5小时</span>的加班时间，加班费按<span class="highlight">1.5倍</span>正常工资计算。</p>
+          </div>
+        </div>
+        
+        <div class="pay-stub">
+          <table class="pay-stub-table" id="pay-stub">
+            <thead>
+              <tr>
+                <th>收入</th>
+                <th>每月</th>
+                <th>每年</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Pay stub will be populated here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>总收入</strong></td>
+                <td id="total-monthly">$5,000.00</td>
+                <td id="total-yearly">$60,000.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        
+        <div class="hourly-converter" id="hourly-converter">
+          <h3>时薪转换器</h3>
+          <div class="input-group" style="margin-top: 1rem;">
+            <div class="input-field">
+              <label for="hourly-input">时薪 ($)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">您的时薪</span>
+                </span>
+              </label>
+              <input type="number" id="hourly-input" placeholder="请输入时薪" min="0" value="25">
+            </div>
+            
+            <div class="input-field">
+              <label for="hourly-period">转换为
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">选择要计算的内容</span>
+                </span>
+              </label>
+              <select id="hourly-period">
+                <option value="weekly">周薪</option>
+                <option value="monthly">月薪</option>
+                <option value="annual" selected>年薪</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="result-metrics" id="hourly-result" style="display: none;">
+            <div class="metric-card">
+              <div class="metric-label">时薪</div>
+              <div class="metric-value">$25.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">周薪</div>
+              <div class="metric-value">$1,000.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">月薪</div>
+              <div class="metric-value">$4,333.33</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">年薪</div>
+              <div class="metric-value">$52,000.00</div>
+            </div>
+          </div>
+          
+          <button class="calculate-btn" id="convert-btn" style="margin-top: 1rem;">
+            <i class="fas fa-exchange-alt"></i> 转换时薪
+          </button>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>了解您的工资</h3>
+        <p>工资是您工作所得的报酬。以下是一些关键组成部分和注意事项：</p>
+        <ul>
+          <li><strong>工资总额：</strong> 扣除任何费用前的总工资</li>
+          <li><strong>实得工资：</strong> 扣除所有费用后的实际收入</li>
+          <li><strong>扣款：</strong> 税收、社保、医疗保健等</li>
+          <li><strong>加班：</strong> 超出您正常工作时间的额外工资</li>
+          <li><strong>奖金：</strong> 因绩效或公司盈利而获得的额外报酬</li>
+        </ul>
+        
+        <h3>常见扣款</h3>
+        <p>典型的工资扣款包括：</p>
+        <ul>
+          <li>所得税</li>
+          <li>社保和医疗保险</li>
+          <li>退休计划供款</li>
+          <li>医疗保险费</li>
+          <li>牙科和视力保险</li>
+          <li>工会会费</li>
+          <li>慈善捐款</li>
+        </ul>
+        
+        <h3>影响实得工资的因素</h3>
+        <p>多个因素会影响您实际获得的工资金额：</p>
+        <ul>
+          <li><strong>税率：</strong> 您的有效税率取决于您的收入水平和税率等级</li>
+          <li><strong>地区：</strong> 州和地方税收因地区而异</li>
+          <li><strong>福利：</strong> 税前福利减少您的应税收入</li>
+          <li><strong>就业类型：</strong> 全职与兼职影响福利和扣款</li>
+          <li><strong>发薪周期：</strong> 您的发薪频率（每周、每两周、每月）</li>
+        </ul>
+        
+        <div class="salary-summary">
+          <h3><i class="fas fa-lightbulb"></i> 工资小贴士</h3>
+          <p>考虑这些小贴士以更好地了解您的薪酬：</p>
+          <ul>
+            <li>定期审查您的工资单以核实扣款</li>
+            <li>了解您的福利套餐以及它们如何影响实得工资</li>
+            <li>使用税收优惠账户减少应税收入</li>
+            <li>在就业讨论中协商工资和福利</li>
+            <li>在评估工作机会时考虑总薪酬（工资+福利）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您的日常计算器和财务工具的可信来源。自2025年以来帮助您做出明智的决策。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他有用计算器</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator-calculator.html">住房抵押贷款计算器</a></li>
+          <li><a href="/zh/daily-life/salary-calculator.html">工资计算器</a></li>
+          <li><a href="/zh/finance/tax-calculator.html">税收计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. 保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些计算器仅提供估算值。请咨询财务顾问以获得个性化建议。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const salaryInput = document.getElementById('salary-input');
+      const salaryPeriod = document.getElementById('salary-period');
+      const workHours = document.getElementById('work-hours');
+      const workType = document.getElementById('work-type');
+      const otMultiplier = document.getElementById('ot-multiplier');
+      const otHours = document.getElementById('ot-hours');
+      const bonusInput = document.getElementById('bonus-input');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const takeHomeEl = document.getElementById('take-home');
+      const deductionTotalEl = document.getElementById('deduction-total');
+      const salarySummary = document.getElementById('salary-summary');
+      const payStubTable = document.getElementById('pay-stub').querySelector('tbody');
+      const hourlyInput = document.getElementById('hourly-input');
+      const hourlyPeriod = document.getElementById('hourly-period');
+      const convertBtn = document.getElementById('convert-btn');
+      const hourlyResult = document.getElementById('hourly-result');
+      const addDeductionBtn = document.getElementById('add-deduction-btn');
+      const deductionList = document.getElementById('deduction-list');
+      
+      // Chart variable
+      let salaryChart = null;
+      
+      // Format currency
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // Initialize deductions with the default one
+      const deductions = [
+        { name: '所得税', rate: 20 }
+      ];
+      
+      // Add event listener to add deduction button
+      addDeductionBtn.addEventListener('click', function() {
+        const newDeduction = document.getElementById('deduction-template').cloneNode(true);
+        newDeduction.style.display = 'grid';
+        newDeduction.querySelector('.deduction-name').value = '';
+        newDeduction.querySelector('.deduction-rate').value = '';
+        
+        // Add event listener to remove button
+        newDeduction.querySelector('.remove-deduction').addEventListener('click', function() {
+          newDeduction.remove();
+        });
+        
+        deductionList.appendChild(newDeduction);
+      });
+      
+      // Add event listener to remove deduction buttons
+      document.querySelectorAll('.remove-deduction').forEach(button => {
+        button.addEventListener('click', function() {
+          this.closest('.input-group').remove();
+        });
+      });
+      
+      // Calculate Salary function
+      function calculateSalary() {
+        // Get input values
+        const salaryAmount = parseFloat(salaryInput.value) || 0;
+        const salaryType = salaryPeriod.value;
+        const weeklyHours = parseFloat(workHours.value) || 40;
+        const otMultiplierVal = parseFloat(otMultiplier.value) || 1.5;
+        const otHoursPerMonth = parseFloat(otHours.value) || 0;
+        const bonusAmount = parseFloat(bonusInput.value) || 0;
+        
+        // Calculate monthly gross salary
+        let monthlyGross;
+        if (salaryType === 'monthly') {
+          monthlyGross = salaryAmount;
+        } else { // annual
+          monthlyGross = salaryAmount / 12;
+        }
+        
+        // Calculate hourly wage
+        const workDaysPerMonth = 4.33; // Average work days per month
+        const regularHoursPerMonth = weeklyHours * workDaysPerMonth;
+        const otHoursTotal = otHoursPerMonth;
+        const totalHoursPerMonth = regularHoursPerMonth + otHoursTotal;
+        const hourlyWage = monthlyGross / regularHoursPerMonth;
+        const otRate = hourlyWage * otMultiplierVal;
+        const otEarnings = otHoursTotal * otRate;
+        
+        // Calculate total earnings
+        const monthlyBonus = bonusAmount / 12;
+        const totalEarnings = monthlyGross + otEarnings + monthlyBonus;
+        
+        // Calculate deductions
+        let totalDeductions = 0;
+        deductionList.querySelectorAll('.input-group').forEach(item => {
+          const name = item.querySelector('.deduction-name').value;
+          const rate = parseFloat(item.querySelector('.deduction-rate').value) || 0;
+          if (name && !isNaN(rate)) {
+            totalDeductions += (totalEarnings * rate / 100);
+          }
+        });
+        
+        // Calculate net salary
+        const netSalary = totalEarnings - totalDeductions;
+        
+        // Update results display
+        document.getElementById('gross-salary').textContent = formatCurrency(monthlyGross);
+        document.getElementById('total-deductions').textContent = formatCurrency(totalDeductions);
+        document.getElementById('net-salary').textContent = formatCurrency(netSalary);
+        document.getElementById('hourly-wage').textContent = formatCurrency(hourlyWage);
+        
+        // Update take-home and deductions display
+        takeHomeEl.textContent = formatCurrency(netSalary);
+        deductionTotalEl.textContent = `总扣款：${formatCurrency(totalDeductions)}`;
+        
+        // Update salary summary
+        const summaryHTML = `
+          <p>根据您的输入，您的税前工资为<span class="highlight">${formatCurrency(monthlyGross)}</span>，扣除各项扣款后实得工资为<span class="highlight">${formatCurrency(netSalary)}</span>。</p>
+          <p>此计算包括每周<span class="highlight">${weeklyHours}</span>小时的正常工作时间和每月<span class="highlight">${otHoursPerMonth}</span>小时的加班时间，加班费按<span class="highlight">${otMultiplierVal}倍</span>正常工资计算。</p>
+        `;
+        salarySummary.innerHTML = summaryHTML;
+        
+        // Update pay stub
+        const yearlyGross = monthlyGross * 12;
+        const yearlyOtEarnings = otEarnings * 12;
+        const yearlyBonus = bonusAmount;
+        const yearlyTotalEarnings = yearlyGross + yearlyOtEarnings + yearlyBonus;
+        const yearlyDeductions = totalDeductions * 12;
+        const yearlyNet = yearlyTotalEarnings - yearlyDeductions;
+        
+        payStubTable.innerHTML = `
+          <tr>
+            <td>工资总额</td>
+            <td>${formatCurrency(monthlyGross)}</td>
+            <td>${formatCurrency(yearlyGross)}</td>
+          </tr>
+          <tr>
+            <td>加班工资</td>
+            <td>${formatCurrency(otEarnings)}</td>
+            <td>${formatCurrency(yearlyOtEarnings)}</td>
+          </tr>
+          <tr>
+            <td>奖金/津贴</td>
+            <td>${formatCurrency(monthlyBonus)}</td>
+            <td>${formatCurrency(yearlyBonus)}</td>
+          </tr>
+          <tr>
+            <td><strong>总收入</strong></td>
+            <td><strong>${formatCurrency(totalEarnings)}</strong></td>
+            <td><strong>${formatCurrency(yearlyTotalEarnings)}</strong></td>
+          </tr>
+          <tr>
+            <td>总扣款</td>
+            <td>${formatCurrency(totalDeductions)}</td>
+            <td>${formatCurrency(yearlyDeductions)}</td>
+          </tr>
+          <tr>
+            <td><strong>实得工资</strong></td>
+            <td><strong>${formatCurrency(netSalary)}</strong></td>
+            <td><strong>${formatCurrency(yearlyNet)}</strong></td>
+          </tr>
+        `;
+        
+        // Update footer totals
+        document.getElementById('total-monthly').textContent = formatCurrency(totalEarnings);
+        document.getElementById('total-yearly').textContent = formatCurrency(yearlyTotalEarnings);
+        
+        // Create or update salary chart
+        const ctx = document.getElementById('salary-chart').getContext('2d');
+        if (salaryChart) {
+          salaryChart.destroy();
+        }
+        
+        salaryChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['工资总额', '加班工资', '奖金', '扣款', '实得工资'],
+            datasets: [{
+
+              data: [
+                monthlyGross,
+                otEarnings,
+                monthlyBonus,
+                totalDeductions,
+                netSalary
+              ],
+              backgroundColor: [
+                '#006d77',
+                '#4db5bd',
+                '#ffd166',
+                '#dc3545',
+                '#9c88ff'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  font: {
+                    family: 'Segoe UI',
+                    size: 12
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.raw;
+                    return `${label}: ${formatCurrency(value)}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Hourly wage converter
+      function convertHourlyWage() {
+        const hourlyWage = parseFloat(hourlyInput.value) || 0;
+        const weeklyHours = parseFloat(workHours.value) || 40;
+        const period = hourlyPeriod.value;
+        
+        let weekly = hourlyWage * weeklyHours;
+        let monthly = weekly * 4.33; // Average weeks per month
+        let annual = monthly * 12;
+        
+        // Update results
+        hourlyResult.querySelector('.metric-card:nth-child(1) .metric-value').textContent = formatCurrency(hourlyWage);
+        hourlyResult.querySelector('.metric-card:nth-child(2) .metric-value').textContent = formatCurrency(weekly);
+        hourlyResult.querySelector('.metric-card:nth-child(3) .metric-value').textContent = formatCurrency(monthly);
+        hourlyResult.querySelector('.metric-card:nth-child(4) .metric-value').textContent = formatCurrency(annual);
+        
+        // Show results
+        hourlyResult.style.display = 'grid';
+      }
+      
+      // Event Listeners
+      calculateBtn.addEventListener('click', calculateSalary);
+      convertBtn.addEventListener('click', convertHourlyWage);
+      
+      // Allow Enter key to trigger calculation
+      const inputFields = [
+        salaryInput, 
+        workHours, 
+        otMultiplier,
+        otHours,
+        bonusInput
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateSalary();
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/daily-life/salary-calculator.html';
+            break;
+          case 'en':
+            targetUrl = '/en/daily-life/salary-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/daily-life/salary-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/daily-life/salary-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/daily-life/salary-calculator.html';
+            break;
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Initialize the calculator with default values
+      window.addEventListener('load', calculateSalary);
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>
