@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home Loan Calculator | Calculator2U</title>
-<meta name="description" content="Calculate your monthly mortgage payments and total interest costs for your home loan" />
-<meta name="keywords" content="home loan calculator, mortgage calculator, loan calculator, finance calculator" />
+<title>International Home Loan Calculator | Calculator2U</title>
+<meta name="description" content="Calculate your monthly mortgage payments for multiple countries including US, UK, Germany, France, Singapore, Malaysia, Saudi Arabia" />
+<meta name="keywords" content="home loan calculator, mortgage calculator, loan calculator, finance calculator, international mortgage" />
 <meta name="author" content="Calculator2U" />
 <link rel="canonical" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
@@ -15,23 +15,13 @@
 <link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
-<meta property="og:title" content="Home Loan Calculator | Calculator2U" />
-<meta property="og:description" content="Calculate your monthly mortgage payments and total interest costs for your home loan" />
+<meta property="og:title" content="International Home Loan Calculator | Calculator2U" />
+<meta property="og:description" content="Calculate your monthly mortgage payments for multiple countries including US, UK, Germany, France, Singapore, Malaysia, Saudi Arabia" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
 <meta property="og:image" content="https://www.calculator2u.com/assets/images/home-loan-calculator.jpg" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="Calculator2U" />
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RLH4FLZBZF');
-</script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -51,10 +41,9 @@
     min-height: 100vh;
     background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
   }
-html, body {
-  overflow-x: hidden;
-}
-
+  html, body {
+    overflow-x: hidden;
+  }
 
   /* Header & Navigation */
   header {
@@ -112,7 +101,7 @@ html, body {
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  /* 多语言选择器样式 */
+  /* Language selector styles */
   .lang-selector {
     position: relative;
     display: inline-block;
@@ -280,7 +269,7 @@ box-sizing: border-box;
     color: #006d77;
   }
   
-  .input-field input {
+  .input-field input, .input-field select {
     padding: 0.8rem 1rem;
     border: 2px solid #e0f7fa;
     border-radius: 8px;
@@ -288,7 +277,7 @@ box-sizing: border-box;
     transition: border-color 0.3s;
   }
   
-  .input-field input:focus {
+  .input-field input:focus, .input-field select:focus {
     outline: none;
     border-color: #4db5bd;
     box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
@@ -423,7 +412,41 @@ box-sizing: border-box;
     margin-bottom: 0.8rem;
     line-height: 1.6;
   }
-
+  
+  .country-info {
+    background: #e8f4f8;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid #4db5bd;
+    display: none;
+  }
+  
+  .country-info h4 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .country-info h4 i {
+    font-size: 1.4rem;
+  }
+  
+  .country-info ul {
+    padding-left: 1.2rem;
+  }
+  
+  .country-info li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .country-info .flag-icon {
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
 
   /* Footer */
   footer {
@@ -558,10 +581,14 @@ box-sizing: border-box;
     .loan-container {
       grid-template-columns: 1fr;
     }
+    
+    .monthly-payment {
+      font-size: 2.8rem;
+    }
   }
   
-  /* 新增的小屏幕样式调整 */
-  @media (max-width: 430px) {
+  /* New styles for small screens */
+  @media (max-width: 480px) {
     body {
       font-size: 14px;
     }
@@ -575,7 +602,7 @@ box-sizing: border-box;
 
     .calculator-card, 
     .info-card {
-      padding: 1rem;
+      padding: 1.2rem;
       width: 100%;
       margin: 0;
       box-sizing: border-box;
@@ -633,7 +660,7 @@ box-sizing: border-box;
     }
     
     .monthly-payment {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
     
     .total-interest {
@@ -641,12 +668,16 @@ box-sizing: border-box;
     }
     
     .result-container {
-      padding: 1rem;
+      padding: 1.2rem;
     }
     
     .calculate-btn {
       padding: 0.8rem 1rem;
       font-size: 1rem;
+    }
+    
+    .country-info {
+      padding: 1rem;
     }
   }
 </style>
@@ -689,37 +720,61 @@ box-sizing: border-box;
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Home Loan Calculator</h1>
-    <p>Calculate your monthly mortgage payments and total interest costs for your home loan</p>
+    <h1>International Home Loan Calculator</h1>
+    <p>Calculate your monthly mortgage payments for multiple countries including US, UK, Germany, France, Singapore, Malaysia, Saudi Arabia</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">Home Loan Calculator</h2>
+    <h2 class="section-title">International Home Loan Calculator</h2>
     
     <div class="loan-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="input-group">
           <div class="input-field">
-            <label for="home-price">Total Home Price ($)</label>
-            <input type="number" id="home-price" placeholder="Enter home price" min="0">
+            <label for="country">Select Country</label>
+            <select id="country">
+              <option value="us">United States 🇺🇸</option>
+              <option value="uk">United Kingdom 🇬🇧</option>
+              <option value="de">Germany 🇩🇪</option>
+              <option value="fr">France 🇫🇷</option>
+              <option value="sg">Singapore 🇸🇬</option>
+              <option value="my">Malaysia 🇲🇾</option>
+              <option value="sa">Saudi Arabia 🇸🇦</option>
+              <option value="other">Other Countries</option>
+            </select>
           </div>
           
           <div class="input-field">
-            <label for="down-payment">Down Payment ($ or %)</label>
-            <input type="text" id="down-payment" placeholder="Enter down payment (e.g., 20000 or 20%)">
+            <label for="home-price">Total Home Price ($)</label>
+            <input type="number" id="home-price" placeholder="Enter home price" min="0">
           </div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="interest-rate">Interest Rate (%)</label>
-            <input type="number" id="interest-rate" placeholder="Enter interest rate" min="0" step="0.01">
+            <label for="down-payment">Down Payment ($ or %)</label>
+            <input type="text" id="down-payment" placeholder="Enter down payment (e.g., 20000 or 20%)">
           </div>
           
           <div class="input-field">
+            <label for="interest-rate">Interest Rate (%)</label>
+            <input type="number" id="interest-rate" placeholder="Enter interest rate" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
             <label for="loan-term">Loan Term (Years)</label>
             <input type="number" id="loan-term" placeholder="Enter loan term (e.g., 25)" min="1" max="35">
+          </div>
+          
+          <div class="input-field">
+            <label for="loan-type">Loan Type</label>
+            <select id="loan-type">
+              <option value="fixed">Fixed Rate</option>
+              <option value="variable">Variable Rate</option>
+            </select>
           </div>
         </div>
         
@@ -737,6 +792,10 @@ box-sizing: border-box;
             <p>Your estimated monthly payment is $1,200 based on a $300,000 home price with 4.5% interest over 25 years.</p>
             <h3><i class="fas fa-money-bill-wave"></i> Total Cost</h3>
             <p>The total cost of the loan will be $426,000, which includes $126,000 in interest payments.</p>
+          </div>
+          
+          <div class="country-info" id="country-info">
+            <!-- Country specific information will be populated here -->
           </div>
         </div>
         
@@ -761,14 +820,18 @@ box-sizing: border-box;
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>Understanding Home Loans</h3>
-        <p>A home loan, also known as a mortgage, is a type of secured loan used to finance the purchase of a home. The property itself serves as collateral for the loan. Key factors that affect your home loan payments include:</p>
+        <h3>Understanding International Home Loans</h3>
+        <p>Home loan requirements and practices vary significantly across countries. This calculator helps you understand mortgage payments for different countries:</p>
+        
+        <h3>Country-Specific Loan Characteristics</h3>
         <ul>
-          <li><strong>Home Price:</strong> The total cost of the property</li>
-          <li><strong>Down Payment:</strong> The amount you pay upfront (usually 10-20% of the home price)</li>
-          <li><strong>Interest Rate:</strong> The cost of borrowing money, expressed as a percentage</li>
-          <li><strong>Loan Term:</strong> The length of time you have to repay the loan (typically 15-30 years)</li>
-          <li><strong>Credit Score:</strong> Affects the interest rate you'll be offered</li>
+          <li><strong>United States:</strong> Typically 15-30 year fixed-rate mortgages with property taxes and insurance included</li>
+          <li><strong>United Kingdom:</strong> Offers repayment and interest-only mortgages with terms up to 35 years</li>
+          <li><strong>Germany:</strong> Long fixed-rate periods (10-30 years) with significant down payments required</li>
+          <li><strong>France:</strong> Fixed-rate mortgages with strict lending criteria and mandatory insurance</li>
+          <li><strong>Singapore:</strong> Variable rates common with maximum 75% loan-to-value ratio</li>
+          <li><strong>Malaysia:</strong> Islamic financing options available with 35-year maximum terms</li>
+          <li><strong>Saudi Arabia:</strong> Sharia-compliant financing with no interest charges</li>
         </ul>
         
         <h3>How Home Loan Payments Work</h3>
@@ -790,14 +853,14 @@ box-sizing: border-box;
         </ul>
         
         <div class="health-advice">
-          <h3><i class="fas fa-lightbulb"></i> Loan Tips</h3>
-          <p>Before taking out a home loan, consider these tips to get the best deal:</p>
+          <h3><i class="fas fa-lightbulb"></i> International Loan Tips</h3>
+          <p>When considering a home loan in another country:</p>
           <ul>
-            <li>Check your credit score and report for errors</li>
-            <li>Shop around for the best interest rates</li>
-            <li>Consider the total cost of homeownership, not just the monthly payment</li>
-            <li>Aim for a loan term that balances affordable payments with minimal interest costs</li>
-            <li>Make at least a 20% down payment if possible to avoid private mortgage insurance</li>
+            <li>Research local lending regulations and requirements</li>
+            <li>Understand currency exchange risks if earning in a different currency</li>
+            <li>Consider tax implications in both your home and property countries</li>
+            <li>Work with a local mortgage broker who understands the market</li>
+            <li>Factor in additional costs like property taxes, insurance, and maintenance</li>
           </ul>
         </div>
       </div>
@@ -808,15 +871,15 @@ box-sizing: border-box;
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>Your trusted source for finance calculators and financial tools. Helping you make informed financial decisions since 2025.</p>
+        <p>Your trusted source for international finance calculators and financial tools. Helping you make informed financial decisions since 2025.</p>
       </div>
       <div class="footer-column">
-        <h3>Others Useful Calculators</h3>
+        <h3>International Calculators</h3>
         <ul class="footer-links">
-          <li><a href="/en/finance/auto-loan-calculator.html">Auto Loan Calculator</a></li>
-          <li><a href="/en/finance/compound-interest-calculator.html">Compound Interest Calculator</a></li>
-          <li><a href="/en/finance/loan-calculator.html">Loan Calculator</a></li>
-          <li><a href="/en/finance/retirement-savings-calculator.html">Retirement Savings Calculator</a></li>
+          <li><a href="/en/finance/international-tax-calculator.html">International Tax Calculator</a></li>
+          <li><a href="/en/finance/currency-converter.html">Currency Converter</a></li>
+          <li><a href="/en/finance/expat-mortgage-calculator.html">Expat Mortgage Calculator</a></li>
+          <li><a href="/en/finance/cost-of-living-comparison.html">Cost of Living Comparison</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -824,6 +887,7 @@ box-sizing: border-box;
         <ul class="footer-links">
           <li><a href="/privacy-en.html">Privacy Policy</a></li>
           <li><a href="/terms-en.html">Terms of Service</a></li>
+          <li><a href="/disclaimer-en.html">Financial Disclaimer</a></li>
         </ul>
       </div>
     </div>
@@ -832,7 +896,7 @@ box-sizing: border-box;
         <a href="/privacy-en.html">Privacy Policy</a> | 
         <a href="/terms-en.html">Terms of Service</a>
       </p>
-      <p><small>Note: These calculators provide estimates only. Consult a financial advisor for personalized advice.</small></p>
+      <p><small>Note: These calculators provide estimates only. Consult a financial advisor for personalized advice. Rates and terms vary by country.</small></p>
     </div>
   </footer>
 
@@ -906,11 +970,117 @@ box-sizing: border-box;
         }
       }
       
+      // Country data - loan characteristics by country
+      const countryData = {
+        us: {
+          name: "United States",
+          flag: "🇺🇸",
+          maxTerm: 30,
+          minDownPayment: 3,
+          avgRate: 6.5,
+          info: "In the US, fixed-rate mortgages are the most common. Property taxes and insurance are often included in monthly payments. FHA loans allow down payments as low as 3.5%."
+        },
+        uk: {
+          name: "United Kingdom",
+          flag: "🇬🇧",
+          maxTerm: 35,
+          minDownPayment: 5,
+          avgRate: 5.2,
+          info: "UK mortgages include repayment and interest-only options. Stamp duty is a significant additional cost. Help to Buy schemes are available for first-time buyers."
+        },
+        de: {
+          name: "Germany",
+          flag: "🇩🇪",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 3.8,
+          info: "German mortgages typically require large down payments (20-40%). Fixed-rate periods of 10-30 years are common. Notary and land registry fees add 10-15% to purchase costs."
+        },
+        fr: {
+          name: "France",
+          flag: "🇫🇷",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 4.0,
+          info: "French mortgages require strong financial profiles. Mandatory life insurance is required. Notary fees are substantial (7-8% of property value)."
+        },
+        sg: {
+          name: "Singapore",
+          flag: "🇸🇬",
+          maxTerm: 30,
+          minDownPayment: 25,
+          avgRate: 3.8,
+          info: "Singapore mortgages have maximum loan-to-value ratios of 75%. Additional Buyer's Stamp Duty applies to foreigners. Floating rates are common and tied to SIBOR or SORA."
+        },
+        my: {
+          name: "Malaysia",
+          flag: "🇲🇾",
+          maxTerm: 35,
+          minDownPayment: 10,
+          avgRate: 4.2,
+          info: "Malaysia offers conventional and Islamic financing. Maximum tenure is 35 years or until age 65-70. Stamp duty exemptions available for first-time buyers."
+        },
+        sa: {
+          name: "Saudi Arabia",
+          flag: "🇸🇦",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 0, // Sharia-compliant financing doesn't charge interest
+          info: "Saudi Arabia uses Sharia-compliant financing with no interest. Instead, banks earn profit through rent or resale margins. Government programs like Sakani assist citizens."
+        },
+        other: {
+          name: "Other Countries",
+          flag: "🌍",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 5.0,
+          info: "For other countries, typical mortgage terms are shown. Actual requirements vary significantly. Consult local lenders for country-specific regulations and requirements."
+        }
+      };
+      
+      // Set default country values
+      function setCountryDefaults() {
+        const countrySelect = document.getElementById('country');
+        const loanTermInput = document.getElementById('loan-term');
+        const interestRateInput = document.getElementById('interest-rate');
+        
+        const countryCode = countrySelect.value;
+        const country = countryData[countryCode];
+        
+        // Set max term based on country
+        loanTermInput.max = country.maxTerm;
+        
+        // Set placeholder interest rate if empty
+        if (!interestRateInput.value && country.avgRate > 0) {
+          interestRateInput.placeholder = `Avg: ${country.avgRate}%`;
+        }
+        
+        // Update country info section
+        const countryInfo = document.getElementById('country-info');
+        countryInfo.innerHTML = `
+          <h4><span class="flag-icon">${country.flag}</span> ${country.name} Mortgage Information</h4>
+          <ul>
+            <li>Maximum loan term: ${country.maxTerm} years</li>
+            <li>Minimum down payment: ${country.minDownPayment}%</li>
+            ${country.avgRate > 0 ? `<li>Average interest rate: ${country.avgRate}%</li>` : ''}
+            <li>${country.info}</li>
+          </ul>
+        `;
+        countryInfo.style.display = 'block';
+      }
+      
+      // Initialize country defaults
+      setCountryDefaults();
+      
+      // Update when country changes
+      document.getElementById('country').addEventListener('change', setCountryDefaults);
+      
       // Home Loan Calculator Functionality
       const homePriceInput = document.getElementById('home-price');
       const downPaymentInput = document.getElementById('down-payment');
       const interestRateInput = document.getElementById('interest-rate');
       const loanTermInput = document.getElementById('loan-term');
+      const loanTypeSelect = document.getElementById('loan-type');
       const calculateBtn = document.getElementById('calculate-btn');
       const resultContainer = document.getElementById('result-container');
       const monthlyPayment = document.getElementById('monthly-payment');
@@ -924,112 +1094,219 @@ box-sizing: border-box;
         const downPayment = downPaymentInput.value;
         const interestRate = parseFloat(interestRateInput.value) / 100;
         const loanTerm = parseInt(loanTermInput.value);
+        const loanType = loanTypeSelect.value;
+        const countryCode = document.getElementById('country').value;
+        const country = countryData[countryCode];
         
         if (!homePrice || !interestRate || !loanTerm || homePrice <= 0 || interestRate <= 0 || loanTerm <= 0) {
           alert('Please enter valid home price, interest rate, and loan term.');
           return;
         }
         
+        // Validate loan term against country max
+        if (loanTerm > country.maxTerm) {
+          alert(`Maximum loan term for ${country.name} is ${country.maxTerm} years. Please adjust your loan term.`);
+          loanTermInput.value = country.maxTerm;
+          return;
+        }
+        
         // Calculate actual loan amount after down payment
         let actualLoanAmount;
+        let downPaymentAmount;
+        let downPaymentPercent;
+        
         if (downPayment.includes('%')) {
-          const downPaymentPercent = parseFloat(downPayment.replace('%', '')) / 100;
+          downPaymentPercent = parseFloat(downPayment.replace('%', '')) / 100;
+          downPaymentAmount = homePrice * downPaymentPercent;
           actualLoanAmount = homePrice * (1 - downPaymentPercent);
         } else {
-          const downPaymentAmount = parseFloat(downPayment);
+          downPaymentAmount = parseFloat(downPayment);
+          downPaymentPercent = downPaymentAmount / homePrice;
           actualLoanAmount = homePrice - downPaymentAmount;
         }
         
-        // Calculate monthly interest rate
-        const monthlyInterestRate = interestRate / 12;
-        const totalPayments = loanTerm * 12;
+        // Validate minimum down payment
+        if (downPaymentPercent * 100 < country.minDownPayment) {
+          alert(`Minimum down payment for ${country.name} is ${country.minDownPayment}%. Please increase your down payment.`);
+          return;
+        }
         
-        // Calculate monthly payment using amortization formula
-        const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments);
-        const denominator = Math.pow(1 + monthlyInterestRate, totalPayments) - 1;
-        let monthlyPaymentAmount = actualLoanAmount * (numerator / denominator);
+        // Special handling for Saudi Arabia (Sharia-compliant financing)
+        let monthlyPaymentAmount;
+        let totalInterestPaid;
         
-        // Round to nearest cent
-        monthlyPaymentAmount = Math.round(monthlyPaymentAmount * 100) / 100;
-        
-        // Calculate total interest paid
-        const totalPaymentsAmount = monthlyPaymentAmount * totalPayments;
-        const totalInterestPaid = totalPaymentsAmount - actualLoanAmount;
+        if (countryCode === 'sa') {
+          // Simplified Musharakah Mutanaqisah model (diminishing partnership)
+          const profitRate = interestRate; // Using input as profit rate
+          const totalPayments = loanTerm * 12;
+          
+          // Total cost (purchase price + bank's profit)
+          const totalCost = homePrice * (1 + profitRate * loanTerm);
+          
+          // Monthly payment
+          monthlyPaymentAmount = totalCost / totalPayments;
+          
+          // Total "interest" (bank's profit)
+          totalInterestPaid = totalCost - homePrice;
+        } else {
+          // Standard amortization formula for other countries
+          const monthlyInterestRate = interestRate / 12;
+          const totalPayments = loanTerm * 12;
+          
+          // Calculate monthly payment using amortization formula
+          const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments);
+          const denominator = Math.pow(1 + monthlyInterestRate, totalPayments) - 1;
+          monthlyPaymentAmount = actualLoanAmount * (numerator / denominator);
+          
+          // Round to nearest cent
+          monthlyPaymentAmount = Math.round(monthlyPaymentAmount * 100) / 100;
+          
+          // Calculate total interest paid
+          const totalPaymentsAmount = monthlyPaymentAmount * totalPayments;
+          totalInterestPaid = totalPaymentsAmount - actualLoanAmount;
+        }
         
         // Update payment amount and total interest
-        monthlyPayment.textContent = monthlyPaymentAmount.toFixed(2);
-        totalInterest.textContent = `Total Interest: $${totalInterestPaid.toFixed(0)}`;
+        monthlyPayment.textContent = monthlyPaymentAmount.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        
+        totalInterest.textContent = `Total Interest: ${totalInterestPaid.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        })}`;
         
         // Update loan summary
         const summaryHTML = `
           <h3><i class="fas fa-home"></i> Loan Summary</h3>
-          <p>Your estimated monthly payment is $${monthlyPaymentAmount.toFixed(2)} based on a $${homePrice.toFixed(0)} home price with ${interestRate * 100}% interest over ${loanTerm} years.</p>
+          <p>Your estimated monthly payment is ${monthlyPaymentAmount.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })} based on a ${homePrice.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} home price with ${(interestRate * 100).toFixed(2)}% interest over ${loanTerm} years.</p>
           <h3><i class="fas fa-money-bill-wave"></i> Total Cost</h3>
-          <p>The total cost of the loan will be $${totalPaymentsAmount.toFixed(0)}, which includes $${totalInterestPaid.toFixed(0)} in interest payments.</p>
+          <p>The total cost of the loan will be ${(actualLoanAmount + totalInterestPaid).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })}, which includes ${totalInterestPaid.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} in ${countryCode === 'sa' ? 'bank profit' : 'interest payments'}.</p>
         `;
         
         loanSummary.innerHTML = summaryHTML;
         
-        // Generate amortization schedule
-        const tableBody = amortizationTable.querySelector('tbody');
-        tableBody.innerHTML = '';
-        
-        let remainingBalance = actualLoanAmount;
-        let paymentNumber = 1;
-        let currentMonth = new Date();
-        currentMonth.setMonth(currentMonth.getMonth() + 1); // Start next month
-        
-        for (let i = 0; i < totalPayments; i++) {
-          const interestPayment = remainingBalance * monthlyInterestRate;
-          const principalPayment = monthlyPaymentAmount - interestPayment;
-          remainingBalance -= principalPayment;
+        // Generate amortization schedule (not for Saudi Arabia's special financing)
+        if (countryCode !== 'sa') {
+          const tableBody = amortizationTable.querySelector('tbody');
+          tableBody.innerHTML = '';
           
-          const row = document.createElement('tr');
+          let remainingBalance = actualLoanAmount;
+          let paymentNumber = 1;
+          let currentMonth = new Date();
+          currentMonth.setMonth(currentMonth.getMonth() + 1); // Start next month
           
-          // Format payment date
-          const paymentDate = new Date(currentMonth);
-          const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-          const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+          for (let i = 0; i < loanTerm * 12; i++) {
+            const interestPayment = remainingBalance * (interestRate / 12);
+            const principalPayment = monthlyPaymentAmount - interestPayment;
+            remainingBalance -= principalPayment;
+            
+            // Prevent negative balance in last payment
+            if (remainingBalance < 0) remainingBalance = 0;
+            
+            const row = document.createElement('tr');
+            
+            // Format payment date
+            const paymentDate = new Date(currentMonth);
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+            
+            row.innerHTML = `
+              <td>${paymentNumber}</td>
+              <td>${dateStr}</td>
+              <td>${principalPayment.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${interestPayment.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${remainingBalance.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${monthlyPaymentAmount.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+            `;
+            
+            tableBody.appendChild(row);
+            
+            // Increment date
+            currentMonth.setMonth(currentMonth.getMonth() + 1);
+            paymentNumber++;
+            
+            // Stop when balance is paid off
+            if (remainingBalance <= 0) break;
+          }
           
-          row.innerHTML = `
-            <td>${paymentNumber}</td>
-            <td>${dateStr}</td>
-            <td>$${principalPayment.toFixed(2)}</td>
-            <td>$${interestPayment.toFixed(2)}</td>
-            <td>$${remainingBalance.toFixed(2)}</td>
-            <td>$${monthlyPaymentAmount.toFixed(2)}</td>
-          `;
-          
-          tableBody.appendChild(row);
-          
-          // Increment date
-          currentMonth.setMonth(currentMonth.getMonth() + 1);
-          paymentNumber++;
+          // Show amortization table
+          document.querySelector('.amortization-container').style.display = 'block';
+        } else {
+          // Hide amortization table for Saudi Arabia
+          document.querySelector('.amortization-container').style.display = 'none';
         }
         
         // Show result container
         resultContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
       
       // Add event listener to calculate button
       calculateBtn.addEventListener('click', calculateHomeLoan);
       
       // Also allow pressing Enter in input fields
-      homePriceInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
+      const inputs = [homePriceInput, downPaymentInput, interestRateInput, loanTermInput];
+      inputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateHomeLoan();
+        });
       });
       
-      downPaymentInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
-      });
-      
-      interestRateInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
-      });
-      
-      loanTermInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
+      // Set default values for demo purposes
+      window.addEventListener('load', () => {
+        homePriceInput.value = 350000;
+        downPaymentInput.value = "20%";
+        interestRateInput.value = 4.5;
+        loanTermInput.value = 30;
       });
     })();
 
