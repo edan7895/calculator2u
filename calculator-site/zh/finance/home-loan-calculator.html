@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>房贷计算器 | Calculator2U</title>
-<meta name="description" content="计算您的月度房贷还款额和总的利息费用" />
-<meta name="keywords" content="房贷计算器,抵押贷款计算器,贷款计算器,金融计算器" />
+<title>国际房贷计算器 | Calculator2U</title>
+<meta name="description" content="计算多个国家的月度房贷还款，包括美国、英国、德国、法国、新加坡、马来西亚、沙特阿拉伯" />
+<meta name="keywords" content="房贷计算器, 抵押贷款计算器, 贷款计算器, 财务计算器, 国际房贷" />
 <meta name="author" content="Calculator2U" />
 <link rel="canonical" href="https://www.calculator2u.com/zh/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
@@ -14,24 +14,14 @@
 <link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/home-loan-calculator.html" />
 <link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/home-loan-calculator.html" />
-<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html" />
-<meta property="og:title" content="房贷计算器 | Calculator2U" />
-<meta property="og:description" content="计算您的月度房贷还款额和总的利息费用" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/zh/finance/home-loan-calculator.html" />
+<meta property="og:title" content="国际房贷计算器 | Calculator2U" />
+<meta property="og:description" content="计算多个国家的月度房贷还款，包括美国、英国、德国、法国、新加坡、马来西亚、沙特阿拉伯" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.calculator2u.com/zh/finance/home-loan-calculator.html" />
 <meta property="og:image" content="https://www.calculator2u.com/assets/images/home-loan-calculator.jpg" />
 <meta property="og:locale" content="zh_CN" />
 <meta property="og:site_name" content="Calculator2U" />
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RLH4FLZBZF');
-</script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -51,10 +41,9 @@
     min-height: 100vh;
     background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
   }
-html, body {
-  overflow-x: hidden;
-}
-
+  html, body {
+    overflow-x: hidden;
+  }
 
   /* Header & Navigation */
   header {
@@ -112,7 +101,7 @@ html, body {
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  /* 多语言选择器样式 */
+  /* Language selector styles */
   .lang-selector {
     position: relative;
     display: inline-block;
@@ -280,7 +269,7 @@ box-sizing: border-box;
     color: #006d77;
   }
   
-  .input-field input {
+  .input-field input, .input-field select {
     padding: 0.8rem 1rem;
     border: 2px solid #e0f7fa;
     border-radius: 8px;
@@ -288,7 +277,7 @@ box-sizing: border-box;
     transition: border-color 0.3s;
   }
   
-  .input-field input:focus {
+  .input-field input:focus, .input-field select:focus {
     outline: none;
     border-color: #4db5bd;
     box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
@@ -423,7 +412,41 @@ box-sizing: border-box;
     margin-bottom: 0.8rem;
     line-height: 1.6;
   }
-
+  
+  .country-info {
+    background: #e8f4f8;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid #4db5bd;
+    display: none;
+  }
+  
+  .country-info h4 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .country-info h4 i {
+    font-size: 1.4rem;
+  }
+  
+  .country-info ul {
+    padding-left: 1.2rem;
+  }
+  
+  .country-info li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .country-info .flag-icon {
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
 
   /* Footer */
   footer {
@@ -558,10 +581,14 @@ box-sizing: border-box;
     .loan-container {
       grid-template-columns: 1fr;
     }
+    
+    .monthly-payment {
+      font-size: 2.8rem;
+    }
   }
   
-  /* 新增的小屏幕样式调整 */
-  @media (max-width: 430px) {
+  /* New styles for small screens */
+  @media (max-width: 480px) {
     body {
       font-size: 14px;
     }
@@ -575,7 +602,7 @@ box-sizing: border-box;
 
     .calculator-card, 
     .info-card {
-      padding: 1rem;
+      padding: 1.2rem;
       width: 100%;
       margin: 0;
       box-sizing: border-box;
@@ -633,7 +660,7 @@ box-sizing: border-box;
     }
     
     .monthly-payment {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
     
     .total-interest {
@@ -641,12 +668,16 @@ box-sizing: border-box;
     }
     
     .result-container {
-      padding: 1rem;
+      padding: 1.2rem;
     }
     
     .calculate-btn {
       padding: 0.8rem 1rem;
       font-size: 1rem;
+    }
+    
+    .country-info {
+      padding: 1rem;
     }
   }
 </style>
@@ -667,7 +698,7 @@ box-sizing: border-box;
       
       <ul class="nav-links" id="navLinks">
         <li><a href="/zh/health/index.html">健康与身体</a></li>
-        <li><a href="/zh/finance/index.html">金融与投资</a></li>
+        <li><a href="/zh/finance/index.html">财务与投资</a></li>
         <li><a href="/zh/education/index.html">教育与学习</a></li>
         <li><a href="/zh/engineering/index.html">工程与科学</a></li>
         <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
@@ -676,8 +707,8 @@ box-sizing: border-box;
         <li><a href="/about-zh.html">关于我们</a></li>
         <li class="lang-selector">
           <select id="lang-select" class="lang-select">
-            <option value="zh">中文 (Chinese)</option>
             <option value="en">English</option>
+            <option value="zh" selected>中文 (Chinese)</option>
             <option value="es">Español (Spanish)</option>
             <option value="de">Deutsch (German)</option>
             <option value="fr">Français (French)</option>
@@ -689,37 +720,61 @@ box-sizing: border-box;
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>房贷计算器</h1>
-    <p>计算您的月度房贷还款额和总的利息费用</p>
+    <h1>国际房贷计算器</h1>
+    <p>计算多个国家的月度房贷还款，包括美国、英国、德国、法国、新加坡、马来西亚、沙特阿拉伯</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">房贷计算器</h2>
+    <h2 class="section-title">国际房贷计算器</h2>
     
     <div class="loan-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="input-group">
           <div class="input-field">
-            <label for="home-price">房屋总价 ($)</label>
-            <input type="number" id="home-price" placeholder="请输入房屋价格" min="0">
+            <label for="country">选择国家</label>
+            <select id="country">
+              <option value="us">美国 🇺🇸</option>
+              <option value="uk">英国 🇬🇧</option>
+              <option value="de">德国 🇩🇪</option>
+              <option value="fr">法国 🇫🇷</option>
+              <option value="sg">新加坡 🇸🇬</option>
+              <option value="my">马来西亚 🇲🇾</option>
+              <option value="sa">沙特阿拉伯 🇸🇦</option>
+              <option value="other">其他国家</option>
+            </select>
           </div>
           
           <div class="input-field">
-            <label for="down-payment">首付 ($或%)</label>
-            <input type="text" id="down-payment" placeholder="请输入首付 (例如，20000或20%)">
+            <label for="home-price">房屋总价 ($)</label>
+            <input type="number" id="home-price" placeholder="请输入房屋总价" min="0">
           </div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="interest-rate">利率 (%)</label>
-            <input type="number" id="interest-rate" placeholder="请输入利率" min="0" step="0.01">
+            <label for="down-payment">首付 ($ 或 %)</label>
+            <input type="text" id="down-payment" placeholder="请输入首付 (例如，20000 或 20%)">
           </div>
           
           <div class="input-field">
+            <label for="interest-rate">利率 (%)</label>
+            <input type="number" id="interest-rate" placeholder="请输入利率" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
             <label for="loan-term">贷款期限 (年)</label>
             <input type="number" id="loan-term" placeholder="请输入贷款期限 (例如，25)" min="1" max="35">
+          </div>
+          
+          <div class="input-field">
+            <label for="loan-type">贷款类型</label>
+            <select id="loan-type">
+              <option value="fixed">固定利率</option>
+              <option value="variable">浮动利率</option>
+            </select>
           </div>
         </div>
         
@@ -730,7 +785,7 @@ box-sizing: border-box;
         <div class="result-container" id="result-container">
           <h3 class="result-header">您的贷款支付摘要</h3>
           <div class="monthly-payment" id="monthly-payment">1,200</div>
-          <div class="total-interest" id="total-interest">总利息: 85,000美元</div>
+          <div class="total-interest" id="total-interest">总利息: $85,000</div>
           
           <div class="health-advice" id="loan-summary">
             <h3><i class="fas fa-home"></i> 贷款摘要</h3>
@@ -738,22 +793,26 @@ box-sizing: border-box;
             <h3><i class="fas fa-money-bill-wave"></i> 总成本</h3>
             <p>贷款的总成本将是426,000美元，其中包括126,000美元的利息支付。</p>
           </div>
+          
+          <div class="country-info" id="country-info">
+            <!-- 国家特定信息将在这里动态生成 -->
+          </div>
         </div>
         
         <div class="amortization-container">
           <table class="amortization-table" id="amortization-table">
             <thead>
               <tr>
-                <th>付款期数</th>
-                <th>付款日期</th>
+                <th>还款期数</th>
+                <th>还款日期</th>
                 <th>本金</th>
                 <th>利息</th>
                 <th>余额</th>
-                <th>总付款</th>
+                <th>总还款额</th>
               </tr>
             </thead>
             <tbody>
-              <!-- 还款计划将在此处生成 -->
+              <!-- 还款计划将在这里动态生成 -->
             </tbody>
           </table>
         </div>
@@ -761,43 +820,47 @@ box-sizing: border-box;
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>了解房贷</h3>
-        <p>房贷，也称为抵押贷款，是一种用于融资购房的有担保贷款。房产本身作为贷款的抵押品。影响房贷支付的关键因素包括：</p>
+        <h3>了解国际房贷</h3>
+        <p>不同国家的房贷要求和实践差异很大。此计算器帮助您了解不同国家的房贷还款情况：</p>
+        
+        <h3>国家特定的贷款特征</h3>
         <ul>
-          <li><strong>房屋价格：</strong>房产的总成本</li>
-          <li><strong>首付：</strong>您预先支付的金额（通常是房价的10-20%）</li>
-          <li><strong>利率：</strong>借款成本，以百分比表示</li>
-          <li><strong>贷款期限：</strong>偿还贷款的时间长度（通常为15-30年）</li>
-          <li><strong>信用评分：</strong>影响您将获得的利率</li>
+          <li><strong>美国：</strong> 通常是15-30年固定利率房贷，包括房产税和保险</li>
+          <li><strong>英国：</strong> 提供还款和利息仅房贷，期限最长可达35年</li>
+          <li><strong>德国：</strong> 长固定利率期（10-30年），要求大额首付</li>
+          <li><strong>法国：</strong> 固定利率房贷，严格的贷款标准和强制性保险</li>
+          <li><strong>新加坡：</strong> 浮动利率常见，最高75%的贷款价值比</li>
+          <li><strong>马来西亚：</strong> 提供伊斯兰融资选项，最长35年期限</li>
+          <li><strong>沙特阿拉伯：</strong> 符合伊斯兰教法的融资，不收取利息</li>
         </ul>
         
-        <h3>房贷支付如何运作</h3>
-        <p>您的月度房贷支付是通过摊销公式确定的。支付包括随时间变化的本金和利息部分：</p>
+        <h3>房贷还款如何运作</h3>
+        <p>您的月度房贷还款是通过摊销公式确定的。还款包括随时间变化的本金和利息部分：</p>
         <ul>
-          <li>在开始时，您的大部分支付用于利息</li>
-          <li>随着时间的推移，更多的支付用于减少本金余额</li>
-          <li>在固定利率贷款的整个期限内，支付金额保持不变</li>
+          <li>在开始时，您的大部分还款用于支付利息</li>
+          <li>随着时间的推移，更多的还款用于减少本金余额</li>
+          <li>在固定利率贷款的整个期限内，还款金额保持不变</li>
         </ul>
         
-        <h3>影响利率的因素</h3>
-        <p>贷款机构在确定房贷利率时会考虑几个因素：</p>
+        <h3>影响您的利率的因素</h3>
+        <p>贷款机构在确定您的房贷利率时会考虑几个因素：</p>
         <ul>
-          <li><strong>信用评分：</strong>较高的信用评分通常会导致较低的利率</li>
-          <li><strong>贷款期限：</strong>较长的期限通常利率较高</li>
-          <li><strong>首付：</strong>较大的首付款可能导致更好的利率</li>
-          <li><strong>房产类型：</strong>自住房的利率通常低于投资房产</li>
-          <li><strong>市场状况：</strong>经济因素影响整体利率水平</li>
+          <li><strong>信用评分：</strong> 较高的信用评分通常会导致较低的利率</li>
+          <li><strong>贷款期限：</strong> 较长的期限通常利率较高</li>
+          <li><strong>首付：</strong> 较大的首付款可能导致更好的利率</li>
+          <li><strong>房产类型：</strong> 自住房的利率通常低于投资房产</li>
+          <li><strong>市场状况：</strong> 经济因素影响整体利率水平</li>
         </ul>
         
         <div class="health-advice">
-          <h3><i class="fas fa-lightbulb"></i> 贷款建议</h3>
-          <p>在申请房贷之前，请考虑以下建议以获得最佳交易：</p>
+          <h3><i class="fas fa-lightbulb"></i> 国际贷款小贴士</h3>
+          <p>在考虑其他国家的房贷时：</p>
           <ul>
-            <li>检查您的信用评分和报告是否有错误</li>
-            <li>货比三家，寻找最佳利率</li>
-            <li>考虑房屋所有权的总成本，而不仅仅是月度支付</li>
-            <li>选择一个在可承受的月度支付与最少利息成本之间取得平衡的贷款期限</li>
-            <li>如果可能，至少支付20%的首付以避免私人抵押贷款保险</li>
+            <li>研究当地的借贷法规和要求</li>
+            <li>了解如果以不同货币收入的货币兑换风险</li>
+            <li>考虑在您的家乡和房产国家的税务影响</li>
+            <li>与了解市场的当地按揭经纪合作</li>
+            <li>考虑额外成本，如房产税、保险和维护费用</li>
           </ul>
         </div>
       </div>
@@ -808,15 +871,15 @@ box-sizing: border-box;
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>您值得信赖的金融计算器和金融工具来源。自2025年以来，帮助您做出明智的财务决策。</p>
+        <p>您值得信赖的国际财务计算器和财务工具来源。自2025年以来，帮助您做出明智的财务决策。</p>
       </div>
       <div class="footer-column">
-        <h3>其他有用的计算器</h3>
+        <h3>国际计算器</h3>
         <ul class="footer-links">
-          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
-          <li><a href="/zh/finance/compound-interest-calculator.html">复利计算器</a></li>
-          <li><a href="/zh/finance/loan-calculator.html">贷款计算器</a></li>
-          <li><a href="/zh/finance/retirement-savings-calculator.html">退休储蓄计算器</a></li>
+          <li><a href="/zh/finance/international-tax-calculator.html">国际税收计算器</a></li>
+          <li><a href="/zh/finance/currency-converter.html">货币转换器</a></li>
+          <li><a href="/zh/finance/expat-mortgage-calculator.html">侨民房贷计算器</a></li>
+          <li><a href="/zh/finance/cost-of-living-comparison.html">生活成本比较</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -824,6 +887,7 @@ box-sizing: border-box;
         <ul class="footer-links">
           <li><a href="/privacy-zh.html">隐私政策</a></li>
           <li><a href="/terms-zh.html">服务条款</a></li>
+          <li><a href="/disclaimer-zh.html">财务免责声明</a></li>
         </ul>
       </div>
     </div>
@@ -832,7 +896,7 @@ box-sizing: border-box;
         <a href="/privacy-zh.html">隐私政策</a> | 
         <a href="/terms-zh.html">服务条款</a>
       </p>
-      <p><small>注意：这些计算器仅提供估算值。请咨询财务顾问以获得个性化建议。</small></p>
+      <p><small>注意：这些计算器仅提供估算值。请咨询财务顾问以获取个性化建议。利率和条款因国家而异。</small></p>
     </div>
   </footer>
 
@@ -867,7 +931,7 @@ box-sizing: border-box;
         const currentPath = window.location.pathname;
         const pathSegments = currentPath.split('/');
         
-        // 确定金融部分的基路径
+        // 确定财务部分的基路径
         let financePath = '';
         if (currentPath.includes('/finance/')) {
           const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
@@ -906,11 +970,117 @@ box-sizing: border-box;
         }
       }
       
+      // 国家数据 - 各国贷款特征
+      const countryData = {
+        us: {
+          name: "美国",
+          flag: "🇺🇸",
+          maxTerm: 30,
+          minDownPayment: 3,
+          avgRate: 6.5,
+          info: "在美国，固定利率房贷最为常见。财产税和保险通常包含在月度还款中。联邦住房管理局贷款允许低至3.5%的首付。"
+        },
+        uk: {
+          name: "英国",
+          flag: "🇬🇧",
+          maxTerm: 35,
+          minDownPayment: 5,
+          avgRate: 5.2,
+          info: "英国有还款型和利息仅房贷。印花税是一项重要的额外成本。首次购房者可享受帮助购房计划。"
+        },
+        de: {
+          name: "德国",
+          flag: "🇩🇪",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 3.8,
+          info: "德国房贷通常需要大额首付（20-40%）。固定利率期限为10-30年常见。公证和土地登记费用增加10-15%的购买成本。"
+        },
+        fr: {
+          name: "法国",
+          flag: "🇫🇷",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 4.0,
+          info: "法国房贷要求强大的财务状况。强制性人寿保险。公证费用高（占房产价值的7-8%）。"
+        },
+        sg: {
+          name: "新加坡",
+          flag: "🇸🇬",
+          maxTerm: 30,
+          minDownPayment: 25,
+          avgRate: 3.8,
+          info: "新加坡房贷的最大贷款价值比为75%。对外国人适用额外买家印花税。浮动利率常见，与新加坡银行间利率或新加坡隔夜利率挂钩。"
+        },
+        my: {
+          name: "马来西亚",
+          flag: "🇲🇾",
+          maxTerm: 35,
+          minDownPayment: 10,
+          avgRate: 4.2,
+          info: "马来西亚提供传统和伊斯兰融资。最长期限为35年或至65-70岁。首次购房者有印花税豁免。"
+        },
+        sa: {
+          name: "沙特阿拉伯",
+          flag: "🇸🇦",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 0, // 符合伊斯兰教法的融资不收取利息
+          info: "沙特阿拉伯使用符合伊斯兰教法的融资，不收取利息。相反，银行通过租金或转售利润获利。国家计划如 Sakani 协助公民。"
+        },
+        other: {
+          name: "其他国家",
+          flag: "🌍",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 5.0,
+          info: "对于其他国家，显示典型房贷条款。实际要求差异很大。请咨询当地贷方以了解国家特定的法规和要求。"
+        }
+      };
+      
+      // 设置国家默认值
+      function setCountryDefaults() {
+        const countrySelect = document.getElementById('country');
+        const loanTermInput = document.getElementById('loan-term');
+        const interestRateInput = document.getElementById('interest-rate');
+        
+        const countryCode = countrySelect.value;
+        const country = countryData[countryCode];
+        
+        // 根据国家设置最大期限
+        loanTermInput.max = country.maxTerm;
+        
+        // 如果为空，设置占位符利率
+        if (!interestRateInput.value && country.avgRate > 0) {
+          interestRateInput.placeholder = `平均: ${country.avgRate}%`;
+        }
+        
+        // 更新国家信息部分
+        const countryInfo = document.getElementById('country-info');
+        countryInfo.innerHTML = `
+          <h4><span class="flag-icon">${country.flag}</span> ${country.name} 房贷信息</h4>
+          <ul>
+            <li>最大贷款期限: ${country.maxTerm} 年</li>
+            <li>最低首付: ${country.minDownPayment}%</li>
+            ${country.avgRate > 0 ? `<li>平均利率: ${country.avgRate}%</li>` : ''}
+            <li>${country.info}</li>
+          </ul>
+        `;
+        countryInfo.style.display = 'block';
+      }
+      
+      // 初始化国家默认值
+      setCountryDefaults();
+      
+      // 国家更改时更新
+      document.getElementById('country').addEventListener('change', setCountryDefaults);
+      
       // 房贷计算器功能
       const homePriceInput = document.getElementById('home-price');
       const downPaymentInput = document.getElementById('down-payment');
       const interestRateInput = document.getElementById('interest-rate');
       const loanTermInput = document.getElementById('loan-term');
+      const loanTypeSelect = document.getElementById('loan-type');
       const calculateBtn = document.getElementById('calculate-btn');
       const resultContainer = document.getElementById('result-container');
       const monthlyPayment = document.getElementById('monthly-payment');
@@ -924,116 +1094,223 @@ box-sizing: border-box;
         const downPayment = downPaymentInput.value;
         const interestRate = parseFloat(interestRateInput.value) / 100;
         const loanTerm = parseInt(loanTermInput.value);
+        const loanType = loanTypeSelect.value;
+        const countryCode = document.getElementById('country').value;
+        const country = countryData[countryCode];
         
         if (!homePrice || !interestRate || !loanTerm || homePrice <= 0 || interestRate <= 0 || loanTerm <= 0) {
           alert('请输入有效的房屋价格、利率和贷款期限。');
           return;
         }
         
-        // 计算首付后的实际贷款金额
+        // 验证贷款期限是否符合国家最大期限
+        if (loanTerm > country.maxTerm) {
+          alert(` ${country.name} 的最大贷款期限是 ${country.maxTerm} 年。请调整您的贷款期限。`);
+          loanTermInput.value = country.maxTerm;
+          return;
+        }
+        
+        // 计算首付后实际贷款金额
         let actualLoanAmount;
+        let downPaymentAmount;
+        let downPaymentPercent;
+        
         if (downPayment.includes('%')) {
-          const downPaymentPercent = parseFloat(downPayment.replace('%', '')) / 100;
+          downPaymentPercent = parseFloat(downPayment.replace('%', '')) / 100;
+          downPaymentAmount = homePrice * downPaymentPercent;
           actualLoanAmount = homePrice * (1 - downPaymentPercent);
         } else {
-          const downPaymentAmount = parseFloat(downPayment);
+          downPaymentAmount = parseFloat(downPayment);
+          downPaymentPercent = downPaymentAmount / homePrice;
           actualLoanAmount = homePrice - downPaymentAmount;
         }
         
-        // 计算月利率
-        const monthlyInterestRate = interestRate / 12;
-        const totalPayments = loanTerm * 12;
+        // 验证最低首付
+        if (downPaymentPercent * 100 < country.minDownPayment) {
+          alert(` ${country.name} 的最低首付是 ${country.minDownPayment}%。请增加您的首付金额。`);
+          return;
+        }
         
-        // 使用摊销公式计算月付款
-        const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments);
-        const denominator = Math.pow(1 + monthlyInterestRate, totalPayments) - 1;
-        let monthlyPaymentAmount = actualLoanAmount * (numerator / denominator);
+        // 特殊处理沙特阿拉伯（符合伊斯兰教法的融资）
+        let monthlyPaymentAmount;
+        let totalInterestPaid;
         
-        // 四舍五入到最近的分
-        monthlyPaymentAmount = Math.round(monthlyPaymentAmount * 100) / 100;
+        if (countryCode === 'sa') {
+          // 简化的递减合伙模型
+          const profitRate = interestRate; // 使用输入作为利润率
+          const totalPayments = loanTerm * 12;
+          
+          // 总成本（购买价格 + 银行利润）
+          const totalCost = homePrice * (1 + profitRate * loanTerm);
+          
+          // 月度还款额
+          monthlyPaymentAmount = totalCost / totalPayments;
+          
+          // 总“利息”（银行利润）
+          totalInterestPaid = totalCost - homePrice;
+        } else {
+          // 其他国家的标准摊销公式
+          const monthlyInterestRate = interestRate / 12;
+          const totalPayments = loanTerm * 12;
+          
+          // 使用摊销公式计算月度还款额
+          const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments);
+          const denominator = Math.pow(1 + monthlyInterestRate, totalPayments) - 1;
+          monthlyPaymentAmount = actualLoanAmount * (numerator / denominator);
+          
+          // 四舍五入到最近的分
+          monthlyPaymentAmount = Math.round(monthlyPaymentAmount * 100) / 100;
+          
+          // 计算支付的总利息
+          const totalPaymentsAmount = monthlyPaymentAmount * totalPayments;
+          totalInterestPaid = totalPaymentsAmount - actualLoanAmount;
+        }
         
-        // 计算总利息支付
-        const totalPaymentsAmount = monthlyPaymentAmount * totalPayments;
-        const totalInterestPaid = totalPaymentsAmount - actualLoanAmount;
+        // 更新还款额和总利息
+        monthlyPayment.textContent = monthlyPaymentAmount.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
         
-        // 更新付款金额和总利息
-        monthlyPayment.textContent = monthlyPaymentAmount.toFixed(2);
-        totalInterest.textContent = `总利息: $${totalInterestPaid.toFixed(0)}`;
+        totalInterest.textContent = `总利息: ${totalInterestPaid.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        })}`;
         
         // 更新贷款摘要
         const summaryHTML = `
           <h3><i class="fas fa-home"></i> 贷款摘要</h3>
-          <p>基于300,000美元的房价，4.5%的利率和25年的期限，您的估计月付款为${monthlyPaymentAmount.toFixed(2)}美元。</p>
+          <p>基于 ${homePrice.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} 的房价，${(interestRate * 100).toFixed(2)}% 的利率和 ${loanTerm} 年的期限，您的估计月还款额为 ${monthlyPaymentAmount.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}。</p>
           <h3><i class="fas fa-money-bill-wave"></i> 总成本</h3>
-          <p>贷款的总成本将是$${totalPaymentsAmount.toFixed(0)}，其中包括$${totalInterestPaid.toFixed(0)}的利息支付。</p>
+          <p>贷款的总成本将是 ${(actualLoanAmount + totalInterestPaid).toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })}，其中包括 ${totalInterestPaid.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} 的 ${countryCode === 'sa' ? '银行利润' : '利息支付'}。</p>
         `;
         
         loanSummary.innerHTML = summaryHTML;
         
-        // 生成摊销计划
-        const tableBody = amortizationTable.querySelector('tbody');
-        tableBody.innerHTML = '';
-        
-        let remainingBalance = actualLoanAmount;
-        let paymentNumber = 1;
-        let currentMonth = new Date();
-        currentMonth.setMonth(currentMonth.getMonth() + 1); // 从下个月开始
-        
-        for (let i = 0; i < totalPayments; i++) {
-          const interestPayment = remainingBalance * monthlyInterestRate;
-          const principalPayment = monthlyPaymentAmount - interestPayment;
-          remainingBalance -= principalPayment;
+        // 生成摊销计划（沙特阿拉伯的特殊融资除外）
+        if (countryCode !== 'sa') {
+          const tableBody = amortizationTable.querySelector('tbody');
+          tableBody.innerHTML = '';
           
-          const row = document.createElement('tr');
+          let remainingBalance = actualLoanAmount;
+          let paymentNumber = 1;
+          let currentMonth = new Date();
+          currentMonth.setMonth(currentMonth.getMonth() + 1); // 从下个月开始
           
-          // 格式化付款日期
-          const paymentDate = new Date(currentMonth);
-          const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-          const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+          for (let i = 0; i < loanTerm * 12; i++) {
+            const interestPayment = remainingBalance * (interestRate / 12);
+            const principalPayment = monthlyPaymentAmount - interestPayment;
+            remainingBalance -= principalPayment;
+            
+            // 防止最后付款出现负余额
+            if (remainingBalance < 0) remainingBalance = 0;
+            
+            const row = document.createElement('tr');
+            
+            // 格式化付款日期
+            const paymentDate = new Date(currentMonth);
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+            
+            row.innerHTML = `
+              <td>${paymentNumber}</td>
+              <td>${dateStr}</td>
+              <td>${principalPayment.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${interestPayment.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${remainingBalance.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${monthlyPaymentAmount.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+            `;
+            
+            tableBody.appendChild(row);
+            
+            // 增加日期
+            currentMonth.setMonth(currentMonth.getMonth() + 1);
+            paymentNumber++;
+            
+            // 平衡付清后停止
+            if (remainingBalance <= 0) break;
+          }
           
-          row.innerHTML = `
-            <td>${paymentNumber}</td>
-            <td>${dateStr}</td>
-            <td>$${principalPayment.toFixed(2)}</td>
-            <td>$${interestPayment.toFixed(2)}</td>
-            <td>$${remainingBalance.toFixed(2)}</td>
-            <td>$${monthlyPaymentAmount.toFixed(2)}</td>
-          `;
-          
-          tableBody.appendChild(row);
-          
-          // 增加日期
-          currentMonth.setMonth(currentMonth.getMonth() + 1);
-          paymentNumber++;
+          // 显示摊销表
+          document.querySelector('.amortization-container').style.display = 'block';
+        } else {
+          // 隐藏沙特阿拉伯的摊销表
+          document.querySelector('.amortization-container').style.display = 'none';
         }
         
         // 显示结果容器
         resultContainer.style.display = 'block';
+        
+        // 滚动到结果
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
       
       // 为计算按钮添加事件监听器
       calculateBtn.addEventListener('click', calculateHomeLoan);
       
       // 允许在输入字段中按Enter键
-      homePriceInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
+      const inputs = [homePriceInput, downPaymentInput, interestRateInput, loanTermInput];
+      inputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateHomeLoan();
+        });
       });
       
-      downPaymentInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
-      });
-      
-      interestRateInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
-      });
-      
-      loanTermInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') calculateHomeLoan();
+      // 为演示目的设置默认值
+      window.addEventListener('load', () => {
+        homePriceInput.value = 350000;
+        downPaymentInput.value = "20%";
+        interestRateInput.value = 4.5;
+        loanTermInput.value = 30;
       });
     })();
 
-    // 为小屏幕添加额外的响应式设计
+    // 为小屏幕增加额外的响应性
     window.addEventListener('resize', function() {
       if (window.innerWidth <= 768) {
         document.querySelector('.loan-container').style.gridTemplateColumns = '1fr';
