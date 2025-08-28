@@ -1,13 +1,809 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>计算器 - 正在翻译中</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>生成器工具 | Calculator2U</title>
+<meta name="description" content="全面的生成器工具，包括密码、邮箱、用户名、随机数、二维码、WiFi 二维码、发票和工资单生成器。" />
+<meta name="keywords" content="生成器工具, 密码生成器, 邮箱生成器, 用户名生成器, 随机数生成器, 二维码生成器, WiFi 二维码生成器, 发票生成器, 工资单生成器" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/zh/generator/index.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/generator/index.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/generator/index.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/generator/index.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/generator/index.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/generator/index.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/generator/index.html" />
+<meta property="og:title" content="生成器工具 | Calculator2U" />
+<meta property="og:description" content="全面的生成器工具，包括密码、邮箱、用户名、随机数、二维码、WiFi 二维码、发票和工资单生成器。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/zh/generator/index.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/generator-banner.jpg" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 多语言选择器样式 */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 200px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-item i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffd166;
+  }
+
+  .stat-item h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-item p {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .category-card {
+    background-color: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(0, 109, 119, 0.1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .category-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #008891;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .category-card i {
+    font-size: 3rem;
+    color: #008891;
+    margin-bottom: 1.2rem;
+  }
+
+  .category-card h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #008891;
+    margin-bottom: 0.8rem;
+  }
+
+  .category-card p {
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+
+  /* How It Works Section */
+  .how-it-works {
+    margin: 3rem 0;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .step {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd166;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+
+  .step i {
+    font-size: 2.5rem;
+    color: #008891;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+  }
+
+  .step p {
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .category-grid {
+      gap: 1.5rem;
+    }
+    
+    .category-card {
+      padding: 1.8rem 1.2rem;
+    }
+    
+    .stat-item {
+      min-width: 180px;
+      padding: 1.2rem;
+    }
+    
+    .lang-selector {
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .stat-item h3 {
+      font-size: 1.8rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+      padding: 1.5rem 1rem;
+    }
+    
+    .category-card i {
+      font-size: 2.5rem;
+    }
+    
+    .category-card h2 {
+      font-size: 1.4rem;
+    }
+    
+    .hero-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-item {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .step {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>页面正在翻译中</h1>
-  <p>我们正在将此页面翻译为中文，稍后将上线完整版本。您可以先访问 <a href="/index.html">英文版</a>。</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-zh.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/zh/health/index.html" class="active">健康与身体</a></li>
+        <li><a href="/zh/finance/index.html">金融与投资</a></li>
+        <li><a href="/zh/education/index.html">教育与学习</a></li>
+        <li><a href="/zh/engineering/index.html">工程与科学</a></li>
+        <li><a href="/zh/daily-life/index.html">工作与生活</a></li>
+        <li><a href="/zh/generator/index.html">生成器</a></li>
+        <li><a href="/zh/games/index.html">游戏</a></li>
+        <li><a href="/about-zh.html">关于我们</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>生成器工具</h1>
+    <p>全面的工具，帮助您快速高效地生成各种类型的数据。从密码到发票，我们的生成器旨在为您节省时间和精力。</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <h3>30万+</h3>
+        <p>月活跃用户</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-magic"></i>
+        <h3>8+</h3>
+        <p>种生成器</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-globe"></i>
+        <h3>100+</h3>
+        <p>个国家</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">生成器工具</h2>
+
+    <div class="category-grid">
+      <a href="/zh/generator/password-generator.html" class="category-card">
+        <i class="fas fa-lock"></i>
+        <h2>密码生成器</h2>
+        <p>创建强大、安全的密码，可自定义长度和字符集，保护您的账户安全。</p>
+      </a>
+      <a href="/zh/generator/email-generator.html" class="category-card">
+        <i class="fas fa-at"></i>
+        <h2>邮箱生成器</h2>
+        <p>生成符合不同域名格式的有效电子邮件地址，用于测试目的。</p>
+      </a>
+      <a href="/zh/generator/username-generator.html" class="category-card">
+        <i class="fas fa-user"></i>
+        <h2>用户名生成器</h2>
+        <p>为社交媒体、游戏或任何在线平台创建独特的用户名。</p>
+      </a>
+      <a href="/zh/generator/random-number-generator.html" class="category-card">
+        <i class="fas fa-random"></i>
+        <h2>随机数生成器</h2>
+        <p>在指定范围内生成随机数，用于游戏、研究或决策。</p>
+      </a>
+      <a href="/zh/generator/qr-code-generator.html" class="category-card">
+        <i class="fas fa-qrcode"></i>
+        <h2>二维码生成器</h2>
+        <p>为网址、文本、联系信息或社交媒体资料创建自定义二维码。</p>
+      </a>
+      <a href="/zh/generator/wifi-qr-code-generator.html" class="category-card">
+        <i class="fas fa-wifi"></i>
+        <h2>WiFi 二维码生成器</h2>
+        <p>生成安全共享 WiFi 网络详情的二维码，便于连接。</p>
+      </a>
+      <a href="/zh/generator/invoice-generator.html" class="category-card">
+        <i class="fas fa-file-invoice"></i>
+        <h2>发票生成器</h2>
+        <p>使用可自定义模板为企业交易创建专业发票。</p>
+      </a>
+      <a href="/zh/generator/payslip-generator.html" class="category-card">
+        <i class="fas fa-file-alt"></i>
+        <h2>工资单生成器</h2>
+        <p>生成包含所有必要详情的准确工资单，用于员工或个人记录保存。</p>
+      </a>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works">
+      <h2 class="section-title">我们的生成器如何为您提供帮助</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <i class="fas fa-edit"></i>
+          <h3>选择生成器</h3>
+          <p>从我们的集合中选择符合您需求的特定生成器工具。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <i class="fas fa-cog"></i>
+          <h3>自定义设置</h3>
+          <p>调整长度、格式或内容等参数，根据您的要求定制输出。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <i class="fas fa-magic"></i>
+          <h3>生成</h3>
+          <p>点击生成按钮，通过我们的高效算法即时创建您的数据。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <i class="fas fa-download"></i>
+          <h3>使用或下载</h3>
+          <p>复制、下载或直接为项目或任务使用生成的内容。</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>您值得信赖的生成器工具和生产力辅助工具来源。自 2025 年以来，提供高效、可靠的数据生成服务。</p>
+      </div>
+      <div class="footer-column">
+        <h3>其他实用工具</h3>
+        <ul class="footer-links">
+          <li><a href="/zh/health/body-fat-calculator.html">体脂率计算器</a></li>
+          <li><a href="/zh/finance/compound-interest-calculator.html">复利计算器</a></li>
+          <li><a href="/zh/finance/home-loan-calculator.html">住房贷款计算器</a></li>
+          <li><a href="/zh/finance/auto-loan-calculator.html">汽车贷款计算器</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>法律信息</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-zh.html">隐私政策</a></li>
+          <li><a href="/terms-zh.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. 保留所有权利。 | 
+        <a href="/privacy-zh.html">隐私政策</a> | 
+        <a href="/terms-zh.html">服务条款</a>
+      </p>
+      <p><small>注意：这些生成器仅提供示例数据。生成的信息在正式使用前请验证。</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the generator section
+        let generatorPath = '';
+        if (currentPath.includes('/generator/')) {
+          const generatorIndex = pathSegments.findIndex(segment => segment === 'generator');
+          if (generatorIndex !== -1) {
+            generatorPath = pathSegments.slice(generatorIndex).join('/');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = generatorPath ? `/en/${generatorPath}` : '/en/generator/index.html';
+            break;
+          case 'es':
+            targetUrl = generatorPath ? `/es/${generatorPath}` : '/es/generator/index.html';
+            break;
+          case 'de':
+            targetUrl = generatorPath ? `/de/${generatorPath}` : '/de/generator/index.html';
+            break;
+          case 'fr':
+            targetUrl = generatorPath ? `/fr/${generatorPath}` : '/fr/generator/index.html';
+            break;
+          default: // Chinese
+            targetUrl = generatorPath ? `/zh/${generatorPath}` : '/zh/generator/index.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>
