@@ -1,13 +1,1251 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de TMB | Calculator2U</title>
+<meta name="description" content="Calcule su Tasa Metabólica Basal para comprender sus necesidades calóricas diarias y planificar su dieta en consecuencia." />
+<meta name="keywords" content="calculadora TMB, tasa metabólica basal, calculadora de salud, necesidades calóricas" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/health/bmr-calculator.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/bmr-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/bmr-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/bmr-calculator.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/bmr-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/bmr-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/es/health/bmr-calculator.html "/>
+<meta property="og:title" content="Calculadora de TMB | Calculator2U" />
+<meta property="og:description" content="Calcule su Tasa Metabólica Basal para comprender sus necesidades calóricas diarias y planificar su dieta en consecuencia." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/health/bmr-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/bmr-calculator.jpg " />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+html, body {
+  overflow-x: hidden;
+}
+
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Selector de idioma */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* New BMR Calculator Styles */
+  .bmr-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .bmr-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .unit-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+@media (max-width: 400px) {
+  .unit-toggle {
+    flex-direction: column;
+  }
+}
+
+  .unit-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .unit-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* FIXED: Improved responsive styles for small screens */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 0 0.5rem; /* Reduced padding for small screens */
+    }
+
+    .bmr-container {
+      padding: 0 0.5rem; /* Reduced padding for small screens */
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem; /* Reduced card padding for small screens */
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+    }
+    
+    /* Added scroll for tables on small screens */
+    .info-card {
+      overflow-x: auto;
+    }
+    
+    .reference-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    
+    .reference-table {
+      min-width: 100%; /* Changed from 600px to 100% */
+      font-size: 0.85rem; /* Smaller font for better fit */
+    }
+    
+    /* Ensure table cells wrap properly */
+    .reference-table th,
+    .reference-table td {
+      padding: 0.5rem; /* Smaller padding */
+      word-break: break-word; /* Allow words to break */
+      white-space: normal; /* Allow text wrapping */
+    }
+    
+    /* Ensure inputs don't overflow */
+    .input-field input,
+    .input-field select {
+      max-width: 100%;
+    }
+    
+    /* Adjust chart labels */
+    .chart-labels {
+      font-size: 0.8rem;
+    }
+    
+    /* Reduce hero padding */
+    .hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .bmr-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .bmr-classification {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  .health-advice {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+  }
+  
+  .health-advice h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+  }
+  
+  .activity-level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    background: #f0f9ff;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .activity-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .activity-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  .target-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .target-option.active {
+    background: #006d77;
+    color: white;
+    border-color: #004d55;
+  }
+  
+  /* 修复：添加表格容器 */
+  .reference-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .reference-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .reference-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .reference-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .reference-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .bmr-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Acerca de Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es" selected>Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculadora de Tasa Metabólica Basal</h1>
+    <p>Calcule su TMB para comprender sus necesidades calóricas diarias para una salud óptima</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora de TMB</h2>
+    
+    <div class="bmr-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="unit-toggle">
+          <div class="unit-option active" id="metric-option">Métrico (kg, cm)</div>
+          <div class="unit-option" id="imperial-option">Imperial (lb, in)</div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="gender">Género</label>
+            <select id="gender">
+              <option value="">Seleccione género</option>
+              <option value="male">Masculino</option>
+              <option value="female">Femenino</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="age">Edad (años)</label>
+            <input type="number" id="age" placeholder="Ingrese edad" min="0" max="120">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="weight" id="weight-label">Peso (kg)</label>
+            <input type="number" id="weight" placeholder="Ingrese peso" min="0" step="0.1">
+          </div>
+          
+          <div class="input-field">
+            <label for="height" id="height-label">Altura (cm)</label>
+            <input type="number" id="height" placeholder="Ingrese altura" min="0" step="0.1">
+          </div>
+        </div>
+        
+        <div class="activity-level">
+          <div class="activity-option" data-multiplier="1.2">
+            <i class="fas fa-couch"></i>
+            <p>Sedentario<br>(Poco o ningún ejercicio)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.375">
+            <i class="fas fa-walking"></i>
+            <p>Ligera Actividad<br>(Ejercicio ligero/deportes 1-3 días/semana)</p>
+          </div>
+          <div class="activity-option active" data-multiplier="1.55">
+            <i class="fas fa-running"></i>
+            <p>Moderadamente Activo<br>(Ejercicio moderado/deportes 3-5 días/semana)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.725">
+            <i class="fas fa-dumbbell"></i>
+            <p>Muy Activo<br>(Ejercicio intenso/deportes 6-7 días/semana)</p>
+          </div>
+          <div class="activity-option" data-multiplier="1.9">
+            <i class="fas fa-hard-hat"></i>
+            <p>Súper Activo<br>(Ejercicio muy intenso/trabajo físico)</p>
+          </div>
+        </div>
+        
+        <div class="activity-level">
+          <div class="target-option active" id="maintenance">
+            <i class="fas fa-balance-scale"></i>
+            <p>Mantener Peso</p>
+          </div>
+          <div class="target-option" id="lose">
+            <i class="fas fa-arrow-down"></i>
+            <p>Perder Peso</p>
+          </div>
+          <div class="target-option" id="gain">
+            <i class="fas fa-arrow-up"></i>
+            <p>Ganar Peso</p>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calcular TMB
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Su Resultado de TMB</h3>
+          <div class="bmr-value" id="bmr-value">1800</div>
+          <div class="bmr-classification" id="bmr-classification">Calorías Diarias Necesarias</div>
+          
+          <div class="health-advice" id="health-advice">
+            <h3><i class="fas fa-heartbeat"></i> Necesidades Calóricas Diarias</h3>
+            <p>Su Tasa Metabólica Basal estimada es de 1800 calorías por día. Este es el número mínimo de calorías que su cuerpo necesita para funcionar en reposo.</p>
+            <h3><i class="fas fa-lightbulb"></i> Ajuste por Nivel de Actividad</h3>
+            <p>Basado en su nivel de actividad, su gasto energético total diario es de aproximadamente 2200 calorías.</p>
+            <h3><i class="fas fa-bullseye"></i> Ajuste por Objetivo</h3>
+            <p>Para mantener el peso, consuma aproximadamente 2200 calorías por día.<br>
+               Para perder peso, consuma aproximadamente 1800 calorías por día.<br>
+               Para ganar peso, consuma aproximadamente 2600 calorías por día.</p>
+          </div>
+          
+          <div class="health-advice" id="diet-advice">
+            <h3><i class="fas fa-utensils"></i> Recomendaciones Dietéticas</h3>
+            <p>Basado en su TMB y objetivos, aquí tiene un enfoque dietético equilibrado:</p>
+            <ul>
+              <li><strong>Carbohidratos:</strong> 45-65% de las calorías diarias</li>
+              <li><strong>Proteínas:</strong> 10-35% de las calorías diarias</li>
+              <li><strong>Grasas:</strong> 20-35% de las calorías diarias</li>
+            </ul>
+            <p>Alimentos para incluir: granos enteros, proteínas magras, grasas saludables, frutas y verduras.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Comprendiendo la TMB</h3>
+        <p>La Tasa Metabólica Basal (TMB) es el número de calorías que su cuerpo necesita para mantener funciones fisiológicas básicas en reposo. Representa aproximadamente el 60-75% de su gasto energético total diario. Los factores comunes que afectan la TMB incluyen edad, género, peso, altura, composición corporal, genética y estado hormonal.</p>
+        
+        <h3>Fórmulas de Cálculo de TMB</h3>
+        <p>Se utilizan dos fórmulas populares para estimar la TMB:</p>
+        <p><strong>1. Ecuación de Harris-Benedict</strong></p>
+        <ul>
+          <li>Masculino: <em>TMB = 88.362 + (13.397 × peso en kg) + (4.799 × altura en cm) - (5.677 × edad)</em></li>
+          <li>Femenino: <em>TMB = 447.593 + (9.247 × peso en kg) + (3.098 × altura en cm) - (4.330 × edad)</em></li>
+        </ul>
+        <p><strong>2. Ecuación de Mifflin-St Jeor</strong></p>
+        <ul>
+          <li>Masculino: <em>TMB = (10 × peso en kg) + (6.25 × altura en cm) - (5 × edad) + 5</em></li>
+          <li>Femenino: <em>TMB = (10 × peso en kg) + (6.25 × altura en cm) - (5 × edad) - 161</em></li>
+        </ul>
+        
+        <h3>TMB y Necesidades Calóricas Diarias</h3>
+        <p>Sus necesidades calóricas totales diarias se calculan multiplicando su TMB por un factor de actividad:</p>
+        <table class="reference-table">
+          <thead>
+            <tr>
+              <th>Nivel de Actividad</th>
+              <th>Multiplicador</th>
+              <th>Necesidades Calóricas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sedentario (poco o ningún ejercicio)</td>
+              <td>1.2</td>
+              <td>TMB × 1.2</td>
+            </tr>
+            <tr>
+              <td>Ejercicio ligero (1-3 días/semana)</td>
+              <td>1.375</td>
+              <td>TMB × 1.375</td>
+            </tr>
+            <tr>
+              <td>Ejercicio moderado (3-5 días/semana)</td>
+              <td>1.55</td>
+              <td>TMB × 1.55</td>
+            </tr>
+            <tr>
+              <td>Muy activo (6-7 días/semana)</td>
+              <td>1.725</td>
+              <td>TMB × 1.725</td>
+            </tr>
+            <tr>
+              <td>Súper activo (ejercicio muy intenso/trabajo físico)</td>
+              <td>1.9</td>
+              <td>TMB × 1.9</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3>Objetivos de Control de Peso</h3>
+        <p>Ajuste calórico para diferentes objetivos de control de peso:</p>
+        <ul>
+          <li><strong>Mantenimiento:</strong> Consuma calorías iguales a su gasto energético total diario</li>
+          <li><strong>Pérdida de Peso:</strong> Consuma 15-20% menos calorías que su gasto energético total diario</li>
+          <li><strong>Ganancia de Peso:</strong> Consuma 15-20% más calorías que su gasto energético total diario</li>
+        </ul>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> Consejos de Salud</h3>
+          <p>Recuerde que la TMB es solo una estimación. Las necesidades calóricas reales pueden variar según factores individuales. Combine una nutrición adecuada con actividad física regular para resultados óptimos de salud.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Su fuente confiable para calculadoras de salud y herramientas de bienestar. Proporcionando métricas de salud precisas y confiables desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Calculadoras de Salud</h3>
+        <ul class="footer-links">
+          <li><a href="/es/health/bmi-calculator.html">Calculadora de IMC</a></li>
+          <li><a href="/es/health/bmr-calculator.html">Calculadora de TMB</a></li>
+          <li><a href="/es/health/body-fat-calculator.html">Calculadora de Grasa Corporal</a></li>
+          <li><a href="/es/health/tdee-calculator.html">Calculadora de TDEE</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Consulte a un profesional de la salud para obtener consejo médico.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the health section
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/bmr-calculator.html';
+            break;
+          case 'zh':
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/bmr-calculator.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/bmr-calculator.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/bmr-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/bmr-calculator.html';
+            break;
+          default: // Spanish
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/bmr-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // BMR Calculator Functionality
+      const metricOption = document.getElementById('metric-option');
+      const imperialOption = document.getElementById('imperial-option');
+      const genderSelect = document.getElementById('gender');
+      const ageInput = document.getElementById('age');
+      const weightInput = document.getElementById('weight');
+      const heightInput = document.getElementById('height');
+      const weightLabel = document.getElementById('weight-label');
+      const heightLabel = document.getElementById('height-label');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const bmrValue = document.getElementById('bmr-value');
+      const bmrClassification = document.getElementById('bmr-classification');
+      const healthAdvice = document.getElementById('health-advice');
+      const dietAdvice = document.getElementById('diet-advice');
+      
+      // Activity level selection
+      const activityOptions = document.querySelectorAll('.activity-option');
+      let selectedActivity = 1.55; // default to moderate activity
+      
+      activityOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          activityOptions.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+          selectedActivity = parseFloat(option.getAttribute('data-multiplier'));
+        });
+      });
+      
+      // Target options
+      const targetOptions = document.querySelectorAll('.target-option');
+      let selectedTarget = 'maintenance'; // default to maintenance
+      
+      targetOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          targetOptions.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+          selectedTarget = option.id;
+        });
+      });
+      
+      // Set default unit to metric
+      let isMetric = true;
+      
+      // Unit toggle functionality
+      metricOption.addEventListener('click', () => {
+        if (!isMetric) {
+          isMetric = true;
+          metricOption.classList.add('active');
+          imperialOption.classList.remove('active');
+          weightLabel.textContent = 'Peso (kg)';
+          heightLabel.textContent = 'Altura (cm)';
+          weightInput.placeholder = 'Ingrese peso en kg';
+          heightInput.placeholder = 'Ingrese altura en cm';
+        }
+      });
+      
+      imperialOption.addEventListener('click', () => {
+        if (isMetric) {
+          isMetric = false;
+          imperialOption.classList.add('active');
+          metricOption.classList.remove('active');
+          weightLabel.textContent = 'Peso (lb)';
+          heightLabel.textContent = 'Altura (in)';
+          weightInput.placeholder = 'Ingrese peso en lb';
+          heightInput.placeholder = 'Ingrese altura en pulgadas';
+        }
+      });
+      
+      // Calculate BMR function
+      function calculateBMR() {
+        const gender = genderSelect.value;
+        const age = parseFloat(ageInput.value);
+        const weight = parseFloat(weightInput.value);
+        const height = parseFloat(heightInput.value);
+        
+        if (!gender || !age || !weight || !height || age <= 0 || weight <= 0 || height <= 0) {
+          alert('Por favor ingrese valores válidos de género, edad, peso y altura.');
+          return;
+        }
+        
+        let bmr;
+        // Use Mifflin-St Jeor formula as it's more accurate for modern populations
+        if (isMetric) {
+          if (gender === 'male') {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+          } else {
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+          }
+        } else {
+          // Convert imperial to metric
+          const weightInKg = weight * 0.453592;
+          const heightInCm = height * 2.54;
+          
+          if (gender === 'male') {
+            bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) + 5;
+          } else {
+            bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
+          }
+        }
+        
+        // Round to nearest whole number
+        bmr = Math.round(bmr);
+        
+        // Calculate total daily energy expenditure
+        const tdee = Math.round(bmr * selectedActivity);
+        
+        // Calculate target calories
+        let targetCalories;
+        switch(selectedTarget) {
+          case 'lose':
+            targetCalories = Math.round(tdee * 0.8); // 20% deficit
+            break;
+          case 'gain':
+            targetCalories = Math.round(tdee * 1.2); // 20% surplus
+            break;
+          default: // maintenance
+            targetCalories = tdee;
+        }
+        
+        // Update BMR value
+        bmrValue.textContent = bmr;
+        bmrClassification.textContent = 'Calorías Diarias Necesarias';
+        bmrClassification.style.backgroundColor = '#4db5bd';
+        
+        // Update advice
+        let adviceHTML = `
+          <h3><i class="fas fa-heartbeat"></i> Necesidades Calóricas Diarias</h3>
+          <p>Su Tasa Metabólica Basal estimada es de ${bmr} calorías por día. Este es el número mínimo de calorías que su cuerpo necesita para funcionar en reposo.</p>
+          
+          <h3><i class="fas fa-lightbulb"></i> Ajuste por Nivel de Actividad</h3>
+          <p>Basado en su nivel de actividad, su gasto energético total diario es de aproximadamente ${tdee} calorías.</p>
+          
+          <h3><i class="fas fa-bullseye"></i> Ajuste por Objetivo</h3>
+        `;
+        
+        switch(selectedTarget) {
+          case 'lose':
+            adviceHTML += `<p>Para perder peso, consuma aproximadamente ${targetCalories} calorías por día.</p>`;
+            break;
+          case 'gain':
+            adviceHTML += `<p>Para ganar peso, consuma aproximadamente ${targetCalories} calorías por día.</p>`;
+            break;
+          default:
+            adviceHTML += `<p>Para mantener el peso, consuma aproximadamente ${targetCalories} calorías por día.</p>`;
+        }
+        
+        healthAdvice.innerHTML = adviceHTML;
+        
+        // Generate dietary advice
+        let dietHTML = `
+          <h3><i class="fas fa-utensils"></i> Recomendaciones Dietéticas</h3>
+          <p>Basado en su TMB y objetivos, aquí tiene un enfoque dietético equilibrado:</p>
+          <ul>
+            <li><strong>Carbohidratos:</strong> 45-65% de las calorías diarias (${Math.round(targetCalories * 0.55 / 4)}g)</li>
+            <li><strong>Proteínas:</strong> 10-35% de las calorías diarias (${Math.round(targetCalories * 0.25 / 4)}g)</li>
+            <li><strong>Grasas:</strong> 20-35% de las calorías diarias (${Math.round(targetCalories * 0.25 / 9)}g)</li>
+          </ul>
+          <p>Alimentos para incluir: granos enteros, proteínas magras, grasas saludables, frutas y verduras.</p>
+        `;
+        
+        dietAdvice.innerHTML = dietHTML;
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateBMR);
+      
+      // Also allow pressing Enter in input fields
+      ageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateBMR();
+      });
+      
+      weightInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateBMR();
+      });
+      
+      heightInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateBMR();
+      });
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>

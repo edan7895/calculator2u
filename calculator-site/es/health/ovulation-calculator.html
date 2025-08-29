@@ -1,13 +1,1845 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Ovulación | Calculator2U</title>
+<meta name="description" content="Calcule su fecha de ovulación, ventana fértil y probabilidad de concepción para maximizar sus posibilidades de quedar embarazada." />
+<meta name="keywords" content="calculadora de ovulación, calculadora de fertilidad, rastreador de ovulación, calculadora de concepción" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/health/ovulation-calculator.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/ovulation-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/ovulation-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/ovulation-calculator.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/ovulation-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/ovulation-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/health/ovulation-calculator.html "/>
+<meta property="og:title" content="Calculadora de Ovulación | Calculator2U" />
+<meta property="og:description" content="Calcule su fecha de ovulación, ventana fértil y probabilidad de concepción para maximizar sus posibilidades de quedar embarazada." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/health/ovulation-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/ovulation-calculator.jpg " />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    overflow-x: hidden;
+    font-size: 14px;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+  }
+
+  .visual-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 10px;
+  }
+
+  .stage-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .stage-dot.active {
+    background: #ffd166;
+    transform: scale(1.3);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Ovulation Calculator Styles */
+  .ovulation-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .ovulation-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 107, 117, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calculator-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ffd166, #4db5bd, #006d77);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .input-field label i {
+    color: #4db5bd;
+  }
+  
+  .input-field input,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: #f8fdff;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+
+  .input-note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.3rem;
+    text-align: left;
+  }
+  
+  .calculate-btn {
+    background: linear-gradient(to right, #ffd166, #ffb142);
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    box-shadow: 0 4px 10px rgba(255, 178, 66, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .calculate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 178, 66, 0.4);
+  }
+
+  .calculate-btn:active {
+    transform: translateY(0);
+  }
+
+  .calculate-btn i {
+    margin-right: 10px;
+  }
+  
+  .result-container {
+    display: none;
+    background: linear-gradient(to bottom right, #f0f9ff, #e0f7fa);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 107, 117, 0.1);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+
+  .result-header i {
+    color: #ffd166;
+    font-size: 1.6rem;
+  }
+  
+  .ovulation-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ovulation-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    border: 1px solid #e0f7fa;
+  }
+
+  .ovulation-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .ovulation-item-title {
+    font-weight: 600;
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .ovulation-item-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #4db5bd;
+  }
+
+  .ovulation-item-sub {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .fertility-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .fertility-info h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .fertility-info .progress-bar {
+    height: 8px;
+    background: #e0f7fa;
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .fertility-info .progress {
+    height: 100%;
+    background: linear-gradient(to right, #4db5bd, #006d77);
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+  
+  .conception-probability {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border-left: 3px solid #ffd166;
+    font-size: 0.9rem;
+  }
+
+  .conception-probability h4 {
+    color: #006d77;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  .conception-probability ul {
+    padding-left: 20px;
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .conception-probability li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  
+  /* Fertility Calendar */
+  .calendar-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    max-width: 100%;
+  }
+  
+  .fertility-calendar {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.85rem;
+  }
+  
+  .fertility-calendar th {
+    background: #006d77;
+    color: white;
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .fertility-calendar td {
+    padding: 0.6rem;
+    border: 1px solid #e0f7fa;
+    text-align: center;
+    position: relative;
+    height: 50px;
+    vertical-align: top;
+    font-size: 0.85rem;
+  }
+  
+  .calendar-day {
+    font-weight: 600;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+  }
+  
+  .fertility-calendar .today .calendar-day {
+    background: #ffd166;
+    color: #333;
+  }
+  
+  .fertility-calendar .ovulation-day .calendar-day {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .fertility-calendar .fertile-day .calendar-day {
+    background: #f39c12;
+    color: white;
+  }
+  
+  .fertility-status {
+    font-size: 0.65rem;
+    margin-top: 22px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  
+  .low-fertility {
+    background-color: #e0f7fa;
+    color: #006d77;
+  }
+  
+  .medium-fertility {
+    background-color: #ffecb3;
+    color: #7d6608;
+  }
+  
+  .high-fertility {
+    background-color: #ffccbc;
+    color: #bf360c;
+  }
+  
+  .peak-fertility {
+    background-color: #ffab91;
+    color: #bf360c;
+    font-weight: bold;
+  }
+
+  .period-day {
+    background-color: #f8e0f0;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 107, 117, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .info-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #4db5bd, #006d77);
+  }
+
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    position: relative;
+    font-size: 0.9rem;
+  }
+
+  .info-card li::before {
+    content: "•";
+    color: #4db5bd;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  .info-card .highlight {
+    background: linear-gradient(to right, #ffd166, #ffd166);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .timeline-visual {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 50px;
+    margin: 2rem 0;
+  }
+
+  .timeline-visual::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #e0f7fa;
+    transform: translateY(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+  }
+
+  .timeline-item .dot {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 2px solid #4db5bd;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    position: relative;
+  }
+
+  .timeline-item.active .dot {
+    background: #ffd166;
+    border-color: #ffb142;
+    transform: scale(1.1);
+  }
+
+  .timeline-item .label {
+    font-size: 0.7rem;
+    color: #006d77;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .health-tips {
+    background: #f0f9ff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px dashed #4db5bd;
+    font-size: 0.9rem;
+  }
+
+  .health-tips h4 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  /* Cycle History */
+  .history-container {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f7fa;
+    display: none;
+  }
+
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .history-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+
+  .history-item:last-child {
+    border-bottom: none;
+  }
+
+  .history-dates {
+    font-size: 0.9rem;
+  }
+
+  .history-duration {
+    color: #666;
+    font-size: 0.85rem;
+  }
+
+  .history-btn {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  
+  /* Footer */
+  footer {
+    background: linear-gradient(to bottom, #006d77, #004f56);
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .ovulation-data {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .calculator-card,
+    .info-card {
+      padding: 1.5rem;
+    }
+
+    .ovulation-item {
+      padding: 0.8rem;
+    }
+
+    .ovulation-item-value {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .ovulation-container {
+      grid-template-columns: 1fr;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr;
+    }
+
+    .ovulation-data {
+      grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .result-header {
+      font-size: 1rem;
+    }
+    
+    .result-header i {
+      font-size: 1.4rem;
+    }
+    
+    .fertility-info h3,
+    .conception-probability h4 {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* NEW: Added media query for 430px and below */
+  @media (max-width: 430px) {
+    .container {
+      padding: 0 0.8rem;
+    }
+    
+    .ovulation-container {
+      padding: 0;
+    }
+    
+    .calculator-card,
+    .info-card {
+      padding: 1.2rem;
+      border-radius: 10px;
+    }
+    
+    .ovulation-data {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    
+    .ovulation-item {
+      padding: 1rem;
+    }
+    
+    .fertility-calendar {
+      min-width: 100%;
+      font-size: 0.75rem;
+    }
+    
+    .fertility-calendar th {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    .fertility-calendar td {
+      height: 40px;
+      padding: 0.3rem;
+    }
+    
+    .calendar-day {
+      width: 18px;
+      height: 18px;
+      font-size: 0.75rem;
+    }
+    
+    .fertility-status {
+      font-size: 0.6rem;
+      margin-top: 18px;
+    }
+    
+    .timeline-visual .label {
+      font-size: 0.6rem;
+    }
+    
+    .health-tips {
+      padding: 1rem;
+    }
+    
+    .hero {
+      padding: 2.5rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.6rem;
+    }
+    
+    .hero p {
+      font-size: 0.85rem;
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+      height: 3px;
+      width: 60px;
+    }
+    
+    .fertility-info {
+      padding: 1rem;
+    }
+    
+    .conception-probability {
+      padding: 8px;
+    }
+    
+    .conception-probability ul {
+      padding-left: 15px;
+      font-size: 0.8rem;
+    }
+    
+    .input-field input,
+    .input-field select {
+      padding: 0.7rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.9rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Animation for progress bar */
+  @keyframes progressGrow {
+    from { width: 0; }
+    to { width: var(--progress-value); }
+  }
+
+  /* Error message styling */
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    text-align: left;
+    display: none;
+  }
+
+  .input-field.error input {
+    border-color: #e74c3c;
+    background: #fff6f6;
+  }
+
+  .input-field.error .error-message {
+    display: block;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Sobre Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Calculadora de Ovulación y Fertilidad</h1>
+      <p>Rastree su ventana fértil, prediga las fechas de ovulación y maximice sus posibilidades de concepción.</p>
+    </div>
+    <div class="visual-indicator">
+      <div class="stage-dot active"></div>
+      <div class="stage-dot"></div>
+      <div class="stage-dot"></div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora de Ovulación</h2>
+    
+    <div class="ovulation-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="last-period"><i class="fas fa-calendar-day"></i> Primer día del último período menstrual</label>
+            <input type="date" id="last-period">
+            <div class="error-message" id="lmp-error">Por favor seleccione una fecha válida</div>
+          </div>
+          
+          <div class="input-field">
+            <label for="cycle-length"><i class="fas fa-sync-alt"></i> Duración del ciclo menstrual (días)</label>
+            <input type="number" id="cycle-length" placeholder="28" min="20" max="45" value="28">
+            <div class="input-note">La duración promedio del ciclo es de 28 días</div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="luteal-length"><i class="fas fa-hourglass-half"></i> Duración de la fase lútea (días)</label>
+            <input type="number" id="luteal-length" placeholder="14" min="10" max="16" value="14">
+            <div class="input-note">La fase lútea promedio es de 14 días</div>
+          </div>
+          
+          <div class="input-field">
+            <label for="period-length"><i class="fas fa-tint"></i> Duración del período (días)</label>
+            <input type="number" id="period-length" placeholder="5" min="3" max="10" value="5">
+            <div class="input-note">El período promedio es de 5 días</div>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calcular Ovulación y Fertilidad
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header"><i class="fas fa-heart"></i> Sus Detalles de Fertilidad</h3>
+          
+          <div class="ovulation-data">
+            <div class="ovulation-item">
+              <div class="ovulation-item-title"><i class="fas fa-calendar-check"></i> Próxima fecha de período</div>
+              <div class="ovulation-item-value" id="next-period">--/--/----</div>
+              <div class="ovulation-item-sub" id="cycle-day">Día X de su ciclo</div>
+            </div>
+            <div class="ovulation-item">
+              <div class="ovulation-item-title"><i class="fas fa-egg"></i> Fecha estimada de ovulación</div>
+              <div class="ovulation-item-value" id="ovulation-date">--/--/----</div>
+              <div class="ovulation-item-sub" id="ovulation-days">En X días</div>
+            </div>
+            <div class="ovulation-item">
+              <div class="ovulation-item-title"><i class="fas fa-calendar-week"></i> Ventana fértil</div>
+              <div class="ovulation-item-value" id="fertile-window">--/--/---- a --/--/----</div>
+              <div class="ovulation-item-sub">Sus días más fértiles</div>
+            </div>
+            <div class="ovulation-item">
+              <div class="ovulation-item-title"><i class="fas fa-chart-line"></i> Probabilidad de concepción</div>
+              <div class="ovulation-item-value" id="conception-probability">XX%</div>
+              <div class="ovulation-item-sub" id="fertility-status">Alta</div>
+            </div>
+          </div>
+          
+          <div class="fertility-info">
+            <h3><i class="fas fa-tasks"></i> Estado de Fertilidad</h3>
+            <div class="progress-bar">
+              <div class="progress" id="fertility-progress"></div>
+            </div>
+            <p id="fertility-description">Está en su ventana fértil. Este es el mejor momento para intentar concebir.</p>
+            
+            <div class="conception-probability">
+              <h4><i class="fas fa-lightbulb"></i> Guía de Probabilidad de Concepción</h4>
+              <ul>
+                <li><strong>Alta probabilidad</strong> (20-33%): 1-2 días antes de la ovulación</li>
+                <li><strong>Probabilidad media</strong> (10-20%): 3-5 días antes de la ovulación</li>
+                <li><strong>Baja probabilidad</strong> (0-10%): Fuera de la ventana fértil</li>
+                <li><strong>Máxima fertilidad</strong> ocurre el día antes de la ovulación</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="fertility-info">
+            <h3><i class="fas fa-calendar-alt"></i> Calendario de Fertilidad</h3>
+            <p id="calendar-description">Su estado de fertilidad para este ciclo:</p>
+            <div class="calendar-container">
+              <table class="fertility-calendar" id="fertility-calendar">
+                <thead>
+                  <tr>
+                    <th>Dom</th>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mié</th>
+                    <th>Jue</th>
+                    <th>Vie</th>
+                    <th>Sáb</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Calendar will be generated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="history-container" id="history-container">
+            <div class="history-header">
+              <h3><i class="fas fa-history"></i> Historial de Ciclo</h3>
+              <button class="history-btn" id="clear-history">Limpiar</button>
+            </div>
+            <div class="history-list" id="history-list">
+              <!-- Cycle history will be added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3><i class="fas fa-info-circle"></i> Comprender la Ovulación y Fertilidad</h3>
+        <p>Una calculadora de ovulación ayuda a identificar su ventana fértil basada en la información de su ciclo menstrual. Los aspectos clave incluyen:</p>
+        <ul>
+          <li><span class="highlight">Fecha de Ovulación</span> - Cuando se libera un óvulo de su ovario</li>
+          <li><span class="highlight">Ventana Fértil</span> - Los 5-6 días previos a la ovulación</li>
+          <li><span class="highlight">Probabilidad de Concepción</span> - Probabilidad de embarazo en días específicos</li>
+          <li><span class="highlight">Calendario de Fertilidad</span> - Representación visual de su ciclo</li>
+        </ul>
+        
+        <h3><i class="fas fa-calculator"></i> Cómo Funciona</h3>
+        <p>Las calculadoras de ovulación usan el primer día de su último período menstrual (LMP) y la duración del ciclo para predecir la fertilidad:</p>
+        <p style="background:#f0f9ff;padding:15px;border-radius:8px;font-weight:500;text-align:center;">
+          Fecha de Ovulación = LMP + (Duración del Ciclo - Fase Lútea)<br>
+          Ventana Fértil = Fecha de Ovulación - 5 días a Fecha de Ovulación + 1 día
+        </p>
+        <p>La probabilidad de concepción es más alta durante la ventana fértil, alcanzando su punto máximo 1-2 días antes de la ovulación.</p>
+        
+        <div class="timeline-visual">
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="label">Período</div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="label">Ventana Fértil</div>
+          </div>
+          <div class="timeline-item active">
+            <div class="dot active"></div>
+            <div class="label">Ovulación</div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="label">Próximo Período</div>
+          </div>
+        </div>
+        
+        <h3><i class="fas fa-exclamation-triangle"></i> Notas Importantes</h3>
+        <p>Tenga en cuenta que:</p>
+        <ul>
+          <li>La predicción de ovulación es una <span class="highlight">estimación</span> y puede variar</li>
+          <li>Las irregularidades del ciclo pueden afectar la precisión</li>
+          <li>Rastree la temperatura corporal basal para resultados más precisos</li>
+          <li>Consulte a un especialista en fertilidad si intenta concebir por más de 6 meses</li>
+        </ul>
+        
+        <div class="health-tips">
+          <h4><i class="fas fa-lightbulb"></i> Consejos para Aumentar la Fertilidad</h4>
+          <p>Para aumentar sus posibilidades de concepción:</p>
+          <ul>
+            <li>Tenga relaciones sexuales cada dos días durante su ventana fértil</li>
+            <li>Mantenga un peso saludable y dieta equilibrada</li>
+            <li>Limita la cafeína y evita el alcohol</li>
+            <li>Controle el estrés mediante técnicas de relajación</li>
+            <li>Considere kits predictores de ovulación para mayor precisión</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Su fuente confiable para calculadoras de salud y herramientas de bienestar. Proporcionando métricas de salud precisas y confiables desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Calculadoras de Salud</h3>
+        <ul class="footer-links">
+          <li><a href="/es/health/bmi-calculator.html">Calculadora de IMC</a></li>
+          <li><a href="/es/health/bmr-calculator.html">Calculadora de TMB</a></li>
+          <li><a href="/es/health/body-fat-calculator.html">Calculadora de Grasa Corporal</a></li>
+          <li><a href="/es/health/ovulation-calculator.html">Calculadora de Ovulación</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Consulte a un profesional de la salud para consejo médico.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the health section
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/').replace('health', '');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/ovulation-calculator.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/ovulation-calculator.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/ovulation-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/ovulation-calculator.html';
+            break;
+          default: // English
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/ovulation-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Ovulation Calculator Functionality
+      const lastPeriodInput = document.getElementById('last-period');
+      const cycleLengthInput = document.getElementById('cycle-length');
+      const lutealLengthInput = document.getElementById('luteal-length');
+      const periodLengthInput = document.getElementById('period-length');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const nextPeriodElement = document.getElementById('next-period');
+      const ovulationDateElement = document.getElementById('ovulation-date');
+      const fertileWindowElement = document.getElementById('fertile-window');
+      const conceptionProbabilityElement = document.getElementById('conception-probability');
+      const fertilityStatusElement = document.getElementById('fertility-status');
+      const ovulationDaysElement = document.getElementById('ovulation-days');
+      const cycleDayElement = document.getElementById('cycle-day');
+      const fertilityProgressElement = document.getElementById('fertility-progress');
+      const fertilityDescriptionElement = document.getElementById('fertility-description');
+      const lmpErrorElement = document.getElementById('lmp-error');
+      const calendarElement = document.getElementById('fertility-calendar');
+      const historyContainer = document.getElementById('history-container');
+      const historyList = document.getElementById('history-list');
+      const clearHistoryBtn = document.getElementById('clear-history');
+      
+      // Cycle history array
+      let cycleHistory = JSON.parse(localStorage.getItem('cycleHistory')) || [];
+      
+      // Helper function to format dates
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${day}/${month}/${year}`;
+      }
+      
+      // Format date for storage
+      function formatDateForStorage(date) {
+        return date.toISOString().split('T')[0];
+      }
+      
+      // Calculate days between two dates
+      function daysBetween(date1, date2) {
+        const oneDay = 24 * 60 * 60 * 1000;
+        return Math.round(Math.abs((date1 - date2) / oneDay));
+      }
+      
+      // Generate calendar for the current cycle
+      function generateFertilityCalendar(startDate, cycleLength, ovulationDate, periodLength) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + cycleLength - 1);
+        
+        // Clear existing calendar
+        const tbody = calendarElement.querySelector('tbody');
+        tbody.innerHTML = '';
+        
+        // Find start of calendar (Sunday before startDate)
+        let calendarStart = new Date(startDate);
+        calendarStart.setDate(calendarStart.getDate() - calendarStart.getDay());
+        
+        // Find end of calendar (Saturday after endDate)
+        let calendarEnd = new Date(endDate);
+        calendarEnd.setDate(calendarEnd.getDate() + (6 - calendarEnd.getDay()));
+        
+        let datePointer = new Date(calendarStart);
+        let calendarHTML = '';
+        let rowHTML = '';
+        
+        while (datePointer <= calendarEnd) {
+          // Start new row on Sundays
+          if (datePointer.getDay() === 0) {
+            if (rowHTML) {
+              calendarHTML += `<tr>${rowHTML}</tr>`;
+            }
+            rowHTML = '';
+          }
+          
+          const currentDate = new Date(datePointer);
+          const dayNumber = currentDate.getDate();
+          const isToday = currentDate.toDateString() === today.toDateString();
+          const isOvulationDay = ovulationDate && currentDate.toDateString() === ovulationDate.toDateString();
+          const isInFertileWindow = ovulationDate && 
+            daysBetween(currentDate, ovulationDate) <= 5 && 
+            daysBetween(currentDate, ovulationDate) >= -5;
+          
+          // Determine if period day
+          const periodStart = new Date(startDate);
+          const periodEnd = new Date(startDate);
+          periodEnd.setDate(periodEnd.getDate() + periodLength - 1);
+          const isPeriodDay = currentDate >= periodStart && currentDate <= periodEnd;
+          
+          // Determine fertility status
+          let fertilityClass = '';
+          let fertilityStatus = '';
+          
+          if (isPeriodDay) {
+            fertilityClass = 'period-day';
+            fertilityStatus = 'PERIODO';
+          } else if (isOvulationDay) {
+            fertilityClass = 'ovulation-day';
+            fertilityStatus = 'PICO';
+          } else if (isInFertileWindow) {
+            const daysToOvulation = daysBetween(currentDate, ovulationDate);
+            if (daysToOvulation >= -2 && daysToOvulation <= 0) {
+              fertilityClass = 'fertile-day';
+              fertilityStatus = 'ALTA';
+            } else if (daysToOvulation >= -5 && daysToOvulation <= -3) {
+              fertilityClass = 'fertile-day';
+              fertilityStatus = 'MEDIA';
+            } else {
+              fertilityStatus = 'BAJA';
+            }
+          } else {
+            fertilityStatus = 'BAJA';
+          }
+          
+          // Add cell to row
+          rowHTML += `
+            <td class="${isToday ? 'today ' : ''}${fertilityClass || ''}">
+              <div class="calendar-day">${dayNumber}</div>
+              <div class="fertility-status ${fertilityStatus.toLowerCase()}-fertility">${fertilityStatus}</div>
+            </td>
+          `;
+          
+          // Move to next day
+          datePointer.setDate(datePointer.getDate() + 1);
+        }
+        
+        // Add last row
+        if (rowHTML) {
+          calendarHTML += `<tr>${rowHTML}</tr>`;
+        }
+        
+        tbody.innerHTML = calendarHTML;
+      }
+      
+      // Save cycle to history
+      function saveToHistory(lastPeriod, cycleLength, lutealLength) {
+        const cycleData = {
+          lastPeriod: formatDateForStorage(lastPeriod),
+          cycleLength,
+          lutealLength,
+          calculatedAt: new Date().toISOString()
+        };
+        
+        // Add to beginning of history
+        cycleHistory.unshift(cycleData);
+        
+        // Limit to 5 entries
+        if (cycleHistory.length > 5) {
+          cycleHistory = cycleHistory.slice(0, 5);
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('cycleHistory', JSON.stringify(cycleHistory));
+        
+        // Update history display
+        updateHistoryDisplay();
+      }
+      
+      // Update history display
+      function updateHistoryDisplay() {
+        if (cycleHistory.length === 0) {
+          historyContainer.style.display = 'none';
+          return;
+        }
+        
+        historyContainer.style.display = 'block';
+        historyList.innerHTML = '';
+        
+        cycleHistory.forEach(cycle => {
+          const lastPeriod = new Date(cycle.lastPeriod);
+          const nextPeriod = new Date(lastPeriod);
+          nextPeriod.setDate(nextPeriod.getDate() + cycle.cycleLength);
+          
+          const historyItem = document.createElement('div');
+          historyItem.className = 'history-item';
+          historyItem.innerHTML = `
+            <div class="history-dates">
+              <div>${formatDate(lastPeriod)} → ${formatDate(nextPeriod)}</div>
+              <div class="history-duration">ciclo de ${cycle.cycleLength} días</div>
+            </div>
+            <button class="history-btn load-history">Cargar</button>
+          `;
+          
+          historyList.appendChild(historyItem);
+        });
+        
+        // Add event listeners to load buttons
+        document.querySelectorAll('.load-history').forEach((button, index) => {
+          button.addEventListener('click', () => {
+            loadHistoryItem(index);
+          });
+        });
+      }
+      
+      // Load history item into calculator
+      function loadHistoryItem(index) {
+        const cycle = cycleHistory[index];
+        if (!cycle) return;
+        
+        lastPeriodInput.value = cycle.lastPeriod;
+        cycleLengthInput.value = cycle.cycleLength;
+        lutealLengthInput.value = cycle.lutealLength;
+        
+        calculateOvulation();
+      }
+      
+      // Clear history
+      clearHistoryBtn.addEventListener('click', () => {
+        cycleHistory = [];
+        localStorage.removeItem('cycleHistory');
+        historyContainer.style.display = 'none';
+      });
+      
+      // Calculate Ovulation Details function
+      function calculateOvulation() {
+        const lastPeriodStr = lastPeriodInput.value;
+        
+        // Validate last period date
+        if (!lastPeriodStr) {
+          lastPeriodInput.parentElement.classList.add('error');
+          lmpErrorElement.style.display = 'block';
+          return;
+        } else {
+          lastPeriodInput.parentElement.classList.remove('error');
+          lmpErrorElement.style.display = 'none';
+        }
+        
+        const lastPeriod = new Date(lastPeriodStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        // Get cycle length or use default 28 days
+        const cycleLength = parseInt(cycleLengthInput.value) || 28;
+        const lutealLength = parseInt(lutealLengthInput.value) || 14;
+        const periodLength = parseInt(periodLengthInput.value) || 5;
+        
+        // Save to history
+        saveToHistory(lastPeriod, cycleLength, lutealLength);
+        
+        // 1. Calculate next period date
+        const nextPeriod = new Date(lastPeriod);
+        nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
+        
+        // 2. Calculate ovulation date (cycle length - luteal phase)
+        const ovulationDate = new Date(lastPeriod);
+        ovulationDate.setDate(ovulationDate.getDate() + (cycleLength - lutealLength));
+        
+        // 3. Calculate fertile window (5 days before ovulation to 1 day after)
+        const fertileStart = new Date(ovulationDate);
+        fertileStart.setDate(fertileStart.getDate() - 5);
+        
+        const fertileEnd = new Date(ovulationDate);
+        fertileEnd.setDate(fertileEnd.getDate() + 1);
+        
+        // 4. Calculate current day of cycle
+        const daysSinceLMP = daysBetween(today, lastPeriod);
+        const cycleDay = daysSinceLMP + 1; // Day 1 is first day of period
+        
+        // 5. Calculate days until ovulation
+        const daysUntilOvulation = daysBetween(today, ovulationDate);
+        
+        // 6. Determine conception probability and fertility status
+        let conceptionProbability = 0;
+        let fertilityStatus = "Baja";
+        
+        if (daysUntilOvulation >= -5 && daysUntilOvulation <= 1) {
+          if (daysUntilOvulation === 0) {
+            conceptionProbability = 33;
+            fertilityStatus = "Pico"; // Only 1 day of peak fertility
+          } else if (daysUntilOvulation >= -2 && daysUntilOvulation <= -1) {
+            conceptionProbability = 25;
+            fertilityStatus = "Alta";
+          } else if (daysUntilOvulation >= -5 && daysUntilOvulation <= -3) {
+            conceptionProbability = 15;
+            fertilityStatus = "Media";
+          } else if (daysUntilOvulation === 1) {
+            conceptionProbability = 10;
+            fertilityStatus = "Media";
+          }
+        } else {
+          conceptionProbability = 0;
+          fertilityStatus = "Baja";
+        }
+        
+        // Calculate fertility progress (based on cycle day)
+        const fertilityProgress = Math.min(100, (cycleDay / cycleLength) * 100);
+        
+        // Update result values
+        nextPeriodElement.textContent = formatDate(nextPeriod);
+        ovulationDateElement.textContent = formatDate(ovulationDate);
+        fertileWindowElement.textContent = `${formatDate(fertileStart)} a ${formatDate(fertileEnd)}`;
+        conceptionProbabilityElement.textContent = `${conceptionProbability}%`;
+        fertilityStatusElement.textContent = fertilityStatus;
+        ovulationDaysElement.textContent = daysUntilOvulation > 0 ? `En ${daysUntilOvulation} días` : 
+          daysUntilOvulation === 0 ? "Hoy" : `Hace ${Math.abs(daysUntilOvulation)} días`;
+        cycleDayElement.textContent = `Día ${cycleDay} de su ciclo de ${cycleLength} días`;
+        
+        // Update fertility progress bar
+        fertilityProgressElement.style.width = `${fertilityProgress}%`;
+        
+        // Update fertility description
+        if (daysUntilOvulation > 5) {
+          fertilityDescriptionElement.textContent = "Aún no está en su ventana fértil. Planifique con anticipación sus próximos días fértiles.";
+        } else if (daysUntilOvulation >= 0) {
+          fertilityDescriptionElement.textContent = "Está en su ventana fértil. Este es el mejor momento para intentar concebir.";
+        } else {
+          fertilityDescriptionElement.textContent = "Su ventana fértil ha pasado para este ciclo. Rastree su próximo ciclo para oportunidades de concepción.";
+        }
+        
+        // Generate fertility calendar
+        generateFertilityCalendar(lastPeriod, cycleLength, ovulationDate, periodLength);
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Update history display
+        updateHistoryDisplay();
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateOvulation);
+      
+      // Also allow pressing Enter in input fields
+      lastPeriodInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateOvulation();
+      });
+      
+      cycleLengthInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateOvulation();
+      });
+      
+      lutealLengthInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateOvulation();
+      });
+      
+      periodLengthInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateOvulation();
+      });
+      
+      // Initialize default selections
+      const twoWeeksAgo = new Date();
+      twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+      lastPeriodInput.valueAsDate = twoWeeksAgo;
+      
+      // Initialize calculator
+      setTimeout(() => {
+        calculateOvulation();
+        updateHistoryDisplay();
+      }, 500);
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>

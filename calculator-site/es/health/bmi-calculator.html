@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>BMI Calculator | Calculator2U</title>
-<meta name="description" content="Calculate your Body Mass Index to understand your weight category and potential health risks." />
-<meta name="keywords" content="BMI calculator, body mass index, health calculator, weight category" />
+<title>Calculadora de IMC | Calculator2U</title>
+<meta name="description" content="Calcula tu Índice de Masa Corporal para entender tu categoría de peso y posibles riesgos para la salud." />
+<meta name="keywords" content="calculadora de IMC, índice de masa corporal, calculadora de salud, categoría de peso" />
 <meta name="author" content="Calculator2U" />
-<link rel="canonical" href="https://www.calculator2u.com/en/health/bmi-calculator.html" />
+<link rel="canonical" href="https://www.calculator2u.com/es/health/bmi-calculator.html" />
 <link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/bmi-calculator.html"/>
 <link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/bmi-calculator.html"/>
 <link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/bmi-calculator.html"/>
 <link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/bmi-calculator.html"/>
 <link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/bmi-calculator.html"/>
 <link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/health/bmi-calculator.html"/>
-<meta property="og:title" content="BMI Calculator | Calculator2U" />
-<meta property="og:description" content="Calculate your Body Mass Index to understand your weight category and potential health risks." />
+<meta property="og:title" content="Calculadora de IMC | Calculator2U" />
+<meta property="og:description" content="Calcula tu Índice de Masa Corporal para entender tu categoría de peso y posibles riesgos para la salud." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.calculator2u.com/en/health/bmi-calculator.html" />
+<meta property="og:url" content="https://www.calculator2u.com/es/health/bmi-calculator.html" />
 <meta property="og:image" content="https://www.calculator2u.com/assets/images/bmi-calculator.jpg" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content="es_ES" />
 <meta property="og:site_name" content="Calculator2U" />
 
 <!-- Google tag (gtag.js) -->
@@ -43,7 +43,7 @@
 
 /* 添加全局溢出控制 */
 html, body {
-  overflow-x: hidden;
+  overflow-x: auto;
   width: 100%;
 }
 
@@ -933,7 +933,7 @@ html, body {
 <body>
   <header>
     <nav class="navbar">
-      <a href="/index-en.html" class="logo">
+      <a href="/index-es.html" class="logo">
         <i class="fas fa-calculator logo-icon"></i>
         Calculator2U
       </a>
@@ -945,19 +945,19 @@ html, body {
       </button>
       
       <ul class="nav-links" id="navLinks">
-        <li><a href="/en/health/index.html">Health & Body</a></li>
-        <li><a href="/en/finance/index.html">Finance & Investment</a></li>
-        <li><a href="/en/education/index.html">Education & Learning</a></li>
-        <li><a href="/en/engineering/index.html">Engineering & Science</a></li>
-        <li><a href="/en/daily-life/index.html">Work & Life</a></li>
-        <li><a href="/en/generator/index.html">Generator</a></li>
-        <li><a href="/en/games/index.html">Games</a></li>
-        <li><a href="/about-en.html">About Us</a></li>
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Acerca de Nosotros</a></li>
         <li class="lang-selector">
           <select id="lang-select" class="lang-select">
             <option value="en">English</option>
             <option value="zh">中文 (Chinese)</option>
-            <option value="es">Español (Spanish)</option>
+            <option value="es" selected>Español (Spanish)</option>
             <option value="de">Deutsch (German)</option>
             <option value="fr">Français (French)</option>
           </select>
@@ -968,50 +968,50 @@ html, body {
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Body Mass Index Calculator</h1>
-    <p>Calculate your BMI to understand your weight category and potential health risks</p>
+    <h1>Calculadora de Índice de Masa Corporal</h1>
+    <p>Calcula tu IMC para entender tu categoría de peso y posibles riesgos para la salud</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">BMI Calculator</h2>
+    <h2 class="section-title">Calculadora de IMC</h2>
     
     <div class="bmi-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="unit-toggle">
-          <div class="unit-option active" id="metric-option">Metric (kg, cm)</div>
+          <div class="unit-option active" id="metric-option">Métrico (kg, cm)</div>
           <div class="unit-option" id="imperial-option">Imperial (lb, in)</div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="weight" id="weight-label">Weight (kg)</label>
-            <input type="number" id="weight" placeholder="Enter weight" min="0" step="0.1">
+            <label for="weight" id="weight-label">Peso (kg)</label>
+            <input type="number" id="weight" placeholder="Ingresa el peso" min="0" step="0.1">
           </div>
           
           <div class="input-field">
-            <label for="height" id="height-label">Height (cm)</label>
-            <input type="number" id="height" placeholder="Enter height" min="0" step="0.1">
+            <label for="height" id="height-label">Altura (cm)</label>
+            <input type="number" id="height" placeholder="Ingresa la altura" min="0" step="0.1">
           </div>
         </div>
         
         <button class="calculate-btn" id="calculate-btn">
-          <i class="fas fa-calculator"></i> Calculate BMI
+          <i class="fas fa-calculator"></i> Calcular IMC
         </button>
         
         <div class="result-container" id="result-container">
-          <h3 class="result-header">Your BMI Result</h3>
+          <h3 class="result-header">Tu Resultado de IMC</h3>
           <div class="bmi-value" id="bmi-value">24.8</div>
-          <div class="bmi-classification normal" id="bmi-classification">Normal Weight</div>
+          <div class="bmi-classification normal" id="bmi-classification">Peso Normal</div>
           
           <div class="chart-container">
             <div class="bmi-scale">
-              <div class="scale-section underweight-bg">Underweight<br>&lt; 18.5</div>
+              <div class="scale-section underweight-bg">Bajo peso<br>&lt; 18.5</div>
               <div class="scale-section normal-bg">Normal<br>18.5-24.9</div>
-              <div class="scale-section overweight-bg">Overweight<br>25-29.9</div>
-              <div class="scale-section obese1-bg">Obese I<br>30-34.9</div>
-              <div class="scale-section obese2-bg">Obese II<br>35-39.9</div>
-              <div class="scale-section obese3-bg">Obese III<br>≥40</div>
+              <div class="scale-section overweight-bg">Sobrepeso<br>25-29.9</div>
+              <div class="scale-section obese1-bg">Obeso I<br>30-34.9</div>
+              <div class="scale-section obese2-bg">Obeso II<br>35-39.9</div>
+              <div class="scale-section obese3-bg">Obeso III<br>≥40</div>
             </div>
             <div class="chart-pointer" id="chart-pointer"></div>
             <div class="chart-labels">
@@ -1026,92 +1026,92 @@ html, body {
           </div>
           
           <div class="health-advice" id="health-advice">
-            <h3><i class="fas fa-heartbeat"></i> Health Recommendation</h3>
-            <p>Your BMI is within the normal range. Continue maintaining a balanced diet and regular physical activity to stay healthy. Aim for at least 150 minutes of moderate-intensity exercise per week.</p>
+            <h3><i class="fas fa-heartbeat"></i> Recomendación de Salud</h3>
+            <p>Tu IMC está dentro del rango normal. Continúa manteniendo una dieta equilibrada y actividad física regular para mantenerte saludable. Intenta realizar al menos 150 minutos de ejercicio de intensidad moderada por semana.</p>
           </div>
         </div>
       </div>
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>Understanding BMI</h3>
-        <p>Body Mass Index (BMI) is a widely used, simple tool to estimate a person's body fat based on their height and weight. It's calculated by dividing an individual's weight in kilograms by the square of their height in meters (kg/m²).</p>
+        <h3>Entendiendo el IMC</h3>
+        <p>El Índice de Masa Corporal (IMC) es una herramienta ampliamente utilizada y simple para estimar la grasa corporal de una persona basándose en su altura y peso. Se calcula dividiendo el peso de un individuo en kilogramos por el cuadrado de su altura en metros (kg/m²).</p>
         
-        <p>This calculation places adults into categories:</p>
+        <p>Este cálculo coloca a los adultos en categorías:</p>
         <ul>
-          <li>Underweight (&lt;18.5)</li>
-          <li>Healthy Weight (18.5–24.9)</li>
-          <li>Overweight (25–29.9)</li>
-          <li>Obese (≥30)</li>
+          <li>Bajo peso (&lt;18.5)</li>
+          <li>Peso saludable (18.5–24.9)</li>
+          <li>Sobrepeso (25–29.9)</li>
+          <li>Obeso (≥30)</li>
         </ul>
         
-        <p>It provides a quick, initial screening method for potential weight-related health risks on a population level.</p>
+        <p>Proporciona un método rápido de detección inicial para posibles riesgos de salud relacionados con el peso a nivel poblacional.</p>
         
-        <h3>How to Calculate BMI</h3>
-        <p>The formula for BMI is weight in kilograms divided by height in meters squared (kg/m²).</p>
+        <h3>Cómo Calcular el IMC</h3>
+        <p>La fórmula para el IMC es el peso en kilogramos dividido por el cuadrado de la altura en metros (kg/m²).</p>
         
-        <p><strong>Metric Units (kg and cm):</strong><br>
-        BMI = weight (kg) / [height (m)]²</p>
+        <p><strong>Unidades métricas (kg y cm):</strong><br>
+        IMC = peso (kg) / [altura (m)]²</p>
         
-        <p><strong>Imperial Units (lb and in):</strong><br>
-        BMI = [weight (lbs) / [height (in)]²] * 703</p>
+        <p><strong>Unidades imperiales (lb y in):</strong><br>
+        IMC = [peso (lbs) / [altura (in)]²] * 703</p>
         
-        <h3>BMI Categories</h3>
+        <h3>Categorías del IMC</h3>
         <div class="reference-table-container">
           <table class="reference-table">
             <thead>
               <tr>
-                <th>Category</th>
-                <th>BMI Range</th>
-                <th>Health Risk</th>
+                <th>Categoría</th>
+                <th>Rango de IMC</th>
+                <th>Riesgo de Salud</th>
               </tr>
             </thead>
             <tbody>
               <tr class="underweight">
-                <td>Underweight</td>
+                <td>Bajo peso</td>
                 <td>&lt; 18.5</td>
-                <td>High</td>
+                <td>Alto</td>
               </tr>
               <tr class="normal">
-                <td>Normal weight</td>
+                <td>Peso normal</td>
                 <td>18.5 - 24.9</td>
-                <td>Low</td>
+                <td>Bajo</td>
               </tr>
               <tr class="overweight">
-                <td>Overweight</td>
+                <td>Sobrepeso</td>
                 <td>25 - 29.9</td>
-                <td>Moderate</td>
+                <td>Moderado</td>
               </tr>
               <tr class="obese">
-                <td>Obesity Class I</td>
+                <td>Obesidad Clase I</td>
                 <td>30 - 34.9</td>
-                <td>High</td>
+                <td>Alto</td>
               </tr>
               <tr class="obese">
-                <td>Obesity Class II</td>
+                <td>Obesidad Clase II</td>
                 <td>35 - 39.9</td>
-                <td>Very High</td>
+                <td>Muy Alto</td>
               </tr>
               <tr class="obese">
-                <td>Obesity Class III</td>
+                <td>Obesidad Clase III</td>
                 <td>≥ 40</td>
-                <td>Extremely High</td>
+                <td>Extremadamente Alto</td>
               </tr>
             </tbody>
           </table>
         </div>
         
-        <h3>Important Considerations</h3>
+        <h3>Consideraciones Importantes</h3>
         <ul>
-          <li>BMI is not a direct measure of body fat</li>
-          <li>Muscle mass can affect BMI readings</li>
-          <li>May not be accurate for athletes, elderly, or pregnant women</li>
-          <li>Consult a healthcare professional for personalized advice</li>
+          <li>El IMC no es una medida directa de la grasa corporal</li>
+          <li>La masa muscular puede afectar las lecturas del IMC</li>
+          <li>Puede no ser preciso para atletas, ancianos o mujeres embarazadas</li>
+          <li>Consulta a un profesional sanitario para asesoramiento personalizado</li>
         </ul>
         
         <div class="health-advice">
-          <h3><i class="fas fa-lightbulb"></i> Health Tips</h3>
-          <p>Maintaining a healthy BMI reduces your risk for heart disease, diabetes, and certain cancers. Combine a balanced diet with regular physical activity for optimal health.</p>
+          <h3><i class="fas fa-lightbulb"></i> Consejos de Salud</h3>
+          <p>Mantener un IMC saludable reduce el riesgo de enfermedades cardíacas, diabetes y ciertos tipos de cáncer. Combina una dieta equilibrada con actividad física regular para una salud óptima.</p>
         </div>
       </div>
     </div>
@@ -1121,31 +1121,31 @@ html, body {
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>Your trusted source for health calculators and wellness tools. Providing accurate, reliable health metrics since 2025.</p>
+        <p>Tu fuente confiable de calculadoras de salud y herramientas de bienestar. Proporcionando métricas de salud precisas y confiables desde 2025.</p>
       </div>
       <div class="footer-column">
-        <h3>Health Calculators</h3>
+        <h3>Calculadoras de Salud</h3>
         <ul class="footer-links">
-          <li><a href="/en/health/bmi-calculator.html">BMI Calculator</a></li>
-          <li><a href="/en/health/bmr-calculator.html">BMR Calculator</a></li>
-          <li><a href="/en/health/body-fat-calculator.html">Body Fat Calculator</a></li>
-          <li><a href="/en/health/tdee-calculator.html">TDEE Calculator</a></li>
+          <li><a href="/es/health/bmi-calculator.html">Calculadora de IMC</a></li>
+          <li><a href="/es/health/bmr-calculator.html">Calculadora de TMB</a></li>
+          <li><a href="/es/health/body-fat-calculator.html">Calculadora de Grasa Corporal</a></li>
+          <li><a href="/es/health/tdee-calculator.html">Calculadora de TDEE</a></li>
         </ul>
       </div>
       <div class="footer-column">
-        <h3>Legal Information</h3>
+        <h3>Información Legal</h3>
         <ul class="footer-links">
-          <li><a href="/privacy-en.html">Privacy Policy</a></li>
-          <li><a href="/terms-en.html">Terms of Service</a></li>
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
         </ul>
       </div>
     </div>
     <div class="copyright">
-      <p>&copy; 2025 Calculator2U. All rights reserved. | 
-        <a href="/privacy-en.html">Privacy Policy</a> | 
-        <a href="/terms-en.html">Terms of Service</a>
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
       </p>
-      <p><small>Note: These calculators provide estimates only. Consult a healthcare professional for medical advice.</small></p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Consulta a un profesional sanitario para asesoramiento médico.</small></p>
     </div>
   </footer>
 
@@ -1242,10 +1242,10 @@ html, body {
           isMetric = true;
           metricOption.classList.add('active');
           imperialOption.classList.remove('active');
-          weightLabel.textContent = 'Weight (kg)';
-          heightLabel.textContent = 'Height (cm)';
-          weightInput.placeholder = 'Enter weight in kg';
-          heightInput.placeholder = 'Enter height in cm';
+          weightLabel.textContent = 'Peso (kg)';
+          heightLabel.textContent = 'Altura (cm)';
+          weightInput.placeholder = 'Ingresa el peso en kg';
+          heightInput.placeholder = 'Ingresa la altura en cm';
         }
       });
       
@@ -1254,10 +1254,10 @@ html, body {
           isMetric = false;
           imperialOption.classList.add('active');
           metricOption.classList.remove('active');
-          weightLabel.textContent = 'Weight (lb)';
-          heightLabel.textContent = 'Height (in)';
-          weightInput.placeholder = 'Enter weight in lb';
-          heightInput.placeholder = 'Enter height in inches';
+          weightLabel.textContent = 'Peso (lb)';
+          heightLabel.textContent = 'Altura (in)';
+          weightInput.placeholder = 'Ingresa el peso en lb';
+          heightInput.placeholder = 'Ingresa la altura en pulgadas';
         }
       });
       
@@ -1267,7 +1267,7 @@ html, body {
         const height = parseFloat(heightInput.value);
         
         if (!weight || !height || weight <= 0 || height <= 0) {
-          alert('Please enter valid weight and height values.');
+          alert('Por favor ingresa valores válidos de peso y altura.');
           return;
         }
         
@@ -1290,21 +1290,21 @@ html, body {
         // Determine classification
         let classification, advice;
         if (bmi < 18.5) {
-          classification = 'Underweight';
+          classification = 'Bajo peso';
           bmiClassification.className = 'bmi-classification underweight';
-          advice = 'Your BMI indicates you may be underweight. Consider consulting a healthcare provider to ensure you\'re getting adequate nutrition. Focus on nutrient-dense foods and strength training to build healthy muscle mass.';
+          advice = 'Tu IMC indica que podrías estar bajo de peso. Considera consultar a un proveedor de atención médica para asegurarte de que estás recibiendo una nutrición adecuada. Enfócate en alimentos densos en nutrientes y entrenamiento de fuerza para aumentar masa muscular saludable.';
         } else if (bmi < 25) {
-          classification = 'Normal Weight';
+          classification = 'Peso normal';
           bmiClassification.className = 'bmi-classification normal';
-          advice = 'Congratulations! Your BMI is within the healthy range. Continue maintaining a balanced diet and regular physical activity. Aim for at least 150 minutes of moderate-intensity exercise per week.';
+          advice = '¡Felicidades! Tu IMC está dentro del rango saludable. Continúa manteniendo una dieta equilibrada y actividad física regular. Intenta realizar al menos 150 minutos de ejercicio de intensidad moderada por semana.';
         } else if (bmi < 30) {
-          classification = 'Overweight';
+          classification = 'Sobrepeso';
           bmiClassification.className = 'bmi-classification overweight';
-          advice = 'Your BMI indicates you may be overweight. Consider making lifestyle changes such as increasing physical activity and making healthier food choices. Focus on gradual weight loss of 1-2 pounds per week.';
+          advice = 'Tu IMC indica que podrías tener sobrepeso. Considera hacer cambios en el estilo de vida como aumentar la actividad física y hacer elecciones alimenticias más saludables. Enfócate en una pérdida de peso gradual de 1-2 libras por semana.';
         } else {
-          classification = 'Obese';
+          classification = 'Obeso';
           bmiClassification.className = 'bmi-classification obese';
-          advice = 'Your BMI indicates obesity. This increases your risk for various health conditions. Consult with a healthcare provider to develop a safe weight loss plan. Focus on sustainable changes to your diet and activity levels.';
+          advice = 'Tu IMC indica obesidad. Esto aumenta tu riesgo de diversas condiciones de salud. Consulta con un proveedor de atención médica para desarrollar un plan seguro de pérdida de peso. Enfócate en cambios sostenibles en tu dieta y niveles de actividad.';
         }
         
         // Update classification and advice
