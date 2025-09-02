@@ -1,13 +1,1579 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Conversión de Cocina | Calculator2U</title>
+<meta name="description" content="Convierte medidas de cocina para tus recetas. Cambia entre unidades métricas e imperiales sin esfuerzo." />
+<meta name="keywords" content="conversor de cocina, calculadora de cocina, conversor de unidades, conversor de medidas" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/daily-life/cooking-converter.html" />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/cooking-converter.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/cooking-converter.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/cooking-converter.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/cooking-converter.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/cooking-converter.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/cooking-converter.html"/>
+<meta property="og:title" content="Calculadora de Conversión de Cocina | Calculator2U" />
+<meta property="og:description" content="Convierte medidas de cocina para tus recetas. Cambia entre unidades métricas e imperiales sin esfuerzo." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/daily-life/cooking-converter.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/cooking-converter.jpg" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Cooking Converter Styles */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Conversion chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Conversion table */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Conversion tabs */
+  .conversion-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .conversion-panel {
+    display: none;
+  }
+  
+  .conversion-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Unit system toggle */
+  .unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-btn {
+    background: #e0f7fa;
+    border: 2px solid #4db5bd;
+    color: #006d77;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .toggle-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .toggle-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Sobre Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es" selected>Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculadora de Conversión de Cocina</h1>
+    <p>Convierte medidas de cocina para tus recetas. Cambia entre unidades métricas e imperiales sin esfuerzo.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora de Conversión de Cocina</h2>
+    
+    <div class="cooking-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="unit-toggle">
+          <button class="toggle-btn active" id="metric-toggle">Métrico</button>
+          <button class="toggle-btn" id="imperial-toggle">Imperial</button>
+        </div>
+        
+        <div class="conversion-tabs">
+          <button class="tab-btn active" data-tab="volume">Volumen</button>
+          <button class="tab-btn" data-tab="weight">Peso</button>
+          <button class="tab-btn" data-tab="temperature">Temperatura</button>
+        </div>
+        
+        <!-- Volume Conversion Tab -->
+        <div class="conversion-panel active" id="volume-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="volume-from">De:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la unidad desde la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="volume-from">
+                <option value="tsp">Cucharadita (tsp)</option>
+                <option value="tbsp">Cucharada (tbsp)</option>
+                <option value="cup">Taza</option>
+                <option value="ml">Mililitro (ml)</option>
+                <option value="l">Litro (L)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="volume-value">Valor:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingresa el valor a convertir</span>
+                </span>
+              </label>
+              <input type="number" id="volume-value" placeholder="Ingresa valor" min="0" step="0.1">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="volume-to">A:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la unidad a la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="volume-to">
+                <option value="tsp">Cucharadita (tsp)</option>
+                <option value="tbsp">Cucharada (tbsp)</option>
+                <option value="cup">Taza</option>
+                <option value="ml">Mililitro (ml)</option>
+                <option value="l">Litro (L)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="volume-result">Resultado:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Valor convertido</span>
+                </span>
+              </label>
+              <input type="text" id="volume-result" readonly>
+            </div>
+          </div>
+          
+          <button class="calculate-btn" id="volume-convert">
+            <i class="fas fa-exchange-alt"></i> Convertir Volumen
+          </button>
+          
+          <div class="result-container" id="volume-result-container">
+            <h3 class="result-header">Resultado de Conversión de Volumen</h3>
+            <div class="result-value" id="volume-result-value">
+              El valor convertido aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="volume-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="volume-details">
+              <p>Esta conversión se basa en medidas de cocina estándar. Ten en cuenta que algunas conversiones pueden incluir valores aproximados.</p>
+            </div>
+          </div>
+          
+          <div class="conversion-table">
+            <h4 style="margin-bottom: 1rem;">Conversiones Comunes de Volumen</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>De Unidad</th>
+                  <th>A Unidad</th>
+                  <th>Factor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 cucharadita (tsp)</td>
+                  <td>mililitro (ml)</td>
+                  <td>≈ 5 ml</td>
+                </tr>
+                <tr>
+                  <td>1 cucharada (tbsp)</td>
+                  <td>cucharadita (tsp)</td>
+                  <td>≈ 3 tsp</td>
+                </tr>
+                <tr>
+                  <td>1 taza</td>
+                  <td>mililitro (ml)</td>
+                  <td>≈ 240 ml</td>
+                </tr>
+                <tr>
+                  <td>1 litro (L)</td>
+                  <td>taza</td>
+                  <td>≈ 4.2268 tazas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Weight Conversion Tab -->
+        <div class="conversion-panel" id="weight-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="weight-from">De:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la unidad desde la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="weight-from">
+                <option value="g">Gramo (g)</option>
+                <option value="kg">Kilogramo (kg)</option>
+                <option value="oz">Onza (oz)</option>
+                <option value="lb">Libra (lb)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="weight-value">Valor:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingresa el valor a convertir</span>
+                </span>
+              </label>
+              <input type="number" id="weight-value" placeholder="Ingresa valor" min="0" step="0.1">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="weight-to">A:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la unidad a la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="weight-to">
+                <option value="g">Gramo (g)</option>
+                <option value="kg">Kilogramo (kg)</option>
+                <option value="oz">Onza (oz)</option>
+                <option value="lb">Libra (lb)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="weight-result">Resultado:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Valor convertido</span>
+                </span>
+              </label>
+              <input type="text" id="weight-result" readonly>
+            </div>
+          </div>
+          
+          <button class="calculate-btn" id="weight-convert">
+            <i class="fas fa-exchange-alt"></i> Convertir Peso
+          </button>
+          
+          <div class="result-container" id="weight-result-container">
+            <h3 class="result-header">Resultado de Conversión de Peso</h3>
+            <div class="result-value" id="weight-result-value">
+              El valor convertido aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="weight-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="weight-details">
+              <p>Las conversiones de peso son precisas para ingredientes secos. Ten en cuenta que para ingredientes líquidos, las conversiones de volumen y peso pueden variar según la densidad del ingrediente.</p>
+            </div>
+          </div>
+          
+          <div class="conversion-table">
+            <h4 style="margin-bottom: 1rem;">Conversiones Comunes de Peso</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>De Unidad</th>
+                  <th>A Unidad</th>
+                  <th>Factor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 kilogramo (kg)</td>
+                  <td>gramo (g)</td>
+                  <td>= 1000 g</td>
+                </tr>
+                <tr>
+                  <td>1 libra (lb)</td>
+                  <td>onza (oz)</td>
+                  <td>= 16 oz</td>
+                </tr>
+                <tr>
+                  <td>1 onza (oz)</td>
+                  <td>gramo (g)</td>
+                  <td>≈ 28.35 g</td>
+                </tr>
+                <tr>
+                  <td>1 libra (lb)</td>
+                  <td>gramo (g)</td>
+                  <td>≈ 453.59 g</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Temperature Conversion Tab -->
+        <div class="conversion-panel" id="temperature-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="temperature-from">De:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la escala de temperatura desde la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="temperature-from">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="temperature-value">Valor:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingresa la temperatura a convertir</span>
+                </span>
+              </label>
+              <input type="number" id="temperature-value" placeholder="Ingresa temperatura" min="-273" step="0.1">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="temperature-to">A:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Selecciona la escala de temperatura a la que vas a convertir</span>
+                </span>
+              </label>
+              <select id="temperature-to">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="temperature-result">Resultado:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Temperatura convertida</span>
+                </span>
+              </label>
+              <input type="text" id="temperature-result" readonly>
+            </div>
+          </div>
+          
+          <button class="calculate-btn" id="temperature-convert">
+            <i class="fas fa-exchange-alt"></i> Convertir Temperatura
+          </button>
+          
+          <div class="result-container" id="temperature-result-container">
+            <h3 class="result-header">Resultado de Conversión de Temperatura</h3>
+            <div class="result-value" id="temperature-result-value">
+              El valor convertido aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="temperature-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="temperature-details">
+              <p>Las conversiones de temperatura son cálculos matemáticos exactos.</p>
+            </div>
+          </div>
+          
+          <div class="conversion-table">
+            <h4 style="margin-bottom: 1rem;">Conversiones Comunes de Temperatura</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Celsius (°C)</th>
+                  <th>Fahrenheit (°F)</th>
+                  <th>Notas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0°C</td>
+                  <td>32°F</td>
+                  <td>Punto de congelación del agua</td>
+                </tr>
+                <tr>
+                  <td>100°C</td>
+                  <td>212°F</td>
+                  <td>Punto de ebullición del agua</td>
+                </tr>
+                <tr>
+                  <td>25°C</td>
+                  <td>77°F</td>
+                  <td>Temperatura ambiente</td>
+                </tr>
+                <tr>
+                  <td>180°C</td>
+                  <td>356°F</td>
+                  <td>Temperatura común de horneado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Entendiendo las Medidas de Cocina</h3>
+        <p>Las medidas precisas son esenciales en la cocina, especialmente en la repostería donde las proporciones exactas son cruciales. Aquí hay algunos puntos clave a recordar:</p>
+        <ul>
+          <li><strong>Ingredientes Secos:</strong> Medidos por peso (gramos, onzas) para precisión</li>
+          <li><strong>Ingredientes Líquidos:</strong> Medidos por volumen (mililitros, tazas)</li>
+          <li><strong>Medidas con Cucharas:</strong> Las medidas niveladas son más precisas que las montadas</li>
+          <li><strong>Temperatura:</strong> Crítica para procesos como el horneado, la confitería y la cocina sous vide</li>
+        </ul>
+        
+        <h3>Consejos de Conversión</h3>
+        <p>Considera estos consejos para conversiones exitosas:</p>
+        <ul>
+          <li>Usa una balanza digital para medidas precisas de ingredientes secos</li>
+          <li>Usa cucharas y tazas medidoras con marcas claras</li>
+          <li>Ten en cuenta que algunas conversiones pueden requerir ajustes ligeros en la receta</li>
+          <li>Para recetas con unidades métricas e imperiales, elige un sistema y mantente en él</li>
+          <li>Al convertir temperaturas, ten en cuenta que los tiempos de horneado pueden necesitar ajuste</li>
+        </ul>
+        
+        <h3>Equivalentes de Medidas de Cocina</h3>
+        <p>Ten a mano estos equivalentes comunes para tus aventuras culinarias:</p>
+        <ul>
+          <li>3 cucharaditas = 1 cucharada</li>
+          <li>16 cucharadas = 1 taza</li>
+          <li>2 tazas = 1 pinta</li>
+          <li>1 taza ≈ 240 mililitros</li>
+          <li>1 onza ≈ 28 gramos</li>
+          <li>1 libra ≈ 454 gramos</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Tu fuente confiable de calculadoras para la vida diaria y herramientas financieras. Ayudándote con conversiones de cocina desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Otras Calculadoras Útiles</h3>
+        <ul class="footer-links">
+          <li><a href="/es/finance/auto-loan-calculator.html">Calculadora de Préstamo de Auto</a></li>
+          <li><a href="/es/finance/home-loan-calculator.html">Calculadora de Hipoteca</a></li>
+          <li><a href="/es/daily-life/salary-calculator.html">Calculadora de Salario</a></li>
+          <li><a href="/es/finance/tax-calculator.html">Calculadora de Impuestos</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Siempre verifica con una balanza de cocina para medidas precisas.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const conversionPanels = document.querySelectorAll('.conversion-panel');
+      
+      // Volume conversion elements
+      const volumeFrom = document.getElementById('volume-from');
+      const volumeValue = document.getElementById('volume-value');
+      const volumeTo = document.getElementById('volume-to');
+      const volumeResult = document.getElementById('volume-result');
+      const volumeConvertBtn = document.getElementById('volume-convert');
+      const volumeResultContainer = document.getElementById('volume-result-container');
+      const volumeResultValue = document.getElementById('volume-result-value');
+      const volumeChartCtx = document.getElementById('volume-chart').getContext('2d');
+      let volumeChart = null;
+      
+      // Weight conversion elements
+      const weightFrom = document.getElementById('weight-from');
+      const weightValue = document.getElementById('weight-value');
+      const weightTo = document.getElementById('weight-to');
+      const weightResult = document.getElementById('weight-result');
+      const weightConvertBtn = document.getElementById('weight-convert');
+      const weightResultContainer = document.getElementById('weight-result-container');
+      const weightResultValue = document.getElementById('weight-result-value');
+      const weightChartCtx = document.getElementById('weight-chart').getContext('2d');
+      let weightChart = null;
+      
+      // Temperature conversion elements
+      const temperatureFrom = document.getElementById('temperature-from');
+      const temperatureValue = document.getElementById('temperature-value');
+      const temperatureTo = document.getElementById('temperature-to');
+      const temperatureResult = document.getElementById('temperature-result');
+      const temperatureConvertBtn = document.getElementById('temperature-convert');
+      const temperatureResultContainer = document.getElementById('temperature-result-container');
+      const temperatureResultValue = document.getElementById('temperature-result-value');
+      const temperatureChartCtx = document.getElementById('temperature-chart').getContext('2d');
+      let temperatureChart = null;
+      
+      // Unit toggle elements
+      const metricToggle = document.getElementById('metric-toggle');
+      const imperialToggle = document.getElementById('imperial-toggle');
+      
+      // Conversion factors
+      const volumeConversionFactors = {
+        tsp: { tsp: 1, tbsp: 1/3, cup: 1/48, ml: 5, l: 0.005 },
+        tbsp: { tsp: 3, tbsp: 1, cup: 1/16, ml: 15, l: 0.015 },
+        cup: { tsp: 48, tbsp: 16, cup: 1, ml: 240, l: 0.24 },
+        ml: { tsp: 0.2, tbsp: 0.0667, cup: 0.004167, ml: 1, l: 0.001 },
+        l: { tsp: 200, tbsp: 66.6667, cup: 4.1667, ml: 1000, l: 1 }
+      };
+      
+      const weightConversionFactors = {
+        g: { g: 1, kg: 0.001, oz: 0.035274, lb: 0.00220462 },
+        kg: { g: 1000, kg: 1, oz: 35.27396, lb: 2.20462 },
+        oz: { g: 28.3495, kg: 0.0283495, oz: 1, lb: 0.0625 },
+        lb: { g: 453.592, kg: 0.453592, oz: 16, lb: 1 }
+      };
+      
+      // Functions
+      function convertVolume() {
+        const fromUnit = volumeFrom.value;
+        const toUnit = volumeTo.value;
+        const value = parseFloat(volumeValue.value) || 0;
+        
+        if (isNaN(value) || value < 0) {
+          volumeResult.value = 'Por favor ingresa un valor válido';
+          return;
+        }
+        
+        const convertedValue = value * volumeConversionFactors[fromUnit][toUnit];
+        volumeResult.value = convertedValue.toFixed(2);
+        
+        // Update result display
+        const fromUnitText = volumeFrom.options[volumeFrom.selectedIndex].text;
+        const toUnitText = volumeTo.options[volumeTo.selectedIndex].text;
+        volumeResultValue.textContent = `${value} ${fromUnitText.split(' ')[0]} = ${convertedValue.toFixed(2)} ${toUnitText.split(' ')[0]}`;
+        
+        // Create or update chart
+        if (volumeChart) {
+          volumeChart.destroy();
+        }
+        
+        volumeChart = new Chart(volumeChartCtx, {
+          type: 'bar',
+          data: {
+            labels: [fromUnitText.split(' ')[0], toUnitText.split(' ')[0]],
+            datasets: [{
+              label: 'Comparación de Volumen',
+              data: [value, convertedValue],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        volumeResultContainer.style.display = 'block';
+      }
+      
+      function convertWeight() {
+        const fromUnit = weightFrom.value;
+        const toUnit = weightTo.value;
+        const value = parseFloat(weightValue.value) || 0;
+        
+        if (isNaN(value) || value < 0) {
+          weightResult.value = 'Por favor ingresa un valor válido';
+          return;
+        }
+        
+        const convertedValue = value * weightConversionFactors[fromUnit][toUnit];
+        weightResult.value = convertedValue.toFixed(2);
+        
+        // Update result display
+        const fromUnitText = weightFrom.options[weightFrom.selectedIndex].text;
+        const toUnitText = weightTo.options[weightTo.selectedIndex].text;
+        weightResultValue.textContent = `${value} ${fromUnitText.split(' ')[0]} = ${convertedValue.toFixed(2)} ${toUnitText.split(' ')[0]}`;
+        
+        // Create or update chart
+        if (weightChart) {
+          weightChart.destroy();
+        }
+        
+        weightChart = new Chart(weightChartCtx, {
+          type: 'bar',
+          data: {
+            labels: [fromUnitText.split(' ')[0], toUnitText.split(' ')[0]],
+            datasets: [{
+              label: 'Comparación de Peso',
+              data: [value, convertedValue],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        weightResultContainer.style.display = 'block';
+      }
+      
+      function convertTemperature() {
+        const fromScale = temperatureFrom.value;
+        const toScale = temperatureTo.value;
+        const value = parseFloat(temperatureValue.value) || 0;
+        
+        if (isNaN(value)) {
+          temperatureResult.value = 'Por favor ingresa un valor válido';
+          return;
+        }
+        
+        let convertedValue;
+        
+        if (fromScale === 'celsius' && toScale === 'fahrenheit') {
+          convertedValue = (value * 9/5) + 32;
+        } else if (fromScale === 'fahrenheit' && toScale === 'celsius') {
+          convertedValue = (value - 32) * 5/9;
+        } else {
+          convertedValue = value; // Same scale conversion
+        }
+        
+        temperatureResult.value = convertedValue.toFixed(1);
+        
+        // Update result display
+        const fromScaleText = temperatureFrom.options[temperatureFrom.selectedIndex].text;
+        const toScaleText = temperatureTo.options[temperatureTo.selectedIndex].text;
+        temperatureResultValue.textContent = `${value}°${fromScaleText.split(' ')[1].replace('(', '').replace(')', '')} = ${convertedValue.toFixed(1)}°${toScaleText.split(' ')[1].replace('(', '').replace(')', '')}`;
+        
+        // Create or update chart
+        if (temperatureChart) {
+          temperatureChart.destroy();
+        }
+        
+        temperatureChart = new Chart(temperatureChartCtx, {
+          type: 'bar',
+          data: {
+            labels: [`°${fromScaleText.split(' ')[1].replace('(', '').replace(')', '')}`, `°${toScaleText.split(' ')[1].replace('(', '').replace(')', '')}`],
+            datasets: [{
+              label: 'Comparación de Temperatura',
+              data: [value, convertedValue],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: false
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        temperatureResultContainer.style.display = 'block';
+      }
+      
+      // Event Listeners
+      volumeConvertBtn.addEventListener('click', convertVolume);
+      weightConvertBtn.addEventListener('click', convertWeight);
+      temperatureConvertBtn.addEventListener('click', convertTemperature);
+      
+      // Tab switching
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          conversionPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Unit system toggle
+      metricToggle.addEventListener('click', () => {
+        metricToggle.classList.add('active');
+        imperialToggle.classList.remove('active');
+        // Add logic to switch to metric units if needed
+      });
+      
+      imperialToggle.addEventListener('click', () => {
+        imperialToggle.classList.add('active');
+        metricToggle.classList.remove('active');
+        // Add logic to switch to imperial units if needed
+      });
+      
+      // Allow Enter key to trigger conversion
+      const inputFields = [
+        volumeValue, 
+        weightValue,
+        temperatureValue
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            if (field === volumeValue) {
+              convertVolume();
+            } else if (field === weightValue) {
+              convertWeight();
+            } else if (field === temperatureValue) {
+              convertTemperature();
+            }
+          }
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+ 
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/daily-life/cooking-converter.html';
+            break;
+          case 'es':
+            targetUrl = '/es/daily-life/cooking-converter.html';
+            break;
+          case 'de':
+            targetUrl = '/de/daily-life/cooking-converter.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/daily-life/cooking-converter.html';
+            break;
+          default: // English
+            targetUrl = '/en/daily-life/cooking-converter.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Initialize the calculator with default values
+      window.addEventListener('load', () => {
+        // Default to Volume tab
+        document.getElementById('volume-panel').classList.add('active');
+      });
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>

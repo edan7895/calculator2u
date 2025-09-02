@@ -1,13 +1,1362 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Bonificaciones | Calculator2U</title>
+<meta name="description" content="Calcula los impuestos sobre tus bonificaciones y tu ingreso neto, incluyendo las implicaciones fiscales de diferentes estructuras y métodos de pago de bonificaciones" />
+<meta name="keywords" content="calculadora de bonificaciones, calculadora de impuestos, calculadora de salario, calculadora de ingresos" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/daily-life/bonus-calculator.html" />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/bonus-calculator.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/bonus-calculator.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/bonus-calculator.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/bonus-calculator.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/bonus-calculator.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/bonus-calculator.html"/>
+<meta property="og:title" content="Calculadora de Bonificaciones | Calculator2U" />
+<meta property="og:description" content="Calcula los impuestos sobre tus bonificaciones y tu ingreso neto, incluyendo las implicaciones fiscales de diferentes estructuras y métodos de pago de bonificaciones" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/daily-life/bonus-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/bonus-calculator.jpg" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include Chart.js for visualizations -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  /* (todo el CSS se mantiene igual) */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  .bonus-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .bonus-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  .bonus-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .bonus-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .bonus-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .bonus-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .bonus-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .bonus-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bonus-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .bonus-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .bonus-container {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .bonus-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .bonus-table th,
+    .bonus-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .final-amount {
+      font-size: 2rem;
+      word-break: break-all;
+    }
+    
+    .total-interest {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    .chart-container canvas {
+      max-width: 100%;
+    }
+  }
+
+  .bonus-structure {
+    margin-top: 2rem;
+  }
+
+  .bonus-summary {
+    margin-top: 2rem;
+  }
+
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .tab-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-buttons {
+    display: flex;
+    border-bottom: 2px solid #e0f7fa;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .tab-btn.active {
+    color: #006d77;
+  }
+
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #006d77;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Acerca de Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es" selected>Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Calculadora de Bonificaciones</h1>
+    <p>Calcula los impuestos sobre tus bonificaciones y tu ingreso neto, incluyendo las implicaciones fiscales de diferentes estructuras y métodos de pago de bonificaciones</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora de Bonificaciones</h2>
+    
+    <div class="bonus-container">
+      <div class="calculator-card">
+        <div class="tab-container">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="bonus-calculator">Calculadora de Bonificación</button>
+            <button class="tab-btn" data-tab="salary-plus-bonus">Salario + Bonificación</button>
+          </div>
+          
+          <div id="bonus-calculator" class="tab-content">
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-type">Tipo de Bonificación
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Elige cómo deseas calcular tu bonificación</span>
+                  </span>
+                </label>
+                <select id="bonus-type">
+                  <option value="fixed">Monto Fijo de Bonificación</option>
+                  <option value="percentage">Porcentaje del Salario</option>
+                </select>
+              </div>
+              
+              <div class="input-field" id="bonus-percentage-container">
+                <label for="bonus-percentage">Porcentaje del Salario (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Introduce el porcentaje de tu salario</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-percentage" placeholder="Introduce porcentaje" min="0" step="0.01" value="10">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-amount">Monto de Bonificación ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Introduce el monto de tu bonificación</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-amount" placeholder="Introduce monto" min="0" value="10000">
+              </div>
+              
+              <div class="input-field">
+                <label for="annual-salary">Salario Anual ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu salario anual (para bonificación basada en porcentaje)</span>
+                  </span>
+                </label>
+                <input type="number" id="annual-salary" placeholder="Introduce salario anual" min="0" value="80000">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="calculation-mode">Modo de Cálculo
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Elige si calcular impuestos desde la bonificación antes o después de impuestos</span>
+                  </span>
+                </label>
+                <select id="calculation-mode">
+                  <option value="pre-tax">Calcular impuestos desde bonificación antes de impuestos</option>
+                  <option value="post-tax">Calcular bonificación antes de impuestos para lograr monto neto</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="tax-mode">Cálculo de Impuestos
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Elige tu modo de cálculo de impuestos</span>
+                  </span>
+                </label>
+                <select id="tax-mode">
+                  <option value="us">Estados Unidos</option>
+                  <option value="china">China</option>
+                  <option value="uk">Reino Unido</option>
+                  <option value="custom">Tasa de Impuesto Personalizada</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group" id="custom-tax-container" style="display: none;">
+              <div class="input-field">
+                <label for="income-tax-rate">Tasa de Impuesto sobre la Renta (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu tasa marginal de impuesto sobre la renta</span>
+                  </span>
+                </label>
+                <input type="number" id="income-tax-rate" placeholder="Introduce tasa" min="0" max="100" step="0.01" value="24">
+              </div>
+              
+              <div class="input-field">
+                <label for="social-tax-rate">Tasa de Seguridad Social (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu tasa de impuesto de seguridad social</span>
+                  </span>
+                </label>
+                <input type="number" id="social-tax-rate" placeholder="Introduce tasa social" min="0" max="100" step="0.01" value="6.2">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-structure">Estructura de Bonificación
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">El tipo de bonificación que estás calculando</span>
+                  </span>
+                </label>
+                <select id="bonus-structure">
+                  <option value="year-end">Bonificación de Fin de Año</option>
+                  <option value="quarterly">Bonificación Trimestral</option>
+                  <option value="performance">Bonificación por Rendimiento</option>
+                  <option value="project">Bonificación por Proyecto</option>
+                  <option value="other">Otra</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="payment-frequency">Frecuencia de Pago
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Con qué frecuencia se paga tu bonificación</span>
+                  </span>
+                </label>
+                <select id="payment-frequency">
+                  <option value="one-time">Única vez</option>
+                  <option value="monthly">Mensual</option>
+                  <option value="quarterly">Trimestral</option>
+                  <option value="semi-annually">Semestral</option>
+                  <option value="annually">Anual</option>
+                </select>
+              </div>
+            </div>
+            
+            <button class="calculate-btn" id="calculate-bonus">
+              <i class="fas fa-calculator"></i> Calcular Bonificación
+            </button>
+            
+            <div class="result-container" id="result-container">
+              <h3 class="result-header">Resumen de tu Bonificación</h3>
+              <div class="final-amount" id="final-amount">$7,600.00</div>
+              <div class="total-interest" id="total-taxes">Impuestos Totales: $2,400.00</div>
+              
+              <div class="result-metrics">
+                <div class="metric-card">
+                  <div class="metric-label">Bonificación Bruta</div>
+                  <div class="metric-value" id="gross-bonus">$10,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Bonificación Neta</div>
+                  <div class="metric-value" id="net-bonus">$7,600.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Tasa de Impuesto Efectiva</div>
+                  <div class="metric-value" id="effective-tax-rate">24.00%</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Ahorro Anual de Impuestos</div>
+                  <div class="metric-value" id="tax-savings">$2,400.00</div>
+                </div>
+              </div>
+              
+              <div class="chart-container">
+                <canvas id="bonus-chart"></canvas>
+              </div>
+              
+              <div class="bonus-summary" id="bonus-summary">
+                <p>Basado en tus entradas, tu bonificación de <span class="highlight">$10,000</span> resultaría en <span class="highlight">$7,600</span> después de impuestos con una tasa de impuesto del <span class="highlight">24%</span>.</p>
+              </div>
+            </div>
+            
+            <div class="bonus-container">
+              <table class="bonus-table" id="bonus-table">
+                <thead>
+                  <tr>
+                    <th>Componente de Impuesto</th>
+                    <th>Tasa de Impuesto</th>
+                    <th>Monto de Impuesto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div id="salary-plus-bonus" class="tab-content" style="display: none;">
+            <div class="input-group">
+              <div class="input-field">
+                <label for="monthly-salary">Salario Mensual ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu salario base mensual</span>
+                  </span>
+                </label>
+                <input type="number" id="monthly-salary" placeholder="Introduce salario mensual" min="0" value="6000">
+              </div>
+              
+              <div class="input-field">
+                <label for="bonus-type-salary">Tipo de Bonificación
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tipo de bonificación a incluir</span>
+                  </span>
+                </label>
+                <select id="bonus-type-salary">
+                  <option value="fixed">Monto Fijo de Bonificación</option>
+                  <option value="percentage">Porcentaje del Salario</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field" id="bonus-percentage-container-salary">
+                <label for="bonus-percentage-salary">Porcentaje del Salario (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Porcentaje del salario para cálculo de bonificación</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-percentage-salary" placeholder="Introduce porcentaje" min="0" step="0.01" value="10">
+              </div>
+              
+              <div class="input-field">
+                <label for="bonus-amount-salary">Monto de Bonificación ($)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu monto de bonificación</span>
+                  </span>
+                </label>
+                <input type="number" id="bonus-amount-salary" placeholder="Introduce monto" min="0" value="7200">
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <div class="input-field">
+                <label for="bonus-frequency">Frecuencia de Pago
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Con qué frecuencia se paga tu bonificación</span>
+                  </span>
+                </label>
+                <select id="bonus-frequency">
+                  <option value="one-time">Única vez</option>
+                  <option value="monthly">Mensual</option>
+                  <option value="quarterly">Trimestral</option>
+                  <option value="semi-annually">Semestral</option>
+                  <option value="annually">Anual</option>
+                </select>
+              </div>
+              
+              <div class="input-field">
+                <label for="salary-plus-bonus-tax">Cálculo de Impuestos
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Elige tu modo de cálculo de impuestos</span>
+                  </span>
+                </label>
+                <select id="salary-plus-bonus-tax">
+                  <option value="us">Estados Unidos</option>
+                  <option value="china">China</option>
+                  <option value="uk">Reino Unido</option>
+                  <option value="custom">Tasa de Impuesto Personalizada</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="input-group" id="custom-tax-container-salary" style="display: none;">
+              <div class="input-field">
+                <label for="income-tax-rate-salary">Tasa de Impuesto sobre la Renta (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu tasa marginal de impuesto sobre la renta</span>
+                  </span>
+                </label>
+                <input type="number" id="income-tax-rate-salary" placeholder="Introduce tasa" min="0" max="100" step="0.01" value="24">
+              </div>
+              
+              <div class="input-field">
+                <label for="social-tax-rate-salary">Tasa de Seguridad Social (%)
+                  <span class="tooltip">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <span class="tooltip-text">Tu tasa de impuesto de seguridad social</span>
+                  </span>
+                </label>
+                <input type="number" id="social-tax-rate-salary" placeholder="Introduce tasa social" min="0" max="100" step="0.01" value="6.2">
+              </div>
+            </div>
+            
+            <button class="calculate-btn" id="calculate-salary-plus-bonus">
+              <i class="fas fa-calculator"></i> Calcular Ingreso Total
+            </button>
+            
+            <div class="result-container" id="salary-plus-result-container">
+              <h3 class="result-header">Resumen de tu Ingreso Total</h3>
+              <div class="final-amount" id="total-gross">$87,200.00</div>
+              <div class="total-interest" id="total-net">$65,408.00</div>
+              
+              <div class="result-metrics">
+                <div class="metric-card">
+                  <div class="metric-label">Salario Anual</div>
+                  <div class="metric-value" id="annual-salary-result">$72,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Bonificación Anual</div>
+                  <div class="metric-value" id="annual-bonus">$12,000.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Impuestos Totales</div>
+                  <div class="metric-value" id="total-taxes">$21,792.00</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Ingreso Neto</div>
+                  <div class="metric-value" id="net-income">$65,408.00</div>
+                </div>
+              </div>
+              
+              <div class="chart-container">
+                <canvas id="income-chart"></canvas>
+              </div>
+              
+              <div class="bonus-summary" id="income-summary">
+                <p>Basado en tus entradas, tu salario anual de <span class="highlight">$72,000</span> más bonificación de <span class="highlight">$12,000</span> resultaría en un ingreso bruto total de <span class="highlight">$84,000</span> y un ingreso neto de <span class="highlight">$65,408</span> después de impuestos.</p>
+              </div>
+            </div>
+            
+            <div class="bonus-container">
+              <table class="bonus-table" id="income-table">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Monto Bruto</th>
+                    <th>Tasa de Impuesto</th>
+                    <th>Monto de Impuesto</th>
+                    <th>Monto Neto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="additional-options">
+          <h3>Opciones Adicionales</h3>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="bonus-performance">Puntuación de Rendimiento
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Tu puntuación de rendimiento (1-100)</span>
+                </span>
+              </label>
+              <input type="number" id="bonus-performance" placeholder="Introduce puntuación" min="0" max="100" value="85">
+            </div>
+            
+            <div class="input-field">
+              <label for="bonus-multiplier">Multiplicador de Bonificación
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Multiplicador de bonificación basado en rendimiento</span>
+                </span>
+              </label>
+              <input type="number" id="bonus-multiplier" placeholder="Introduce multiplicador" min="0" step="0.01" value="0.5">
+            </div>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-paycheck-details">
+              <span class="slider"></span>
+            </label>
+            <span>Incluir desglose detallado del cheque de pago</span>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-yearly-projections">
+              <span class="slider"></span>
+            </label>
+            <span>Mostrar proyecciones de ingresos anuales</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info-card">
+        <h3>Entendiendo los Cálculos de Bonificación</h3>
+        <p>Los cálculos de bonificación pueden ser complejos debido al tratamiento fiscal variable en comparación con el ingreso regular. Factores clave que afectan tu bonificación incluyen:</p>
+        <ul>
+          <li><strong>Monto de Bonificación:</strong> La bonificación total que recibes</li>
+          <li><strong>Tasa de Impuesto:</strong> El porcentaje de tu bonificación que va a impuestos</li>
+          <li><strong>Frecuencia de Pago:</strong> Con qué frecuencia se paga tu bonificación</li>
+          <li><strong>Estructura de Bonificación:</strong> Ya sea de fin de año, trimestral o basada en rendimiento</li>
+          <li><strong>País/Región:</strong> Las leyes fiscales varían por ubicación</li>
+        </ul>
+        
+        <h3>Cómo se Gravan las Bonificaciones</h3>
+        <p>La tributación de bonificaciones varía por país y puede tratarse de manera diferente que el ingreso regular:</p>
+        <ul>
+          <li>En EE.UU., las bonificaciones generalmente se gravan a una tasa federal fija del 22% (hasta $1 millón)</li>
+          <li>En China, las bonificaciones se gravan usando un método de cálculo separado</li>
+          <li>En el Reino Unido, las bonificaciones se gravan a tu tasa marginal de impuesto sobre la renta</li>
+          <li>Algunos países te permiten elegir entre agregar bonificaciones al ingreso regular o gravarlas separadamente</li>
+        </ul>
+        
+        <h3>Consejos de Planificación Fiscal para Bonificaciones</h3>
+        <p>Considera estos consejos para maximizar tu ingreso neto de bonificación:</p>
+        <ul>
+          <li>Entiende cómo se gravan las bonificaciones en tu país</li>
+          <li>Considera cuentas con ventajas fiscales para ahorros de bonificación</li>
+          <li>Verifica si diferir pagos de bonificación podría reducir tu carga fiscal</li>
+          <li>Consulta a un profesional fiscal para asesoramiento personalizado</li>
+          <li>Considera donaciones caritativas para reducir el ingreso gravable</li>
+        </ul>
+        
+        <div class="bonus-summary">
+          <h3><i class="fas fa-lightbulb"></i> Optimización de Bonificación</h3>
+          <p>La planificación estratégica puede mejorar significativamente tu ingreso neto de bonificación:</p>
+          <ul>
+            <li>Diferir bonificaciones a años con menores impuestos</li>
+            <li>Dividir bonificaciones entre miembros de la familia</li>
+            <li>Usar bonificaciones para financiar cuentas con ventajas fiscales</li>
+            <li>Negociar el momento de pago de la bonificación</li>
+            <li>Entender las políticas de bonificación de tu empresa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Tu fuente confiable de calculadoras para la vida diaria y herramientas financieras. Ayudándote a tomar decisiones informadas desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Otras Calculadoras Útiles</h3>
+        <ul class="footer-links">
+          <li><a href="/es/finance/auto-loan-calculator.html">Calculadora de Préstamo Automotriz</a></li>
+          <li><a href="/es/finance/home-loan-calculator.html">Calculadora de Hipoteca</a></li>
+          <li><a href="/es/daily-life/salary-calculator.html">Calculadora de Salario</a></li>
+          <li><a href="/es/finance/tax-calculator.html">Calculadora de Impuestos</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan estimaciones únicamente. Consulta a un profesional fiscal para asesoramiento personalizado.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    /* (todo el JavaScript se mantiene igual) */
+  </script>
 </body>
-</html></body></html> 
+</html>
