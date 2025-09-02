@@ -1,13 +1,958 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Generador de Nombres de Usuario | Calculator2U</title>
+<meta name="description" content="Genera nombres de usuario creativos y únicos con nuestra herramienta gratuita. Personaliza tus preferencias y obtén sugerencias al instante." />
+<meta name="keywords" content="generador de nombres de usuario, crear nombre de usuario, nombre de usuario único, generar nombre de usuario, ideas de nombre de usuario" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/generator/username-generator.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/generator/username-generator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/generator/username-generator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/generator/username-generator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/generator/username-generator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/generator/username-generator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/generator/username-generator.html" />
+<meta property="og:title" content="Generador de Nombres de Usuario | Calculator2U" />
+<meta property="og:description" content="Genera nombres de usuario creativos y únicos con nuestra herramienta gratuita. Personaliza tus preferencias y obtén sugerencias al instante." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/generator/username-generator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/username-generator.jpg" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* All existing styles from your date calculator */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Generator Styles */
+  .generator-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .generator-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field textarea,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field textarea:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .action-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .action-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .generator-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .generator-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .action-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  /* Username Generator specific styles */
+  .username-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    .username-settings {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .username-display {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 2rem;
+    background: #f0f9ff;
+    border-radius: 12px;
+    margin: 2rem 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #006d77;
+    font-weight: bold;
+  }
+  
+  .username-history {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .username-history p {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .clear-history {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .clear-history:hover {
+    background: #006d77;
+  }
+  
+  /* Info Card Styles */
+  .card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0f7fa;
+  }
+
+  .card ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .card li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+
+  .card p {
+    color: #555;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html" class="active">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Sobre Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es" selected>Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Generador de Nombres de Usuario</h1>
+    <p>Crea nombres de usuario únicos y creativos con nuestro generador. Personaliza tus preferencias y obtén sugerencias al instante.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Generar Nombres de Usuario Únicos</h2>
+    
+    <div class="generator-container">
+      <!-- Generator Card -->
+      <div class="card">
+        <h3 class="payslip-section-title">Configuración de Generación de Nombre de Usuario</h3>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="username-prefix">Prefijo (Opcional):</label>
+            <input type="text" id="username-prefix" placeholder="p. ej., cool, super">
+          </div>
+          
+          <div class="input-field">
+            <label for="username-suffix">Sufijo (Opcional):</label>
+            <input type="text" id="username-suffix" placeholder="p. ej., 2023, pro">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="username-length">Longitud del Nombre de Usuario:</label>
+            <input type="number" id="username-length" value="10" min="3" max="20">
+          </div>
+          
+          <div class="input-field">
+            <label for="username-count">Número de Sugerencias:</label>
+            <input type="number" id="username-count" value="5" min="1" max="20">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="include-numbers">Incluir Números:</label>
+            <select id="include-numbers">
+              <option value="true">Sí</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="include-special">Incluir Caracteres Especiales:</label>
+            <select id="include-special">
+              <option value="false">No</option>
+              <option value="true">Sí</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="action-btn" id="generate-username">
+          <i class="fas fa-magic"></i> Generar Nombres de Usuario
+        </button>
+        
+        <div class="username-display" id="username-display">
+          Aún no se ha generado ningún nombre de usuario
+        </div>
+        
+        <div class="input-field">
+          <label>Historial de Nombres de Usuario:</label>
+          <div class="username-history" id="username-history"></div>
+        </div>
+        
+        <button class="clear-history" id="clear-history">
+          Borrar Historial
+        </button>
+      </div>
+      
+      <!-- Info Card -->
+      <div class="card">
+        <h3>Acerca de la Generación de Nombres de Usuario</h3>
+        <p>Los generadores de nombres de usuario son herramientas que ayudan a los usuarios a crear nombres de usuario únicos y memorables para diversas plataformas en línea. Son útiles para:</p>
+        <ul>
+          <li><strong>Redes Sociales:</strong> Crear perfiles distintivos</li>
+          <li><strong>Videojuegos:</strong> Establecer identidades memorables dentro del juego</li>
+          <li><strong>Uso Profesional:</strong> Crear identificadores profesionales</li>
+          <li><strong>Creación de Contenido:</strong> Encontrar nombres atractivos para plataformas</li>
+          <li><strong>Marca Personal:</strong> Desarrollar una presencia en línea coherente</li>
+        </ul>
+        
+        <h3>Cómo Funciona Este Generador</h3>
+        <p>Nuestro generador de nombres de usuario utiliza una combinación de palabras aleatorias, números y caracteres especiales para crear nombres únicos según tus preferencias. Puedes personalizar la longitud, incluir números o caracteres especiales, e incluso añadir tu propio prefijo o sufijo.</p>
+        
+        <h3>Mejores Prácticas</h3>
+        <p>Sigue estos consejos para una creación efectiva de nombres de usuario:</p>
+        <ul>
+          <li>Elige nombres que sean fáciles de recordar y deletrear</li>
+          <li>Considera tu audiencia objetivo y plataforma</li>
+          <li>Mantén un tono profesional si es necesario para negocios</li>
+          <li>Verifica la disponibilidad en múltiples plataformas</li>
+          <li>Utiliza esta herramienta para generar múltiples opciones para elegir</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Tu fuente confiable de calculadoras para la vida diaria y herramientas financieras. Ayudándote a crear nombres de usuario únicos desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Otros Generadores Útiles</h3>
+        <ul class="footer-links">
+          <li><a href="/es/generator/password-generator.html" id="util1">Generador de Contraseñas</a></li>
+          <li><a href="/es/generator/qr-code-generator.html" id="util2">Generador de Código QR</a></li>
+          <li><a href="/es/generator/username-generator.html" id="util3">Generador de Nombres de Usuario</a></li>
+          <li><a href="/es/generator/random-number-generator.html" id="util4">Generador de Números Aleatorios</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Este generador de nombres de usuario proporciona sugerencias para nombres. Siempre verifica la disponibilidad del nombre en tu plataforma objetivo.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      
+      // Username generator elements
+      const usernamePrefix = document.getElementById('username-prefix');
+      const usernameSuffix = document.getElementById('username-suffix');
+      const usernameLength = document.getElementById('username-length');
+      const usernameCount = document.getElementById('username-count');
+      const includeNumbers = document.getElementById('include-numbers');
+      const includeSpecial = document.getElementById('include-special');
+      const generateBtn = document.getElementById('generate-username');
+      const displayEl = document.getElementById('username-display');
+      const historyEl = document.getElementById('username-history');
+      const clearHistoryBtn = document.getElementById('clear-history');
+      
+      // Word list for username generation
+      const adjectives = ['genial', 'súper', 'increíble', 'fantástico', 'brillante', 'calmado', 'loco', 'lindo', 'atrevido', 'soñador', 'elegante', 'amistoso', 'divertido', 'gentil', 'feliz', 'alegre', 'legendario', 'encantador', 'afortunado', 'poderoso', 'ordenado', 'agradable', 'perfecto', 'tranquilo', 'rápido', 'brillante', 'inteligente', 'veloz', 'fuerte', 'dulce', 'salvaje', 'loco'];
+      const nouns = ['manzana', 'espada', 'brisa', 'burbuja', 'mariposa', 'capitán', 'campeón', 'guepardo', 'cazador', 'grillo', 'bailarín', 'delfín', 'soñador', 'águila', 'explorador', 'halcón', 'zorro', 'gema', 'girafa', 'héroe', 'jaguar', 'caballero', 'león', 'maestro', 'luna', 'noche', 'pantera', 'estrella', 'tormenta', 'trueno', 'tigre', 'vanguardia', 'lobo', 'susurro', 'juventud', 'cénit'];
+      const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '\\', ':', ';', '"', "'", '<', '>', ',', '.', '?', '/'];
+      
+      // Generate usernames
+      function generateUsernames() {
+        const prefix = usernamePrefix.value.trim();
+        const suffix = usernameSuffix.value.trim();
+        const length = parseInt(usernameLength.value);
+        const count = parseInt(usernameCount.value);
+        const useNumbers = includeNumbers.value === 'true';
+        const useSpecial = includeSpecial.value === 'true';
+        
+        // Validate input
+        if (isNaN(length) || isNaN(count)) {
+          alert('Por favor, ingresa números válidos para la longitud y la cantidad.');
+          return;
+        }
+        
+        if (length < 3 || length > 20) {
+          alert('La longitud del nombre de usuario debe estar entre 3 y 20 caracteres.');
+          return;
+        }
+        
+        if (count < 1 || count > 20) {
+          alert('Por favor, selecciona entre 1 y 20 sugerencias.');
+          return;
+        }
+        
+        // Clear display
+        displayEl.textContent = 'Generando...';
+        
+        // Generate usernames
+        let usernames = [];
+        
+        for (let i = 0; i < count; i++) {
+          let username = '';
+          
+          // Add prefix if provided
+          if (prefix) {
+            username += prefix;
+          }
+          
+          // Generate main part of username
+          let mainPart;
+          do {
+            const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+            const noun = nouns[Math.floor(Math.random() * nouns.length)];
+            mainPart = adj + noun;
+            
+            // Ensure mainPart doesn't make the username too long
+          } while ((prefix ? prefix.length : 0) + mainPart.length + (suffix ? suffix.length : 0) + (useNumbers ? 3 : 0) + (useSpecial ? 1 : 0) > length);
+          
+          username += mainPart;
+          
+          // Add numbers if requested
+          if (useNumbers) {
+            const numLength = Math.min(length - username.length - (suffix ? suffix.length : 0), 3);
+            if (numLength > 0) {
+              const num = Math.floor(Math.random() * Math.pow(10, numLength));
+              username += String(num).padStart(numLength, '0');
+            }
+          }
+          
+          // Add special character if requested and there's space
+          if (useSpecial && username.length < length - (suffix ? suffix.length : 0)) {
+            const specialChar = specialChars[Math.floor(Math.random() * specialChars.length)];
+            username = username.slice(0, -1) + specialChar;
+          }
+          
+          // Add suffix if provided and there's space
+          if (suffix && username.length + suffix.length <= length) {
+            username += suffix;
+          }
+          
+          // Truncate if necessary
+          if (username.length > length) {
+            username = username.substring(0, length);
+          }
+          
+          // Ensure uniqueness in the generated list
+          if (usernames.includes(username)) {
+            i--;
+            continue;
+          }
+          
+          usernames.push(username);
+        }
+        
+        // Update display
+        displayEl.textContent = usernames.join('\n');
+        
+        // Update history
+        const now = new Date().toLocaleTimeString();
+        const historyItem = document.createElement('p');
+        historyItem.textContent = `${now}: ${usernames.join(', ')}`;
+        historyEl.prepend(historyItem);
+      }
+      
+      // Clear history
+      function clearHistory() {
+        historyEl.innerHTML = '';
+      }
+      
+      // Event Listeners
+      generateBtn.addEventListener('click', generateUsernames);
+      clearHistoryBtn.addEventListener('click', clearHistory);
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/generator/username-generator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/generator/username-generator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/generator/username-generator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/generator/username-generator.html';
+            break;
+          default: // English
+            targetUrl = '/en/generator/username-generator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize with default values
+      window.addEventListener('load', () => {
+        generateUsernames();
+      });
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>
