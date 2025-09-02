@@ -1,13 +1,2447 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de Resistencia de Materiales | Calculator2U</title>
+<meta name="description" content="Calcula tensión, deformación, módulo de Young y más con nuestra completa calculadora de resistencia de materiales." />
+<meta name="keywords" content="calculadora de resistencia de materiales, calculadora de tensión, calculadora de deformación, calculadora de módulo de Young, calculadora de ingeniería" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/engineering/material-strength-calculator.html" />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/engineering/material-strength-calculator.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/engineering/material-strength-calculator.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/engineering/material-strength-calculator.html"/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/engineering/material-strength-calculator.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/engineering/material-strength-calculator.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/engineering/material-strength-calculator.html"/>
+<meta property="og:title" content="Calculadora de Resistencia de Materiales | Calculator2U" />
+<meta property="og:description" content="Calcula tensión, deformación, módulo de Young y más con nuestra completa calculadora de resistencia de materiales." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/engineering/material-strength-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/material-strength-calculator.jpg" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus,
+  .input-field textarea:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .unit-selection {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .unit-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .swap-button {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  
+  .swap-button:hover {
+    background: #006d77;
+    transform: rotate(180deg);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  
+  /* Tooltip */
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+  
+  /* Material Specific Styles */
+  .material-selector {
+    margin-bottom: 1rem;
+  }
+  
+  .material-selector select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .material-properties {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .material-property {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .property-name {
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .property-value {
+    font-weight: 600;
+  }
+  
+  /* Safety Factor Styles */
+  .safety-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .safe {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  .warning {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .danger {
+    background: #f8d7da;
+    color: #721c24;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-es.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Sobre Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chino)</option>
+            <option value="de">Deutsch (Alemán)</option>
+            <option value="fr">Français (Francés)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculadora de Resistencia de Materiales</h1>
+    <p>Calcula tensión, deformación, módulo de Young y más con nuestra completa calculadora de resistencia de materiales. Perfecta para estudiantes y profesionales de ingeniería.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora de Resistencia de Materiales</h2>
+    
+    <div class="cooking-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="converter-tabs">
+          <button class="converter-tab-btn active" data-tab="basic-stress">Cálculo de Tensión Básica</button>
+          <button class="converter-tab-btn" data-tab="strain">Cálculo de Deformación</button>
+          <button class="converter-tab-btn" data-tab="youngs-modulus">Módulo de Young</button>
+          <button class="converter-tab-btn" data-tab="material-comparison">Comparación de Resistencia de Materiales</button>
+          <button class="converter-tab-btn" data-tab="shear-stress">Tensión de Corte</button>
+          <button class="converter-tab-btn" data-tab="bending-stress">Tensión por Flexión</button>
+          <button class="converter-tab-btn" data-tab="torsion-stress">Tensión por Torsión</button>
+          <button class="converter-tab-btn" data-tab="safety-factor">Factor de Seguridad</button>
+          <button class="converter-tab-btn" data-tab="section-analysis">Análisis de Sección</button>
+        </div>
+        
+        <!-- Basic Stress Calculation Tab -->
+        <div class="converter-panel active" id="basic-stress-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="force-value">Fuerza (F):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese la fuerza aplicada en Newtons (N) o kiloNewtons (kN)</span>
+                </span>
+              </label>
+              <input type="number" id="force-value" placeholder="Ingrese la fuerza" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="force-unit">Unidad de Fuerza:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para la fuerza (N o kN)</span>
+                </span>
+              </label>
+              <select id="force-unit">
+                <option value="N">Newtons (N)</option>
+                <option value="kN">kiloNewtons (kN)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="area-value">Área (A):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el área de sección transversal en mm², cm² o m²</span>
+                </span>
+              </label>
+              <input type="number" id="area-value" placeholder="Ingrese el área" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="area-unit">Unidad de Área:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el área (mm², cm² o m²)</span>
+                </span>
+              </label>
+              <select id="area-unit">
+                <option value="mm²">mm²</option>
+                <option value="cm²">cm²</option>
+                <option value="m²">m²</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="basic-stress-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="basic-stress-calculate">
+            <i class="fas fa-calculator"></i> Calcular Tensión
+          </button>
+          
+          <div class="result-container" id="basic-stress-result-container">
+            <h3 class="result-header">Resultado del Cálculo de Tensión Básica</h3>
+            <div class="result-value" id="basic-stress-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="basic-stress-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Strain Calculation Tab -->
+        <div class="converter-panel" id="strain-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="original-length">Longitud Original (L₀):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese la longitud original del material</span>
+                </span>
+              </label>
+              <input type="number" id="original-length" placeholder="Ingrese la longitud original" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="elongation">Elongación (ΔL):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el cambio en la longitud después de aplicar la fuerza</span>
+                </span>
+              </label>
+              <input type="number" id="elongation" placeholder="Ingrese la elongación" step="any">
+            </div>
+          </div>
+          
+          <div id="strain-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="strain-calculate">
+            <i class="fas fa-calculator"></i> Calcular Deformación
+          </button>
+          
+          <div class="result-container" id="strain-result-container">
+            <h3 class="result-header">Resultado del Cálculo de Deformación</h3>
+            <div class="result-value" id="strain-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="strain-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Young's Modulus Tab -->
+        <div class="converter-panel" id="youngs-modulus-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="stress-value">Tensión (σ):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el valor de tensión calculado o conocido</span>
+                </span>
+              </label>
+              <input type="number" id="stress-value" placeholder="Ingrese la tensión" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="strain-value">Deformación (ε):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el valor de deformación calculado o conocido</span>
+                </span>
+              </label>
+              <input type="number" id="strain-value" placeholder="Ingrese la deformación" step="any">
+            </div>
+          </div>
+          
+          <div id="youngs-modulus-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="youngs-modulus-calculate">
+            <i class="fas fa-calculator"></i> Calcular Módulo de Young
+          </button>
+          
+          <div class="result-container" id="youngs-modulus-result-container">
+            <h3 class="result-header">Resultado del Cálculo del Módulo de Young</h3>
+            <div class="result-value" id="youngs-modulus-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="youngs-modulus-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Material Strength Comparison Tab -->
+        <div class="converter-panel" id="material-comparison-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="calculated-stress">Tensión Calculada (σ):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el valor de tensión calculado para comparar</span>
+                </span>
+              </label>
+              <input type="number" id="calculated-stress" placeholder="Ingrese la tensión" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="material-selection">Material:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione el material para comparar</span>
+                </span>
+              </label>
+              <select id="material-selection">
+                <option value="steel">Acero</option>
+                <option value="aluminum">Aluminio</option>
+                <option value="copper">Cobre</option>
+                <option value="titanium">Titanio</option>
+                <option value="concrete">Concreto</option>
+                <option value="wood">Madera</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="material-comparison-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="material-comparison-calculate">
+            <i class="fas fa-calculator"></i> Comparar Resistencia de Materiales
+          </button>
+          
+          <div class="result-container" id="material-comparison-result-container">
+            <h3 class="result-header">Resultado de la Comparación de Resistencia de Materiales</h3>
+            <div class="result-value" id="material-comparison-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="material-properties" id="material-properties-display">
+              <!-- Material properties will be displayed here -->
+            </div>
+            
+            <div class="safety-result" id="material-safety-result">
+              <!-- Safety result will be displayed here -->
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="material-comparison-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Shear Stress Tab -->
+        <div class="converter-panel" id="shear-stress-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="shear-force">Fuerza de Corte (F):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese la fuerza de corte aplicada</span>
+                </span>
+              </label>
+              <input type="number" id="shear-force" placeholder="Ingrese la fuerza de corte" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="shear-force-unit">Unidad de Fuerza:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para la fuerza (N o kN)</span>
+                </span>
+              </label>
+              <select id="shear-force-unit">
+                <option value="N">Newtons (N)</option>
+                <option value="kN">kiloNewtons (kN)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="shear-area">Área de Cortante (A):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el área sobre la que se aplica la fuerza de corte</span>
+                </span>
+              </label>
+              <input type="number" id="shear-area" placeholder="Ingrese el área de cortante" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="shear-area-unit">Unidad de Área:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el área (mm², cm² o m²)</span>
+                </span>
+              </label>
+              <select id="shear-area-unit">
+                <option value="mm²">mm²</option>
+                <option value="cm²">cm²</option>
+                <option value="m²">m²</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="shear-stress-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="shear-stress-calculate">
+            <i class="fas fa-calculator"></i> Calcular Tensión de Corte
+          </button>
+          
+          <div class="result-container" id="shear-stress-result-container">
+            <h3 class="result-header">Resultado del Cálculo de Tensión de Corte</h3>
+            <div class="result-value" id="shear-stress-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="shear-stress-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bending Stress Tab -->
+        <div class="converter-panel" id="bending-stress-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="bending-moment">Momento de Flexión (M):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el valor del momento de flexión</span>
+                </span>
+              </label>
+              <input type="number" id="bending-moment" placeholder="Ingrese el momento de flexión" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="bending-unit">Unidad de Momento:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el momento de flexión (N·m o kN·m)</span>
+                </span>
+              </label>
+              <select id="bending-unit">
+                <option value="N·m">Newton-metros (N·m)</option>
+                <option value="kN·m">kiloNewton-metros (kN·m)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="section-modulus">Módulo de Sección (S):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el módulo de sección de la viga</span>
+                </span>
+              </label>
+              <input type="number" id="section-modulus" placeholder="Ingrese el módulo de sección" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="modulus-unit">Unidad de Módulo:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el módulo de sección (mm³, cm³ o m³)</span>
+                </span>
+              </label>
+              <select id="modulus-unit">
+                <option value="mm³">mm³</option>
+                <option value="cm³">cm³</option>
+                <option value="m³">m³</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="bending-stress-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="bending-stress-calculate">
+            <i class="fas fa-calculator"></i> Calcular Tensión por Flexión
+          </button>
+          
+          <div class="result-container" id="bending-stress-result-container">
+            <h3 class="result-header">Resultado del Cálculo de Tensión por Flexión</h3>
+            <div class="result-value" id="bending-stress-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="bending-stress-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Torsion Stress Tab -->
+        <div class="converter-panel" id="torsion-stress-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="torque-value">Torque (T):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el torque aplicado</span>
+                </span>
+              </label>
+              <input type="number" id="torque-value" placeholder="Ingrese el torque" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="torque-unit">Unidad de Torque:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el torque (N·m o kN·m)</span>
+                </span>
+              </label>
+              <select id="torque-unit">
+                <option value="N·m">Newton-metros (N·m)</option>
+                <option value="kN·m">kiloNewton-metros (kN·m)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="radius-value">Radio (r):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el radio en el que se calcula la tensión</span>
+                </span>
+              </label>
+              <input type="number" id="radius-value" placeholder="Ingrese el radio" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="radius-unit">Unidad de Radio:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el radio (mm, cm o m)</span>
+                </span>
+              </label>
+              <select id="radius-unit">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="polar-moment">Momento Polar de Inercia (J):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese el momento polar de inercia</span>
+                </span>
+              </label>
+              <input type="number" id="polar-moment" placeholder="Ingrese el momento polar" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="polar-unit">Unidad de Momento Polar:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para el momento polar (mm⁴, cm⁴ o m⁴)</span>
+                </span>
+              </label>
+              <select id="polar-unit">
+                <option value="mm⁴">mm⁴</option>
+                <option value="cm⁴">cm⁴</option>
+                <option value="m⁴">m⁴</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="torsion-stress-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="torsion-stress-calculate">
+            <i class="fas fa-calculator"></i> Calcular Tensión por Torsión
+          </button>
+          
+          <div class="result-container" id="torsion-stress-result-container">
+            <h3 class="result-header">Resultado del Cálculo de Tensión por Torsión</h3>
+            <div class="result-value" id="torsion-stress-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="torsion-stress-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Safety Factor Tab -->
+        <div class="converter-panel" id="safety-factor-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="yield-strength">Resistencia de Fluencia (σᵧ):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese la resistencia de fluencia del material</span>
+                </span>
+              </label>
+              <input type="number" id="yield-strength" placeholder="Ingrese la resistencia de fluencia" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="yield-unit">Unidad de Resistencia:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para la resistencia de fluencia (Pa, MPa o GPa)</span>
+                </span>
+              </label>
+              <select id="yield-unit">
+                <option value="Pa">Pascales (Pa)</option>
+                <option value="MPa">MegaPascales (MPa)</option>
+                <option value="GPa">GigaPascales (GPa)</option>
+              </select>
+            </div>
+            
+            <div class="input-field">
+              <label for="applied-stress">Tensión Aplicada (σ):
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Ingrese la tensión calculada o aplicada</span>
+                </span>
+              </label>
+              <input type="number" id="applied-stress" placeholder="Ingrese la tensión aplicada" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="stress-unit-safety">Unidad de Tensión:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para la tensión aplicada (Pa, MPa o GPa)</span>
+                </span>
+              </label>
+              <select id="stress-unit-safety">
+                <option value="Pa">Pascales (Pa)</option>
+                <option value="MPa">MegaPascales (MPa)</option>
+                <option value="GPa">GigaPascales (GPa)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="safety-factor-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="safety-factor-calculate">
+            <i class="fas fa-calculator"></i> Calcular Factor de Seguridad
+          </button>
+          
+          <div class="result-container" id="safety-factor-result-container">
+            <h3 class="result-header">Resultado del Cálculo del Factor de Seguridad</h3>
+            <div class="result-value" id="safety-factor-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="safety-result" id="safety-result">
+              <!-- Safety result will be displayed here -->
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="safety-factor-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section Analysis Tab -->
+        <div class="converter-panel" id="section-analysis-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="shape-selection">Forma:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la forma de la sección transversal</span>
+                </span>
+              </label>
+              <select id="shape-selection">
+                <option value="solid-circle">Círculo Sólido</option>
+                <option value="hollow-circle">Círculo Hueco</option>
+                <option value="solid-rectangle">Rectángulo Sólido</option>
+                <option value="hollow-rectangle">Rectángulo Hueco</option>
+                <option value="i-beam">Viga en I</option>
+              </select>
+            </div>
+            
+            <div class="input-field" id="dimension-input-1-container" style="display: none;">
+              <label for="dimension-input-1">Dimensión 1:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text" id="dimension-1-tooltip">La descripción de la dimensión aparecerá aquí</span>
+                </span>
+              </label>
+              <input type="number" id="dimension-input-1" placeholder="Ingrese la dimensión" step="any">
+            </div>
+            
+            <div class="input-field" id="dimension-input-2-container" style="display: none;">
+              <label for="dimension-input-2">Dimensión 2:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text" id="dimension-2-tooltip">La descripción de la dimensión aparecerá aquí</span>
+                </span>
+              </label>
+              <input type="number" id="dimension-input-2" placeholder="Ingrese la dimensión" step="any">
+            </div>
+            
+            <div class="input-field" id="dimension-input-3-container" style="display: none;">
+              <label for="dimension-input-3">Dimensión 3:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text" id="dimension-3-tooltip">La descripción de la dimensión aparecerá aquí</span>
+                </span>
+              </label>
+              <input type="number" id="dimension-input-3" placeholder="Ingrese la dimensión" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="dimension-unit">Unidad de Dimensión:
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Seleccione la unidad para las dimensiones (mm, cm o m)</span>
+                </span>
+              </label>
+              <select id="dimension-unit">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="section-analysis-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="section-analysis-calculate">
+            <i class="fas fa-calculator"></i> Analizar Sección
+          </button>
+          
+          <div class="result-container" id="section-analysis-result-container">
+            <h3 class="result-header">Resultado del Análisis de Sección</h3>
+            <div class="result-value" id="section-analysis-result-value">
+              El resultado aparecerá aquí
+            </div>
+            
+            <div class="material-properties" id="section-properties-display">
+              <!-- Section properties will be displayed here -->
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="section-analysis-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Acerca de los Cálculos de Resistencia de Materiales</h3>
+        <p>Los cálculos de resistencia de materiales son esenciales en la ingeniería para asegurar que las estructuras puedan soportar las cargas aplicadas sin fallar. Aquí hay algunos conceptos clave:</p>
+        <ul>
+          <li><strong>Tensión:</strong> Fuerza aplicada por unidad de área (σ = F/A)</li>
+          <li><strong>Deformación:</strong> Deformación causada por la tensión (ε = ΔL/L₀)</li>
+          <li><strong>Módulo de Young:</strong> Medida de la rigidez de un material (E = σ/ε)</li>
+          <li><strong>Resistencia de Fluencia:</strong> Tensión a la que un material comienza a deformarse plásticamente</li>
+          <li><strong>Resistencia a la Tensión Última:</strong> Tensión máxima que puede soportar un material</li>
+          <li><strong>Factor de Seguridad:</strong> Relación entre la tensión de falla y la tensión de trabajo</li>
+        </ul>
+        
+        <h3>Propiedades Comunes de Materiales</h3>
+        <p>Aquí hay propiedades típicas para algunos materiales comunes:</p>
+        <ul>
+          <li><strong>Acero:</strong> E ≈ 200 GPa, σᵧ ≈ 250-350 MPa</li>
+          <li><strong>Aluminio:</strong> E ≈ 70 GPa, σᵧ ≈ 60-250 MPa</li>
+          <li><strong>Cobre:</strong> E ≈ 110-130 GPa, σᵧ ≈ 70-220 MPa</li>
+          <li><strong>Titanio:</strong> E ≈ 100-120 GPa, σᵧ ≈ 880-970 MPa</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Tu fuente confiable de calculadoras para la vida diaria y herramientas de ingeniería. Ayudándote con los cálculos de resistencia de materiales desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Otras Calculadoras Útiles</h3>
+        <ul class="footer-links">
+          <li><a href="/es/education/unit-converter.html">Convertidor de Unidades</a></li>
+          <li><a href="/es/education/ph-calculator.html">Calculadora de pH</a></li>
+          <li><a href="/es/education/mole-calculator.html">Calculadora de Moles</a></li>
+          <li><a href="/es/education/word-counter.html">Contador de Palabras</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Siempre verifique los cálculos críticos con múltiples fuentes.</small></p>
+    </div>
+  </footer>
+
+<script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const converterTabButtons = document.querySelectorAll('.converter-tab-btn');
+      const converterPanels = document.querySelectorAll('.converter-panel');
+      
+      // Conversion elements for each calculator type
+      const conversionElements = {
+        basicStress: {
+          force: document.getElementById('force-value'),
+          forceUnit: document.getElementById('force-unit'),
+          area: document.getElementById('area-value'),
+          areaUnit: document.getElementById('area-unit'),
+          error: document.getElementById('basic-stress-error'),
+          resultContainer: document.getElementById('basic-stress-result-container'),
+          resultValue: document.getElementById('basic-stress-result-value'),
+          chartCtx: document.getElementById('basic-stress-chart').getContext('2d'),
+          chart: null
+        },
+        strain: {
+          originalLength: document.getElementById('original-length'),
+          elongation: document.getElementById('elongation'),
+          error: document.getElementById('strain-error'),
+          resultContainer: document.getElementById('strain-result-container'),
+          resultValue: document.getElementById('strain-result-value'),
+          chartCtx: document.getElementById('strain-chart').getContext('2d'),
+          chart: null
+        },
+        youngsModulus: {
+          stress: document.getElementById('stress-value'),
+          strain: document.getElementById('strain-value'),
+          error: document.getElementById('youngs-modulus-error'),
+          resultContainer: document.getElementById('youngs-modulus-result-container'),
+          resultValue: document.getElementById('youngs-modulus-result-value'),
+          chartCtx: document.getElementById('youngs-modulus-chart').getContext('2d'),
+          chart: null
+        },
+        materialComparison: {
+          calculatedStress: document.getElementById('calculated-stress'),
+          materialSelection: document.getElementById('material-selection'),
+          error: document.getElementById('material-comparison-error'),
+          resultContainer: document.getElementById('material-comparison-result-container'),
+          resultValue: document.getElementById('material-comparison-result-value'),
+          materialProperties: document.getElementById('material-properties-display'),
+          safetyResult: document.getElementById('material-safety-result'),
+          chartCtx: document.getElementById('material-comparison-chart').getContext('2d'),
+          chart: null
+        },
+        shearStress: {
+          force: document.getElementById('shear-force'),
+          forceUnit: document.getElementById('shear-force-unit'),
+          area: document.getElementById('shear-area'),
+          areaUnit: document.getElementById('shear-area-unit'),
+          error: document.getElementById('shear-stress-error'),
+          resultContainer: document.getElementById('shear-stress-result-container'),
+          resultValue: document.getElementById('shear-stress-result-value'),
+          chartCtx: document.getElementById('shear-stress-chart').getContext('2d'),
+          chart: null
+        },
+        bendingStress: {
+          moment: document.getElementById('bending-moment'),
+          momentUnit: document.getElementById('bending-unit'),
+          modulus: document.getElementById('section-modulus'),
+          modulusUnit: document.getElementById('modulus-unit'),
+          error: document.getElementById('bending-stress-error'),
+          resultContainer: document.getElementById('bending-stress-result-container'),
+          resultValue: document.getElementById('bending-stress-result-value'),
+          chartCtx: document.getElementById('bending-stress-chart').getContext('2d'),
+          chart: null
+        },
+        torsionStress: {
+          torque: document.getElementById('torque-value'),
+          torqueUnit: document.getElementById('torque-unit'),
+          radius: document.getElementById('radius-value'),
+          radiusUnit: document.getElementById('radius-unit'),
+          polarMoment: document.getElementById('polar-moment'),
+          polarUnit: document.getElementById('polar-unit'),
+          error: document.getElementById('torsion-stress-error'),
+          resultContainer: document.getElementById('torsion-stress-result-container'),
+          resultValue: document.getElementById('torsion-stress-result-value'),
+          chartCtx: document.getElementById('torsion-stress-chart').getContext('2d'),
+          chart: null
+        },
+        safetyFactor: {
+          yieldStrength: document.getElementById('yield-strength'),
+          yieldUnit: document.getElementById('yield-unit'),
+          appliedStress: document.getElementById('applied-stress'),
+          stressUnit: document.getElementById('stress-unit-safety'),
+          error: document.getElementById('safety-factor-error'),
+          resultContainer: document.getElementById('safety-factor-result-container'),
+          resultValue: document.getElementById('safety-factor-result-value'),
+          safetyResult: document.getElementById('safety-result'),
+          chartCtx: document.getElementById('safety-factor-chart').getContext('2d'),
+          chart: null
+        },
+        sectionAnalysis: {
+          shape: document.getElementById('shape-selection'),
+          dimension1: document.getElementById('dimension-input-1'),
+          dimension2: document.getElementById('dimension-input-2'),
+          dimension3: document.getElementById('dimension-input-3'),
+          dimensionUnit: document.getElementById('dimension-unit'),
+          dimension1Container: document.getElementById('dimension-input-1-container'),
+          dimension2Container: document.getElementById('dimension-input-2-container'),
+          dimension3Container: document.getElementById('dimension-input-3-container'),
+          dimension1Tooltip: document.getElementById('dimension-1-tooltip'),
+          dimension2Tooltip: document.getElementById('dimension-2-tooltip'),
+          dimension3Tooltip: document.getElementById('dimension-3-tooltip'),
+          error: document.getElementById('section-analysis-error'),
+          resultContainer: document.getElementById('section-analysis-result-container'),
+          resultValue: document.getElementById('section-analysis-result-value'),
+          propertiesDisplay: document.getElementById('section-properties-display'),
+          chartCtx: document.getElementById('section-analysis-chart').getContext('2d'),
+          chart: null
+        }
+      };
+      
+      // Material properties database (Spanish names)
+      const materialProperties = {
+        steel: {
+          name: 'Acero',
+          yieldStrength: 250, // MPa
+          tensileStrength: 400, // MPa
+          youngsModulus: 200, // GPa
+          color: '#888'
+        },
+        aluminum: {
+          name: 'Aluminio',
+          yieldStrength: 60, // MPa
+          tensileStrength: 250, // MPa
+          youngsModulus: 70, // GPa
+          color: '#aaa'
+        },
+        copper: {
+          name: 'Cobre',
+          yieldStrength: 70, // MPa
+          tensileStrength: 220, // MPa
+          youngsModulus: 110, // GPa
+          color: '#b87333'
+        },
+        titanium: {
+          name: 'Titanio',
+          yieldStrength: 880, // MPa
+          tensileStrength: 970, // MPa
+          youngsModulus: 116, // GPa
+          color: '#679'
+        },
+        concrete: {
+          name: 'Hormigón',
+          yieldStrength: 3, // MPa (compressive)
+          tensileStrength: 0.5, // MPa
+          youngsModulus: 30, // GPa
+          color: '#a67c52'
+        },
+        wood: {
+          name: 'Madera',
+          yieldStrength: 15, // MPa
+          tensileStrength: 20, // MPa
+          youngsModulus: 10, // GPa
+          color: '#8d6e63'
+        }
+      };
+      
+      // Shape analysis configurations (Spanish names)
+      const shapeConfigurations = {
+        'solid-circle': {
+          name: 'Círculo Macizo',
+          dimensions: 1,
+          dimensionTooltips: ['Diámetro (d)'],
+          calculateArea: (d) => Math.PI * (d/2)**2,
+          calculateMomentOfInertia: (d) => Math.PI * (d**4)/64,
+          calculatePolarMoment: (d) => Math.PI * (d**4)/32,
+          calculateSectionModulus: (d) => Math.PI * (d**3)/32
+        },
+        'hollow-circle': {
+          name: 'Círculo Hueco',
+          dimensions: 2,
+          dimensionTooltips: ['Diámetro Exterior (D)', 'Diámetro Interior (d)'],
+          calculateArea: (D, d) => Math.PI/4 * (D**2 - d**2),
+          calculateMomentOfInertia: (D, d) => Math.PI/4 * (D**4 - d**4)/4,
+          calculatePolarMoment: (D, d) => Math.PI/2 * (D**4 - d**4)/4,
+          calculateSectionModulus: (D, d) => Math.PI * (D**3 - d**3)/ (16 * D)
+        },
+        'solid-rectangle': {
+          name: 'Rectángulo Macizo',
+          dimensions: 2,
+          dimensionTooltips: ['Ancho (b)', 'Altura (h)'],
+          calculateArea: (b, h) => b * h,
+          calculateMomentOfInertia: (b, h) => b * h**3 / 12,
+          calculatePolarMoment: (b, h) => (b * h**3 + h * b**3)/12,
+          calculateSectionModulus: (b, h) => b * h**2 / 6
+        },
+        'hollow-rectangle': {
+          name: 'Rectángulo Hueco',
+          dimensions: 4,
+          dimensionTooltips: ['Ancho Exterior (B)', 'Altura Exterior (H)', 'Ancho Interior (b)', 'Altura Interior (h)'],
+          calculateArea: (B, H, b, h) => B * H - b * h,
+          calculateMomentOfInertia: (B, H, b, h) => (B * H**3 - b * h**3)/12,
+          calculatePolarMoment: (B, H, b, h) => ((B * H**3 + H * B**3) - (b * h**3 + h * b**3))/12,
+          calculateSectionModulus: (B, H, b, h) => (B * H**2 - b * h**2)/ (6 * H)
+        },
+        'i-beam': {
+          name: 'Viga I',
+          dimensions: 5,
+          dimensionTooltips: ['Ancho del Ala (bf)', 'Espesor del Ala (tf)', 'Altura del Alma (h)', 'Espesor del Alma (tw)', 'Radio de la Raíz (r)'],
+          calculateArea: (bf, tf, h, tw, r) => 2 * bf * tf + (h - 2 * tf) * tw,
+          calculateMomentOfInertia: (bf, tf, h, tw) => (bf * tf**3 + tw * (h - tf)**3)/12,
+          calculatePolarMoment: (bf, tf, h, tw) => ((bf * tf**3 + tf * bf**3) + (tw * (h - tf)**3 + (h - tf) * tw**3))/12,
+          calculateSectionModulus: (bf, tf, h, tw) => (bf * tf**3 + tw * (h - tf)**3)/ (6 * tf)
+        }
+      };
+      
+      // Unit conversion factors (Spanish comments)
+      const unitConversions = {
+        force: {
+          N: 1,
+          kN: 1000
+        },
+        area: {
+          'mm²': 1e-6,
+          'cm²': 1e-4,
+          'm²': 1
+        },
+        length: {
+          mm: 1e-3,
+          cm: 1e-2,
+          m: 1
+        },
+        moment: {
+          'N·m': 1,
+          'kN·m': 1000
+        },
+        stress: {
+          Pa: 1,
+          MPa: 1e6,
+          GPa: 1e9
+        },
+        polarMoment: {
+          'mm⁴': 1e-12,
+          'cm⁴': 1e-8,
+          'm⁴': 1
+        }
+      };
+      
+      // Create chart for visualization (Spanish labels)
+      function createChart(ctx, value1, value2, label1, label2, color1 = '#4db5bd', color2 = '#ffd166') {
+        if (ctx.chart) {
+          ctx.chart.destroy();
+        }
+        
+        ctx.chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [label1, label2],
+            datasets: [{
+              label: 'Comparación',
+              data: [value1, value2],
+              backgroundColor: [
+                color1,
+                color2
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Valor'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              },
+              title: {
+                display: true,
+                text: 'Comparación de Cálculo'
+              }
+            }
+          }
+        });
+      }
+      
+      // Format the result (Spanish)
+      function formatResult(value, unit = '', precision = 4) {
+        // Use scientific notation for very large or very small numbers
+        if (Math.abs(value) >= 1e6 || (Math.abs(value) < 1e-3 && value !== 0)) {
+          return (value.toExponential(precision) + (unit ? ' ' + unit : ''));
+        }
+        
+        // Format with appropriate decimal places
+        const decimalPlaces = Math.abs(value) < 1 ? precision : Math.max(2, precision - Math.floor(Math.log10(Math.abs(value))) - 1);
+        return (value.toFixed(decimalPlaces) + (unit ? ' ' + unit : ''));
+      }
+      
+      // Basic Stress Calculation (Spanish text)
+      function calculateBasicStress() {
+        const elements = conversionElements.basicStress;
+        const forceValue = elements.force.value;
+        const forceUnit = elements.forceUnit.value;
+        const areaValue = elements.area.value;
+        const areaUnit = elements.areaUnit.value;
+        
+        // Validate inputs
+        if (forceValue === '' || isNaN(forceValue) || areaValue === '' || isNaN(areaValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para fuerza y área';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert units to SI
+        const force = parseFloat(forceValue) * unitConversions.force[forceUnit];
+        const area = parseFloat(areaValue) * unitConversions.area[areaUnit];
+        
+        // Calculate stress
+        const stress = force / area;
+        
+        // Format the result
+        let stressUnit = 'Pa';
+        if (stress >= 1e6) {
+          stressUnit = 'MPa';
+          const stressMPa = stress / 1e6;
+          elements.resultValue.textContent = `Esfuerzo (σ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(stressMPa)} ${stressUnit}`;
+        } else if (stress >= 1e3) {
+          stressUnit = 'kPa';
+          const stressKPa = stress / 1e3;
+          elements.resultValue.textContent = `Esfuerzo (σ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(stressKPa)} ${stressUnit}`;
+        } else {
+          elements.resultValue.textContent = `Esfuerzo (σ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(stress)} ${stressUnit}`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, force, stress, 'Fuerza (N)', `Esfuerzo (${stressUnit})`);
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Strain Calculation (Spanish text)
+      function calculateStrain() {
+        const elements = conversionElements.strain;
+        const originalLength = elements.originalLength.value;
+        const elongation = elements.elongation.value;
+        
+        // Validate inputs
+        if (originalLength === '' || isNaN(originalLength) || elongation === '' || isNaN(elongation)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para longitud original y elongación';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate strain
+        const length0 = parseFloat(originalLength);
+        const deltaL = parseFloat(elongation);
+        const strain = deltaL / length0;
+        
+        // Format the result
+        elements.resultValue.textContent = `Deformación (ε) = Elongación / Longitud Original = ${deltaL} / ${length0} = ${formatResult(strain)}`;
+        
+        // Create chart
+        createChart(elements.chartCtx, length0, deltaL, 'Longitud Original', 'Elongación');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Young's Modulus Calculation (Spanish text)
+      function calculateYoungsModulus() {
+        const elements = conversionElements.youngsModulus;
+        const stressValue = elements.stress.value;
+        const strainValue = elements.strain.value;
+        
+        // Validate inputs
+        if (stressValue === '' || isNaN(stressValue) || strainValue === '' || isNaN(strainValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para esfuerzo y deformación';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate Young's Modulus
+        const stress = parseFloat(stressValue);
+        const strain = parseFloat(strainValue);
+        const modulus = stress / strain;
+        
+        // Format the result
+        let modulusUnit = 'Pa';
+        if (modulus >= 1e9) {
+          modulusUnit = 'GPa';
+          const modulusGPa = modulus / 1e9;
+          elements.resultValue.textContent = `Módulo de Young (E) = Esfuerzo / Deformación = ${formatResult(stress)} Pa / ${formatResult(strain)} = ${formatResult(modulusGPa)} ${modulusUnit}`;
+        } else if (modulus >= 1e6) {
+          modulusUnit = 'MPa';
+          const modulusMPa = modulus / 1e6;
+          elements.resultValue.textContent = `Módulo de Young (E) = Esfuerzo / Deformación = ${formatResult(stress)} Pa / ${formatResult(strain)} = ${formatResult(modulusMPa)} ${modulusUnit}`;
+        } else {
+          elements.resultValue.textContent = `Módulo de Young (E) = Esfuerzo / Deformación = ${formatResult(stress)} Pa / ${formatResult(strain)} = ${formatResult(modulus)} ${modulusUnit}`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, stress, modulus, 'Esfuerzo (Pa)', `Módulo (${modulusUnit})`);
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Material Strength Comparison (Spanish text)
+      function calculateMaterialComparison() {
+        const elements = conversionElements.materialComparison;
+        const calculatedStress = elements.calculatedStress.value;
+        const materialSelection = elements.materialSelection.value;
+        
+        // Validate inputs
+        if (calculatedStress === '' || isNaN(calculatedStress)) {
+          elements.error.textContent = 'Por favor ingrese un valor válido de esfuerzo';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Get material properties
+        const material = materialProperties[materialSelection];
+        const stress = parseFloat(calculatedStress);
+        
+        // Format the result
+        elements.resultValue.textContent = `Comparando ${stress} MPa con las propiedades de ${material.name}:`;
+        
+        // Display material properties
+        elements.materialProperties.innerHTML = `
+          <div class="material-property">
+            <span class="property-name">Límite de Fluencia:</span>
+            <span class="property-value">${material.yieldStrength} MPa</span>
+          </div>
+          <div class="material-property">
+            <span class="property-name">Resistencia a la Tensión:</span>
+            <span class="property-value">${material.tensileStrength} MPa</span>
+          </div>
+          <div class="material-property">
+            <span class="property-name">Módulo de Young:</span>
+            <span class="property-value">${material.youngsModulus} GPa</span>
+          </div>
+        `;
+        
+        // Determine safety
+        if (stress < material.yieldStrength * 0.2) {
+          elements.safetyResult.className = 'safety-result safe';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Seguro - El esfuerzo está bien por debajo del límite de fluencia del material`;
+        } else if (stress < material.yieldStrength) {
+          elements.safetyResult.className = 'safety-result warning';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Precaución - El esfuerzo se acerca al límite de fluencia del material`;
+        } else {
+          elements.safetyResult.className = 'safety-result danger';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Peligro - El esfuerzo excede el límite de fluencia del material`;
+        }
+        
+        // Create chart
+        createChart(
+          elements.chartCtx, 
+          material.yieldStrength, 
+          stress, 
+          'Límite de Fluencia del Material (MPa)', 
+          'Esfuerzo Calculado (MPa)', 
+          material.color, 
+          '#4db5bd'
+        );
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Shear Stress Calculation (Spanish text)
+      function calculateShearStress() {
+        const elements = conversionElements.shearStress;
+        const forceValue = elements.force.value;
+        const forceUnit = elements.forceUnit.value;
+        const areaValue = elements.area.value;
+        const areaUnit = elements.areaUnit.value;
+        
+        // Validate inputs
+        if (forceValue === '' || isNaN(forceValue) || areaValue === '' || isNaN(areaValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para fuerza y área';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert units to SI
+        const force = parseFloat(forceValue) * unitConversions.force[forceUnit];
+        const area = parseFloat(areaValue) * unitConversions.area[areaUnit];
+        
+        // Calculate shear stress
+        const shearStress = force / area;
+        
+        // Format the result
+        let stressUnit = 'Pa';
+        if (shearStress >= 1e6) {
+          stressUnit = 'MPa';
+          const stressMPa = shearStress / 1e6;
+          elements.resultValue.textContent = `Esfuerzo Cortante (τ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(stressMPa)} ${stressUnit}`;
+        } else if (shearStress >= 1e3) {
+          stressUnit = 'kPa';
+          const stressKPa = shearStress / 1e3;
+          elements.resultValue.textContent = `Esfuerzo Cortante (τ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(stressKPa)} ${stressUnit}`;
+        } else {
+          elements.resultValue.textContent = `Esfuerzo Cortante (τ) = Fuerza / Área = ${formatResult(force, 'N')} / ${formatResult(area, 'm²')} = ${formatResult(shearStress)} ${stressUnit}`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, force, shearStress, 'Fuerza (N)', `Esfuerzo Cortante (${stressUnit})`);
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Bending Stress Calculation (Spanish text)
+      function calculateBendingStress() {
+        const elements = conversionElements.bendingStress;
+        const momentValue = elements.moment.value;
+        const momentUnit = elements.momentUnit.value;
+        const modulusValue = elements.modulus.value;
+        const modulusUnit = elements.modulusUnit.value;
+        
+        // Validate inputs
+        if (momentValue === '' || isNaN(momentValue) || modulusValue === '' || isNaN(modulusValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para momento flector y módulo de sección';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert units to SI
+        const moment = parseFloat(momentValue) * unitConversions.moment[momentUnit];
+        const modulus = parseFloat(modulusValue);
+        
+        // Convert modulus unit to m³
+        let modulusSI = modulus;
+        if (modulusUnit === 'mm³') {
+          modulusSI = modulus * 1e-9;
+        } else if (modulusUnit === 'cm³') {
+          modulusSI = modulus * 1e-6;
+        }
+        
+        // Calculate bending stress
+        const bendingStress = moment / modulusSI;
+        
+        // Format the result
+        let stressUnit = 'Pa';
+        if (bendingStress >= 1e6) {
+          stressUnit = 'MPa';
+          const stressMPa = bendingStress / 1e6;
+          elements.resultValue.textContent = `Esfuerzo de Flexión (σ) = Momento / Módulo de Sección = ${formatResult(moment, 'N·m')} / ${formatResult(modulusSI, 'm³')} = ${formatResult(stressMPa)} ${stressUnit}`;
+        } else if (bendingStress >= 1e3) {
+          stressUnit = 'kPa';
+          const stressKPa = bendingStress / 1e3;
+          elements.resultValue.textContent = `Esfuerzo de Flexión (σ) = Momento / Módulo de Sección = ${formatResult(moment, 'N·m')} / ${formatResult(modulusSI, 'm³')} = ${formatResult(stressKPa)} ${stressUnit}`;
+        } else {
+          elements.resultValue.textContent = `Esfuerzo de Flexión (σ) = Momento / Módulo de Sección = ${formatResult(moment, 'N·m')} / ${formatResult(modulusSI, 'm³')} = ${formatResult(bendingStress)} ${stressUnit}`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, moment, bendingStress, 'Momento Flector (N·m)', `Esfuerzo (${stressUnit})`);
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Torsion Stress Calculation (Spanish text)
+      function calculateTorsionStress() {
+        const elements = conversionElements.torsionStress;
+        const torqueValue = elements.torque.value;
+        const torqueUnit = elements.torqueUnit.value;
+        const radiusValue = elements.radius.value;
+        const radiusUnit = elements.radiusUnit.value;
+        const polarMomentValue = elements.polarMoment.value;
+        const polarUnit = elements.polarUnit.value;
+        
+        // Validate inputs
+        if (torqueValue === '' || isNaN(torqueValue) || 
+            radiusValue === '' || isNaN(radiusValue) || 
+            polarMomentValue === '' || isNaN(polarMomentValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para torque, radio y momento polar de inercia';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert units to SI
+        const torque = parseFloat(torqueValue) * unitConversions.moment[torqueUnit];
+        const radius = parseFloat(radiusValue) * unitConversions.length[radiusUnit];
+        
+        // Convert polar moment unit to m⁴
+        let polarMomentSI = parseFloat(polarMomentValue);
+        if (polarUnit === 'mm⁴') {
+          polarMomentSI = polarMomentValue * 1e-12;
+        } else if (polarUnit === 'cm⁴') {
+          polarMomentSI = polarMomentValue * 1e-8;
+        }
+        
+        // Calculate torsion stress
+        const torsionStress = (torque * radius) / polarMomentSI;
+        
+        // Format the result
+        let stressUnit = 'Pa';
+        if (torsionStress >= 1e6) {
+          stressUnit = 'MPa';
+          const stressMPa = torsionStress / 1e6;
+          elements.resultValue.textContent = `Esfuerzo de Torsión (τ) = (Torque × Radio) / Momento Polar = (${formatResult(torque, 'N·m')} × ${formatResult(radius, 'm')}) / ${formatResult(polarMomentSI, 'm⁴')} = ${formatResult(stressMPa)} ${stressUnit}`;
+        } else if (torsionStress >= 1e3) {
+          stressUnit = 'kPa';
+          const stressKPa = torsionStress / 1e3;
+          elements.resultValue.textContent = `Esfuerzo de Torsión (τ) = (Torque × Radio) / Momento Polar = (${formatResult(torque, 'N·m')} × ${formatResult(radius, 'm')}) / ${formatResult(polarMomentSI, 'm⁴')} = ${formatResult(stressKPa)} ${stressUnit}`;
+        } else {
+          elements.resultValue.textContent = `Esfuerzo de Torsión (τ) = (Torque × Radio) / Momento Polar = (${formatResult(torque, 'N·m')} × ${formatResult(radius, 'm')}) / ${formatResult(polarMomentSI, 'm⁴')} = ${formatResult(torsionStress)} ${stressUnit}`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, torque, torsionStress, 'Torque (N·m)', `Esfuerzo (${stressUnit})`);
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Safety Factor Calculation (Spanish text)
+      function calculateSafetyFactor() {
+        const elements = conversionElements.safetyFactor;
+        const yieldValue = elements.yieldStrength.value;
+        const yieldUnit = elements.yieldUnit.value;
+        const stressValue = elements.appliedStress.value;
+        const stressUnit = elements.stressUnit.value;
+        
+        // Validate inputs
+        if (yieldValue === '' || isNaN(yieldValue) || stressValue === '' || isNaN(stressValue)) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para límite de fluencia y esfuerzo aplicado';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert units to Pa
+        const yieldStrength = parseFloat(yieldValue) * (yieldUnit === 'MPa' ? 1e6 : yieldUnit === 'GPa' ? 1e9 : 1);
+        const appliedStress = parseFloat(stressValue) * (stressUnit === 'MPa' ? 1e6 : stressUnit === 'GPa' ? 1e9 : 1);
+        
+        // Calculate safety factor
+        const safetyFactor = yieldStrength / appliedStress;
+        
+        // Format the result
+        elements.resultValue.textContent = `Factor de Seguridad (FoS) = Límite de Fluencia / Esfuerzo Aplicado = ${formatResult(yieldStrength, 'Pa')} / ${formatResult(appliedStress, 'Pa')} = ${formatResult(safetyFactor)}`;
+        
+        // Determine safety status
+        if (safetyFactor >= 2) {
+          elements.safetyResult.className = 'safety-result safe';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Seguro - Factor de Seguridad ≥ 2`;
+        } else if (safetyFactor >= 1) {
+          elements.safetyResult.className = 'safety-result warning';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Precaución - Factor de Seguridad entre 1 y 2`;
+        } else {
+          elements.safetyResult.className = 'safety-result danger';
+          elements.safetyResult.innerHTML = `<strong>Estado de Seguridad:</strong> Peligro - Factor de Seguridad < 1`;
+        }
+        
+        // Create chart
+        createChart(elements.chartCtx, yieldStrength, appliedStress, 'Límite de Fluencia (Pa)', 'Esfuerzo Aplicado (Pa)');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Section Analysis Calculation (Spanish text)
+      function calculateSectionAnalysis() {
+        const elements = conversionElements.sectionAnalysis;
+        const shape = elements.shape.value;
+        const dimensionUnit = elements.dimensionUnit.value;
+        
+        // Validate inputs based on shape
+        const shapeConfig = shapeConfigurations[shape];
+        let valid = true;
+        let dimensionValues = [];
+        
+        // Collect and validate dimensions
+        for (let i = 1; i <= shapeConfig.dimensions; i++) {
+          const dimensionInput = document.getElementById(`dimension-input-${i}`);
+          if (!dimensionInput.value || isNaN(dimensionInput.value)) {
+            valid = false;
+            break;
+          }
+          dimensionValues.push(parseFloat(dimensionInput.value));
+        }
+        
+        if (!valid) {
+          elements.error.textContent = 'Por favor ingrese valores válidos para todas las dimensiones';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Convert dimensions to meters
+        const unitConversion = unitConversions.length[dimensionUnit];
+        const convertedDimensions = dimensionValues.map(d => d * unitConversion);
+        
+        // Calculate properties
+        const area = shapeConfig.calculateArea(...convertedDimensions);
+        const momentOfInertia = shapeConfig.calculateMomentOfInertia(...convertedDimensions);
+        const polarMoment = shapeConfig.calculatePolarMoment ? shapeConfig.calculatePolarMoment(...convertedDimensions) : null;
+        const sectionModulus = shapeConfig.calculateSectionModulus(...convertedDimensions);
+        
+        // Format the result
+        elements.resultValue.textContent = `Análisis para ${shapeConfig.name}:`;
+        
+        // Display properties
+        elements.propertiesDisplay.innerHTML = `
+          <div class="material-property">
+            <span class="property-name">Área de Sección Transversal:</span>
+            <span class="property-value">${formatResult(area, 'm²')} m²</span>
+          </div>
+          <div class="material-property">
+            <span class="property-name">Momento de Inercia (I):</span>
+            <span class="property-value">${formatResult(momentOfInertia, 'm⁴')} m⁴</span>
+          </div>
+          ${polarMoment ? `<div class="material-property">
+            <span class="property-name">Momento Polar de Inercia (J):</span>
+            <span class="property-value">${formatResult(polarMoment, 'm⁴')} m⁴</span>
+          </div>` : ''}
+          <div class="material-property">
+            <span class="property-name">Módulo de Sección (S):</span>
+            <span class="property-value">${formatResult(sectionModulus, 'm³')} m³</span>
+          </div>
+        `;
+        
+        // Create chart (example - would show different visualization for different shapes)
+        createChart(
+          elements.chartCtx, 
+          area, 
+          momentOfInertia, 
+          'Área de Sección Transversal (m²)', 
+          'Momento de Inercia (m⁴)'
+        );
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Update shape analysis inputs based on selected shape
+      function updateShapeAnalysisInputs() {
+        const elements = conversionElements.sectionAnalysis;
+        const shape = elements.shape.value;
+        const shapeConfig = shapeConfigurations[shape];
+        
+        // Hide all dimension inputs
+        elements.dimension1Container.style.display = 'none';
+        elements.dimension2Container.style.display = 'none';
+        elements.dimension3Container.style.display = 'none';
+        
+        // Show relevant dimension inputs based on selected shape
+        for (let i = 1; i <= shapeConfig.dimensions; i++) {
+          document.getElementById(`dimension-input-${i}-container`).style.display = 'block';
+          document.getElementById(`dimension-${i}-tooltip`).textContent = shapeConfig.dimensionTooltips[i - 1];
+        }
+      }
+      
+      // Event Listeners for calculator buttons
+      document.getElementById('basic-stress-calculate').addEventListener('click', calculateBasicStress);
+      document.getElementById('strain-calculate').addEventListener('click', calculateStrain);
+      document.getElementById('youngs-modulus-calculate').addEventListener('click', calculateYoungsModulus);
+      document.getElementById('material-comparison-calculate').addEventListener('click', calculateMaterialComparison);
+      document.getElementById('shear-stress-calculate').addEventListener('click', calculateShearStress);
+      document.getElementById('bending-stress-calculate').addEventListener('click', calculateBendingStress);
+      document.getElementById('torsion-stress-calculate').addEventListener('click', calculateTorsionStress);
+      document.getElementById('safety-factor-calculate').addEventListener('click', calculateSafetyFactor);
+      document.getElementById('section-analysis-calculate').addEventListener('click', calculateSectionAnalysis);
+      
+      // Event listener for shape selection in section analysis
+      document.getElementById('shape-selection').addEventListener('change', updateShapeAnalysisInputs);
+      
+      // Tab switching
+      converterTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs and panels
+          converterTabButtons.forEach(btn => btn.classList.remove('active'));
+          converterPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality (Spanish paths)
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/engineering/material-strength-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/engineering/material-strength-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/engineering/material-strength-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/engineering/material-strength-calculator.html';
+            break;
+          default: // English
+            targetUrl = '/en/engineering/material-strength-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize the calculator with default tab
+      window.addEventListener('load', () => {
+        // Default to Basic Stress Calculation tab
+        document.getElementById('basic-stress-panel').classList.add('active');
+      });
+    })();
+  </script>
 </body>
-</html></body></html> 
+</html>

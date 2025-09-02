@@ -1,13 +1,1506 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculadora - En Traducción</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora del Número de Reynolds | Calculator2U</title>
+<meta name="description" content="Calcule el número de Reynolds para determinar el régimen de flujo (laminar, transicional o turbulento) en tuberías o sobre superficies." />
+<meta name="keywords" content="calculadora número de Reynolds, calculadora flujo fluido, calculadora flujo laminar, calculadora flujo turbulento, calculadora mecánica fluidos" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/es/engineering/reynolds-number-calculator.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/engineering/reynolds-number-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/engineering/reynolds-number-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/engineering/reynolds-number-calculator.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/engineering/reynolds-number-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/engineering/reynolds-number-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/engineering/reynolds-number-calculator.html "/>
+<meta property="og:title" content="Calculadora del Número de Reynolds | Calculator2U" />
+<meta property="og:description" content="Calcule el número de Reynolds para determinar el régimen de flujo (laminar, transicional o turbulento) para el flujo de fluidos en tuberías o sobre superficies." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/es/engineering/reynolds-number-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/reynolds-number-calculator.jpg " />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " />
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7 "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    line-height: 1.6;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .calc-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .calc-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+    font-size: 0.9rem;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus,
+  .input-field textarea:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    color: #006d77;
+    font-size: 1.2rem;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 250px;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e0f7fa;
+    font-size: 0.9rem;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 2.5rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 1rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .calc-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .calc-container {
+      padding: 0 0.8rem;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 0.95rem;
+    }
+    
+    .converter-tab-btn {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .result-value {
+      font-size: 1.1rem;
+      padding: 0.6rem;
+    }
+    
+    .chart-container {
+      height: 200px;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.3rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .unit-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .unit-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .unit-label {
+    font-weight: 500;
+    color: #006d77;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .unit-select {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .unit-select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  /* Fluid Presets Styles */
+  .fluid-presets {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+  }
+  
+  .preset-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    justify-content: center;
+  }
+  
+  .preset-btn {
+    background: #e0f7fa;
+    border: 1px solid #4db5bd;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .preset-btn:hover, .preset-btn.active {
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Flow Regime Indicator */
+  .flow-regime {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .flow-regime.laminar {
+    background: #e0f7fa;
+    border-left: 4px solid #4db5bd;
+  }
+  
+  .flow-regime-transitional {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+  }
+  
+  .flow-regime.turbulent {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+  }
+  
+  .flow-regime h4 {
+    margin-bottom: 0.5rem;
+    color: #006d77;
+  }
+  
+  .flow-regime p {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  /* Circuit Diagram Container */
+  .flow-diagram {
+    background-color: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    height: fit-content;
+  }
+  
+  .flow-diagram h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .flow-container {
+    height: 250px;
+    border: 1px dashed #4db5bd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin: 0.8rem 0;
+  }
+  
+  /* Slider Styles */
+  .slider-container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .slider-container h3 {
+    color: #006d77;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .slider-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #006d77;
+    font-size: 0.95rem;
+  }
+  
+  .slider-value {
+    font-weight: 600;
+    color: #4db5bd;
+  }
+  
+  .slider-track {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: #e0f7fa;
+    outline: none;
+  }
+  
+  .slider-track::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffd166;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin: 0.8rem 0;
+    display: none;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 6px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+  
+  /* Formula display */
+  .formula-display {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #006d77;
+    border-left: 3px solid #ffd166;
+  }
+  
+  /* Loader */
+  .loader {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .loader-spinner {
+    border: 4px solid #f0f9ff;
+    border-top: 4px solid #4db5bd;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Success animation */
+  @keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .success-pulse {
+    animation: successPulse 0.5s ease-in-out;
+  }
+</style>
 </head>
 <body>
-  <h1>Página en proceso de traducción</h1>
-  <p>Estamos traduciendo esta página al español y la versión completa estará disponible pronto. Mientras tanto, puede visitar la <a href="/index.html">versión en inglés</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/es/health/index.html">Salud y Cuerpo</a></li>
+        <li><a href="/es/finance/index.html">Finanzas e Inversión</a></li>
+        <li><a href="/es/education/index.html">Educación y Aprendizaje</a></li>
+        <li><a href="/es/engineering/index.html">Ingeniería y Ciencia</a></li>
+        <li><a href="/es/daily-life/index.html">Trabajo y Vida</a></li>
+        <li><a href="/es/generator/index.html">Generador</a></li>
+        <li><a href="/es/games/index.html">Juegos</a></li>
+        <li><a href="/about-es.html">Sobre Nosotros</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es" selected>Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculadora del Número de Reynolds</h1>
+    <p>Determine el régimen de flujo (laminar, transicional o turbulento) para flujo de fluidos en tuberías o sobre superficies con nuestra completa Calculadora del Número de Reynolds.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculadora del Número de Reynolds</h2>
+    
+    <div class="calc-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="formula-display">
+          Número de Reynolds (Re) = <span id="formula-display">ρvL/μ</span>
+        </div>
+        
+        <div class="unit-selection">
+          <div class="unit-field">
+            <span class="unit-label">Unidad de Longitud</span>
+            <select class="unit-select" id="length-unit">
+              <option value="m">Metros (m)</option>
+              <option value="mm">Milímetros (mm)</option>
+              <option value="cm">Centímetros (cm)</option>
+              <option value="in">Pulgadas (in)</option>
+            </select>
+          </div>
+          
+          <div class="unit-field">
+            <span class="unit-label">Unidad de Velocidad</span>
+            <select class="unit-select" id="velocity-unit">
+              <option value="m/s">Metros por segundo (m/s)</option>
+              <option value="km/h">Kilómetros por hora (km/h)</option>
+              <option value="ft/s">Pies por segundo (ft/s)</option>
+            </select>
+          </div>
+          
+          <div class="unit-field">
+            <span class="unit-label">Unidad de Viscosidad</span>
+            <select class="unit-select" id="viscosity-unit">
+              <option value="Pa_s">Pascal-segundos (Pa·s)</option>
+              <option value="cP">Centipoises (cP)</option>
+            </select>
+          </div>
+          
+          <div class="unit-field">
+            <span class="unit-label">Unidad de Densidad</span>
+            <select class="unit-select" id="density-unit">
+              <option value="kg/m3">kg/m³</option>
+              <option value="g/cm3">g/cm³</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="velocity">Velocidad del Fluido:
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Introduzca la velocidad del fluido</span>
+              </span>
+            </label>
+            <input type="number" id="velocity" placeholder="Introduzca velocidad" step="any" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="length">Longitud (Diámetro):
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Introduzca la longitud característica (ej., diámetro de tubería)</span>
+              </span>
+            </label>
+            <input type="number" id="length" placeholder="Introduzca longitud" step="any" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="density">Densidad del Fluido:
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Introduzca la densidad del fluido</span>
+              </span>
+            </label>
+            <input type="number" id="density" placeholder="Introduzca densidad" step="any" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="viscosity">Viscosidad del Fluido:
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Introduzca la viscosidad del fluido</span>
+              </span>
+            </label>
+            <input type="number" id="viscosity" placeholder="Introduzca viscosidad" step="any" min="0">
+          </div>
+        </div>
+        
+        <!-- Fluid Presets -->
+        <div class="fluid-presets">
+          <h4>Preajustes de Fluidos Comunes</h4>
+          <div class="preset-buttons">
+            <button class="preset-btn" data-fluid="air">Aire (25°C)</button>
+            <button class="preset-btn" data-fluid="water">Agua (25°C)</button>
+            <button class="preset-btn" data-fluid="oil">Aceite</button>
+            <button class="preset-btn" data-fluid="alcohol">Alcohol</button>
+          </div>
+        </div>
+        
+        <div id="error-message" class="error-message"></div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calcular Número de Reynolds
+        </button>
+        
+        <div class="loader" id="loader">
+          <div class="loader-spinner"></div>
+          <p>Calculando...</p>
+        </div>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Resultado del Cálculo del Número de Reynolds</h3>
+          <div class="result-value" id="result-value">
+            Número de Reynolds: <span id="reynolds-number">0</span>
+          </div>
+          
+          <div class="flow-regime" id="flow-regime">
+            <h4>Régimen de Flujo</h4>
+            <p id="flow-regime-text">Calculando...</p>
+          </div>
+          
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-value" id="velocity-result">0 m/s</div>
+              <div class="metric-label">Velocidad del Fluido</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="length-result">0 m</div>
+              <div class="metric-label">Longitud Característica</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="density-result">0 kg/m³</div>
+              <div class="metric-label">Densidad del Fluido</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="viscosity-result">0 Pa·s</div>
+              <div class="metric-label">Viscosidad del Fluido</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Sobre el Número de Reynolds</h3>
+        <p>El número de Reynolds (Re) es una cantidad adimensional utilizada para predecir patrones de flujo en dinámica de fluidos. Se define como la relación entre las fuerzas inerciales y las fuerzas viscosas y ayuda a determinar si un flujo es laminar, transicional o turbulento.</p>
+        
+        <div class="formula-display">
+          Re = ρvL/μ = vL/ν
+        </div>
+        
+        <p>Donde:</p>
+        <ul>
+          <li>ρ = Densidad del fluido (kg/m³)</li>
+          <li>v = Velocidad del fluido (m/s)</li>
+          <li>L = Longitud característica (m)</li>
+          <li>μ = Viscosidad dinámica (Pa·s)</li>
+          <li>ν = Viscosidad cinemática (m²/s) = μ/ρ</li>
+        </ul>
+        
+        <h3>Régimen de Flujo</h3>
+        <p>El número de Reynolds proporciona información crítica sobre el régimen de flujo:</p>
+        <ul>
+          <li>Re < 2000: Flujo laminar (suave y ordenado)</li>
+          <li>2000 ≤ Re ≤ 4000: Flujo transicional</li>
+          <li>Re > 4000: Flujo turbulento (caótico y desordenado)</li>
+        </ul>
+        
+        <h3>Instrucciones de Uso</h3>
+        <ul>
+          <li>Introduzca la velocidad del fluido, la longitud característica, la densidad y la viscosidad</li>
+          <li>Use los preajustes de fluidos para sustancias comunes</li>
+          <li>Elija las unidades apropiadas desde los menús desplegables</li>
+          <li>Haga clic en "Calcular Número de Reynolds" para obtener los resultados</li>
+          <li>La calculadora mostrará el número de Reynolds e indicará el régimen de flujo</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Su fuente confiable de calculadoras para la vida diaria y herramientas educativas. Ayudándole con cálculos de ingeniería desde 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Otras Calculadoras Útiles</h3>
+        <ul class="footer-links">
+          <li><a href="/es/education/unit-converter.html">Convertidor de Unidades</a></li>
+          <li><a href="/es/finance/compound-interest-calculator.html">Calculadora de Interés Compuesto</a></li>
+          <li><a href="/es/engineering/mechanics-calculator.html">Calculadora de Mecánica</a></li>
+          <li><a href="/es/engineering/material-strength-calculator.html">Calculadora de Resistencia de Materiales</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Información Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-es.html">Política de Privacidad</a></li>
+          <li><a href="/terms-es.html">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Todos los derechos reservados. | 
+        <a href="/privacy-es.html">Política de Privacidad</a> | 
+        <a href="/terms-es.html">Términos de Servicio</a>
+      </p>
+      <p><small>Nota: Estas calculadoras proporcionan solo estimaciones. Siempre verifique cálculos críticos con múltiples fuentes.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const loader = document.getElementById('loader');
+      const resultContainer = document.getElementById('result-container');
+      const errorMessage = document.getElementById('error-message');
+      
+      // Fluid presets
+      const fluidPresets = {
+        air: { density: 1.184, viscosity: 1.849e-5 },
+        water: { density: 997, viscosity: 8.9e-4 },
+        oil: { density: 900, viscosity: 0.1 },
+        alcohol: { density: 789, viscosity: 1.2e-3 }
+      };
+      
+      // Fluid preset buttons
+      const presetBtns = document.querySelectorAll('.preset-btn');
+      
+      // Input fields
+      const velocity = document.getElementById('velocity');
+      const length = document.getElementById('length');
+      const density = document.getElementById('density');
+      const viscosity = document.getElementById('viscosity');
+      
+      // Unit selects
+      const lengthUnit = document.getElementById('length-unit');
+      const velocityUnit = document.getElementById('velocity-unit');
+      const viscosityUnit = document.getElementById('viscosity-unit');
+      const densityUnit = document.getElementById('density-unit');
+      
+      // Result fields
+      const reynoldsNumber = document.getElementById('reynolds-number');
+      const flowRegimeText = document.getElementById('flow-regime-text');
+      const flowRegime = document.getElementById('flow-regime');
+      const velocityResult = document.getElementById('velocity-result');
+      const lengthResult = document.getElementById('length-result');
+      const densityResult = document.getElementById('density-result');
+      const viscosityResult = document.getElementById('viscosity-result');
+      
+      // Formula display
+      const formulaDisplay = document.getElementById('formula-display');
+      
+      // Toggle mobile navigation
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+      
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/engineering/reynolds-number-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/engineering/reynolds-number-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/engineering/reynolds-number-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/engineering/reynolds-number-calculator.html';
+            break;
+          default: // English
+            targetUrl = '/en/engineering/reynolds-number-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      const tooltips = document.querySelectorAll('.tooltip');
+      tooltips.forEach(tooltip => {
+        const infoIcon = tooltip.querySelector('.info-icon');
+        const tooltipText = tooltip.querySelector('.tooltip-text');
+        
+        infoIcon.addEventListener('mouseover', function() {
+          tooltipText.style.display = 'block';
+        });
+        
+        infoIcon.addEventListener('mouseout', function() {
+          tooltipText.style.display = 'none';
+        });
+      });
+      
+      // Fluid preset functionality
+      presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const fluid = btn.getAttribute('data-fluid');
+          const preset = fluidPresets[fluid];
+          
+          density.value = preset.density;
+          viscosity.value = preset.viscosity;
+          
+          // Reset other inputs
+          velocity.value = '';
+          length.value = '';
+          
+          // Clear any previous error
+          errorMessage.style.display = 'none';
+          
+          // Update active button state
+          presetBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+      
+      // Unit change handling
+      function updateFormulaDisplay() {
+        const viscosityUnit = document.getElementById('viscosity-unit').value;
+        const densityUnit = document.getElementById('density-unit').value;
+        
+        if (viscosityUnit === 'cP') {
+          formulaDisplay.innerHTML = "Re = ρvL/μ = vL/ν";
+          formulaDisplay.style.fontSize = "1.1rem";
+        } else {
+          formulaDisplay.innerHTML = "Re = ρvL/μ";
+          formulaDisplay.style.fontSize = "1.2rem";
+        }
+      }
+      
+      viscosityUnit.addEventListener('change', updateFormulaDisplay);
+      densityUnit.addEventListener('change', updateFormulaDisplay);
+      
+      // Calculate Reynolds Number
+      function calculateReynoldsNumber() {
+        // Get input values
+        const v = parseFloat(velocity.value);
+        const L = parseFloat(length.value);
+        const rho = parseFloat(density.value);
+        const mu = parseFloat(viscosity.value);
+        
+        // Get units
+        const lengthUnitVal = lengthUnit.value;
+        const velocityUnitVal = velocityUnit.value;
+        const viscosityUnitVal = viscosityUnit.value;
+        const densityUnitVal = densityUnit.value;
+        
+        // Show loader
+        loader.style.display = 'block';
+        
+        // Hide previous results and error
+        resultContainer.style.display = 'none';
+        errorMessage.style.display = 'none';
+        
+        // Simulate calculation delay
+        setTimeout(() => {
+          let error = '';
+          let Re = 0;
+          let flowRegimeClass = '';
+          let flowRegimeType = '';
+          
+          // Validate inputs
+          if (isNaN(v) || isNaN(L) || isNaN(rho) || isNaN(mu) || v === 0 || L === 0 || rho === 0 || mu === 0) {
+            error = 'Por favor introduzca valores válidos para todos los parámetros';
+          } else {
+            // Perform unit conversions (simple version for demonstration)
+            // In a real implementation, this would be more comprehensive
+            
+            // Convert length to meters
+            let L_m = L;
+            if (lengthUnitVal === 'mm') L_m *= 0.001;
+            if (lengthUnitVal === 'cm') L_m *= 0.01;
+            if (lengthUnitVal === 'in') L_m *= 0.0254;
+            
+            // Convert velocity to m/s
+            let v_mps = v;
+            if (velocityUnitVal === 'km/h') v_mps *= 0.277778;
+            if (velocityUnitVal === 'ft/s') v_mps *= 0.3048;
+            
+            // Convert viscosity to Pa·s
+            let mu_Pas = mu;
+            if (viscosityUnitVal === 'cP') mu_Pas *= 0.001;
+            
+            // Calculate Reynolds number
+            Re = (rho * v_mps * L_m) / mu_Pas;
+            
+            // Determine flow regime
+            if (Re < 2000) {
+              flowRegimeClass = 'laminar';
+              flowRegimeType = 'Laminar';
+            } else if (Re <= 4000) {
+              flowRegimeClass = 'transitional';
+              flowRegimeType = 'Transicional';
+            } else {
+              flowRegimeClass = 'turbulent';
+              flowRegimeType = 'Turbulento';
+            }
+          }
+          
+          // Hide loader
+          loader.style.display = 'none';
+          
+          if (error) {
+            // Show error
+            errorMessage.textContent = error;
+            errorMessage.style.display = 'block';
+          } else {
+            // Display results
+            reynoldsNumber.textContent = Re.toFixed(2);
+            
+            // Update flow regime display
+            flowRegimeText.textContent = `Flujo ${flowRegimeType}`;
+            flowRegime.className = `flow-regime ${flowRegimeClass}`;
+            
+            // Update result metrics
+            velocityResult.textContent = `${v} ${getUnitSymbol(velocityUnitVal, 'velocity')}`;
+            lengthResult.textContent = `${L} ${getUnitSymbol(lengthUnitVal, 'length')}`;
+            densityResult.textContent = `${rho} ${getUnitSymbol(densityUnitVal, 'density')}`;
+            viscosityResult.textContent = `${mu} ${getUnitSymbol(viscosityUnitVal, 'viscosity')}`;
+            
+            // Show result container
+            resultContainer.style.display = 'block';
+          }
+        }, 800);
+      }
+      
+      // Helper function to get unit symbols
+      function getUnitSymbol(unit, type) {
+        const unitSymbols = {
+          velocity: {
+            'm/s': 'm/s',
+            'km/h': 'km/h',
+            'ft/s': 'ft/s'
+          },
+          length: {
+            'm': 'm',
+            'mm': 'mm',
+            'cm': 'cm',
+            'in': 'in'
+          },
+          viscosity: {
+            'Pa_s': 'Pa·s',
+            'cP': 'cP'
+          },
+          density: {
+            'kg/m3': 'kg/m³',
+            'g/cm3': 'g/cm³'
+          }
+        };
+        return unitSymbols[type][unit];
+      }
+      
+      // Add event listeners
+      calculateBtn.addEventListener('click', calculateReynoldsNumber);
+      
+      // Initialize formula display
+      updateFormulaDisplay();
+    });
+  </script>
 </body>
-</html></body></html> 
+</html>
