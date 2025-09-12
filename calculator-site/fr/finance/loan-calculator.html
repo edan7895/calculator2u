@@ -1,14 +1,1050 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculateur de Prêt | Calculator2U</title>
+<meta name="description" content="Calculez vos paiements mensuels de prêt et les coûts d'intérêt total pour votre prêt personnel ou professionnel" />
+<meta name="keywords" content="calculateur de prêt, calculateur de prêt personnel, calculateur de prêt d'affaires, calculateur financier" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/loan-calculator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/loan-calculator.html " />
+<meta property="og:title" content="Calculateur de Prêt | Calculator2U" />
+<meta property="og:description" content="Calculez vos paiements mensuels de prêt et les coûts d'intérêt total pour votre prêt personnel ou professionnel" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/finance/loan-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/loan-calculator.jpg " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+html, body {
+  overflow-x: hidden;
+}
+
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 多语言选择器样式 */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Loan Calculator Styles */
+  .loan-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .loan-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .monthly-payment {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Amortization Schedule */
+  .amortization-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .amortization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .amortization-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .amortization-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .amortization-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .amortization-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loan-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* 新增的小屏幕样式调整 */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .loan-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+    }
+    
+    .amortization-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .amortization-table {
+      min-width: 100%;
+    }
+    
+    .amortization-table th,
+    .amortization-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .monthly-payment {
+      font-size: 2.5rem;
+    }
+    
+    .total-interest {
+      font-size: 1.1rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À Propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr" selected>Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculateur de Prêt</h1>
+    <p>Calculez vos paiements mensuels de prêt et les coûts d'intérêt total pour votre prêt personnel ou professionnel</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculateur de Prêt</h2>
+    
+    <div class="loan-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="loan-amount">Montant Total du Prêt ($)</label>
+            <input type="number" id="loan-amount" placeholder="Entrez le montant du prêt" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="interest-rate">Taux d'Intérêt (%)</label>
+            <input type="number" id="interest-rate" placeholder="Entrez le taux d'intérêt" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="loan-term">Durée du Prêt (Années)</label>
+            <input type="number" id="loan-term" placeholder="Entrez la durée du prêt (ex. 1-99)" min="1" max="99">
+          </div>
+          
+          <div class="input-field">
+            <label for="payment-per-year">Paiements par Année</label>
+            <select id="payment-per-year">
+              <option value="12">Mensuel (12 paiements par an)</option>
+              <option value="2">Semestriel (2 paiements par an)</option>
+              <option value="1">Annuel (1 paiement par an)</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculer le Prêt
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Résumé de Votre Paiement de Prêt</h3>
+          <div class="monthly-payment" id="payment-amount">1 200</div>
+          <div class="total-interest" id="total-interest">Intérêt Total : 85 000 $</div>
+          
+          <div class="loan-summary" id="loan-summary">
+            <h3><i class="fas fa-money-bill-wave"></i> Résumé du Prêt</h3>
+            <p>Votre paiement mensuel estimé est de 1 200 $ basé sur un prêt de 300 000 $ avec un taux d'intérêt de 4,5 % sur 25 ans.</p>
+            <h3><i class="fas fa-chart-line"></i> Coût Total</h3>
+            <p>Le coût total du prêt sera de 426 000 $, ce qui inclut 126 000 $ en paiements d'intérêt.</p>
+          </div>
+        </div>
+        
+        <div class="amortization-container">
+          <table class="amortization-table" id="amortization-table">
+            <thead>
+              <tr>
+                <th>Paiement n°</th>
+                <th>Date de Paiement</th>
+                <th>Principal</th>
+                <th>Intérêt</th>
+                <th>Solde</th>
+                <th>Paiement Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Amortization schedule will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Comprendre les Prêts</h3>
+        <p>Un prêt est un arrangement financier où un emprunteur reçoit une somme d'argent d'un prêteur et accepte de la rembourser avec des intérêts sur une période déterminée. Les facteurs clés qui affectent vos paiements de prêt incluent :</p>
+        <ul>
+          <li><strong>Montant du Prêt :</strong> Le montant total emprunté</li>
+          <li><strong>Taux d'Intérêt :</strong> Le coût d'emprunt d'argent, exprimé en pourcentage</li>
+          <li><strong>Durée du Prêt :</strong> La durée dont vous disposez pour rembourser le prêt (généralement 1-99 ans)</li>
+          <li><strong>Fréquence de Remboursement :</strong> La fréquence à laquelle vous effectuez des paiements (mensuel, trimestriel, annuel)</li>
+        </ul>
+        
+        <h3>Comment Fonctionnent les Paiements de Prêt</h3>
+        <p>Votre paiement de prêt régulier est déterminé à l'aide d'une formule d'amortissement. Les paiements incluent à la fois des composantes de principal et d'intérêt qui changent au fil du temps :</p>
+        <ul>
+          <li>Au début, la majeure partie de votre paiement va vers les intérêts</li>
+          <li>Au fil du temps, une plus grande partie de votre paiement va vers la réduction du solde principal</li>
+          <li>Le montant du paiement reste le même pendant toute la durée d'un prêt à taux fixe</li>
+        </ul>
+        
+        <h3>Facteurs Affectant Votre Taux d'Intérêt</h3>
+        <p>Les prêteurs considèrent plusieurs facteurs lors de la détermination de votre taux d'intérêt de prêt :</p>
+        <ul>
+          <li><strong>Score de Crédit :</strong> Des scores de crédit plus élevés entraînent généralement des taux d'intérêt plus bas</li>
+          <li><strong>Durée du Prêt :</strong> Des durées plus longues ont généralement des taux d'intérêt plus élevés</li>
+          <li><strong>Type de Prêt :</strong> Les prêts personnels, commerciaux et garantis peuvent avoir des taux différents</li>
+          <li><strong>Conditions du Marché :</strong> Les facteurs économiques influencent les niveaux généraux des taux d'intérêt</li>
+        </ul>
+        
+        <div class="loan-tips">
+          <h3><i class="fas fa-lightbulb"></i> Conseils pour les Prêts</h3>
+          <p>Avant de contracter un prêt, considérez ces conseils pour obtenir la meilleure offre :</p>
+          <ul>
+            <li>Vérifiez votre score de crédit et votre rapport pour les erreurs</li>
+            <li>Faites le tour des offres pour obtenir les meilleurs taux d'intérêt</li>
+            <li>Considérez le coût total d'emprunt, pas seulement le paiement mensuel</li>
+            <li>Viser une durée de prêt qui équilibre des paiements abordables avec des coûts d'intérêt minimaux</li>
+            <li>Effectuez des paiements plus élevés si possible pour réduire les coûts d'intérêt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable pour les calculateurs financiers et outils financiers. Vous aidant à prendre des décisions financières éclairées depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres Calculateurs Utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/finance/auto-loan-calculator.html">Calculateur de Prêt Auto</a></li>
+          <li><a href="/fr/finance/home-loan-calculator.html">Calculateur Hypothécaire</a></li>
+          <li><a href="/fr/finance/retirement-savings-calculator.html">Calculateur d'Épargne Retraite</a></li>
+          <li><a href="/fr/finance/compound-interest-calculator-calculator.html">Calculateur d'Intérêt Composé</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations Légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de Confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'Utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de Confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'Utilisation</a>
+      </p>
+      <p><small>Remarque : Ces calculateurs fournissent uniquement des estimations. Consultez un conseiller financier pour des conseils personnalisés.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+
+        // Determine the base path for the finance section
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/loan-calculator', 'finance/loan-calculator');
+          }
+        }
+
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/loan-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/loan-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/loan-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/loan-calculator.html';
+            break;
+          default: // English
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/loan-calculator.html';
+        }
+
+        window.location.href = targetUrl;
+      });
+
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+
+      // Loan Calculator Functionality
+      const loanAmountInput = document.getElementById('loan-amount');
+      const interestRateInput = document.getElementById('interest-rate');
+      const loanTermInput = document.getElementById('loan-term');
+      const paymentPerYearInput = document.getElementById('payment-per-year');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const paymentAmount = document.getElementById('payment-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const loanSummary = document.getElementById('loan-summary');
+      const amortizationTable = document.getElementById('amortization-table');
+
+      // Calculate Loan function
+      function calculateLoan() {
+        const loanAmount = parseFloat(loanAmountInput.value);
+        const interestRate = parseFloat(interestRateInput.value) / 100;
+        const loanTerm = parseInt(loanTermInput.value);
+        const paymentsPerYear = parseInt(paymentPerYearInput.value);
+
+        if (!loanAmount || !interestRate || !loanTerm || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+          alert('Veuillez entrer un montant de prêt, un taux d\'intérêt et une durée de prêt valides.');
+          return;
+        }
+
+        // Calculate monthly interest rate
+        const paymentFrequency = paymentsPerYear;
+        const periodInterestRate = interestRate / paymentFrequency;
+        const totalPayments = loanTerm * paymentFrequency;
+
+        // Calculate payment amount using amortization formula
+        const numerator = periodInterestRate * Math.pow(1 + periodInterestRate, totalPayments);
+        const denominator = Math.pow(1 + periodInterestRate, totalPayments) - 1;
+        let paymentAmountValue = loanAmount * (numerator / denominator);
+
+        // Round to nearest cent
+        paymentAmountValue = Math.round(paymentAmountValue * 100) / 100;
+
+        // Calculate total interest paid
+        const totalPaymentsAmount = paymentAmountValue * totalPayments;
+        const totalInterestPaid = totalPaymentsAmount - loanAmount;
+
+        // Update payment amount and total interest
+        paymentAmount.textContent = paymentAmountValue.toFixed(2);
+        totalInterest.textContent = `Intérêt Total : ${totalInterestPaid.toFixed(0)} $`;
+
+        // Update loan summary
+        const paymentFrequencyText = paymentPerYearInput.options[paymentPerYearInput.selectedIndex].text.split(' ')[0];
+        const summaryHTML = `
+          <h3><i class="fas fa-money-bill-wave"></i> Résumé du Prêt</h3>
+          <p>Votre paiement ${paymentFrequencyText.toLowerCase()} estimé est de ${paymentAmountValue.toFixed(2)} $ basé sur un prêt de ${loanAmount.toFixed(0)} $ avec un taux d'intérêt de ${interestRate * 100} % sur ${loanTerm} ans.</p>
+          <h3><i class="fas fa-chart-line"></i> Coût Total</h3>
+          <p>Le coût total du prêt sera de ${totalPaymentsAmount.toFixed(0)} $, ce qui inclut ${totalInterestPaid.toFixed(0)} $ en paiements d'intérêt.</p>
+        `;
+
+        loanSummary.innerHTML = summaryHTML;
+
+        // Generate amortization schedule
+        const tableBody = amortizationTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+
+        let remainingBalance = loanAmount;
+        let paymentNumber = 1;
+        let currentPeriod = new Date();
+        currentPeriod.setMonth(currentPeriod.getMonth() + 1); // Start next month
+
+        for (let i = 0; i < totalPayments; i++) {
+          const interestPayment = remainingBalance * periodInterestRate;
+          const principalPayment = paymentAmountValue - interestPayment;
+          remainingBalance -= principalPayment;
+
+          const row = document.createElement('tr');
+
+          // Format payment date
+          const paymentDate = new Date(currentPeriod);
+          const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 
+                             'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+          const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+
+          row.innerHTML = `
+            <td>${paymentNumber}</td>
+            <td>${dateStr}</td>
+            <td>${principalPayment.toFixed(2)} $</td>
+            <td>${interestPayment.toFixed(2)} $</td>
+            <td>${remainingBalance.toFixed(2)} $</td>
+            <td>${paymentAmountValue.toFixed(2)} $</td>
+          `;
+
+          tableBody.appendChild(row);
+
+          // Increment date
+          currentPeriod.setMonth(currentPeriod.getMonth() + 1);
+          paymentNumber++;
+        }
+
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateLoan);
+
+      // Also allow pressing Enter in input fields
+      loanAmountInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      interestRateInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      loanTermInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+
+      paymentPerYearInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateLoan();
+      });
+    })();
+
+    // Add additional responsiveness for small screens
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.loan-container').style.gridTemplateColumns = '1fr';
+      }
+    });
+
+    // Set up the path for the canonical URL and og:url
+    const canonicalUrl = document.querySelector('link[rel="canonical"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    const currentUrl = window.location.href;
+    
+    if (canonicalUrl && canonicalUrl.getAttribute('href').includes('url')) {
+      canonicalUrl.setAttribute('href', currentUrl);
+    }
+    
+    if (ogUrl && ogUrl.getAttribute('content').includes('url')) {
+      ogUrl.setAttribute('content', currentUrl);
+    }
+  </script>
 </body>
 </html>
-</body></html> 

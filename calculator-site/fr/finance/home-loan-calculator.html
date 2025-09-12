@@ -1,14 +1,1321 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculateur de prêt immobilier international | Calculator2U</title>
+<meta name="description" content="Calculez vos mensualités de prêt immobilier pour plusieurs pays : États-Unis, Royaume-Uni, Allemagne, France, Singapour, Malaisie, Arabie Saoudite" />
+<meta name="keywords" content="calculateur de prêt immobilier, calculateur de crédit hypothécaire, calculateur de prêt, calculateur financier, prêt immobilier international" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/home-loan-calculator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/home-loan-calculator.html " />
+<meta property="og:title" content="Calculateur de prêt immobilier international | Calculator2U" />
+<meta property="og:description" content="Calculez vos mensualités de prêt immobilier pour plusieurs pays : États-Unis, Royaume-Uni, Allemagne, France, Singapour, Malaisie, Arabie Saoudite" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/finance/home-loan-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/home-loan-calculator.jpg " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Home Loan Calculator Styles */
+  .loan-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .loan-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input, .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus, .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .monthly-payment {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Amortization Schedule */
+  .amortization-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .amortization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .amortization-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .amortization-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .amortization-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .amortization-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .country-info {
+    background: #e8f4f8;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid #4db5bd;
+    display: none;
+  }
+  
+  .country-info h4 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .country-info h4 i {
+    font-size: 1.4rem;
+  }
+  
+  .country-info ul {
+    padding-left: 1.2rem;
+  }
+  
+  .country-info li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .country-info .flag-icon {
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loan-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .monthly-payment {
+      font-size: 2.8rem;
+    }
+  }
+  
+  /* New styles for small screens */
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .loan-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1.2rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+    }
+    
+    .amortization-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .amortization-table {
+      min-width: 100%;
+    }
+    
+    .amortization-table th,
+    .amortization-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .monthly-payment {
+      font-size: 2.2rem;
+    }
+    
+    .total-interest {
+      font-size: 1.1rem;
+    }
+    
+    .result-container {
+      padding: 1.2rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .country-info {
+      padding: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À propos de nous</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinois)</option>
+            <option value="es">Español (Espagnol)</option>
+            <option value="de">Deutsch (Allemand)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculateur de prêt immobilier international</h1>
+    <p>Calculez vos mensualités de prêt immobilier pour plusieurs pays : États-Unis, Royaume-Uni, Allemagne, France, Singapour, Malaisie, Arabie Saoudite</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculateur de prêt immobilier international</h2>
+    
+    <div class="loan-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="country">Sélectionner un pays</label>
+            <select id="country">
+              <option value="us">États-Unis 🇺🇸</option>
+              <option value="uk">Royaume-Uni 🇬🇧</option>
+              <option value="de">Allemagne 🇩🇪</option>
+              <option value="fr">France 🇫🇷</option>
+              <option value="sg">Singapour 🇸🇬</option>
+              <option value="my">Malaisie 🇲🇾</option>
+              <option value="sa">Arabie Saoudite 🇸🇦</option>
+              <option value="other">Autres pays</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="home-price">Prix total du logement (€)</label>
+            <input type="number" id="home-price" placeholder="Entrez le prix du logement" min="0">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="down-payment">Apport initial (€ ou %)</label>
+            <input type="text" id="down-payment" placeholder="Entrez l'apport (ex. : 20000 ou 20%)">
+          </div>
+          
+          <div class="input-field">
+            <label for="interest-rate">Taux d'intérêt (%)</label>
+            <input type="number" id="interest-rate" placeholder="Entrez le taux d'intérêt" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="loan-term">Durée du prêt (années)</label>
+            <input type="number" id="loan-term" placeholder="Entrez la durée (ex. : 25)" min="1" max="35">
+          </div>
+          
+          <div class="input-field">
+            <label for="loan-type">Type de prêt</label>
+            <select id="loan-type">
+              <option value="fixed">Taux fixe</option>
+              <option value="variable">Taux variable</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculer le prêt
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Résumé de votre paiement</h3>
+          <div class="monthly-payment" id="monthly-payment">1 200 €</div>
+          <div class="total-interest" id="total-interest">Intérêts totaux : 85 000 €</div>
+          
+          <div class="health-advice" id="loan-summary">
+            <h3><i class="fas fa-home"></i> Résumé du prêt</h3>
+            <p>Votre mensualité estimée est de 1 200 € pour un prix de logement de 300 000 € avec un taux de 4,5 % sur 25 ans.</p>
+            <h3><i class="fas fa-money-bill-wave"></i> Coût total</h3>
+            <p>Le coût total du prêt sera de 426 000 €, incluant 126 000 € d'intérêts.</p>
+          </div>
+          
+          <div class="country-info" id="country-info">
+            <!-- Country specific information will be populated here -->
+          </div>
+        </div>
+        
+        <div class="amortization-container">
+          <table class="amortization-table" id="amortization-table">
+            <thead>
+              <tr>
+                <th># Paiement</th>
+                <th>Date de paiement</th>
+                <th>Principal</th>
+                <th>Intérêts</th>
+                <th>Solde</th>
+                <th>Paiement total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Amortization schedule will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Comprendre les prêts immobiliers internationaux</h3>
+        <p>Les exigences et pratiques de prêt immobilier varient considérablement selon les pays. Ce calculateur vous aide à comprendre les paiements hypothécaires pour différents pays :</p>
+        
+        <h3>Caractéristiques des prêts par pays</h3>
+        <ul>
+          <li><strong>États-Unis :</strong> Hypothèques fixes de 15-30 ans avec taxes foncières et assurance incluses</li>
+          <li><strong>Royaume-Uni :</strong> Offre de remboursement et d'intérêt seulement avec durées jusqu'à 35 ans</li>
+          <li><strong>Allemagne :</strong> Longues périodes à taux fixe (10-30 ans) avec apports importants requis</li>
+          <li><strong>France :</strong> Prêts à taux fixe avec critères stricts et assurance obligatoire</li>
+          <li><strong>Singapour :</strong> Taux variables courants avec ratio maximum de 75 %</li>
+          <li><strong>Malaisie :</strong> Options de financement islamique avec durées maximales de 35 ans</li>
+          <li><strong>Arabie Saoudite :</strong> Financement conforme à la charia sans charges d'intérêt</li>
+        </ul>
+        
+        <h3>Fonctionnement des paiements de prêt immobilier</h3>
+        <p>Votre mensualité est déterminée par une formule d'amortissement. Les paiements incluent principal et intérêts qui évoluent :</p>
+        <ul>
+          <li>Au début, la majeure partie va aux intérêts</li>
+          <li>Avec le temps, plus va au principal</li>
+          <li>Le montant reste identique pour un prêt à taux fixe</li>
+        </ul>
+        
+        <h3>Facteurs affectant votre taux</h3>
+        <p>Les prêteurs considèrent plusieurs facteurs :</p>
+        <ul>
+          <li><strong>Score de crédit :</strong> Plus élevé = taux plus bas</li>
+          <li><strong>Durée du prêt :</strong> Plus longue = taux plus élevé</li>
+          <li><strong>Apport :</strong> Plus important = meilleur taux</li>
+          <li><strong>Type de bien :</strong> Résidence principale = taux plus bas</li>
+          <li><strong>Conditions du marché :</strong> Facteurs économiques</li>
+        </ul>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> Conseils pour prêts internationaux</h3>
+          <p>Lors d'un prêt dans un autre pays :</p>
+          <ul>
+            <li>Recherchez les réglementations locales</li>
+            <li>Comprenez les risques de change</li>
+            <li>Considérez les implications fiscales</li>
+            <li>Travaillez avec un courtier local</li>
+            <li>Intégrez taxes, assurance et entretien</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs financiers internationaux et d'outils financiers. Nous vous aidons à prendre des décisions financières éclairées depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Calculateurs internationaux</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/finance/investment-return-calculator.html">Calculateur de rendement d'investissement</a></li>
+          <li><a href="/fr/finance/home-loan-calculator.html">Calculateur de prêt immobilier</a></li>
+          <li><a href="/fr/finance/loan-calculator.html">Calculateur de prêt</a></li>
+          <li><a href="/fr/finance/tax-calculator.html">Calculateur d'impôt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'utilisation</a></li>
+          <li><a href="/disclaimer-fr.html">Clause de non-responsabilité financière</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'utilisation</a>
+      </p>
+      <p><small>Remarque : Ces calculateurs fournissent uniquement des estimations. Consultez un conseiller financier pour des conseils personnalisés. Les taux et conditions varient selon le pays.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the finance section
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/home-loan-calculator', 'finance/home-loan-calculator');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/home-loan-calculator.html';
+            break;
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/home-loan-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/home-loan-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/home-loan-calculator.html';
+            break;
+          default: // French
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/home-loan-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Country data - loan characteristics by country
+      const countryData = {
+        us: {
+          name: "États-Unis",
+          flag: "🇺🇸",
+          maxTerm: 30,
+          minDownPayment: 3,
+          avgRate: 6.5,
+          info: "Aux États-Unis, les prêts à taux fixe sont les plus courants. Les taxes foncières et l'assurance sont souvent incluses dans les mensualités. Les prêts FHA permettent des apports de seulement 3,5 %."
+        },
+        uk: {
+          name: "Royaume-Uni",
+          flag: "🇬🇧",
+          maxTerm: 35,
+          minDownPayment: 5,
+          avgRate: 5.2,
+          info: "Les hypothèques britanniques incluent des options de remboursement et d'intérêt seulement. La taxe de timbre est un coût supplémentaire important. Des programmes Help to Buy sont disponibles pour les primo-accédants."
+        },
+        de: {
+          name: "Allemagne",
+          flag: "🇩🇪",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 3.8,
+          info: "Les prêts allemands nécessitent généralement de grands apports (20-40 %). Des périodes à taux fixe de 10-30 ans sont courantes. Les frais de notaire et d'enregistrement ajoutent 10-15 % aux coûts d'achat."
+        },
+        fr: {
+          name: "France",
+          flag: "🇫🇷",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 4.0,
+          info: "Les prêts français exigent des profils financiers solides. Une assurance-vie obligatoire est requise. Les frais de notaire sont substantiels (7-8 % de la valeur du bien)."
+        },
+        sg: {
+          name: "Singapour",
+          flag: "🇸🇬",
+          maxTerm: 30,
+          minDownPayment: 25,
+          avgRate: 3.8,
+          info: "Les prêts singapouriens ont des ratios maximum de 75 %. Une taxe supplémentaire pour les acheteurs étrangers s'applique. Les taux variables sont courants et liés au SIBOR ou SORA."
+        },
+        my: {
+          name: "Malaisie",
+          flag: "🇲🇾",
+          maxTerm: 35,
+          minDownPayment: 10,
+          avgRate: 4.2,
+          info: "La Malaisie offre des financements conventionnels et islamiques. La durée maximale est de 35 ans ou jusqu'à 65-70 ans. Des exemptions de taxe de timbre sont disponibles pour les primo-accédants."
+        },
+        sa: {
+          name: "Arabie Saoudite",
+          flag: "🇸🇦",
+          maxTerm: 25,
+          minDownPayment: 15,
+          avgRate: 0, // Sharia-compliant financing doesn't charge interest
+          info: "L'Arabie Saoudite utilise un financement conforme à la charia sans intérêt. Les banques gagnent du profit via le loyer ou des marges de revente. Des programmes gouvernementaux comme Sakani aident les citoyens."
+        },
+        other: {
+          name: "Autres pays",
+          flag: "🌍",
+          maxTerm: 30,
+          minDownPayment: 20,
+          avgRate: 5.0,
+          info: "Pour les autres pays, les conditions hypothécaires typiques sont indiquées. Les exigences réelles varient considérablement. Consultez les prêteurs locaux pour les réglementations spécifiques."
+        }
+      };
+      
+      // Set default country values
+      function setCountryDefaults() {
+        const countrySelect = document.getElementById('country');
+        const loanTermInput = document.getElementById('loan-term');
+        const interestRateInput = document.getElementById('interest-rate');
+        
+        const countryCode = countrySelect.value;
+        const country = countryData[countryCode];
+        
+        // Set max term based on country
+        loanTermInput.max = country.maxTerm;
+        
+        // Set placeholder interest rate if empty
+        if (!interestRateInput.value && country.avgRate > 0) {
+          interestRateInput.placeholder = `Moy. : ${country.avgRate} %`;
+        }
+        
+        // Update country info section
+        const countryInfo = document.getElementById('country-info');
+        countryInfo.innerHTML = `
+          <h4><span class="flag-icon">${country.flag}</span> Informations hypothécaires ${country.name}</h4>
+          <ul>
+            <li>Durée maximale du prêt : ${country.maxTerm} ans</li>
+            <li>Apport minimum : ${country.minDownPayment} %</li>
+            ${country.avgRate > 0 ? `<li>Taux d'intérêt moyen : ${country.avgRate} %</li>` : ''}
+            <li>${country.info}</li>
+          </ul>
+        `;
+        countryInfo.style.display = 'block';
+      }
+      
+      // Initialize country defaults
+      setCountryDefaults();
+      
+      // Update when country changes
+      document.getElementById('country').addEventListener('change', setCountryDefaults);
+      
+      // Home Loan Calculator Functionality
+      const homePriceInput = document.getElementById('home-price');
+      const downPaymentInput = document.getElementById('down-payment');
+      const interestRateInput = document.getElementById('interest-rate');
+      const loanTermInput = document.getElementById('loan-term');
+      const loanTypeSelect = document.getElementById('loan-type');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const monthlyPayment = document.getElementById('monthly-payment');
+      const totalInterest = document.getElementById('total-interest');
+      const loanSummary = document.getElementById('loan-summary');
+      const amortizationTable = document.getElementById('amortization-table');
+      
+      // Calculate Home Loan function
+      function calculateHomeLoan() {
+        const homePrice = parseFloat(homePriceInput.value);
+        const downPayment = downPaymentInput.value;
+        const interestRate = parseFloat(interestRateInput.value) / 100;
+        const loanTerm = parseInt(loanTermInput.value);
+        const loanType = loanTypeSelect.value;
+        const countryCode = document.getElementById('country').value;
+        const country = countryData[countryCode];
+        
+        if (!homePrice || !interestRate || !loanTerm || homePrice <= 0 || interestRate <= 0 || loanTerm <= 0) {
+          alert('Veuillez entrer un prix de logement, un taux d\'intérêt et une durée valides.');
+          return;
+        }
+        
+        // Validate loan term against country max
+        if (loanTerm > country.maxTerm) {
+          alert(`La durée maximale pour ${country.name} est de ${country.maxTerm} ans. Veuillez ajuster la durée.`);
+          loanTermInput.value = country.maxTerm;
+          return;
+        }
+        
+        // Calculate actual loan amount after down payment
+        let actualLoanAmount;
+        let downPaymentAmount;
+        let downPaymentPercent;
+        
+        if (downPayment.includes('%')) {
+          downPaymentPercent = parseFloat(downPayment.replace('%', '')) / 100;
+          downPaymentAmount = homePrice * downPaymentPercent;
+          actualLoanAmount = homePrice * (1 - downPaymentPercent);
+        } else {
+          downPaymentAmount = parseFloat(downPayment);
+          downPaymentPercent = downPaymentAmount / homePrice;
+          actualLoanAmount = homePrice - downPaymentAmount;
+        }
+        
+        // Validate minimum down payment
+        if (downPaymentPercent * 100 < country.minDownPayment) {
+          alert(`L'apport minimum pour ${country.name} est de ${country.minDownPayment} %. Veuillez augmenter votre apport.`);
+          return;
+        }
+        
+        // Special handling for Saudi Arabia (Sharia-compliant financing)
+        let monthlyPaymentAmount;
+        let totalInterestPaid;
+        
+        if (countryCode === 'sa') {
+          // Simplified Musharakah Mutanaqisah model (diminishing partnership)
+          const profitRate = interestRate; // Using input as profit rate
+          const totalPayments = loanTerm * 12;
+          
+          // Total cost (purchase price + bank's profit)
+          const totalCost = homePrice * (1 + profitRate * loanTerm);
+          
+          // Monthly payment
+          monthlyPaymentAmount = totalCost / totalPayments;
+          
+          // Total "interest" (bank's profit)
+          totalInterestPaid = totalCost - homePrice;
+        } else {
+          // Standard amortization formula for other countries
+          const monthlyInterestRate = interestRate / 12;
+          const totalPayments = loanTerm * 12;
+          
+          // Calculate monthly payment using amortization formula
+          const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments);
+          const denominator = Math.pow(1 + monthlyInterestRate, totalPayments) - 1;
+          monthlyPaymentAmount = actualLoanAmount * (numerator / denominator);
+          
+          // Round to nearest cent
+          monthlyPaymentAmount = Math.round(monthlyPaymentAmount * 100) / 100;
+          
+          // Calculate total interest paid
+          const totalPaymentsAmount = monthlyPaymentAmount * totalPayments;
+          totalInterestPaid = totalPaymentsAmount - actualLoanAmount;
+        }
+        
+        // Update payment amount and total interest
+        monthlyPayment.textContent = monthlyPaymentAmount.toLocaleString('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        
+        totalInterest.textContent = `Intérêts totaux : ${totalInterestPaid.toLocaleString('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        })}`;
+        
+        // Update loan summary
+        const summaryHTML = `
+          <h3><i class="fas fa-home"></i> Résumé du prêt</h3>
+          <p>Votre mensualité estimée est de ${monthlyPaymentAmount.toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })} pour un prix de logement de ${homePrice.toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} avec un taux de ${(interestRate * 100).toFixed(2)} % sur ${loanTerm} ans.</p>
+          <h3><i class="fas fa-money-bill-wave"></i> Coût total</h3>
+          <p>Le coût total du prêt sera de ${(actualLoanAmount + totalInterestPaid).toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })}, incluant ${totalInterestPaid.toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })} en ${countryCode === 'sa' ? 'profit bancaire' : 'paiements d\'intérêts'}.</p>
+        `;
+        
+        loanSummary.innerHTML = summaryHTML;
+        
+        // Generate amortization schedule (not for Saudi Arabia's special financing)
+        if (countryCode !== 'sa') {
+          const tableBody = amortizationTable.querySelector('tbody');
+          tableBody.innerHTML = '';
+          
+          let remainingBalance = actualLoanAmount;
+          let paymentNumber = 1;
+          let currentMonth = new Date();
+          currentMonth.setMonth(currentMonth.getMonth() + 1); // Start next month
+          
+          for (let i = 0; i < loanTerm * 12; i++) {
+            const interestPayment = remainingBalance * (interestRate / 12);
+            const principalPayment = monthlyPaymentAmount - interestPayment;
+            remainingBalance -= principalPayment;
+            
+            // Prevent negative balance in last payment
+            if (remainingBalance < 0) remainingBalance = 0;
+            
+            const row = document.createElement('tr');
+            
+            // Format payment date
+            const paymentDate = new Date(currentMonth);
+            const monthNames = ['jan', 'fév', 'mar', 'avr', 'mai', 'jun', 
+                               'jul', 'aoû', 'sep', 'oct', 'nov', 'déc'];
+            const dateStr = `${monthNames[paymentDate.getMonth()]} ${paymentDate.getFullYear()}`;
+            
+            row.innerHTML = `
+              <td>${paymentNumber}</td>
+              <td>${dateStr}</td>
+              <td>${principalPayment.toLocaleString('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${interestPayment.toLocaleString('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${remainingBalance.toLocaleString('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+              <td>${monthlyPaymentAmount.toLocaleString('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}</td>
+            `;
+            
+            tableBody.appendChild(row);
+            
+            // Increment date
+            currentMonth.setMonth(currentMonth.getMonth() + 1);
+            paymentNumber++;
+            
+            // Stop when balance is paid off
+            if (remainingBalance <= 0) break;
+          }
+          
+          // Show amortization table
+          document.querySelector('.amortization-container').style.display = 'block';
+        } else {
+          // Hide amortization table for Saudi Arabia
+          document.querySelector('.amortization-container').style.display = 'none';
+        }
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateHomeLoan);
+      
+      // Also allow pressing Enter in input fields
+      const inputs = [homePriceInput, downPaymentInput, interestRateInput, loanTermInput];
+      inputs.forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateHomeLoan();
+        });
+      });
+      
+      // Set default values for demo purposes
+      window.addEventListener('load', () => {
+        homePriceInput.value = 350000;
+        downPaymentInput.value = "20 %";
+        interestRateInput.value = 4.5;
+        loanTermInput.value = 30;
+      });
+    })();
+
+    // Add additional responsiveness for small screens
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.loan-container').style.gridTemplateColumns = '1fr';
+      }
+    });
+  </script>
 </body>
 </html>
-</body></html> 
