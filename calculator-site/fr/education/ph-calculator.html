@@ -1,14 +1,1768 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculateur de pH | Calculator2U</title>
+<meta name="description" content="Calculez le pH, la concentration en H+, le pOH et bien plus avec notre calculateur de pH complet. Parfait pour les étudiants en chimie et les professionnels." />
+<meta name="keywords" content="calculateur de pH, calculateur de H+, calculateur de pOH, calculateur de pH tampon, calculateur de pH acide faible, calculateur de pH acide fort" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/education/ph-calculator.html " />
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/education/ph-calculator.html "/>
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/education/ph-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/education/ph-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/education/ph-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/education/ph-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/education/ph-calculator.html "/>
+<meta property="og:title" content="Calculateur de pH | Calculator2U" />
+<meta property="og:description" content="Calculez le pH, la concentration en H+, le pOH et bien plus avec notre calculateur de pH complet." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/education/ph-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/ph-calculator.jpg " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " />
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus,
+  .input-field textarea:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .unit-selection {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .unit-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .swap-button {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  
+  .swap-button:hover {
+    background: #006d77;
+    transform: rotate(180deg);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  
+  /* Tooltip */
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À Propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinois)</option>
+            <option value="es">Español (Espagnol)</option>
+            <option value="de">Deutsch (Allemand)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculateur de pH</h1>
+    <p>Calculez le pH, la concentration en H+, le pOH et bien plus avec notre calculateur de pH complet. Parfait pour les étudiants en chimie et les professionnels.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculateur de pH</h2>
+    
+    <div class="cooking-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="converter-tabs">
+          <button class="converter-tab-btn active" data-tab="pH-from-H+">Calculer pH à partir de H+</button>
+          <button class="converter-tab-btn" data-tab="H+-from-pH">Calculer H+ à partir de pH</button>
+          <button class="converter-tab-btn" data-tab="pOH-from-OH-">Calculer pOH à partir de OH-</button>
+          <button class="converter-tab-btn" data-tab="pOH-to-pH">Convertir pOH en pH</button>
+          <button class="converter-tab-btn" data-tab="strong-Acid-Base">pH d'Acide/Base Fort(e)</button>
+          <button class="converter-tab-btn" data-tab="weak-Acid-Base">pH d'Acide/Base Faible (Ka/Kb)</button>
+          <button class="converter-tab-btn" data-tab="buffer-pH">Calculateur pH Tampon (Henderson-Hasselbalch)</button>
+        </div>
+        
+        <!-- Calculate pH from H+ Tab -->
+        <div class="converter-panel active" id="pH-from-H+-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="H+-value">Concentration en H+ (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration en ions hydrogène en mol/L (M)</span>
+                </span>
+              </label>
+              <input type="number" id="H+-value" placeholder="Entrez la concentration en H+" step="any">
+            </div>
+          </div>
+          
+          <div id="pH-from-H+-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="pH-from-H+-calculate">
+            <i class="fas fa-calculator"></i> Calculer le pH
+          </button>
+          
+          <div class="result-container" id="pH-from-H+-result-container">
+            <h3 class="result-header">Résultat du calcul de pH</h3>
+            <div class="result-value" id="pH-from-H+-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="pH-from-H+-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="pH-from-H+-details">
+              <p>Ce calcul utilise la formule : pH = -log[H+]</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Calculate H+ from pH Tab -->
+        <div class="converter-panel" id="H+-from-pH-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="pH-value">Valeur du pH :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la valeur du pH (0-14)</span>
+                </span>
+              </label>
+              <input type="number" id="pH-value" placeholder="Entrez le pH" step="any">
+            </div>
+          </div>
+          
+          <div id="H+-from-pH-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="H+-from-pH-calculate">
+            <i class="fas fa-calculator"></i> Calculer H+
+          </button>
+          
+          <div class="result-container" id="H+-from-pH-result-container">
+            <h3 class="result-header">Résultat du calcul de concentration en H+</h3>
+            <div class="result-value" id="H+-from-pH-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="H+-from-pH-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="H+-from-pH-details">
+              <p>Ce calcul utilise la formule : [H+] = 10^(-pH)</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Calculate pOH from OH- Tab -->
+        <div class="converter-panel" id="pOH-from-OH--panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="OH--value">Concentration en OH- (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration en ions hydroxyde en mol/L (M)</span>
+                </span>
+              </label>
+              <input type="number" id="OH--value" placeholder="Entrez la concentration en OH-" step="any">
+            </div>
+          </div>
+          
+          <div id="pOH-from-OH--error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="pOH-from-OH--calculate">
+            <i class="fas fa-calculator"></i> Calculer le pOH
+          </button>
+          
+          <div class="result-container" id="pOH-from-OH--result-container">
+            <h3 class="result-header">Résultat du calcul de pOH</h3>
+            <div class="result-value" id="pOH-from-OH--result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="pOH-from-OH--chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="pOH-from-OH--details">
+              <p>Ce calcul utilise la formule : pOH = -log[OH-]</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Convert pOH to pH Tab -->
+        <div class="converter-panel" id="pOH-to-pH-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="pOH-value">Valeur du pOH :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la valeur du pOH (0-14)</span>
+                </span>
+              </label>
+              <input type="number" id="pOH-value" placeholder="Entrez le pOH" step="any">
+            </div>
+          </div>
+          
+          <div id="pOH-to-pH-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="pOH-to-pH-calculate">
+            <i class="fas fa-calculator"></i> Convertir en pH
+          </button>
+          
+          <div class="result-container" id="pOH-to-pH-result-container">
+            <h3 class="result-header">Résultat du calcul de pH</h3>
+            <div class="result-value" id="pOH-to-pH-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="pOH-to-pH-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="pOH-to-pH-details">
+              <p>Ce calcul utilise la relation : pH + pOH = 14 à 25°C</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- pH of Strong Acid/Base Tab -->
+        <div class="converter-panel" id="strong-Acid-Base-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="strong-concentration">Concentration (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration de l'acide ou de la base forte en mol/L (M)</span>
+                </span>
+              </label>
+              <input type="number" id="strong-concentration" placeholder="Entrez la concentration" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="strong-acid-base">Type :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Sélectionnez s'il s'agit d'un acide fort ou d'une base forte</span>
+                </span>
+              </label>
+              <select id="strong-acid-base">
+                <option value="acid">Acide Fort</option>
+                <option value="base">Base Forte</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="strong-acid-base-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="strong-acid-base-calculate">
+            <i class="fas fa-calculator"></i> Calculer le pH
+          </button>
+          
+          <div class="result-container" id="strong-acid-base-result-container">
+            <h3 class="result-header">Résultat du calcul de pH d'acide/base fort(e)</h3>
+            <div class="result-value" id="strong-acid-base-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="strong-acid-base-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="strong-acid-base-details">
+              <p>Pour les acides forts : [H+] = concentration<br>Pour les bases fortes : [OH-] = concentration</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- pH of Weak Acid/Base Tab -->
+        <div class="converter-panel" id="weak-Acid-Base-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="weak-concentration">Concentration (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration de l'acide ou de la base faible en mol/L (M)</span>
+                </span>
+              </label>
+              <input type="number" id="weak-concentration" placeholder="Entrez la concentration" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="weak-constant">Constante de dissociation (Ka/Kb) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la constante de dissociation acide (Ka) ou basique (Kb)</span>
+                </span>
+              </label>
+              <input type="number" id="weak-constant" placeholder="Entrez Ka ou Kb" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="weak-type">Type :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Sélectionnez s'il s'agit d'un acide faible ou d'une base faible</span>
+                </span>
+              </label>
+              <select id="weak-type">
+                <option value="acid">Acide Faible</option>
+                <option value="base">Base Faible</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="weak-acid-base-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="weak-acid-base-calculate">
+            <i class="fas fa-calculator"></i> Calculer le pH
+          </button>
+          
+          <div class="result-container" id="weak-acid-base-result-container">
+            <h3 class="result-header">Résultat du calcul de pH d'acide/base faible</h3>
+            <div class="result-value" id="weak-acid-base-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="weak-acid-base-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="weak-acid-base-details">
+              <p>Pour les acides faibles : [H+] = √(Ka × concentration)<br>Pour les bases faibles : [OH-] = √(Kb × concentration)</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Buffer pH Calculator Tab -->
+        <div class="converter-panel" id="buffer-pH-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="buffer-weak-concentration">Concentration acide/base faible (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration de l'acide ou de la base faible dans le tampon</span>
+                </span>
+              </label>
+              <input type="number" id="buffer-weak-concentration" placeholder="Entrez la concentration" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="buffer-conjugate-concentration">Concentration base/acide conjuguée (mol/L) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la concentration de la base ou de l'acide conjugué(e) dans le tampon</span>
+                </span>
+              </label>
+              <input type="number" id="buffer-conjugate-concentration" placeholder="Entrez la concentration" step="any">
+            </div>
+            
+            <div class="input-field">
+              <label for="buffer-constant">Constante de dissociation (Ka/Kb) :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez la constante de dissociation acide (Ka) ou basique (Kb)</span>
+                </span>
+              </label>
+              <input type="number" id="buffer-constant" placeholder="Entrez Ka ou Kb" step="any">
+            </div>
+          </div>
+          
+          <div id="buffer-pH-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="buffer-pH-calculate">
+            <i class="fas fa-calculator"></i> Calculer le pH du tampon
+          </button>
+          
+          <div class="result-container" id="buffer-pH-result-container">
+            <h3 class="result-header">Résultat du calcul de pH tampon</h3>
+            <div class="result-value" id="buffer-pH-result-value">
+              Le résultat apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="buffer-pH-chart"></canvas>
+            </div>
+            
+            <div class="conversion-details" id="buffer-pH-details">
+              <p>Ce calcul utilise l'équation de Henderson-Hasselbalch : pH = pKa + log([A-]/[HA])</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>À propos des calculs de pH</h3>
+        <p>Le pH est une mesure de la concentration en ions hydrogène dans une solution. Voici quelques points clés sur les calculs de pH :</p>
+        <ul>
+          <li><strong>pH :</strong> Le logarithme négatif de la concentration en ions hydrogène, mesuré sur une échelle de 0 à 14</li>
+          <li><strong>pOH :</strong> Le logarithme négatif de la concentration en ions hydroxyde, lié au pH par pH + pOH = 14</li>
+          <li><strong>Acides/Bases Forts :</strong> Se dissocient complètement en solution, rendant les calculs de pH simples</li>
+          <li><strong>Acides/Bases Faibles :</strong> Se dissocient partiellement en solution, nécessitant les valeurs Ka ou Kb pour le calcul du pH</li>
+          <li><strong>Solutions Tampons :</strong> Résistent aux changements de pH lorsque de petites quantités d'acide ou de base sont ajoutées</li>
+        </ul>
+        
+        <h3>Formules courantes de pH</h3>
+        <p>Voici quelques formules essentielles pour les calculs de pH :</p>
+        <ul>
+          <li>pH = -log[H+]</li>
+          <li>[H+] = 10^(-pH)</li>
+          <li>pOH = -log[OH-]</li>
+          <li>pH + pOH = 14 (à 25°C)</li>
+          <li>Pour les acides faibles : [H+] = √(Ka × concentration)</li>
+          <li>Équation de Henderson-Hasselbalch : pH = pKa + log([A-]/[HA])</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs pour la vie quotidienne et outils éducatifs. Nous vous aidons avec les calculs chimiques depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres calculateurs utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/education/gpa-calculator.html">Calculateur de GPA</a></li>
+          <li><a href="/fr/education/word-counter.html">Compteur de Mots</a></li>
+          <li><a href="/fr/education/unit-converter.html">Convertisseur d'Unités</a></li>
+          <li><a href="/fr/education/mole-calculator.html">Calculateur de Moles</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'utilisation</a>
+      </p>
+      <p><small>Remarque : Ces calculateurs fournissent uniquement des estimations. Vérifiez toujours les calculs critiques avec plusieurs sources.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const converterTabButtons = document.querySelectorAll('.converter-tab-btn');
+      const converterPanels = document.querySelectorAll('.converter-panel');
+      
+      // Conversion elements for each unit type
+      const conversionElements = {
+        'pH-from-H+': {
+          HValue: document.getElementById('H+-value'),
+          error: document.getElementById('pH-from-H+-error'),
+          resultContainer: document.getElementById('pH-from-H+-result-container'),
+          resultValue: document.getElementById('pH-from-H+-result-value'),
+          chartCtx: document.getElementById('pH-from-H+-chart').getContext('2d'),
+          chart: null
+        },
+        'H+-from-pH': {
+          pHValue: document.getElementById('pH-value'),
+          error: document.getElementById('H+-from-pH-error'),
+          resultContainer: document.getElementById('H+-from-pH-result-container'),
+          resultValue: document.getElementById('H+-from-pH-result-value'),
+          chartCtx: document.getElementById('H+-from-pH-chart').getContext('2d'),
+          chart: null
+        },
+        'pOH-from-OH-': {
+          OHValue: document.getElementById('OH--value'),
+          error: document.getElementById('pOH-from-OH--error'),
+          resultContainer: document.getElementById('pOH-from-OH--result-container'),
+          resultValue: document.getElementById('pOH-from-OH--result-value'),
+          chartCtx: document.getElementById('pOH-from-OH--chart').getContext('2d'),
+          chart: null
+        },
+        'pOH-to-pH': {
+          pOHValue: document.getElementById('pOH-value'),
+          error: document.getElementById('pOH-to-pH-error'),
+          resultContainer: document.getElementById('pOH-to-pH-result-container'),
+          resultValue: document.getElementById('pOH-to-pH-result-value'),
+          chartCtx: document.getElementById('pOH-to-pH-chart').getContext('2d'),
+          chart: null
+        },
+        'strong-Acid-Base': {
+          concentration: document.getElementById('strong-concentration'),
+          type: document.getElementById('strong-acid-base'),
+          error: document.getElementById('strong-acid-base-error'),
+          resultContainer: document.getElementById('strong-acid-base-result-container'),
+          resultValue: document.getElementById('strong-acid-base-result-value'),
+          chartCtx: document.getElementById('strong-acid-base-chart').getContext('2d'),
+          chart: null
+        },
+        'weak-Acid-Base': {
+          concentration: document.getElementById('weak-concentration'),
+          constant: document.getElementById('weak-constant'),
+          type: document.getElementById('weak-type'),
+          error: document.getElementById('weak-acid-base-error'),
+          resultContainer: document.getElementById('weak-acid-base-result-container'),
+          resultValue: document.getElementById('weak-acid-base-result-value'),
+          chartCtx: document.getElementById('weak-acid-base-chart').getContext('2d'),
+          chart: null
+        },
+        'buffer-pH': {
+          weakConcentration: document.getElementById('buffer-weak-concentration'),
+          conjugateConcentration: document.getElementById('buffer-conjugate-concentration'),
+          constant: document.getElementById('buffer-constant'),
+          error: document.getElementById('buffer-pH-error'),
+          resultContainer: document.getElementById('buffer-pH-result-container'),
+          resultValue: document.getElementById('buffer-pH-result-value'),
+          chartCtx: document.getElementById('buffer-pH-chart').getContext('2d'),
+          chart: null
+        }
+      };
+      
+      // Constants for calculations
+      const K_WATER = 1e-14; // Water ionization constant at 25°C
+      
+      // Create chart for visualization
+      function createChart(ctx, value1, value2, label1, label2) {
+        if (ctx.chart) {
+          ctx.chart.destroy();
+        }
+        
+        ctx.chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [label1, label2],
+            datasets: [ {
+              label: 'Comparaison',
+              data: [value1, value2],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            } ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Valeur'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              },
+              title: {
+                display: true,
+                text: 'Comparaison de calcul'
+              }
+            }
+          }
+        });
+      }
+      
+      // Format the result
+      function formatResult(value, precision = 4) {
+        // Use scientific notation for very large or very small numbers
+        if (Math.abs(value) >= 1e6 || (Math.abs(value) < 1e-4 && value !== 0)) {
+          return value.toExponential(precision);
+        }
+        
+        // Format with appropriate decimal places
+        const decimalPlaces = Math.abs(value) < 1 ? precision : Math.max(2, precision - Math.floor(Math.log10(Math.abs(value))) - 1);
+        return value.toFixed(decimalPlaces);
+      }
+      
+      // Calculate pH from H+ concentration
+      function calculatepHfromH() {
+        const elements = conversionElements['pH-from-H+'];
+        const HValue = elements.HValue.value;
+        
+        // Validate input
+        if (HValue === '' || isNaN(HValue)) {
+          elements.error.textContent = 'Veuillez entrer une concentration en H+ valide';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const H = parseFloat(HValue);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate pH
+        const pH = -Math.log10(H);
+        
+        // Format the result
+        const formattedpH = formatResult(pH);
+        elements.resultValue.textContent = `Une concentration en H+ de ${formatResult(H)} M correspond à un pH de ${formattedpH}`;
+        
+        // Create chart
+        createChart(elements.chartCtx, H, pH, 'Concentration en H+ (M)', 'pH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Calculate H+ from pH
+      function calculateHfrompH() {
+        const elements = conversionElements['H+-from-pH'];
+        const pHValue = elements.pHValue.value;
+        
+        // Validate input
+        if (pHValue === '' || isNaN(pHValue)) {
+          elements.error.textContent = 'Veuillez entrer une valeur de pH valide';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const pH = parseFloat(pHValue);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate H+
+        const H = Math.pow(10, -pH);
+        
+        // Format the result
+        const formattedH = formatResult(H);
+        elements.resultValue.textContent = `Un pH de ${formatResult(pH)} correspond à une concentration en H+ de ${formattedH} M`;
+        
+        // Create chart
+        createChart(elements.chartCtx, pH, H, 'pH', 'Concentration en H+ (M)');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Calculate pOH from OH- concentration
+      function calculatepOHfromOH() {
+        const elements = conversionElements['pOH-from-OH-'];
+        const OHValue = elements.OHValue.value;
+        
+        // Validate input
+        if (OHValue === '' || isNaN(OHValue)) {
+          elements.error.textContent = 'Veuillez entrer une concentration en OH- valide';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const OH = parseFloat(OHValue);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate pOH
+        const pOH = -Math.log10(OH);
+        
+        // Format the result
+        const formattedpOH = formatResult(pOH);
+        elements.resultValue.textContent = `Une concentration en OH- de ${formatResult(OH)} M correspond à un pOH de ${formattedpOH}`;
+        
+        // Create chart
+        createChart(elements.chartCtx, OH, pOH, 'Concentration en OH- (M)', 'pOH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Convert pOH to pH
+      function convertpOHtopH() {
+        const elements = conversionElements['pOH-to-pH'];
+        const pOHValue = elements.pOHValue.value;
+        
+        // Validate input
+        if (pOHValue === '' || isNaN(pOHValue)) {
+          elements.error.textContent = 'Veuillez entrer une valeur de pOH valide';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const pOH = parseFloat(pOHValue);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate pH
+        const pH = 14 - pOH;
+        
+        // Format the result
+        const formattedpH = formatResult(pH);
+        elements.resultValue.textContent = `Un pOH de ${formatResult(pOH)} correspond à un pH de ${formattedpH} à 25°C`;
+        
+        // Create chart
+        createChart(elements.chartCtx, pOH, pH, 'pOH', 'pH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Calculate pH of strong acid/base
+      function calculateStrongAcidBase() {
+        const elements = conversionElements['strong-Acid-Base'];
+        const concentration = elements.concentration.value;
+        const type = elements.type.value;
+        
+        // Validate input
+        if (concentration === '' || isNaN(concentration)) {
+          elements.error.textContent = 'Veuillez entrer une concentration valide';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const conc = parseFloat(concentration);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate pH
+        let pH;
+        if (type === 'acid') {
+          pH = -Math.log10(conc);
+        } else { // base
+          const pOH = -Math.log10(conc);
+          pH = 14 - pOH;
+        }
+        
+        // Format the result
+        const formattedpH = formatResult(pH);
+        elements.resultValue.textContent = `Un(e) ${type === 'acid' ? 'acide fort' : 'base forte'} avec une concentration de ${formatResult(conc)} M a un pH de ${formattedpH} à 25°C`;
+        
+        // Create chart
+        createChart(elements.chartCtx, conc, pH, `${type === 'acid' ? 'Acide' : 'Base'} Concentration (M)`, 'pH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Calculate pH of weak acid/base
+      function calculateWeakAcidBase() {
+        const elements = conversionElements['weak-Acid-Base'];
+        const concentration = elements.concentration.value;
+        const constant = elements.constant.value;
+        const type = elements.type.value;
+        
+        // Validate input
+        if (concentration === '' || isNaN(concentration) ||
+            constant === '' || isNaN(constant)) {
+          elements.error.textContent = 'Veuillez entrer des valeurs valides pour la concentration et la constante de dissociation';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const conc = parseFloat(concentration);
+        const K = parseFloat(constant);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate H+ or OH-
+        let result;
+        if (type === 'acid') {
+          result = Math.sqrt(K * conc);
+        } else { // base
+          const OH = Math.sqrt(K * conc);
+          result = K_WATER / OH;
+        }
+        
+        // Calculate pH
+        const pH = -Math.log10(result);
+        
+        // Format the result
+        const formattedpH = formatResult(pH);
+        elements.resultValue.textContent = `${type === 'acid' ? 'Un acide faible' : 'Une base faible'} avec une concentration de ${formatResult(conc)} M et un(e) ${type === 'acid' ? 'Ka' : 'Kb'} de ${formatResult(K)} a un pH de ${formattedpH} à 25°C`;
+        
+        // Create chart
+        createChart(elements.chartCtx, conc, pH, `${type === 'acid' ? 'Acide' : 'Base'} Concentration (M)`, 'pH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Calculate buffer pH (Henderson-Hasselbalch)
+      function calculateBufferpH() {
+        const elements = conversionElements['buffer-pH'];
+        const weakConc = elements.weakConcentration.value;
+        const conjConc = elements.conjugateConcentration.value;
+        const K = elements.constant.value;
+        
+        // Validate input
+        if (weakConc === '' || isNaN(weakConc) ||
+            conjConc === '' || isNaN(conjConc) ||
+            K === '' || isNaN(K)) {
+          elements.error.textContent = 'Veuillez entrer des valeurs valides pour tous les champs';
+          elements.error.style.display = 'block';
+          return;
+        }
+        
+        const weak = parseFloat(weakConc);
+        const conj = parseFloat(conjConc);
+        const constant = parseFloat(K);
+        
+        // Clear error
+        elements.error.style.display = 'none';
+        
+        // Calculate pH using Henderson-Hasselbalch equation
+        // Assuming it's an acid buffer (pH = pKa + log([A-]/[HA]))
+        const pKa = -Math.log10(constant);
+        const ratio = conj / weak;
+        const pH = pKa + Math.log10(ratio);
+        
+        // Format the result
+        const formattedpH = formatResult(pH);
+        elements.resultValue.textContent = `Une solution tampon avec ${conjConc > weakConc ? 'base' : 'acide'} faible de concentration ${formatResult(weak)} M, ${conjConc > weakConc ? 'acide' : 'base'} conjugué(e) de concentration ${formatResult(conj)} M, et ${conjConc > weakConc ? 'Kb' : 'Ka'} de ${formatResult(constant)} a un pH de ${formattedpH} à 25°C`;
+        
+        // Create chart
+        createChart(elements.chartCtx, weak, pH, `${conjConc > weakConc ? 'Base' : 'Acide'} Concentration (M)`, 'pH');
+        
+        // Show result
+        elements.resultContainer.style.display = 'block';
+      }
+      
+      // Event Listeners for calculator buttons
+      document.getElementById('pH-from-H+-calculate').addEventListener('click', calculatepHfromH);
+      document.getElementById('H+-from-pH-calculate').addEventListener('click', calculateHfrompH);
+      document.getElementById('pOH-from-OH--calculate').addEventListener('click', calculatepOHfromOH);
+      document.getElementById('pOH-to-pH-calculate').addEventListener('click', convertpOHtopH);
+      document.getElementById('strong-acid-base-calculate').addEventListener('click', calculateStrongAcidBase);
+      document.getElementById('weak-acid-base-calculate').addEventListener('click', calculateWeakAcidBase);
+      document.getElementById('buffer-pH-calculate').addEventListener('click', calculateBufferpH);
+      
+      // Allow Enter key to trigger calculations
+      Object.keys(conversionElements).forEach(type => {
+        const element = conversionElements[type];
+        
+        if (element.HValue) {
+          element.HValue.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'pH-from-H+') {
+              calculatepHfromH();
+            }
+          });
+        }
+        
+        if (element.pHValue) {
+          element.pHValue.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'H+-from-pH') {
+              calculateHfrompH();
+            }
+          });
+        }
+        
+        if (element.OHValue) {
+          element.OHValue.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'pOH-from-OH-') {
+              calculatepOHfromOH();
+            }
+          });
+        }
+        
+        if (element.pOHValue) {
+          element.pOHValue.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'pOH-to-pH') {
+              convertpOHtopH();
+            }
+          });
+        }
+        
+        if (element.concentration) {
+          element.concentration.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && (type === 'strong-Acid-Base' || type === 'weak-Acid-Base')) {
+              if (type === 'strong-Acid-Base') calculateStrongAcidBase();
+              if (type === 'weak-Acid-Base') calculateWeakAcidBase();
+            }
+          });
+        }
+        
+        if (element.weakConcentration) {
+          element.weakConcentration.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'buffer-pH') {
+              calculateBufferpH();
+            }
+          });
+        }
+        
+        if (element.constant) {
+          element.constant.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && (type === 'weak-Acid-Base' || type === 'buffer-pH')) {
+              if (type === 'weak-Acid-Base') calculateWeakAcidBase();
+              if (type === 'buffer-pH') calculateBufferpH();
+            }
+          });
+        }
+        
+        if (element.conjugateConcentration) {
+          element.conjugateConcentration.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && type === 'buffer-pH') {
+              calculateBufferpH();
+            }
+          });
+        }
+      });
+      
+      // Tab switching
+      converterTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs and panels
+          converterTabButtons.forEach(btn => btn.classList.remove('active'));
+          converterPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = '/en/education/ph-calculator.html';
+            break;
+          case 'zh':
+            targetUrl = '/zh/education/ph-calculator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/education/ph-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/education/ph-calculator.html';
+            break;
+          default: // French
+            targetUrl = '/fr/education/ph-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Initialize the calculator with default values
+      window.addEventListener('load', () => {
+        // Default to Calculate pH from H+ tab
+        document.getElementById('pH-from-H+-panel').classList.add('active');
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 

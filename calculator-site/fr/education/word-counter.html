@@ -1,14 +1,1401 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compteur de Mots | Calculator2U</title>
+<meta name="description" content="Comptez les mots, caractères, phrases et paragraphes de votre texte. Estimez le temps de lecture et convertissez la casse du texte." />
+<meta name="keywords" content="compteur de mots, compteur de caractères, analyseur de texte, calculateur de temps de lecture, convertisseur de casse" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/education/word-counter.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/education/word-counter.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/education/word-counter.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/education/word-counter.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/education/word-counter.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/education/word-counter.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/education/word-counter.html "/>
+<meta property="og:title" content="Compteur de Mots | Calculator2U" />
+<meta property="og:description" content="Comptez les mots, caractères, phrases et paragraphes de votre texte. Estimez le temps de lecture et convertissez la casse du texte." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/education/word-counter.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/word-counter.png " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Word Counter Calculator Styles */
+  .word-counter-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .word-counter-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus,
+  .input-field textarea:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .summary-card {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Text statistics */
+  .text-statistics {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .statistics-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .statistics-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .statistics-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .statistics-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .statistics-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .word-counter-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .word-counter-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .text-statistics {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .statistics-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .statistics-table th,
+    .statistics-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .reading-time-visualization {
+      height: 150px !important;
+    }
+    
+    .case-converter-options {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .case-converter-option {
+      width: 100%;
+    }
+  }
+
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* Case converter styles */
+  .case-converter-section {
+    margin-top: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .case-converter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .case-converter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .case-converter-option {
+    background: white;
+    border: 1px solid #e0f7fa;
+    border-radius: 4px;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .case-converter-option:hover {
+    background: #e0f7fa;
+    border-color: #4db5bd;
+  }
+  
+  .case-converter-option.active {
+    background: #4db5bd;
+    color: white;
+    border-color: #4db5bd;
+  }
+  
+  /* Reading time visualization */
+  .reading-time-visualization {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+  
+  .reading-time-bar {
+    flex: 1;
+    height: 20px;
+    background: #e0f7fa;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .reading-time-progress {
+    height: 100%;
+    background: #4db5bd;
+    border-radius: 10px;
+    width: 0;
+    transition: width 0.5s;
+  }
+  
+  /* Share link */
+  .share-link-container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .share-link-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  
+  .copy-btn {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .copy-btn:hover {
+    background: #3a9a99;
+  }
+  
+  /* Text editor styles */
+  .text-editor-container {
+    margin-bottom: 1rem;
+  }
+  
+  .text-editor-container textarea {
+    min-height: 200px;
+    resize: vertical;
+  }
+  
+  /* Responsive chart styling */
+  .chart-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  @media (max-width: 430px) {
+    .case-converter-options {
+      flex-direction: column;
+    }
+    
+    .case-converter-option {
+      width: 100%;
+    }
+  }
+  
+  /* Copy converted text button */
+  .copy-converted-text {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+  }
+  
+  .copy-converted-text:hover {
+    background: #3a9a99;
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinois)</option>
+            <option value="es">Español (Espagnol)</option>
+            <option value="de">Deutsch (Allemand)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Compteur de Mots</h1>
+    <p>Comptez les mots, caractères, phrases et paragraphes. Analysez votre texte et convertissez la casse.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Analyseur de Texte & Compteur de Mots</h2>
+    
+    <div class="word-counter-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="text-editor-container">
+          <div class="input-field">
+            <label for="text-input">
+              Entrez votre texte
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Collez ou tapez votre texte ici pour l'analyser</span>
+              </span>
+            </label>
+            <textarea id="text-input" placeholder="Entrez votre texte pour analyse..."></textarea>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="analyze-btn">
+          <i class="fas fa-search"></i> Analyser le texte
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Résultats de l'analyse de texte</h3>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Nombre de mots</div>
+              <div class="metric-value" id="word-count">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Nombre de caractères</div>
+              <div class="metric-value">
+                <div>Avec espaces: <span id="char-count-with-spaces">0</span></div>
+                <div>Sans espaces: <span id="char-count-without-spaces">0</span></div>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Nombre de mots chinois</div>
+              <div class="metric-value" id="chinese-word-count">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Nombre de phrases</div>
+              <div class="metric-value" id="sentence-count">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Nombre de paragraphes</div>
+              <div class="metric-value" id="paragraph-count">0</div>
+            </div>
+          </div>
+          
+          <!-- Reading Time Estimation -->
+          <div class="metric-card" style="margin-top: 1rem;">
+            <div class="metric-label">Temps de lecture estimé</div>
+            <div class="metric-value" id="reading-time">0 minutes</div>
+            <div class="reading-time-visualization" style="margin-top: 0.5rem;">
+              <div class="reading-time-bar">
+                <div class="reading-time-progress" id="reading-time-progress"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Case Converter -->
+          <div class="case-converter-section">
+            <div class="case-converter-header">
+              <h4>Convertisseur de casse</h4>
+            </div>
+            <div class="case-converter-options" id="case-converter-options">
+              <div class="case-converter-option" data-case="uppercase">MAJUSCULES</div>
+              <div class="case-converter-option" data-case="lowercase">minuscules</div>
+              <div class="case-converter-option" data-case="titlecase">Cas De Titre</div>
+              <div class="case-converter-option" data-case="sentencecase">Cas de phrase</div>
+            </div>
+            <div id="converted-text-container" style="margin-top: 1rem;">
+              <textarea id="converted-text" placeholder="Le texte converti apparaîtra ici" readonly></textarea>
+              <button class="copy-converted-text" id="copy-converted-text">Copier le texte converti</button>
+            </div>
+          </div>
+          
+          <!-- Text Statistics Table -->
+          <div class="text-statistics">
+            <table class="statistics-table" id="statistics-table">
+              <thead>
+                <tr>
+                  <th>Statistique</th>
+                  <th>Valeur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Nombre de mots</td>
+                  <td id="table-word-count">0</td>
+                </tr>
+                <tr>
+                  <td>Nombre de mots chinois</td>
+                  <td id="table-chinese-word-count">0</td>
+                </tr>
+                <tr>
+                  <td>Nombre de caractères (avec espaces)</td>
+                  <td id="table-char-with-spaces">0</td>
+                </tr>
+                <tr>
+                  <td>Nombre de caractères (sans espaces)</td>
+                  <td id="table-char-without-spaces">0</td>
+                </tr>
+                <tr>
+                  <td>Nombre de phrases</td>
+                  <td id="table-sentence-count">0</td>
+                </tr>
+                <tr>
+                  <td>Nombre de paragraphes</td>
+                  <td id="table-paragraph-count">0</td>
+                </tr>
+                <tr>
+                  <td>Moyenne de mots par phrase</td>
+                  <td id="avg-words-per-sentence">0</td>
+                </tr>
+                <tr>
+                  <td>Longueur moyenne de phrase</td>
+                  <td id="avg-sentence-length">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Share link -->
+          <div class="share-link-container">
+            <h3 style="margin-bottom: 1rem; color: #006d77;">Partager l'analyse de texte</h3>
+            <input type="text" class="share-link-input" id="share-link" readonly>
+            <button class="copy-btn" id="copy-btn">Copier le lien</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Comment fonctionne le compteur de mots</h3>
+        <p>Cet outil analyse votre texte pour fournir des statistiques détaillées et des conversions :</p>
+        <ul>
+          <li>Compte les mots, caractères (avec/sans espaces), phrases et paragraphes</li>
+          <li>Estime le temps de lecture basé sur une vitesse moyenne (200 mots par minute)</li>
+          <li>Convertit le texte dans différents styles de casse</li>
+          <li>Détecte et compte les mots chinois</li>
+          <li>Fournit des métriques d'analyse de texte supplémentaires</li>
+        </ul>
+        
+        <h3>Cas d'utilisation</h3>
+        <p>Voici quelques utilisations courantes de cet analyseur de texte :</p>
+        <ul>
+          <li><strong>Création de contenu :</strong> Assurez-vous que vos articles respectent les exigences de nombre de mots</li>
+          <li><strong>Rédaction d'essais :</strong> Suivez vos progrès et améliorez la lisibilité</li>
+          <li><strong>Rédaction publicitaire :</strong> Optimisez la longueur du contenu pour les supports marketing</li>
+          <li><strong>Recherche académique :</strong> Respectez les directives de soumission pour les articles</li>
+          <li><strong>Réseaux sociaux :</strong> Créez des messages concis dans les limites des plateformes</li>
+        </ul>
+        
+        <h3>Estimateur de temps de lecture</h3>
+        <p>L'estimation du temps de lecture suppose une vitesse moyenne de 200 mots par minute :</p>
+        <ul>
+          <li>100 mots ≈ 30 secondes</li>
+          <li>250 mots ≈ 1 minute</li>
+          <li>500 mots ≈ 2,5 minutes</li>
+          <li>1 000 mots ≈ 5 minutes</li>
+          <li>2 000 mots ≈ 10 minutes</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs pour la vie quotidienne et outils éducatifs. Nous vous aidons à analyser et comprendre des informations complexes depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres outils utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/education/gpa-calculator.html">Calculateur de GPA</a></li>
+          <li><a href="/fr/education/word-counter.html">Compteur de Mots</a></li>
+          <li><a href="/fr/education/unit-converter.html">Convertisseur d'Unités</a></li>
+          <li><a href="/fr/education/mole-calculator.html">Calculateur de Moles</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'utilisation</a>
+      </p>
+      <p><small>Remarque : Ce calculateur fournit uniquement des estimations. Le temps de lecture réel peut varier selon la vitesse de lecture individuelle.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const analyzeBtn = document.getElementById('analyze-btn');
+      const resultContainer = document.getElementById('result-container');
+      const textInput = document.getElementById('text-input');
+      const caseOptions = document.getElementById('case-converter-options');
+      const caseConverterOptions = caseOptions.querySelectorAll('.case-converter-option');
+      const convertedText = document.getElementById('converted-text');
+      const copyConvertedTextBtn = document.getElementById('copy-converted-text');
+      const copyBtn = document.getElementById('copy-btn');
+      const shareLink = document.getElementById('share-link');
+      
+      // Case converter references
+      const wordCount = document.getElementById('word-count');
+      const charCountWithSpaces = document.getElementById('char-count-with-spaces');
+      const charCountWithoutSpaces = document.getElementById('char-count-without-spaces');
+      const chineseWordCount = document.getElementById('chinese-word-count');
+      const sentenceCount = document.getElementById('sentence-count');
+      const paragraphCount = document.getElementById('paragraph-count');
+      const readingTime = document.getElementById('reading-time');
+      const readingTimeProgress = document.getElementById('reading-time-progress');
+      
+      // Table references
+      const tableWordCount = document.getElementById('table-word-count');
+      const tableChineseWordCount = document.getElementById('table-chinese-word-count');
+      const tableCharWithSpaces = document.getElementById('table-char-with-spaces');
+      const tableCharWithoutSpaces = document.getElementById('table-char-without-spaces');
+      const tableSentenceCount = document.getElementById('table-sentence-count');
+      const tableParagraphCount = document.getElementById('table-paragraph-count');
+      const avgWordsPerSentence = document.getElementById('avg-words-per-sentence');
+      const avgSentenceLength = document.getElementById('avg-sentence-length');
+      
+      // Constants
+      const AVG_READING_SPEED = 200; // words per minute
+      
+      // Analyze text
+      function analyzeText() {
+        const text = textInput.value;
+        
+        if (!text.trim()) {
+          alert('Veuillez entrer du texte à analyser');
+          return;
+        }
+        
+        // Basic counts
+        const wordCountVal = countWords(text);
+        const charCountWithSpacesVal = text.length;
+        const charCountWithoutSpacesVal = text.replace(/\s/g, '').length;
+        const chineseWordCountVal = countChineseWords(text);
+        const sentenceCountVal = countSentences(text);
+        const paragraphCountVal = countParagraphs(text);
+        
+        // Update metrics
+        wordCount.textContent = wordCountVal;
+        charCountWithSpaces.textContent = charCountWithSpacesVal;
+        charCountWithoutSpaces.textContent = charCountWithoutSpacesVal;
+        chineseWordCount.textContent = chineseWordCountVal;
+        sentenceCount.textContent = sentenceCountVal;
+        paragraphCount.textContent = paragraphCountVal;
+        
+        // Update table
+        tableWordCount.textContent = wordCountVal;
+        tableChineseWordCount.textContent = chineseWordCountVal;
+        tableCharWithSpaces.textContent = charCountWithSpacesVal;
+        tableCharWithoutSpaces.textContent = charCountWithoutSpacesVal;
+        tableSentenceCount.textContent = sentenceCountVal;
+        tableParagraphCount.textContent = paragraphCountVal;
+        
+        // Calculate averages
+        if (sentenceCountVal > 0) {
+          const avgWords = (wordCountVal / sentenceCountVal).toFixed(2);
+          const avgLength = (charCountWithSpacesVal / sentenceCountVal).toFixed(2);
+          
+          avgWordsPerSentence.textContent = avgWords;
+          avgSentenceLength.textContent = avgLength;
+        } else {
+          avgWordsPerSentence.textContent = 'N/A';
+          avgSentenceLength.textContent = 'N/A';
+        }
+        
+        // Reading time estimation
+        const minutes = Math.ceil(wordCountVal / AVG_READING_SPEED);
+        readingTime.textContent = `${minutes} minute${minutes === 1 ? '' : 's'}`;
+        
+        // Update reading time visualization
+        const maxMinutes = 10; // Max visualization for 10 minutes
+        const percentage = Math.min((minutes / maxMinutes) * 100, 100);
+        readingTimeProgress.style.width = `${percentage}%`;
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Generate share link
+        generateShareLink();
+      }
+      
+      // Word count function
+      function countWords(text) {
+        // Split text into words (accounting for various whitespace and punctuation)
+        const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+        return words.length;
+      }
+      
+      // Character count (with and without spaces)
+      function countCharacters(text, includeSpaces) {
+        if (includeSpaces) {
+          return text.length;
+        } else {
+          return text.replace(/\s/g, '').length;
+        }
+      }
+      
+      // Chinese word count function
+      function countChineseWords(text) {
+        const chineseWordRegex = /[\u4e00-\u9fa5]/g;
+        const matches = text.match(chineseWordRegex);
+        return matches ? matches.length : 0;
+      }
+      
+      // Sentence count
+      function countSentences(text) {
+        // Split on sentence-ending punctuation followed by whitespace or end of string
+        const sentences = text.trim().split(/(?<=[.!?])\s+/);
+        return sentences.filter(sentence => sentence.length > 0).length;
+      }
+      
+      // Paragraph count
+      function countParagraphs(text) {
+        // Split on two or more newlines (or paragraph breaks)
+        const paragraphs = text.trim().split(/\n\s*\n/);
+        return paragraphs.filter(para => para.length > 0).length;
+      }
+      
+      // Case conversion functions
+      function toUpperCase(text) {
+        return text.toUpperCase();
+      }
+      
+      function toLowerCase(text) {
+        return text.toLowerCase();
+      }
+      
+      function toTitleCase(text) {
+        return text.split(' ')
+          .map(word => {
+            if (word.length === 0) return word;
+            return word[0].toUpperCase() + word.substring(1).toLowerCase();
+          })
+          .join(' ');
+      }
+      
+      function toSentenceCase(text) {
+        return text.charAt(0).toUpperCase() + 
+               text.substring(1).toLowerCase();
+      }
+      
+      // Case converter logic
+      caseConverterOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Remove active class from all options
+          caseConverterOptions.forEach(opt => opt.classList.remove('active'));
+          
+          // Add active class to clicked option
+          this.classList.add('active');
+          
+          // Get the case type
+          const caseType = this.dataset.case;
+          
+          // Convert text
+          let converted;
+          switch(caseType) {
+            case 'uppercase':
+              converted = toUpperCase(textInput.value);
+              break;
+            case 'lowercase':
+              converted = toLowerCase(textInput.value);
+              break;
+            case 'titlecase':
+              converted = toTitleCase(textInput.value);
+              break;
+            case 'sentencecase':
+              converted = toSentenceCase(textInput.value);
+              break;
+            default:
+              converted = textInput.value;
+          }
+          
+          // Update converted text area
+          convertedText.value = converted;
+        });
+      });
+      
+      // Copy converted text
+      copyConvertedTextBtn.addEventListener('click', function() {
+        convertedText.select();
+        document.execCommand('copy');
+        alert('Texte converti copié dans le presse-papiers !');
+      });
+      
+      // Generate share link
+      function generateShareLink() {
+        // In a real implementation, you would generate a unique link to share the text analysis
+        // For this example, we'll just create a static link with some basic details
+        const textPreview = textInput.value.substring(0, 20).replace(/\n/g, ' ') + (textInput.value.length > 20 ? '...' : '');
+        const wordCountVal = countWords(textInput.value);
+        
+        // Encode the trip details
+        const encodedDetails = btoa(JSON.stringify({
+          preview: textPreview,
+          wordCount: wordCountVal
+        }));
+        
+        // Create share link
+        shareLink.value = `${window.location.origin}${window.location.pathname}?analysis=${encodedDetails}`;
+      }
+      
+      // Event Listeners
+      analyzeBtn.addEventListener('click', analyzeText);
+      copyBtn.addEventListener('click', function() {
+        shareLink.select();
+        document.execCommand('copy');
+        alert('Lien copié dans le presse-papiers !');
+      });
+      
+      // Allow Enter key to trigger analysis
+      textInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          analyzeText();
+        }
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = '/en/education/word-counter.html';
+            break;
+          case 'zh':
+            targetUrl = '/zh/education/word-counter.html';
+            break;
+          case 'de':
+            targetUrl = '/de/education/word-counter.html';
+            break;
+          case 'es':
+            targetUrl = '/es/education/word-counter.html';
+            break;
+          default: // French
+            targetUrl = '/fr/education/word-counter.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 
