@@ -1,14 +1,1781 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convertisseur de Base | Calculator2U</title>
+<meta name="description" content="Convertissez des nombres entre différents systèmes numériques : binaire, octal, décimal, hexadécimal et plus encore grâce à notre convertisseur de base complet." />
+<meta name="keywords" content="convertisseur de base, convertisseur de système numérique, convertisseur binaire, convertisseur hexadécimal" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/engineering/base-converter.html" />
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/engineering/base-converter.html"/>
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/engineering/base-converter.html"/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/engineering/base-converter.html"/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/engineering/base-converter.html"/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/engineering/base-converter.html"/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/fr/engineering/base-converter.html"/>
+<meta property="og:title" content="Convertisseur de Base | Calculator2U" />
+<meta property="og:description" content="Convertissez des nombres entre différents systèmes numériques : binaire, octal, décimal, hexadécimal et plus encore grâce à notre convertisseur de base complet." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/engineering/base-converter.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/base-converter.jpg" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Converter Tabs */
+  .converter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .converter-tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .converter-tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .converter-panel {
+    display: none;
+  }
+  
+  .converter-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Input Styles */
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Result Styles */
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .result-value {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Chart Styles */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Conversion Table Styles */
+  .conversion-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .conversion-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .conversion-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .conversion-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .conversion-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .conversion-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .conversion-table {
+      max-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .conversion-table th,
+    .conversion-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Result Metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Unit Selection Styles */
+  .base-selection {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .base-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  
+  /* Tooltip */
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    background: #006d77;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
+  
+  /* History Panel */
+  .history-panel {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e0f7fa;
+  }
+  
+  .history-panel h4 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .history-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e0f7fa;
+    font-size: 0.9rem;
+  }
+  
+  .history-item:last-child {
+    border-bottom: none;
+  }
+  
+  .history-clear {
+    display: block;
+    margin-top: 0.5rem;
+    background: #ffd166;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  
+  /* Step-by-step container */
+  .steps-container {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    border: 1px solid #e0f7fa;
+  }
+  
+  /* Auto conversion indicator */
+  .auto-convert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #006d77;
+  }
+  
+  /* Toggle switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(16px);
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinois)</option>
+            <option value="es">Español (Espagnol)</option>
+            <option value="de">Deutsch (Allemand)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Convertisseur de Base</h1>
+    <p>Convertissez des nombres entre différents systèmes numériques : binaire, octal, décimal, hexadécimal et plus encore grâce à notre convertisseur de base complet.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Convertisseur de Base</h2>
+    
+    <div class="cooking-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="converter-tabs">
+          <button class="converter-tab-btn active" data-tab="common">Conversions Courantes</button>
+          <button class="converter-tab-btn" data-tab="custom">Base Personnalisée</button>
+        </div>
+        
+        <!-- Common Conversions Tab -->
+        <div class="converter-panel active" id="common-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="base-value">Valeur :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez le nombre à convertir (ex. : 1010, 255, 1FF)</span>
+                </span>
+              </label>
+              <input type="text" id="base-value" placeholder="Entrez un nombre" autocomplete="off">
+            </div>
+          </div>
+          
+          <div class="base-selection">
+            <div class="base-field">
+              <label for="from-base">De la base :</label>
+              <select id="from-base" class="base-select">
+                <option value="2">Binaire (Base-2)</option>
+                <option value="10" selected>Décimal (Base-10)</option>
+                <option value="8">Octal (Base-8)</option>
+                <option value="16">Hexadécimal (Base-16)</option>
+              </select>
+            </div>
+            
+            <button class="swap-button" id="base-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="base-field">
+              <label for="to-base">Vers la base :</label>
+              <select id="to-base" class="base-select">
+                <option value="2" selected>Binaire (Base-2)</option>
+                <option value="10">Décimal (Base-10)</option>
+                <option value="8">Octal (Base-8)</option>
+                <option value="16">Hexadécimal (Base-16)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="auto-convert">
+            <label for="auto-convert-toggle">Conversion automatique :</label>
+            <label class="switch">
+              <input type="checkbox" id="auto-convert-toggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div id="base-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="base-convert">
+            <i class="fas fa-exchange-alt"></i> Convertir
+          </button>
+          
+          <div class="result-container" id="base-result-container">
+            <h3 class="result-header">Résultat de la conversion</h3>
+            <div class="result-value" id="base-result-value">
+              La valeur convertie apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="base-chart"></canvas>
+            </div>
+            
+            <div id="conversion-details">
+              <h4>Étapes de conversion :</h4>
+              <div class="steps-container" id="conversion-steps"></div>
+            </div>
+            
+            <div class="history-panel">
+              <h4>Conversions récentes :</h4>
+              <div id="history-list"></div>
+              <button class="history-clear" id="clear-history">Effacer l’historique</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Custom Base Conversion Tab -->
+        <div class="converter-panel" id="custom-panel">
+          <div class="input-group">
+            <div class="input-field">
+              <label for="custom-value">Valeur :
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Entrez le nombre à convertir (ex. : 1010, 255, 1FF)</span>
+                </span>
+              </label>
+              <input type="text" id="custom-value" placeholder="Entrez un nombre" autocomplete="off">
+            </div>
+          </div>
+          
+          <div class="base-selection">
+            <div class="base-field">
+              <label for="custom-from-base">De la base :</label>
+              <input type="number" id="custom-from-base" min="2" max="36" value="10">
+            </div>
+            
+            <button class="swap-button" id="custom-swap">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            
+            <div class="base-field">
+              <label for="custom-to-base">Vers la base :</label>
+              <input type="number" id="custom-to-base" min="2" max="36" value="2">
+            </div>
+          </div>
+          
+          <div class="auto-convert">
+            <label for="custom-auto-convert">Conversion automatique :</label>
+            <label class="switch">
+              <input type="checkbox" id="custom-auto-convert" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div id="custom-error" class="error-message"></div>
+          
+          <button class="calculate-btn" id="custom-convert">
+            <i class="fas fa-exchange-alt"></i> Convertir
+          </button>
+          
+          <div class="result-container" id="custom-result-container">
+            <h3 class="result-header">Résultat de la conversion</h3>
+            <div class="result-value" id="custom-result-value">
+              La valeur convertie apparaîtra ici
+            </div>
+            
+            <div class="chart-container">
+              <canvas id="custom-chart"></canvas>
+            </div>
+            
+            <div id="custom-conversion-details">
+              <h4>Étapes de conversion :</h4>
+              <div class="steps-container" id="custom-conversion-steps"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>À propos des conversions de base</h3>
+        <p>Les conversions de base sont essentielles en informatique, en mathématiques et en électronique numérique. Voici quelques points clés à retenir :</p>
+        <ul>
+          <li><strong>Binaire (Base-2) :</strong> utilise uniquement 0 et 1. C’est le langage des ordinateurs.</li>
+          <li><strong>Octal (Base-8) :</strong> utilise les chiffres 0-7. Souvent utilisé comme raccourci pour le binaire.</li>
+          <li><strong>Décimal (Base-10) :</strong> le système numérique standard que nous utilisons quotidiennement.</li>
+          <li><strong>Hexadécimal (Base-16) :</strong> utilise les chiffres 0-9 et les lettres A-F. Très courant en informatique.</li>
+        </ul>
+        
+        <h3>Conseils de conversion</h3>
+        <p>Voici quelques conseils pour des conversions de base réussies :</p>
+        <ul>
+          <li>Vérifiez que le nombre saisi est valide pour la base sélectionnée</li>
+          <li>Faites attention aux lettres en hexadécimal (A-F ne tiennent pas compte de la casse)</li>
+          <li>Les grands nombres peuvent nécessiter un traitement particulier</li>
+          <li>Utilisez des outils de conversion fiables pour les calculs complexes</li>
+        </ul>
+        
+        <h3>Méthodes de conversion</h3>
+        <p>Voici les méthodes couramment utilisées pour les conversions de base :</p>
+        <ul>
+          <li><strong>Méthode division-reste :</strong> utilisée pour convertir vers une base supérieure</li>
+          <li><strong>Méthode de multiplication :</strong> utilisée pour convertir les parties fractionnaires</li>
+          <li><strong>Notation positionnelle :</strong> utilisée pour convertir depuis une base supérieure</li>
+        </ul>
+        
+        <h3>Conversions de base courantes</h3>
+        <div class="conversion-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Décimal</th>
+                <th>Binaire</th>
+                <th>Octal</th>
+                <th>Hexadécimal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>10</td>
+                <td>2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>11</td>
+                <td>3</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>100</td>
+                <td>4</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>101</td>
+                <td>5</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>1000</td>
+                <td>10</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>1010</td>
+                <td>12</td>
+                <td>A</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>1111</td>
+                <td>17</td>
+                <td>F</td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>10000</td>
+                <td>20</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>32</td>
+                <td>100000</td>
+                <td>40</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>64</td>
+                <td>1000000</td>
+                <td>100</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>100</td>
+                <td>1100100</td>
+                <td>144</td>
+                <td>64</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable d’outils de calcul et d’apprentissage du quotidien. Nous vous aidons dans vos conversions depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres calculateurs utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/education/unit-converter.html">Convertisseur d’unités</a></li>
+          <li><a href="/fr/finance/compound-interest-calculator.html">Calculateur d’intérêts composés</a></li>
+          <li><a href="/fr/engineering/mechanics-calculator.html">Calculateur de mécanique</a></li>
+          <li><a href="/fr/engineering/material-strength-calculator.html">Calculateur de résistance des matériaux</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d’utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d’utilisation</a>
+      </p>
+      <p><small>Remarque : ces calculateurs fournissent uniquement des estimations. Vérifiez toujours les conversions critiques auprès de plusieurs sources.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const converterTabButtons = document.querySelectorAll('.converter-tab-btn');
+      const converterPanels = document.querySelectorAll('.converter-panel');
+      const autoConvertToggle = document.getElementById('auto-convert-toggle');
+      const customAutoConvertToggle = document.getElementById('custom-auto-convert');
+      const clearHistoryBtn = document.getElementById('clear-history');
+      const historyList = document.getElementById('history-list');
+      
+      // Conversion elements for common conversions
+      const commonElements = {
+        value: document.getElementById('base-value'),
+        fromBase: document.getElementById('from-base'),
+        toBase: document.getElementById('to-base'),
+        swapBtn: document.getElementById('base-swap'),
+        result: document.getElementById('base-result'),
+        error: document.getElementById('base-error'),
+        resultContainer: document.getElementById('base-result-container'),
+        resultValue: document.getElementById('base-result-value'),
+        chartCtx: document.getElementById('base-chart').getContext('2d'),
+        chart: null,
+        steps: document.getElementById('conversion-steps'),
+        autoConvert: autoConvertToggle
+      };
+      
+      // Conversion elements for custom base conversions
+      const customElements = {
+        value: document.getElementById('custom-value'),
+        fromBase: document.getElementById('custom-from-base'),
+        toBase: document.getElementById('custom-to-base'),
+        swapBtn: document.getElementById('custom-swap'),
+        result: document.getElementById('custom-result'),
+        error: document.getElementById('custom-error'),
+        resultContainer: document.getElementById('custom-result-container'),
+        resultValue: document.getElementById('custom-result-value'),
+        chartCtx: document.getElementById('custom-chart').getContext('2d'),
+        chart: null,
+        steps: document.getElementById('custom-conversion-steps'),
+        autoConvert: customAutoConvertToggle
+      };
+      
+      // History storage
+      let conversionHistory = JSON.parse(localStorage.getItem('baseConversionHistory')) || [];
+      
+      // Initialize history display
+      function updateHistoryDisplay() {
+        historyList.innerHTML = '';
+        if (conversionHistory.length === 0) {
+          historyList.innerHTML = '<div class="history-item">Aucun historique pour l’instant</div>';
+          return;
+        }
+        
+        // Display latest 5 conversions
+        const displayHistory = conversionHistory.slice(0, 5);
+        displayHistory.forEach(item => {
+          const historyItem = document.createElement('div');
+          historyItem.className = 'history-item';
+          historyItem.innerHTML = `
+            <strong>${item.input}</strong> (Base-${item.from}) → 
+            <strong>${item.result}</strong> (Base-${item.to})
+          `;
+          historyList.appendChild(historyItem);
+        });
+      }
+      
+      // Save conversion to history
+      function saveToHistory(input, result, fromBase, toBase) {
+        const newEntry = {
+          input,
+          result,
+          from: fromBase,
+          to: toBase,
+          timestamp: new Date().toISOString()
+        };
+        
+        // Add to the beginning of the array
+        conversionHistory.unshift(newEntry);
+        
+        // Keep only the last 10 entries
+        if (conversionHistory.length > 10) {
+          conversionHistory = conversionHistory.slice(0, 10);
+        }
+        
+        localStorage.setItem('baseConversionHistory', JSON.stringify(conversionHistory));
+        updateHistoryDisplay();
+      }
+      
+      // Chart for visualization
+      function createChart(ctx, value, convertedValue, fromBase, toBase) {
+        if (ctx.chart) {
+          ctx.chart.destroy();
+        }
+        
+        const baseNames = {
+          2: 'Binaire',
+          8: 'Octal',
+          10: 'Décimal',
+          16: 'Hexadécimal'
+        };
+        
+        const fromName = baseNames[fromBase] || `Base-${fromBase}`;
+        const toName = baseNames[toBase] || `Base-${toBase}`;
+        
+        ctx.chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [fromName, toName],
+            datasets: [{
+              label: 'Comparaison de conversion',
+              data: [value, convertedValue],
+              backgroundColor: [
+                '#4db5bd',
+                '#ffd166'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Valeur'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              },
+              title: {
+                display: true,
+                text: 'Comparaison de conversion'
+              }
+            }
+          }
+        });
+      }
+      
+      // Base conversion logic with steps
+      function baseConversion(value, fromBase, toBase) {
+        // Convert to uppercase for hexadecimal support
+        value = value.toUpperCase();
+        
+        // Steps for conversion
+        let steps = '';
+        let result = '';
+        
+        // Check if value is empty
+        if (value === '') {
+          return { error: 'Veuillez entrer une valeur à convertir' };
+        }
+        
+        // Validate fromBase
+        if (fromBase < 2 || fromBase > 36) {
+          return { error: `Base de départ invalide : ${fromBase}. Doit être comprise entre 2 et 36` };
+        }
+        
+        // Validate toBase
+        if (toBase < 2 || toBase > 36) {
+          return { error: `Base d’arrivée invalide : ${toBase}. Doit être comprise entre 2 et 36` };
+        }
+        
+        // Check for same base
+        if (fromBase === toBase) {
+          return { result: value, steps: 'Même base - aucune conversion nécessaire' };
+        }
+        
+        // Validate input characters
+        const validChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substring(0, fromBase);
+        const regex = new RegExp(`^[-+]?[${validChars}]+(\\.[${validChars}]+)?$`, 'i');
+        
+        if (!regex.test(value)) {
+          return { error: `Caractères invalides pour la base-${fromBase}` };
+        }
+        
+        // Check for negative sign
+        let isNegative = false;
+        if (value.startsWith('-')) {
+          isNegative = true;
+          value = value.substring(1);
+        } else if (value.startsWith('+')) {
+          value = value.substring(1);
+        }
+        
+        // Split into integer and fractional parts
+        const [integerPart, fractionalPart] = value.split('.');
+        let decimalValue = 0;
+        let fractionalValue = 0;
+        
+        // Convert integer part to decimal
+        if (integerPart) {
+          steps += `Conversion de la partie entière "${integerPart}" de la base-${fromBase} vers décimal :\n`;
+          for (let i = 0; i < integerPart.length; i++) {
+            const char = integerPart[i];
+            const digitValue = parseInt(char, fromBase);
+            
+            if (isNaN(digitValue)) {
+              return { error: `Caractère invalide '${char}' pour la base-${fromBase}` };
+            }
+            
+            const exponent = integerPart.length - 1 - i;
+            const positionValue = digitValue * Math.pow(fromBase, exponent);
+            decimalValue += positionValue;
+            
+            steps += `  ${char} × ${fromBase}^${exponent} = ${digitValue} × ${Math.pow(fromBase, exponent)} = ${positionValue}\n`;
+          }
+          steps += `Valeur entière totale : ${decimalValue}\n\n`;
+        }
+        
+        // Convert fractional part to decimal
+        if (fractionalPart) {
+          steps += `Conversion de la partie fractionnaire "${fractionalPart}" de la base-${fromBase} vers décimal :\n`;
+          for (let i = 0; i < fractionalPart.length; i++) {
+            const char = fractionalPart[i];
+            const digitValue = parseInt(char, fromBase);
+            
+            if (isNaN(digitValue)) {
+              return { error: `Caractère invalide '${char}' pour la base-${fromBase}` };
+            }
+            
+            const exponent = -(i + 1);
+            const positionValue = digitValue * Math.pow(fromBase, exponent);
+            fractionalValue += positionValue;
+            
+            steps += `  ${char} × ${fromBase}^${exponent} = ${digitValue} × ${Math.pow(fromBase, exponent)} = ${positionValue.toFixed(6)}\n`;
+          }
+          steps += `Valeur fractionnaire totale : ${fractionalValue.toFixed(6)}\n\n`;
+        }
+        
+        // Combine integer and fractional parts
+        const totalDecimalValue = decimalValue + fractionalValue;
+        
+        steps += `Valeur décimale totale : ${isNegative ? '-' : ''}${totalDecimalValue}\n\n`;
+        steps += `Conversion de la valeur décimale ${totalDecimalValue} vers la base-${toBase} :\n`;
+        
+        // Convert decimal to target base (integer part)
+        let convertedInteger = '';
+        let tempInteger = Math.floor(totalDecimalValue);
+        
+        if (tempInteger === 0) {
+          convertedInteger = '0';
+          steps += `Partie entière : 0\n`;
+        } else {
+          steps += `Conversion de la partie entière (division par ${toBase}) :\n`;
+          while (tempInteger > 0) {
+            const remainder = tempInteger % toBase;
+            const digit = remainder < 10 ? remainder.toString() : String.fromCharCode(55 + remainder);
+            convertedInteger = digit + convertedInteger;
+            
+            steps += `  ${tempInteger} ÷ ${toBase} = ${Math.floor(tempInteger / toBase)} reste ${remainder} (${digit})\n`;
+            tempInteger = Math.floor(tempInteger / toBase);
+          }
+          steps += `Résultat de la partie entière : ${convertedInteger}\n`;
+        }
+        
+        // Convert fractional part
+        let convertedFractional = '';
+        let tempFractional = totalDecimalValue - Math.floor(totalDecimalValue);
+        const maxPrecision = 10; // To prevent infinite loops
+        
+        if (tempFractional > 0) {
+          steps += `\nConversion de la partie fractionnaire (multiplication par ${toBase}) :\n`;
+          for (let i = 0; i < maxPrecision && tempFractional > 0; i++) {
+            tempFractional *= toBase;
+            const integerPart = Math.floor(tempFractional);
+            const digit = integerPart < 10 ? integerPart.toString() : String.fromCharCode(55 + integerPart);
+            convertedFractional += digit;
+            
+            steps += `  ${tempFractional.toFixed(6)} → partie entière : ${integerPart} (${digit}), partie fractionnaire : ${(tempFractional - integerPart).toFixed(6)}\n`;
+            tempFractional -= integerPart;
+          }
+          steps += `Résultat de la partie fractionnaire : ${convertedFractional}\n`;
+        }
+        
+        // Combine results
+        result = (isNegative ? '-' : '') + convertedInteger;
+        if (convertedFractional) {
+          result += '.' + convertedFractional;
+        }
+        
+        steps += `\nRésultat final : ${result} (Base-${toBase})`;
+        
+        return { result, steps };
+      }
+      
+      // Handle common conversions
+      function handleCommonConversion() {
+        const elements = commonElements;
+        const value = elements.value.value.trim();
+        const fromBase = parseInt(elements.fromBase.value);
+        const toBase = parseInt(elements.toBase.value);
+        
+        // Clear any previous error
+        elements.error.style.display = 'none';
+        
+        // Perform conversion
+        const conversionResult = baseConversion(value, fromBase, toBase);
+        
+        if (conversionResult.error) {
+          elements.error.textContent = conversionResult.error;
+          elements.error.style.display = 'block';
+          elements.resultContainer.style.display = 'none';
+          return;
+        }
+        
+        elements.resultValue.textContent = `${value} (Base-${fromBase}) = ${conversionResult.result} (Base-${toBase})`;
+        elements.steps.textContent = conversionResult.steps;
+        elements.resultContainer.style.display = 'block';
+        
+        // Create or update chart
+        try {
+          const decimalValue = parseFloat(value) || 0;
+          const convertedDecimal = parseFloat(conversionResult.result) || 0;
+          createChart(elements.chartCtx, decimalValue, convertedDecimal, fromBase, toBase);
+        } catch (e) {
+          console.error('Chart creation error:', e);
+        }
+        
+        // Save to history
+        saveToHistory(value, conversionResult.result, fromBase, toBase);
+      }
+      
+      // Handle custom base conversions
+      function handleCustomConversion() {
+        const elements = customElements;
+        const value = elements.value.value.trim();
+        const fromBase = parseInt(elements.fromBase.value);
+        const toBase = parseInt(elements.toBase.value);
+        
+        // Clear any previous error
+        elements.error.style.display = 'none';
+        
+        // Perform conversion
+        const conversionResult = baseConversion(value, fromBase, toBase);
+        
+        if (conversionResult.error) {
+          elements.error.textContent = conversionResult.error;
+          elements.error.style.display = 'block';
+          elements.resultContainer.style.display = 'none';
+          return;
+        }
+        
+        elements.resultValue.textContent = `${value} (Base-${fromBase}) = ${conversionResult.result} (Base-${toBase})`;
+        elements.steps.textContent = conversionResult.steps;
+        elements.resultContainer.style.display = 'block';
+        
+        // Create or update chart
+        try {
+          const decimalValue = parseFloat(value) || 0;
+          const convertedDecimal = parseFloat(conversionResult.result) || 0;
+          createChart(elements.chartCtx, decimalValue, convertedDecimal, fromBase, toBase);
+        } catch (e) {
+          console.error('Chart creation error:', e);
+        }
+      }
+      
+      // Event Listeners for conversion buttons
+      document.getElementById('base-convert').addEventListener('click', handleCommonConversion);
+      document.getElementById('custom-convert').addEventListener('click', handleCustomConversion);
+      
+      // Event Listeners for swap buttons
+      commonElements.swapBtn.addEventListener('click', () => {
+        const temp = commonElements.fromBase.value;
+        commonElements.fromBase.value = commonElements.toBase.value;
+        commonElements.toBase.value = temp;
+        
+        if (commonElements.autoConvert.checked) {
+          handleCommonConversion();
+        }
+      });
+      
+      customElements.swapBtn.addEventListener('click', () => {
+        const temp = customElements.fromBase.value;
+        customElements.fromBase.value = customElements.toBase.value;
+        customElements.toBase.value = temp;
+        
+        if (customElements.autoConvert.checked) {
+          handleCustomConversion();
+        }
+      });
+      
+      // Tab switching
+      converterTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all tabs
+          converterTabButtons.forEach(btn => btn.classList.remove('active'));
+          converterPanels.forEach(panel => panel.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          button.classList.add('active');
+          
+          // Show corresponding panel
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+      });
+      
+      // Auto conversion with debounce
+      let debounceTimer;
+      function debounce(func, delay) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(func, delay);
+      }
+      
+      // Input event listeners with auto conversion
+      commonElements.value.addEventListener('input', () => {
+        if (commonElements.autoConvert.checked) {
+          debounce(handleCommonConversion, 500);
+        }
+      });
+      
+      commonElements.fromBase.addEventListener('change', () => {
+        if (commonElements.autoConvert.checked) {
+          handleCommonConversion();
+        }
+      });
+      
+      commonElements.toBase.addEventListener('change', () => {
+        if (commonElements.autoConvert.checked) {
+          handleCommonConversion();
+        }
+      });
+      
+      customElements.value.addEventListener('input', () => {
+        if (customElements.autoConvert.checked) {
+          debounce(handleCustomConversion, 500);
+        }
+      });
+      
+      customElements.fromBase.addEventListener('input', () => {
+        if (customElements.autoConvert.checked) {
+          debounce(handleCustomConversion, 500);
+        }
+      });
+      
+      customElements.toBase.addEventListener('input', () => {
+        if (customElements.autoConvert.checked) {
+          debounce(handleCustomConversion, 500);
+        }
+      });
+      
+      // Allow Enter key to trigger conversion
+      commonElements.value.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleCommonConversion();
+        }
+      });
+      
+      customElements.value.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleCustomConversion();
+        }
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+     // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'en':
+            targetUrl = '/en/engineering/base-converter.html';
+            break;
+          case 'zh':
+            targetUrl = '/zh/engineering/base-converter.html';
+            break;
+          case 'es':
+            targetUrl = '/es/engineering/base-converter.html';
+            break;
+          case 'de':
+            targetUrl = '/de/engineering/base-converter.html';
+            break;
+          default: // French
+            targetUrl = '/fr/engineering/base-converter.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+      
+      // Clear history button
+      clearHistoryBtn.addEventListener('click', () => {
+        conversionHistory = [];
+        localStorage.removeItem('baseConversionHistory');
+        updateHistoryDisplay();
+      });
+      
+      // Initialize the calculator
+      window.addEventListener('load', () => {
+        // Default to Common Conversions tab
+        document.getElementById('common-panel').classList.add('active');
+        
+        // Initialize history display
+        updateHistoryDisplay();
+        
+        // Set up example conversion
+        commonElements.value.value = "255";
+        commonElements.fromBase.value = "10";
+        commonElements.toBase.value = "16";
+        handleCommonConversion();
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 
