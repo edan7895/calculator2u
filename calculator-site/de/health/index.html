@@ -1,14 +1,971 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gesundheits- & Körperrechner | Calculator2U</title>
+<meta name="description" content="Umfassende Gesundheitsrechner inklusive BMI, BMR, Körperfett, TDEE, Zielgewicht, Geburtstermin und Eisprungrechner." />
+<meta name="keywords" content="Gesundheitsrechner, BMI-Rechner, BMR-Rechner, Körperfettrechner, TDEE-Rechner, Schwangerschaftsrechner, Eisprungrechner" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/health/index.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/health/index.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/health/index.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/health/index.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/health/index.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/health/index.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/health/index.html "/>
+<meta property="og:title" content="Gesundheits- & Körperrechner | Calculator2U" />
+<meta property="og:description" content="Umfassende Gesundheitsrechner inklusive BMI, BMR, Körperfett, TDEE, Zielgewicht, Geburtstermin und Eisprungrechner." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/health/index.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/health-banner.jpg " />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    overflow-x: hidden;
+    word-wrap: break-word;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* 多语言选择器样式 */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 200px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-item i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffd166;
+  }
+
+  .stat-item h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-item p {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .category-card {
+    background-color: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(0, 109, 119, 0.1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .category-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #008891;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .category-card i {
+    font-size: 3rem;
+    color: #008891;
+    margin-bottom: 1.2rem;
+  }
+
+  .category-card h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #008891;
+    margin-bottom: 0.8rem;
+  }
+
+  .category-card p {
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+
+  /* Health Tips Section */
+  .health-tips {
+    background-color: #fff;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .tips-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .tip-card {
+    background: #f0f9ff;
+    padding: 1.8rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #4db5bd;
+    transition: transform 0.3s ease;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .tip-card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .tip-card h3 i {
+    margin-right: 10px;
+    color: #ffd166;
+  }
+
+  .tip-card p {
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* How It Works Section */
+  .how-it-works {
+    margin: 3rem 0;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .step {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd166;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+
+  .step i {
+    font-size: 2.5rem;
+    color: #008891;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+  }
+
+  .step p {
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* 新增：针对小屏幕的优化 */
+  @media (max-width: 992px) {
+    .category-grid {
+      gap: 1.5rem;
+    }
+    
+    .category-card {
+      padding: 1.8rem 1.2rem;
+    }
+    
+    .stat-item {
+      min-width: 180px;
+      padding: 1.2rem;
+    }
+    
+    .lang-selector {
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+      position: absolute;
+      right: 1rem;
+      top: 1.2rem;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .stat-item h3 {
+      font-size: 1.8rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    /* 新增：小屏幕调整 */
+    .container, .health-tips {
+      padding: 0 1rem;
+    }
+    
+    .step {
+      padding: 1.8rem 1.5rem;
+    }
+    
+    .footer-container {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+      padding: 1.5rem 1rem;
+    }
+    
+    .category-card i {
+      font-size: 2.5rem;
+    }
+    
+    .category-card h2 {
+      font-size: 1.4rem;
+    }
+    
+    .hero-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-item {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .steps {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .step {
+      width: 100%;
+      max-width: 300px;
+      padding: 1.5rem;
+    }
+    
+    .step h3 {
+      font-size: 1.2rem;
+    }
+    
+    .step p {
+      font-size: 0.95rem;
+    }
+    
+    .hero {
+      padding: 3rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+      padding: 0 0.5rem;
+    }
+    
+    .hero p {
+      padding: 0 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.6rem;
+      padding: 0 0.5rem;
+    }
+    
+    .tips-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .tip-card {
+      padding: 1.5rem;
+    }
+    
+    .footer-links a:hover {
+      transform: none;
+    }
+  }
+  
+  /* 新增：针对超小屏幕的优化 */
+  @media (max-width: 400px) {
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.95rem;
+    }
+    
+    .category-card h2 {
+      font-size: 1.3rem;
+    }
+    
+    .category-card p {
+      font-size: 0.92rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.92rem;
+    }
+    
+    .copyright {
+      font-size: 0.8rem;
+    }
+    
+    .logo {
+      font-size: 1.3rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html" class="active">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html">Finanzen & Investition</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Ingenieurwesen & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Spiele</a></li>
+        <li><a href="/about-de.html">Über uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de" selected>Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Gesundheits- & Körperrechner</h1>
+    <p>Umfassende Tools, die dir helfen, deine Gesundheit zu verstehen und zu verbessern. Verfolge deine Fitness-Fortschritte, plane deine Ernährung und manage dein Wohlbefinden.</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <h3>500K+</h3>
+        <p>Monatliche Nutzer</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-calculator"></i>
+        <h3>25+</h3>
+        <p>Rechner</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-globe"></i>
+        <h3>100+</h3>
+        <p>Länder</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Gesundheitsrechner</h2>
+
+    <div class="category-grid">
+      <a href="/de/health/bmi-calculator.html" class="category-card">
+        <i class="fas fa-weight"></i>
+        <h2>BMI-Rechner</h2>
+        <p>Berechne deinen Body-Mass-Index, um deine Gewichtskategorie und mögliche Gesundheitsrisiken zu verstehen.</p>
+      </a>
+      <a href="/de/health/bmr-calculator.html" class="category-card">
+        <i class="fas fa-fire"></i>
+        <h2>BMR-Rechner</h2>
+        <p>Bestimme deinen Grundumsatz – die Kalorien, die dein Körper im Ruhezustand für lebenswichtige Funktionen benötigt.</p>
+      </a>
+      <a href="/de/health/body-fat-calculator.html" class="category-card">
+        <i class="fas fa-percent"></i>
+        <h2>Körperfett-Rechner</h2>
+        <p>Schätze deinen Körperfettanteil mit verschiedenen Methoden für eine bessere Gesundheitseinschätzung.</p>
+      </a>
+      <a href="/de/health/tdee-calculator.html" class="category-card">
+        <i class="fas fa-running"></i>
+        <h2>TDEE-Rechner</h2>
+        <p>Berechne deinen Gesamtenergieumsatz, um dein Gewicht effektiv zu managen.</p>
+      </a>
+      <a href="/de/health/goal-weight-calculator.html" class="category-card">
+        <i class="fas fa-bullseye"></i>
+        <h2>Zielgewicht-Rechner</h2>
+        <p>Plane deine gesunde Gewichtsabnahme oder -zunahme mit persönlichen Zielvorgaben.</p>
+      </a>
+      <a href="/de/health/pregnancy-calculator.html" class="category-card">
+        <i class="fas fa-baby"></i>
+        <h2>Geburtstermin</h2>
+        <p>Schätze deinen Geburtstermin und verfolge deinen Schwangerschaftsfortschritt Woche für Woche.</p>
+      </a>
+      <a href="/de/health/ovulation-calculator.html" class="category-card">
+        <i class="fas fa-calendar-alt"></i>
+        <h2>Eisprungrechner</h2>
+        <p>Verfolge deinen Menstruationszyklus und bestimme deine fruchtbarsten Tage zur Empfängnis.</p>
+      </a>
+      <a href="/de/health/calorie-calculator.html" class="category-card">
+        <i class="fas fa-utensils"></i>
+        <h2>Kalorienrechner</h2>
+        <p>Bestimme deinen täglichen Kalorienbedarf basierend auf deinen Zielen und Aktivitätslevel.</p>
+      </a>
+    </div>
+
+    <!-- Health Tips Section -->
+    <div class="health-tips">
+      <h2 class="section-title">Gesundheits- & Wellness-Tipps</h2>
+      <div class="tips-container">
+        <div class="tip-card">
+          <h3><i class="fas fa-apple-alt"></i> Ernährungstipps</h3>
+          <p>Eine ausgewogene Ernährung mit Obst, Gemüse, mageren Proteinen und Vollkornprodukten liefert wichtige Nährstoffe für optimale Gesundheit. Denke daran, den ganzen Tag über hydratisiert zu bleiben.</p>
+        </div>
+        <div class="tip-card">
+          <h3><i class="fas fa-running"></i> Trainingsleitfaden</h3>
+          <p>Erwachsene sollten mindestens 150 Minuten mäßig intensive Ausdaueraktivität oder 75 Minuten intensive Aktivität pro Woche anstreben, plus muskelstärkende Übungen.</p>
+        </div>
+        <div class="tip-card">
+          <h3><i class="fas fa-bed"></i> Schlafqualität</h3>
+          <p>Qualitativ hochwertiger Schlaf ist essentiell für körperliche und mentale Gesundheit. Ziele auf 7–9 Stunden pro Nacht und halte einen konstanten Schlafrhythmus auch am Wochenende ein.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works">
+      <h2 class="section-title">So helfen dir unsere Rechner</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <i class="fas fa-edit"></i>
+          <h3>Details eingeben</h3>
+          <p>Gib grundlegende Informationen wie Alter, Gewicht, Größe und Aktivitätslevel ein.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <i class="fas fa-calculator"></i>
+          <h3>Berechnen</h3>
+          <p>Unsere Algorithmen verarbeiten deine Daten mit medizinisch anerkannten Formeln.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <i class="fas fa-chart-line"></i>
+          <h3>Ergebnisse erhalten</h3>
+          <p>Erhalte personalisierte Gesundheitskennzahlen mit klaren Erklärungen.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <i class="fas fa-lightbulb"></i>
+          <h3>Maßnahmen ergreifen</h3>
+          <p>Nutze die Erkenntnisse, um informierte Entscheidungen für deine Gesundheit zu treffen.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Deine vertrauensvolle Quelle für Gesundheitsrechner und Wellness-Tools. Wir liefern präzise, zuverlässige Gesundheitskennzahlen seit 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Weitere nützliche Rechner</h3>
+        <ul class="footer-links">
+          <li><a href="/de/health/body-fat-calculator.html">Körperfettrechner</a></li>
+          <li><a href="/de/finance/compound-interest-calculator.html">Zinseszinsrechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Baufinanzierungsrechner</a></li>
+          <li><a href="/de/finance/auto-loan-calculator.html">Autokreditrechner</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html">Datenschutzrichtlinie</a></li>
+          <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
+        <a href="/privacy-de.html">Datenschutzrichtlinie</a> | 
+        <a href="/terms-de.html">Nutzungsbedingungen</a>
+      </p>
+      <p><small>Hinweis: Diese Rechner liefern nur Schätzungen. Konsultiere einen Facharzt für medizinischen Rat.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the health section
+        let healthPath = '';
+        if (currentPath.includes('/health/')) {
+          const healthIndex = pathSegments.findIndex(segment => segment === 'health');
+          if (healthIndex !== -1) {
+            healthPath = pathSegments.slice(healthIndex).join('/');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = healthPath ? `/zh/${healthPath}` : '/zh/health/index.html';
+            break;
+          case 'es':
+            targetUrl = healthPath ? `/es/${healthPath}` : '/es/health/index.html';
+            break;
+          case 'de':
+            targetUrl = healthPath ? `/de/${healthPath}` : '/de/health/index.html';
+            break;
+          case 'fr':
+            targetUrl = healthPath ? `/fr/${healthPath}` : '/fr/health/index.html';
+            break;
+          default: // English
+            targetUrl = healthPath ? `/en/${healthPath}` : '/en/health/index.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
-</body></html> 
