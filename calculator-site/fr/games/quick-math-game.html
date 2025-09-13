@@ -1,14 +1,1241 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Jeu de Maths Rapide | Calculator2U</title>
+<meta name="description" content="Testez vos compétences en mathématiques avec notre Jeu de Maths Rapide ! Résolvez un maximum de problèmes avant la fin du temps imparti." />
+<meta name="keywords" content="jeu de maths, maths rapides, jeu arithmétique, calcul mental, jeu cérébral" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="/fr/games/quick-math-game.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/games/quick-math-game.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/games/quick-math-game.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/games/quick-math-game.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/games/quick-math-game.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/games/quick-math-game.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/games/quick-math-game.html " />
+<meta property="og:title" content="Jeu de Maths Rapide | Calculator2U" />
+<meta property="og:description" content="Testez vos compétences en mathématiques avec notre Jeu de Maths Rapide ! Résolvez un maximum de problèmes avant la fin du temps imparti." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/fr/games/quick-math-game.html" />
+<meta property="og:image" content="/assets/images/math-game.jpg" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " />
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 8px;
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 1.8rem;
+    height: 0.2rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 0.5rem;
+  }
+
+  /* Main Content */
+  .container {
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 0 0.8rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Game Styles */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .game-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .score-box {
+    background: #006d77;
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    min-width: 100px;
+    font-size: 1.1rem;
+  }
+  
+  .timer-box {
+    background: #4db5bd;
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    min-width: 100px;
+    font-size: 1.1rem;
+  }
+  
+  .math-game-container {
+    width: 100%;
+    max-width: 92vw;
+    background-color: #fafafa;
+    border-radius: 6px;
+    position: relative;
+    touch-action: none;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Math Problem Styles */
+  .math-problem {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006d77;
+    background: #f0f9ff;
+    padding: 1.5rem 3rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    min-width: 250px;
+    text-align: center;
+  }
+  
+  .answer-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+  }
+  
+  .answer-input {
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #4db5bd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .answer-input:focus {
+    outline: none;
+    border-color: #006d77;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.3);
+  }
+  
+  .submit-btn {
+    padding: 1rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background: #006d77;
+    transform: translateY(-2px);
+  }
+  
+  /* Feedback Animation */
+  .feedback {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 20;
+    animation: floatUp 1s forwards;
+  }
+  
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100px); }
+  }
+  
+  .correct-feedback {
+    color: #4CAF50;
+  }
+  
+  .incorrect-feedback {
+    color: #e53935;
+  }
+  
+  /* Options Container */
+  .options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    max-width: 500px;
+  }
+  
+  .option-btn {
+    padding: 0.8rem 1.2rem;
+    background: #e0f7fa;
+    color: #006d77;
+    border: 1px solid #4db5bd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .option-btn.active {
+    background: #4db5bd;
+    color: white;
+    border-color: #4db5bd;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .game-btn {
+    padding: 0.7rem 1.2rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1;
+    max-width: 140px;
+    justify-content: center;
+  }
+  
+  .game-btn:hover {
+    background: #006d77;
+  }
+  
+  /* Game messages */
+  .game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .game-message.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .game-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #006d77;
+  }
+  
+  .game-message p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 90%;
+  }
+  
+  .game-message .final-score {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006d77;
+    margin: 1rem 0;
+  }
+  
+  .game-message button {
+    padding: 0.8rem 1.8rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .game-message button:hover {
+    background: #006d77;
+  }
+  
+  /* Instructions */
+  .instructions {
+    margin-top: 1.2rem;
+    padding: 0.8rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .instructions h3 {
+    color: #006d77;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.1rem;
+  }
+  
+  .instructions p {
+    margin-bottom: 0.6rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 1.5rem 0.8rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(3px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (min-width: 768px) {
+    .navbar {
+      padding: 1rem 2rem;
+    }
+    
+    .navbar .logo {
+      font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .hero {
+      padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      padding: 0 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .game-container {
+      flex-direction: row;
+      gap: 2rem;
+      max-width: 1200px;
+      padding: 0 1.5rem;
+    }
+    
+    .card {
+      padding: 1.8rem;
+      flex: 1;
+    }
+    
+    .math-problem {
+      font-size: 3rem;
+      padding: 2rem 4rem;
+    }
+    
+    .instructions {
+      font-size: 1rem;
+    }
+    
+    .instructions h3 {
+      font-size: 1.2rem;
+    }
+    
+    footer {
+      padding: 2.5rem 1rem;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.2rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Mobile navigation active state */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: #006d77;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 0.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s ease;
+    z-index: 99;
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+  
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .close-menu {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Info Card Styles */
+  .card h3 {
+    color: #006d77;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e0f7fa;
+    font-size: 1.2rem;
+  }
+
+  .card ul {
+    margin: 0.8rem 0;
+    padding-left: 1.2rem;
+  }
+
+  .card li {
+    margin-bottom: 0.4rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    color: #555;
+    margin: 0.8rem 0;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 480px) {
+    .math-problem {
+      font-size: 2rem;
+      padding: 1.2rem 2rem;
+    }
+    
+    .answer-input {
+      font-size: 1.2rem;
+      padding: 0.8rem;
+    }
+    
+    .submit-btn {
+      padding: 0.8rem;
+      font-size: 1rem;
+    }
+    
+    .game-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+    
+    .option-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+    </nav>
+    
+    <ul class="nav-links" id="navLinks">
+      <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+      <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+      <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+      <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+      <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+      <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+      <li><a href="/fr/generator/index.html">Générateur</a></li>
+      <li><a href="/fr/games/index.html" class="active">Jeux</a></li>
+      <li><a href="/about-fr.html">À propos</a></li>
+      <li class="lang-selector">
+        <select id="lang-select" class="lang-select">
+          <option value="en">English</option>
+          <option value="zh">中文 (Chinois)</option>
+          <option value="es">Español (Espagnol)</option>
+          <option value="de">Deutsch (Allemand)</option>
+          <option value="fr" selected>Français (French)</option>
+        </select>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Jeu de Maths Rapide</h1>
+    <p>Testez vos compétences en mathématiques avec notre Jeu de Maths Rapide ! Résolvez un maximum de problèmes avant la fin du temps imparti.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Mettez vos compétences en mathématiques au défi</h2>
+    
+    <div class="game-container">
+      <!-- Game Card -->
+      <div class="card">
+        <div class="game-board-container">
+          <div class="score-container">
+            <span>SCORE :</span>
+            <div class="score-box" id="score">0</div>
+            <span>TEMPS :</span>
+            <div class="timer-box" id="timer">60s</div>
+          </div>
+          
+          <div class="math-game-container" id="math-game-container">
+            <div class="math-problem" id="math-problem">
+              5 + 7 = ?
+            </div>
+            
+            <div class="answer-input-container">
+              <input type="number" class="answer-input" id="answer-input" placeholder="Entrez votre réponse">
+              <button class="submit-btn" id="submit-btn">Soumettre la réponse</button>
+            </div>
+            
+            <div class="options-container">
+              <button class="option-btn active" data-operation="addition">Addition</button>
+              <button class="option-btn" data-operation="subtraction">Soustraction</button>
+              <button class="option-btn" data-operation="multiplication">Multiplication</button>
+              <button class="option-btn" data-operation="division">Division</button>
+              <button class="option-btn" data-operation="mixed">Mixte</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="controls">
+          <button class="game-btn" id="restart-btn">
+            <i class="fas fa-redo"></i> Recommencer
+          </button>
+          <button class="game-btn" id="pause-btn">
+            <i class="fas fa-pause"></i> Pause
+          </button>
+        </div>
+        
+        <div class="instructions">
+          <h3>Comment jouer :</h3>
+          <p>Résolvez le problème de mathématiques en entrant la bonne réponse dans le champ et en cliquant sur « Soumettre la réponse ». Chaque bonne réponse vous rapporte 10 points. Le jeu se termine quand le compte à rebours atteint zéro.</p>
+          <p>Choisissez différentes opérations pour vous challenger :</p>
+          <ul>
+            <li><strong>Addition (+) :</strong> Problèmes d’addition simples</li>
+            <li><strong>Soustraction (-) :</strong> Problèmes de soustraction basiques</li>
+            <li><strong>Multiplication (×) :</strong> Défis de multiplication</li>
+            <li><strong>Division (÷) :</strong> Problèmes de division avec nombres entiers</li>
+            <li><strong>Mixte :</strong> Mélange aléatoire de toutes les opérations</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Info Card -->
+      <div class="card">
+        <h3>À propos du Jeu de Maths Rapide</h3>
+        <p>Notre Jeu de Maths Rapide est conçu pour améliorer vos compétences de calcul mental grâce à des défis arithmétiques rapides. Avec plusieurs niveaux de difficulté et opérations au choix, il est parfait pour les enfants comme pour les adultes.</p>
+        
+        <h3>Fonctionnalités du jeu</h3>
+        <ul>
+          <li>Compte à rebours de 60 secondes</li>
+          <li>Plusieurs opérations mathématiques (+, -, ×, ÷)</li>
+          <li>Niveaux de difficulté ajustables</li>
+          <li>Système de score en temps réel</li>
+          <li>Retour visuel pour les réponses correctes/incorrectes</li>
+          <li>Suivi des progrès</li>
+        </ul>
+        
+        <h3>Bienfaits du jeu</h3>
+        <p>Jouer régulièrement à des jeux de maths peut :</p>
+        <ul>
+          <li>Améliorer la vitesse de calcul mental</li>
+          <li>Renforcer les compétences en résolution de problèmes</li>
+          <li>Boostez la concentration et l’attention</li>
+          <li>Développer le sens du nombre</li>
+          <li>Augmenter la confiance en vos capacités mathématiques</li>
+        </ul>
+        
+        <h3>Système de score</h3>
+        <p>Votre score est calculé selon :</p>
+        <ul>
+          <li>10 points par bonne réponse</li>
+          <li>Points bonus pour les réponses correctes consécutives</li>
+          <li>Les niveaux de difficulté supérieurs multiplient vos points</li>
+          <li>Bonus de temps à la fin du jeu</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs pour la vie quotidienne et d’outils éducatifs. Profitez de notre Jeu de Maths Rapide depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres jeux</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/games/math-puzzle.html" id="game1">Jeu de Puzzle Mathématique</a></li>
+          <li><a href="/fr/games/2048-game.html" id="game2">Jeu 2048</a></li>
+          <li><a href="/fr/games/memory-game.html" id="game3">Jeu de Mémoire</a></li>
+          <li><a href="/fr/games/number-guessing.html" id="game4">Devinez le Nombre</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d’utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d’utilisation</a>
+      </p>
+      <p><small>Remarque : Ce Jeu de Maths Rapide est fourni uniquement à des fins de divertissement et éducatives.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const closeMenu = document.getElementById('closeMenu');
+      const langSelect = document.getElementById('lang-select');
+      const mathProblem = document.getElementById('math-problem');
+      const answerInput = document.getElementById('answer-input');
+      const submitBtn = document.getElementById('submit-btn');
+      const scoreElement = document.getElementById('score');
+      const timerElement = document.getElementById('timer');
+      const restartBtn = document.getElementById('restart-btn');
+      const pauseBtn = document.getElementById('pause-btn');
+      const gameMessage = document.getElementById('game-message');
+      const optionBtns = document.querySelectorAll('.option-btn');
+      const mathContainer = document.getElementById('math-game-container');
+      
+      // Game variables
+      let score = 0;
+      let timeLeft = 60;
+      let timerInterval = null;
+      let gameActive = false;
+      let consecutiveCorrect = 0;
+      let currentOperation = 'addition';
+      let difficulty = 'easy';
+      
+      // Initialize the game
+      function initGame() {
+        // Reset game state
+        score = 0;
+        timeLeft = 60;
+        consecutiveCorrect = 0;
+        gameActive = true;
+        
+        // Update UI
+        scoreElement.textContent = score;
+        timerElement.textContent = `${timeLeft}s`;
+        answerInput.value = '';
+        answerInput.disabled = false;
+        submitBtn.disabled = false;
+        answerInput.focus();
+        
+        // Hide game message
+        document.querySelector('.game-message')?.classList.remove('show');
+        
+        // Generate first problem
+        generateProblem();
+        
+        // Start timer if not already running
+        if (!timerInterval) {
+          timerInterval = setInterval(updateTimer, 1000);
+        }
+      }
+      
+      // Generate a math problem
+      function generateProblem() {
+        let num1, num2, problem, answer;
+        
+        // Adjust numbers based on operation and difficulty
+        let maxNum = 20;
+        if (difficulty === 'medium') maxNum = 50;
+        if (difficulty === 'hard') maxNum = 100;
+        
+        // Determine the operation to use
+        let operation = currentOperation;
+        if (currentOperation === 'mixed') {
+          const operations = ['addition', 'subtraction', 'multiplication', 'division'];
+          operation = operations[Math.floor(Math.random() * operations.length)];
+        }
+        
+        switch(operation) {
+          case 'addition':
+            num1 = Math.floor(Math.random() * maxNum) + 1;
+            num2 = Math.floor(Math.random() * maxNum) + 1;
+            problem = `${num1} + ${num2} = ?`;
+            answer = num1 + num2;
+            break;
+          case 'subtraction':
+            num1 = Math.floor(Math.random() * maxNum) + 10;
+            num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
+            problem = `${num1} - ${num2} = ?`;
+            answer = num1 - num2;
+            break;
+          case 'multiplication':
+            num1 = Math.floor(Math.random() * 12) + 1;
+            num2 = Math.floor(Math.random() * 12) + 1;
+            problem = `${num1} × ${num2} = ?`;
+            answer = num1 * num2;
+            break;
+          case 'division':
+            // Ensure whole number division
+            num2 = Math.floor(Math.random() * 10) + 1;
+            num1 = num2 * (Math.floor(Math.random() * 10) + 1);
+            problem = `${num1} ÷ ${num2} = ?`;
+            answer = num1 / num2;
+            break;
+        }
+        
+        // Set problem and store answer in dataset
+        mathProblem.textContent = problem;
+        mathProblem.dataset.answer = answer;
+      }
+      
+      // Check the answer
+      function checkAnswer() {
+        if (!gameActive) return;
+        
+        const userAnswer = parseInt(answerInput.value);
+        const correctAnswer = parseInt(mathProblem.dataset.answer);
+        
+        if (isNaN(userAnswer)) {
+          showFeedback('Entrez un nombre !', 'incorrect');
+          return;
+        }
+        
+        if (userAnswer === correctAnswer) {
+          // Correct answer
+          consecutiveCorrect++;
+          score += 10 + Math.min(5, consecutiveCorrect - 1); // Bonus for consecutive correct
+          scoreElement.textContent = score;
+          showFeedback('Correct ! +' + (10 + Math.min(5, consecutiveCorrect - 1)), 'correct');
+          generateProblem();
+        } else {
+          // Incorrect answer
+          consecutiveCorrect = 0;
+          showFeedback('Réessayez !', 'incorrect');
+        }
+        
+        // Clear input and focus
+        answerInput.value = '';
+        answerInput.focus();
+      }
+      
+      // Show feedback animation
+      function showFeedback(text, type) {
+        const feedback = document.createElement('div');
+        feedback.className = `feedback ${type}-feedback`;
+        feedback.textContent = text;
+        feedback.style.left = `${mathContainer.offsetLeft + mathContainer.offsetWidth / 2 - 50}px`;
+        feedback.style.top = `${mathContainer.offsetTop + 100}px`;
+        document.body.appendChild(feedback);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+          feedback.remove();
+        }, 1000);
+      }
+      
+      // Update the timer
+      function updateTimer() {
+        if (!gameActive) return;
+        
+        timeLeft--;
+        timerElement.textContent = `${timeLeft}s`;
+        
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }
+      
+      // End the game
+      function endGame() {
+        gameActive = false;
+        clearInterval(timerInterval);
+        timerInterval = null;
+        
+        // Calculate final score with time bonus
+        const finalScore = score + Math.floor(score * (timeLeft / 60));
+        
+        // Show game over message
+        const message = document.createElement('div');
+        message.className = 'game-message';
+        message.innerHTML = `
+          <h2>Temps écoulé !</h2>
+          <p>Vous avez répondu correctement à ${score / 10} problèmes.</p>
+          <div class="final-score">${finalScore}</div>
+          <p>Score final</p>
+          <button id="play-again">Rejouer</button>
+        `;
+        mathContainer.appendChild(message);
+        message.classList.add('show');
+        
+        // Add event listener to play again button
+        document.getElementById('play-again').addEventListener('click', () => {
+          message.remove();
+          initGame();
+        });
+      }
+      
+      // Toggle game pause
+      function togglePause() {
+        if (pauseBtn.innerHTML.includes('pause')) {
+          // Pause the game
+          gameActive = false;
+          pauseBtn.innerHTML = '<i class="fas fa-play"></i> Reprendre';
+          clearInterval(timerInterval);
+          timerInterval = null;
+          answerInput.disabled = true;
+          submitBtn.disabled = true;
+        } else {
+          // Resume the game
+          gameActive = true;
+          pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+          timerInterval = setInterval(updateTimer, 1000);
+          answerInput.disabled = false;
+          submitBtn.disabled = false;
+          answerInput.focus();
+        }
+      }
+      
+      // Set operation type
+      function setOperation(operation) {
+        currentOperation = operation;
+        
+        // Update active button
+        optionBtns.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.operation === operation) {
+            btn.classList.add('active');
+          }
+        });
+        
+        // Generate new problem with selected operation
+        if (gameActive) {
+          generateProblem();
+        }
+      }
+      
+      // Event Listeners
+      submitBtn.addEventListener('click', checkAnswer);
+      
+      answerInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          checkAnswer();
+        }
+      });
+      
+      restartBtn.addEventListener('click', initGame);
+      pauseBtn.addEventListener('click', togglePause);
+      
+      // Operation buttons
+      optionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          setOperation(btn.dataset.operation);
+        });
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.add('active');
+      });
+      
+      closeMenu.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/games/quick-math-game.html';
+            break;
+          case 'es':
+            targetUrl = '/es/games/quick-math-game.html';
+            break;
+          case 'de':
+            targetUrl = '/de/games/quick-math-game.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/games/quick-math-game.html';
+            break;
+          default: // English
+            targetUrl = '/en/games/quick-math-game.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize the game on page load
+      window.addEventListener('load', initGame);
+    })();
+  </script>
 </body>
 </html>
-</body></html> 
