@@ -1,14 +1,1161 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Générateur de QR Code WiFi | Calculator2U</title>
+<meta name="description" content="Générez des codes QR pour votre réseau WiFi avec notre outil gratuit. Personnalisez et téléchargez instantanément." />
+<meta name="keywords" content="générateur de qr code wifi, créer qr code wifi, générer qr code wifi, créateur de qr code wifi" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/generator/wifi-qr-code-generator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/generator/wifi-qr-code-generator.html " />
+<meta property="og:title" content="Générateur de QR Code WiFi | Calculator2U" />
+<meta property="og:description" content="Générez des codes QR pour votre réseau WiFi avec notre outil gratuit. Personnalisez et téléchargez instantanément." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/generator/wifi-qr-code-generator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/wifi-qr-code-generator.jpg " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<style>
+  /* All existing styles from your date calculator */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Generator Styles */
+  .generator-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .generator-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input,
+  .input-field textarea,
+  .input-field select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus,
+  .input-field textarea:focus,
+  .input-field select:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .action-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .action-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .generator-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .generator-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .action-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  /* QR Code Generator specific styles */
+  .qr-display {
+    max-width: 300px;
+    margin: 2rem auto;
+    border: 1px solid #e0f7fa;
+    padding: 1rem;
+    background: white;
+    position: relative;
+  }
+  
+  .qr-display img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  
+  .qr-display p {
+    text-align: center;
+    color: #666;
+    margin-top: 1rem;
+  }
+  
+  .qr-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    .qr-settings {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .qr-history {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .qr-history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .qr-history-item:hover {
+    background-color: #e6f7ff;
+  }
+  
+  .qr-history-item img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .clear-history {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #4db5bd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .clear-history:hover {
+    background: #006d77;
+  }
+  
+  /* Info Card Styles */
+  .card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0f7fa;
+  }
+
+  .card ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .card li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+
+  .card p {
+    color: #555;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+  
+  /* WiFi Icon */
+  .wifi-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #006d77;
+    font-size: 3rem;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  
+  /* Password toggle */
+  .password-container {
+    position: relative;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #006d77;
+  }
+  
+  /* Security indicator */
+  .security-indicator {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+  }
+  
+  .security-bar {
+    height: 4px;
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 2px;
+  }
+  
+  .security-bar.active {
+    background: #006d77;
+  }
+  
+  .security-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 3px;
+  }
+  
+  /* Custom colors */
+  .wifi-color {
+    color: #006d77;
+  }
+  
+  .wifi-bg {
+    background-color: #e6f7ff;
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html" class="active">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À Propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr" selected>Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Générateur de QR Code WiFi</h1>
+    <p>Créez des codes QR pour votre réseau WiFi avec notre outil gratuit. Personnalisez et téléchargez instantanément pour un partage facile.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Générer un QR Code WiFi</h2>
+    
+    <div class="generator-container">
+      <!-- Generator Card -->
+      <div class="card">
+        <h3 class="payslip-section-title">Paramètres du Réseau WiFi</h3>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="ssid">Nom du Réseau (SSID) :</label>
+            <input type="text" id="ssid" placeholder="Entrez le nom de votre réseau WiFi">
+          </div>
+          
+          <div class="input-field">
+            <label for="encryption">Type de Chiffrement :</label>
+            <select id="encryption">
+              <option value="WPA">WPA/WPA2 (Recommandé)</option>
+              <option value="WEP">WEP</option>
+              <option value="nopass">Sans Mot de Passe (Réseau Ouvert)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="password">Mot de Passe WiFi :</label>
+            <div class="password-container">
+              <input type="password" id="password" placeholder="Entrez le mot de passe WiFi">
+              <button class="toggle-password" id="togglePassword">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div class="security-indicator">
+              <div class="security-bar" id="bar1"></div>
+              <div class="security-bar" id="bar2"></div>
+              <div class="security-bar" id="bar3"></div>
+              <div class="security-bar" id="bar4"></div>
+            </div>
+            <div class="security-label" id="securityLabel">Force du mot de passe : Très Faible</div>
+          </div>
+          
+          <div class="input-field">
+            <label for="hidden">Visibilité du Réseau :</label>
+            <select id="hidden">
+              <option value="false">Visible (Diffusé)</option>
+              <option value="true">Caché (Non Diffusé)</option>
+            </select>
+          </div>
+        </div>
+        
+        <h3 class="payslip-section-title">Personnalisation du QR Code</h3>
+        
+        <div class="qr-settings">
+          <div class="input-field">
+            <label for="qr-size">Taille du QR Code :</label>
+            <select id="qr-size">
+              <option value="100">100px</option>
+              <option value="150" selected>150px</option>
+              <option value="200">200px</option>
+              <option value="250">250px</option>
+              <option value="300">300px</option>
+            </select>
+          </div>
+          
+          <div class="input-field">
+            <label for="qr-color">Couleur du QR Code :</label>
+            <input type="color" id="qr-color" value="#006d77">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="qr-bg-color">Couleur d'Arrière-Plan :</label>
+            <input type="color" id="qr-bg-color" value="#ffffff">
+          </div>
+          
+          <div class="input-field">
+            <label for="qr-error">Correction d'Erreur :</label>
+            <select id="qr-error">
+              <option value="L">Faible (7%)</option>
+              <option value="M" selected>Moyenne (15%)</option>
+              <option value="Q">Haute (25%)</option>
+              <option value="H">Très Haute (30%)</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="action-btn" id="generate-qr">
+          <i class="fas fa-wifi"></i> Générer le QR Code WiFi
+        </button>
+        
+        <div class="qr-display" id="qr-display">
+          <div class="wifi-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <p>Aucun QR code généré pour le moment</p>
+        </div>
+        
+        <div class="action-btns" id="qr-actions" style="display: none; margin-top: 1rem;">
+          <button class="action-btn" id="download-qr">
+            <i class="fas fa-download"></i> Télécharger le QR Code
+          </button>
+        </div>
+        
+        <div class="input-field">
+          <label>QR Codes Générés :</label>
+          <div class="qr-history" id="qr-history"></div>
+        </div>
+        
+        <button class="clear-history" id="clear-history">
+          Effacer l'Historique
+        </button>
+      </div>
+      
+      <!-- Info Card -->
+      <div class="card">
+        <h3>À Propos des QR Codes WiFi</h3>
+        <p>Les QR codes WiFi permettent aux invités de se connecter à votre réseau sans entrer manuellement le mot de passe. Lorsqu'ils sont scannés avec l'appareil photo d'un smartphone, l'appareil se connecte automatiquement au réseau WiFi.</p>
+        
+        <h3>Comment Fonctionne ce Générateur</h3>
+        <p>Notre générateur de QR code WiFi crée des codes QR personnalisés basés sur vos paramètres réseau :</p>
+        <ul>
+          <li><strong>Nom du Réseau (SSID) :</strong> Le nom de votre réseau WiFi</li>
+          <li><strong>Type de Chiffrement :</strong> Protocole de sécurité utilisé par votre réseau</li>
+          <li><strong>Mot de Passe :</strong> Mot de passe réseau (non stocké ni sauvegardé)</li>
+          <li><strong>Visibilité du Réseau :</strong> Si votre réseau est diffusé ou caché</li>
+        </ul>
+        
+        <h3>Meilleures Pratiques</h3>
+        <p>Suivez ces conseils pour une utilisation efficace des QR codes WiFi :</p>
+        <ul>
+          <li>Placez les QR codes à des endroits visibles pour les invités</li>
+          <li>Utilisez un mot de passe fort avec un mélange de caractères</li>
+          <li>Choisissez le chiffrement WPA/WPA2 pour une meilleure sécurité</li>
+          <li>Imprimez les QR codes sur un matériau durable pour une utilisation à long terme</li>
+          <li>Testez votre QR code avant de le partager avec d'autres</li>
+        </ul>
+        
+        <h3>Considérations de Sécurité</h3>
+        <p>Lors de la création de QR codes WiFi :</p>
+        <ul>
+          <li>Les QR codes contiennent votre mot de passe réseau en clair</li>
+          <li>Ne les partagez qu'avec des personnes de confiance</li>
+          <li>Envisagez de créer un réseau invité au lieu de partager votre réseau principal</li>
+          <li>Mettez régulièrement à jour votre mot de passe WiFi pour la sécurité</li>
+          <li>Retirez les QR codes lorsqu'ils ne sont plus nécessaires</li>
+        </ul>
+        
+        <div class="wifi-bg" style="padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+          <h3>Comment Utiliser votre QR Code WiFi</h3>
+          <ol>
+            <li>Générez et téléchargez votre QR code</li>
+            <li>Imprimez-le ou affichez-le sur un appareil</li>
+            <li>Les invités scannent le code avec l'appareil photo de leur téléphone</li>
+            <li>Ils tapent sur la notification pour se connecter automatiquement</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source de confiance pour les calculateurs et outils de la vie quotidienne. Simplifiant le partage WiFi depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres Générateurs Utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/generator/password-generator.html">Générateur de Mot de Passe</a></li>
+          <li><a href="/fr/generator/qr-code-generator.html">Générateur de QR Code</a></li>
+          <li><a href="/fr/generator/username-generator.html">Générateur de Nom d'Utilisateur</a></li>
+          <li><a href="/fr/generator/random-number-generator.html">Générateur de Nombre Aléatoire</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations Légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de Confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'Utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de Confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'Utilisation</a>
+      </p>
+      <p><small>Note : Cet outil génère des codes QR localement dans votre navigateur. Vos identifiants WiFi ne sont ni stockés ni transmis à un serveur.</small></p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js "></script>
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      
+      // WiFi QR code generator elements
+      const ssid = document.getElementById('ssid');
+      const encryption = document.getElementById('encryption');
+      const password = document.getElementById('password');
+      const hidden = document.getElementById('hidden');
+      const qrSize = document.getElementById('qr-size');
+      const qrColor = document.getElementById('qr-color');
+      const qrBgColor = document.getElementById('qr-bg-color');
+      const qrError = document.getElementById('qr-error');
+      const generateBtn = document.getElementById('generate-qr');
+      const downloadBtn = document.getElementById('download-qr');
+      const displayEl = document.getElementById('qr-display');
+      const qrActions = document.getElementById('qr-actions');
+      const historyEl = document.getElementById('qr-history');
+      const clearHistoryBtn = document.getElementById('clear-history');
+      const togglePassword = document.getElementById('togglePassword');
+      const securityBars = [
+        document.getElementById('bar1'),
+        document.getElementById('bar2'),
+        document.getElementById('bar3'),
+        document.getElementById('bar4')
+      ];
+      const securityLabel = document.getElementById('securityLabel');
+      
+      let currentQR = null;
+      
+      // Toggle password visibility
+      togglePassword.addEventListener('click', () => {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+      });
+      
+      // Password strength indicator
+      password.addEventListener('input', () => {
+        const pass = password.value;
+        let strength = 0;
+        
+        // Length check
+        if (pass.length >= 8) strength++;
+        if (pass.length >= 12) strength++;
+        
+        // Complexity checks
+        if (/[A-Z]/.test(pass)) strength++;
+        if (/[a-z]/.test(pass)) strength++;
+        if (/[0-9]/.test(pass)) strength++;
+        if (/[^A-Za-z0-9]/.test(pass)) strength++;
+        
+        // Cap strength at 4
+        strength = Math.min(strength, 4);
+        
+        // Update UI
+        securityBars.forEach((bar, index) => {
+          bar.classList.toggle('active', index < strength);
+        });
+        
+        // Update label
+        const labels = ['Très Faible', 'Faible', 'Moyenne', 'Forte', 'Très Forte'];
+        securityLabel.textContent = `Force du mot de passe : ${labels[strength]}`;
+      });
+      
+      // Generate WiFi QR code
+      function generateQRCode() {
+        const networkName = ssid.value.trim();
+        const encType = encryption.value;
+        const pass = password.value;
+        const isHidden = hidden.value === 'true';
+        
+        // Validate input
+        if (!networkName) {
+          alert('Veuillez entrer le nom de votre réseau WiFi.');
+          return;
+        }
+        
+        if (encType !== 'nopass' && !pass) {
+          alert('Veuillez entrer le mot de passe de votre réseau WiFi.');
+          return;
+        }
+        
+        // Clear display
+        displayEl.innerHTML = '<div class="wifi-icon"><i class="fas fa-wifi"></i></div><p>Génération...</p>';
+        
+        // Create WiFi connection string
+        let wifiString = `WIFI:S:${escapeSpecialChars(networkName)};`;
+        wifiString += `T:${encType};`;
+        if (encType !== 'nopass') {
+          wifiString += `P:${escapeSpecialChars(pass)};`;
+        }
+        wifiString += `H:${isHidden};`;
+        wifiString += ';';
+        
+        // Get customization values
+        const size = qrSize.value;
+        const fgColor = qrColor.value;
+        const bgColor = qrBgColor.value;
+        const errorCorrection = qrError.value;
+        
+        // Create QR code
+        displayEl.innerHTML = '';
+        const qrcode = new QRCode(displayEl, {
+          text: wifiString,
+          width: size,
+          height: size,
+          colorDark: fgColor,
+          colorLight: bgColor,
+          correctLevel: QRCode.CorrectLevel[errorCorrection]
+        });
+        
+        // Add WiFi icon overlay
+        const wifiIcon = document.createElement('div');
+        wifiIcon.className = 'wifi-icon';
+        wifiIcon.innerHTML = '<i class="fas fa-wifi"></i>';
+        displayEl.appendChild(wifiIcon);
+        
+        currentQR = qrcode;
+        
+        // Show action buttons
+        qrActions.style.display = 'block';
+        
+        // Update history
+        const historyItem = document.createElement('div');
+        historyItem.className = 'qr-history-item';
+        
+        const qrImg = document.createElement('img');
+        qrImg.src = displayEl.querySelector('img').src;
+        qrImg.alt = 'QR Code WiFi';
+        qrImg.width = 50;
+        qrImg.height = 50;
+        
+        const dataSpan = document.createElement('span');
+        dataSpan.textContent = networkName;
+        dataSpan.className = 'wifi-color';
+        
+        historyItem.appendChild(qrImg);
+        historyItem.appendChild(dataSpan);
+        historyItem.addEventListener('click', () => {
+          displayEl.innerHTML = '';
+          new QRCode(displayEl, {
+            text: wifiString,
+            width: size,
+            height: size,
+            colorDark: fgColor,
+            colorLight: bgColor,
+            correctLevel: QRCode.CorrectLevel[errorCorrection]
+          });
+          displayEl.appendChild(wifiIcon.cloneNode(true));
+          qrActions.style.display = 'block';
+        });
+        
+        historyEl.prepend(historyItem);
+      }
+      
+      // Helper to escape special characters in WiFi string
+      function escapeSpecialChars(str) {
+        return str.replace(/[\\;,"]/g, '\\$&');
+      }
+      
+      // Download QR code
+      function downloadQRCode() {
+        if (!currentQR) return;
+        
+        const img = displayEl.querySelector('img');
+        const link = document.createElement('a');
+        link.download = `${ssid.value || 'wifi'}-qrcode.png`;
+        link.href = img.src;
+        link.click();
+      }
+      
+      // Clear history
+      function clearHistory() {
+        historyEl.innerHTML = '';
+      }
+      
+      // Event Listeners
+      generateBtn.addEventListener('click', generateQRCode);
+      downloadBtn.addEventListener('click', downloadQRCode);
+      clearHistoryBtn.addEventListener('click', clearHistory);
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = '/zh/generator/wifi-qr-code-generator.html';
+            break;
+          case 'es':
+            targetUrl = '/es/generator/wifi-qr-code-generator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/generator/wifi-qr-code-generator.html';
+            break;
+          case 'fr':
+            targetUrl = '/fr/generator/wifi-qr-code-generator.html';
+            break;
+          default: // English
+            targetUrl = '/en/generator/wifi-qr-code-generator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize with default values
+      window.addEventListener('load', () => {
+        ssid.value = 'MonReseauWiFi';
+        generateQRCode();
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 
