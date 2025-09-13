@@ -1,14 +1,958 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculateur de Partage de Frais de Voyage | Calculator2U</title>
+<meta name="description" content="Partagez facilement les frais de voyage entre les participants, suivez les paiements et calculez qui doit quoi à qui" />
+<meta name="keywords" content="partage de frais de voyage, calculateur de dépenses de voyage, séparateur de factures, suivi de dépenses" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/daily-life/trip-splitter.html " />
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/trip-splitter.html "/>
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/trip-splitter.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/trip-splitter.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/trip-splitter.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/trip-splitter.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/trip-splitter.html "/>
+<meta property="og:title" content="Calculateur de Partage de Frais de Voyage | Calculator2U" />
+<meta property="og:description" content="Partagez facilement les frais de voyage entre les participants, suivez les paiements et calculez qui doit quoi à qui" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/fr/daily-life/trip-splitter.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/trip-splitter.jpg " />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " />
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<style>
+  /* (styles identiques au code original) */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f9f9f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%); }
+  html, body { overflow-x: hidden; }
+  header { background-color: #006d77; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+  .navbar { padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  .navbar .logo { color: #fff; font-size: 1.5rem; text-decoration: none; font-weight: bold; display: flex; align-items: center; }
+  .logo-icon { margin-right: 10px; font-size: 1.8rem; }
+  .nav-links { list-style: none; display: flex; flex-wrap: wrap; gap: 1.5rem; padding-left: 0; margin: 0; align-items: center; transition: all 0.4s ease; }
+  .nav-links a { color: #fff; text-decoration: none; transition: color 0.3s; font-weight: 500; padding: 0.5rem 0.8rem; border-radius: 4px; }
+  .nav-links a:hover, .nav-links a.active { background-color: rgba(255, 255, 255, 0.15); }
+  .lang-selector { position: relative; display: inline-block; min-width: 140px; }
+  .lang-select { background: transparent; border: 1.5px solid #fff; color: #fff; padding: 0.3rem 1.8rem 0.3rem 0.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9rem; outline: none; width: 100%; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.7rem center; background-size: 1rem; }
+  .lang-select option { background-color: #006d77; color: #fff; }
+  .hamburger { display: none; flex-direction: column; justify-content: space-around; width: 2rem; height: 2rem; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 10; }
+  .hamburger:focus { outline: none; }
+  .hamburger div { width: 2rem; height: 0.25rem; background: #fff; border-radius: 10px; transition: all 0.3s linear; position: relative; transform-origin: 1px; }
+  .hero { background: linear-gradient(135deg, #006d77 0%, #008891 100%); color: white; text-align: center; padding: 4rem 1rem; margin-bottom: 3rem; }
+  .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: #fff; }
+  .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 1.5rem; color: rgba(255, 255, 255, 0.9); }
+  .container { max-width: 1200px; width: 100%; margin: 0 auto 3rem; padding: 0 1.5rem; text-align: center; flex: 1; }
+  .section-title { text-align: center; margin-bottom: 2.5rem; color: #006d77; position: relative; padding-bottom: 1rem; }
+  .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: #ffd166; border-radius: 2px; }
+  .trip-splitter-container { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 1.5rem; }
+  @media (min-width: 992px) { .trip-splitter-container { grid-template-columns: 1fr 1fr; } }
+  .calculator-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  .input-group { display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+  @media (min-width: 576px) { .input-group { grid-template-columns: 1fr 1fr; } }
+  .input-field { display: flex; flex-direction: column; }
+  .input-field input, .input-field select, .input-field textarea { flex-wrap: wrap; max-width: 100%; width: 100%; box-sizing: border-box; }
+  .input-field label { margin-bottom: 0.5rem; font-weight: 500; color: #006d77; display: flex; align-items: center; }
+  .info-icon { margin-left: 0.5rem; color: #4db5bd; cursor: help; font-size: 0.9rem; }
+  .input-field input, .input-field select, .input-field textarea { padding: 0.8rem 1rem; border: 2px solid #e0f7fa; border-radius: 8px; font-size: 1.1rem; transition: border-color 0.3s; }
+  .input-field input:focus, .input-field select:focus, .input-field textarea:focus { outline: none; border-color: #4db5bd; box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2); }
+  .calculate-btn { background: #ffd166; color: #333; border: none; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s; display: block; width: 100%; margin-top: 1rem; }
+  .calculate-btn:hover { background: #ffc043; transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+  .result-container { display: none; background: #f0f9ff; border-radius: 12px; padding: 2rem; margin-top: 2rem; border-left: 5px solid #4db5bd; animation: fadeIn 0.5s ease-in-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .result-header { text-align: center; margin-bottom: 1.5rem; color: #006d77; }
+  .summary-card { text-align: center; font-size: 1.4rem; font-weight: 600; padding: 0.8rem; border-radius: 8px; margin-bottom: 1.5rem; background: #4db5bd; color: white; }
+  .chart-container { height: 300px; margin: 2rem 0; position: relative; }
+  .expense-table { overflow-x: auto; margin-top: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); -webkit-overflow-scrolling: touch; }
+  .expense-table-container { width: 100%; border-collapse: collapse; background: white; }
+  .expense-table-container th { background: #006d77; color: white; padding: 1rem; text-align: left; }
+  .expense-table-container td { padding: 0.8rem 1rem; border-bottom: 1px solid #e0f7fa; }
+  .expense-table-container tr:last-child td { border-bottom: none; }
+  .expense-table-container tr:nth-child(even) { background: #f9f9f9; }
+  .info-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  .info-card h3 { color: #006d77; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.8rem; }
+  .info-card h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 3px; background: #ffd166; }
+  .info-card ul { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+  .info-card li { margin-bottom: 0.8rem; line-height: 1.6; }
+  footer { background-color: #006d77; color: #fff; padding: 3rem 1rem; margin-top: auto; }
+  .footer-container { max-width: 1200px; width: 100%; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+  .footer-column h3 { font-size: 1.3rem; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.5rem; }
+  .footer-column h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background-color: #4db5bd; }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.7rem; }
+  .footer-links a { color: #e0f7fa; text-decoration: none; transition: all 0.3s ease; display: block; padding: 0.3rem 0; }
+  .footer-links a:hover { color: #fff; transform: translateX(5px); }
+  .copyright { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: #c1eef2; }
+  .copyright a { color: #fff; text-decoration: none; font-weight: 500; }
+  .copyright a:hover { text-decoration: underline; }
+  @media (max-width: 992px) { .navbar { padding: 1rem; } .hamburger { display: flex; } .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background-color: #006d77; flex-direction: column; align-items: flex-start; padding: 1.5rem 2rem; gap: 0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transform: translateY(-150%); opacity: 0; } .nav-links.active { transform: translateY(0); opacity: 1; } .nav-links li { width: 100%; margin: 0.5rem 0; } .nav-links a { display: block; width: 100%; padding: 0.8rem 1rem; } .hero h1 { font-size: 2.2rem; } .hero p { font-size: 1.1rem; } .lang-selector { width: 100%; margin-top: 1rem; } }
+  @media (max-width: 768px) { .trip-splitter-container { grid-template-columns: 1fr; } }
+  @media (max-width: 430px) { body { font-size: 14px; } .container, .trip-splitter-container { padding: 0 0.5rem; width: 100%; max-width: 100%; overflow-x: hidden; box-sizing: border-box; } .calculator-card, .info-card { padding: 1rem; width: 100%; margin: 0; box-sizing: border-box; min-width: 0; } .section-title { font-size: 1.2rem; margin-bottom: 1.5rem; } .input-group { grid-template-columns: 1fr !important; gap: 0.8rem; } .input-field label { font-size: 0.9rem; } input, select, textarea { font-size: 1rem; width: 100%; max-width: 100%; } .expense-table { max-width: 100%; width: auto; } .expense-table-container { min-width: 100%; width: auto; } .expense-table-container th, .expense-table-container td { padding: 0.5rem; word-break: break-word; white-space: normal; font-size: 0.8rem; } .hero { padding: 2rem 0.5rem; } .hero h1 { font-size: 1.8rem; } .hero p { font-size: 0.9rem; padding: 0 0.5rem; } .calculate-btn { padding: 0.8rem 1rem; font-size: 1rem; } .chart-container { height: 250px; margin: 1rem 0; } .result-metrics { grid-template-columns: 1fr 1fr; gap: 0.5rem; } .metric-card { padding: 0.5rem; } .metric-card .metric-value { font-size: 1.2rem; } .calculator-card > *, .info-card > * { max-width: 100%; overflow-x: hidden; } }
+  .result-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .metric-card { background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; }
+  .metric-card .metric-value { font-size: 1.5rem; font-weight: 700; color: #006d77; margin: 0.5rem 0; }
+  .metric-card .metric-label { font-size: 0.9rem; color: #666; }
+  .highlight { background-color: #ffd166; padding: 0.3rem 0.5rem; border-radius: 4px; font-weight: 600; }
+  .participants-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+  .participant-item { background: #e0f7fa; border-radius: 4px; padding: 0.5rem; text-align: left; }
+  .participant-item .remove-participant { color: #ff6b6b; cursor: pointer; font-size: 0.9rem; margin-top: 0.3rem; display: inline-block; }
+  .expense-items { margin-top: 1rem; }
+  .expense-item { border: 1px solid #e0f7fa; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+  .expense-item-header { background: #006d77; color: white; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+  .expense-item-content { padding: 1rem; }
+  .remove-expense { color: #ff6b6b; cursor: pointer; font-size: 0.9rem; }
+  .settlement-list { margin-top: 2rem; }
+  .settlement-item { display: flex; justify-content: space-between; padding: 1rem; margin-bottom: 0.5rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+  .share-link-container { margin-top: 2rem; text-align: center; }
+  .share-link-input { width: 100%; padding: 0.8rem; border: 2px solid #e0f7fa; border-radius: 8px; margin-bottom: 1rem; font-size: 1rem; }
+  .copy-btn { background: #4db5bd; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-weight: 500; }
+  .copy-btn:hover { background: #3a9a99; }
+  .split-section { margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #e0f7fa; }
+  .split-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .split-toggle { color: #006d77; cursor: pointer; font-size: 0.9rem; font-weight: 500; }
+  .split-toggle i { margin-left: 0.3rem; }
+  .split-options { display: none; padding-top: 0.5rem; }
+  .split-options.active { display: block; }
+  .split-option { margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 4px; display: flex; align-items: center; }
+  .split-option input[type="checkbox"] { margin-right: 0.5rem; }
+  .split-option label { flex: 1; margin-bottom: 0; }
+  .split-option input[type="number"] { width: 70px; padding: 0.3rem; border: 1px solid #ddd; border-radius: 4px; }
+  .split-equal { color: #28a745; font-size: 0.85rem; margin-left: 0.5rem; }
+  .custom-split-badge { background-color: #ffd166; color: #333; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem; }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinois)</option>
+            <option value="es">Español (Espagnol)</option>
+            <option value="de">Deutsch (Allemand)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Calculateur de Partage de Frais de Voyage</h1>
+    <p>Partagez facilement les frais de voyage entre les participants, suivez les paiements et calculez qui doit quoi à qui.</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculateur de Partage de Frais de Voyage</h2>
+    
+    <div class="trip-splitter-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="trip-name">Nom du voyage
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Entrez un nom pour votre voyage</span>
+              </span>
+            </label>
+            <input type="text" id="trip-name" placeholder="Entrez le nom du voyage">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="trip-date">Date du voyage
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Sélectionnez les dates de votre voyage</span>
+              </span>
+            </label>
+            <input type="date" id="trip-date">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="trip-location">Lieu du voyage
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Où avez-vous voyagé ?</span>
+              </span>
+            </label>
+            <input type="text" id="trip-location" placeholder="Entrez le lieu du voyage">
+          </div>
+        </div>
+        
+        <!-- Participants Section -->
+        <div class="input-group">
+          <div class="input-field">
+            <label>
+              Participants
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Ajoutez tous les participants du voyage</span>
+              </span>
+            </label>
+            <div id="participants-container">
+              <input type="text" class="participant-input" placeholder="Ajouter un nom de participant">
+              <button class="add-participant-btn" style="background: #4db5bd; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; margin-top: 0.5rem;">
+                <i class="fas fa-plus"></i> Ajouter un participant
+              </button>
+              <div class="participants-list" id="participants-list">
+                <!-- Participants will be added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Expenses Section -->
+        <div class="input-group">
+          <div class="input-field">
+            <label>
+              Dépenses
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Ajoutez toutes les dépenses engagées pendant le voyage</span>
+              </span>
+            </label>
+            <div id="expenses-container">
+              <select id="expense-category" style="margin-bottom: 0.5rem;">
+                <option value="accommodation">Hébergement</option>
+                <option value="transportation">Transport</option>
+                <option value="food">Nourriture</option>
+                <option value="entertainment">Divertissement</option>
+                <option value="other">Autre</option>
+              </select>
+              <input type="number" id="expense-amount" placeholder="Montant" min="0" style="margin-bottom: 0.5rem;">
+              <input type="text" id="expense-note" placeholder="Note" style="margin-bottom: 0.5rem;">
+              <select id="expense-payer" style="margin-bottom: 0.5rem;">
+                <option value="">Sélectionner le payeur</option>
+                <!-- Payers will be dynamically added -->
+              </select>
+              
+              <!-- Custom Split Section -->
+              <div class="split-section">
+                <div class="split-header">
+                  <span>Options de partage</span>
+                  <span class="split-toggle" id="split-toggle">
+                    Personnaliser <i class="fas fa-chevron-down"></i>
+                  </span>
+                </div>
+                <div class="split-options" id="split-options">
+                  <div class="split-option">
+                    <input type="checkbox" id="split-equal" checked>
+                    <label for="split-equal">Partager également entre tous les participants</label>
+                    <span class="split-equal" id="split-equal-indicator">(Par défaut)</span>
+                  </div>
+                  <div id="custom-split-container" style="display: none; margin-top: 0.5rem;">
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #666;">Sélectionnez les participants à inclure dans cette dépense :</p>
+                    <div id="split-participants-list">
+                      <!-- Custom split options will be added here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="add-expense-btn" style="background: #4db5bd; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; margin-top: 0.5rem;">
+                <i class="fas fa-plus"></i> Ajouter une dépense
+              </button>
+              <div class="expense-items" id="expense-items">
+                <!-- Expenses will be added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Calculer le partage
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Résumé des dépenses du voyage</h3>
+          <div class="summary-card" id="summary-card">
+            Dépenses totales : 0,00 €
+          </div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Nombre de participants</div>
+              <div class="metric-value" id="participants-count">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Dépenses totales</div>
+              <div class="metric-value" id="total-expenses">0,00 €</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Moyenne par personne</div>
+              <div class="metric-value" id="each-owes">0,00 €</div>
+            </div>
+          </div>
+          
+          <!-- Expense breakdown chart -->
+          <div class="chart-container">
+            <canvas id="expense-chart"></canvas>
+          </div>
+          
+          <!-- Expense details table -->
+          <div class="expense-table">
+            <table class="expense-table-container" id="expense-table">
+              <thead>
+                <tr>
+                  <th>Catégorie</th>
+                  <th>Description</th>
+                  <th>Payeur</th>
+                  <th>Partagé entre</th>
+                  <th>Montant</th>
+                </tr>
+              </thead>
+              <tbody id="expense-table-body">
+                <!-- Expenses will be populated here -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"><strong>Dépenses totales</strong></td>
+                  <td id="total-expenses-footer">0,00 €</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
+          <!-- Settlement results -->
+          <div class="settlement-list" id="settlement-list">
+            <h3 style="margin-bottom: 1rem; color: #006d77;">Résultats du règlement</h3>
+            <!-- Settlement items will be added here -->
+          </div>
+          
+          <!-- Share link -->
+          <div class="share-link-container">
+            <h3 style="margin-bottom: 1rem; color: #006d77;">Partager les dépenses du voyage</h3>
+            <input type="text" class="share-link-input" id="share-link" readonly>
+            <button class="copy-btn" id="copy-btn">Copier le lien</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Fonctionnement du partage de frais de voyage</h3>
+        <p>Ce calculateur vous aide à répartir équitablement les frais de voyage entre les participants. Il suit :</p>
+        <ul>
+          <li>Qui a payé chaque dépense</li>
+          <li>Le montant de chaque dépense</li>
+          <li>La catégorie de chaque dépense</li>
+          <li>Qui doit quoi à qui et combien</li>
+          <li><strong>Partages personnalisés :</strong> Choisissez des participants spécifiques pour chaque dépense</li>
+        </ul>
+        
+        <h3>Dépenses courantes de voyage</h3>
+        <p>Voici quelques dépenses courantes qui peuvent être partagées :</p>
+        <ul>
+          <li><strong>Hébergement :</strong> Hôtel, Airbnb ou autres frais de logement</li>
+          <li><strong>Transport :</strong> Vols, locations de voiture, essence, péages, transports en commun</li>
+          <li><strong>Nourriture :</strong> Repas, courses, collations</li>
+          <li><strong>Divertissement :</strong> Activités, attractions, événements</li>
+          <li><strong>Autre :</strong> Souvenirs, pourboires, frais divers</li>
+        </ul>
+        
+        <div class="trip-tips">
+          <h3><i class="fas fa-lightbulb"></i> Conseils de planification de voyage</h3>
+          <p>Considérez ces conseils pour gérer efficacement les dépenses de voyage :</p>
+          <ul>
+            <li>Budgetisez à l'avance pour éviter le dépassement</li>
+            <li>Convenez de la façon dont les dépenses seront partagées avant le voyage</li>
+            <li>Utilisez des partages personnalisés pour les dépenses qui n'incluent pas tout le monde</li>
+            <li>Gardez tous les reçus et enregistrements de paiement</li>
+            <li>Réglez les comptes rapidement après le voyage</li>
+            <li>Utilisez ce calculateur pour rendre le processus équitable et transparent</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs de la vie quotidienne et d'outils financiers. Nous vous aidons à prendre des décisions éclairées depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres calculateurs utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/finance/auto-loan-calculator.html">Calculateur de prêt auto</a></li>
+          <li><a href="/fr/finance/home-loan-calculator.html">Calculateur de prêt hypothécaire</a></li>
+          <li><a href="/fr/daily-life/salary-calculator.html">Calculateur de salaire</a></li>
+          <li><a href="/fr/finance/tax-calculator.html">Calculateur d'impôt</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d'utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d'utilisation</a>
+      </p>
+      <p><small>Remarque : Ce calculateur fournit uniquement des estimations. Assurez-vous que tous les participants acceptent le règlement.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // DOM Elements
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      const langSelect = document.getElementById('lang-select');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const participantsContainer = document.getElementById('participants-container');
+      const participantsList = document.getElementById('participants-list');
+      const expensesContainer = document.getElementById('expenses-container');
+      const expenseItems = document.getElementById('expense-items');
+      const expenseTableBody = document.getElementById('expense-table-body');
+      const settlementList = document.getElementById('settlement-list');
+      const shareLink = document.getElementById('share-link');
+      const copyBtn = document.getElementById('copy-btn');
+      const splitToggle = document.getElementById('split-toggle');
+      const splitOptions = document.getElementById('split-options');
+      const splitEqualCheckbox = document.getElementById('split-equal');
+      const customSplitContainer = document.getElementById('custom-split-container');
+      const splitParticipantsList = document.getElementById('split-participants-list');
+      
+      // Chart variable
+      let expenseChart = null;
+      
+      // State variables
+      let participants = [];
+      let expenses = [];
+      let customSplitEnabled = false;
+      
+      // Format currency
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat('fr-FR', { 
+          style: 'currency', 
+          currency: 'EUR',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(amount);
+      }
+      
+      // Add participant
+      function addParticipant() {
+        const participantInput = participantsContainer.querySelector('.participant-input');
+        const name = participantInput.value.trim();
+        
+        if (name && !participants.includes(name)) {
+          participants.push(name);
+          
+          const participantElement = document.createElement('div');
+          participantElement.className = 'participant-item';
+          participantElement.innerHTML = `
+            ${name}
+            <span class="remove-participant" data-name="${name}">
+              <i class="fas fa-times"></i> Retirer
+            </span>
+          `;
+          participantsList.appendChild(participantElement);
+          
+          // Update payer select and split options
+          updatePayerSelect();
+          updateSplitOptions();
+          
+          // Clear input
+          participantInput.value = '';
+        }
+      }
+      
+      // Update payer select options
+      function updatePayerSelect() {
+        const payerSelect = document.getElementById('expense-payer');
+        payerSelect.innerHTML = '<option value="">Sélectionner le payeur</option>';
+        
+        participants.forEach(participant => {
+          const option = document.createElement('option');
+          option.value = participant;
+          option.textContent = participant;
+          payerSelect.appendChild(option);
+        });
+      }
+      
+      // Update split options
+      function updateSplitOptions() {
+        splitParticipantsList.innerHTML = '';
+        
+        participants.forEach(participant => {
+          const splitOption = document.createElement('div');
+          splitOption.className = 'split-option';
+          splitOption.innerHTML = `
+            <input type="checkbox" id="split-${participant}" checked>
+            <label for="split-${participant}">${participant}</label>
+          `;
+          splitParticipantsList.appendChild(splitOption);
+        });
+      }
+      
+      // Toggle custom split options
+      splitToggle.addEventListener('click', function() {
+        splitOptions.classList.toggle('active');
+        const icon = this.querySelector('i');
+        if (splitOptions.classList.contains('active')) {
+          icon.className = 'fas fa-chevron-up';
+        } else {
+          icon.className = 'fas fa-chevron-down';
+        }
+      });
+      
+      // Toggle custom split
+      splitEqualCheckbox.addEventListener('change', function() {
+        customSplitEnabled = !this.checked;
+        customSplitContainer.style.display = customSplitEnabled ? 'block' : 'none';
+      });
+      
+      // Add expense
+      function addExpense() {
+        const category = document.getElementById('expense-category').value;
+        const amount = parseFloat(document.getElementById('expense-amount').value);
+        const note = document.getElementById('expense-note').value.trim();
+        const payer = document.getElementById('expense-payer').value;
+        
+        // Get beneficiaries (people who share this expense)
+        let beneficiaries = [];
+        if (customSplitEnabled) {
+          const checkboxes = splitParticipantsList.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+              const label = checkbox.nextElementSibling;
+              beneficiaries.push(label.textContent);
+            }
+          });
+        } else {
+          // Default: all participants
+          beneficiaries = [...participants];
+        }
+        
+        if (!amount || isNaN(amount)) {
+          alert('Veuillez entrer un montant de dépense valide');
+          return;
+        }
+        
+        if (!payer) {
+          alert('Veuillez sélectionner un payeur');
+          return;
+        }
+        
+        if (beneficiaries.length === 0) {
+          alert('Veuillez sélectionner au moins un bénéficiaire pour cette dépense');
+          return;
+        }
+        
+        const expense = {
+          id: Date.now(),
+          category,
+          amount,
+          note,
+          payer,
+          beneficiaries,
+          date: new Date().toISOString()
+        };
+        
+        expenses.push(expense);
+        
+        // Create expense item element
+        const expenseElement = document.createElement('div');
+        expenseElement.className = 'expense-item';
+        expenseElement.innerHTML = `
+          <div class="expense-item-header">
+            <span>${category} ${customSplitEnabled ? '<span class="custom-split-badge">Partage personnalisé</span>' : ''}</span>
+            <span class="remove-expense" data-id="${expense.id}">
+              <i class="fas fa-times"></i> Retirer
+            </span>
+          </div>
+          <div class="expense-item-content">
+            <p><strong>Payeur :</strong> ${payer}</p>
+            <p><strong>Montant :</strong> ${formatCurrency(amount)}</p>
+            <p><strong>Partagé entre :</strong> ${beneficiaries.join(', ')}</p>
+            <p><strong>Note :</strong> ${note || 'N/A'}</p>
+          </div>
+        `;
+        expenseItems.appendChild(expenseElement);
+        
+        // Clear inputs
+        document.getElementById('expense-amount').value = '';
+        document.getElementById('expense-note').value = '';
+        
+        // Recalculate if needed
+        if (resultContainer.style.display === 'block') {
+          calculateSplit();
+        }
+      }
+      
+      // Calculate expense split
+      function calculateSplit() {
+        if (participants.length === 0) {
+          alert('Veuillez ajouter au moins un participant');
+          return;
+        }
+        
+        if (expenses.length === 0) {
+          alert('Veuillez ajouter au moins une dépense');
+          return;
+        }
+        
+        // Calculate totals
+        const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
+        const averagePerPerson = totalExpenses / participants.length;
+        
+        // Update metrics
+        document.getElementById('participants-count').textContent = participants.length;
+        document.getElementById('total-expenses').textContent = formatCurrency(totalExpenses);
+        document.getElementById('each-owes').textContent = formatCurrency(averagePerPerson);
+        document.getElementById('summary-card').textContent = `Dépenses totales : ${formatCurrency(totalExpenses)}`;
+        document.getElementById('total-expenses-footer').textContent = formatCurrency(totalExpenses);
+        
+        // Populate expense table
+        expenseTableBody.innerHTML = '';
+        expenses.forEach(expense => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${expense.category}</td>
+            <td>${expense.note || 'N/A'}</td>
+            <td>${expense.payer}</td>
+            <td>${expense.beneficiaries.join(', ')}</td>
+            <td>${formatCurrency(expense.amount)}</td>
+          `;
+          expenseTableBody.appendChild(row);
+        });
+        
+        // Calculate settlement
+        const payments = {};
+        const shares = {};
+        
+        // Initialize payments and shares
+        participants.forEach(participant => {
+          payments[participant] = 0;
+          shares[participant] = 0;
+        });
+        
+        // Calculate payments made by each participant
+        expenses.forEach(expense => {
+          payments[expense.payer] += expense.amount;
+          
+          // Calculate how much each beneficiary owes for this expense
+          const amountPerPerson = expense.amount / expense.beneficiaries.length;
+          expense.beneficiaries.forEach(beneficiary => {
+            if (shares.hasOwnProperty(beneficiary)) {
+              shares[beneficiary] += amountPerPerson;
+            }
+          });
+        });
+        
+        // Calculate net balances
+        const balances = {};
+        participants.forEach(participant => {
+          balances[participant] = payments[participant] - shares[participant];
+        });
+        
+        // Calculate who owes whom
+        settlementList.innerHTML = '<h3 style="margin-bottom: 1rem; color: #006d77;">Résultats du règlement</h3>';
+        
+        // Create a copy of balances for settlement calculation
+        const settlementBalances = {...balances};
+        
+        // Find who owes money and who is owed money
+        const debtors = [];
+        const creditors = [];
+        
+        participants.forEach(participant => {
+          if (settlementBalances[participant] < -0.01) {
+            debtors.push({
+              name: participant,
+              amount: Math.abs(settlementBalances[participant])
+            });
+          } else if (settlementBalances[participant] > 0.01) {
+            creditors.push({
+              name: participant,
+              amount: settlementBalances[participant]
+            });
+          }
+        });
+        
+        // Sort debtors and creditors
+        debtors.sort((a, b) => b.amount - a.amount);
+        creditors.sort((a, b) => b.amount - a.amount);
+        
+        // Calculate settlements
+        while (debtors.length > 0 && creditors.length > 0) {
+          const debtor = debtors[0];
+          const creditor = creditors[0];
+          
+          const settlementAmount = Math.min(debtor.amount, creditor.amount);
+          
+          // Create settlement item
+          const settlementItem = document.createElement('div');
+          settlementItem.className = 'settlement-item';
+          settlementItem.innerHTML = `
+            <div>${debtor.name} doit payer ${creditor.name}</div>
+            <div>${formatCurrency(settlementAmount)}</div>
+          `;
+          settlementList.appendChild(settlementItem);
+          
+          // Update amounts
+          debtor.amount -= settlementAmount;
+          creditor.amount -= settlementAmount;
+          
+          // Remove settled parties if their balance is close to zero
+          if (debtor.amount < 0.01) debtors.shift();
+          if (creditor.amount < 0.01) creditors.shift();
+        }
+        
+        // Create or update expense chart
+        const ctx = document.getElementById('expense-chart').getContext('2d');
+        if (expenseChart) {
+          expenseChart.destroy();
+        }
+        
+        const categoryTotals = {};
+        expenses.forEach(expense => {
+          if (!categoryTotals[expense.category]) {
+            categoryTotals[expense.category] = 0;
+          }
+          categoryTotals[expense.category] += expense.amount;
+        });
+        
+        const categories = Object.keys(categoryTotals);
+        const amounts = categories.map(category => categoryTotals[category]);
+        
+        const chartColors = [
+          '#4db5bd', '#ffd166', '#9c88ff', '#ff6b6b', '#006d77'
+        ];
+        
+        expenseChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: categories,
+            datasets: [{
+              data: amounts,
+              backgroundColor: chartColors.slice(0, categories.length),
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  font: {
+                    family: 'Segoe UI',
+                    size: 12
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.raw;
+                    return `${label} : ${formatCurrency(value)}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+        
+        // Generate share link
+        generateShareLink();
+      }
+      
+      // Generate share link
+      function generateShareLink() {
+        // In a real implementation, you would generate a unique link to share the trip data
+        // For this example, we'll just create a static link with trip name and location
+        const tripName = document.getElementById('trip-name').value || 'Mon Voyage';
+        const tripLocation = document.getElementById('trip-location').value || 'Lieu inconnu';
+        
+        // Encode the trip details
+        const encodedDetails = btoa(JSON.stringify({
+          name: tripName,
+          location: tripLocation,
+          participants: participants,
+          expenses: expenses
+        }));
+        
+        // Create share link
+        shareLink.value = `${window.location.origin}${window.location.pathname}?trip=${encodedDetails}`;
+      }
+      
+      // Event Listeners
+      document.querySelector('.add-participant-btn').addEventListener('click', addParticipant);
+      document.querySelector('.add-expense-btn').addEventListener('click', addExpense);
+      calculateBtn.addEventListener('click', calculateSplit);
+      copyBtn.addEventListener('click', function() {
+        shareLink.select();
+        document.execCommand('copy');
+        alert('Lien copié dans le presse-papiers !');
+      });
+      
+      // Allow Enter key to trigger actions
+      participantsContainer.querySelector('.participant-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') addParticipant();
+      });
+      
+      document.getElementById('expense-amount').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') addExpense();
+      });
+      
+      // Remove participant
+      participantsContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-participant') || e.target.parentElement.classList.contains('remove-participant')) {
+          const name = e.target.closest('.remove-participant').dataset.name;
+          participants = participants.filter(p => p !== name);
+          
+          // Remove participant element
+          const participantElement = document.querySelector(`.participant-item:contains(${name})`);
+          if (participantElement) {
+            participantElement.remove();
+          }
+          
+          // Update payer select and split options
+          updatePayerSelect();
+          updateSplitOptions();
+          
+          // Recalculate if needed
+          if (resultContainer.style.display === 'block') {
+            calculateSplit();
+          }
+        }
+      });
+      
+      // Remove expense
+      expenseItems.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-expense') || e.target.parentElement.classList.contains('remove-expense')) {
+          const id = parseInt(e.target.closest('.remove-expense').dataset.id);
+          expenses = expenses.filter(expense => expense.id !== id);
+          
+          // Remove expense element
+          const expenseElement = document.querySelector(`.expense-item [data-id="${id}"]`).closest('.expense-item');
+          if (expenseElement) {
+            expenseElement.remove();
+          }
+          
+          // Recalculate if needed
+          if (resultContainer.style.display === 'block') {
+            calculateSplit();
+          }
+        }
+      });
+      
+      // Hamburger menu functionality
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Build target URL based on selected language
+        switch(selectedLang) {
+          case 'fr':
+            targetUrl = '/fr/daily-life/trip-splitter.html';
+            break;
+          case 'en':
+            targetUrl = '/en/daily-life/trip-splitter.html';
+            break;
+          case 'zh':
+            targetUrl = '/zh/daily-life/trip-splitter.html';
+            break;
+          case 'es':
+            targetUrl = '/es/daily-life/trip-splitter.html';
+            break;
+          case 'de':
+            targetUrl = '/de/daily-life/trip-splitter.html';
+            break;
+          default:
+            targetUrl = '/fr/daily-life/trip-splitter.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Initialize tooltips
+      document.addEventListener('DOMContentLoaded', function() {
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+          const infoIcon = tooltip.querySelector('.info-icon');
+          const tooltipText = tooltip.querySelector('.tooltip-text');
+          
+          infoIcon.addEventListener('mouseover', function() {
+            tooltipText.style.display = 'block';
+          });
+          
+          infoIcon.addEventListener('mouseout', function() {
+            tooltipText.style.display = 'none';
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 

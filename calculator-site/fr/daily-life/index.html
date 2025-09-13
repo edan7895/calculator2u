@@ -1,14 +1,974 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Calculatrice - En cours de traduction</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculateurs de Travail et Vie Quotidienne | Calculator2U</title>
+<meta name="description" content="Des calculateurs complets pour le travail et la vie quotidienne, incluant date, fuseau horaire, convertisseur de cuisine, partage de voyage, salaire, bonus, congés et devis de projet." />
+<meta name="keywords" content="calculateur travail, calculateur date, calculateur fuseau horaire, convertisseur cuisine, partage voyage, calculateur salaire, calculateur bonus, calculateur congés, calculateur devis projet" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/daily-life/index.html "/>
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/index.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/index.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/index.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/index.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/index.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/index.html "/>
+<meta property="og:title" content="Calculateurs de Travail et Vie Quotidienne | Calculator2U" />
+<meta property="og:description" content="Des calculateurs complets pour le travail et la vie quotidienne, incluant date, fuseau horaire, convertisseur de cuisine, partage de voyage, salaire, bonus, congés et devis de projet." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/fr/daily-life/index.html" />
+<meta property="og:image" content="/assets/images/daily-life-banner.jpg" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " crossorigin="anonymous">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    padding: 0 0.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0 1rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.2rem;
+    border-radius: 10px;
+    min-width: 150px;
+    backdrop-filter: blur(10px);
+    flex: 1 1 150px;
+  }
+
+  .stat-item i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ffd166;
+  }
+
+  .stat-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-item p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 2rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .category-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(0, 109, 119, 0.1);
+    overflow: hidden;
+    position: relative;
+    word-wrap: break-word;
+  }
+
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .category-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #008891;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .category-card i {
+    font-size: 2.5rem;
+    color: #008891;
+    margin-bottom: 1rem;
+  }
+
+  .category-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #008891;
+    margin-bottom: 0.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .category-card p {
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .productivity-tips {
+    background-color: #fff;
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .tips-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tip-card {
+    background: #f0f9ff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 4px solid #4db5bd;
+    transition: transform 0.3s ease;
+    word-wrap: break-word;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .tip-card h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .tip-card h3 i {
+    margin-right: 10px;
+    color: #ffd166;
+  }
+
+  .tip-card p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .how-it-works {
+    margin: 2.5rem 0;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffd166;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+
+  .step i {
+    font-size: 2.2rem;
+    color: #008891;
+    margin-bottom: 0.8rem;
+  }
+
+  .step h3 {
+    color: #006d77;
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
+  }
+
+  .step p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 2rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .category-card {
+      padding: 1.2rem 1rem;
+    }
+    
+    .category-card i {
+      font-size: 2.2rem;
+    }
+    
+    .category-card h2 {
+      font-size: 1.3rem;
+    }
+    
+    .stat-item {
+      min-width: 120px;
+      padding: 1rem;
+    }
+    
+    .stat-item i {
+      font-size: 1.8rem;
+    }
+    
+    .stat-item h3 {
+      font-size: 1.6rem;
+    }
+    
+    .step {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .footer-column {
+      text-align: center;
+    }
+    
+    .footer-column h3::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .footer-links a:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .category-grid {
+      gap: 1.5rem;
+    }
+    
+    .category-card {
+      padding: 1.8rem 1.2rem;
+    }
+    
+    .stat-item {
+      min-width: 180px;
+      padding: 1.2rem;
+    }
+    
+    .lang-selector {
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero p {
+      font-size: 1.05rem;
+    }
+    
+    .stat-item h3 {
+      font-size: 1.8rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    .container {
+      padding: 0 1.2rem;
+    }
+    
+    .productivity-tips {
+      padding: 1.8rem 1.2rem;
+    }
+    
+    .tips-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .step {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    
+    .category-card {
+      padding: 1.5rem 1rem;
+    }
+    
+    .category-card i {
+      font-size: 2.5rem;
+    }
+    
+    .category-card h2 {
+      font-size: 1.4rem;
+    }
+    
+    .hero-stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .stat-item {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .steps {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .step {
+      max-width: 300px;
+    }
+    
+    .category-card, .tip-card, .step {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .hero h1 {
+      font-size: 1.7rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Page en cours de traduction</h1>
-  <p>Nous sommes en train de traduire cette page en français. La version complète sera disponible bientôt. En attendant, vous pouvez consulter la <a href="/index.html">version anglaise</a>.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-fr.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/fr/health/index.html">Santé & Corps</a></li>
+        <li><a href="/fr/finance/index.html">Finance & Investissement</a></li>
+        <li><a href="/fr/education/index.html">Éducation & Apprentissage</a></li>
+        <li><a href="/fr/engineering/index.html">Ingénierie & Science</a></li>
+        <li><a href="/fr/daily-life/index.html" class="active">Travail & Vie</a></li>
+        <li><a href="/fr/generator/index.html">Générateur</a></li>
+        <li><a href="/fr/games/index.html">Jeux</a></li>
+        <li><a href="/about-fr.html">À propos</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="fr" selected>Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Calculateurs de Travail et Vie Quotidienne</h1>
+    <p>Des outils complets pour vous aider à gérer vos activités quotidiennes, maximiser votre productivité et simplifier vos calculs du quotidien.</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <h3>500 K+</h3>
+        <p>Utilisateurs mensuels</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-calculator"></i>
+        <h3>25+</h3>
+        <p>Calculateurs</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-globe"></i>
+        <h3>100+</h3>
+        <p>Pays</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Calculateurs du quotidien</h2>
+
+    <div class="category-grid">
+      <a href="/fr/daily-life/date-calculator.html" class="category-card">
+        <i class="fas fa-calendar-alt"></i>
+        <h2>Calculateur de dates</h2>
+        <p>Calculez la différence entre deux dates ou ajoutez/soustrayez des jours, semaines, mois ou années à une date.</p>
+      </a>
+      <a href="/fr/daily-life/timezone-calculator.html" class="category-card">
+        <i class="fas fa-clock"></i>
+        <h2>Calculateur de fuseaux horaires</h2>
+        <p>Convertissez l’heure entre fuseaux horaires et trouvez l’heure actuelle dans n’importe quelle région du monde.</p>
+      </a>
+      <a href="/fr/daily-life/cooking-converter.html" class="category-card">
+        <i class="fas fa-utensils"></i>
+        <h2>Convertisseur de cuisine</h2>
+        <p>Convertissez les mesures de cuisine entre unités métriques et impériales pour les ingrédients et recettes.</p>
+      </a>
+      <a href="/fr/daily-life/trip-splitter.html" class="category-card">
+        <i class="fas fa-car"></i>
+        <h2>Partage de voyage</h2>
+        <p>Calculez le coût par personne pour les dépenses partagées lors de voyages, vacances ou activités de groupe.</p>
+      </a>
+      <a href="/fr/daily-life/salary-calculator.html" class="category-card">
+        <i class="fas fa-money-bill-wave"></i>
+        <h2>Calculateur de salaire</h2>
+        <p>Convertissez entre salaires horaires, mensuels et annuels en tenant compte des impôts.</p>
+      </a>
+      <a href="/fr/daily-life/bonus-calculator.html" class="category-card">
+        <i class="fas fa-gift"></i>
+        <h2>Calculateur de prime</h2>
+        <p>Déterminez l’impact des primes sur votre salaire net, y compris les implications fiscales.</p>
+      </a>
+      <a href="/fr/daily-life/leave-calculator.html" class="category-card">
+        <i class="fas fa-plane-departure"></i>
+        <h2>Calculateur de congés</h2>
+        <p>Suivez vos jours de congé disponibles et planifiez vos vacances et congés maladie tout au long de l’année.</p>
+      </a>
+      <a href="/fr/daily-life/project-quotation-calculator.html" class="category-card">
+        <i class="fas fa-file-invoice"></i>
+        <h2>Calculateur de devis de projet</h2>
+        <p>Générez des estimations de coûts précises pour des projets en calculant la main-d’œuvre, les matériaux et les marges bénéficiaires.</p>
+      </a>
+  <a href="/fr/daily-life/age-calculator.html" class="category-card">
+    <i class="fas fa-birthday-cake"></i>
+    <h2>Calculateur d’âge</h2>
+    <p>Calculez votre âge à partir de votre date de naissance et découvrez combien de jours, semaines, mois et années vous avez vécu.</p>
+  </a>
+    </div>
+
+    <div class="productivity-tips">
+      <h2 class="section-title">Conseils de productivité & gestion du temps</h2>
+      <div class="tips-container">
+        <div class="tip-card">
+          <h3><i class="fas fa-list-check"></i> Gestion des tâches</h3>
+          <p>Divisez les grandes tâches en petites parties gérables. Utilisez des listes de tâches et priorisez-les par importance et échéances pour rester organisé et productif.</p>
+        </div>
+        <div class="tip-card">
+          <h3><i class="fas fa-clock"></i> Blocs de temps</h3>
+          <p>Allouez des blocs horaires spécifiques à différentes activités. Cette technique aide à maintenir la concentration et évite le multitâche qui réduit l’efficacité.</p>
+        </div>
+        <div class="tip-card">
+          <h3><i class="fas fa-brain"></i> Pauses mentales</h3>
+          <p>Prenez régulièrement de courtes pauses pour recharger votre esprit. Des techniques comme la méthode Pomodoro (25 min de travail + 5 min de pause) améliorent concentration et productivité.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-it-works">
+      <h2 class="section-title">Comment nos calculateurs vous aident</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <i class="fas fa-edit"></i>
+          <h3>Saisissez les détails</h3>
+          <p>Fournissez les informations nécessaires requises par chaque calculateur pour des résultats précis.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <i class="fas fa-calculator"></i>
+          <h3>Calculez</h3>
+          <p>Nos algorithmes traitent vos données à l’aide de formules et méthodes établies.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <i class="fas fa-chart-line"></i>
+          <h3>Obtenez les résultats</h3>
+          <p>Recevez des résultats clairs et exploitables que vous pouvez facilement comprendre et utiliser.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <i class="fas fa-lightbulb"></i>
+          <h3>Passez à l’action</h3>
+          <p>Appliquez les idées obtenues pour améliorer vos processus de travail et votre vie quotidienne.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Votre source fiable de calculateurs pour le travail et la vie quotidienne. Des outils pratiques depuis 2025.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Autres calculateurs utiles</h3>
+        <ul class="footer-links">
+          <li><a href="/fr/health/body-fat-calculator.html">Calculateur de masse grasse</a></li>
+          <li><a href="/fr/finance/compound-interest-calculator.html">Calculateur d’intérêts composés</a></li>
+          <li><a href="/fr/finance/home-loan-calculator.html">Calculateur de prêt immobilier</a></li>
+          <li><a href="/fr/finance/auto-loan-calculator.html">Calculateur de prêt auto</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Informations légales</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-fr.html">Politique de confidentialité</a></li>
+          <li><a href="/terms-fr.html">Conditions d’utilisation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Tous droits réservés. | 
+        <a href="/privacy-fr.html">Politique de confidentialité</a> | 
+        <a href="/terms-fr.html">Conditions d’utilisation</a>
+      </p>
+      <p><small>Remarque : ces calculateurs fournissent uniquement des estimations. Pour des décisions importantes, consultez des professionnels du domaine concerné.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+
+        let dailyLifePath = '';
+        if (currentPath.includes('/daily-life/')) {
+          const dailyLifeIndex = pathSegments.findIndex(segment => segment === 'daily-life');
+          if (dailyLifeIndex !== -1) {
+            dailyLifePath = pathSegments.slice(dailyLifeIndex).join('/');
+          }
+        }
+        
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = dailyLifePath ? `/zh/${dailyLifePath}` : '/zh/daily-life/index.html';
+            break;
+          case 'es':
+            targetUrl = dailyLifePath ? `/es/${dailyLifePath}` : '/es/daily-life/index.html';
+            break;
+          case 'de':
+            targetUrl = dailyLifePath ? `/de/${dailyLifePath}` : '/de/daily-life/index.html';
+            break;
+          case 'fr':
+            targetUrl = dailyLifePath ? `/fr/${dailyLifePath}` : '/fr/daily-life/index.html';
+            break;
+          default:
+            targetUrl = dailyLifePath ? `/en/${dailyLifePath}` : '/en/daily-life/index.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
-</body></html> 

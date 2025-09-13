@@ -4,22 +4,22 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Calculateur de Congés | Calculator2U</title>
-<meta name="description" content="Calculez vos droits de congés restants, suivez vos jours de vacances et planifiez votre temps libre" />
-<meta name="keywords" content="calculateur de congés, calculateur de vacances, calculateur de droits aux vacances, calculateur de congés annuels" />
+<title>Calculateur d'Âge | Calculator2U</title>
+<meta name="description" content="Calculez votre âge en années, mois et jours. Découvrez votre âge dans différentes unités de temps." />
+<meta name="keywords" content="calculateur d'âge, calculer l'âge, quel âge ai-je, âge en jours, âge en semaines" />
 <meta name="author" content="Calculator2U" />
-<link rel="canonical" href="https://www.calculator2u.com/fr/daily-life/leave-calculator.html " />
-<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="x-default" href="https://www.calculator2u.com/fr/daily-life/leave-calculator.html "/>
-<meta property="og:title" content="Calculateur de Congés | Calculator2U" />
-<meta property="og:description" content="Calculez vos droits de congés restants, suivez vos jours de vacances et planifiez votre temps libre" />
+<link rel="canonical" href="https://www.calculator2u.com/fr/daily-life/age-calculator.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/age-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/age-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/age-calculator.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/age-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/age-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/age-calculator.html "/>
+<meta property="og:title" content="Calculateur d'Âge | Calculator2U" />
+<meta property="og:description" content="Calculez votre âge en années, mois et jours. Découvrez votre âge dans différentes unités de temps." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.calculator2u.com/fr/daily-life/leave-calculator.html " />
-<meta property="og:image" content="https://www.calculator2u.com/assets/images/leave-calculator.jpg " />
+<meta property="og:url" content="https://www.calculator2u.com/fr/daily-life/age-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/age-calculator.jpg " />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:site_name" content="Calculator2U" />
 
@@ -32,9 +32,7 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
-<!-- Include Chart.js for visualizations -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
 <style>
   * {
@@ -224,8 +222,8 @@
     border-radius: 2px;
   }
 
-  /* Leave Calculator Styles */
-  .leave-container {
+  /* Date Calculator Styles */
+  .date-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -236,7 +234,7 @@
   }
   
   @media (min-width: 992px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -345,7 +343,7 @@
     color: #006d77;
   }
   
-  .leave-summary {
+  .result-value {
     text-align: center;
     font-size: 1.4rem;
     font-weight: 600;
@@ -356,15 +354,15 @@
     color: white;
   }
   
-  /* Leave breakdown chart container */
+  /* Conversion chart container */
   .chart-container {
     height: 300px;
     margin: 2rem 0;
     position: relative;
   }
   
-  /* Leave schedule */
-  .leave-schedule {
+  /* Conversion table */
+  .conversion-table {
     overflow-x: auto;
     margin-top: 2rem;
     border-radius: 8px;
@@ -372,30 +370,30 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  .leave-table {
+  .conversion-table table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     min-width: 600px;
   }
   
-  .leave-table th {
+  .conversion-table th {
     background: #006d77;
     color: white;
     padding: 1rem;
     text-align: left;
   }
   
-  .leave-table td {
+  .conversion-table td {
     padding: 0.8rem 1rem;
     border-bottom: 1px solid #e0f7fa;
   }
   
-  .leave-table tr:last-child td {
+  .conversion-table tr:last-child td {
     border-bottom: none;
   }
   
-  .leave-table tr:nth-child(even) {
+  .conversion-table tr:nth-child(even) {
     background: #f9f9f9;
   }
   
@@ -563,7 +561,7 @@
   }
 
   @media (max-width: 768px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr;
     }
   }
@@ -574,7 +572,7 @@
       font-size: 14px;
     }
 
-    .container, .leave-container {
+    .container, .date-container {
       padding: 0 0.5rem;
       width: 100%;
       max-width: 100%;
@@ -611,18 +609,18 @@
       max-width: 100%;
     }
     
-    .leave-schedule {
+    .conversion-table {
       max-width: 100%;
       width: auto;
     }
     
-    .leave-table {
+    .conversion-table table {
       min-width: 100%;
       width: auto;
     }
     
-    .leave-table th,
-    .leave-table td {
+    .conversion-table th,
+    .conversion-table td {
       padding: 0.5rem;
       word-break: break-word;
       white-space: normal;
@@ -707,6 +705,137 @@
     border-radius: 4px;
     font-weight: 600;
   }
+  
+  /* Conversion tabs */
+  .conversion-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .conversion-panel {
+    display: none;
+  }
+  
+  .conversion-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Unit system toggle */
+  .unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-btn {
+    background: #e0f7fa;
+    border: 2px solid #4db5bd;
+    color: #006d77;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .toggle-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .toggle-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  /* Age Calculator Specific */
+  .birthday-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .birthday-input input {
+    flex: 1;
+  }
+
+  .age-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e63946;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(230, 57, 70, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .age-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .age-value {
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .age-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .result-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .format-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    min-width: 160px;
+  }
+
+  .format-value {
+    font-weight: bold;
+    color: #006d77;
+    font-size: 1.1rem;
+  }
+
+  .format-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
 </style>
 </head>
 <body>
@@ -731,7 +860,7 @@
         <li><a href="/fr/daily-life/index.html">Travail & Vie</a></li>
         <li><a href="/fr/generator/index.html">Générateur</a></li>
         <li><a href="/fr/games/index.html">Jeux</a></li>
-        <li><a href="/about-fr.html">À propos</a></li>
+        <li><a href="/about-fr.html">À propos de nous</a></li>
         <li class="lang-selector">
           <select id="lang-select" class="lang-select">
             <option value="fr">Français</option>
@@ -747,211 +876,122 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Calculateur de Congés</h1>
-    <p>Calculez vos droits de congés restants, suivez vos jours de vacances et planifiez votre temps libre</p>
+    <h1>Calculateur d'Âge</h1>
+    <p>Calculez votre âge en années, mois et jours. Découvrez votre âge dans différentes unités de temps.</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">Calculateur de Congés</h2>
+    <h2 class="section-title">Calculateur d'Âge</h2>
     
-    <div class="leave-container">
+    <div class="date-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="input-group">
           <div class="input-field">
-            <label for="employee-name">Nom de l'employé
+            <label for="birth-date">Date de naissance :
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Entrez le nom de l'employé</span>
+                <span class="tooltip-text">Sélectionnez votre date de naissance</span>
               </span>
             </label>
-            <input type="text" id="employee-name" placeholder="Entrez le nom de l'employé">
-          </div>
-          
-          <div class="input-field">
-            <label for="hiring-date">Date d'embauche
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Date à laquelle l'employé a été embauché</span>
-              </span>
-            </label>
-            <input type="date" id="hiring-date">
+            <input type="date" id="birth-date">
           </div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="year-month">Année/Mois
+            <label for="calculate-date">Calculer l'âge le :
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Sélectionnez l'année et le mois pour le calcul</span>
+                <span class="tooltip-text">Sélectionnez la date pour calculer votre âge</span>
               </span>
             </label>
-            <select id="year-month">
-              <option value="2025-01">Janvier 2025</option>
-              <option value="2025-02">Février 2025</option>
-              <option value="2025-03">Mars 2025</option>
-              <option value="2025-04">Avril 2025</option>
-              <option value="2025-05">Mai 2025</option>
-              <option value="2025-06">Juin 2025</option>
-              <option value="2025-07">Juillet 2025</option>
-              <option value="2025-08">Août 2025</option>
-              <option value="2025-09">Septembre 2025</option>
-              <option value="2025-10">Octobre 2025</option>
-              <option value="2025-11">Novembre 2025</option>
-              <option value="2025-12">Décembre 2025</option>
-            </select>
-          </div>
-          
-          <div class="input-field">
-            <label for="leave-quota">Quota de congés annuels (jours)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Nombre de jours de congés alloués par an</span>
-              </span>
-            </label>
-            <input type="number" id="leave-quota" placeholder="Entrez le quota de congés" min="0" value="20">
+            <input type="date" id="calculate-date">
           </div>
         </div>
         
-        <div class="input-group">
-          <div class="input-field">
-            <label for="used-leave">Congés utilisés (jours)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Nombre de jours de congés déjà utilisés</span>
-              </span>
-            </label>
-            <input type="number" id="used-leave" placeholder="Entrez les congés utilisés" min="0" value="5">
-          </div>
-          
-          <div class="input-field">
-            <label for="planned-leave">Congés planifiés (jours)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Nombre de jours de congés prévus à l'avance</span>
-              </span>
-            </label>
-            <input type="number" id="planned-leave" placeholder="Entrez les congés planifiés" min="0">
-          </div>
-        </div>
-        
-        <div class="input-group">
-          <div class="input-field">
-            <label for="leave-balance">Solde de congés (jours)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Jours de congés restants après les congés planifiés</span>
-              </span>
-            </label>
-            <input type="number" id="leave-balance" placeholder="Solde de congés" min="0" readonly>
-          </div>
-        </div>
-        
-        <button class="calculate-btn" id="calculate-btn">
-          <i class="fas fa-calculator"></i> Calculer les congés
+        <button class="calculate-btn" id="calculate-age">
+          <i class="fas fa-calculator"></i> Calculer l'âge
         </button>
         
-        <div class="result-container" id="result-container">
-          <h3 class="result-header">Résumé de vos congés</h3>
-          <div class="leave-summary" id="leave-summary">
-            Congés restants : 10 jours
+        <div class="result-container" id="age-result-container">
+          <h3 class="result-header">Votre âge</h3>
+          
+          <div class="age-display" id="age-display">
+            <!-- Age will appear here -->
           </div>
           
-          <!-- Result Metrics -->
-          <div class="result-metrics">
-            <div class="metric-card">
-              <div class="metric-label">Quota de congés annuels</div>
-              <div class="metric-value" id="quota-value">20 jours</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Congés utilisés</div>
-              <div class="metric-value" id="used-value">5 jours</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Congés planifiés</div>
-              <div class="metric-value" id="planned-value">3 jours</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Congés restants</div>
-              <div class="metric-value" id="remaining-value">12 jours</div>
-            </div>
-          </div>
-          
-          <!-- Leave breakdown chart -->
-          <div class="chart-container">
-            <canvas id="leave-chart"></canvas>
-          </div>
-          
-          <div class="leave-details" id="leave-details">
-            <p>Sur la base de vos données, <span class="highlight" id="employee-name-display">Nom de l'employé</span> dispose de <span class="highlight" id="remaining-leave-display">12</span> jours de congés restants pour l'année en cours.</p>
-            <p>Ce calcul inclut <span class="highlight" id="used-leave-display">5</span> jours déjà utilisés et <span class="highlight" id="planned-leave-display">3</span> jours planifiés.</p>
+          <div class="result-formats" id="age-formats">
+            <!-- Age formats will be inserted here -->
           </div>
         </div>
         
-        <div class="leave-schedule">
-          <table class="leave-table" id="leave-table">
+        <div class="conversion-table">
+          <h4 style="margin-bottom: 1rem;">Exemples de calcul d'âge</h4>
+          <table>
             <thead>
               <tr>
-                <th>Type de congé</th>
-                <th>Date de début</th>
-                <th>Date de fin</th>
-                <th>Jours</th>
-                <th>Statut</th>
+                <th>Date de naissance</th>
+                <th>Calculer le</th>
+                <th>Résultat</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Leave schedule will be populated here -->
+              <tr>
+                <td>2000-01-01</td>
+                <td>2025-01-01</td>
+                <td>25 ans</td>
+              </tr>
+              <tr>
+                <td>1990-05-15</td>
+                <td>2025-06-17</td>
+                <td>35 ans, 1 mois, 2 jours</td>
+              </tr>
+              <tr>
+                <td>2010-12-31</td>
+                <td>2025-01-01</td>
+                <td>14 ans, 0 mois, 1 jour</td>
+              </tr>
+              <tr>
+                <td>2005-02-28</td>
+                <td>2025-02-28</td>
+                <td>20 ans</td>
+              </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>Total des congés utilisés</strong></td>
-                <td colspan="3" id="total-used-leave">5 jours</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><strong>Congés restants</strong></td>
-                <td colspan="3" id="total-remaining-leave">15 jours</td>
-                <td></td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>Comprendre vos droits aux congés</h3>
-        <p>Les droits aux congés varient selon la politique de l'entreprise et les lois locales du travail. Voici quelques types courants de congés :</p>
+        <h3>Comprendre le calcul de l'âge</h3>
+        <p>Les calculs d'âge peuvent varier selon les différents systèmes calendaires et les considérations d'années bissextiles. Voici quelques points clés à retenir :</p>
         <ul>
-          <li><strong>Congés annuels :</strong> Jours de vacances payés accumulés au cours de l'année</li>
-          <li><strong>Congés de maladie :</strong> Temps libre pour maladie ou rendez-vous médicaux</li>
-          <li><strong>Congés parentaux :</strong> Congés pour les nouveaux parents (maternité/paternité)</li>
-          <li><strong>Congés de deuil :</strong> Temps libre pour faire le deuil d'un membre de la famille</li>
-          <li><strong>Congés pour service de jury :</strong> Temps libre pour servir dans un jury</li>
+          <li><strong>Années bissextiles :</strong> Les années divisibles par 4 sont bissextiles, sauf les années séculaires qui doivent être divisibles par 400</li>
+          <li><strong>Longueurs des mois :</strong> Les mois ont 28 à 31 jours (avril, juin, septembre, novembre ont 30 ; février a 28 ou 29)</li>
+          <li><strong>Formats de date :</strong> Notre calculateur utilise le format ISO 8601 (AAAA-MM-JJ)</li>
+          <li><strong>Âge exact :</strong> Le calculateur considère la date exacte de naissance et la date cible pour calculer l'âge précis</li>
         </ul>
         
-        <h3>Facteurs affectant le calcul des congés</h3>
-        <p>Plusieurs facteurs peuvent influencer vos droits aux congés :</p>
+        <h3>Astuces pour le calcul de l'âge</h3>
+        <p>Considérez ces astuces pour des calculs d'âge précis :</p>
         <ul>
-          <li><strong>Type d'emploi :</strong> Temps plein, temps partiel ou contrat</li>
-          <li><strong>Ancienneté :</strong> Certaines entreprises augmentent les congés avec l'ancienneté</li>
-          <li><strong>Taux d'accumulation :</strong> Comment les jours de congés s'accumulent au fil du temps</li>
-          <li><strong>Politique de l'entreprise :</strong> Règles spécifiques sur l'utilisation des congés</li>
-          <li><strong>Lois locales :</strong> Exigences minimales de congés par la loi</li>
+          <li>L'âge est calculé selon le calendrier grégorien</li>
+          <li>Si votre anniversaire n'est pas encore passé cette année, un an est soustrait du calcul</li>
+          <li>L'âge peut être exprimé en plusieurs formats (années, mois, jours)</li>
+          <li>Les années bissextiles affectent les calculs d'âge pour les personnes nées le 29 février</li>
+          <li>Les fuseaux horaires n'affectent pas les calculs d'âge car nous ne considérons que les dates</li>
         </ul>
         
-        <div class="leave-tips">
-          <h3><i class="fas fa-lightbulb"></i> Conseils de gestion des congés</h3>
-          <p>Envisagez ces conseils pour gérer efficacement vos congés :</p>
-          <ul>
-            <li>Planifiez vos congés à l'avance pour assurer une couverture adéquate</li>
-            <li>Comprenez les politiques et procédures de congés de votre entreprise</li>
-            <li>Suivez votre solde de congés tout au long de l'année</li>
-            <li>Communiquez avec votre équipe au sujet de vos absences prévues</li>
-            <li>Envisagez d'espacer les congés pour éviter l'épuisement professionnel</li>
-          </ul>
-        </div>
+        <h3>Calculs d'âge courants</h3>
+        <p>Certains calculs d'âge fréquemment utilisés :</p>
+        <ul>
+          <li>Majorité légale : 18 ans dans de nombreux pays</li>
+          <li>Âge de la retraite : Généralement 65-70 ans selon le pays</li>
+          <li>Âge de conduire : Habituellement 16-18 ans</li>
+          <li>Éligibilité universitaire : Généralement 18 ans</li>
+          <li>Enfance : Jusqu'à 12 ans</li>
+        </ul>
       </div>
     </div>
   </main>
@@ -960,12 +1000,12 @@
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>Votre source fiable pour les calculateurs de la vie quotidienne et les outils financiers. Nous vous aidons à prendre des décisions éclairées depuis 2025.</p>
+        <p>Votre source de confiance pour les calculateurs de la vie quotidienne et les outils financiers. Nous vous aidons à calculer votre âge depuis 2025.</p>
       </div>
       <div class="footer-column">
         <h3>Autres calculateurs utiles</h3>
         <ul class="footer-links">
-          <li><a href="/fr/finance/auto-loan-calculator.html">Calculateur de prêt auto</a></li>
+          <li><a href="/fr/finance/auto-loan-calculator.html">Calculateur de prêt automobile</a></li>
           <li><a href="/fr/finance/home-loan-calculator.html">Calculateur de prêt hypothécaire</a></li>
           <li><a href="/fr/daily-life/salary-calculator.html">Calculateur de salaire</a></li>
           <li><a href="/fr/finance/tax-calculator.html">Calculateur d'impôt</a></li>
@@ -984,7 +1024,7 @@
         <a href="/privacy-fr.html">Politique de confidentialité</a> | 
         <a href="/terms-fr.html">Conditions d'utilisation</a>
       </p>
-      <p><small>Remarque : Ces calculateurs fournissent uniquement des estimations. Consultez votre service RH pour des droits spécifiques.</small></p>
+      <p><small>Remarque : Les calculs d'âge sont basés sur le calendrier grégorien. Les résultats peuvent varier pour d'autres systèmes calendaires.</small></p>
     </div>
   </footer>
 
@@ -994,124 +1034,152 @@
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
       const langSelect = document.getElementById('lang-select');
-      const employeeName = document.getElementById('employee-name');
-      const hiringDate = document.getElementById('hiring-date');
-      const yearMonth = document.getElementById('year-month');
-      const leaveQuota = document.getElementById('leave-quota');
-      const usedLeave = document.getElementById('used-leave');
-      const plannedLeave = document.getElementById('planned-leave');
-      const calculateBtn = document.getElementById('calculate-btn');
-      const resultContainer = document.getElementById('result-container');
-      const leaveSummary = document.getElementById('leave-summary');
-      const leaveDetails = document.getElementById('leave-details');
-      const leaveTable = document.getElementById('leave-table').querySelector('tbody');
       
-      // Chart variable
-      let leaveChart = null;
+      // Age calculator elements
+      const birthDate = document.getElementById('birth-date');
+      const calculateDate = document.getElementById('calculate-date');
+      const calculateAgeBtn = document.getElementById('calculate-age');
+      const ageResultContainer = document.getElementById('age-result-container');
+      const ageDisplay = document.getElementById('age-display');
+      const ageFormats = document.getElementById('age-formats');
       
-      // Format number with comma separator
-      function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // Set default dates
+      function setDefaultDates() {
+        const today = new Date();
+        const todayFormatted = formatDate(today);
+        
+        // Set calculate date to today
+        calculateDate.value = todayFormatted;
+        
+        // Set birth date to 30 years ago
+        const thirtyYearsAgo = new Date();
+        thirtyYearsAgo.setFullYear(today.getFullYear() - 30);
+        birthDate.value = formatDate(thirtyYearsAgo);
       }
       
-      // Calculate Leave function
-      function calculateLeave() {
-        // Get input values
-        const name = employeeName.value || 'Employé';
-        const quota = parseFloat(leaveQuota.value) || 0;
-        const used = parseFloat(usedLeave.value) || 0;
-        const planned = parseFloat(plannedLeave.value) || 0;
+      // Format date to YYYY-MM-DD
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+      
+      // Calculate age
+      function calculateAge() {
+        const birth = new Date(birthDate.value);
+        const calc = new Date(calculateDate.value);
         
-        // Calculate remaining leave
-        const remaining = Math.max(quota - used - planned, 0);
-        
-        // Update results display
-        document.getElementById('quota-value').textContent = `${quota} jours`;
-        document.getElementById('used-value').textContent = `${used} jours`;
-        document.getElementById('planned-value').textContent = `${planned} jours`;
-        document.getElementById('remaining-value').textContent = `${remaining} jours`;
-        
-        // Update leave summary
-        leaveSummary.textContent = `Congés restants : ${remaining} jours`;
-        
-        // Update leave details
-        document.getElementById('employee-name-display').textContent = name;
-        document.getElementById('remaining-leave-display').textContent = remaining;
-        document.getElementById('used-leave-display').textContent = used;
-        document.getElementById('planned-leave-display').textContent = planned;
-        
-        // Update leave balance field
-        document.getElementById('leave-balance').value = remaining;
-        
-        // Update footer totals
-        document.getElementById('total-used-leave').textContent = `${used} jours`;
-        document.getElementById('total-remaining-leave').textContent = `${remaining} jours`;
-        
-        // Create or update leave chart
-        const ctx = document.getElementById('leave-chart').getContext('2d');
-        if (leaveChart) {
-          leaveChart.destroy();
+        if (isNaN(birth) || isNaN(calc)) {
+          ageDisplay.innerHTML = "Veuillez sélectionner des dates valides";
+          ageResultContainer.style.display = "block";
+          return;
         }
         
-        leaveChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ['Congés utilisés', 'Congés planifiés', 'Congés restants'],
-            datasets: [ {
-              data: [used, planned, remaining],
-              backgroundColor: [
-                '#4db5bd',
-                '#ffd166',
-                '#9c88ff'
-              ],
-              borderWidth: 1
-            } ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'right',
-                labels: {
-                  font: {
-                    family: 'Segoe UI',
-                    size: 12
-                  }
-                }
-              },
-              tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    const label = context.label || '';
-                    const value = context.raw;
-                    return `${label} : ${value} jours`;
-                  }
-                }
-              }
-            }
-          }
-        });
+        // Calculate age in milliseconds
+        let age = calc - birth;
         
-        // Show result container
-        resultContainer.style.display = 'block';
+        if (age < 0) {
+          ageDisplay.innerHTML = "Veuillez sélectionner une date de calcul postérieure à votre date de naissance";
+          ageResultContainer.style.display = "block";
+          return;
+        }
+        
+        // Calculate years, months, and days
+        let years = calc.getFullYear() - birth.getFullYear();
+        let months = calc.getMonth() - birth.getMonth();
+        let days = calc.getDate() - birth.getDate();
+        
+        // Adjust for negative months/days
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+        
+        if (days < 0) {
+          // Get last day of previous month
+          const lastDay = new Date(calc.getFullYear(), calc.getMonth(), 0).getDate();
+          days += lastDay;
+          months--;
+          
+          // Adjust months if needed
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
+        }
+        
+        // Calculate total days
+        const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
+        
+        // Calculate weeks
+        const weeks = Math.floor(totalDays / 7);
+        
+        // Calculate months (another way)
+        const totalMonths = years * 12 + months;
+        
+        // Calculate hours, minutes, seconds
+        const hours = Math.floor((age % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((age % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((age % (1000 * 60)) / 1000);
+        
+        // Display results
+        ageDisplay.innerHTML = `
+          <div class="age-unit">
+            <div class="age-value">${years}</div>
+            <div class="age-label">ANNÉES</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${months}</div>
+            <div class="age-label">MOIS</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${days}</div>
+            <div class="age-label">JOURS</div>
+          </div>
+        `;
+        ageResultContainer.style.display = "block";
+        
+        // Format results
+        ageFormats.innerHTML = '';
+        
+        const formats = [
+          { value: `${years} an${years !== 1 ? 's' : ''}`, label: "Années" },
+          { value: `${totalMonths} mois`, label: "Mois" },
+          { value: `${weeks} semaine${weeks !== 1 ? 's' : ''}`, label: "Semaines" },
+          { value: `${totalDays} jour${totalDays !== 1 ? 's' : ''}`, label: "Jours" },
+          { value: `${Math.floor(totalDays / 365.25)} an${Math.floor(totalDays / 365.25) !== 1 ? 's' : ''}`, label: "Années solaires" },
+          { value: `${Math.floor(totalDays / 30.44)} mois`, label: "Mois approximatifs" },
+          { value: `${totalDays * 24} heure${totalDays * 24 !== 1 ? 's' : ''}`, label: "Heures" },
+          { value: `${totalDays * 24 * 60} minute${totalDays * 24 * 60 !== 1 ? 's' : ''}`, label: "Minutes" },
+          { value: `${totalDays * 24 * 60 * 60} seconde${totalDays * 24 * 60 * 60 !== 1 ? 's' : ''}`, label: "Secondes" }
+        ];
+        
+        formats.forEach(format => {
+          const formatCard = document.createElement('div');
+          formatCard.className = 'format-card';
+          formatCard.innerHTML = `
+            <div class="format-value">${format.value}</div>
+            <div class="format-label">${format.label}</div>
+          `;
+          ageFormats.appendChild(formatCard);
+        });
       }
       
       // Event Listeners
-      calculateBtn.addEventListener('click', calculateLeave);
+      calculateAgeBtn.addEventListener('click', calculateAge);
       
       // Allow Enter key to trigger calculation
       const inputFields = [
-        employeeName, 
-        hiringDate, 
-        leaveQuota,
-        usedLeave,
-        plannedLeave
+        birthDate, 
+        calculateDate
       ];
       
       inputFields.forEach(field => {
         field.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') calculateLeave();
+          if (e.key === 'Enter') {
+            calculateAge();
+          }
         });
       });
       
@@ -1137,20 +1205,20 @@
         
         // Build target URL based on selected language
         switch(selectedLang) {
+          case 'en':
+            targetUrl = '/en/daily-life/age-calculator.html';
+            break;
           case 'zh':
-            targetUrl = '/zh/daily-life/leave-calculator.html';
+            targetUrl = '/zh/daily-life/age-calculator.html';
             break;
           case 'es':
-            targetUrl = '/es/daily-life/leave-calculator.html';
+            targetUrl = '/es/daily-life/age-calculator.html';
             break;
           case 'de':
-            targetUrl = '/de/daily-life/leave-calculator.html';
-            break;
-          case 'en':
-            targetUrl = '/en/daily-life/leave-calculator.html';
+            targetUrl = '/de/daily-life/age-calculator.html';
             break;
           default: // French
-            targetUrl = '/fr/daily-life/leave-calculator.html';
+            targetUrl = '/fr/daily-life/age-calculator.html';
         }
         
         window.location.href = targetUrl;
@@ -1174,7 +1242,10 @@
       });
       
       // Initialize the calculator with default values
-      window.addEventListener('load', calculateLeave;
+      window.addEventListener('load', () => {
+        setDefaultDates();
+        calculateAge();
+      });
     })();
   </script>
 </body>
