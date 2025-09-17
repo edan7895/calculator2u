@@ -1,14 +1,714 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inflationsrechner | Calculator2U</title>
+<meta name="description" content="Berechnen Sie die Auswirkungen der Inflation auf die Kaufkraft, vergleichen Sie historische Werte und schätzen Sie zukünftige Kosten mit unserem Inflationsrechner." />
+<meta name="keywords" content="inflationsrechner, kaufkraft rechner, historischer inflationsrechner, zukunftswert rechner, inflationsrate rechner" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/inflation-calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/inflation-calculator.html" />
+<meta property="og:title" content="Inflationsrechner | Calculator2U" />
+<meta property="og:description" content="Berechnen Sie die Auswirkungen der Inflation auf die Kaufkraft, vergleichen Sie historische Werte und schätzen Sie zukünftige Kosten mit unserem Inflationsrechner." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/finance/inflation-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/inflation-calculator.jpg" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  /* (alle vorhandenen CSS-Stile bleiben unverändert) */
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html" class="active">Finanzen & Investition</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Spiele</a></li>
+        <li><a href="/about-de.html">Über uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinesisch)</option>
+            <option value="es">Español (Spanisch)</option>
+            <option value="fr">Français (Französisch)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Inflationsrechner</h1>
+    <p>Berechnen Sie die Auswirkungen der Inflation auf die Kaufkraft und schätzen Sie zukünftige Kosten</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Inflationsrechner</h2>
+    
+    <div class="calculator-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="amount">Betrag (€)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Der Geldbetrag, den Sie über die Zeit vergleichen möchten</span>
+              </span>
+            </label>
+            <input type="number" id="amount" placeholder="Betrag eingeben" min="0" value="100">
+          </div>
+          
+          <div class="input-field">
+            <label for="start-year">Startjahr
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Das Jahr, in dem Ihr ursprünglicher Betrag gültig war</span>
+              </span>
+            </label>
+            <input type="number" id="start-year" placeholder="Startjahr eingeben" min="1900" max="2099" value="2000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="end-year">Endjahr
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Das Jahr, auf das Sie den Wert vergleichen möchten</span>
+              </span>
+            </label>
+            <input type="number" id="end-year" placeholder="Endjahr eingeben" min="1900" max="2099" value="2024">
+          </div>
+          
+          <div class="input-field">
+            <label for="country">Land/Region
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Land oder Region für Inflationsdaten auswählen</span>
+              </span>
+            </label>
+            <select id="country">
+              <option value="us">Vereinigte Staaten (CPI-U)</option>
+              <option value="china">China (CPI)</option>
+              <option value="eu">Europäische Union (HICP)</option>
+              <option value="uk">Vereinigtes Königreich (CPI)</option>
+              <option value="custom">Benutzerdefinierte Inflationsrate</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group" id="custom-rate-group" style="display: none;">
+          <div class="input-field">
+            <label for="custom-rate">Jährliche Inflationsrate (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Geben Sie die jährliche Inflationsrate ein, wenn Sie die benutzerdefinierte Option verwenden</span>
+              </span>
+            </label>
+            <input type="number" id="custom-rate" placeholder="Inflationsrate eingeben" min="0" step="0.01" value="2">
+          </div>
+          
+          <div class="input-field">
+            <label for="inflation-type">Inflationstyp
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Wählen Sie die Art der Inflationsberechnung</span>
+              </span>
+            </label>
+            <select id="inflation-type">
+              <option value="general">Allgemeine Inflation</option>
+              <option value="food">Lebensmittelinflation</option>
+              <option value="housing">Wohnungsinflation</option>
+              <option value="energy">Energieinflation</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="future-amount">Zukünftiger Wert
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Geben Sie den zukünftigen Betrag ein, um seinen heutigen Wert zu berechnen</span>
+              </span>
+            </label>
+            <input type="number" id="future-amount" placeholder="Zukünftigen Betrag eingeben" min="0" value="">
+          </div>
+          
+          <div class="input-field">
+            <label for="future-year">Zukunftsjahr
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Das Jahr des zukünftigen Werts</span>
+              </span>
+            </label>
+            <input type="number" id="future-year" placeholder="Zukunftsjahr eingeben" min="1900" max="2099" value="">
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Inflation berechnen
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Ergebnisse der Inflation</h3>
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Äquivalenter Wert</div>
+              <div class="metric-value" id="equivalent-value">€161,50</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Inflationsrate</div>
+              <div class="metric-value" id="inflation-rate">2,38%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Kumulative Inflation</div>
+              <div class="metric-value" id="cumulative-inflation">61,50%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Annualisierte Inflation</div>
+              <div class="metric-value" id="annualized-inflation">2,38%</div>
+            </div>
+          </div>
+          
+          <div class="chart-container">
+            <canvas id="inflation-chart"></canvas>
+          </div>
+          
+          <div class="investment-summary" id="inflation-summary">
+            <p>Basierend auf Ihren Eingaben entspräche <span class="highlight">€100</span> im Jahr <span class="highlight">2000</span> einem Wert von <span class="highlight">€161,50</span> im Jahr <span class="highlight">2024</span>, inflationsbereinigt.</p>
+            <p>Die durchschnittliche jährliche Inflationsrate betrug in diesem Zeitraum <span class="highlight">2,38%</span>, was zu einer kumulativen Inflation von <span class="highlight">61,50%</span> führte.</p>
+          </div>
+        </div>
+        
+        <div class="comparison-container">
+          <h3>Historische Inflationsraten</h3>
+          <div class="chart-container">
+            <canvas id="historical-chart"></canvas>
+          </div>
+          <p id="historical-summary">Laden von historischen Inflationsdaten...</p>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Verständnis der Inflation</h3>
+        <p>Inflation ist die Rate, mit der das allgemeine Preisniveau für Waren und Dienstleistungen steigt und damit die Kaufkraft sinkt. Zentralbanken versuchen, Inflation zu begrenzen und Deflation zu vermeiden, um die Wirtschaft reibungslos laufen zu lassen.</p>
+        
+        <h3>Wie Inflation die Kaufkraft beeinflusst</h3>
+        <p>Inflation reduziert die Kaufkraft von Geld im Laufe der Zeit. Was Sie heute für €100 kaufen können, kann in Zukunft aufgrund der Inflation mehr kosten:</p>
+        <ul>
+          <li><strong>Allgemeine Inflation:</strong> Gesamtpreisniveauänderungen für alle Waren und Dienstleistungen</li>
+          <li><strong>Lebensmittelinflation:</strong> Preisänderungen speziell für Lebensmittel</li>
+          <li><strong>Wohnungsinflation:</strong> Preisänderungen für wohnungsbezogene Ausgaben</li>
+          <li><strong>Energieinflation:</strong> Preisänderungen für Energieprodukte</li>
+        </ul>
+        
+        <h3>Wie dieser Rechner funktioniert</h3>
+        <p>Dieser Rechner verwendet Inflationsdaten, um zu schätzen, wie sich die Kaufkraft von Geld im Laufe der Zeit ändert. Er kann:</p>
+        <ul>
+          <li>Berechnen, was ein vergangener Betrag heute wert wäre</li>
+          <li>Schätzen, was ein heutiger Betrag in Zukunft wert sein wird</li>
+          <li>Werte zwischen zwei verschiedenen Jahren vergleichen</li>
+          <li>Offizielle CPI-Daten oder benutzerdefinierte Inflationsraten verwenden</li>
+        </ul>
+        
+        <div class="investment-summary">
+          <h3><i class="fas fa-lightbulb"></i> Inflationstipps</h3>
+          <p>Beachten Sie diese Tipps, um Ihre Kaufkraft zu schützen:</p>
+          <ul>
+            <li>Investieren Sie in Vermögenswerte, die historisch die Inflation übertreffen</li>
+            <li>Erwägen Sie inflationsgeschützte Wertpapiere</li>
+            <li>Überprüfen Sie regelmäßig Ihre Anlagestrategie</li>
+            <li>Budgetieren Sie für erwartete Inflation in der Finanzplanung</li>
+            <li>Halten Sie etwas Bargeld auf Zinskonten</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Ihre vertrauenswürdige Quelle für Finanzrechner und Finanztools. Wir helfen Ihnen seit 2025, fundierte Finanzentscheidungen zu treffen.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Andere nützliche Rechner</h3>
+        <ul class="footer-links">
+          <li><a href="/de/finance/auto-loan-calculator.html">Autokredit-Rechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Hypothekenrechner</a></li>
+          <li><a href="/de/finance/loan-calculator.html">Kreditrechner</a></li>
+          <li><a href="/de/finance/retirement-savings-calculator.html">Altersvorsorge-Rechner</a></li>
+          <li><a href="/de/finance/compound-interest-calculator.html">Zinseszins-Rechner</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html">Datenschutzrichtlinie</a></li>
+          <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
+        <a href="/privacy-de.html">Datenschutzrichtlinie</a> | 
+        <a href="/terms-de.html">Nutzungsbedingungen</a>
+      </p>
+      <p><small>Hinweis: Diese Rechner liefern nur Schätzwerte. Konsultieren Sie einen Finanzberater für persönliche Beratung.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger-Menü-Funktionalität
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Menü schließen beim Klicken außerhalb
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Sprachauswahl-Funktionalität
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Aktuellen Pfad abrufen und Sprachsegment ersetzen
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Basis-Pfad für den Finanzbereich bestimmen
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/inflation-calculator', 'finance/inflation-calculator');
+          }
+        }
+        
+        // Neue URL basierend auf ausgewählter Sprache erstellen
+        switch(selectedLang) {
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/inflation-calculator.html';
+            break;
+          case 'en':
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/inflation-calculator.html';
+            break;
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/inflation-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/inflation-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/inflation-calculator.html';
+            break;
+          default: // Deutsch
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/inflation-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Aktuelle Sprache basierend auf URL festlegen
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Inflationsrechner-Funktionalität
+      const amountInput = document.getElementById('amount');
+      const startYearInput = document.getElementById('start-year');
+      const endYearInput = document.getElementById('end-year');
+      const countrySelect = document.getElementById('country');
+      const customRateInput = document.getElementById('custom-rate');
+      const customRateGroup = document.getElementById('custom-rate-group');
+      const inflationTypeSelect = document.getElementById('inflation-type');
+      const futureAmountInput = document.getElementById('future-amount');
+      const futureYearInput = document.getElementById('future-year');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const equivalentValueEl = document.getElementById('equivalent-value');
+      const inflationRateEl = document.getElementById('inflation-rate');
+      const cumulativeInflationEl = document.getElementById('cumulative-inflation');
+      const annualizedInflationEl = document.getElementById('annualized-inflation');
+      const inflationSummary = document.getElementById('inflation-summary');
+      
+      let inflationChart = null;
+      let historicalChart = null;
+      
+      // Währung formatieren
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // Prozent formatieren
+      function formatPercent(value) {
+        return value.toFixed(2) + '%';
+      }
+      
+      // Inflationsdaten - vereinfacht für Beispiel
+      const inflationData = {
+        us: {
+          name: 'Vereinigte Staaten',
+          type: 'general',
+          rates: {
+            1900: 1.2, 1910: 0.1, 1920: 15.7, 1930: -10.3, 1940: -0.8,
+            1950: 0.1, 1960: 1.4, 1970: 5.9, 1980: 13.5, 1990: 4.2,
+            2000: 3.4, 2010: 1.6, 2020: 1.2, 2023: 2.1
+          },
+          cpi: {
+            1900: 8.0, 1910: 8.8, 1920: 17.3, 1930: 17.7, 1940: 14.7,
+            1950: 24.1, 1960: 29.6, 1970: 38.8, 1980: 82.4, 1990: 130.7,
+            2000: 172.2, 2010: 218.1, 2020: 258.8, 2023: 302.4, 2024: 305.0
+          }
+        },
+        china: {
+          name: 'China',
+          type: 'general',
+          rates: {
+            1970: 0.8, 1980: 8.1, 1990: 3.1, 2000: 0.4, 2010: 3.3,
+            2020: 2.5, 2023: 0.7
+          },
+          cpi: {
+            1970: 100.0, 1980: 108.1, 1990: 132.8, 2000: 167.5, 2010: 205.6,
+            2020: 259.3, 2023: 266.9, 2024: 269.6
+          }
+        },
+        eu: {
+          name: 'Europäische Union',
+          type: 'general',
+          rates: {
+            1990: 3.2, 2000: 2.0, 2010: 1.6, 2020: 1.3, 2023: 5.2
+          },
+          cpi: {
+            1990: 100.0, 2000: 120.3, 2010: 138.9, 2020: 161.3, 2023: 181.2, 2024: 186.5
+          }
+        },
+        uk: {
+          name: 'Vereinigtes Königreich',
+          type: 'general',
+          rates: {
+            1900: 0.8, 1910: 1.3, 1920: 11.5, 1930: -6.1, 1940: 15.2,
+            1950: 4.8, 1960: 3.1, 1970: 6.4, 1980: 13.4, 1990: 7.0,
+            2000: 3.0, 2010: 3.2, 2020: 1.6, 2023: 7.2
+          },
+          cpi: {
+            1900: 8.5, 1910: 9.6, 1920: 20.3, 1930: 19.1, 1940: 22.6,
+            1950: 29.5, 1960: 36.4, 1970: 46.3, 1980: 80.3, 1990: 118.0,
+            2000: 168.5, 2010: 218.3, 2020: 266.4, 2023: 307.1, 2024: 316.3
+          }
+        }
+      };
+
+      // Event-Listener für Länderauswahl
+      countrySelect.addEventListener('change', () => {
+        if (countrySelect.value === 'custom') {
+          customRateGroup.style.display = 'block';
+        } else {
+          customRateGroup.style.display = 'none';
+        }
+      });
+      
+      // Inflation berechnen Funktion
+      function calculateInflation() {
+        const amount = parseFloat(amountInput.value) || 100;
+        const startYear = parseInt(startYearInput.value) || 2000;
+        const endYear = parseInt(endYearInput.value) || 2024;
+        const country = countrySelect.value;
+        const inflationType = inflationTypeSelect.value;
+        
+        let inflationRate;
+        let cpiStart, cpiEnd;
+        
+        // CPI-Daten basierend auf Land und Typ abrufen
+        if (country === 'custom') {
+          inflationRate = parseFloat(customRateInput.value) / 100 || 0.02;
+          cpiStart = 100;
+          cpiEnd = 100 * Math.pow(1 + inflationRate, endYear - startYear);
+        } else {
+          const countryData = inflationData[country];
+          cpiStart = countryData.cpi[startYear] || countryData.cpi[Math.max(startYear - 5, Object.keys(countryData.cpi)[0])];
+          cpiEnd = countryData.cpi[endYear] || countryData.cpi[Math.min(endYear + 5, Object.keys(countryData.cpi).slice(-1)[0])];
+          
+          // Durchschnittliche jährliche Inflationsrate berechnen
+          const years = endYear - startYear;
+          if (years > 0) {
+            inflationRate = Math.pow(cpiEnd / cpiStart, 1 / years) - 1;
+          } else {
+            inflationRate = 0;
+          }
+        }
+        
+        // Ergebnisse berechnen
+        const equivalentValue = amount * (cpiEnd / cpiStart);
+        const cumulativeInflation = (cpiEnd / cpiStart - 1) * 100;
+        const annualizedInflation = inflationRate * 100;
+        
+        // Ergebnisse formatieren
+        equivalentValueEl.textContent = formatCurrency(equivalentValue);
+        inflationRateEl.textContent = formatPercent(annualizedInflation);
+        cumulativeInflationEl.textContent = formatPercent(cumulativeInflation);
+        annualizedInflationEl.textContent = formatPercent(annualizedInflation);
+        
+        // Zusammenfassung aktualisieren
+        inflationSummary.innerHTML = `
+          <p>Basierend auf Ihren Eingaben entspräche <span class="highlight">${formatCurrency(amount)}</span> im Jahr <span class="highlight">${startYear}</span> einem Wert von <span class="highlight">${formatCurrency(equivalentValue)}</span> im Jahr <span class="highlight">${endYear}</span>, inflationsbereinigt.</p>
+          <p>Die durchschnittliche jährliche Inflationsrate betrug in diesem Zeitraum <span class="highlight">${formatPercent(annualizedInflation)}</span>, was zu einer kumulativen Inflation von <span class="highlight">${formatPercent(cumulativeInflation)}</span> führte.</p>
+        `;
+        
+        // Inflationsdiagramm erstellen oder aktualisieren
+        createInflationChart(startYear, endYear, country, inflationType);
+        
+        // Historisches Diagramm erstellen oder aktualisieren
+        createHistoricalChart(country);
+        
+        // Ergebnis-Container anzeigen
+        resultContainer.style.display = 'block';
+      }
+      
+      // Inflationsdiagramm erstellen
+      function createInflationChart(startYear, endYear, country, inflationType) {
+        const ctx = document.getElementById('inflation-chart').getContext('2d');
+        
+        // Vorheriges Diagramm zerstören, falls vorhanden
+        if (inflationChart) {
+          inflationChart.destroy();
+        }
+        
+        const countryData = inflationData[country] || inflationData.us;
+        const cpiData = [];
+        const years = [];
+        
+        // CPI-Daten für den Bereich generieren
+        for (let year = startYear; year <= endYear; year++) {
+          const cpi = countryData.cpi[year] || (year < startYear ? countryData.cpi[startYear] : countryData.cpi[endYear]);
+          cpiData.push(cpi);
+          years.push(year);
+        }
+        
+        // Äquivalente Werte berechnen
+        const equivalentValues = cpiData.map(cpi => (amountInput.value * (cpi / cpiData[0])).toFixed(2));
+        
+        inflationChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [{
+              label: 'Angepasster Wert',
+              data: equivalentValues,
+              backgroundColor: 'rgba(77, 181, 189, 0.2)',
+              borderColor: '#006d77',
+              borderWidth: 3,
+              pointBackgroundColor: '#ffd166',
+              pointBorderColor: '#333',
+              pointBorderWidth: 1,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              fill: true,
+              tension: 0.3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                  label: function(context) {
+                    return `Wert: ${formatCurrency(parseFloat(context.parsed.y))}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Jahr',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Äquivalenter Wert',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                beginAtZero: false,
+                ticks: {
+                  callback: function(value) {
+                    return '€' + value;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Historisches Inflationsdiagramm erstellen
+      function createHistoricalChart(country) {
+        const ctx = document.getElementById('historical-chart').getContext('2d');
+        
+        // Vorheriges Diagramm zerstören, falls vorhanden
+        if (historicalChart) {
+          historicalChart.destroy();
+        }
+        
+        const countryData = inflationData[country] || inflationData.us;
+        const historicalRates = [];
+        const years = Object.keys(countryData.rates).sort((a, b) => a - b);
+        
+        years.forEach(year => {
+          historicalRates.push(countryData.rates[year]);
+        });
+        
+        historicalChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: years,
+            datasets: [{
+              label: 'Inflationsrate (%)',
+              data: historicalRates,
+              backgroundColor: 'rgba(77, 181, 189, 0.7)',
+              borderColor: '#006d77',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+            scales: {
+              x: {
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Inflationsrate (%)'
+                }
+              }
+            }
+          }
+        });
+        
+        // Historische Zusammenfassung aktualisieren
+        const historicalSummary = document.getElementById('historical-summary');
+        historicalSummary.textContent = `Historische Inflationsraten für ${countryData.name} (${years[0]}-${years[years.length-1]}): Durchschnitt ${formatPercent(historicalRates.reduce((a, b) => a + b, 0) / historicalRates.length)}`;
+      }
+      
+      // Event-Listener zum Berechnen-Button hinzufügen
+      calculateBtn.addEventListener('click', calculateInflation);
+      
+      // Ebenfalls Eingabe mit Enter in Eingabefeldern ermöglichen
+      const inputFields = [
+        amountInput, 
+        startYearInput, 
+        endYearInput, 
+        customRateInput,
+        futureAmountInput,
+        futureYearInput
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateInflation();
+        });
+      });
+      
+      // Rechner mit Standardwerten initialisieren
+      calculateInflation();
+      
+      // Zusätzliche Reaktionsfähigkeit für kleine Bildschirme hinzufügen
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.calculator-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 

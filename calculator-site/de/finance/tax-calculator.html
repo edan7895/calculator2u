@@ -1,14 +1,1640 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Steuerrechner | Calculator2U</title>
+<meta name="description" content="Berechnen Sie Ihre Steuerpflicht, Steuerstufen und Steuernachlässen für Ihr Einkommen" />
+<meta name="keywords" content="steuerrechner, einkommensteuerrechner, steuernachlassrechner, steuererklärung" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/tax-calculator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/tax-calculator.html " />
+<meta property="og:title" content="Steuerrechner | Calculator2U" />
+<meta property="og:description" content="Berechnen Sie Ihre Steuerpflicht, Steuerstufen und Steuernachlässen für Ihr Einkommen" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/finance/tax-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/tax-calculator.jpg " />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Tax Calculator Styles */
+  .tax-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .tax-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select,
+  .input-field textarea {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .tax-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .tax-deductions {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Tax comparison chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Tax Summary */
+  .tax-summary-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tax-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .tax-summary-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .tax-summary-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .tax-summary-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .tax-summary-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tax-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 430px */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .tax-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .tax-summary-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
+    }
+    
+    .tax-summary-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .tax-summary-table th,
+    .tax-summary-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .tax-amount {
+      font-size: 2rem;
+      word-break: break-all;
+    }
+    
+    .tax-deductions {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Fix for chart container */
+    .chart-container canvas {
+      max-width: 100%;
+    }
+  }
+
+  /* Tax comparison styles */
+  .comparison-container {
+    margin-top: 2rem;
+  }
+
+  .comparison-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .comparison-btn:hover {
+    background: #ffc043;
+  }
+
+  .comparison-input {
+    display: none;
+    margin-bottom: 1rem;
+  }
+
+  .comparison-input input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 1rem;
+  }
+
+  .comparison-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .comparison-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #006d77;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* Tax type styles */
+  .tax-type-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .tax-type-btn {
+    background: #4db5bd;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .tax-type-btn.active {
+    background: #006d77;
+  }
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html">Finanzen & Investment</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Alltag</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Games</a></li>
+        <li><a href="/about-de.html">Über Uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Steuerrechner</h1>
+    <p>Berechnen Sie Ihre Steuerpflicht, Steuernachlässe und Steuerstufen</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Einkommensteuerrechner</h2>
+    
+    <div class="tax-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="tax-type-container">
+          <button class="tax-type-btn active" data-tax-type="progressive">Progressive Steuer</button>
+          <button class="tax-type-btn" data-tax-type="flat">Flache Steuer</button>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="salary-income">Gehaltseinkommen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Ihr Jahresgehalt vor Steuern</span>
+              </span>
+            </label>
+            <input type="number" id="salary-income" placeholder="Geben Sie Ihr Gehalt ein" min="0" value="50000">
+          </div>
+          
+          <div class="input-field">
+            <label for="bonus-income">Bonus & Zulagen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Jegliche Bonusszahlungen oder Zulagen</span>
+              </span>
+            </label>
+            <input type="number" id="bonus-income" placeholder="Geben Sie Ihren Bonus ein" min="0" value="5000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="self-employed-income">Einkommen aus selbstständiger Tätigkeit ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Einkommen aus freiberuflicher oder beauftragter Arbeit</span>
+              </span>
+            </label>
+            <input type="number" id="self-employed-income" placeholder="Geben Sie Ihr selbstständiges Einkommen ein" min="0" value="10000">
+          </div>
+          
+          <div class="input-field">
+            <label for="interest-income">Zinseinkommen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Zinsen von Bankkonten</span>
+              </span>
+            </label>
+            <input type="number" id="interest-income" placeholder="Geben Sie Ihr Zinseinkommen ein" min="0" value="2000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="dividend-income">Dividendeneinkommen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Dividenden aus Investitionen</span>
+              </span>
+            </label>
+            <input type="number" id="dividend-income" placeholder="Geben Sie Ihr Dividendeneinkommen ein" min="0" value="3000">
+          </div>
+          
+          <div class="input-field">
+            <label for="rental-income">Mieteinnahmen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Einkommen aus Immobilienvermietung</span>
+              </span>
+            </label>
+            <input type="number" id="rental-income" placeholder="Geben Sie Ihre Mieteinnahmen ein" min="0" value="5000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="foreign-income">Auslandseinkommen ($)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Im Ausland verdientes Einkommen</span>
+              </span>
+            </label>
+            <input type="number" id="foreign-income" placeholder="Geben Sie Ihr Auslandseinkommen ein" min="0" value="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="foreign-currency">Ausländische Währung</label>
+            <select id="foreign-currency">
+              <option value="none">Keine</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="GBP">Britisches Pfund (GBP)</option>
+              <option value="JPY">Japanischer Yen (JPY)</option>
+              <option value="CAD">Kanadischer Dollar (CAD)</option>
+              <option value="AUD"> Australischer Dollar (AUD)</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Deductions Section -->
+        <div class="additional-options">
+          <h3>Abzüge & Steuererleichterungen</h3>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="standard-deduction">
+              <span class="slider"></span>
+            </label>
+            <span>Standardabzug verwenden</span>
+          </div>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="itemized-deductions">
+              <span class="slider"></span>
+            </label>
+            <span>Itemisierte Abzüge verwenden</span>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="education-expenses">Bildungsausgaben ($)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Qualifizierte Bildungsausgaben</span>
+                </span>
+              </label>
+              <input type="number" id="education-expenses" placeholder="Geben Sie Ihre Bildungsausgaben ein" min="0" value="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="retirement-contributions">Rücklagebeiträge ($)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Beiträge zu 401(k), IRA usw.</span>
+                </span>
+              </label>
+              <input type="number" id="retirement-contributions" placeholder="Geben Sie Ihre Rücklagebeiträge ein" min="0" value="0">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="medical-expenses">Medizinische Ausgaben ($)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Qualifizierte medizinische Ausgaben</span>
+                </span>
+              </label>
+              <input type="number" id="medical-expenses" placeholder="Geben Sie Ihre medizinischen Ausgaben ein" min="0" value="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="charitable-donations">Spenden ($)
+                <span class="tooltip">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="tooltip-text">Qualifizierte spenden</span>
+                </span>
+              </label>
+              <input type="number" id="charitable-donations" placeholder="Geben Sie Ihre Spenden ein" min="0" value="0">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-field">
+              <label for="child-credits">Kinder unter 17</label>
+              <input type="number" id="child-credits" placeholder="Anzahl der Kinder" min="0" value="0">
+            </div>
+            
+            <div class="input-field">
+              <label for="dependents">Weitere Abhängige</label>
+              <input type="number" id="dependents" placeholder="Anzahl der Abhängigen" min="0" value="0">
+            </div>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Steuern berechnen
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Ihre Steuerübersicht</h3>
+          <div class="tax-amount" id="tax-amount">$7,250.00</div>
+          <div class="tax-deductions" id="tax-deductions">Gesamte Abzüge: $12,000.00</div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Steuerpflichtiges Einkommen</div>
+              <div class="metric-value" id="taxable-income">$45,000.00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Steuersatz</div>
+              <div class="metric-value" id="tax-rate">15.00%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Effektiver Steuersatz</div>
+              <div class="metric-value" id="effective-tax-rate">12.50%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Steuersatzstufe</div>
+              <div class="metric-value" id="tax-bracket">12-22%</div>
+            </div>
+          </div>
+          
+          <!-- Tax comparison chart container -->
+          <div class="chart-container">
+            <canvas id="tax-chart"></canvas>
+          </div>
+          
+          <div class="tax-summary" id="tax-summary">
+            <p>Basierend auf Ihren Eingaben ergibt sich aus Ihrem Gesamteinkommen von <span class="highlight">$75,000</span> eine Steuerpflicht von <span class="highlight">$7,250</span>.</p>
+            <p>Nach Anwendung aller Abzüge und Steuererleichterungen beträgt Ihr verfügbares Einkommen <span class="highlight">$67,750</span>.</p>
+          </div>
+        </div>
+        
+        <div class="tax-summary-container">
+          <table class="tax-summary-table" id="tax-summary-table">
+            <thead>
+              <tr>
+                <th>Einkommensart</th>
+                <th>Grossbetrag</th>
+                <th>Steuerpflichtiger Betrag</th>
+                <th>Steuersatz</th>
+                <th>Steuerbetrag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Tax summary will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Steuerverständnis</h3>
+        <p>Steuern sind ein Prozentsatz Ihres Einkommens, den Sie an die Regierung zahlen. Das Steuersystem kann komplex sein, aber die Grundlagen zu verstehen, kann Ihnen bei der Planung helfen:</p>
+        <ul>
+          <li><strong>Grosses Einkommen:</strong> Das gesamte Einkommen aus allen Quellen vor Abzügen</li>
+          <li><strong>Steuerpflichtiges Einkommen:</strong> Der Einkommensanteil, der Steuern unterliegt, nach Abzügen</li>
+          <li><strong>Steuersatzstufen:</strong> Die Prozentsätze, die auf unterschiedliche Anteile Ihres Einkommens angewendet werden</li>
+          <li><strong>Abzüge:</strong> Beträge, die vom Grossgehalt abgezogen werden, um das steuerpflichtige Einkommen zu verringern</li>
+          <li><strong>Steuererleichterungen:</strong> Beträge, die direkt vom Steuersatz abgezogen werden</li>
+        </ul>
+        
+        <h3>Steuertypen erklärt</h3>
+        <p>Der Steuerrechner unterstützt zwei Hauptsteuersysteme:</p>
+        <ul>
+          <li><strong>Progressive Steuer:</strong> Höhere Einkommensanteile werden zu höheren Steuersätzen besteuert. Beispielsweise könnte das erste $10,000 zu 10 % besteuert werden, das nächste $30,000 zu 15 % usw.</li>
+          <li><strong>Flache Steuer:</strong> Das gesamte Einkommen wird unabhängig von der Höhe zu derselben Steuersatz besteuert</li>
+        </ul>
+        
+        <h3>Steuerplanungstipps</h3>
+        <p>Bedenken Sie diese Tipps, um Ihre Steuersituation zu optimieren:</p>
+        <ul>
+          <li>Nutzen Sie Rentenkonten mit Steuererleichterungen wie 401(k) oder IRA</li>
+          <li>Halten Sie Rekorde aller abrechenbaren Ausgaben</li>
+          <li>Überlegen Sie sich die zeitliche Anpassung von Einkommen und Abzügen zur Optimierung des Steuereffekts</li>
+          <li>Nutzen Sie Steuererleichterungen für Abhängige, Bildung und Energieeffizienz</li>
+          <li>Legen Sie bei komplexen Situationen einen Steuerberater zu Rate</li>
+        </ul>
+        
+        <div class="tax-summary">
+          <h3><i class="fas fa-lightbulb"></i> Wichtige Steuertermine</h3>
+          <p>Denken Sie an diese wichtigen Termine für die Steuererklärung:</p>
+          <ul>
+            <li><strong>15. April:</strong> Traditioneller Steuererklärungsfrist für Einzelpersonen</li>
+            <li><strong>15. Oktober:</strong> Frist für Verlängerungsanträge</li>
+            <li><strong>31. Januar:</strong> Arbeitgeber müssen W-2-Formulare ausstellen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Ihr vertrauenswürdiger Anbieter für Finanzrechner und Finanztools. Wir helfen Ihnen seit 2025, fundierte Finanzentscheidungen zu treffen.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Sonstige nützliche Rechner</h3>
+        <ul class="footer-links">
+          <li><a href="/de/finance/auto-loan-calculator.html">Autokreditrechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Hypothekenrechner</a></li>
+          <li><a href="/de/finance/loan-calculator.html">Kreditrechner</a></li>
+          <li><a href="/de/finance/compound-interest-calculator-calculator.html">Zinseszinsrechner</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html">Datenschutzrichtlinie</a></li>
+          <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
+        <a href="/privacy-de.html">Datenschutzrichtlinie</a> | 
+        <a href="/terms-de.html">Nutzungsbedingungen</a>
+      </p>
+      <p><small>Hinweis: Diese Rechner liefern nur Schätzungen. Für personalisierte Beratung wenden Sie sich bitte an einen Steuerberater.</small></p>
+    </div>
+  </footer>
+
+<script>
+  (function(){
+    // Hamburger-Menü-Funktionalität
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
+    // Menü schließen bei Klick außerhalb
+    document.addEventListener('click', (event) => {
+      const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+      if (!isClickInsideNav && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    });
+
+    // Sprachumschaltung
+    const langSelect = document.getElementById('lang-select');
+    langSelect.addEventListener('change', function () {
+      const selectedLang = this.value;
+      let targetUrl = '';
+      const currentPath = window.location.pathname;
+      const pathSegments = currentPath.split('/');
+
+      let financePath = '';
+      if (currentPath.includes('/finance/')) {
+        const financeIndex = pathSegments.findIndex(seg => seg === 'finance');
+        if (financeIndex !== -1) {
+          financePath = pathSegments.slice(financeIndex).join('/').replace('finance/tax-calculator', 'finance/tax-calculator');
+        }
+      }
+
+      switch (selectedLang) {
+        case 'zh':
+          targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/tax-calculator.html';
+          break;
+        case 'es':
+          targetUrl = financePath ? `/es/${financePath}` : '/es/finance/tax-calculator.html';
+          break;
+        case 'de':
+          targetUrl = financePath ? `/de/${financePath}` : '/de/finance/tax-calculator.html';
+          break;
+        case 'fr':
+          targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/tax-calculator.html';
+          break;
+        default: // Englisch
+          targetUrl = financePath ? `/en/${financePath}` : '/en/finance/tax-calculator.html';
+      }
+      window.location.href = targetUrl;
+    });
+
+    // Aktuelle Sprache anhand URL setzen
+    const pathSegments = window.location.pathname.split('/');
+    if (pathSegments.length > 1) {
+      const lang = pathSegments[1];
+      if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+        langSelect.value = lang;
+      }
+    }
+
+    /* ----------  STEUERRECHNER  ---------- */
+    const salaryInput            = document.getElementById('salary-income');
+    const bonusInput             = document.getElementById('bonus-income');
+    const selfEmployedInput      = document.getElementById('self-employed-income');
+    const interestInput          = document.getElementById('interest-income');
+    const dividendInput          = document.getElementById('dividend-income');
+    const rentalInput            = document.getElementById('rental-income');
+    const foreignInput           = document.getElementById('foreign-income');
+    const currencySelect         = document.getElementById('foreign-currency');
+
+    const calculateBtn           = document.getElementById('calculate-btn');
+    const resultContainer        = document.getElementById('result-container');
+    const taxAmount              = document.getElementById('tax-amount');
+    const taxDeductions          = document.getElementById('tax-deductions');
+    const taxSummary             = document.getElementById('tax-summary');
+    const taxSummaryTable        = document.getElementById('tax-summary-table');
+
+    const educationExpensesInput      = document.getElementById('education-expenses');
+    const retirementContributionsInput= document.getElementById('retirement-contributions');
+    const medicalExpensesInput        = document.getElementById('medical-expenses');
+    const charitableDonationsInput    = document.getElementById('charitable-donations');
+    const childCreditsInput           = document.getElementById('child-credits');
+    const dependentsInput             = document.getElementById('dependents');
+
+    const standardDeductionCheckbox  = document.getElementById('standard-deduction');
+    const itemizedDeductionsCheckbox = document.getElementById('itemized-deductions');
+
+    const taxableIncomeEl  = document.getElementById('taxable-income');
+    const taxRateEl        = document.getElementById('tax-rate');
+    const effectiveTaxRateEl= document.getElementById('effective-tax-rate');
+    const taxBracketEl     = document.getElementById('tax-bracket');
+
+    const taxTypeBtns = document.querySelectorAll('.tax-type-btn');
+    let currentTaxType = 'progressive';
+
+    // Beispiel-Progressivstufen (US-Bundessteuer 2023)
+    const taxBrackets = [
+      { min: 0, max: 10200, rate: 0.10 },
+      { min: 10201, max: 41775, rate: 0.12 },
+      { min: 41776, max: 89075, rate: 0.22 },
+      { min: 89076, max: 170050, rate: 0.24 },
+      { min: 170051, max: 215950, rate: 0.32 },
+      { min: 215951, max: 539900, rate: 0.35 },
+      { min: 539901, max: Infinity, rate: 0.37 }
+    ];
+
+    const standardDeduction = 12950;
+    const childTaxCredit    = 2000;
+    const dependentCredit   = 500;
+
+    // Steuerart-Toggle
+    taxTypeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        taxTypeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTaxType = btn.dataset.taxType;
+
+        if (currentTaxType === 'flat') {
+          taxBrackets.length = 0;
+          taxBrackets.push({ min: 0, max: Infinity, rate: 0.20 }); // 20 % Pauschal
+        } else {
+          taxBrackets.length = 0;
+          taxBrackets.push(
+            { min: 0, max: 10200, rate: 0.10 },
+            { min: 10201, max: 41775, rate: 0.12 },
+            { min: 41776, max: 89075, rate: 0.22 },
+            { min: 89076, max: 170050, rate: 0.24 },
+            { min: 170051, max: 215950, rate: 0.32 },
+            { min: 215951, max: 539900, rate: 0.35 },
+            { min: 539901, max: Infinity, rate: 0.37 }
+          );
+        }
+      });
+    });
+
+    // Hauptberechnung
+    function calculateTaxes() {
+      const salary      = parseFloat(salaryInput.value) || 0;
+      const bonus       = parseFloat(bonusInput.value) || 0;
+      const selfEmployed= parseFloat(selfEmployedInput.value) || 0;
+      const interest    = parseFloat(interestInput.value) || 0;
+      const dividend    = parseFloat(dividendInput.value) || 0;
+      const rental      = parseFloat(rentalInput.value) || 0;
+      const foreign     = parseFloat(foreignInput.value) || 0;
+
+      const educationExpenses     = parseFloat(educationExpensesInput.value) || 0;
+      const retirementContributions= parseFloat(retirementContributionsInput.value) || 0;
+      const medicalExpenses       = parseFloat(medicalExpensesInput.value) || 0;
+      const charitableDonations   = parseFloat(charitableDonationsInput.value) || 0;
+      const children              = parseInt(childCreditsInput.value) || 0;
+      const dependents            = parseInt(dependentsInput.value) || 0;
+
+      let totalIncome = salary + bonus + selfEmployed + interest + dividend + rental + foreign;
+
+      let totalDeductions = 0;
+      if (standardDeductionCheckbox.checked) {
+        totalDeductions += standardDeduction;
+      } else if (itemizedDeductionsCheckbox.checked) {
+        totalDeductions += educationExpenses + retirementContributions + medicalExpenses + charitableDonations;
+      }
+
+      const totalCredits = children * childTaxCredit + dependents * dependentCredit;
+
+      let taxableIncome = Math.max(0, totalIncome - totalDeductions);
+
+      let taxLiability = 0;
+      let effectiveTaxRate = 0;
+      let taxBracket = '';
+
+      if (currentTaxType === 'progressive') {
+        taxLiability = 0;
+        for (let i = 0; i < taxBrackets.length; i++) {
+          const b = taxBrackets[i];
+          if (taxableIncome > b.max) {
+            taxLiability += (b.max - b.min + 1) * b.rate;
+          } else if (taxableIncome > b.min) {
+            taxLiability += (taxableIncome - b.min + 1) * b.rate;
+            taxBracket = `${(b.rate * 100).toFixed(0)} %`;
+            break;
+          }
+        }
+        if (taxableIncome > taxBrackets[taxBrackets.length - 1].max) {
+          taxBracket = `${(taxBrackets[taxBrackets.length - 1].rate * 100).toFixed(0)} %+`;
+        }
+        effectiveTaxRate = (taxLiability / totalIncome) * 100;
+      } else {
+        taxLiability = taxableIncome * taxBrackets[0].rate;
+        effectiveTaxRate = taxBrackets[0].rate * 100;
+        taxBracket = `${(taxBrackets[0].rate * 100).toFixed(0)} % Pauschal`;
+      }
+
+      const finalTaxLiability = Math.max(0, taxLiability - totalCredits);
+      const takeHomePay = totalIncome - finalTaxLiability;
+
+      // Anzeige
+      taxAmount.textContent = formatCurrency(finalTaxLiability);
+      taxDeductions.textContent = `Abzüge & Gutschriften: ${formatCurrency(totalDeductions + totalCredits)}`;
+      taxableIncomeEl.textContent = formatCurrency(taxableIncome);
+      taxRateEl.textContent = formatPercent(effectiveTaxRate);
+      effectiveTaxRateEl.textContent = formatPercent(effectiveTaxRate);
+      taxBracketEl.textContent = taxBracket;
+
+      taxSummary.innerHTML = `
+        <p>Basierend auf Ihren Angaben ergibt sich bei einem Gesamteinkommen von <span class="highlight">${formatCurrency(totalIncome)}</span> eine Steuerschuld von <span class="highlight">${formatCurrency(finalTaxLiability)}</span>.</p>
+        <p>Nach Abzug aller Freibeträge und Gutschriften beträgt Ihr Nettogehalt <span class="highlight">${formatCurrency(takeHomePay)}</span>.</p>
+      `;
+
+      // Tabelle füllen
+      const tableBody = taxSummaryTable.querySelector('tbody');
+      tableBody.innerHTML = '';
+
+      const categories = [
+        { name: 'Gehalt', gross: salary, tax: salary * 0.20, rate: 0.20 },
+        { name: 'Prämie', gross: bonus, tax: bonus * 0.25, rate: 0.25 },
+        { name: 'Selbstständig', gross: selfEmployed, tax: selfEmployed * 0.15, rate: 0.15 },
+        { name: 'Zinserträge', gross: interest, tax: interest * 0.10, rate: 0.10 },
+        { name: 'Dividenden', gross: dividend, tax: dividend * 0.15, rate: 0.15 },
+        { name: 'Vermietung', gross: rental, tax: rental * 0.28, rate: 0.28 },
+        { name: 'Ausland', gross: foreign, tax: foreign * 0.30, rate: 0.30 }
+      ];
+
+      categories.forEach(cat => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${cat.name}</td>
+          <td>${formatCurrency(cat.gross)}</td>
+          <td>${formatCurrency(Math.max(0, cat.gross - cat.tax))}</td>
+          <td>${formatPercent(cat.rate * 100)}</td>
+          <td>${formatCurrency(cat.tax)}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+
+      const totalRow = document.createElement('tr');
+      totalRow.style.fontWeight = 'bold';
+      totalRow.innerHTML = `
+        <td><strong>Gesamt</strong></td>
+        <td>${formatCurrency(totalIncome)}</td>
+        <td>${formatCurrency(taxableIncome)}</td>
+        <td></td>
+        <td><strong>${formatCurrency(finalTaxLiability)}</strong></td>
+      `;
+      tableBody.appendChild(totalRow);
+
+      createTaxChart(totalIncome, finalTaxLiability);
+      resultContainer.style.display = 'block';
+    }
+
+    // Diagramm
+    function createTaxChart(totalIncome, taxLiability) {
+      const ctx = document.getElementById('tax-chart').getContext('2d');
+      if (window.taxChart) window.taxChart.destroy();
+
+      window.taxChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Bruttoeinkommen', 'Steuern', 'Netto'],
+          datasets: [{
+            label: 'Betrag (€)',
+            data: [totalIncome, taxLiability, totalIncome - taxLiability],
+            backgroundColor: [
+              'rgba(77, 181, 189, 0.7)',
+              'rgba(255, 112, 67, 0.7)',
+              'rgba(76, 175, 80, 0.7)'
+            ],
+            borderColor: [
+              'rgba(77, 181, 189, 1)',
+              'rgba(255, 112, 67, 1)',
+              'rgba(76, 175, 80, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `Betrag: ${formatCurrency(ctx.parsed.y)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Einkommensaufteilung',
+                font: { weight: 'bold' }
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Betrag (€)',
+                font: { weight: 'bold' }
+              },
+              beginAtZero: true,
+              ticks: {
+                callback: val => formatCurrency(val).replace('€', '')
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Helfer
+    function formatCurrency(val) {
+      return new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(val);
+    }
+    function formatPercent(val) {
+      return val.toFixed(2).replace('.', ',') + ' %';
+    }
+
+    // Events
+    calculateBtn.addEventListener('click', calculateTaxes);
+    const inputFields = [
+      salaryInput, bonusInput, selfEmployedInput, interestInput, dividendInput, rentalInput, foreignInput,
+      educationExpensesInput, retirementContributionsInput, medicalExpensesInput, charitableDonationsInput,
+      childCreditsInput, dependentsInput
+    ];
+    inputFields.forEach(field => {
+      field.addEventListener('keypress', e => { if (e.key === 'Enter') calculateTaxes(); });
+    });
+
+    // Init
+    calculateTaxes();
+
+    // Responsive
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.tax-container').style.gridTemplateColumns = '1fr';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
-</body></html> 

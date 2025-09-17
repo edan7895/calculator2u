@@ -1,14 +1,1055 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zinseszins-Rechner | Calculator2U</title>
+<meta name="description" content="Berechne deinen Zinseszins und Gesamtrendite für deine Investitionen" />
+<meta name="keywords" content="Zinseszins-Rechner, Investitionsrechner, Finanzrechner" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/compound-interest-calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/compound-interest-calculator.html" />
+<meta property="og:title" content="Zinseszins-Rechner | Calculator2U" />
+<meta property="og:description" content="Berechne deinen Zinseszins und Gesamtrendite für deine Investitionen" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/finance/compound-interest-calculator.html" />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/compound-interest-calculator.jpg" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+html, body {
+  overflow-x: hidden;
+}
+
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Mehrsprachige Auswahlstile */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Zinseszins-Rechner-Stile */
+  .loan-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .loan-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+.input-field input,
+.input-field select,
+.input-field textarea{
+flex-wrap:wrap;
+max-width :100%;
+width: 100%;
+box-sizing: border-box;
+}
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .monthly-payment {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Tilgungsplan */
+  .amortization-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .amortization-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+  }
+  
+  .amortization-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .amortization-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .amortization-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .amortization-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loan-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Zusätzliche Anpassungen für kleine Bildschirme */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .loan-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      font-size: 1rem;
+      width: 100%;
+    }
+    
+    .amortization-container {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .amortization-table {
+      min-width: 100%;
+    }
+    
+    .amortization-table th,
+    .amortization-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .monthly-payment {
+      font-size: 2.5rem;
+    }
+    
+    .total-interest {
+      font-size: 1.1rem;
+    }
+    
+    .result-container {
+      padding: 1rem;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html">Finanz & Investition</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Spiele</a></li>
+        <li><a href="/about-de.html">Über uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de" selected>Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Zinseszins-Rechner</h1>
+    <p>Berechne das Wachstum deiner Investition mit Zinseszins</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Zinseszins-Rechner</h2>
+    
+    <div class="loan-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="initial-principal">Anfangskapital (€)</label>
+            <input type="number" id="initial-principal" placeholder="Anfangskapital eingeben" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="annual-rate">Jährlicher Zinssatz (%)</label>
+            <input type="number" id="annual-rate" placeholder="Jährlichen Zinssatz eingeben" min="0" step="0.01">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="investment-years">Anlagedauer (Jahre)</label>
+            <input type="number" id="investment-years" placeholder="Anlagedauer eingeben" min="1">
+          </div>
+          
+          <div class="input-field">
+            <label for="compounding-frequency">Zinseszins-Häufigkeit</label>
+            <select id="compounding-frequency">
+              <option value="yearly">Jährlich</option>
+              <option value="semi-yearly">Halbjährlich</option>
+              <option value="quarterly">Vierteljährlich</option>
+              <option value="monthly">Monatlich</option>
+              <option value="daily">Täglich</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="additional-contribution">Regelmäßige Einzahlung (€)</label>
+            <input type="number" id="additional-contribution" placeholder="Regelmäßige Einzahlung eingeben" min="0">
+          </div>
+          
+          <div class="input-field">
+            <label for="contribution-frequency">Einzahlungs-Häufigkeit</label>
+            <select id="contribution-frequency">
+              <option value="none">Keine</option>
+              <option value="daily">Täglich</option>
+              <option value="weekly">Wöchentlich</option>
+              <option value="monthly">Monatlich</option>
+              <option value="yearly">Jährlich</option>
+            </select>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Zinsen berechnen
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Deine Investitions-Zusammenfassung</h3>
+          <div class="monthly-payment" id="final-amount">10.000</div>
+          <div class="total-interest" id="interest-earned">Verdiente Zinsen: 2.500 €</div>
+        </div>
+        
+        <div class="amortization-container">
+          <table class="amortization-table" id="amortization-table">
+            <thead>
+              <tr>
+                <th>Zeitraum</th>
+                <th>Anfangssaldo</th>
+                <th>Einzahlung</th>
+                <th>Verdiente Zinsen</th>
+                <th>Endsaldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Tilgungsplan wird hier eingefügt -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Zinseszins verstehen</h3>
+        <p>Zinseszins ist die Aufschlagung von Zinsen auf das ursprüngliche Kapital einer Investition oder eines Darlehens, also Zinsen auf Zinsen. Er entsteht, wenn Zinsen nicht ausgezahlt, sondern wieder angelegt werden, sodass in der nächsten Periode Zinsen auf das ursprüngliche Kapital plus alle bereits angehäuften Zinsen aus früheren Perioden berechnet werden.</p>
+        
+        <h3>So funktioniert Zinseszins</h3>
+        <p>Zinseszins lässt deine Investition exponentiell wachsen, weil die Zinsen auf das Anfangskapital plus alle bereits verdienten Zinsen berechnet werden. Wichtige Faktoren, die deine Zinseszins-Erträge beeinflussen, sind:</p>
+        <ul>
+          <li><strong>Anfangskapital:</strong> Der Betrag, mit dem du beginnst</li>
+          <li><strong>Zinssatz:</strong> Der Prozentsatz, um den deine Investition wächst</li>
+          <li><strong>Anlagedauer:</strong> Wie lange du dein Geld anlegst</li>
+          <li><strong>Zinseszins-Häufigkeit:</strong> Wie oft die Zinsen berechnet und dem Kapital zugeschlagen werden</li>
+          <li><strong>Zusätzliche Einzahlungen:</strong> Wie viel und wie oft du deiner Investition hinzufügst</li>
+        </ul>
+        
+        <h3>Die Macht des Zinseszins</h3>
+        <p>Die Macht des Zinseszins zeigt sich besonders über längere Anlageperioden. Albert Einstein soll ihn als das „achte Weltwunder“ bezeichnet haben, weil er Vermögen exponentiell wachsen lassen kann.</p>
+        
+        <div class="health-advice">
+          <h3><i class="fas fa-lightbulb"></i> Investitionstipps</h3>
+          <p>So maximierst du deine Zinseszins-Erträge:</p>
+          <ul>
+            <li>Beginne so früh wie möglich mit dem Investieren, um Zeit zu nutzen</li>
+            <li>Wähle Investitionen mit höheren Zinssätzen</li>
+            <li>Reinvestiere deine Erträge anstatt sie abzuheben</li>
+            <li>Leiste regelmäßige Einzahlungen</li>
+            <li>Wähle eine passende Zinseszins-Häufigkeit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Deine vertrauensvolle Quelle für Finanzrechner und Finanztools. Wir helfen dir seit 2025, informierte finanzielle Entscheidungen zu treffen.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Weitere nützliche Rechner</h3>
+        <ul class="footer-links">
+          <li><a href="/de/finance/auto-loan-calculator.html">Autokredit-Rechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Hypothekenrechner</a></li>
+          <li><a href="/de/finance/loan-calculator.html">Kreditrechner</a></li>
+          <li><a href="/de/finance/investment-return-calculator.html">Investitionsrendite-Rechner</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html">Datenschutz</a></li>
+          <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
+        <a href="/privacy-de.html">Datenschutz</a> | 
+        <a href="/terms-de.html">Nutzungsbedingungen</a>
+      </p>
+      <p><small>Hinweis: Diese Rechner liefern nur Schätzwerte. Konsultiere einen Finanzberater für individuelle Beratung.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the finance section
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/compound-interest-calculator', 'finance/compound-interest-calculator');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/compound-interest-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/compound-interest-calculator.html';
+            break;
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/compound-interest-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/compound-interest-calculator.html';
+            break;
+          default: // English
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/compound-interest-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+// Zinseszins-Rechner-Funktionalität
+const initialPrincipalInput = document.getElementById('initial-principal');
+const annualRateInput = document.getElementById('annual-rate');
+const investmentYearsInput = document.getElementById('investment-years');
+const compoundingFrequencyInput = document.getElementById('compounding-frequency');
+const additionalContributionInput = document.getElementById('additional-contribution');
+const contributionFrequencyInput = document.getElementById('contribution-frequency');
+const calculateBtn = document.getElementById('calculate-btn');
+const resultContainer = document.getElementById('result-container');
+const finalAmount = document.getElementById('final-amount');
+const interestEarned = document.getElementById('interest-earned');
+const amortizationTable = document.getElementById('amortization-table');
+
+// Berechne Zinseszins - Optimierte Version
+function calculateCompoundInterest() {
+    const initialPrincipal = parseFloat(initialPrincipalInput.value) || 0;
+    const annualRate = (parseFloat(annualRateInput.value) || 0) / 100;
+    const investmentYears = parseInt(investmentYearsInput.value) || 0;
+    const compoundingFrequency = compoundingFrequencyInput.value;
+    const additionalContribution = parseFloat(additionalContributionInput.value) || 0;
+    const contributionFrequency = contributionFrequencyInput.value;
+    
+    // Eingabevalidierung
+    if (initialPrincipal <= 0 || annualRate <= 0 || investmentYears <= 0) {
+        alert('Bitte gib gültiges Anfangskapital, Zinssatz und Anlagedauer ein.');
+        return;
+    }
+    
+    // Definition der Zinsperioden pro Jahr
+    const periodsPerYear = {
+        'yearly': 1,
+        'semi-yearly': 2,
+        'quarterly': 4,
+        'monthly': 12,
+        'daily': 365
+    }[compoundingFrequency] || 1;
+    
+    const ratePerPeriod = annualRate / periodsPerYear;
+    const totalPeriods = investmentYears * periodsPerYear;
+    
+    // Berechne Einzahlungen pro Periode
+    let contributionPerPeriod = 0;
+    if (additionalContribution > 0 && contributionFrequency !== 'none') {
+        const contributionsPerYear = {
+            'daily': 365,
+            'weekly': 52,
+            'monthly': 12,
+            'yearly': 1
+        }[contributionFrequency] || 0;
+        
+        contributionPerPeriod = additionalContribution * (contributionsPerYear / periodsPerYear);
+    }
+    
+    // Berechne Endbetrag mit Zinseszins und regelmäßigen Einzahlungen
+    let balance = initialPrincipal;
+    let totalContributions = 0;
+    
+    for (let i = 1; i <= totalPeriods; i++) {
+        const interest = balance * ratePerPeriod;
+        balance += interest + contributionPerPeriod;
+        totalContributions += contributionPerPeriod;
+    }
+    
+    // Berechne verdiente Zinsen
+    const interestEarnedValue = balance - initialPrincipal - totalContributions;
+    
+    // Aktualisiere Endbetrag und verdiente Zinsen
+    finalAmount.textContent = balance.toLocaleString('de-DE', {style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2});
+    interestEarned.textContent = `Verdiente Zinsen: ${interestEarnedValue.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €`;
+    
+    // Erstelle jährlichen Tilgungsplan
+    const tableBody = amortizationTable.querySelector('tbody');
+    tableBody.innerHTML = '';
+    
+    let yearlyBalance = initialPrincipal;
+    let yearlyTotalInterest = 0;
+    let yearlyTotalContributions = 0;
+    
+    for (let year = 1; year <= investmentYears; year++) {
+        let yearlyInterest = 0;
+        let yearlyContribution = 0;
+        
+        // Berechne für jede Periode im Jahr
+        for (let period = 1; period <= periodsPerYear; period++) {
+            const periodInterest = yearlyBalance * ratePerPeriod;
+            yearlyInterest += periodInterest;
+            yearlyBalance += periodInterest;
+            
+            if (contributionPerPeriod > 0) {
+                yearlyBalance += contributionPerPeriod;
+                yearlyContribution += contributionPerPeriod;
+            }
+        }
+        
+        yearlyTotalInterest += yearlyInterest;
+        yearlyTotalContributions += yearlyContribution;
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>Jahr ${year}</td>
+            <td>${(yearlyBalance - yearlyInterest - yearlyContribution).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €</td>
+            <td>${yearlyContribution.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €</td>
+            <td>${yearlyInterest.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €</td>
+            <td>${yearlyBalance.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €</td>
+        `;
+        
+        tableBody.appendChild(row);
+    }
+        
+        // Zeige Ergebnis-Container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Event-Listener für Berechnen-Button
+      calculateBtn.addEventListener('click', calculateCompoundInterest);
+      
+      // Ebenfalls Enter-Taste in Eingabefeldern ermöglichen
+      initialPrincipalInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateCompoundInterest();
+      });
+      
+      annualRateInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateCompoundInterest();
+      });
+      
+      investmentYearsInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateCompoundInterest();
+      });
+      
+      additionalContributionInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') calculateCompoundInterest();
+      });
+      
+      // Zusätzliche Responsivität für kleine Bildschirme
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.loan-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-</body></html> 

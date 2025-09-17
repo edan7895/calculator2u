@@ -1,14 +1,1409 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rentenspar-Rechner | Calculator2U</title>
+<meta name="description" content="Berechne das Wachstum deiner Rentensparvorsorge, einschließlich Zinseszins und regelmäßiger Einzahlungen" />
+<meta name="keywords" content="Rentenrechner, Sparrechner, Rentenspar-Rechner, Altersvorsorge" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/finance/retirement-savings-calculator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/finance/retirement-savings-calculator.html " />
+<meta property="og:title" content="Rentenspar-Rechner | Calculator2U" />
+<meta property="og:description" content="Berechne das Wachstum deiner Rentensparvorsorge basierend auf deinem aktuellen Sparguthaben, Einzahlungen und Anlagerenditen" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/finance/retirement-savings-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/retirement-savings-calculator.jpg " />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Retirement Savings Calculator Styles */
+  .retirement-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .retirement-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .input-group {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .input-field input,
+  .input-field select {
+    flex-wrap:wrap;
+    max-width:100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .input-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #006d77;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-icon {
+    margin-left: 0.5rem;
+    color: #4db5bd;
+    cursor: help;
+    font-size: 0.9rem;
+  }
+  
+  .input-field input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0f7fa;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .input-field input:focus {
+    outline: none;
+    border-color: #4db5bd;
+    box-shadow: 0 0 0 3px rgba(77, 181, 189, 0.2);
+  }
+  
+  .calculate-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .calculate-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .result-container {
+    display: none;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-left: 5px solid #4db5bd;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #006d77;
+  }
+  
+  .final-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .total-interest {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: #4db5bd;
+    color: white;
+  }
+  
+  /* Savings growth chart container */
+  .chart-container {
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  /* Retirement Summary */
+  .retirement-summary {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 500px;
+  }
+  
+  .summary-table th {
+    background: #006d77;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .summary-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0f7fa;
+  }
+  
+  .summary-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .summary-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      gap: 0;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .retirement-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Modified styles for small screens below 576px */
+  @media (max-width: 576px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .retirement-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .input-group {
+      grid-template-columns: 1fr !important;
+      gap: 0.8rem;
+    }
+
+    .input-field label {
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .result-container {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .calculate-btn {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin: 1rem 0;
+    }
+    
+    .result-metrics {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .metric-card {
+      padding: 0.5rem;
+    }
+    
+    .metric-card .metric-value {
+      font-size: 1.2rem;
+    }
+    
+    .comparison-table {
+      min-width: 100%;
+      width: auto;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+      word-break: break-word;
+      white-space: normal;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Additional inputs */
+  .additional-options {
+    background: #f0f9ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .additional-options h3 {
+    color: #006d77;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4db5bd;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Result metrics */
+  .result-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .metric-card .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #006d77;
+    margin: 0.5rem 0;
+  }
+  
+  .metric-card .metric-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .highlight {
+    background-color: #ffd166;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #006d77;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html">Finanzen & Investition</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Spiele</a></li>
+        <li><a href="/about-de.html">Über uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Rentenspar-Rechner</h1>
+    <p>Verfolge das Wachstum deiner Rentensparvorsorge und plane deine finanzielle Zukunft</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Rentenspar-Rechner</h2>
+    
+    <div class="retirement-container">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <div class="input-group">
+          <div class="input-field">
+            <label for="current-age">Aktuelles Alter
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Dein aktuelles Alter</span>
+              </span>
+            </label>
+            <input type="number" id="current-age" placeholder="Aktuelles Alter eingeben" min="0" max="100" value="30">
+          </div>
+          
+          <div class="input-field">
+            <label for="retirement-age">Renteneintrittsalter
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Das Alter, in dem du in Rente gehen möchtest</span>
+              </span>
+            </label>
+            <input type="number" id="retirement-age" placeholder="Renteneintrittsalter eingeben" min="1" max="100" value="65">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="current-savings">Aktuelle Rentensparvorsorge (€)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Dein aktuelles Rentensparguthaben</span>
+              </span>
+            </label>
+            <input type="number" id="current-savings" placeholder="Aktuelles Sparguthaben eingeben" min="0" value="50000">
+          </div>
+          
+          <div class="input-field">
+            <label for="monthly-contribution">Monatliche Einzahlung (€)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Betrag, den du monatlich einzahlst</span>
+              </span>
+            </label>
+            <input type="number" id="monthly-contribution" placeholder="Monatliche Einzahlung eingeben" min="0" value="1000">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="annual-return">Erwartete jährliche Rendite (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Erwartete jährliche Rendite deiner Anlagen</span>
+              </span>
+            </label>
+            <input type="number" id="annual-return" placeholder="Jährliche Rendite eingeben" min="0" step="0.01" value="6">
+          </div>
+          
+          <div class="input-field">
+            <label for="inflation-rate">Inflationsrate (%)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Erwartete jährliche Inflationsrate</span>
+              </span>
+            </label>
+            <input type="number" id="inflation-rate" placeholder="Inflationsrate eingeben" min="0" step="0.01" value="2">
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <div class="input-field">
+            <label for="retirement-goal">Rentenziel (€)
+              <span class="tooltip">
+                <i class="fas fa-info-circle info-icon"></i>
+                <span class="tooltip-text">Dein gewünschtes Rentensparziel</span>
+              </span>
+            </label>
+            <input type="number" id="retirement-goal" placeholder="Rentenziel eingeben" min="0" value="1000000">
+          </div>
+        </div>
+        
+        <div class="additional-options">
+          <h3>Zusätzliche Optionen</h3>
+          
+          <div class="toggle-switch">
+            <label class="switch">
+              <input type="checkbox" id="include-inflation">
+              <span class="slider"></span>
+            </label>
+            <span>An Inflation anpassen</span>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" id="calculate-btn">
+          <i class="fas fa-calculator"></i> Rentensparvorsorge berechnen
+        </button>
+        
+        <div class="result-container" id="result-container">
+          <h3 class="result-header">Deine Rentenspar-Zusammenfassung</h3>
+          <div class="final-amount" id="final-amount">€1.234.567,89</div>
+          <div class="total-interest" id="total-interest">Gesamtzinsen: €789.123,45</div>
+          
+          <!-- Result Metrics -->
+          <div class="result-metrics">
+            <div class="metric-card">
+              <div class="metric-label">Gesamteinzahlungen</div>
+              <div class="metric-value" id="total-contributions">€450.000,00</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Jahre bis zur Rente</div>
+              <div class="metric-value" id="years-until-retirement">35</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Erforderliche monatliche Erhöhung</div>
+              <div class="metric-value" id="required-increase">€0,00</div>
+            </div>
+          </div>
+          
+          <!-- Chart container -->
+          <div class="chart-container">
+            <canvas id="savings-chart"></canvas>
+          </div>
+          
+          <div class="retirement-summary" id="retirement-summary">
+            <p>Auf Basis deiner Eingaben würde sich deine Rentensparvorsorge von <span class="highlight">€50.000</span> mit monatlichen Einzahlungen von <span class="highlight">€1.000</span> und einer erwarteten jährlichen Rendite von <span class="highlight">6 %</span> über <span class="highlight">35 Jahre</span> auf <span class="highlight">€1.234.567,89</span> erhöhen.</p>
+            <p id="goal-message"></p>
+          </div>
+        </div>
+        
+        <div class="retirement-summary">
+          <table class="summary-table" id="summary-table">
+            <thead>
+              <tr>
+                <th>Jahr</th>
+                <th>Alter</th>
+                <th>Einzahlungen</th>
+                <th>Zinsen</th>
+                <th>Gesamtsparguthaben</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Retirement summary will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3>Verständnis der Rentensparvorsorge</h3>
+        <p>Die Rentensparvorsorge ist entscheidend für die finanzielle Sicherheit in deinen späteren Jahren. Wichtige Faktoren, die deine Rentensparvorsorge beeinflussen, sind:</p>
+        <ul>
+          <li><strong>Aktuelles Alter:</strong> Dein heutiges Alter</li>
+          <li><strong>Renteneintrittsalter:</strong> Das Alter, in dem du in Rente gehen möchtest</li>
+          <li><strong>Aktuelle Ersparnisse:</strong> Wie viel du bereits gespart hast</li>
+          <li><strong>Monatliche Einzahlungen:</strong> Wie viel du regelmäßig einzahlst</li>
+          <li><strong>Erwartete Rendite:</strong> Die Wachstumsrate deiner Anlagen</li>
+        </ul>
+        
+        <h3>Wie der Zinseszins funktioniert</h3>
+        <p>Zinseszins ist Zins, der auf die ursprüngliche Einlage sowie auf die bereits angefallenen Zinsen berechnet wird. Das bedeutet, dass sich deine Rentensparvorsorge exponentiell vergrößern kann:</p>
+        <ul>
+          <li>Frühes Sparen gibt deinem Geld mehr Zeit zu wachsen</li>
+          <li>Konsistente Einzahlungen summieren sich im Laufe der Zeit</li>
+          <li>Höhere Renditen beschleunigen das Wachstum</li>
+          <li>Zinseszins funktioniert am besten über lange Zeiträume</li>
+        </ul>
+        
+        <h3>Faktoren, die deine Rentensparvorsorge beeinflussen</h3>
+        <p>Mehrere Faktoren beeinflussen, wie sich deine Rentensparvorsorge im Laufe der Zeit entwickelt:</p>
+        <ul>
+          <li><strong>Marktentwicklung:</strong> Die Gesamtentwicklung deiner Anlagen</li>
+          <li><strong>Inflationsrate:</strong> Inflation verringert die Kaufkraft deines Geldes</li>
+          <li><strong>Steuersatz:</strong> Steuern auf Anlageerträge können dein Nettoguthaben verringern</li>
+          <li><strong>Anlagegebühren:</strong> Verwaltungsgebühren und andere Kosten können deine Nettorendite senken</li>
+          <li><strong>Konsistenz der Einzahlungen:</strong> Regelmäßige Einzahlungen bauen schneller Vermögen auf als sporadische</li>
+        </ul>
+        
+        <div class="retirement-tips">
+          <h3><i class="fas fa-lightbulb"></i> Tipps zur Rentensparvorsorge</h3>
+          <p>Beachte diese Tipps, um deine Rentensparvorsorge zu maximieren:</p>
+          <ul>
+            <li>Beginne so früh wie möglich zu sparen, um von Zinseszins zu profitieren</li>
+            <li>Zahle regelmäßig ein und erhöhe die Einzahlungen, wenn möglich</li>
+            <li>Diversifiziere deine Anlagen über verschiedene Anlageklassen</li>
+            <li>Nutze Arbeitgeber-Zuschüsse und steuerliche Vorteile</li>
+            <li>Überprüfe und passe deinen Rentenplan jährlich an</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Calculator2U</h3>
+        <p>Deine vertrauensvolle Quelle für Finanzrechner und Finanztools. Wir helfen dir seit 2025, informierte Finanzentscheidungen zu treffen.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Andere nützliche Rechner</h3>
+        <ul class="footer-links">
+          <li><a href="/de/finance/auto-loan-calculator.html">Autokredit-Rechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Hypothekenrechner</a></li>
+          <li><a href="/de/finance/loan-calculator.html">Kreditrechner</a></li>
+          <li><a href="/de/finance/compound-interest-calculator-calculator.html">Zinseszins-Rechner</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html">Datenschutzrichtlinie</a></li>
+          <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
+        <a href="/privacy-de.html">Datenschutzrichtlinie</a> | 
+        <a href="/terms-de.html">Nutzungsbedingungen</a>
+      </p>
+      <p><small>Hinweis: Diese Rechner liefern nur Schätzungen. Konsultiere einen Finanzberater für individuelle Beratung.</small></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Language selector functionality
+      const langSelect = document.getElementById('lang-select');
+      
+      langSelect.addEventListener('change', function() {
+        const selectedLang = this.value;
+        let targetUrl = '';
+        
+        // Get current path and replace language segment
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Determine the base path for the finance section
+        let financePath = '';
+        if (currentPath.includes('/finance/')) {
+          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
+          if (financeIndex !== -1) {
+            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/retirement-savings-calculator', 'finance/retirement-savings-calculator');
+          }
+        }
+        
+        // Build new URL based on selected language
+        switch(selectedLang) {
+          case 'de':
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/retirement-savings-calculator.html';
+            break;
+          case 'en':
+            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/retirement-savings-calculator.html';
+            break;
+          case 'zh':
+            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/retirement-savings-calculator.html';
+            break;
+          case 'es':
+            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/retirement-savings-calculator.html';
+            break;
+          case 'fr':
+            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/retirement-savings-calculator.html';
+            break;
+          default: // Deutsch
+            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/retirement-savings-calculator.html';
+        }
+        
+        window.location.href = targetUrl;
+      });
+      
+      // Set current language based on URL
+      const pathSegments = window.location.pathname.split('/');
+      if (pathSegments.length > 1) {
+        const lang = pathSegments[1];
+        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+          langSelect.value = lang;
+        }
+      }
+      
+      // Retirement Calculator Functionality
+      const currentAgeInput = document.getElementById('current-age');
+      const retirementAgeInput = document.getElementById('retirement-age');
+      const currentSavingsInput = document.getElementById('current-savings');
+      const monthlyContributionInput = document.getElementById('monthly-contribution');
+      const annualReturnInput = document.getElementById('annual-return');
+      const inflationRateInput = document.getElementById('inflation-rate');
+      const retirementGoalInput = document.getElementById('retirement-goal');
+      const includeInflationCheckbox = document.getElementById('include-inflation');
+      const calculateBtn = document.getElementById('calculate-btn');
+      const resultContainer = document.getElementById('result-container');
+      const finalAmount = document.getElementById('final-amount');
+      const totalInterest = document.getElementById('total-interest');
+      const retirementSummary = document.getElementById('retirement-summary');
+      const summaryTable = document.getElementById('summary-table');
+      const totalContributionsEl = document.getElementById('total-contributions');
+      const yearsUntilRetirementEl = document.getElementById('years-until-retirement');
+      const requiredIncreaseEl = document.getElementById('required-increase');
+      const goalMessage = document.getElementById('goal-message');
+      
+      let savingsChart = null;
+      
+      // Format currency
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+      
+      // Format percentage
+      function formatPercent(value) {
+        return value.toFixed(2) + '%';
+      }
+      
+      // Calculate Retirement Savings function
+      function calculateRetirementSavings() {
+        const currentAge = parseInt(currentAgeInput.value) || 0;
+        const retirementAge = parseInt(retirementAgeInput.value) || 0;
+        const currentSavings = parseFloat(currentSavingsInput.value) || 0;
+        const monthlyContribution = parseFloat(monthlyContributionInput.value) || 0;
+        const annualReturnRate = parseFloat(annualReturnInput.value) / 100 || 0;
+        const inflationRate = parseFloat(inflationRateInput.value) / 100 || 0;
+        const retirementGoal = parseFloat(retirementGoalInput.value) || 0;
+        const includeInflation = includeInflationCheckbox.checked;
+        
+        if (isNaN(currentAge) || isNaN(retirementAge) || isNaN(currentSavings) || isNaN(monthlyContribution) || isNaN(annualReturnRate)) {
+          alert('Bitte gib gültige Rentendaten ein.');
+          return;
+        }
+        
+        if (currentAge >= retirementAge) {
+          alert('Das Renteneintrittsalter muss größer als das aktuelle Alter sein.');
+          return;
+        }
+        
+        // Calculate years until retirement
+        const yearsUntilRetirement = retirementAge - currentAge;
+        
+        // Calculate total contributions
+        const totalContributions = monthlyContribution * 12 * yearsUntilRetirement;
+        
+        // Calculate future value of current savings
+        const currentSavingsFutureValue = currentSavings * Math.pow(1 + annualReturnRate, yearsUntilRetirement);
+        
+        // Calculate future value of monthly contributions
+        const contributionsFutureValue = monthlyContribution * 12 * ((Math.pow(1 + annualReturnRate, yearsUntilRetirement) - 1) / annualReturnRate);
+        
+        // Calculate total future value
+        let totalFutureValue = currentSavingsFutureValue + contributionsFutureValue;
+        
+        // Calculate total interest
+        const totalInterestEarned = totalFutureValue - (currentSavings + totalContributions);
+        
+        // Adjust for inflation
+        let inflationAdjustedValue = totalFutureValue;
+        if (includeInflation && inflationRate > 0) {
+          const inflationFactor = Math.pow(1 + inflationRate, yearsUntilRetirement);
+          inflationAdjustedValue = totalFutureValue / inflationFactor;
+        }
+        
+        // Calculate required additional contribution if goal is set
+        let requiredMonthlyIncrease = 0;
+        let goalMessageText = '';
+        
+        if (retirementGoal > 0) {
+          if (totalFutureValue >= retirementGoal) {
+            goalMessageText = `<p>Herzlichen Glückwunsch! Dein aktueller Sparplan wird dein Rentenziel um <span class="highlight">${formatCurrency(totalFutureValue - retirementGoal)}</span> übertreffen.</p>`;
+          } else {
+            // Calculate required contribution to meet goal
+            const requiredContribution = retirementGoal - currentSavingsFutureValue;
+            const requiredMonthly = requiredContribution / ((Math.pow(1 + annualReturnRate, yearsUntilRetirement) - 1) / annualReturnRate) / 12;
+            
+            requiredMonthlyIncrease = requiredMonthly - monthlyContribution;
+            
+            goalMessageText = `<p>Um dein Rentenziel zu erreichen, musst du deine monatliche Einzahlung um <span class="highlight">${formatCurrency(requiredMonthlyIncrease)}</span> erhöhen.</p>`;
+          }
+        }
+        
+        // Update results
+        finalAmount.textContent = formatCurrency(totalFutureValue);
+        totalInterest.textContent = `Gesamtzinsen: ${formatCurrency(totalInterestEarned)}`;
+        totalContributionsEl.textContent = formatCurrency(totalContributions);
+        yearsUntilRetirementEl.textContent = yearsUntilRetirement;
+        requiredIncreaseEl.textContent = formatCurrency(requiredMonthlyIncrease);
+        
+        // Update retirement summary
+        const summaryHTML = `
+          <p>Auf Basis deiner Eingaben würde sich deine Rentensparvorsorge von <span class="highlight">${formatCurrency(currentSavings)}</span> mit monatlichen Einzahlungen von <span class="highlight">${formatCurrency(monthlyContribution)}</span> und einer erwarteten jährlichen Rendite von <span class="highlight">${formatPercent(annualReturnRate * 100)}</span> über <span class="highlight">${yearsUntilRetirement} Jahre</span> auf <span class="highlight">${formatCurrency(totalFutureValue)}</span> erhöhen.</p>
+        `;
+        retirementSummary.innerHTML = summaryHTML + goalMessageText;
+        
+        // Generate summary table
+        const tableBody = summaryTable.querySelector('tbody');
+        tableBody.innerHTML = '';
+        
+        // Calculate yearly data
+        let balance = currentSavings;
+        for (let year = 0; year <= yearsUntilRetirement; year++) {
+          const age = currentAge + year;
+          const yearlyContributions = monthlyContribution * 12;
+          const yearlyEarnings = balance * annualReturnRate;
+          
+          // Apply annual return
+          balance += yearlyContributions;
+          balance *= (1 + annualReturnRate);
+          
+          // Store yearly data
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${year}</td>
+            <td>${age}</td>
+            <td>${formatCurrency(yearlyContributions)}</td>
+            <td>${formatCurrency(yearlyEarnings)}</td>
+            <td>${formatCurrency(balance)}</td>
+          `;
+          tableBody.appendChild(row);
+        }
+        
+        // Create or update savings chart
+        createSavingsChart();
+        
+        // Show result container
+        resultContainer.style.display = 'block';
+      }
+      
+      // Create savings chart
+      function createSavingsChart() {
+        const ctx = document.getElementById('savings-chart').getContext('2d');
+        
+        // Destroy previous chart if exists
+        if (savingsChart) {
+          savingsChart.destroy();
+        }
+        
+        // Get data from table
+        const tableRows = summaryTable.querySelectorAll('tbody tr');
+        const years = [];
+        const savings = [];
+        
+        tableRows.forEach(row => {
+          const yearCell = row.cells[0];
+          const savingsCell = row.cells[4];
+          
+          years.push(parseInt(yearCell.textContent));
+          savings.push(parseFloat(savingsCell.textContent.replace('€', '').replace(/\./g, '').replace(',', '.')));
+        });
+        
+        savingsChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [ {
+              label: 'Rentensparvorsorge',
+              data: savings,
+              backgroundColor: 'rgba(77, 181, 189, 0.2)',
+              borderColor: '#006d77',
+              borderWidth: 3,
+              pointBackgroundColor: '#ffd166',
+              pointBorderColor: '#333',
+              pointBorderWidth: 1,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              fill: true,
+              tension: 0.3
+            } ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                  label: function(context) {
+                    return `Sparguthaben: ${formatCurrency(context.parsed.y)}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Jahre',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                grid: {
+                  display: false
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Rentensparvorsorge',
+                  font: {
+                    weight: 'bold'
+                  }
+                },
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    return formatCurrency(value);
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Add event listener to calculate button
+      calculateBtn.addEventListener('click', calculateRetirementSavings);
+      
+      // Also allow pressing Enter in input fields
+      const inputFields = [
+        currentAgeInput, 
+        retirementAgeInput, 
+        currentSavingsInput, 
+        monthlyContributionInput,
+        annualReturnInput,
+        inflationRateInput,
+        retirementGoalInput
+      ];
+      
+      inputFields.forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') calculateRetirementSavings();
+        });
+      });
+      
+      // Initialize the calculator with default values
+      calculateRetirementSavings();
+      
+      // Add additional responsiveness for small screens
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+          document.querySelector('.retirement-container').style.gridTemplateColumns = '1fr';
+        }
+      });
+    })();
+
+    // Ensure all content is within viewport width
+    window.addEventListener('load', function() {
+      document.body.style.maxWidth = '100%';
+      document.body.style.overflowX = 'hidden';
+    });
+  </script>
 </body>
 </html>
-</body></html> 
