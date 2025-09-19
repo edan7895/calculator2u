@@ -1,14 +1,1246 @@
-<html><body> 
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Rechner – Übersetzung läuft</title>
-  <meta name="robots" content="noindex, follow">
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Language" content="auto" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Temporäre E-Mail | Calculator2U</title>
+<meta name="description" content="Generieren Sie temporäre E-Mail-Adressen mit unserem sicheren Wegwerf-E-Mail-Service unter Verwendung der mail.tm API" />
+<meta name="keywords" content="temporäre E-Mail, Wegwerf-E-Mail, temp Mail, mail.tm, E-Mail-Verifizierung" />
+<meta name="author" content="Calculator2U" />
+<link rel="canonical" href="https://www.calculator2u.com/de/generator/email-generator.html " />
+<link rel="alternate" hreflang="en" href="https://www.calculator2u.com/en/generator/email-generator.html " />
+<link rel="alternate" hreflang="zh" href="https://www.calculator2u.com/zh/generator/email-generator.html " />
+<link rel="alternate" hreflang="es" href="https://www.calculator2u.com/es/generator/email-generator.html " />
+<link rel="alternate" hreflang="fr" href="https://www.calculator2u.com/fr/generator/email-generator.html " />
+<link rel="alternate" hreflang="de" href="https://www.calculator2u.com/de/generator/email-generator.html " />
+<link rel="alternate" hreflang="x-default" href="https://www.calculator2u.com/en/generator/email-generator.html " />
+<meta property="og:title" content="Temporäre E-Mail | Calculator2U" />
+<meta property="og:description" content="Generieren Sie temporäre E-Mail-Adressen mit unserem sicheren Wegwerf-E-Mail-Service unter Verwendung der mail.tm API" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.calculator2u.com/de/generator/email-generator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/email-generator.jpg " />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:site_name" content="Calculator2U" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLH4FLZBZF "></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLH4FLZBZF');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " />
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Header & Navigation */
+  header {
+    background-color: #006d77;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Language selector styles */
+  .lang-selector {
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+  }
+  
+  .lang-select {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  
+  .lang-select option {
+    background-color: #006d77;
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+    position: relative;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  .hamburger div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    transform-origin: center;
+  }
+
+  /* Hamburger animation */
+  .hamburger.active .line1 {
+    transform: rotate(45deg) translate(0.3rem, 0.4rem);
+  }
+
+  .hamburger.active .line2 {
+    opacity: 0;
+  }
+
+  .hamburger.active .line3 {
+    transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #006d77 0%, #008891 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Main Content */
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #006d77;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #ffd166;
+    border-radius: 2px;
+  }
+
+  /* Calculator Container */
+  .cooking-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (min-width: 992px) {
+    .cooking-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .calculator-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Email Card Styling */
+  .email-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  
+  .action-btn {
+    background: #ffd166;
+    color: #333;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .action-btn:hover {
+    background: #ffc043;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  .dark-mode-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: #006d77;
+    font-weight: 500;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #006d77;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .email-box {
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    word-break: break-all;
+    user-select: all;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    border-left: 5px solid #4db5bd;
+    transition: all 0.3s;
+  }
+  
+  .email-box:hover {
+    background: #e0f7fa;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .email-box::after {
+    content: "Zum Kopieren klicken";
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.8rem;
+    color: #4db5bd;
+    font-weight: 500;
+  }
+  
+  .code-box {
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    border-left: 5px solid #ffd166;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .notification {
+    color: #e74c3c;
+    background: #fdeded;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .notification.show {
+    opacity: 1;
+    height: auto;
+    padding: 0.8rem;
+    margin: 1rem 0;
+  }
+  
+  /* Info Card Styles */
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .info-card h3 {
+    color: #006d77;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+  
+  .info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #ffd166;
+  }
+  
+  .info-card ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+  
+  .info-text {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #006d77;
+    color: #fff;
+    padding: 3rem 1rem;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #4db5bd;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-links a {
+    color: #e0f7fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c1eef2;
+  }
+
+  .copyright a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .copyright a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .navbar {
+      padding: 1rem;
+    }
+    
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #006d77;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1.5rem;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 100;
+    }
+    
+    .nav-links.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .lang-selector {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cooking-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Responsive styles for small screens (below 430px) */
+  @media (max-width: 430px) {
+    body {
+      font-size: 14px;
+    }
+
+    .container, .cooking-container {
+      padding: 0 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .calculator-card, 
+    .email-card,
+    .info-card {
+      padding: 1rem;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .action-btn {
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+    
+    .email-box {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+    
+    .email-box::after {
+      font-size: 0.7rem;
+      bottom: 5px;
+      right: 8px;
+    }
+    
+    .code-box {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+    
+    .hero {
+      padding: 2rem 0.5rem;
+    }
+    
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+    
+    .hero p {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    
+    .btn-group {
+      flex-direction: column;
+    }
+    
+    /* Ensure all content fits within viewport */
+    .calculator-card > *,
+    .email-card > *,
+    .info-card > * {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Dark mode styles */
+  body.dark {
+    background: #121212;
+    color: #eee;
+  }
+  
+  body.dark .hero {
+    background: linear-gradient(135deg, #00474d 0%, #00666d 100%);
+  }
+  
+  body.dark .email-card,
+  body.dark .info-card {
+    background: #222;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  body.dark .email-box,
+  body.dark .code-box {
+    background: #333;
+    color: #eee;
+  }
+  
+  body.dark .email-box::after {
+    color: #80c7ff;
+  }
+  
+  body.dark .notification {
+    background: rgba(128, 199, 255, 0.15);
+    color: #80c7ff;
+  }
+  
+  body.dark .info-text {
+    color: #bbb;
+  }
+</style>
 </head>
 <body>
-  <h1>Seite wird derzeit übersetzt</h1>
-  <p>Wir übersetzen diese Seite derzeit ins Deutsche. Die vollständige Version wird in Kürze verfügbar sein. In der Zwischenzeit können Sie die <a href="/index.html">englische Version</a> besuchen.</p>
+  <header>
+    <nav class="navbar">
+      <a href="/index-de.html" class="logo">
+        <i class="fas fa-calculator logo-icon"></i>
+        Calculator2U
+      </a>
+      
+      <button class="hamburger" id="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
+        <li><a href="/de/finance/index.html">Finanzen & Investition</a></li>
+        <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
+        <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
+        <li><a href="/de/generator/index.html">Generator</a></li>
+        <li><a href="/de/games/index.html">Spiele</a></li>
+        <li><a href="/about-de.html">Über uns</a></li>
+        <li class="lang-selector">
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="de" selected>Deutsch (German)</option>
+            <option value="fr">Français (French)</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 id="hero-title">Temporärer E-Mail-Service</h1>
+    <p id="hero-description">Generieren Sie Wegwerf-E-Mail-Adressen für Anmeldungen und Verifizierungen mit unserem sicheren temporären E-Mail-Service auf Basis der mail.tm API</p>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title" id="section-title">Temporärer E-Mail-Generator</h2>
+    
+    <div class="cooking-container">
+      <!-- Email Card -->
+      <div class="email-card">
+        <div class="header-actions">
+          <div class="btn-group">
+            <button class="action-btn" id="new-email-btn">
+              <i class="fas fa-envelope"></i> <span id="new-email-text">Neue E-Mail</span>
+            </button>
+            <button class="action-btn" id="clear-mailbox-btn">
+              <i class="fas fa-trash"></i> <span id="clear-mailbox-text">Postfach leeren</span>
+            </button>
+            <button class="action-btn" id="change-domain-btn">
+              <i class="fas fa-globe"></i> <span id="change-domain-text">Domain ändern</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="dark-mode-container">
+          <span id="dark-mode-text">Dunkler Modus</span>
+          <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="section-title" id="current-email-text">Aktuelle E-Mail (zum Kopieren klicken):</div>
+        <div id="email" class="email-box" title="Klicken Sie, um die E-Mail zu kopieren">E-Mail wird generiert...</div>
+        
+        <div class="section-title" id="verification-text">Verifizierungscode (aus E-Mail extrahiert):</div>
+        <div id="verification-code" class="code-box">Warten auf E-Mails...</div>
+        
+        <div class="notification" id="notification"></div>
+      </div>
+      
+      <!-- Information Card -->
+      <div class="info-card">
+        <h3 id="about-title">Über temporäre E-Mails</h3>
+        <p class="info-text" id="about-description">Unser temporärer E-Mail-Service nutzt die mail.tm API, um Wegwerf-E-Mail-Adressen zu erstellen, die nach 24 Stunden automatisch ablaufen.</p>
+        
+        <h3 id="features-title">Hauptmerkmale</h3>
+        <ul>
+          <li><strong id="feature1">Privatsphärenschutz:</strong> <span id="feature1-desc">Schützen Sie Ihre persönliche E-Mail und vermeiden Sie Spam</span></li>
+          <li><strong id="feature2">Automatische Code-Extraktion:</strong> <span id="feature2-desc">Verifizierungscodes werden automatisch erkannt und angezeigt</span></li>
+          <li><strong id="feature3">Mehrere Domains:</strong> <span id="feature3-desc">Wechseln Sie zwischen verschiedenen E-Mail-Domains</span></li>
+          <li><strong id="feature4">Sicher:</strong> <span id="feature4-desc">Keine persönlichen Daten erforderlich, um ein Konto zu erstellen</span></li>
+          <li><strong id="feature5">Dunkler Modus:</strong> <span id="feature5-desc">Arbeiten Sie nachts komfortabel mit dem dunklen Modus</span></li>
+        </ul>
+        
+        <h3 id="howto-title">Verwendung</h3>
+        <ol>
+          <li id="step1">Klicken Sie auf „Neue E-Mail“, um eine temporäre E-Mail-Adresse zu generieren</li>
+          <li id="step2">Verwenden Sie diese E-Mail für Anmeldungen oder Verifizierungen</li>
+          <li id="step3">Verifizierungscodes werden automatisch angezeigt</li>
+          <li id="step4">Klicken Sie auf die E-Mail, um sie in die Zwischenablage zu kopieren</li>
+          <li id="step5">Klicken Sie auf „Postfach leeren“, um den Posteingang zurückzusetzen</li>
+        </ol>
+        
+        <div class="info-text">
+          <p id="note-text"><strong>Hinweis:</strong> E-Mails werden nach 24 Stunden automatisch gelöscht. Dieser Dienst ist nur für legitime Zwecke gedacht.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 id="footer-title">Calculator2U</h3>
+        <p id="footer-description">Ihre vertrauenswürdige Quelle für Taschenrechner des täglichen Lebens und nützliche Tools. Bietet seit 2025 sichere temporäre E-Mails.</p>
+      </div>
+      <div class="footer-column">
+        <h3 id="utilities-title">Andere nützliche Tools</h3>
+        <ul class="footer-links">
+          <li><a href="/de/generator/password-generator.html" id="util1">Passwort-Generator</a></li>
+          <li><a href="/de/generator/qr-code-generator.html" id="util2">QR-Code-Generator</a></li>
+          <li><a href="/de/generator/username-generator.html" id="util3">Benutzername-Generator</a></li>
+          <li><a href="/de/generator/random-number-generator.html" id="util4">Zufallszahlengenerator</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 id="legal-title">Rechtliche Informationen</h3>
+        <ul class="footer-links">
+          <li><a href="/privacy-de.html" id="legal1">Datenschutzrichtlinie</a></li>
+          <li><a href="/terms-de.html" id="legal2">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Calculator2U. <span id="rights-text">Alle Rechte vorbehalten.</span> | 
+        <a href="/privacy-de.html" id="privacy-link">Datenschutzrichtlinie</a> | 
+        <a href="/terms-de.html" id="terms-link">Nutzungsbedingungen</a>
+      </p>
+      <p><small id="note-small">Hinweis: Temporäre E-Mails werden nach 24 Stunden automatisch gelöscht. Verantwortungsbewusst verwenden.</small></p>
+    </div>
+  </footer>
+
+  <audio id="notify-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg " preload="auto"></audio>
+
+<script>
+(() => {
+  const apiBase = 'https://api.mail.tm ';
+  let token = '';
+  let account = null;
+  let domains = [];
+  let currentDomainIndex = 0;
+  let checkMailInterval = null;
+  let lastMailId = null;
+  
+  // Mehrsprachige Unterstützung
+  const translations = {
+    de: {
+      heroTitle: "Temporärer E-Mail-Service",
+      heroDesc: "Generieren Sie Wegwerf-E-Mail-Adressen für Anmeldungen und Verifizierungen mit unserem sicheren temporären E-Mail-Service auf Basis der mail.tm API",
+      sectionTitle: "Temporärer E-Mail-Generator",
+      newEmail: "Neue E-Mail",
+      clearMailbox: "Postfach leeren",
+      changeDomain: "Domain ändern",
+      darkMode: "Dunkler Modus",
+      currentEmail: "Aktuelle E-Mail (zum Kopieren klicken):",
+      verificationCode: "Verifizierungscode (aus E-Mail extrahiert):",
+      aboutTitle: "Über temporäre E-Mails",
+      aboutDesc: "Unser temporärer E-Mail-Service nutzt die mail.tm API, um Wegwerf-E-Mail-Adressen zu erstellen, die nach 24 Stunden automatisch ablaufen.",
+      featuresTitle: "Hauptmerkmale",
+      feature1: "Privatsphärenschutz:",
+      feature1Desc: "Schützen Sie Ihre persönliche E-Mail und vermeiden Sie Spam",
+      feature2: "Automatische Code-Extraktion:",
+      feature2Desc: "Verifizierungscodes werden automatisch erkannt und angezeigt",
+      feature3: "Mehrere Domains:",
+      feature3Desc: "Wechseln Sie zwischen verschiedenen E-Mail-Domains",
+      feature4: "Sicher:",
+      feature4Desc: "Keine persönlichen Daten erforderlich, um ein Konto zu erstellen",
+      feature5: "Dunkler Modus:",
+      feature5Desc: "Arbeiten Sie nachts komfortabel mit dem dunklen Modus",
+      howtoTitle: "Verwendung",
+      step1: "Klicken Sie auf „Neue E-Mail“, um eine temporäre E-Mail-Adresse zu generieren",
+      step2: "Verwenden Sie diese E-Mail für Anmeldungen oder Verifizierungen",
+      step3: "Verifizierungscodes werden automatisch angezeigt",
+      step4: "Klicken Sie auf die E-Mail, um sie in die Zwischenablage zu kopieren",
+      step5: "Klicken Sie auf „Postfach leeren“, um den Posteingang zurückzusetzen",
+      noteText: "Hinweis: E-Mails werden nach 24 Stunden automatisch gelöscht. Dieser Dienst ist nur für legitime Zwecke gedacht.",
+      footerTitle: "Calculator2U",
+      footerDesc: "Ihre vertrauenswürdige Quelle für Taschenrechner des täglichen Lebens und nützliche Tools. Bietet seit 2025 sichere temporäre E-Mails.",
+      utilitiesTitle: "Andere nützliche Tools",
+      util1: "Passwort-Generator",
+      util2: "QR-Code-Generator",
+      util3: "Benutzername-Generator",
+      util4: "Zufallszahlengenerator",
+      legalTitle: "Rechtliche Informationen",
+      legal1: "Datenschutzrichtlinie",
+      legal2: "Nutzungsbedingungen",
+      rights: "Alle Rechte vorbehalten.",
+      privacy: "Datenschutzrichtlinie",
+      terms: "Nutzungsbedingungen",
+      noteSmall: "Hinweis: Temporäre E-Mails werden nach 24 Stunden automatisch gelöscht. Verantwortungsbewusst verwenden.",
+      loading: "Lädt...",
+      noMail: "Noch keine E-Mails",
+      newMail: "Neue E-Mail erhalten!",
+      copied: "E-Mail in Zwischenablage kopiert!",
+      error: "Fehler aufgetreten, bitte aktualisieren",
+      clearing: "Postfach wird geleert...",
+      cleared: "Postfach geleert",
+      switchingEmail: "Neue E-Mail wird generiert...",
+      switchedEmail: "Neue E-Mail erstellt",
+      switchingDomain: "Domain wird geändert...",
+      switchedDomain: "Domain geändert",
+      generating: "E-Mail wird generiert..."
+    }
+  };
+
+  // Aktuelle Sprache abrufen
+  function getCurrentLang() {
+    const path = window.location.pathname;
+    const langMatch = path.match(/\/(en|zh|es|de|fr)\//);
+    return langMatch ? langMatch[1] : 'de';
+  }
+  
+  const currentLang = getCurrentLang();
+  const t = (key) => translations[currentLang][key] || translations['de'][key] || key;
+
+  // Übersetzungen auf die Seite anwenden
+  function applyTranslations() {
+    // Alle Textelemente aktualisieren
+    document.getElementById('hero-title').textContent = t('heroTitle');
+    document.getElementById('hero-description').textContent = t('heroDesc');
+    document.getElementById('section-title').textContent = t('sectionTitle');
+    document.getElementById('new-email-text').textContent = t('newEmail');
+    document.getElementById('clear-mailbox-text').textContent = t('clearMailbox');
+    document.getElementById('change-domain-text').textContent = t('changeDomain');
+    document.getElementById('dark-mode-text').textContent = t('darkMode');
+    document.getElementById('current-email-text').textContent = t('currentEmail');
+    document.getElementById('verification-text').textContent = t('verificationCode');
+    document.getElementById('about-title').textContent = t('aboutTitle');
+    document.getElementById('about-description').textContent = t('aboutDesc');
+    document.getElementById('features-title').textContent = t('featuresTitle');
+    document.getElementById('feature1').textContent = t('feature1');
+    document.getElementById('feature1-desc').textContent = t('feature1Desc');
+    document.getElementById('feature2').textContent = t('feature2');
+    document.getElementById('feature2-desc').textContent = t('feature2Desc');
+    document.getElementById('feature3').textContent = t('feature3');
+    document.getElementById('feature3-desc').textContent = t('feature3Desc');
+    document.getElementById('feature4').textContent = t('feature4');
+    document.getElementById('feature4-desc').textContent = t('feature4Desc');
+    document.getElementById('feature5').textContent = t('feature5');
+    document.getElementById('feature5-desc').textContent = t('feature5Desc');
+    document.getElementById('howto-title').textContent = t('howtoTitle');
+    document.getElementById('step1').textContent = t('step1');
+    document.getElementById('step2').textContent = t('step2');
+    document.getElementById('step3').textContent = t('step3');
+    document.getElementById('step4').textContent = t('step4');
+    document.getElementById('step5').textContent = t('step5');
+    document.getElementById('note-text').textContent = t('noteText');
+    document.getElementById('footer-title').textContent = t('footerTitle');
+    document.getElementById('footer-description').textContent = t('footerDesc');
+    document.getElementById('utilities-title').textContent = t('utilitiesTitle');
+    document.getElementById('util1').textContent = t('util1');
+    document.getElementById('util2').textContent = t('util2');
+    document.getElementById('util3').textContent = t('util3');
+    document.getElementById('util4').textContent = t('util4');
+    document.getElementById('legal-title').textContent = t('legalTitle');
+    document.getElementById('legal1').textContent = t('legal1');
+    document.getElementById('legal2').textContent = t('legal2');
+    document.getElementById('rights-text').textContent = t('rights');
+    document.getElementById('privacy-link').textContent = t('privacy');
+    document.getElementById('terms-link').textContent = t('terms');
+    document.getElementById('note-small').textContent = t('noteSmall');
+    
+    // Sprachauswahl aktualisieren
+    document.getElementById('lang-select').value = currentLang;
+  }
+
+  // DOM-Elemente
+  const emailBox = document.getElementById('email');
+  const codeBox = document.getElementById('verification-code');
+  const notification = document.getElementById('notification');
+  const notifySound = document.getElementById('notify-sound');
+
+  const newEmailBtn = document.getElementById('new-email-btn');
+  const clearMailboxBtn = document.getElementById('clear-mailbox-btn');
+  const changeDomainBtn = document.getElementById('change-domain-btn');
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+  // E-Mail in Zwischenablage kopieren
+  emailBox.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailBox.textContent)
+      .then(() => {
+        notify(t('copied'));
+      })
+      .catch(() => {
+        alert(t('error'));
+      });
+  });
+
+  // Benachrichtigung anzeigen
+  function notify(msg) {
+    notification.textContent = msg;
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.textContent = '', 300);
+    }, 2500);
+  }
+
+  // Dunklen Modus einstellen
+  darkModeToggle.addEventListener('change', e => {
+    if(e.target.checked) {
+      document.body.classList.add('dark');
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+
+  // Gespeicherte Dunkelmodus-Voreinstellung prüfen
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark');
+    darkModeToggle.checked = true;
+  }
+
+  // Verfügbare Domains abrufen
+  async function fetchDomains() {
+    try {
+      const res = await fetch(apiBase + '/domains');
+      const data = await res.json();
+      domains = data['hydra:member'].map(d => d.domain);
+    } catch {
+      domains = ['mail.tm']; // Fallback
+    }
+  }
+
+  // Konto registrieren (zufälliger Benutzername + aktuelle Domain)
+  async function registerAccount(domain) {
+    const username = 'user' + Math.random().toString(36).substring(2, 10);
+    const address = `${username}@${domain}`;
+    const password = 'Pass1234!';
+
+    // Registrieren
+    try {
+      await fetch(apiBase + '/accounts', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({address, password})
+      });
+    } catch (e) {
+      // Konto existiert möglicherweise, trotzdem versuchen, sich anzumelden
+    }
+    return {address, password};
+  }
+
+  // Anmelden, um Token zu erhalten
+  async function login(address, password) {
+    const res = await fetch(apiBase + '/token', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({address, password})
+    });
+    if(!res.ok) throw new Error('Login fehlgeschlagen');
+    const data = await res.json();
+    return data.token;
+  }
+
+  // E-Mail-Konto initialisieren (registrieren + anmelden)
+  async function initEmailAccount() {
+    notify(t('loading'));
+    if(domains.length === 0) await fetchDomains();
+    const domain = domains[currentDomainIndex];
+    account = await registerAccount(domain);
+    token = await login(account.address, account.password);
+    emailBox.textContent = account.address;
+    codeBox.textContent = t('noMail');
+    lastMailId = null;
+    if(checkMailInterval) clearInterval(checkMailInterval);
+    checkMailInterval = setInterval(checkEmails, 8000);
+  }
+
+  // E-Mail-Liste abrufen
+  async function fetchEmails() {
+    if(!token) return [];
+    try {
+      const res = await fetch(apiBase + '/messages', {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+      if(!res.ok) return [];
+      const data = await res.json();
+      return data['hydra:member'] || [];
+    } catch {
+      return [];
+    }
+  }
+
+  // E-Mail-Inhalt abrufen
+  async function fetchEmailContent(id) {
+    if(!token) return null;
+    try {
+      const res = await fetch(apiBase + `/messages/${id}`, {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+      if(!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
+    }
+  }
+
+  // Verifizierungscode extrahieren (4-8-stellige Zahlen)
+  function extractCode(text) {
+    const match = text.match(/\b(\d{4,8})\b/);
+    return match ? match[1] : null;
+  }
+
+  // Auf neue E-Mails prüfen
+  async function checkEmails() {
+    const mails = await fetchEmails();
+    if(mails.length === 0) {
+      codeBox.textContent = t('noMail');
+      return;
+    }
+    if(mails[0].id !== lastMailId) {
+      lastMailId = mails[0].id;
+      const mail = await fetchEmailContent(lastMailId);
+      if(mail) {
+        let code = extractCode(mail.text) || extractCode(mail.html) || t('noCode');
+        codeBox.textContent = code;
+        notify(t('newMail'));
+        notifySound.play();
+      }
+    }
+  }
+
+  // Postfach leeren (Anzeige aktualisieren)
+  async function clearMailbox() {
+    notify(t('clearing'));
+    codeBox.textContent = t('noMail');
+    lastMailId = null;
+    setTimeout(() => notify(t('cleared')), 1000);
+  }
+
+  // Zu neuer E-Mail wechseln
+  async function switchNewEmail() {
+    notify(t('switchingEmail'));
+    currentDomainIndex = 0;
+    await initEmailAccount();
+    notify(t('switchedEmail'));
+  }
+
+  // Domain wechseln
+  async function switchDomain() {
+    notify(t('switchingDomain'));
+    currentDomainIndex = (currentDomainIndex + 1) % domains.length;
+    await initEmailAccount();
+    notify(t('switchedDomain'));
+  }
+
+  // Sprachauswahl-Ereignis
+  document.getElementById('lang-select').addEventListener('change', function() {
+    const lang = this.value;
+    window.location.href = `/${lang}/generator/email-generator.html`;
+  });
+
+  // Schaltflächenereignisse zuordnen
+  newEmailBtn.onclick = switchNewEmail;
+  clearMailboxBtn.onclick = clearMailbox;
+  changeDomainBtn.onclick = switchDomain;
+
+  // Bei Seitenladen initialisieren
+  window.onload = async () => {
+    applyTranslations();
+    
+    // Hamburger-Menü einrichten
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    // Menü umschalten Funktion
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      
+      // Körperscrollen umschalten, wenn Menü geöffnet ist
+      if (navLinks.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Ereignisse an Hamburger binden
+    hamburger.addEventListener('click', toggleMenu);
+    
+    // Menü auch schließen, wenn außerhalb geklickt wird
+    document.addEventListener('click', (e) => {
+      const isMenuOpen = navLinks.classList.contains('active');
+      const isClickInsideNav = navLinks.contains(e.target);
+      const isClickOnHamburger = hamburger.contains(e.target);
+      
+      if (isMenuOpen && !isClickInsideNav && !isClickOnHamburger) {
+        toggleMenu();
+      }
+    });
+    
+    // Menü auch schließen, wenn auf Links geklickt wird
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    });
+    
+    emailBox.textContent = t('generating');
+    await fetchDomains();
+    await initEmailAccount();
+  };
+
+})();
+</script>
 </body>
 </html>
-</body></html> 
