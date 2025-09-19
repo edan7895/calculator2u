@@ -13,6 +13,15 @@
   <url><loc>https://calculator2u.com/about-es.html</loc></url>
   <url><loc>https://calculator2u.com/privacy-es.html</loc></url>
   <url><loc>https://calculator2u.com/terms-es.html</loc></url>
+  <url><loc>https://calculator2u.com/index-fr.html</loc></url>
+  <url><loc>https://calculator2u.com/index-de.html</loc></url>
+  <url><loc>https://calculator2u.com/about-fr.html</loc></url>
+  <url><loc>https://calculator2u.com/privacy-fr.html</loc></url>
+  <url><loc>https://calculator2u.com/terms-fr.html</loc></url>
+  <url><loc>https://calculator2u.com/about-de.html</loc></url>
+  <url><loc>https://calculator2u.com/privacy-de.html</loc></url>
+  <url><loc>https://calculator2u.com/terms-de.html</loc></url>
+
 
   <!-- EN Calculators -->
   <url><loc>https://calculator2u.com/en/health/index.html</loc></url>
@@ -214,4 +223,140 @@
   <url><loc>https://calculator2u.com/es/games/number-guessing.html</loc></url>
   <url><loc>https://calculator2u.com/es/games/2048-game.html</loc></url>
   <url><loc>https://calculator2u.com/es/games/sudoku.html</loc></url>
+
+  <!-- FR Calculators -->
+  <url><loc>https://calculator2u.com/fr/health/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/bmi-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/bmr-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/body-fat-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/tdee-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/goal-weight-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/pregnancy-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/ovulation-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/health/calorie-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/finance/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/home-loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/auto-loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/investment-return-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/tax-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/compound-interest-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/retirement-savings-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/finance/inflation-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/education/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/equation-solver.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/gpa-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/unit-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/ph-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/mole-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/education/word-counter.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/engineering/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/reynolds-number-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/base-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/ohms-law-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/mechanics-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/material-strength-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/engineering/coordinate-converter.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/daily-life/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/date-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/timezone-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/cooking-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/trip-splitter.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/salary-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/bonus-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/leave-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/project-quotation-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/daily-life/age-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/generator/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/password-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/email-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/username-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/random-number-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/qr-code-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/wifi-qr-code-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/invoice-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/generator/payslip-generator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/fr/games/index.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/quick-math-game.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/memory-game.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/math-puzzle.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/typing-speed-test.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/number-guessing.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/2048-game.html</loc></url>
+  <url><loc>https://calculator2u.com/fr/games/sudoku.html</loc></url>
+
+  <!-- DE Calculators -->
+  <url><loc>https://calculator2u.com/de/health/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/bmi-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/bmr-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/body-fat-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/tdee-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/goal-weight-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/pregnancy-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/ovulation-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/health/calorie-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/finance/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/home-loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/auto-loan-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/investment-return-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/tax-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/compound-interest-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/retirement-savings-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/finance/inflation-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/education/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/equation-solver.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/gpa-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/unit-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/ph-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/mole-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/education/word-counter.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/engineering/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/reynolds-number-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/base-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/ohms-law-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/mechanics-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/material-strength-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/engineering/coordinate-converter.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/daily-life/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/date-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/timezone-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/cooking-converter.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/trip-splitter.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/salary-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/bonus-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/leave-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/project-quotation-calculator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/daily-life/age-calculator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/generator/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/password-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/email-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/username-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/random-number-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/qr-code-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/wifi-qr-code-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/invoice-generator.html</loc></url>
+  <url><loc>https://calculator2u.com/de/generator/payslip-generator.html</loc></url>
+
+  <url><loc>https://calculator2u.com/de/games/index.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/quick-math-game.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/memory-game.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/math-puzzle.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/typing-speed-test.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/number-guessing.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/2048-game.html</loc></url>
+  <url><loc>https://calculator2u.com/de/games/sudoku.html</loc></url>
+
+
 </urlset>
