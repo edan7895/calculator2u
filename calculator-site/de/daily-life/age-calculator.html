@@ -4,22 +4,22 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Language" content="auto" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Urlaubsrechner | Calculator2U</title>
-<meta name="description" content="Berechnen Sie Ihre restlichen Urlaubsansprüche, verfolgen Sie Ihre Urlaubstage und planen Sie Ihre freie Zeit" />
-<meta name="keywords" content="Urlaubsrechner, Urlaubsanspruch, Urlaubsguthaben, Jahresurlaubsrechner" />
+<title>Altersrechner | Calculator2U</title>
+<meta name="description" content="Berechne dein Alter in Jahren, Monaten und Tagen. Finde heraus, wie alt du in verschiedenen Zeiteinheiten bist." />
+<meta name="keywords" content="Altersrechner, Alter berechnen, wie alt bin ich, Alter in Tagen, Alter in Wochen" />
 <meta name="author" content="Calculator2U" />
-<link rel="canonical" href="https://www.calculator2u.com/de/daily-life/leave-calculator.html " />
-<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/leave-calculator.html "/>
-<link rel=" hreflang="x-default" href="https://www.calculator2u.com/de/daily-life/leave-calculator.html "/>
-<meta property="og:title" content="Urlaubsrechner | Calculator2U" />
-<meta property="og:description" content="Berechnen Sie Ihre restlichen Urlaubsansprüche, verfolgen Sie Ihre Urlaubstage und planen Sie Ihre freie Zeit" />
+<link rel="canonical" href="https://www.calculator2u.com/de/daily-life/age-calculator.html " />
+<link rel=" hreflang="en" href="https://www.calculator2u.com/en/daily-life/age-calculator.html "/>
+<link rel=" hreflang="zh" href="https://www.calculator2u.com/zh/daily-life/age-calculator.html "/>
+<link rel=" hreflang="es" href="https://www.calculator2u.com/es/daily-life/age-calculator.html "/>
+<link rel=" hreflang="fr" href="https://www.calculator2u.com/fr/daily-life/age-calculator.html "/>
+<link rel=" hreflang="de" href="https://www.calculator2u.com/de/daily-life/age-calculator.html "/>
+<link rel=" hreflang="x-default" href="https://www.calculator2u.com/en/daily-life/age-calculator.html "/>
+<meta property="og:title" content="Altersrechner | Calculator2U" />
+<meta property="og:description" content="Berechne dein Alter in Jahren, Monaten und Tagen. Finde heraus, wie alt du in verschiedenen Zeiteinheiten bist." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.calculator2u.com/de/daily-life/leave-calculator.html " />
-<meta property="og:image" content="https://www.calculator2u.com/assets/images/leave-calculator.jpg " />
+<meta property="og:url" content="https://www.calculator2u.com/de/daily-life/age-calculator.html " />
+<meta property="og:image" content="https://www.calculator2u.com/assets/images/age-calculator.jpg " />
 <meta property="og:locale" content="de_DE" />
 <meta property="og:site_name" content="Calculator2U" />
 
@@ -32,9 +32,7 @@
 
   gtag('config', 'G-RLH4FLZBZF');
 </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
-<!-- Include Chart.js for visualizations -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
 <style>
   * {
@@ -224,8 +222,8 @@
     border-radius: 2px;
   }
 
-  /* Leave Calculator Styles */
-  .leave-container {
+  /* Date Calculator Styles */
+  .date-container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -236,7 +234,7 @@
   }
   
   @media (min-width: 992px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -345,7 +343,7 @@
     color: #006d77;
   }
   
-  .leave-summary {
+  .result-value {
     text-align: center;
     font-size: 1.4rem;
     font-weight: 600;
@@ -356,15 +354,15 @@
     color: white;
   }
   
-  /* Leave breakdown chart container */
+  /* Conversion chart container */
   .chart-container {
     height: 300px;
     margin: 2rem 0;
     position: relative;
   }
   
-  /* Leave schedule */
-  .leave-schedule {
+  /* Conversion table */
+  .conversion-table {
     overflow-x: auto;
     margin-top: 2rem;
     border-radius: 8px;
@@ -372,30 +370,30 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  .leave-table {
+  .conversion-table table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     min-width: 600px;
   }
   
-  .leave-table th {
+  .conversion-table th {
     background: #006d77;
     color: white;
     padding: 1rem;
     text-align: left;
   }
   
-  .leave-table td {
+  .conversion-table td {
     padding: 0.8rem 1rem;
     border-bottom: 1px solid #e0f7fa;
   }
   
-  .leave-table tr:last-child td {
+  .conversion-table tr:last-child td {
     border-bottom: none;
   }
   
-  .leave-table tr:nth-child(even) {
+  .conversion-table tr:nth-child(even) {
     background: #f9f9f9;
   }
   
@@ -563,7 +561,7 @@
   }
 
   @media (max-width: 768px) {
-    .leave-container {
+    .date-container {
       grid-template-columns: 1fr;
     }
   }
@@ -574,7 +572,7 @@
       font-size: 14px;
     }
 
-    .container, .leave-container {
+    .container, .date-container {
       padding: 0 0.5rem;
       width: 100%;
       max-width: 100%;
@@ -611,18 +609,18 @@
       max-width: 100%;
     }
     
-    .leave-schedule {
+    .conversion-table {
       max-width: 100%;
       width: auto;
     }
     
-    .leave-table {
+    .conversion-table table {
       min-width: 100%;
       width: auto;
     }
     
-    .leave-table th,
-    .leave-table td {
+    .conversion-table th,
+    .conversion-table td {
       padding: 0.5rem;
       word-break: break-word;
       white-space: normal;
@@ -707,6 +705,137 @@
     border-radius: 4px;
     font-weight: 600;
   }
+  
+  /* Conversion tabs */
+  .conversion-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    background: #e0f7fa;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #006d77;
+  }
+  
+  .tab-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .conversion-panel {
+    display: none;
+  }
+  
+  .conversion-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Unit system toggle */
+  .unit-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-btn {
+    background: #e0f7fa;
+    border: 2px solid #4db5bd;
+    color: #006d77;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .toggle-btn.active {
+    background: #006d77;
+    color: white;
+  }
+  
+  .toggle-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  /* Age Calculator Specific */
+  .birthday-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .birthday-input input {
+    flex: 1;
+  }
+
+  .age-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e63946;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(230, 57, 70, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .age-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .age-value {
+    font-size: 2.2rem;
+    line-height: 1;
+  }
+
+  .age-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .result-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .format-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    min-width: 160px;
+  }
+
+  .format-value {
+    font-weight: bold;
+    color: #006d77;
+    font-size: 1.1rem;
+  }
+
+  .format-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
 </style>
 </head>
 <body>
@@ -725,19 +854,19 @@
       
       <ul class="nav-links" id="navLinks">
         <li><a href="/de/health/index.html">Gesundheit & Körper</a></li>
-        <li><a href="/de/finance/index.html">Finanzen & Investment</a></li>
+        <li><a href="/de/finance/index.html">Finanzen & Investition</a></li>
         <li><a href="/de/education/index.html">Bildung & Lernen</a></li>
-        <li><a href="/de/engineering/index.html">Ingenieurwesen & Wissenschaft</a></li>
+        <li><a href="/de/engineering/index.html">Technik & Wissenschaft</a></li>
         <li><a href="/de/daily-life/index.html">Arbeit & Leben</a></li>
         <li><a href="/de/generator/index.html">Generator</a></li>
         <li><a href="/de/games/index.html">Spiele</a></li>
         <li><a href="/about-de.html">Über uns</a></li>
         <li class="lang-selector">
           <select id="lang-select" class="lang-select">
-            <option value="de">Deutsch</option>
             <option value="en">English</option>
             <option value="zh">中文 (Chinese)</option>
             <option value="es">Español (Spanish)</option>
+            <option value="de" selected>Deutsch (German)</option>
             <option value="fr">Français (French)</option>
           </select>
         </li>
@@ -747,211 +876,122 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Urlaubsrechner</h1>
-    <p>Berechnen Sie Ihre restlichen Urlaubsansprüche, verfolgen Sie Ihre Urlaubstage und planen Sie Ihre freie Zeit</p>
+    <h1>Altersrechner</h1>
+    <p>Berechne dein Alter in Jahren, Monaten und Tagen. Finde heraus, wie alt du in verschiedenen Zeiteinheiten bist.</p>
   </section>
 
   <main class="container">
-    <h2 class="section-title">Urlaubsrechner</h2>
+    <h2 class="section-title">Altersrechner</h2>
     
-    <div class="leave-container">
+    <div class="date-container">
       <!-- Calculator Card -->
       <div class="calculator-card">
         <div class="input-group">
           <div class="input-field">
-            <label for="employee-name">Name des Mitarbeiters
+            <label for="birth-date">Geburtsdatum:
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Geben Sie den Namen des Mitarbeiters ein</span>
+                <span class="tooltip-text">Wähle dein Geburtsdatum</span>
               </span>
             </label>
-            <input type="text" id="employee-name" placeholder="Name eingeben">
-          </div>
-          
-          <div class="input-field">
-            <label for="hiring-date">Einstellungsdatum
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Datum, an dem der Mitarbeiter eingestellt wurde</span>
-              </span>
-            </label>
-            <input type="date" id="hiring-date">
+            <input type="date" id="birth-date">
           </div>
         </div>
         
         <div class="input-group">
           <div class="input-field">
-            <label for="year-month">Jahr/Monat
+            <label for="calculate-date">Alter berechnen am:
               <span class="tooltip">
                 <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Wählen Sie Jahr und Monat für die Berechnung</span>
+                <span class="tooltip-text">Wähle das Datum, an dem dein Alter berechnet werden soll</span>
               </span>
             </label>
-            <select id="year-month">
-              <option value="2025-01">Januar 2025</option>
-              <option value="2025-02">Februar 2025</option>
-              <option value="2025-03">März 2025</option>
-              <option value="2025-04">April 2025</option>
-              <option value="2025-05">Mai 2025</option>
-              <option value="2025-06">Juni 2025</option>
-              <option value="2025-07">Juli 2025</option>
-              <option value="2025-08">August 2025</option>
-              <option value="2025-09">September 2025</option>
-              <option value="2025-10">Oktober 2025</option>
-              <option value="2025-11">November 2025</option>
-              <option value="2025-12">Dezember 2025</option>
-            </select>
-          </div>
-          
-          <div class="input-field">
-            <label for="leave-quota">Jährlicher Urlaubsanspruch (Tage)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Anzahl der pro Jahr zugewiesenen Urlaubstage</span>
-              </span>
-            </label>
-            <input type="number" id="leave-quota" placeholder="Urlaubsanspruch eingeben" min="0" value="20">
+            <input type="date" id="calculate-date">
           </div>
         </div>
         
-        <div class="input-group">
-          <div class="input-field">
-            <label for="used-leave">Genommener Urlaub (Tage)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Bereits genommene Urlaubstage</span>
-              </span>
-            </label>
-            <input type="number" id="used-leave" placeholder="Genommene Tage" min="0" value="5">
-          </div>
-          
-          <div class="input-field">
-            <label for="planned-leave">Geplanter Urlaub (Tage)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Für die Zukunft geplante Urlaubstage</span>
-              </span>
-            </label>
-            <input type="number" id="planned-leave" placeholder="Geplante Tage" min="0">
-          </div>
-        </div>
-        
-        <div class="input-group">
-          <div class="input-field">
-            <label for="leave-balance">Urlaubsguthaben (Tage)
-              <span class="tooltip">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="tooltip-text">Verbleibende Urlaubstage nach geplantem Urlaub</span>
-              </span>
-            </label>
-            <input type="number" id="leave-balance" placeholder="Urlaubsguthaben" min="0" readonly>
-          </div>
-        </div>
-        
-        <button class="calculate-btn" id="calculate-btn">
-          <i class="fas fa-calculator"></i> Urlaub berechnen
+        <button class="calculate-btn" id="calculate-age">
+          <i class="fas fa-calculator"></i> Alter berechnen
         </button>
         
-        <div class="result-container" id="result-container">
-          <h3 class="result-header">Ihre Urlaubsübersicht</h3>
-          <div class="leave-summary" id="leave-summary">
-            Verbleibender Urlaub: 10 Tage
+        <div class="result-container" id="age-result-container">
+          <h3 class="result-header">Dein Alter</h3>
+          
+          <div class="age-display" id="age-display">
+            <!-- Age will appear here -->
           </div>
           
-          <!-- Result Metrics -->
-          <div class="result-metrics">
-            <div class="metric-card">
-              <div class="metric-label">Jährlicher Urlaubsanspruch</div>
-              <div class="metric-value" id="quota-value">20 Tage</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Genommener Urlaub</div>
-              <div class="metric-value" id="used-value">5 Tage</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Geplanter Urlaub</div>
-              <div class="metric-value" id="planned-value">3 Tage</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Verbleibender Urlaub</div>
-              <div class="metric-value" id="remaining-value">12 Tage</div>
-            </div>
-          </div>
-          
-          <!-- Leave breakdown chart -->
-          <div class="chart-container">
-            <canvas id="leave-chart"></canvas>
-          </div>
-          
-          <div class="leave-details" id="leave-details">
-            <p>Auf Basis Ihrer Angaben hat <span class="highlight" id="employee-name-display">Mitarbeitername</span> <span class="highlight" id="remaining-leave-display">12</span> Urlaubstage für das laufende Jahr übrig.</p>
-            <p>Diese Berechnung beinhaltet <span class="highlight" id="used-leave-display">5</span> bereits genommene und <span class="highlight" id="planned-leave-display">3</span> geplante Tage.</p>
+          <div class="result-formats" id="age-formats">
+            <!-- Age formats will be inserted here -->
           </div>
         </div>
         
-        <div class="leave-schedule">
-          <table class="leave-table" id="leave-table">
+        <div class="conversion-table">
+          <h4 style="margin-bottom: 1rem;">Beispiele für Altersberechnungen</h4>
+          <table>
             <thead>
               <tr>
-                <th>Urlaubsart</th>
-                <th>Startdatum</th>
-                <th>Enddatum</th>
-                <th>Tage</th>
-                <th>Status</th>
+                <th>Geburtstag</th>
+                <th>Berechnen am</th>
+                <th>Ergebnis</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Leave schedule will be populated here -->
+              <tr>
+                <td>2000-01-01</td>
+                <td>2025-01-01</td>
+                <td>25 Jahre alt</td>
+              </tr>
+              <tr>
+                <td>1990-05-15</td>
+                <td>2025-06-17</td>
+                <td>35 Jahre, 1 Monat, 2 Tage</td>
+              </tr>
+              <tr>
+                <td>2010-12-31</td>
+                <td>2025-01-01</td>
+                <td>14 Jahre, 0 Monate, 1 Tag</td>
+              </tr>
+              <tr>
+                <td>2005-02-28</td>
+                <td>2025-02-28</td>
+                <td>20 Jahre alt</td>
+              </tr>
             </tbody>
-            <tfoot>
-              <tr>
-                <td><strong>Gesamter genommener Urlaub</strong></td>
-                <td colspan="3" id="total-used-leave">5 Tage</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><strong>Verbleibender Urlaub</strong></td>
-                <td colspan="3" id="total-remaining-leave">15 Tage</td>
-                <td></td>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
       
       <!-- Information Card -->
       <div class="info-card">
-        <h3>Ihre Urlaubsansprüche verstehen</h3>
-        <p>Urlaubsansprüche variieren je nach Unternehmensrichtlinien und örtlichem Arbeitsrecht. Hier sind einige häufige Urlaubsarten:</p>
+        <h3>Verständnis der Altersberechnung</h3>
+        <p>Altersberechnungen können je nach Kalendersystem und Schaltjahr-Berücksichtigung variieren. Hier sind einige wichtige Punkte zu beachten:</p>
         <ul>
-          <li><strong>Jahresurlaub:</strong> Bezahlte Urlaubstage, die im Laufe des Jahres angesammelt werden</li>
-          <li><strong>Krankheitsurlaub:</strong> Freistellung bei Krankheit oder Arztterminen</li>
-          <li><strong>Elternurlaub:</strong> Urlaub für frischgebackene Eltern (Mutterschaft/Vaterschaft)</li>
-          <li><strong>Sonderurlaub:</strong> Freistellung bei Todesfällen in der Familie</li>
-          <li><strong>Urteilsurlaub:</strong> Freistellung für Jury-Dienst</li>
+          <li><strong>Schaltjahre:</strong> Durch 4 teilbare Jahre sind Schaltjahre, außer Säkularjahre, die durch 400 teilbar sein müssen</li>
+          <li><strong>Monatslängen:</strong> Monate haben 28–31 Tage (April, Juni, September, November haben 30; Februar hat 28 oder 29)</li>
+          <li><strong>Datumsformate:</strong> Unser Rechner verwendet das ISO-8601-Format (JJJJ-MM-TT)</li>
+          <li><strong>Exaktes Alter:</strong> Der Rechner berücksichtigt das genaue Geburts- und Zieldatum für eine präzise Altersberechnung</li>
         </ul>
         
-        <h3>Faktoren, die die Urlaubsberechnung beeinflussen</h3>
-        <p>Mehrere Faktoren können Ihre Urlaubsansprüche beeinflussen:</p>
+        <h3>Tipps zur Altersberechnung</h3>
+        <p>Beachte diese Tipps für genaue Altersberechnungen:</p>
         <ul>
-          <li><strong>Beschäftigungsart:</strong> Vollzeit, Teilzeit oder Vertrag</li>
-          <li><strong>Betriebszugehörigkeit:</strong> Manche Unternehmen erhöhen den Urlaub mit der Dienstzeit</li>
-          <li><strong>Ansammlungsrate:</strong> Wie sich Urlaubstage im Laufe der Zeit ansammeln</li>
-          <li><strong>Unternehmensrichtlinie:</strong> Spezifische Regeln zur Urlaubsnutzung</li>
-          <li><strong>Örtliche Gesetze:</strong> Mindesturlaub gesetzlich vorgeschrieben</li>
+          <li>Das Alter wird auf Basis des Gregorianischen Kalenders berechnet</li>
+          <li>Wenn dein Geburtstag in diesem Jahr noch nicht war, wird ein Jahr abgezogen</li>
+          <li>Das Alter kann in mehreren Formaten ausgedrückt werden (Jahre, Monate, Tage)</li>
+          <li>Schaltjahre beeinflussen Altersberechnungen für Menschen, die am 29. Februar geboren wurden</li>
+          <li>Zeitzonen beeinflussen Altersberechnungen nicht, da nur Daten berücksichtigt werden</li>
         </ul>
         
-        <div class="leave-tips">
-          <h3><i class="fas fa-lightbulb"></i> Tipps zur Urlaubsverwaltung</h3>
-          <p>Beachten Sie diese Tipps zur effektiven Urlaubsverwaltung:</p>
-          <ul>
-            <li>Planen Sie Ihren Urlaub im Voraus, um ausreichende Abdeckung sicherzustellen</li>
-            <li>Verstehen Sie die Urlaubsrichtlinien und -verfahren Ihres Unternehmens</li>
-            <li>Behalten Sie Ihr Urlaubsguthaben während des ganzen Jahres im Blick</li>
-            <li>Kommunizieren Sie mit Ihrem Team über Ihre geplanten Abwesenheiten</li>
-            <li>Verteilen Sie den Urlaub, um Burnout zu vermeiden</li>
-          </ul>
-        </div>
+        <h3>Häufige Altersberechnungen</h3>
+        <p>Einige häufig verwendete Altersberechnungen:</p>
+        <ul>
+          <li>Juristische Volljährigkeit: 18 Jahre in vielen Ländern</li>
+          <li>Rentenalter: In der Regel 65–70 Jahre je nach Land</li>
+          <li>Führerscheinalter: Normalerweise 16–18 Jahre</li>
+          <li>Studienberechtigung: In der Regel 18 Jahre</li>
+          <li>Kindheit: Bis zu 12 Jahre</li>
+        </ul>
       </div>
     </div>
   </main>
@@ -960,13 +1000,13 @@
     <div class="footer-container">
       <div class="footer-column">
         <h3>Calculator2U</h3>
-        <p>Ihre vertrauensvolle Quelle für Alltagsrechner und Finanztools. Wir helfen Ihnen seit 2025, informierte Entscheidungen zu treffen.</p>
+        <p>Deine vertrauensvolle Quelle für Alltagsrechner und Finanztools. Wir helfen dir, dein Alter seit 2025 zu berechnen.</p>
       </div>
       <div class="footer-column">
         <h3>Andere nützliche Rechner</h3>
         <ul class="footer-links">
           <li><a href="/de/finance/auto-loan-calculator.html">Autokredit-Rechner</a></li>
-          <li><a href="/de/finance/home-loan-calculator.html">Baufinanzierungsrechner</a></li>
+          <li><a href="/de/finance/home-loan-calculator.html">Hypothekenrechner</a></li>
           <li><a href="/de/daily-life/salary-calculator.html">Gehaltsrechner</a></li>
           <li><a href="/de/finance/tax-calculator.html">Steuerrechner</a></li>
         </ul>
@@ -974,17 +1014,17 @@
       <div class="footer-column">
         <h3>Rechtliche Informationen</h3>
         <ul class="footer-links">
-          <li><a href="/privacy-de.html">Datenschutzrichtlinie</a></li>
+          <li><a href="/privacy-de.html">Datenschutz</a></li>
           <li><a href="/terms-de.html">Nutzungsbedingungen</a></li>
         </ul>
       </div>
     </div>
     <div class="copyright">
       <p>&copy; 2025 Calculator2U. Alle Rechte vorbehalten. | 
-        <a href="/privacy-de.html">Datenschutzrichtlinie</a> | 
+        <a href="/privacy-de.html">Datenschutz</a> | 
         <a href="/terms-de.html">Nutzungsbedingungen</a>
       </p>
-      <p><small>Hinweis: Diese Rechner liefern nur Schätzungen. Wenden Sie sich zur Prüfung Ihrer Ansprüche an Ihre Personalabteilung.</small></p>
+      <p><small>Hinweis: Altersberechnungen basieren auf dem Gregorianischen Kalender. Ergebnisse können bei anderen Kalendersystemen abweichen.</small></p>
     </div>
   </footer>
 
@@ -994,124 +1034,152 @@
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('navLinks');
       const langSelect = document.getElementById('lang-select');
-      const employeeName = document.getElementById('employee-name');
-      const hiringDate = document.getElementById('hiring-date');
-      const yearMonth = document.getElementById('year-month');
-      const leaveQuota = document.getElementById('leave-quota');
-      const usedLeave = document.getElementById('used-leave');
-      const plannedLeave = document.getElementById('planned-leave');
-      const calculateBtn = document.getElementById('calculate-btn');
-      const resultContainer = document.getElementById('result-container');
-      const leaveSummary = document.getElementById('leave-summary');
-      const leaveDetails = document.getElementById('leave-details');
-      const leaveTable = document.getElementById('leave-table').querySelector('tbody');
       
-      // Chart variable
-      let leaveChart = null;
+      // Age calculator elements
+      const birthDate = document.getElementById('birth-date');
+      const calculateDate = document.getElementById('calculate-date');
+      const calculateAgeBtn = document.getElementById('calculate-age');
+      const ageResultContainer = document.getElementById('age-result-container');
+      const ageDisplay = document.getElementById('age-display');
+      const ageFormats = document.getElementById('age-formats');
       
-      // Format number with comma separator
-      function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // Set default dates
+      function setDefaultDates() {
+        const today = new Date();
+        const todayFormatted = formatDate(today);
+        
+        // Set calculate date to today
+        calculateDate.value = todayFormatted;
+        
+        // Set birth date to 30 years ago
+        const thirtyYearsAgo = new Date();
+        thirtyYearsAgo.setFullYear(today.getFullYear() - 30);
+        birthDate.value = formatDate(thirtyYearsAgo);
       }
       
-      // Calculate Leave function
-      function calculateLeave() {
-        // Get input values
-        const name = employeeName.value || 'Mitarbeiter';
-        const quota = parseFloat(leaveQuota.value) || 0;
-        const used = parseFloat(usedLeave.value) || 0;
-        const planned = parseFloat(plannedLeave.value) || 0;
+      // Format date to YYYY-MM-DD
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+      
+      // Calculate age
+      function calculateAge() {
+        const birth = new Date(birthDate.value);
+        const calc = new Date(calculateDate.value);
         
-        // Calculate remaining leave
-        const remaining = Math.max(quota - used - planned, 0);
-        
-        // Update results display
-        document.getElementById('quota-value').textContent = `${quota} Tage`;
-        document.getElementById('used-value').textContent = `${used} Tage`;
-        document.getElementById('planned-value').textContent = `${planned} Tage`;
-        document.getElementById('remaining-value').textContent = `${remaining} Tage`;
-        
-        // Update leave summary
-        leaveSummary.textContent = `Verbleibender Urlaub: ${remaining} Tage`;
-        
-        // Update leave details
-        document.getElementById('employee-name-display').textContent = name;
-        document.getElementById('remaining-leave-display').textContent = remaining;
-        document.getElementById('used-leave-display').textContent = used;
-        document.getElementById('planned-leave-display').textContent = planned;
-        
-        // Update leave balance field
-        document.getElementById('leave-balance').value = remaining;
-        
-        // Update footer totals
-        document.getElementById('total-used-leave').textContent = `${used} Tage`;
-        document.getElementById('total-remaining-leave').textContent = `${remaining} Tage`;
-        
-        // Create or update leave chart
-        const ctx = document.getElementById('leave-chart').getContext('2d');
-        if (leaveChart) {
-          leaveChart.destroy();
+        if (isNaN(birth) || isNaN(calc)) {
+          ageDisplay.innerHTML = "Bitte gültige Daten auswählen";
+          ageResultContainer.style.display = "block";
+          return;
         }
         
-        leaveChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ['Genommener Urlaub', 'Geplanter Urlaub', 'Verbleibender Urlaub'],
-            datasets: [ {
-              data: [used, planned, remaining],
-              backgroundColor: [
-                '#4db5bd',
-                '#ffd166',
-                '#9c88ff'
-              ],
-              borderWidth: 1
-            } ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'right',
-                labels: {
-                  font: {
-                    family: 'Segoe UI',
-                    size: 12
-                  }
-                }
-              },
-              tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    const label = context.label || '';
-                    const value = context.raw;
-                    return `${label}: ${value} Tage`;
-                  }
-                }
-              }
-            }
-          }
-        });
+        // Calculate age in milliseconds
+        let age = calc - birth;
         
-        // Show result container
-        resultContainer.style.display = 'block';
+        if (age < 0) {
+          ageDisplay.innerHTML = "Bitte wähle ein Berechnungsdatum nach deinem Geburtstag";
+          ageResultContainer.style.display = "block";
+          return;
+        }
+        
+        // Calculate years, months, and days
+        let years = calc.getFullYear() - birth.getFullYear();
+        let months = calc.getMonth() - birth.getMonth();
+        let days = calc.getDate() - birth.getDate();
+        
+        // Adjust for negative months/days
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+        
+        if (days < 0) {
+          // Get last day of previous month
+          const lastDay = new Date(calc.getFullYear(), calc.getMonth(), 0).getDate();
+          days += lastDay;
+          months--;
+          
+          // Adjust months if needed
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
+        }
+        
+        // Calculate total days
+        const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
+        
+        // Calculate weeks
+        const weeks = Math.floor(totalDays / 7);
+        
+        // Calculate months (another way)
+        const totalMonths = years * 12 + months;
+        
+        // Calculate hours, minutes, seconds
+        const hours = Math.floor((age % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((age % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((age % (1000 * 60)) / 1000);
+        
+        // Display results
+        ageDisplay.innerHTML = `
+          <div class="age-unit">
+            <div class="age-value">${years}</div>
+            <div class="age-label">JAHRE</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${months}</div>
+            <div class="age-label">MONATE</div>
+          </div>
+          <div class="age-unit">
+            <div class="age-value">${days}</div>
+            <div class="age-label">TAGE</div>
+          </div>
+        `;
+        ageResultContainer.style.display = "block";
+        
+        // Format results
+        ageFormats.innerHTML = '';
+        
+        const formats = [
+          { value: `${years} Jahr${years !== 1 ? 'e' : ''}`, label: "Jahre" },
+          { value: `${totalMonths} Monat${totalMonths !== 1 ? 'e' : ''}`, label: "Monate" },
+          { value: `${weeks} Woche${weeks !== 1 ? 'n' : ''}`, label: "Wochen" },
+          { value: `${totalDays} Tag${totalDays !== 1 ? 'e' : ''}`, label: "Tage" },
+          { value: `${Math.floor(totalDays / 365.25)} Jahr${Math.floor(totalDays / 365.25) !== 1 ? 'e' : ''}`, label: "Sonnenjahre" },
+          { value: `${Math.floor(totalDays / 30.44)} Monat${Math.floor(totalDays / 30.44) !== 1 ? 'e' : ''}`, label: "Ca. Monate" },
+          { value: `${totalDays * 24} Stunde${totalDays * 24 !== 1 ? 'n' : ''}`, label: "Stunden" },
+          { value: `${totalDays * 24 * 60} Minute${totalDays * 24 * 60 !== 1 ? 'n' : ''}`, label: "Minuten" },
+          { value: `${totalDays * 24 * 60 * 60} Sekunde${totalDays * 24 * 60 * 60 !== 1 ? 'n' : ''}`, label: "Sekunden" }
+        ];
+        
+        formats.forEach(format => {
+          const formatCard = document.createElement('div');
+          formatCard.className = 'format-card';
+          formatCard.innerHTML = `
+            <div class="format-value">${format.value}</div>
+            <div class="format-label">${format.label}</div>
+          `;
+          ageFormats.appendChild(formatCard);
+        });
       }
       
       // Event Listeners
-      calculateBtn.addEventListener('click', calculateLeave);
+      calculateAgeBtn.addEventListener('click', calculateAge);
       
       // Allow Enter key to trigger calculation
       const inputFields = [
-        employeeName, 
-        hiringDate, 
-        leaveQuota,
-        usedLeave,
-        plannedLeave
+        birthDate, 
+        calculateDate
       ];
       
       inputFields.forEach(field => {
         field.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') calculateLeave();
+          if (e.key === 'Enter') {
+            calculateAge();
+          }
         });
       });
       
@@ -1137,20 +1205,20 @@
         
         // Build target URL based on selected language
         switch(selectedLang) {
-          case 'en':
-            targetUrl = '/en/daily-life/leave-calculator.html';
-            break;
           case 'zh':
-            targetUrl = '/zh/daily-life/leave-calculator.html';
+            targetUrl = '/zh/daily-life/age-calculator.html';
             break;
           case 'es':
-            targetUrl = '/es/daily-life/leave-calculator.html';
+            targetUrl = '/es/daily-life/age-calculator.html';
+            break;
+          case 'de':
+            targetUrl = '/de/daily-life/age-calculator.html';
             break;
           case 'fr':
-            targetUrl = '/fr/daily-life/leave-calculator.html';
+            targetUrl = '/fr/daily-life/age-calculator.html';
             break;
-          default: // German
-            targetUrl = '/de/daily-life/leave-calculator.html';
+          default: // English
+            targetUrl = '/en/daily-life/age-calculator.html';
         }
         
         window.location.href = targetUrl;
@@ -1174,7 +1242,10 @@
       });
       
       // Initialize the calculator with default values
-      window.addEventListener('load', calculateLeave);
+      window.addEventListener('load', () => {
+        setDefaultDates();
+        calculateAge();
+      });
     })();
   </script>
 </body>
