@@ -978,6 +978,16 @@
     <h1>Tax Calculator</h1>
     <p>Calculate your tax liability, deductions, and tax brackets</p>
   </section>
+<script type="text/javascript">
+	atOptions = {
+		'key' : '3836125f77de06af76b49cca9a865bf1',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/3836125f77de06af76b49cca9a865bf1/invoke.js"></script>
 
   <main class="container">
     <h2 class="section-title">Income Tax Calculator</h2>
@@ -1165,6 +1175,8 @@
           <h3 class="result-header">Your Tax Summary</h3>
           <div class="tax-amount" id="tax-amount">$7,250.00</div>
           <div class="tax-deductions" id="tax-deductions">Total Deductions: $12,000.00</div>
+<script async="async" data-cfasync="false" src="//pl27758561.revenuecpmgate.com/6987c3d1b68c02e9477fe80d5480127a/invoke.js"></script>
+<div id="container-6987c3d1b68c02e9477fe80d5480127a"></div>
           
           <!-- Result Metrics -->
           <div class="result-metrics">
@@ -1256,6 +1268,16 @@
       </div>
     </div>
   </main>
+<script type="text/javascript">
+	atOptions = {
+		'key' : '3836125f77de06af76b49cca9a865bf1',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/3836125f77de06af76b49cca9a865bf1/invoke.js"></script>
 
   <footer>
     <div class="footer-container">
@@ -1289,435 +1311,352 @@
     </div>
   </footer>
 
-  <script>
-    (function(){
-      // Hamburger menu functionality
-      const hamburger = document.getElementById('hamburger');
-      const navLinks = document.getElementById('navLinks');
-      
-      hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (event) => {
-        const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
-        if (!isClickInsideNav && navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-          hamburger.classList.remove('active');
+<script>
+  (function(){
+    // Hamburger-Menü-Funktionalität
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
+    // Menü schließen bei Klick außerhalb
+    document.addEventListener('click', (event) => {
+      const isClickInsideNav = navLinks.contains(event.target) || hamburger.contains(event.target);
+      if (!isClickInsideNav && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    });
+
+    // Sprachumschaltung
+    const langSelect = document.getElementById('lang-select');
+    langSelect.addEventListener('change', function () {
+      const selectedLang = this.value;
+      let targetUrl = '';
+      const currentPath = window.location.pathname;
+      const pathSegments = currentPath.split('/');
+
+      let financePath = '';
+      if (currentPath.includes('/finance/')) {
+        const financeIndex = pathSegments.findIndex(seg => seg === 'finance');
+        if (financeIndex !== -1) {
+          financePath = pathSegments.slice(financeIndex).join('/').replace('finance/tax-calculator', 'finance/tax-calculator');
         }
+      }
+
+      switch (selectedLang) {
+        case 'zh':
+          targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/tax-calculator.html';
+          break;
+        case 'es':
+          targetUrl = financePath ? `/es/${financePath}` : '/es/finance/tax-calculator.html';
+          break;
+        case 'de':
+          targetUrl = financePath ? `/de/${financePath}` : '/de/finance/tax-calculator.html';
+          break;
+        case 'fr':
+          targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/tax-calculator.html';
+          break;
+        default: // Englisch
+          targetUrl = financePath ? `/en/${financePath}` : '/en/finance/tax-calculator.html';
+      }
+      window.location.href = targetUrl;
+    });
+
+    // Aktuelle Sprache anhand URL setzen
+    const pathSegments = window.location.pathname.split('/');
+    if (pathSegments.length > 1) {
+      const lang = pathSegments[1];
+      if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
+        langSelect.value = lang;
+      }
+    }
+
+    /* ----------  STEUERRECHNER  ---------- */
+    const salaryInput            = document.getElementById('salary-income');
+    const bonusInput             = document.getElementById('bonus-income');
+    const selfEmployedInput      = document.getElementById('self-employed-income');
+    const interestInput          = document.getElementById('interest-income');
+    const dividendInput          = document.getElementById('dividend-income');
+    const rentalInput            = document.getElementById('rental-income');
+    const foreignInput           = document.getElementById('foreign-income');
+    const currencySelect         = document.getElementById('foreign-currency');
+
+    const calculateBtn           = document.getElementById('calculate-btn');
+    const resultContainer        = document.getElementById('result-container');
+    const taxAmount              = document.getElementById('tax-amount');
+    const taxDeductions          = document.getElementById('tax-deductions');
+    const taxSummary             = document.getElementById('tax-summary');
+    const taxSummaryTable        = document.getElementById('tax-summary-table');
+
+    const educationExpensesInput      = document.getElementById('education-expenses');
+    const retirementContributionsInput= document.getElementById('retirement-contributions');
+    const medicalExpensesInput        = document.getElementById('medical-expenses');
+    const charitableDonationsInput    = document.getElementById('charitable-donations');
+    const childCreditsInput           = document.getElementById('child-credits');
+    const dependentsInput             = document.getElementById('dependents');
+
+    const standardDeductionCheckbox  = document.getElementById('standard-deduction');
+    const itemizedDeductionsCheckbox = document.getElementById('itemized-deductions');
+
+    const taxableIncomeEl  = document.getElementById('taxable-income');
+    const taxRateEl        = document.getElementById('tax-rate');
+    const effectiveTaxRateEl= document.getElementById('effective-tax-rate');
+    const taxBracketEl     = document.getElementById('tax-bracket');
+
+    const taxTypeBtns = document.querySelectorAll('.tax-type-btn');
+    let currentTaxType = 'progressive';
+
+    // Beispiel-Progressivstufen (US-Bundessteuer 2023)
+    const taxBrackets = [
+      { min: 0, max: 10200, rate: 0.10 },
+      { min: 10201, max: 41775, rate: 0.12 },
+      { min: 41776, max: 89075, rate: 0.22 },
+      { min: 89076, max: 170050, rate: 0.24 },
+      { min: 170051, max: 215950, rate: 0.32 },
+      { min: 215951, max: 539900, rate: 0.35 },
+      { min: 539901, max: Infinity, rate: 0.37 }
+    ];
+
+    const standardDeduction = 12950;
+    const childTaxCredit    = 2000;
+    const dependentCredit   = 500;
+
+    // Steuerart-Toggle
+    taxTypeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        taxTypeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTaxType = btn.dataset.taxType;
+
+        if (currentTaxType === 'flat') {
+          taxBrackets.length = 0;
+          taxBrackets.push({ min: 0, max: Infinity, rate: 0.20 }); // 20 % Pauschal
+        } else {
+          taxBrackets.length = 0;
+          taxBrackets.push(
+            { min: 0, max: 10200, rate: 0.10 },
+            { min: 10201, max: 41775, rate: 0.12 },
+            { min: 41776, max: 89075, rate: 0.22 },
+            { min: 89076, max: 170050, rate: 0.24 },
+            { min: 170051, max: 215950, rate: 0.32 },
+            { min: 215951, max: 539900, rate: 0.35 },
+            { min: 539901, max: Infinity, rate: 0.37 }
+          );
+        }
+      });
+    });
+
+    // Hauptberechnung
+    function calculateTaxes() {
+      const salary      = parseFloat(salaryInput.value) || 0;
+      const bonus       = parseFloat(bonusInput.value) || 0;
+      const selfEmployed= parseFloat(selfEmployedInput.value) || 0;
+      const interest    = parseFloat(interestInput.value) || 0;
+      const dividend    = parseFloat(dividendInput.value) || 0;
+      const rental      = parseFloat(rentalInput.value) || 0;
+      const foreign     = parseFloat(foreignInput.value) || 0;
+
+      const educationExpenses     = parseFloat(educationExpensesInput.value) || 0;
+      const retirementContributions= parseFloat(retirementContributionsInput.value) || 0;
+      const medicalExpenses       = parseFloat(medicalExpensesInput.value) || 0;
+      const charitableDonations   = parseFloat(charitableDonationsInput.value) || 0;
+      const children              = parseInt(childCreditsInput.value) || 0;
+      const dependents            = parseInt(dependentsInput.value) || 0;
+
+      let totalIncome = salary + bonus + selfEmployed + interest + dividend + rental + foreign;
+
+      let totalDeductions = 0;
+      if (standardDeductionCheckbox.checked) {
+        totalDeductions += standardDeduction;
+      } else if (itemizedDeductionsCheckbox.checked) {
+        totalDeductions += educationExpenses + retirementContributions + medicalExpenses + charitableDonations;
+      }
+
+      const totalCredits = children * childTaxCredit + dependents * dependentCredit;
+
+      let taxableIncome = Math.max(0, totalIncome - totalDeductions);
+
+      let taxLiability = 0;
+      let effectiveTaxRate = 0;
+      let taxBracket = '';
+
+      if (currentTaxType === 'progressive') {
+        taxLiability = 0;
+        for (let i = 0; i < taxBrackets.length; i++) {
+          const b = taxBrackets[i];
+          if (taxableIncome > b.max) {
+            taxLiability += (b.max - b.min + 1) * b.rate;
+          } else if (taxableIncome > b.min) {
+            taxLiability += (taxableIncome - b.min + 1) * b.rate;
+            taxBracket = `${(b.rate * 100).toFixed(0)} %`;
+            break;
+          }
+        }
+        if (taxableIncome > taxBrackets[taxBrackets.length - 1].max) {
+          taxBracket = `${(taxBrackets[taxBrackets.length - 1].rate * 100).toFixed(0)} %+`;
+        }
+        effectiveTaxRate = (taxLiability / totalIncome) * 100;
+      } else {
+        taxLiability = taxableIncome * taxBrackets[0].rate;
+        effectiveTaxRate = taxBrackets[0].rate * 100;
+        taxBracket = `${(taxBrackets[0].rate * 100).toFixed(0)} % Pauschal`;
+      }
+
+      const finalTaxLiability = Math.max(0, taxLiability - totalCredits);
+      const takeHomePay = totalIncome - finalTaxLiability;
+
+      // Anzeige
+      taxAmount.textContent = formatCurrency(finalTaxLiability);
+      taxDeductions.textContent = `Abzüge & Gutschriften: ${formatCurrency(totalDeductions + totalCredits)}`;
+      taxableIncomeEl.textContent = formatCurrency(taxableIncome);
+      taxRateEl.textContent = formatPercent(effectiveTaxRate);
+      effectiveTaxRateEl.textContent = formatPercent(effectiveTaxRate);
+      taxBracketEl.textContent = taxBracket;
+
+      taxSummary.innerHTML = `
+        <p>Basierend auf Ihren Angaben ergibt sich bei einem Gesamteinkommen von <span class="highlight">${formatCurrency(totalIncome)}</span> eine Steuerschuld von <span class="highlight">${formatCurrency(finalTaxLiability)}</span>.</p>
+        <p>Nach Abzug aller Freibeträge und Gutschriften beträgt Ihr Nettogehalt <span class="highlight">${formatCurrency(takeHomePay)}</span>.</p>
+      `;
+
+      // Tabelle füllen
+      const tableBody = taxSummaryTable.querySelector('tbody');
+      tableBody.innerHTML = '';
+
+      const categories = [
+        { name: 'Gehalt', gross: salary, tax: salary * 0.20, rate: 0.20 },
+        { name: 'Prämie', gross: bonus, tax: bonus * 0.25, rate: 0.25 },
+        { name: 'Selbstständig', gross: selfEmployed, tax: selfEmployed * 0.15, rate: 0.15 },
+        { name: 'Zinserträge', gross: interest, tax: interest * 0.10, rate: 0.10 },
+        { name: 'Dividenden', gross: dividend, tax: dividend * 0.15, rate: 0.15 },
+        { name: 'Vermietung', gross: rental, tax: rental * 0.28, rate: 0.28 },
+        { name: 'Ausland', gross: foreign, tax: foreign * 0.30, rate: 0.30 }
+      ];
+
+      categories.forEach(cat => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${cat.name}</td>
+          <td>${formatCurrency(cat.gross)}</td>
+          <td>${formatCurrency(Math.max(0, cat.gross - cat.tax))}</td>
+          <td>${formatPercent(cat.rate * 100)}</td>
+          <td>${formatCurrency(cat.tax)}</td>
+        `;
+        tableBody.appendChild(row);
       });
 
-      // Language selector functionality
-      const langSelect = document.getElementById('lang-select');
-      
-      langSelect.addEventListener('change', function() {
-        const selectedLang = this.value;
-        let targetUrl = '';
-        
-        // Get current path and replace language segment
-        const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/');
-        
-        // Determine the base path for the finance section
-        let financePath = '';
-        if (currentPath.includes('/finance/')) {
-          const financeIndex = pathSegments.findIndex(segment => segment === 'finance');
-          if (financeIndex !== -1) {
-            financePath = pathSegments.slice(financeIndex).join('/').replace('finance/tax-calculator', 'finance/tax-calculator');
-          }
-        }
-        
-        // Build new URL based on selected language
-        switch(selectedLang) {
-          case 'zh':
-            targetUrl = financePath ? `/zh/${financePath}` : '/zh/finance/tax-calculator.html';
-            break;
-          case 'es':
-            targetUrl = financePath ? `/es/${financePath}` : '/es/finance/tax-calculator.html';
-            break;
-          case 'de':
-            targetUrl = financePath ? `/de/${financePath}` : '/de/finance/tax-calculator.html';
-            break;
-          case 'fr':
-            targetUrl = financePath ? `/fr/${financePath}` : '/fr/finance/tax-calculator.html';
-            break;
-          default: // English
-            targetUrl = financePath ? `/en/${financePath}` : '/en/finance/tax-calculator.html';
-        }
-        
-        window.location.href = targetUrl;
-      });
-      
-      // Set current language based on URL
-      const pathSegments = window.location.pathname.split('/');
-      if (pathSegments.length > 1) {
-        const lang = pathSegments[1];
-        if (['en', 'zh', 'es', 'de', 'fr'].includes(lang)) {
-          langSelect.value = lang;
-        }
-      }
-      
-      // Tax Calculator Functionality
-      const salaryInput = document.getElementById('salary-income');
-      const bonusInput = document.getElementById('bonus-income');
-      const selfEmployedInput = document.getElementById('self-employed-income');
-      const interestInput = document.getElementById('interest-income');
-      const dividendInput = document.getElementById('dividend-income');
-      const rentalInput = document.getElementById('rental-income');
-      const foreignInput = document.getElementById('foreign-income');
-      const currencySelect = document.getElementById('foreign-currency');
-      
-      const calculateBtn = document.getElementById('calculate-btn');
-      const resultContainer = document.getElementById('result-container');
-      const taxAmount = document.getElementById('tax-amount');
-      const taxDeductions = document.getElementById('tax-deductions');
-      const taxSummary = document.getElementById('tax-summary');
-      const taxSummaryTable = document.getElementById('tax-summary-table');
-      
-      const educationExpensesInput = document.getElementById('education-expenses');
-      const retirementContributionsInput = document.getElementById('retirement-contributions');
-      const medicalExpensesInput = document.getElementById('medical-expenses');
-      const charitableDonationsInput = document.getElementById('charitable-donations');
-      const childCreditsInput = document.getElementById('child-credits');
-      const dependentsInput = document.getElementById('dependents');
-      
-      const standardDeductionCheckbox = document.getElementById('standard-deduction');
-      const itemizedDeductionsCheckbox = document.getElementById('itemized-deductions');
-      
-      const taxableIncomeEl = document.getElementById('taxable-income');
-      const taxRateEl = document.getElementById('tax-rate');
-      const effectiveTaxRateEl = document.getElementById('effective-tax-rate');
-      const taxBracketEl = document.getElementById('tax-bracket');
-      
-      // Tax type buttons
-      const taxTypeBtns = document.querySelectorAll('.tax-type-btn');
-      let currentTaxType = 'progressive';
-      
-      // Sample tax brackets for progressive tax (US federal tax brackets for 2023 as example)
-      const taxBrackets = [
-        { min: 0, max: 10200, rate: 0.10 },
-        { min: 10201, max: 41775, rate: 0.12 },
-        { min: 41776, max: 89075, rate: 0.22 },
-        { min: 89076, max: 170050, rate: 0.24 },
-        { min: 170051, max: 215950, rate: 0.32 },
-        { min: 215951, max: 539900, rate: 0.35 },
-        { min: 539901, max: Infinity, rate: 0.37 }
-      ];
-      
-      // Standard deduction amount
-      const standardDeduction = 12950;
-      
-      // Child tax credit amount
-      const childTaxCredit = 2000;
-      
-      // Dependent credit amount
-      const dependentCredit = 500;
-      
-      // Initialize tax type buttons
-      taxTypeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          taxTypeBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentTaxType = btn.dataset.taxType;
-          if (currentTaxType === 'flat') {
-            // Update brackets for flat tax
-            taxBrackets.length = 0;
-            taxBrackets.push({ min: 0, max: Infinity, rate: 0.20 }); // 20% flat tax
-          } else {
-            // Reset to progressive tax brackets
-            taxBrackets.length = 0;
-            taxBrackets.push(
-              { min: 0, max: 10200, rate: 0.10 },
-              { min: 10201, max: 41775, rate: 0.12 },
-              { min: 41776, max: 89075, rate: 0.22 },
-              { min: 89076, max: 170050, rate: 0.24 },
-              { min: 170051, max: 215950, rate: 0.32 },
-              { min: 215951, max: 539900, rate: 0.35 },
-              { min: 539901, max: Infinity, rate: 0.37 }
-            );
-          }
-        });
-      });
-      
-      // Calculate Tax function
-      function calculateTaxes() {
-        // Get income values
-        const salary = parseFloat(salaryInput.value) || 0;
-        const bonus = parseFloat(bonusInput.value) || 0;
-        const selfEmployed = parseFloat(selfEmployedInput.value) || 0;
-        const interest = parseFloat(interestInput.value) || 0;
-        const dividend = parseFloat(dividendInput.value) || 0;
-        const rental = parseFloat(rentalInput.value) || 0;
-        const foreign = parseFloat(foreignInput.value) || 0;
-        
-        // Get deductions
-        const educationExpenses = parseFloat(educationExpensesInput.value) || 0;
-        const retirementContributions = parseFloat(retirementContributionsInput.value) || 0;
-        const medicalExpenses = parseFloat(medicalExpensesInput.value) || 0;
-        const charitableDonations = parseFloat(charitableDonationsInput.value) || 0;
-        const children = parseInt(childCreditsInput.value) || 0;
-        const dependents = parseInt(dependentsInput.value) || 0;
-        
-        // Calculate total income
-        let totalIncome = salary + bonus + selfEmployed + interest + dividend + rental + foreign;
-        
-        // Calculate total deductions
-        let totalDeductions = 0;
-        
-        // Standard deduction vs itemized deductions
-        if (standardDeductionCheckbox.checked) {
-          totalDeductions += standardDeduction;
-        } else if (itemizedDeductionsCheckbox.checked) {
-          totalDeductions += educationExpenses + retirementContributions + medicalExpenses + charitableDonations;
-        }
-        
-        // Add child credits and dependent credits
-        const totalCredits = children * childTaxCredit + dependents * dependentCredit;
-        
-        // Calculate taxable income
-        let taxableIncome = totalIncome - totalDeductions;
-        taxableIncome = Math.max(0, taxableIncome);
-        
-        // Calculate tax liability based on tax type
-        let taxLiability = 0;
-        let effectiveTaxRate = 0;
-        let taxBracket = '';
-        
-        if (currentTaxType === 'progressive') {
-          // Progressive tax calculation
-          taxLiability = 0;
-          taxBracket = '';
-          
-          for (let i = 0; i < taxBrackets.length; i++) {
-            const bracket = taxBrackets[i];
-            
-            if (taxableIncome > bracket.max) {
-              taxLiability += (bracket.max - bracket.min + 1) * bracket.rate;
-            } else if (taxableIncome > bracket.min) {
-              taxLiability += (taxableIncome - bracket.min + 1) * bracket.rate;
-              taxBracket = `${bracket.rate * 100}%`;
-            } else {
-              break;
+      const totalRow = document.createElement('tr');
+      totalRow.style.fontWeight = 'bold';
+      totalRow.innerHTML = `
+        <td><strong>Gesamt</strong></td>
+        <td>${formatCurrency(totalIncome)}</td>
+        <td>${formatCurrency(taxableIncome)}</td>
+        <td></td>
+        <td><strong>${formatCurrency(finalTaxLiability)}</strong></td>
+      `;
+      tableBody.appendChild(totalRow);
+
+      createTaxChart(totalIncome, finalTaxLiability);
+      resultContainer.style.display = 'block';
+    }
+
+    // Diagramm
+    function createTaxChart(totalIncome, taxLiability) {
+      const ctx = document.getElementById('tax-chart').getContext('2d');
+      if (window.taxChart) window.taxChart.destroy();
+
+      window.taxChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Bruttoeinkommen', 'Steuern', 'Netto'],
+          datasets: [{
+            label: 'Betrag (€)',
+            data: [totalIncome, taxLiability, totalIncome - taxLiability],
+            backgroundColor: [
+              'rgba(77, 181, 189, 0.7)',
+              'rgba(255, 112, 67, 0.7)',
+              'rgba(76, 175, 80, 0.7)'
+            ],
+            borderColor: [
+              'rgba(77, 181, 189, 1)',
+              'rgba(255, 112, 67, 1)',
+              'rgba(76, 175, 80, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `Betrag: ${formatCurrency(ctx.parsed.y)}`
+              }
             }
-          }
-          
-          // If taxable income exceeds the highest bracket
-          if (taxableIncome > taxBrackets[taxBrackets.length - 1].max) {
-            taxBracket = `${taxBrackets[taxBrackets.length - 1].rate * 100}%+`;
-          }
-          
-          effectiveTaxRate = taxLiability / totalIncome * 100;
-        } else {
-          // Flat tax calculation
-          taxLiability = taxableIncome * taxBrackets[0].rate;
-          effectiveTaxRate = taxBrackets[0].rate * 100;
-          taxBracket = `${taxBrackets[0].rate * 100}% flat`;
-        }
-        
-        // Subtract credits from tax liability
-        let finalTaxLiability = Math.max(0, taxLiability - totalCredits);
-        
-        // Calculate take-home pay
-        const takeHomePay = totalIncome - finalTaxLiability;
-        
-        // Update results
-        taxAmount.textContent = formatCurrency(finalTaxLiability);
-        taxDeductions.textContent = `Total Deductions & Credits: ${formatCurrency(totalDeductions + totalCredits)}`;
-        taxableIncomeEl.textContent = formatCurrency(taxableIncome);
-        taxRateEl.textContent = formatPercent(effectiveTaxRate);
-        effectiveTaxRateEl.textContent = formatPercent(effectiveTaxRate);
-        taxBracketEl.textContent = taxBracket;
-        
-        // Update tax summary
-        const summaryHTML = `
-          <p>Based on your inputs, your total income of <span class="highlight">${formatCurrency(totalIncome)}</span> would result in a tax liability of <span class="highlight">${formatCurrency(finalTaxLiability)}</span>.</p>
-          <p>After applying all deductions and credits, your take-home pay would be <span class="highlight">${formatCurrency(takeHomePay)}</span>.</p>
-        `;
-        taxSummary.innerHTML = summaryHTML;
-        
-        // Generate tax summary table
-        const tableBody = taxSummaryTable.querySelector('tbody');
-        tableBody.innerHTML = '';
-        
-        // Common tax calculation function
-        function calculateSingleCategoryTax(amount, rate) {
-          if (amount <= 0) return { taxable: 0, tax: 0 };
-          const taxable = Math.min(amount, taxableIncome);
-          return { taxable, tax: taxable * rate };
-        }
-        
-        // Simulated tax for different income categories
-        const salaryTax = calculateSingleCategoryTax(salary, 0.20);
-        const bonusTax = calculateSingleCategoryTax(bonus, 0.25);
-        const selfEmployedTax = calculateSingleCategoryTax(selfEmployed, 0.15);
-        const interestTax = calculateSingleCategoryTax(interest, 0.10);
-        const dividendTax = calculateSingleCategoryTax(dividend, 0.15);
-        const rentalTax = calculateSingleCategoryTax(rental, 0.28);
-        const foreignTax = calculateSingleCategoryTax(foreign, 0.30);
-        
-        // Add rows to summary table
-        const categories = [
-          { name: 'Salary', gross: salary, tax: salaryTax.tax, rate: 0.20 },
-          { name: 'Bonus', gross: bonus, tax: bonusTax.tax, rate: 0.25 },
-          { name: 'Self-Employed', gross: selfEmployed, tax: selfEmployedTax.tax, rate: 0.15 },
-          { name: 'Interest', gross: interest, tax: interestTax.tax, rate: 0.10 },
-          { name: 'Dividend', gross: dividend, tax: dividendTax.tax, rate: 0.15 },
-          { name: 'Rental', gross: rental, tax: rentalTax.tax, rate: 0.28 },
-          { name: 'Foreign', gross: foreign, tax: foreignTax.tax, rate: 0.30 }
-        ];
-        
-        // Create table rows
-        categories.forEach(category => {
-          const taxable = category.gross - (category.gross * category.rate);
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${category.name} Income</td>
-            <td>${formatCurrency(category.gross)}</td>
-            <td>${formatCurrency(taxable)}</td>
-            <td>${formatPercent(category.rate * 100)}</td>
-            <td>${formatCurrency(category.tax)}</td>
-          `;
-          tableBody.appendChild(row);
-        });
-        
-        // Create total row
-        const totalRow = document.createElement('tr');
-        totalRow.innerHTML = `
-          <td><strong>Total</strong></td>
-          <td>${formatCurrency(totalIncome)}</td>
-          <td>${formatCurrency(taxableIncome)}</td>
-          <td></td>
-          <td><strong>${formatCurrency(finalTaxLiability)}</strong></td>
-        `;
-        totalRow.style.fontWeight = 'bold';
-        tableBody.appendChild(totalRow);
-        
-        // Create tax chart
-        createTaxChart(totalIncome, finalTaxLiability);
-        
-        // Show result container
-        resultContainer.style.display = 'block';
-      }
-      
-      // Create tax chart
-      function createTaxChart(totalIncome, taxLiability) {
-        const ctx = document.getElementById('tax-chart').getContext('2d');
-        
-        // Destroy previous chart if exists
-        if (window.taxChart) {
-          window.taxChart.destroy();
-        }
-        
-        window.taxChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Gross Income', 'Taxes', 'Take-Home Pay'],
-            datasets: [{
-              label: 'Amount ($)',
-              data: [totalIncome, taxLiability, totalIncome - taxLiability],
-              backgroundColor: [
-                'rgba(77, 181, 189, 0.7)',
-                'rgba(255, 112, 67, 0.7)',
-                'rgba(76, 175, 80, 0.7)'
-              ],
-              borderColor: [
-                'rgba(77, 181, 189, 1)',
-                'rgba(255, 112, 67, 1)',
-                'rgba(76, 175, 80, 1)'
-              ],
-              borderWidth: 1
-            }]
           },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                display: false
-              },
-              tooltip: {
-                mode: 'index',
-                intersect: false,
-                callbacks: {
-                  label: function(context) {
-                    return `Amount: ${formatCurrency(context.parsed.y)}`;
-                  }
-                }
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Einkommensaufteilung',
+                font: { weight: 'bold' }
               }
             },
-            scales: {
-              x: {
-                title: {
-                  display: true,
-                  text: 'Income Breakdown',
-                  font: {
-                    weight: 'bold'
-                  }
-                }
+            y: {
+              title: {
+                display: true,
+                text: 'Betrag (€)',
+                font: { weight: 'bold' }
               },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Amount ($)',
-                  font: {
-                    weight: 'bold'
-                  }
-                },
-                beginAtZero: true,
-                ticks: {
-                  callback: function(value) {
-                    return formatCurrency(value).replace('$', '');
-                  }
-                }
+              beginAtZero: true,
+              ticks: {
+                callback: val => formatCurrency(val).replace('€', '')
               }
             }
           }
-        });
-      }
-      
-      // Format currency
-      function formatCurrency(value) {
-        return new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(value);
-      }
-      
-      // Format percentage
-      function formatPercent(value) {
-        return value.toFixed(2) + '%';
-      }
-      
-      // Add event listener to calculate button
-      calculateBtn.addEventListener('click', calculateTaxes);
-      
-      // Also allow pressing Enter in input fields
-      const inputFields = [
-        salaryInput, bonusInput, selfEmployedInput, interestInput, dividendInput, rentalInput, foreignInput,
-        educationExpensesInput, retirementContributionsInput, medicalExpensesInput, charitableDonationsInput,
-        childCreditsInput, dependentsInput
-      ];
-      
-      inputFields.forEach(field => {
-        field.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') calculateTaxes();
-        });
-      });
-
-      // Initialize the calculator with default values
-      calculateTaxes();
-      
-      // Add additional responsiveness for small screens
-      window.addEventListener('resize', function() {
-        if (window.innerWidth <= 768) {
-          document.querySelector('.tax-container').style.gridTemplateColumns = '1fr';
         }
       });
-    })()
-  </script>
+    }
+
+    // Helfer
+    function formatCurrency(val) {
+      return new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(val);
+    }
+    function formatPercent(val) {
+      return val.toFixed(2).replace('.', ',') + ' %';
+    }
+
+    // Events
+    calculateBtn.addEventListener('click', calculateTaxes);
+    const inputFields = [
+      salaryInput, bonusInput, selfEmployedInput, interestInput, dividendInput, rentalInput, foreignInput,
+      educationExpensesInput, retirementContributionsInput, medicalExpensesInput, charitableDonationsInput,
+      childCreditsInput, dependentsInput
+    ];
+    inputFields.forEach(field => {
+      field.addEventListener('keypress', e => { if (e.key === 'Enter') calculateTaxes(); });
+    });
+
+    // Init
+    calculateTaxes();
+
+    // Responsive
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.tax-container').style.gridTemplateColumns = '1fr';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
